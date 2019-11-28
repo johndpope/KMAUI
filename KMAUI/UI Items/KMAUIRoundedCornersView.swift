@@ -10,7 +10,7 @@ import UIKit
 
 /// This class represents the custom UIView with rounded corners.
 
-class KMAUIRoundedCornersView: UIView {
+@objc class KMAUIRoundedCornersView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
