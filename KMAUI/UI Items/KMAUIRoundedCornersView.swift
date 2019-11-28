@@ -19,7 +19,7 @@ public class KMAUIRoundedCornersView: UIView {
         layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // Shadow
-        layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+        layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor!.cgColor
         layer.shadowOpacity = 0.5
         layer.shadowOffset = CGSize(width: 0, height: 8)
         layer.shadowRadius = 8
