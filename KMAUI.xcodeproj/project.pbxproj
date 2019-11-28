@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17117339460CEC697A5B7566 /* Pods_KMAUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D11B4808B8EAB5AFDE69EDD /* Pods_KMAUI.framework */; };
 		855BA984238FFB3100CE2709 /* KMAUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 855BA982238FFB3100CE2709 /* KMAUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		855BA98C238FFBE500CE2709 /* KMAUIRoundedCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BA98B238FFBE500CE2709 /* KMAUIRoundedCornersView.swift */; };
+		855BA98E238FFC2D00CE2709 /* KMAUIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */; };
+		855BA990238FFC6C00CE2709 /* KMAUIAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1347A4BD83539BDA7D7E6847 /* Pods-KMAUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMAUI.release.xcconfig"; path = "Target Support Files/Pods-KMAUI/Pods-KMAUI.release.xcconfig"; sourceTree = "<group>"; };
+		3D11B4808B8EAB5AFDE69EDD /* Pods_KMAUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KMAUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		855BA97F238FFB3100CE2709 /* KMAUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KMAUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		855BA982238FFB3100CE2709 /* KMAUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KMAUI.h; sourceTree = "<group>"; };
 		855BA983238FFB3100CE2709 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		855BA98B238FFBE500CE2709 /* KMAUIRoundedCornersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAUIRoundedCornersView.swift; sourceTree = "<group>"; };
+		855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIConstants.swift; sourceTree = "<group>"; };
+		855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KMAUIAssets.xcassets; sourceTree = "<group>"; };
+		EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMAUI.debug.xcconfig"; path = "Target Support Files/Pods-KMAUI/Pods-KMAUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -21,17 +31,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17117339460CEC697A5B7566 /* Pods_KMAUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		53C44EC3DD0B664B94345866 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */,
+				1347A4BD83539BDA7D7E6847 /* Pods-KMAUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		855BA975238FFB3100CE2709 = {
 			isa = PBXGroup;
 			children = (
 				855BA981238FFB3100CE2709 /* KMAUI */,
 				855BA980238FFB3100CE2709 /* Products */,
+				53C44EC3DD0B664B94345866 /* Pods */,
+				E4B4A999F93900155EAE2A7A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,9 +69,28 @@
 			isa = PBXGroup;
 			children = (
 				855BA982238FFB3100CE2709 /* KMAUI.h */,
+				855BA98A238FFBD000CE2709 /* UI Items */,
 				855BA983238FFB3100CE2709 /* Info.plist */,
 			);
 			path = KMAUI;
+			sourceTree = "<group>";
+		};
+		855BA98A238FFBD000CE2709 /* UI Items */ = {
+			isa = PBXGroup;
+			children = (
+				855BA98B238FFBE500CE2709 /* KMAUIRoundedCornersView.swift */,
+				855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */,
+				855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */,
+			);
+			path = "UI Items";
+			sourceTree = "<group>";
+		};
+		E4B4A999F93900155EAE2A7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D11B4808B8EAB5AFDE69EDD /* Pods_KMAUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -70,6 +111,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 855BA987238FFB3100CE2709 /* Build configuration list for PBXNativeTarget "KMAUI" */;
 			buildPhases = (
+				D5E6A8941F9729ABF558AA03 /* [CP] Check Pods Manifest.lock */,
 				855BA97A238FFB3100CE2709 /* Headers */,
 				855BA97B238FFB3100CE2709 /* Sources */,
 				855BA97C238FFB3100CE2709 /* Frameworks */,
@@ -95,6 +137,7 @@
 				TargetAttributes = {
 					855BA97E238FFB3100CE2709 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -121,16 +164,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855BA990238FFC6C00CE2709 /* KMAUIAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D5E6A8941F9729ABF558AA03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KMAUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		855BA97B238FFB3100CE2709 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				855BA98C238FFBE500CE2709 /* KMAUIRoundedCornersView.swift in Sources */,
+				855BA98E238FFC2D00CE2709 /* KMAUIConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +330,9 @@
 		};
 		855BA988238FFB3100CE2709 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CGLWULMA8G;
@@ -276,6 +349,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sircfc.KMAUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -283,7 +357,9 @@
 		};
 		855BA989238FFB3100CE2709 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1347A4BD83539BDA7D7E6847 /* Pods-KMAUI.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CGLWULMA8G;
