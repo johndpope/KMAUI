@@ -20,7 +20,7 @@ class KMAUIRoundedCornersView: UIView {
         
         // Shadow
         layer.shadowColor = KMAUIConstants.shared.KMATextGray.cgColor
-        layer.shadowOpacity = 0.5
+        layer.shadowOpacity = 1.0
         layer.shadowOffset = CGSize(width: 0, height: 8)
         layer.shadowRadius = 8
         layer.shouldRasterize = true
