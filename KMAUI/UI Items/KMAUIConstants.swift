@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KMAUIConstants {
+public class KMAUIConstants {
     // Access variable
     public static let shared = KMAUIConstants()
 
