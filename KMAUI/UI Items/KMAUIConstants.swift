@@ -13,8 +13,17 @@ public class KMAUIConstants {
     public static let shared = KMAUIConstants()
 
     // MARK: - Colors
-    public let KMATextGray = UIColor(named: "KMATextGray")!
+    public let KMATextGrayColor = UIColor(named: "KMATextGrayColor")!
     public let KMABackColor = UIColor(named: "KMABackColor")!
+    public let KMATurquoiseColor = UIColor(named: "KMATurquoiseColor")!
+    public let KMATitleColor = UIColor(named: "KMATitleColor")!
+    public let KMATextColor = UIColor(named: "KMATextColor")!
+    public let KMABlueColor = UIColor(named: "KMABlueColor")!
+    public let KMAGreenColor = UIColor(named: "KMAGreenColor")!
+    public let KMARoseColor = UIColor(named: "KMARoseColor")!
+    public let KMARedColor = UIColor(named: "KMARedColor")!
+    public let KMALightPurpleColor = UIColor(named: "KMALightPurpleColor")!
+    public let KMAPurpleColor = UIColor(named: "KMAPurpleColor")!
     
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 8
