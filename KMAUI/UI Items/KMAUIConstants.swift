@@ -13,9 +13,9 @@ public class KMAUIConstants {
     public static let shared = KMAUIConstants()
 
     // MARK: - Colors
-    let KMATextGray = UIColor(named: "KMATextGray")!
-    let KMABackColor = UIColor(named: "KMABackColor")!
+    public let KMATextGray = UIColor(named: "KMATextGray")!
+    public let KMABackColor = UIColor(named: "KMABackColor")!
     
     // MARK: - Constants
-    let KMACornerRadius: CGFloat = 8
+    public let KMACornerRadius: CGFloat = 8
 }
