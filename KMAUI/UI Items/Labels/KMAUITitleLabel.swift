@@ -20,7 +20,7 @@ public class KMAUITitleLabel: UILabel {
         numberOfLines = 0
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         
         font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
