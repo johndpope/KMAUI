@@ -1,5 +1,5 @@
 //
-//  KMATitleLabel.swift
+//  KMAUITitleLabel.swift
 //  KMA EYES CITIZENS
 //
 //  Created by Stanislav Rastvorov on 8/28/19.

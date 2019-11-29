@@ -1,5 +1,5 @@
 //
-//  KMARoundedCornersView.swift
+//  KMAUIRoundedCornersView.swift
 //  KMA EYES CITIZENS
 //
 //  Created by Stanislav Rastvorov on 9/9/19.
