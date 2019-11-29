@@ -14,8 +14,8 @@ public class KMAUITextLabel: UILabel {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
+
+        font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         textColor = KMAUIConstants.shared.KMATextColor
         numberOfLines = 0
     }

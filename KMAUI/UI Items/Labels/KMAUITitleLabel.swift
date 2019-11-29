@@ -15,16 +15,16 @@ public class KMAUITitleLabel: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
-        textColor = KMAUIConstants.shared.KMATextColor
+        font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        textColor = KMAUIConstants.shared.KMATitleColor
         numberOfLines = 0
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
-        textColor = KMAUIConstants.shared.KMATextColor
+        font = UIFont.systemFont(ofSize: 16.0, weight: .semibold)
+        textColor = KMAUIConstants.shared.KMATitleColor
         numberOfLines = 0
     }
 }

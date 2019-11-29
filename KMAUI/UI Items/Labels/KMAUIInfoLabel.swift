@@ -15,7 +15,7 @@ public class KMAUIInfoLabel: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        font = UIFont.systemFont(ofSize: 15.0, weight: .regular)
+        font = UIFont.systemFont(ofSize: 13.0, weight: .regular)
         textColor = KMAUIConstants.shared.KMATextGrayColor
         numberOfLines = 0
     }
