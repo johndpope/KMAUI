@@ -26,7 +26,7 @@
                         <color key="textColor" name="KMATitleColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter some text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yQ2-M1-Lvx">
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter some text" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="yQ2-M1-Lvx">
                         <rect key="frame" x="16" y="32" width="288" height="44"/>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
