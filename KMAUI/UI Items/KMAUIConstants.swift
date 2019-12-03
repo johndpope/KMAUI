@@ -28,4 +28,32 @@ public class KMAUIConstants {
     
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
+    
+    // MARK: - Login variables
+    public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
+}
+
+// MARK: - Structures
+
+public struct KMAUITextFieldCellData {
+    var type = "textField"
+    var placeholderText = ""
+    var value = ""
+    
+    // Fill the data from the dictionary
+    mutating func setupStruct(cellObject: [String: AnyObject]) {
+        if let placeholderTextValue = cellObject["placeholderText"] as? String {
+            placeholderText = placeholderTextValue
+        }
+        
+        // For request
+        if let defaultValue = cellObject["defaultValue"] as? String {
+            value = defaultValue
+        }
+        
+        // For answer
+        if let answerValue = cellObject["answer"] as? String {
+            value = answerValue
+        }
+    }
 }

@@ -13,10 +13,18 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var valueTextField: UITextField!
     
+    // MARK: - Variables
+    var cellType = ""
+    var cellData = KMAUITextFieldCellData()
+    var textFieldChangedCallback: ((String) -> Void)?
+    var nextFieldCallback: ((String) -> Void)?
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Adjust the UI for the text field
+        valueTextField.delegate = self
+        valueTextField.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         valueTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
         valueTextField.layer.borderWidth = 1
         valueTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -41,4 +49,55 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /**
+     Setup the cell UI.
+     */
+    
+    func setupCell() {
+        // Setup the placeholder
+        placeholderLabel.text = cellData.placeholderText
+        valueTextField.placeholder = cellData.placeholderText
+        valueTextField.text = cellData.value
+    }
+    
+    // MARK: - IBActions
+    
+    /**
+     Text field value changed.
+    */
+    
+    @objc func textFieldValueChanged(textField: UITextField) {
+        if let textLoaded = valueTextField.text {
+            cellData.value = textLoaded
+            textFieldChangedCallback?("changed")
+        }
+    }
+}
+
+// MARK: - UITextField delegate
+
+extension KMAUITextFieldTableViewCell: UITextFieldDelegate {
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nextFieldCallback?("done")
+        
+        return true
+    }
+    
+    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // Only alphanumerics for username
+        if cellType == "username", !string.isEmpty {
+            var allowedCharacters = CharacterSet()
+            allowedCharacters.insert(charactersIn: KMAUIConstants.shared.usernameAllowedCharacters)
+            let unwantedStr = string.trimmingCharacters(in: allowedCharacters)
+            
+            return unwantedStr.count == 0
+        }
+        
+        return true
+    }
 }
