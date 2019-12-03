@@ -36,9 +36,9 @@ public class KMAUIConstants {
 // MARK: - Structures
 
 public struct KMAUITextFieldCellData {
-    var type = "textField"
-    var placeholderText = ""
-    var value = ""
+    public var type = "textField"
+    public var placeholderText = ""
+    public var value = ""
     
     // Fill the data from the dictionary
     public mutating func setupStruct(cellObject: [String: AnyObject]) {
