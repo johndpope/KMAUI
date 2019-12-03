@@ -56,4 +56,10 @@ public struct KMAUITextFieldCellData {
             value = answerValue
         }
     }
+    
+    public init(type: String? = "textField", placeholderText: String? = "", value: String? = "") {
+        self.type = type
+        self.placeholderText = placeholderText
+        self.value = value
+    }
 }
