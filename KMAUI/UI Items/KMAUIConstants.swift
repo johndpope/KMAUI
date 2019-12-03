@@ -26,5 +26,5 @@ public class KMAUIConstants {
     public let KMAPurpleColor = UIColor(named: "KMAPurpleColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Constants
-    public let KMACornerRadius: CGFloat = 8
+    public let KMACornerRadius: CGFloat = 6
 }
