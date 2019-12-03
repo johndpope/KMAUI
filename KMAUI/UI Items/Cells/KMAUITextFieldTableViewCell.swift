@@ -10,14 +10,14 @@ import UIKit
 
 public class KMAUITextFieldTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var placeholderLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet public weak var placeholderLabel: UILabel!
+    @IBOutlet public weak var valueTextField: UITextField!
     
     // MARK: - Variables
-    var cellType = ""
-    var cellData = KMAUITextFieldCellData()
-    var textFieldChangedCallback: ((String) -> Void)?
-    var nextFieldCallback: ((String) -> Void)?
+    public var cellType = ""
+    public var cellData = KMAUITextFieldCellData()
+    public var textFieldChangedCallback: ((String) -> Void)?
+    public var nextFieldCallback: ((String) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -53,7 +53,7 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
      Setup the cell UI.
      */
     
-    func setupCell() {
+    public func setupCell() {
         // Setup the placeholder
         placeholderLabel.text = cellData.placeholderText
         valueTextField.placeholder = cellData.placeholderText
