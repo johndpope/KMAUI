@@ -17,7 +17,8 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Adjust the UI for the text field
-        valueTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        valueTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
+        valueTextField.layer.borderWidth = 1
         valueTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // No selection required
