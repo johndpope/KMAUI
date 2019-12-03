@@ -41,7 +41,7 @@ public struct KMAUITextFieldCellData {
     var value = ""
     
     // Fill the data from the dictionary
-    mutating func setupStruct(cellObject: [String: AnyObject]) {
+    public mutating func setupStruct(cellObject: [String: AnyObject]) {
         if let placeholderTextValue = cellObject["placeholderText"] as? String {
             placeholderText = placeholderTextValue
         }
