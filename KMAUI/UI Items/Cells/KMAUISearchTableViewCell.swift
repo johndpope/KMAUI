@@ -11,6 +11,7 @@ import UIKit
 public class KMAUISearchTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var searchTextField: UITextField!
+    @IBOutlet public weak var searchIconImageView: UIImageView!
     
     // MARK: - Variables
     public var textFieldChangedCallback: ((String) -> Void)?
@@ -37,6 +38,10 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         
         // No selection required
         selectionStyle = .none
+        
+        // Search icon color
+        searchIconImageView.image = KMAUIConstants.shared.searchIcon.withRenderingMode(.alwaysTemplate)
+        searchIconImageView.tintColor = KMAUIConstants.shared.KMATextColor
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
