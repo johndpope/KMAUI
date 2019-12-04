@@ -17,11 +17,13 @@ public class KMAUIUtilities {
     */
     
     public func headerView(title: String, isRound: Bool? = nil) -> UITableViewHeaderFooterView {
-        var offset: CGFloat = 0
+//        var offset: CGFloat = 0
+//
+//        if let isRound = isRound, isRound {
+//            offset = 20
+//        }
         
-        if let isRound = isRound, isRound {
-            offset = 20
-        }
+        let offset: CGFloat = 20
         
         let backgroundView = UIView(frame: CGRect(x: 0, y: 0, width: KMAUIConstants.shared.KMAScreenWidth, height: 44 + offset))
         
