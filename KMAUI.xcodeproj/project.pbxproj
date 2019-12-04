@@ -19,6 +19,7 @@
 		855BA990238FFC6C00CE2709 /* KMAUIAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */; };
 		859C8B6C2398005A00CAFF47 /* KMAUISearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B6A2398005A00CAFF47 /* KMAUISearchTableViewCell.swift */; };
 		859C8B6D2398005A00CAFF47 /* KMAUISearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859C8B6B2398005A00CAFF47 /* KMAUISearchTableViewCell.xib */; };
+		859C8B6F2398059000CAFF47 /* KMAUIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = KMAUIAssets.xcassets; sourceTree = "<group>"; };
 		859C8B6A2398005A00CAFF47 /* KMAUISearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUISearchTableViewCell.swift; sourceTree = "<group>"; };
 		859C8B6B2398005A00CAFF47 /* KMAUISearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUISearchTableViewCell.xib; sourceTree = "<group>"; };
+		859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIUtilities.swift; sourceTree = "<group>"; };
 		EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMAUI.debug.xcconfig"; path = "Target Support Files/Pods-KMAUI/Pods-KMAUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				852181BD239159BA00A6B891 /* Labels */,
 				852181BC239159B200A6B891 /* Views */,
 				855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */,
+				859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */,
 				855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */,
 			);
 			path = "UI Items";
@@ -249,6 +252,7 @@
 			files = (
 				852181BF23915A2800A6B891 /* KMAUITitleLabel.swift in Sources */,
 				855BA98C238FFBE500CE2709 /* KMAUIRoundedCornersView.swift in Sources */,
+				859C8B6F2398059000CAFF47 /* KMAUIUtilities.swift in Sources */,
 				855BA98E238FFC2D00CE2709 /* KMAUIConstants.swift in Sources */,
 				85476CA523968ECF00F6B74A /* KMAUITextFieldTableViewCell.swift in Sources */,
 				859C8B6C2398005A00CAFF47 /* KMAUISearchTableViewCell.swift in Sources */,
