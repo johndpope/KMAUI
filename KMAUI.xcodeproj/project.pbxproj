@@ -22,6 +22,8 @@
 		859C8B6F2398059000CAFF47 /* KMAUIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */; };
 		859C8B7223981C0200CAFF47 /* KMAUIStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B7023981C0200CAFF47 /* KMAUIStatusTableViewCell.swift */; };
 		859C8B7323981C0200CAFF47 /* KMAUIStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */; };
+		859C8B762398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */; };
+		859C8B772398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIUtilities.swift; sourceTree = "<group>"; };
 		859C8B7023981C0200CAFF47 /* KMAUIStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIStatusTableViewCell.swift; sourceTree = "<group>"; };
 		859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUIStatusTableViewCell.xib; sourceTree = "<group>"; };
+		859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUISaveButtonTableViewCell.swift; sourceTree = "<group>"; };
+		859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUISaveButtonTableViewCell.xib; sourceTree = "<group>"; };
 		EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMAUI.debug.xcconfig"; path = "Target Support Files/Pods-KMAUI/Pods-KMAUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +98,8 @@
 				859C8B6B2398005A00CAFF47 /* KMAUISearchTableViewCell.xib */,
 				859C8B7023981C0200CAFF47 /* KMAUIStatusTableViewCell.swift */,
 				859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */,
+				859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */,
+				859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -219,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				855BA990238FFC6C00CE2709 /* KMAUIAssets.xcassets in Resources */,
+				859C8B772398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib in Resources */,
 				85476CA623968ECF00F6B74A /* KMAUITextFieldTableViewCell.xib in Resources */,
 				859C8B6D2398005A00CAFF47 /* KMAUISearchTableViewCell.xib in Resources */,
 				859C8B7323981C0200CAFF47 /* KMAUIStatusTableViewCell.xib in Resources */,
@@ -259,6 +266,7 @@
 			files = (
 				852181BF23915A2800A6B891 /* KMAUITitleLabel.swift in Sources */,
 				859C8B7223981C0200CAFF47 /* KMAUIStatusTableViewCell.swift in Sources */,
+				859C8B762398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift in Sources */,
 				855BA98C238FFBE500CE2709 /* KMAUIRoundedCornersView.swift in Sources */,
 				859C8B6F2398059000CAFF47 /* KMAUIUtilities.swift in Sources */,
 				855BA98E238FFC2D00CE2709 /* KMAUIConstants.swift in Sources */,
