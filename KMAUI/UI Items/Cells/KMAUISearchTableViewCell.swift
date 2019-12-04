@@ -15,7 +15,6 @@ public class KMAUISearchTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var textFieldChangedCallback: ((String) -> Void)?
-    public var nextFieldCallback: ((String) -> Void)?
     public var value = ""
     
     override public func awakeFromNib() {
@@ -50,6 +49,10 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell() {
+        searchTextField.text = value
+    }
+    
     // MARK: - IBActions
     
     /**
@@ -69,7 +72,7 @@ public class KMAUISearchTableViewCell: UITableViewCell {
 extension KMAUISearchTableViewCell: UITextFieldDelegate {
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nextFieldCallback?("done")
+        searchTextField.resignFirstResponder()
         
         return true
     }
