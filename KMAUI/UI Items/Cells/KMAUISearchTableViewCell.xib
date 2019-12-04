@@ -52,7 +52,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="searchIcon" width="33" height="33"/>
+        <image name="searchIcon" width="16" height="16"/>
         <namedColor name="KMABackColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
