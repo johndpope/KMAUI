@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="68" id="KGk-i7-Jjw" customClass="KMAUISearchTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cxz-US-WQF">
+                        <rect key="frame" x="16" y="8" width="288" height="44"/>
+                        <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="mFh-qw-KCr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HFa-F1-uIn">
+                        <rect key="frame" x="28" y="20" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="k30-jc-AY2"/>
+                            <constraint firstAttribute="height" constant="20" id="uom-eL-9v1"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" name="KMABgGray"/>
+                <constraints>
+                    <constraint firstItem="HFa-F1-uIn" firstAttribute="centerY" secondItem="Cxz-US-WQF" secondAttribute="centerY" id="2vp-tQ-hJb"/>
+                    <constraint firstAttribute="trailing" secondItem="Cxz-US-WQF" secondAttribute="trailing" constant="16" id="CB2-jk-nef"/>
+                    <constraint firstItem="Cxz-US-WQF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Lzk-8W-Wip"/>
+                    <constraint firstItem="Cxz-US-WQF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="UsH-5b-rzx"/>
+                    <constraint firstAttribute="bottom" secondItem="Cxz-US-WQF" secondAttribute="bottom" constant="16" id="g53-eT-ShC"/>
+                    <constraint firstItem="HFa-F1-uIn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="28" id="jPg-Zl-yBa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="searchTextField" destination="Cxz-US-WQF" id="wth-VJ-sLx"/>
+            </connections>
+            <point key="canvasLocation" x="2.8985507246376816" y="108.48214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="searchIcon" width="33" height="33"/>
+        <namedColor name="KMABackColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABgGray">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
