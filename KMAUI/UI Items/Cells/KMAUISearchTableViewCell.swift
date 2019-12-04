@@ -49,7 +49,7 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell() {
+    public func setupCell() {
         searchTextField.text = value
     }
     
