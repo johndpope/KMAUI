@@ -19,7 +19,7 @@ public class KMAUISaveButtonTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Rounded corners for button
-        saveButton.layer.cornerRadius = 29
+        saveButton.layer.cornerRadius = 26
         saveButton.clipsToBounds = true
         
         // No selection required
