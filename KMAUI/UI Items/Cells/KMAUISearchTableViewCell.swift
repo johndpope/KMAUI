@@ -28,6 +28,9 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         searchTextField.leftViewMode = .always
         
         searchTextField.placeholder = "Enter topic, keyword, etc"
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
