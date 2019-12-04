@@ -13,10 +13,16 @@ public class KMAUISearchTableViewCell: UITableViewCell {
     @IBOutlet public weak var searchTextField: UITextField!
     
     // MARK: - Variables
+    public var textFieldChangedCallback: ((String) -> Void)?
     public var nextFieldCallback: ((String) -> Void)?
+    public var value = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Text field delegate and changes detection
+        searchTextField.delegate = self
+        searchTextField.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         
         // Adjust the search text field
         searchTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
@@ -37,6 +43,19 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    // MARK: - IBActions
+    
+    /**
+     Text field value changed.
+    */
+    
+    @objc func textFieldValueChanged(textField: UITextField) {
+        if let textLoaded = searchTextField.text {
+            value = textLoaded
+            textFieldChangedCallback?("changed")
+        }
     }
 }
 
