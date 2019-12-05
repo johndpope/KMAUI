@@ -62,7 +62,7 @@ public class KMAUISearchTableViewCell: UITableViewCell {
     @objc func textFieldValueChanged(textField: UITextField) {
         if let textLoaded = searchTextField.text {
             value = textLoaded
-            textFieldChangedCallback?("changed")
+            textFieldChangedCallback?(value)
         }
     }
 }
