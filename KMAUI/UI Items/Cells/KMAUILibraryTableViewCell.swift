@@ -9,7 +9,7 @@
 import UIKit
 
 /// This class represents the UI for the third party library cell
-public class KMAUIThirdPartyLibraryTableViewCell: UITableViewCell {
+public class KMAUILibraryTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var logoImageView: UIImageView!
