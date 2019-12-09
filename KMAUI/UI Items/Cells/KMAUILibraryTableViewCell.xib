@@ -36,10 +36,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jau-UE-rbC" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jau-UE-rbC" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="60" y="30" width="188" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="zMN-YG-pMc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="zMN-YG-pMc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -55,14 +55,14 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="fob-Bl-Zru" firstAttribute="centerY" secondItem="mGa-D6-g4e" secondAttribute="centerY" id="3l6-Sb-K6O"/>
                             <constraint firstItem="nKx-ZH-fja" firstAttribute="top" secondItem="mGa-D6-g4e" secondAttribute="top" constant="8" id="6oY-gh-rUb"/>
                             <constraint firstItem="fob-Bl-Zru" firstAttribute="leading" secondItem="mGa-D6-g4e" secondAttribute="leading" constant="8" id="Br3-e6-yOH"/>
                             <constraint firstItem="nKx-ZH-fja" firstAttribute="leading" secondItem="fob-Bl-Zru" secondAttribute="trailing" constant="8" id="CnG-sS-gEt"/>
-                            <constraint firstAttribute="bottom" secondItem="fob-Bl-Zru" secondAttribute="bottom" constant="8" id="JkN-EC-STV"/>
+                            <constraint firstAttribute="bottom" secondItem="jau-UE-rbC" secondAttribute="bottom" constant="8" id="QCv-ol-tDA"/>
                             <constraint firstItem="rGg-qL-ZZV" firstAttribute="centerY" secondItem="mGa-D6-g4e" secondAttribute="centerY" id="Tkq-bX-ZIE"/>
                             <constraint firstItem="rGg-qL-ZZV" firstAttribute="leading" secondItem="nKx-ZH-fja" secondAttribute="trailing" constant="8" id="V9u-bP-LAq"/>
                             <constraint firstItem="rGg-qL-ZZV" firstAttribute="leading" secondItem="jau-UE-rbC" secondAttribute="trailing" constant="8" id="ddL-Wo-NoM"/>
-                            <constraint firstItem="fob-Bl-Zru" firstAttribute="top" secondItem="mGa-D6-g4e" secondAttribute="top" constant="8" id="g4n-OI-WEV"/>
                             <constraint firstItem="jau-UE-rbC" firstAttribute="leading" secondItem="fob-Bl-Zru" secondAttribute="trailing" constant="8" id="h9m-wA-dOU"/>
                             <constraint firstAttribute="trailing" secondItem="rGg-qL-ZZV" secondAttribute="trailing" constant="8" id="oYe-ff-kgf"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="rGD-hd-PH0"/>
