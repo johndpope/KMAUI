@@ -12,6 +12,7 @@ import UIKit
 public class KMAUILibraryTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var descriptionLabel: KMAUITextLabel!

@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mGa-D6-g4e" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="16" width="288" height="60"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="60"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fob-Bl-Zru">
                                 <rect key="frame" x="8" y="8" width="44" height="44"/>
@@ -74,13 +74,14 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="mGa-D6-g4e" secondAttribute="trailing" constant="16" id="0Pf-WT-95d"/>
                     <constraint firstItem="mGa-D6-g4e" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="B33-EJ-Udz"/>
-                    <constraint firstItem="mGa-D6-g4e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="Yl4-sC-4mT"/>
-                    <constraint firstAttribute="bottom" secondItem="mGa-D6-g4e" secondAttribute="bottom" id="hUH-0o-x3g"/>
+                    <constraint firstItem="mGa-D6-g4e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Yl4-sC-4mT"/>
+                    <constraint firstAttribute="bottom" secondItem="mGa-D6-g4e" secondAttribute="bottom" constant="16" id="hUH-0o-x3g"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="mGa-D6-g4e" id="V9E-Br-heJ"/>
+                <outlet property="bgViewTop" destination="Yl4-sC-4mT" id="zJ9-jn-GJM"/>
                 <outlet property="checkboxImageView" destination="rGg-qL-ZZV" id="xsE-nI-4IX"/>
                 <outlet property="descriptionLabel" destination="jau-UE-rbC" id="vSV-5k-XhZ"/>
                 <outlet property="logoImageView" destination="fob-Bl-Zru" id="MXW-Pt-jBE"/>
