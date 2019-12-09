@@ -24,6 +24,8 @@ public class KMAUILibraryTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         // Round corners for logo
+        logoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        logoImageView.layer.borderWidth = 1
         logoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // No selection required
