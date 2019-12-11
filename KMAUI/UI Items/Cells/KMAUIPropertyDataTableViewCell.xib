@@ -10,18 +10,59 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyDataCell" rowHeight="67" id="KGk-i7-Jjw" customClass="KMAUIPropertyDataTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyDataCell" rowHeight="153" id="KGk-i7-Jjw" customClass="KMAUIPropertyDataTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="67"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Re-0j-TbA" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="8" width="288" height="44"/>
+                        <rect key="frame" x="16" y="8" width="288" height="137"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private house" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdF-t3-ukz" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="215" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="jNz-NB-s7F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lna-Dz-6m1">
+                                <rect key="frame" x="231" y="13" width="51" height="12"/>
+                                <color key="onTintColor" name="KMABrightBlueColor"/>
+                            </switch>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apartment number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKM-ze-xWa">
+                                <rect key="frame" x="8" y="33" width="272" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="dFj-BV-l8a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw5-Hb-1HL">
+                                <rect key="frame" x="8" y="85" width="272" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="YHc-Fs-VcY"/>
+                                </constraints>
+                                <state key="normal" title="Confirm"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="2uS-su-s96"/>
+                            <constraint firstItem="lna-Dz-6m1" firstAttribute="centerY" secondItem="EdF-t3-ukz" secondAttribute="centerY" id="5eP-mU-bSI"/>
+                            <constraint firstItem="Pw5-Hb-1HL" firstAttribute="leading" secondItem="6Re-0j-TbA" secondAttribute="leading" constant="8" id="5fc-ql-hF9"/>
+                            <constraint firstItem="EdF-t3-ukz" firstAttribute="leading" secondItem="6Re-0j-TbA" secondAttribute="leading" constant="8" id="92q-gt-7H1"/>
+                            <constraint firstAttribute="trailing" secondItem="Pw5-Hb-1HL" secondAttribute="trailing" constant="8" id="AHT-UF-mdv"/>
+                            <constraint firstAttribute="trailing" secondItem="lKM-ze-xWa" secondAttribute="trailing" constant="8" id="Af8-KT-e1a"/>
+                            <constraint firstItem="lKM-ze-xWa" firstAttribute="leading" secondItem="6Re-0j-TbA" secondAttribute="leading" constant="8" id="UIr-LF-rn4"/>
+                            <constraint firstItem="EdF-t3-ukz" firstAttribute="top" secondItem="6Re-0j-TbA" secondAttribute="top" constant="8" id="b0G-sj-ZYi"/>
+                            <constraint firstItem="lna-Dz-6m1" firstAttribute="leading" secondItem="EdF-t3-ukz" secondAttribute="trailing" constant="8" id="eak-yT-MPI"/>
+                            <constraint firstItem="Pw5-Hb-1HL" firstAttribute="top" secondItem="lKM-ze-xWa" secondAttribute="bottom" constant="8" id="jhC-lb-dx6"/>
+                            <constraint firstAttribute="bottom" secondItem="Pw5-Hb-1HL" secondAttribute="bottom" constant="8" id="jth-S4-JeZ"/>
+                            <constraint firstItem="lKM-ze-xWa" firstAttribute="top" secondItem="lna-Dz-6m1" secondAttribute="bottom" constant="8" id="pFi-Us-hW9"/>
+                            <constraint firstAttribute="trailing" secondItem="lna-Dz-6m1" secondAttribute="trailing" constant="8" id="yNX-qD-FwE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -37,7 +78,7 @@
             <connections>
                 <outlet property="bgView" destination="6Re-0j-TbA" id="Tre-7O-2UV"/>
             </connections>
-            <point key="canvasLocation" x="-157.97101449275362" y="108.14732142857143"/>
+            <point key="canvasLocation" x="-157.97101449275362" y="136.94196428571428"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -46,6 +87,9 @@
         </namedColor>
         <namedColor name="KMABgGray">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABrightBlueColor">
+            <color red="0.15294117647058825" green="0.41568627450980394" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
