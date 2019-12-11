@@ -20,9 +20,7 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var apartmentNumber = 0
     public var isPrivateHouse = true
-    public var dataUpdatedCallback: ((Bool, Int) -> Void)?
-    public var reloadCallback: ((Bool) -> Void)?
-    public var confirmCallback: ((Bool) -> Void)?
+    public var dataUpdatedCallback: ((Bool, Int, String) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -89,25 +87,23 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
                 apartmentNumber = 0
             }
             
-            dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
+            dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "edited")
         }
     }
     
     @IBAction public func confirmButtonPressed(_ sender: Any) {
         if !isPrivateHouse, apartmentNumber == 0 {
-            KMAUIUtilities.shared.globalAlert(title: "Apartment number", message: "Please enter your apartment number or switch to the private house mode.") { (done) in }
+            //            KMAUIUtilities.shared.globalAlert(title: "Apartment number", message: "Please enter your apartment number or switch to the private house mode.") { (done) in }
+            dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "error")
         } else {
-            dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
-            // Plus update all the details
-            confirmCallback?(true)
+            dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "confirmed")
         }
     }
     
     @IBAction public func houseSwitchValueChanged(_ sender: Any) {
         isPrivateHouse = !isPrivateHouse
         verifyVisibility()
-        dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
-        reloadCallback?(true)
+        dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "update")
     }
 }
 
