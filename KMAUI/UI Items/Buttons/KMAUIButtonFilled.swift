@@ -18,7 +18,7 @@ public class KMAButtonFilled: UIButton {
         titleLabel?.font = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
         setTitleColor(UIColor.white, for: .normal) // It should be white for both Light and Dark mode
         backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
-        layer.cornerRadius = KMAConstants.shared.KMACornerRadius
+        layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         clipsToBounds = true
     }
 }
