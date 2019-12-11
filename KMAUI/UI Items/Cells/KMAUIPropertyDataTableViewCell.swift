@@ -93,7 +93,6 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     
     @IBAction public func confirmButtonPressed(_ sender: Any) {
         if !isPrivateHouse, apartmentNumber == 0 {
-            //            KMAUIUtilities.shared.globalAlert(title: "Apartment number", message: "Please enter your apartment number or switch to the private house mode.") { (done) in }
             dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "error")
         } else {
             dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "confirmed")
@@ -102,6 +101,11 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     
     @IBAction public func houseSwitchValueChanged(_ sender: Any) {
         isPrivateHouse = !isPrivateHouse
+        
+        if isPrivateHouse {
+            apartmentNumber = 0
+        }
+        
         verifyVisibility()
         dataUpdatedCallback?(isPrivateHouse, apartmentNumber, "update")
     }
