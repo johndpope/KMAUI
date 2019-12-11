@@ -101,7 +101,7 @@ public class KMAUIUtilities {
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
         loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
         loadingIndicator.startAnimating()
         
@@ -119,7 +119,7 @@ public class KMAUIUtilities {
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 20, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        loadingIndicator.style = UIActivityIndicatorView.Style.large
         loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
         loadingIndicator.startAnimating()
         
