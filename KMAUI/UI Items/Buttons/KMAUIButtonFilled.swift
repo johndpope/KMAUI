@@ -10,7 +10,7 @@ import UIKit
 
 /// This class represents the button with the green background and white title
 
-public class KMAButtonFilled: UIButton {
+public class KMAUIButtonFilled: UIButton {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
