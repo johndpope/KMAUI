@@ -11,6 +11,7 @@ import UIKit
 public class KMAUIUtilities {
     // Access variable
     public static let shared = KMAUIUtilities()
+    public var uploadAlert = UIAlertController()
     
     /**
      Returns the UIView for a header with the headerTitle set for a label.
@@ -68,5 +69,136 @@ public class KMAUIUtilities {
         childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor, constant: right).isActive = true
         childView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: top).isActive = true
         childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: bottom).isActive = true
+    }
+    
+    // MARK: - Controller methods
+    
+    /**
+     Global alert message which can be called from anywhere in the app to show the UIAlertController over the current screen
+     */
+    
+    public func globalAlert(title: String, message: String, completion: @escaping (_ result: String)->()) {
+        let alertController = UIAlertController(title: title,
+                                                message: message,
+                                                preferredStyle: .alert)
+        alertController.view.tintColor = KMAUIConstants.shared.KMABrightBlueColor
+        
+        let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { (action) in
+            completion("closed")
+        }
+        
+        alertController.addAction(cancelAction)
+        
+        KMAUIUtilities.shared.displayAlert(viewController: alertController)
+    }
+    
+    /**
+     Show the loading alert.
+    */
+    
+    public func startLoading(title: String) {
+        let alert = UIAlertController(title: nil, message: title, preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
+        loadingIndicator.startAnimating()
+        
+        alert.view.addSubview(loadingIndicator)
+        
+        KMAUIUtilities.shared.displayAlert(viewController: alert)
+    }
+    
+    /**
+     Displaying the upload progress.
+    */
+    
+    public func uploadProgressAlert(title: String, message: String) {
+        uploadAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 20, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
+        loadingIndicator.startAnimating()
+        
+        uploadAlert.view.addSubview(loadingIndicator)
+        
+        KMAUIUtilities.shared.displayAlert(viewController: uploadAlert)
+    }
+    
+    /**
+     Hide the loading alert.
+    */
+    
+    public func stopLoadingWith(completion: @escaping (_ hide: String)->()) {
+        guard let topController = KMAUIUtilities.shared.getTopVisibleController() else {
+            return
+        }
+        
+        topController.dismiss(animated: false) {
+            completion("hide")
+        }
+    }
+    
+    /**
+     Display the alert controller over the current context
+     */
+    
+    public func displayAlert(viewController: UIViewController) {
+        guard let topController = KMAUIUtilities.shared.getTopVisibleController() else {
+            return
+        }
+        
+        topController.present(viewController, animated: true, completion: nil)
+    }
+    
+    /**
+     Get the top visible View Controller.
+     */
+    
+    public func getTopVisibleController() -> UIViewController? {
+        guard let window = UIApplication.shared.keyWindow,
+            var controller = window.rootViewController else {
+                return nil
+        }
+        
+        var reachedTop = false
+        
+        while reachedTop == false {
+            let topController = KMAUIUtilities.shared.findTopController(for: controller)
+            
+            if topController == controller {
+                controller = topController
+                reachedTop = true
+            } else {
+                controller = topController
+            }
+        }
+        
+        return controller
+    }
+    
+    /**
+     Find the top View Controller.
+     */
+    
+    public func findTopController(for controller : UIViewController) -> UIViewController {
+        if let presentedController = controller.presentedViewController {
+            if let navigationController = presentedController as? UINavigationController,
+                let topController = navigationController.topViewController {
+                return topController
+            } else {
+                return presentedController
+            }
+        } else {
+            if let navigationController = controller as? UINavigationController,
+                let topController = navigationController.topViewController {
+                return topController
+            } else {
+                return controller
+            }
+        }
     }
 }

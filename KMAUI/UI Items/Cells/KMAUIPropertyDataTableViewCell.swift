@@ -44,13 +44,18 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     public func setupCell() {
         houseSwitch.isOn = isPrivateHouse
-        apartmentTextField.text = "\(apartmentNumber)"
+        
+        if apartmentNumber > 0 {
+            apartmentTextField.text = "\(apartmentNumber)"
+        } else {
+            apartmentTextField.text = ""
+        }
         verifyVisibility()
     }
     
@@ -89,9 +94,13 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     }
     
     @IBAction public func confirmButtonPressed(_ sender: Any) {
-        dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
-        // Plus update all the details
-        confirmCallback?(true)
+        if !isPrivateHouse, apartmentNumber == 0 {
+            
+        } else {
+            dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
+            // Plus update all the details
+            confirmCallback?(true)
+        }
     }
     
     @IBAction public func houseSwitchValueChanged(_ sender: Any) {
