@@ -38,7 +38,7 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     
     // MARK: - IBActions
     
-    @IBAction publicfunc confirmButtonPressed(_ sender: Any) {
+    @IBAction public func confirmButtonPressed(_ sender: Any) {
     }
     
     @IBAction public func houseSwitchValueChanged(_ sender: Any) {
