@@ -11,6 +11,11 @@ import UIKit
 class KMAUIPropertyDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet weak var houseSwitch: UISwitch!
+    @IBOutlet weak var apartmentTextField: UITextField!
+    @IBOutlet weak var apartmentTextFieldHeight: NSLayoutConstraint!
+    @IBOutlet weak var apartmentTextFieldTop: NSLayoutConstraint!
+    @IBOutlet weak var confirmButton: UIButton!
     
     // MARK: - Variables
     
@@ -29,5 +34,13 @@ class KMAUIPropertyDataTableViewCell: UITableViewCell {
     
     func setupCell() {
         
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func confirmButtonPressed(_ sender: Any) {
+    }
+    
+    @IBAction func houseSwitchValueChanged(_ sender: Any) {
     }
 }

@@ -32,6 +32,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lna-Dz-6m1">
                                 <rect key="frame" x="231" y="13" width="51" height="12"/>
                                 <color key="onTintColor" name="KMABrightBlueColor"/>
+                                <connections>
+                                    <action selector="houseSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="5Dm-y9-uGK"/>
+                                </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apartment number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKM-ze-xWa">
                                 <rect key="frame" x="8" y="33" width="272" height="44"/>
@@ -47,6 +50,9 @@
                                     <constraint firstAttribute="height" constant="44" id="YHc-Fs-VcY"/>
                                 </constraints>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fTn-xB-zHW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
@@ -76,7 +82,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="apartmentTextField" destination="lKM-ze-xWa" id="AGf-92-Eye"/>
+                <outlet property="apartmentTextFieldHeight" destination="dFj-BV-l8a" id="Ekx-uz-ydO"/>
+                <outlet property="apartmentTextFieldTop" destination="pFi-Us-hW9" id="pyI-3m-7Ku"/>
                 <outlet property="bgView" destination="6Re-0j-TbA" id="Tre-7O-2UV"/>
+                <outlet property="confirmButton" destination="Pw5-Hb-1HL" id="drh-hh-cS4"/>
+                <outlet property="houseSwitch" destination="lna-Dz-6m1" id="cq9-Fy-Ebf"/>
             </connections>
             <point key="canvasLocation" x="-157.97101449275362" y="136.94196428571428"/>
         </tableViewCell>
