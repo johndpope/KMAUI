@@ -8,39 +8,39 @@
 
 import UIKit
 
-class KMAUIPropertyDataTableViewCell: UITableViewCell {
+public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
-    @IBOutlet weak var houseSwitch: UISwitch!
-    @IBOutlet weak var apartmentTextField: UITextField!
-    @IBOutlet weak var apartmentTextFieldHeight: NSLayoutConstraint!
-    @IBOutlet weak var apartmentTextFieldTop: NSLayoutConstraint!
-    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var houseSwitch: UISwitch!
+    @IBOutlet public weak var apartmentTextField: UITextField!
+    @IBOutlet public weak var apartmentTextFieldHeight: NSLayoutConstraint!
+    @IBOutlet public weak var apartmentTextFieldTop: NSLayoutConstraint!
+    @IBOutlet public weak var confirmButton: UIButton!
     
     // MARK: - Variables
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // No selection required
         selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func setupCell() {
+    public func setupCell() {
         
     }
     
     // MARK: - IBActions
     
-    @IBAction func confirmButtonPressed(_ sender: Any) {
+    @IBAction publicfunc confirmButtonPressed(_ sender: Any) {
     }
     
-    @IBAction func houseSwitchValueChanged(_ sender: Any) {
+    @IBAction public func houseSwitchValueChanged(_ sender: Any) {
     }
 }
