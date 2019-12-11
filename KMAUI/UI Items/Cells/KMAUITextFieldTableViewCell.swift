@@ -29,16 +29,10 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
         valueTextField.layer.borderWidth = 1
         valueTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
-        // Padding
-        
         // Create a padding view for padding on left
         valueTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: valueTextField.frame.height))
         valueTextField.leftViewMode = .always
 
-        // Create a padding view for padding on right
-//        valueTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: valueTextField.frame.height))
-//        valueTextField.rightViewMode = .always
-        
         // No selection required
         selectionStyle = .none
     }
