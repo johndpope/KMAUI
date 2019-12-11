@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyDataCell" rowHeight="153" id="KGk-i7-Jjw" customClass="KMAUIPropertyDataTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyDataCell" rowHeight="166" id="KGk-i7-Jjw" customClass="KMAUIPropertyDataTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="153"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Re-0j-TbA" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="8" width="288" height="137"/>
+                        <rect key="frame" x="16" y="16" width="288" height="142"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Private house" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdF-t3-ukz" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="8" y="8" width="215" height="22"/>
@@ -30,14 +30,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lna-Dz-6m1">
-                                <rect key="frame" x="231" y="13" width="51" height="12"/>
+                                <rect key="frame" x="231" y="8" width="51" height="22"/>
                                 <color key="onTintColor" name="KMABrightBlueColor"/>
                                 <connections>
                                     <action selector="houseSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="5Dm-y9-uGK"/>
                                 </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apartment number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKM-ze-xWa">
-                                <rect key="frame" x="8" y="33" width="272" height="44"/>
+                                <rect key="frame" x="8" y="38" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dFj-BV-l8a"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw5-Hb-1HL">
-                                <rect key="frame" x="8" y="85" width="272" height="44"/>
+                                <rect key="frame" x="8" y="90" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="YHc-Fs-VcY"/>
                                 </constraints>
@@ -74,7 +74,7 @@
                 </subviews>
                 <color key="backgroundColor" name="KMABgGray"/>
                 <constraints>
-                    <constraint firstItem="6Re-0j-TbA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="2H3-aZ-oel"/>
+                    <constraint firstItem="6Re-0j-TbA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2H3-aZ-oel"/>
                     <constraint firstAttribute="trailing" secondItem="6Re-0j-TbA" secondAttribute="trailing" constant="16" id="Kvi-ex-CKo"/>
                     <constraint firstAttribute="bottom" secondItem="6Re-0j-TbA" secondAttribute="bottom" constant="8" id="Y3n-hP-ohz"/>
                     <constraint firstItem="6Re-0j-TbA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="zbp-Q4-xGy"/>
@@ -89,7 +89,7 @@
                 <outlet property="confirmButton" destination="Pw5-Hb-1HL" id="drh-hh-cS4"/>
                 <outlet property="houseSwitch" destination="lna-Dz-6m1" id="cq9-Fy-Ebf"/>
             </connections>
-            <point key="canvasLocation" x="-157.97101449275362" y="136.94196428571428"/>
+            <point key="canvasLocation" x="-157.97101449275362" y="147.99107142857142"/>
         </tableViewCell>
     </objects>
     <resources>
