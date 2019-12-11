@@ -94,6 +94,8 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     }
     
     @IBAction public func houseSwitchValueChanged(_ sender: Any) {
+        isPrivateHouse = !isPrivateHouse
+        verifyVisibility()
         dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
     }
 }
