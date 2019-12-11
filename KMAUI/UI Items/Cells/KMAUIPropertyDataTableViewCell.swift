@@ -21,6 +21,7 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     public var apartmentNumber = 0
     public var isPrivateHouse = true
     public var dataUpdatedCallback: ((Bool, Int) -> Void)?
+    public var reloadCallback: ((Bool) -> Void)?
     public var confirmCallback: ((Bool) -> Void)?
     
     override public func awakeFromNib() {
@@ -97,6 +98,7 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
         isPrivateHouse = !isPrivateHouse
         verifyVisibility()
         dataUpdatedCallback?(isPrivateHouse, apartmentNumber)
+        reloadCallback?(true)
     }
 }
 
