@@ -18,8 +18,8 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
     @IBOutlet public weak var confirmButton: UIButton!
     
     // MARK: - Variables
-    var apartmentNumber = 0
-    var isPrivateHouse = true
+    public var apartmentNumber = 0
+    public var isPrivateHouse = true
     public var dataUpdatedCallback: ((Bool, Int) -> Void)?
     public var confirmCallback: ((Bool) -> Void)?
     
