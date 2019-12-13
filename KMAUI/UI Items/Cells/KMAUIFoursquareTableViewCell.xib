@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwM-pI-YyK" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="52" width="272" height="35"/>
+                                <rect key="frame" x="8" y="56" width="272" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="y5j-d5-EJ3"/>
                                 </constraints>
@@ -59,10 +59,10 @@
                         <constraints>
                             <constraint firstItem="nrP-Gq-CA8" firstAttribute="leading" secondItem="9Un-JX-Gnh" secondAttribute="leading" constant="8" id="2fG-1v-aOw"/>
                             <constraint firstItem="Xt5-bx-Z5k" firstAttribute="leading" secondItem="nrP-Gq-CA8" secondAttribute="trailing" constant="8" id="A6t-4B-9G0"/>
-                            <constraint firstItem="JwM-pI-YyK" firstAttribute="top" secondItem="nrP-Gq-CA8" secondAttribute="bottom" id="D8d-Mc-AZv"/>
+                            <constraint firstItem="JwM-pI-YyK" firstAttribute="top" secondItem="nrP-Gq-CA8" secondAttribute="bottom" constant="4" id="D8d-Mc-AZv"/>
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="top" secondItem="Xt5-bx-Z5k" secondAttribute="bottom" id="FCI-QY-Hi1"/>
                             <constraint firstItem="Xt5-bx-Z5k" firstAttribute="top" secondItem="9Un-JX-Gnh" secondAttribute="top" constant="8" id="Gaw-2Z-da8"/>
-                            <constraint firstAttribute="bottom" secondItem="JwM-pI-YyK" secondAttribute="bottom" constant="8" id="SZT-y7-M14"/>
+                            <constraint firstAttribute="bottom" secondItem="JwM-pI-YyK" secondAttribute="bottom" constant="4" id="SZT-y7-M14"/>
                             <constraint firstAttribute="trailing" secondItem="Xt5-bx-Z5k" secondAttribute="trailing" constant="8" id="Y3R-yt-8EP"/>
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="leading" secondItem="nrP-Gq-CA8" secondAttribute="trailing" constant="8" id="gOD-zx-Ucg"/>
                             <constraint firstItem="nrP-Gq-CA8" firstAttribute="top" secondItem="9Un-JX-Gnh" secondAttribute="top" constant="8" id="pOC-dA-an6"/>
