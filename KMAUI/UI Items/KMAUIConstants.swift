@@ -82,3 +82,30 @@ public struct KMAUITextFieldCellData {
         self.value = value
     }
 }
+
+public struct KMAFoursquareVenue {
+    public var name = ""
+    public var category = ""
+    public var categoryPrefix = ""
+    public var categorySuffix = ""
+    public var latitude: Double = 0.0
+    public var longitude: Double = 0.0
+    public var address = ""
+    public var prefix = ""
+    public var suffix = ""
+    
+    public init() {
+    }
+    
+    public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String) {
+        self.name = name
+        self.category = category
+        self.categoryPrefix = categoryPrefix
+        self.categorySuffix = categorySuffix
+        self.latitude = latitude
+        self.longitude = longitude
+        self.address = address
+        self.prefix = prefix
+        self.suffix = suffix
+    }
+}

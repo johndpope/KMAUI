@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="44" id="c5X-OC-evI"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-lw-Wak" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-lw-Wak" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="60" y="8" width="220" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="q9L-NL-sBw"/>
@@ -36,7 +36,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8c-EX-UT5" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d8c-EX-UT5" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="60" y="30" width="220" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="bTD-oH-f0M"/>
