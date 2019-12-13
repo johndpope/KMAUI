@@ -9,7 +9,7 @@
 import UIKit
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
-    var venue = KMAFoursquareVenue()
+    public var venue = KMAFoursquareVenue()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setupCell() {
+    public func setupCell() {
         
     }
 }
