@@ -35,5 +35,9 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         nameLabel.text = venue.name
         detailLabel.text = "\(venue.distance)m, \(venue.category)"
         addressLabel.text = venue.address
+        
+        photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        photoImageView.clipsToBounds = true
+        photoImageView.layer.borderWidth = 0
     }
 }
