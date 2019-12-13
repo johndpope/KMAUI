@@ -30,14 +30,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lna-Dz-6m1">
-                                <rect key="frame" x="231" y="8" width="51" height="22"/>
+                                <rect key="frame" x="231" y="16" width="51" height="6"/>
                                 <color key="onTintColor" name="KMABrightBlueColor"/>
                                 <connections>
                                     <action selector="houseSwitchValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="5Dm-y9-uGK"/>
                                 </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apartment number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lKM-ze-xWa">
-                                <rect key="frame" x="8" y="38" width="272" height="44"/>
+                                <rect key="frame" x="8" y="30" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="dFj-BV-l8a"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pw5-Hb-1HL" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="90" width="272" height="44"/>
+                                <rect key="frame" x="8" y="82" width="272" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="YHc-Fs-VcY"/>
                                 </constraints>
@@ -66,7 +66,7 @@
                             <constraint firstItem="EdF-t3-ukz" firstAttribute="top" secondItem="6Re-0j-TbA" secondAttribute="top" constant="8" id="b0G-sj-ZYi"/>
                             <constraint firstItem="lna-Dz-6m1" firstAttribute="leading" secondItem="EdF-t3-ukz" secondAttribute="trailing" constant="8" id="eak-yT-MPI"/>
                             <constraint firstItem="Pw5-Hb-1HL" firstAttribute="top" secondItem="lKM-ze-xWa" secondAttribute="bottom" constant="8" id="jhC-lb-dx6"/>
-                            <constraint firstAttribute="bottom" secondItem="Pw5-Hb-1HL" secondAttribute="bottom" constant="8" id="jth-S4-JeZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Pw5-Hb-1HL" secondAttribute="bottom" constant="16" id="jth-S4-JeZ"/>
                             <constraint firstItem="lKM-ze-xWa" firstAttribute="top" secondItem="lna-Dz-6m1" secondAttribute="bottom" constant="8" id="pFi-Us-hW9"/>
                             <constraint firstAttribute="trailing" secondItem="lna-Dz-6m1" secondAttribute="trailing" constant="8" id="yNX-qD-FwE"/>
                         </constraints>
