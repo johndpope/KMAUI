@@ -9,10 +9,13 @@
 import UIKit
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
+    var venue = KMAFoursquareVenue()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -21,4 +24,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func setupCell() {
+        
+    }
 }

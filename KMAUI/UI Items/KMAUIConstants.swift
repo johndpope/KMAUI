@@ -90,6 +90,7 @@ public struct KMAFoursquareVenue {
     public var categorySuffix = ""
     public var latitude: Double = 0.0
     public var longitude: Double = 0.0
+    public var distance: Int = 0
     public var address = ""
     public var prefix = ""
     public var suffix = ""
@@ -109,3 +110,5 @@ public struct KMAFoursquareVenue {
         self.suffix = suffix
     }
 }
+
+//
