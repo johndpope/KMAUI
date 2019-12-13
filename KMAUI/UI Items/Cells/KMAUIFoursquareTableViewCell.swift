@@ -9,6 +9,13 @@
 import UIKit
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var nameLabel: KMAUITitleLabel!
+    @IBOutlet weak var detailLabel: KMAUIInfoLabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    // MARK: - Variables
     public var venue = KMAFoursquareVenue()
 
     override public func awakeFromNib() {
@@ -25,6 +32,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        
+        nameLabel.text = venue.name
+        detailLabel.text = "\(venue.distance)m, \(venue.category)"
+        addressLabel.text = venue.address
     }
 }
