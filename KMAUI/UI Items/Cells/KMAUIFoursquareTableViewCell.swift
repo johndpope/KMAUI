@@ -10,10 +10,10 @@ import UIKit
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var photoImageView: UIImageView!
-    @IBOutlet weak var nameLabel: KMAUITitleLabel!
-    @IBOutlet weak var detailLabel: KMAUIInfoLabel!
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet public weak var photoImageView: UIImageView!
+    @IBOutlet public weak var nameLabel: KMAUITitleLabel!
+    @IBOutlet public weak var detailLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var addressLabel: UILabel!
     
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
