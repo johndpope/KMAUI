@@ -9,7 +9,8 @@
 import UIKit
 
 public class KMAUIAccuWeatherTableViewCell: UITableViewCell {
-
+    @IBOutlet public weak var weatherIcon: UIImageView!
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
