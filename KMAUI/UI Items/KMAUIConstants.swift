@@ -94,11 +94,12 @@ public struct KMAFoursquareVenue {
     public var address = ""
     public var prefix = ""
     public var suffix = ""
+    public var venueId = ""
     
     public init() {
     }
     
-    public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String) {
+    public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String, venueId: String) {
         self.name = name
         self.category = category
         self.categoryPrefix = categoryPrefix
@@ -108,6 +109,7 @@ public struct KMAFoursquareVenue {
         self.address = address
         self.prefix = prefix
         self.suffix = suffix
+        self.venueId = venueId
     }
 }
 
