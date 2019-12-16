@@ -136,12 +136,12 @@ public struct KMAZooplaProperty {
     public var address = "" // Granite Apartments, 39 Windmill Lane, London E15
     public var status = "" // rent, sale
     public var category = "" // Residential
-    public var numFloors = 0 //
-    public var numBathrooms = 0
-    public var numBedrooms = 0
-    public var detailsURL = ""
-    public var firstPublishedDate = ""
-    public var lastPublishedDate = ""
+    public var numFloors = 0 // 1, 2, 3
+    public var numBathrooms = 0 // 1, 2, 3
+    public var numBedrooms = 0 // 1, 2, 3
+    public var detailsURL = "" // https://www.zoopla.co.uk/to-rent/details/44440070?utm_source=v1:7OaVHSXLChfP5Rizees94WCsIgAk0bKW&utm_medium=api
+    public var firstPublishedDate: Double = 0 // Date in London timezone
+    public var lastPublishedDate: Double = 0 // Date in London timezone
     public var lettingFees = ""
     public var floorPlan = [String]()
     public var salePrice = ""
@@ -157,7 +157,7 @@ public struct KMAZooplaProperty {
     public init() {
     }
     
-    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: String, lastPublishedDate: String, lettingFees: String, floorPlan: [String], salePrice: String, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: String, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
         self.latitude = latitude
         self.longitude = longitude
         self.image50x38 = image50x38
