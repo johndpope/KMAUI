@@ -174,8 +174,20 @@ public struct KMAZooplaProperty {
      */
     public var billsIncluded = false // true if buills included into price
     public var newHome = false // true if it's a new home
-    public var minFloorArea = ""
-    public var maxFloorArea = ""
+    public var minFloorArea = "" // the minimum floor area details
+    /*
+     {
+       "value" : "699",
+       "units" : "sq_feet"
+     }
+     */
+    public var maxFloorArea = "" // the maximum floor area details
+    /*
+    {
+      "units" : "sq_feet",
+      "value" : 592.01507291903499
+    }
+    */
     
     public init() {
     }
