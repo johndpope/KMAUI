@@ -83,6 +83,8 @@ public struct KMAUITextFieldCellData {
     }
 }
 
+// MARK: - Foursquare venue struct
+
 public struct KMAFoursquareVenue {
     public var name = ""
     public var category = ""
@@ -113,4 +115,83 @@ public struct KMAFoursquareVenue {
     }
 }
 
-//
+// MARK: - Zoopla Propety struct
+
+public struct KMAZooplaProperty {
+    public var latitude: Double = 0
+    public var longitude: Double = 0
+    public var image50x38 = ""
+    public var image354x255 = ""
+    public var image645x430 = ""
+    public var image80x60 = ""
+    public var image150x113 = ""
+    public var image = ""
+    public var imageCaption = ""
+    public var thumbnail = ""
+    public var availableFrom = ""
+    public var listingId = ""
+    public var description = ""
+    public var shortDescription = ""
+    public var type = ""
+    public var address = ""
+    public var status = ""
+    public var category = ""
+    public var numFloors = ""
+    public var numBathrooms = ""
+    public var numBedrooms = ""
+    public var detailsURL = ""
+    public var firstPublishedDate = ""
+    public var lastPublishedDate = ""
+    public var lettingFees = ""
+    public var floorPlan = [String]()
+    public var salePrice = ""
+    public var rentWeek = 0
+    public var rentMonth = 0
+    public var priceChange = ""
+    public var priceChangeSummary = ""
+    public var billsIncluded = 0
+    public var newHome = false
+    public var minFloorArea = ""
+    public var maxFloorArea = ""
+    
+    public init() {
+    }
+    
+    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: String, numBathrooms: String, numBedrooms: String, detailsURL: String, firstPublishedDate: String, lastPublishedDate: String, lettingFees: String, floorPlan: [String], salePrice: String, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.image50x38 = image50x38
+        self.image354x255 = image354x255
+        self.image645x430 = image645x430
+        self.image80x60 = image80x60
+        self.image150x113 = image150x113
+        self.image = image
+        self.imageCaption = imageCaption
+        self.thumbnail = thumbnail
+        self.availableFrom = availableFrom
+        self.listingId = listingId
+        self.description = description
+        self.shortDescription = shortDescription
+        self.type = type
+        self.address = address
+        self.status = status
+        self.category = category
+        self.numFloors = numFloors
+        self.numBathrooms = numBathrooms
+        self.numBedrooms = numBedrooms
+        self.detailsURL = detailsURL
+        self.firstPublishedDate = firstPublishedDate
+        self.lastPublishedDate = lastPublishedDate
+        self.lettingFees = lettingFees
+        self.floorPlan = floorPlan
+        self.salePrice = salePrice
+        self.rentWeek = rentWeek
+        self.rentMonth = rentMonth
+        self.priceChange = priceChange
+        self.priceChangeSummary = priceChangeSummary
+        self.billsIncluded = billsIncluded
+        self.newHome = newHome
+        self.minFloorArea = minFloorArea
+        self.maxFloorArea = maxFloorArea
+    }
+}
