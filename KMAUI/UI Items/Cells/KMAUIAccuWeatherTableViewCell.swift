@@ -12,6 +12,7 @@ public class KMAUIAccuWeatherTableViewCell: UITableViewCell {
     @IBOutlet public weak var weatherIcon: UIImageView!
     @IBOutlet public weak var weatherTitleLabel: KMAUITitleLabel!
     @IBOutlet public weak var weatherTextLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var activityView: UIActivityIndicatorView!
     
     override public func awakeFromNib() {
         super.awakeFromNib()

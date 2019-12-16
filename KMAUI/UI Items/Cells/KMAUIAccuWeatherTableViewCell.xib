@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,15 +45,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="cgg-EE-GE8">
+                                <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="FUZ-BV-5ye"/>
+                                    <constraint firstAttribute="height" constant="44" id="loC-Ys-hwO"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="cgg-EE-GE8" firstAttribute="leading" secondItem="HWY-GF-KUx" secondAttribute="leading" constant="8" id="4va-0o-d0i"/>
                             <constraint firstItem="KqR-ar-4x5" firstAttribute="leading" secondItem="HWY-GF-KUx" secondAttribute="leading" constant="8" id="9VL-t7-tKy"/>
                             <constraint firstAttribute="trailing" secondItem="ZV7-lw-Wak" secondAttribute="trailing" constant="8" id="EXn-B1-2KG"/>
                             <constraint firstItem="d8c-EX-UT5" firstAttribute="top" secondItem="ZV7-lw-Wak" secondAttribute="bottom" id="IfW-t9-hOl"/>
                             <constraint firstItem="ZV7-lw-Wak" firstAttribute="leading" secondItem="KqR-ar-4x5" secondAttribute="trailing" constant="8" id="KpS-KJ-ejQ"/>
                             <constraint firstAttribute="trailing" secondItem="d8c-EX-UT5" secondAttribute="trailing" constant="8" id="ZGS-A8-blx"/>
                             <constraint firstItem="KqR-ar-4x5" firstAttribute="centerY" secondItem="HWY-GF-KUx" secondAttribute="centerY" id="gUV-TL-GAK"/>
+                            <constraint firstItem="cgg-EE-GE8" firstAttribute="centerY" secondItem="HWY-GF-KUx" secondAttribute="centerY" id="qyU-Z9-x7A"/>
                             <constraint firstItem="d8c-EX-UT5" firstAttribute="leading" secondItem="KqR-ar-4x5" secondAttribute="trailing" constant="8" id="sti-af-0zY"/>
                             <constraint firstItem="ZV7-lw-Wak" firstAttribute="top" secondItem="HWY-GF-KUx" secondAttribute="top" constant="8" id="tXf-Al-NyD"/>
                             <constraint firstAttribute="height" constant="60" id="xtB-8h-Hvr"/>
@@ -70,6 +79,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityView" destination="cgg-EE-GE8" id="XPc-ro-Ysm"/>
                 <outlet property="weatherIcon" destination="KqR-ar-4x5" id="25z-v2-Z77"/>
                 <outlet property="weatherTextLabel" destination="d8c-EX-UT5" id="djv-jb-BP0"/>
                 <outlet property="weatherTitleLabel" destination="ZV7-lw-Wak" id="vd4-RU-zF4"/>
