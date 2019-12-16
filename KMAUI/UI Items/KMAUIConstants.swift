@@ -118,27 +118,27 @@ public struct KMAFoursquareVenue {
 // MARK: - Zoopla Propety struct
 
 public struct KMAZooplaProperty {
-    public var latitude: Double = 0
-    public var longitude: Double = 0
-    public var image50x38 = ""
-    public var image354x255 = ""
-    public var image645x430 = ""
-    public var image80x60 = ""
-    public var image150x113 = ""
-    public var image = ""
-    public var imageCaption = ""
-    public var thumbnail = ""
-    public var availableFrom = ""
-    public var listingId = ""
-    public var description = ""
-    public var shortDescription = ""
-    public var type = ""
-    public var address = ""
-    public var status = ""
-    public var category = ""
-    public var numFloors = ""
-    public var numBathrooms = ""
-    public var numBedrooms = ""
+    public var latitude: Double = 0 // 51.542496
+    public var longitude: Double = 0 // -0.000534
+    public var image50x38 = "" // image url
+    public var image354x255 = "" // image url
+    public var image645x430 = "" // image url
+    public var image80x60 = "" // image url
+    public var image150x113 = "" // image url
+    public var image = "" // image url
+    public var thumbnail = "" // image url
+    public var imageCaption = "" // preview image caption
+    public var availableFrom = "" // Available from 17th Dec 2019, Available immediately
+    public var listingId = "" // 53472590
+    public var description = "" // full description
+    public var shortDescription = "" // short description
+    public var type = "" // Flat, Maisonette, Terraced house, Semi-detached house, Studio,
+    public var address = "" // Granite Apartments, 39 Windmill Lane, London E15
+    public var status = "" // rent, sale
+    public var category = "" // Residential
+    public var numFloors = 0 //
+    public var numBathrooms = 0
+    public var numBedrooms = 0
     public var detailsURL = ""
     public var firstPublishedDate = ""
     public var lastPublishedDate = ""
@@ -157,7 +157,7 @@ public struct KMAZooplaProperty {
     public init() {
     }
     
-    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: String, numBathrooms: String, numBedrooms: String, detailsURL: String, firstPublishedDate: String, lastPublishedDate: String, lettingFees: String, floorPlan: [String], salePrice: String, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: String, lastPublishedDate: String, lettingFees: String, floorPlan: [String], salePrice: String, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
         self.latitude = latitude
         self.longitude = longitude
         self.image50x38 = image50x38

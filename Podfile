@@ -6,6 +6,5 @@ target 'KMAUI' do
   use_frameworks!
 
   # Pods for KMAUI
-  pod 'Kingfisher', '~> 5.0'
 
 end
