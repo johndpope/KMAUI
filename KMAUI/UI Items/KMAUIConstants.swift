@@ -144,20 +144,43 @@ public struct KMAZooplaProperty {
     public var lastPublishedDate: Double = 0 // timeInterval value since 1970
     public var lettingFees = "" // payment description in html format
     public var floorPlan = [String]() // an array of plan images
-    public var salePrice = 0
-    public var rentWeek = 0
-    public var rentMonth = 0
-    public var priceChange = ""
-    public var priceChangeSummary = ""
-    public var billsIncluded = 0
-    public var newHome = false
+    public var salePrice = 0 // Int value in UK pounds
+    public var rentWeek = 0 // Int value in UK pounds
+    public var rentMonth = 0 // Int value in UK pounds
+    public var priceChange = "" // the array of price change details, includes price, percent, date and direction
+    /*
+     [
+       {
+         "percent" : "0%",
+         "price" : "312",
+         "date" : "2014-12-22 19:07:08",
+         "direction" : ""
+       },
+       {
+         "percent" : "24%",
+         "price" : "387",
+         "date" : "2019-12-10 19:25:14",
+         "direction" : "up"
+       }
+     ]
+     */
+    public var priceChangeSummary = "" // the summary for a price change, includes last updated date, percent and direction
+    /*
+     {
+       "last_updated_date" : "2019-11-27 21:46:11",
+       "percent" : "-0.5%",
+       "direction" : "down"
+     }
+     */
+    public var billsIncluded = false // true if buills included into price
+    public var newHome = false // true if it's a new home
     public var minFloorArea = ""
     public var maxFloorArea = ""
     
     public init() {
     }
     
-    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Int, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Bool, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
         self.latitude = latitude
         self.longitude = longitude
         self.image50x38 = image50x38
