@@ -14,6 +14,9 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Round corners for image view
+        propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        propertyImageView.clipsToBounds = true
     }
 }
