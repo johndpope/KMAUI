@@ -32,8 +32,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37D-ip-V2M">
-                        <rect key="frame" x="106" y="12" width="44" height="26"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  £1,500 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37D-ip-V2M">
+                        <rect key="frame" x="97.5" y="0.0" width="52.5" height="26"/>
                         <color key="backgroundColor" name="KMATurquoiseColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="26" id="u0t-jm-8Jf"/>
@@ -51,7 +51,7 @@
                 <constraint firstAttribute="trailing" secondItem="37D-ip-V2M" secondAttribute="trailing" id="WmZ-Hb-HUt"/>
                 <constraint firstAttribute="trailing" secondItem="kuI-mj-ZfU" secondAttribute="trailing" constant="4" id="aJ7-mx-2MC"/>
                 <constraint firstAttribute="trailing" secondItem="HTx-d5-0vm" secondAttribute="trailing" id="jPo-8w-BPc"/>
-                <constraint firstItem="37D-ip-V2M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="jb1-RK-w5f"/>
+                <constraint firstItem="37D-ip-V2M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jb1-RK-w5f"/>
                 <constraint firstItem="kuI-mj-ZfU" firstAttribute="top" secondItem="HTx-d5-0vm" secondAttribute="bottom" id="ua2-c2-WBh"/>
                 <constraint firstAttribute="bottom" secondItem="kuI-mj-ZfU" secondAttribute="bottom" id="zOg-b3-Pb0"/>
                 <constraint firstItem="kuI-mj-ZfU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="zk2-TZ-hnz"/>
