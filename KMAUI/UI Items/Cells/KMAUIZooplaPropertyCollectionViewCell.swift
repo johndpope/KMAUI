@@ -43,6 +43,7 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
             priceLabel.text = "  " + detailStrings.1 + " "
             priceLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
             priceLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            priceLabel.clipsToBounds = true
             priceLabel.alpha = 1
         }
     }
