@@ -84,6 +84,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="JwM-pI-YyK" id="Oh3-lI-dDB"/>
+                <outlet property="bgView" destination="9Un-JX-Gnh" id="TDZ-Cn-WII"/>
                 <outlet property="detailLabel" destination="aq3-mV-IhY" id="loV-CW-TXJ"/>
                 <outlet property="nameLabel" destination="Xt5-bx-Z5k" id="O5c-CH-Wiu"/>
                 <outlet property="photoImageView" destination="nrP-Gq-CA8" id="tQ0-U2-mnP"/>
