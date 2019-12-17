@@ -256,15 +256,15 @@ public struct KMAZooplaProperty {
         if !status.isEmpty {
             if propertyDescription.isEmpty {
                 if status == "rent" {
-                    propertyDescription = "To rent, £\(rentMonth.withCommas()) pcm"
+                    propertyDescription = "To rent\n£\(rentMonth.withCommas()) pcm"
                 } else if status == "sale" {
-                    propertyDescription = "For sale, £\(salePrice.withCommas())"
+                    propertyDescription = "For sale\n£\(salePrice.withCommas())"
                 }
             } else {
                 if status == "rent" {
-                    propertyDescription += " to rent, £\(rentMonth.withCommas()) pcm"
+                    propertyDescription += " to rent\n£\(rentMonth.withCommas()) pcm"
                 } else if status == "sale" {
-                    propertyDescription += " for sale, £\(salePrice.withCommas())"
+                    propertyDescription += " for sale\n£\(salePrice.withCommas())"
                 }
             }
         }
