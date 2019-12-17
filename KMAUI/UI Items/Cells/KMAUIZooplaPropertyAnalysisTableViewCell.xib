@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAZooplaPropertyAnalysisCell" rowHeight="198" id="KGk-i7-Jjw" customClass="KMAUIZooplaPropertyAnalysisTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1e4-7v-fd4" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="0.0" width="288" height="188"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Average rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrh-ca-VwM" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="97" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="ppG-eB-VAE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£1454" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0A-Hi-8WA" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="113" y="8" width="167" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="hb1-Ck-AFC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Average sale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFl-bJ-Frh" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="38" width="97.5" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Bhe-10-TVJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£534994" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WoV-Mq-3aB" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="113.5" y="38" width="166.5" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="yHx-ca-sWY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEw-Z2-CVD" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="136" width="272" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="IZz-Wt-mwm"/>
+                                </constraints>
+                                <state key="normal" title="Review details"/>
+                                <connections>
+                                    <action selector="reviewButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bw7-Na-WMF"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-0f-3dU">
+                                <rect key="frame" x="0.0" y="68" width="288" height="60"/>
+                                <color key="backgroundColor" name="KMABgGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="d1l-YF-Wxq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="WoV-Mq-3aB" secondAttribute="trailing" constant="8" id="0kd-TJ-Pz6"/>
+                            <constraint firstItem="rrh-ca-VwM" firstAttribute="top" secondItem="1e4-7v-fd4" secondAttribute="top" constant="8" id="7GK-WP-eHi"/>
+                            <constraint firstItem="tFl-bJ-Frh" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" constant="8" id="8S5-6g-ca7"/>
+                            <constraint firstItem="rrh-ca-VwM" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" constant="8" id="CIn-ry-51E"/>
+                            <constraint firstItem="4Tc-0f-3dU" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" id="Kg8-rY-B7v"/>
+                            <constraint firstAttribute="trailing" secondItem="K0A-Hi-8WA" secondAttribute="trailing" constant="8" id="R5T-nJ-Ftf"/>
+                            <constraint firstItem="4Tc-0f-3dU" firstAttribute="top" secondItem="tFl-bJ-Frh" secondAttribute="bottom" constant="8" id="Uoe-Eh-W9F"/>
+                            <constraint firstItem="xEw-Z2-CVD" firstAttribute="top" secondItem="4Tc-0f-3dU" secondAttribute="bottom" constant="8" id="WKE-12-ebb"/>
+                            <constraint firstAttribute="trailing" secondItem="xEw-Z2-CVD" secondAttribute="trailing" constant="8" id="YdH-Dc-6I7"/>
+                            <constraint firstItem="WoV-Mq-3aB" firstAttribute="leading" secondItem="tFl-bJ-Frh" secondAttribute="trailing" constant="8" id="bAp-ci-UPM"/>
+                            <constraint firstItem="tFl-bJ-Frh" firstAttribute="top" secondItem="rrh-ca-VwM" secondAttribute="bottom" constant="8" id="fAj-cD-urc"/>
+                            <constraint firstItem="K0A-Hi-8WA" firstAttribute="leading" secondItem="rrh-ca-VwM" secondAttribute="trailing" constant="8" id="jhS-nq-tfU"/>
+                            <constraint firstAttribute="bottom" secondItem="xEw-Z2-CVD" secondAttribute="bottom" constant="8" id="lhq-5N-1rK"/>
+                            <constraint firstAttribute="trailing" secondItem="4Tc-0f-3dU" secondAttribute="trailing" id="puR-Yo-jtV"/>
+                            <constraint firstAttribute="bottom" secondItem="xEw-Z2-CVD" secondAttribute="bottom" constant="8" id="tTo-oy-zLn"/>
+                            <constraint firstItem="xEw-Z2-CVD" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" constant="8" id="tU3-ct-DrN"/>
+                            <constraint firstItem="WoV-Mq-3aB" firstAttribute="top" secondItem="K0A-Hi-8WA" secondAttribute="bottom" constant="8" id="wkF-VC-ppA"/>
+                            <constraint firstItem="K0A-Hi-8WA" firstAttribute="top" secondItem="1e4-7v-fd4" secondAttribute="top" constant="8" id="ygP-ZK-bsg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="1e4-7v-fd4" secondAttribute="trailing" constant="16" id="Iu3-aS-bLX"/>
+                    <constraint firstItem="1e4-7v-fd4" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YHS-KS-3Qk"/>
+                    <constraint firstAttribute="bottom" secondItem="1e4-7v-fd4" secondAttribute="bottom" constant="16" id="mgn-ez-tjz"/>
+                    <constraint firstItem="1e4-7v-fd4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="udF-z9-aWt"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="KMABgGray"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="rentLabel" destination="K0A-Hi-8WA" id="HZG-fC-FV0"/>
+                <outlet property="reviewButton" destination="xEw-Z2-CVD" id="8eA-aj-IkU"/>
+                <outlet property="saleLabel" destination="WoV-Mq-3aB" id="oY4-oK-PNN"/>
+            </connections>
+            <point key="canvasLocation" x="-69.565217391304358" y="-45.535714285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMABackColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABgGray">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
