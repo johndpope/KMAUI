@@ -33,43 +33,6 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
-        var propertyDescription = ""
-                    
-                    // bedrooms
-                    if propertyObject.numBedrooms > 0 {
-                        propertyDescription = "\(propertyObject.numBedrooms) bedroom"
-                    }
-                    
-                    // type
-                    if !propertyObject.type.isEmpty {
-                        if propertyDescription.isEmpty {
-                            propertyDescription = propertyObject.type
-                        } else {
-                            propertyDescription += " " + propertyObject.type.lowercased()
-                        }
-                    }
-                    
-                    // status
-                    if !propertyObject.status.isEmpty {
-                        if propertyDescription.isEmpty {
-                            if propertyObject.status == "rent" {
-                                propertyDescription = "To rent, £\(propertyObject.rentMonth.withCommas()) pcm"
-                            } else if propertyObject.status == "sale" {
-                                propertyDescription = "For sale, £\(propertyObject.salePrice.withCommas())"
-                            }
-                        } else {
-                            if propertyObject.status == "rent" {
-                                propertyDescription += " to rent, £\(propertyObject.rentMonth.withCommas()) pcm"
-                            } else if propertyObject.status == "sale" {
-                                propertyDescription += " for sale, £\(propertyObject.salePrice.withCommas())"
-                            }
-                        }
-                    }
-                    
-        if propertyDescription.isEmpty {
-            propertyInfoLabel.text = "Property"
-        } else {
-            propertyInfoLabel.text = propertyDescription
-        }
+        propertyInfoLabel.text = propertyObject.getPropertyDescription()
     }
 }

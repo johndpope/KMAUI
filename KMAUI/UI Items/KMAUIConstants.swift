@@ -234,4 +234,45 @@ public struct KMAZooplaProperty {
         self.minFloorArea = minFloorArea
         self.maxFloorArea = maxFloorArea
     }
+    
+    public func getPropertyDescription() -> String {
+        var propertyDescription = ""
+        
+        // bedrooms
+        if numBedrooms > 0 {
+            propertyDescription = "\(numBedrooms) bedroom"
+        }
+        
+        // type
+        if !type.isEmpty {
+            if propertyDescription.isEmpty {
+                propertyDescription = type
+            } else {
+                propertyDescription += " " + type.lowercased()
+            }
+        }
+        
+        // status
+        if !status.isEmpty {
+            if propertyDescription.isEmpty {
+                if status == "rent" {
+                    propertyDescription = "To rent, £\(rentMonth.withCommas()) pcm"
+                } else if status == "sale" {
+                    propertyDescription = "For sale, £\(salePrice.withCommas())"
+                }
+            } else {
+                if status == "rent" {
+                    propertyDescription += " to rent, £\(rentMonth.withCommas()) pcm"
+                } else if status == "sale" {
+                    propertyDescription += " for sale, £\(salePrice.withCommas())"
+                }
+            }
+        }
+        
+        if propertyDescription.isEmpty {
+            propertyDescription = "Property"
+        }
+        
+        return propertyDescription
+    }
 }
