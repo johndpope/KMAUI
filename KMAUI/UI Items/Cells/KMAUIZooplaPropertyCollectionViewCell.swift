@@ -14,7 +14,7 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var propertyInfoLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
-    var propertyObject = KMAZooplaProperty()
+    public var propertyObject = KMAZooplaProperty()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
