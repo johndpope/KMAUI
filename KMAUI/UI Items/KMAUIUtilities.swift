@@ -202,3 +202,14 @@ public class KMAUIUtilities {
         }
     }
 }
+
+// MARK: - Int extension
+public extension Int {
+    
+    // Formatting the currency with commas
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        return numberFormatter.string(from: NSNumber(value:self))!
+    }
+}
