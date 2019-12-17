@@ -25,6 +25,10 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
         
         // No selection required
         selectionStyle = .none
+        
+        // Rounded corners for the collectionView
+        collectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        collectionView.clipsToBounds = true
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
