@@ -24,6 +24,9 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-mj-ZfU" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="4" y="113" width="142" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="9it-ef-ECh"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
