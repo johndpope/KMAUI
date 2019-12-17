@@ -21,12 +21,13 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         // Round corners for image view
-        propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        propertyImageView.clipsToBounds = true
         propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        propertyImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
-        propertyImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+
+        layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+        clipsToBounds = true
     }
     
     /**
