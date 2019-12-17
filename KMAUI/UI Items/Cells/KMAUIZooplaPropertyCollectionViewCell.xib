@@ -10,27 +10,40 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIZooplaPropertyCell" id="gTV-IL-0wX" customClass="KMAUIZooplaPropertyCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="113"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="157"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="113"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="157"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-d5-0vm">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="113"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="113" id="FZz-A2-XMi"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-mj-ZfU" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="4" y="113" width="142" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="HTx-d5-0vm" secondAttribute="bottom" id="8LD-91-F7D"/>
                 <constraint firstItem="HTx-d5-0vm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MlB-2A-0gp"/>
                 <constraint firstItem="HTx-d5-0vm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TUC-6f-NS7"/>
+                <constraint firstAttribute="trailing" secondItem="kuI-mj-ZfU" secondAttribute="trailing" constant="4" id="aJ7-mx-2MC"/>
                 <constraint firstAttribute="trailing" secondItem="HTx-d5-0vm" secondAttribute="trailing" id="jPo-8w-BPc"/>
+                <constraint firstItem="kuI-mj-ZfU" firstAttribute="top" secondItem="HTx-d5-0vm" secondAttribute="bottom" id="ua2-c2-WBh"/>
+                <constraint firstAttribute="bottom" secondItem="kuI-mj-ZfU" secondAttribute="bottom" id="zOg-b3-Pb0"/>
+                <constraint firstItem="kuI-mj-ZfU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="zk2-TZ-hnz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="propertyImageView" destination="HTx-d5-0vm" id="55E-df-EOw"/>
+                <outlet property="propertyInfoLabel" destination="kuI-mj-ZfU" id="RmD-Va-eY1"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </collectionViewCell>
