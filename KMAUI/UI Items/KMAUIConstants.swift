@@ -46,6 +46,10 @@ public class KMAUIConstants {
     public let KMAScreenWidth = UIScreen.main.bounds.size.width
     public let KMSScreenHeight = UIScreen.main.bounds.size.height
     
+    let KMABorderWidthLight: CGFloat = 0.5
+    let KMABorderWidthRegular: CGFloat = 1.0
+    let KMABorderWidthBold: CGFloat = 2.0
+    
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
 }
