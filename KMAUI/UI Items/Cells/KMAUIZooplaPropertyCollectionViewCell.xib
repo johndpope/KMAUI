@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,10 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIZooplaPropertyCell" id="gTV-IL-0wX" customClass="KMAUIZooplaPropertyCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="150" height="161"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="157"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="150" height="161"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="157"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTx-d5-0vm">
@@ -23,12 +24,22 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-mj-ZfU" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="4" y="113" width="142" height="48"/>
+                        <rect key="frame" x="4" y="113" width="142" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="0p3-BB-Knz"/>
+                            <constraint firstAttribute="height" constant="44" id="0p3-BB-Knz"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37D-ip-V2M">
+                        <rect key="frame" x="106" y="12" width="44" height="26"/>
+                        <color key="backgroundColor" name="KMATurquoiseColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="u0t-jm-8Jf"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -37,18 +48,26 @@
             <constraints>
                 <constraint firstItem="HTx-d5-0vm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="MlB-2A-0gp"/>
                 <constraint firstItem="HTx-d5-0vm" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="TUC-6f-NS7"/>
+                <constraint firstAttribute="trailing" secondItem="37D-ip-V2M" secondAttribute="trailing" id="WmZ-Hb-HUt"/>
                 <constraint firstAttribute="trailing" secondItem="kuI-mj-ZfU" secondAttribute="trailing" constant="4" id="aJ7-mx-2MC"/>
                 <constraint firstAttribute="trailing" secondItem="HTx-d5-0vm" secondAttribute="trailing" id="jPo-8w-BPc"/>
+                <constraint firstItem="37D-ip-V2M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="jb1-RK-w5f"/>
                 <constraint firstItem="kuI-mj-ZfU" firstAttribute="top" secondItem="HTx-d5-0vm" secondAttribute="bottom" id="ua2-c2-WBh"/>
                 <constraint firstAttribute="bottom" secondItem="kuI-mj-ZfU" secondAttribute="bottom" id="zOg-b3-Pb0"/>
                 <constraint firstItem="kuI-mj-ZfU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="zk2-TZ-hnz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="priceLabel" destination="37D-ip-V2M" id="7UB-t6-bcK"/>
                 <outlet property="propertyImageView" destination="HTx-d5-0vm" id="55E-df-EOw"/>
                 <outlet property="propertyInfoLabel" destination="kuI-mj-ZfU" id="RmD-Va-eY1"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="KMATurquoiseColor">
+            <color red="0.26666666666666666" green="0.83921568627450982" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

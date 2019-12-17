@@ -235,8 +235,9 @@ public struct KMAZooplaProperty {
         self.maxFloorArea = maxFloorArea
     }
     
-    public func getPropertyDescription() -> String {
+    public func getPropertyDescription() -> (String, String) {
         var propertyDescription = ""
+        var priceString = ""
         
         // bedrooms
         if numBedrooms > 0 {
@@ -256,15 +257,19 @@ public struct KMAZooplaProperty {
         if !status.isEmpty {
             if propertyDescription.isEmpty {
                 if status == "rent" {
-                    propertyDescription = "To rent\n£\(rentMonth.withCommas()) pcm"
+                    propertyDescription = "To rent"
+                    priceString = "£\(rentMonth.withCommas()) pcm"
                 } else if status == "sale" {
-                    propertyDescription = "For sale\n£\(salePrice.withCommas())"
+                    propertyDescription = "For sale"
+                    priceString = "£\(salePrice.withCommas())"
                 }
             } else {
                 if status == "rent" {
-                    propertyDescription += " to rent\n£\(rentMonth.withCommas()) pcm"
+                    propertyDescription += " to rent"
+                    priceString = "£\(rentMonth.withCommas()) pcm"
                 } else if status == "sale" {
                     propertyDescription += " for sale\n£\(salePrice.withCommas())"
+                    priceString = "£\(salePrice.withCommas())"
                 }
             }
         }
@@ -273,6 +278,6 @@ public struct KMAZooplaProperty {
             propertyDescription = "Property"
         }
         
-        return propertyDescription
+        return (propertyDescription, priceString)
     }
 }

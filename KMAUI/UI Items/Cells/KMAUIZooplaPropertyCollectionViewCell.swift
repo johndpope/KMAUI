@@ -11,6 +11,7 @@ import UIKit
 public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var propertyImageView: UIImageView!
+    @IBOutlet public weak var priceLabel: UILabel!
     @IBOutlet public weak var propertyInfoLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
@@ -33,6 +34,16 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
-        propertyInfoLabel.text = propertyObject.getPropertyDescription()
+        let detailStrings = propertyObject.getPropertyDescription()
+        propertyInfoLabel.text = detailStrings.0
+        
+        if detailStrings.1.isEmpty {
+            priceLabel.alpha = 0
+        } else {
+            priceLabel.text = "  " + detailStrings.1 + " "
+            priceLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+            priceLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+            priceLabel.alpha = 1
+        }
     }
 }
