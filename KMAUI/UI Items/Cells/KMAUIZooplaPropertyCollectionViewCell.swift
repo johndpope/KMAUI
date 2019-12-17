@@ -18,5 +18,7 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
         // Round corners for image view
         propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         propertyImageView.clipsToBounds = true
+        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
     }
 }
