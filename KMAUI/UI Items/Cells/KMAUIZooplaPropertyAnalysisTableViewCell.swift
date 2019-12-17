@@ -25,9 +25,6 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
         
         // No selection required
         selectionStyle = .none
-        
-        // Register collectionViewCell
-        collectionView.register(UINib(nibName: "KMAUIZooplaPropertyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "KMAUIZooplaPropertyCell")
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
