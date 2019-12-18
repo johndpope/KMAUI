@@ -14,10 +14,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     @IBOutlet public weak var actionButton: KMAUIButtonFilled!
     @IBOutlet public weak var actionButtonHeight: NSLayoutConstraint!
     @IBOutlet public weak var actionButtonBottom: NSLayoutConstraint!
+    @IBOutlet public weak var activityView: UIActivityIndicatorView!
+    @IBOutlet public weak var activityViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var activityViewLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public var info = ""
     public var action = ""
+    public var isLoading = false
     public var actionCallback: ((Bool) -> Void)?
     
     override public func awakeFromNib() {
@@ -45,6 +49,17 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
             actionButton.alpha = 1
             actionButtonHeight.constant = 44
             actionButtonBottom.constant = 8
+        }
+        
+        if isLoading {
+            activityView.alpha = 1
+            activityView.startAnimating()
+            activityViewWidth.constant = 44
+            activityViewLeft.constant = 8
+        } else {
+            activityView.alpha = 0
+            activityViewWidth.constant = 0
+            activityViewLeft.constant = 0
         }
     }
     
