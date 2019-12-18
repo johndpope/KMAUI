@@ -8,7 +8,7 @@ s.summary = "KMAUI allows you using the same design items across all of the KMA 
 s.requires_arc = true
 
 # 2
-s.version = "0.7.7.18"
+s.version = "0.7.7.19"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -34,5 +34,9 @@ s.resources = "KMAUI/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
 
 # 10
 s.swift_version = "5.0"
+
+s.dependency 'Alamofire', '~> 5.0.0-rc.2'
+s.dependency 'SwiftyJSON', '~> 4.0'
+s.dependency 'Kingfisher', '~> 5.0'
 
 end
