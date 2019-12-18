@@ -119,6 +119,83 @@ public struct KMAFoursquareVenue {
         self.suffix = suffix
         self.venueId = venueId
     }
+    
+    public mutating func fillFrom(venue: JSON) {
+        if let venue = venue.dictionary {
+            if let id = venue["id"]?.string {
+                self.venueId = id
+            }
+            
+            if let venueData = venue["venue"]?.dictionary {
+                // name
+                if let name = venueData["name"]?.string {
+                    self.name = name
+                }
+                // category
+                if let categories = venueData["categories"]?.array {
+                    for category in categories {
+                        if let category = category.dictionary, let primary = category["primary"]?.bool, primary, let categoryName = category["name"]?.string {
+                            self.category = categoryName
+                            
+                            if let icon = category["icon"]?.dictionary {
+                                if let prefix = icon["prefix"]?.string {
+                                    self.categoryPrefix = prefix
+                                }
+                                
+                                if let suffix = icon["suffix"]?.string {
+                                    self.categorySuffix = suffix
+                                }
+                            }
+                        }
+                    }
+                }
+                // address
+                if let location = venueData["location"]?.dictionary {
+                    // latitude
+                    if let lat = location["lat"]?.double {
+                        self.latitude = lat
+                    }
+                    // longitude
+                    if let lng = location["lng"]?.double {
+                        self.longitude = lng
+                    }
+                    // formatted address
+                    if let formattedAddress = location["formattedAddress"]?.array {
+                        var address = ""
+                        
+                        for addressLine in formattedAddress {
+                            if let addressLine = addressLine.string, !addressLine.isEmpty {
+                                if address.isEmpty {
+                                    address = addressLine
+                                } else {
+                                    address += ", " + addressLine
+                                }
+                            }
+                        }
+                        
+                        self.address = address
+                    }
+                    // distance
+                    if let distance = location["distance"]?.int {
+                        self.distance = distance
+                    }
+                }
+                
+            }
+            
+            // photo
+            if let photoDict = venue["photo"]?.dictionary {
+                // prefix
+                if let prefix = photoDict["prefix"]?.string {
+                    self.prefix = prefix
+                }
+                // suffix
+                if let suffix = photoDict["suffix"]?.string {
+                    self.suffix = suffix
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Zoopla Propety struct
