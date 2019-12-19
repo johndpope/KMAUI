@@ -32,7 +32,7 @@ public class KMAUIFoursquare {
      Get venues from places
      */
     
-    func getVenues(jsonString: String) -> [KMAFoursquareVenue] {
+    public func getVenues(jsonString: String) -> [KMAFoursquareVenue] {
         var foursquareVenues = [KMAFoursquareVenue]()
                 
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
