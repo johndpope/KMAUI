@@ -38,12 +38,11 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
                 propertyInfoLabel.textColor = UIColor.white
                 layer.borderColor = UIColor.white.cgColor
                 // Your customized animation or add a overlay view
+            } else {
+                // Your customized animation or remove overlay view
                 backgroundColor = KMAUIConstants.shared.KMABgGray
                 propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
                 layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
-            } else {
-                print("no")
-                // Your customized animation or remove overlay view
             }
         }
     }
