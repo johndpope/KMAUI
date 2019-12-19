@@ -156,8 +156,6 @@
 				85656AB823A3EB7F000CC21B /* KMAUIFoursquareTableViewCell.xib */,
 				8597E2DE23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.swift */,
 				8597E2DF23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.xib */,
-				85AFA45A23ABC943009FE9E6 /* KMAUIZooplaPropertyInfoTableViewCell.swift */,
-				85AFA45B23ABC943009FE9E6 /* KMAUIZooplaPropertyInfoTableViewCell.xib */,
 				85AFA45923ABC82C009FE9E6 /* Zoopla */,
 			);
 			path = Cells;
@@ -223,6 +221,8 @@
 				85E0B32223A813A200547786 /* KMAUIZooplaPropertyAnalysisTableViewCell.xib */,
 				85113EAA23A8D96D0087DD3E /* KMAUIZooplaPropertyCollectionViewCell.swift */,
 				85113EAB23A8D96D0087DD3E /* KMAUIZooplaPropertyCollectionViewCell.xib */,
+				85AFA45A23ABC943009FE9E6 /* KMAUIZooplaPropertyInfoTableViewCell.swift */,
+				85AFA45B23ABC943009FE9E6 /* KMAUIZooplaPropertyInfoTableViewCell.xib */,
 			);
 			path = Zoopla;
 			sourceTree = "<group>";
