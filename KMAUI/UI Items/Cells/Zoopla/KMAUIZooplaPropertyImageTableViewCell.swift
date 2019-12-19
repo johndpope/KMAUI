@@ -37,7 +37,7 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
             propertyImageView.kf.setImage(with: imageURL) { result in
                 switch result {
                 case .success(let value):
-                    self.photoImageView.image = value.image
+                    self.propertyImageView.image = value.image
                     self.propertyImageView.contentMode = .scaleAspectFill
                 case .failure(let error):
                     print(error) // The error happens
