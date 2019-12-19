@@ -57,7 +57,7 @@ public class KMAUIFoursquare {
     }
     
     /**
-     Get the nearby venues
+     Get the nearby venues by the location is 1 km radius
      */
     
     public func foursquareVenues(location: String, completion: @escaping (_ places: [KMAFoursquareVenue], _ jsonString: String, _ error: String)->()) {
@@ -77,6 +77,59 @@ public class KMAUIFoursquare {
                     }
                 } catch {
                     completion(venues, jsonString, error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    /**
+     Get the venues in the bounds provided
+     */
+    
+    func foursquareVenues(bounds: String, completion: @escaping (_ venues: [JSON])->()) {
+        let requestString = "https://api.foursquare.com/v2/venues/search?\(bounds)&categoryId=4d4b7105d754a06374d81259&intent=browse&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let repsonseValue = json["response"].dictionary, let venues = repsonseValue["venues"]?.array, !venues.isEmpty {
+                        completion(venues)
+                        /*var pins = [KMAPointAnnotation]()
+                        
+                        for venue in venues {
+                            // print(venue)
+                            if let venue = venue.dictionary {
+                                if let name = venue["name"]?.string, let categories = venue["categories"]?.array {
+                                    let foursquareAnnotation = KMAPointAnnotation()
+                                    foursquareAnnotation.title = name
+                                    
+                                    for category in categories {
+                                        if let category = category.dictionary, let primary = category["primary"]?.bool, let categoryName = category["name"]?.string {
+                                            if primary {
+                                                foursquareAnnotation.subtitle = categoryName
+                                            }
+                                        }
+                                    }
+                                    
+                                    if let id = venue["id"]?.string {
+                                        foursquareAnnotation.foursquareId = id
+                                    }
+                                    
+                                    if let location = venue["location"]?.dictionary, let latitude = location["lat"]?.double, let longitude = location["lng"]?.double {
+                                        foursquareAnnotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                                    }
+                                    
+                                    foursquareAnnotation.foursquareJSON = venue
+                                    pins.append(foursquareAnnotation)
+                                }
+                            }
+                        }
+                        
+                        completion(pins)*/
+                    }
+                } catch {
+                    print(error.localizedDescription)
                 }
             }
         }
