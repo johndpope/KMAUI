@@ -71,6 +71,7 @@ public class KMAUIZoopla {
             let listing = json["listing"]?.array {
             
             for propertyItem in listing {
+                print("\nPROPERTY: \(propertyItem)\n")
                 var zooplaProperty = KMAZooplaProperty()
                 zooplaProperty.fillFrom(propertyItem: propertyItem)
                 zooplaPropertyArray.append(zooplaProperty)
@@ -290,8 +291,6 @@ public struct KMAZooplaProperty {
     
     public mutating func fillFrom(propertyItem: JSON) {
         if let propertyItem = propertyItem.dictionary {
-            print(propertyItem)
-            
             // Location
             
             // Latitude
