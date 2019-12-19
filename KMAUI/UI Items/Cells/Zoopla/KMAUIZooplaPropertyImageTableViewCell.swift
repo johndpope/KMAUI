@@ -1,5 +1,5 @@
 //
-//  KMAUIZooplaPropertyDescriptionTableViewCell.swift
+//  KMAUIZooplaPropertyImageTableViewCell.swift
 //  KMAUI
 //
 //  Created by Stanislav Rastvorov on 19.12.2019.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
-    // MARK: -
-    @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
+public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var propertyImageView: UIImageView!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
-        // No selection required
-        selectionStyle = .none
+        // Initialization code
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
