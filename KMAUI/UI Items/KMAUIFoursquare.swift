@@ -159,6 +159,7 @@ public struct KMAFoursquareVenue {
     }
     
     public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String, venueId: String) {
+        // The main variables from recommendations
         self.name = name
         self.category = category
         self.categoryPrefix = categoryPrefix
@@ -169,6 +170,7 @@ public struct KMAFoursquareVenue {
         self.prefix = prefix
         self.suffix = suffix
         self.venueId = venueId
+        // The details additional variables
     }
     
     public mutating func fillFrom(venue: JSON) {

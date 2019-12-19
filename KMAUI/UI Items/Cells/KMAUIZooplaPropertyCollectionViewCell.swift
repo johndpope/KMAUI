@@ -31,6 +31,23 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
     }
     
+    override public var isHighlighted: Bool {
+        didSet {
+            if self.isHighlighted {
+                backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+                propertyInfoLabel.textColor = UIColor.white
+                layer.borderColor = UIColor.white.cgColor
+                // Your customized animation or add a overlay view
+                backgroundColor = KMAUIConstants.shared.KMABgGray
+                propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+                layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+            } else {
+                print("no")
+                // Your customized animation or remove overlay view
+            }
+        }
+    }
+    
     /**
      Setup the data for cell
      */
