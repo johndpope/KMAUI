@@ -11,7 +11,7 @@ import Kingfisher
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var photoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var detailLabel: KMAUIInfoLabel!

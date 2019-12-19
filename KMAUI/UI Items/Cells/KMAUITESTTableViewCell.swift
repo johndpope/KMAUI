@@ -1,5 +1,5 @@
 //
-//  KMAUIZooplaPropertyDetailTableViewCell.swift
+//  KMAUITESTTableViewCell.swift
 //  KMAUI
 //
 //  Created by Stanislav Rastvorov on 19.12.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMAUIZooplaPropertyDetailTableViewCell: UITableViewCell {
+pulbic class KMAUITESTTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()

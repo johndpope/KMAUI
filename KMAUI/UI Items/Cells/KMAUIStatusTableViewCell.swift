@@ -11,7 +11,7 @@ import UIKit
 public class KMAUIStatusTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var statusLabel: UILabel!
-    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet public weak var statusImageView: UIImageView!
 
     // MARK: - Variables
     public var isChecked = false
