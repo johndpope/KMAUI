@@ -11,11 +11,21 @@ import SwiftyJSON
 
 /// This class represents the method to communicate with the Foursquare Places API
 public class KMAUIFoursquare {
-
+    
     // Access variable
     public static let shared = KMAUIFoursquare()
     
+    /**
+     Get version value - this is a value required by Foursquare API to get the latest updated data, loading the current date
+     */
     
+    public func getVersion() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let dateValue = dateFormatter.string(from: Date())
+        
+        return dateValue
+    }
 }
 
 // MARK: - Foursquare venue struct
