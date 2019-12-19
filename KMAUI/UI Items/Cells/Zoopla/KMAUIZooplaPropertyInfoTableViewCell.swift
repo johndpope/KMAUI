@@ -34,7 +34,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathIcon.image = KMAUIConstants.shared.bathIcon.withRenderingMode(.alwaysTemplate)
         bathIcon.tintColor = KMAUIConstants.shared.KMALineGray
         receptIcon.image = KMAUIConstants.shared.receptIcon.withRenderingMode(.alwaysTemplate)
-        bathIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        receptIcon.tintColor = KMAUIConstants.shared.KMALineGray
         
         // No selection required
         selectionStyle = .none
