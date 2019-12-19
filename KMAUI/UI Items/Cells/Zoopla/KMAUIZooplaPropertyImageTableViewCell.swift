@@ -11,6 +11,7 @@ import Kingfisher
 
 public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var propertyImageView: UIImageView!
     
     // MARK: - Valued
@@ -18,7 +19,12 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Clips to bounds for bgView
+        bgView.clipsToBounds = true
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

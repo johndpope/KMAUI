@@ -46,6 +46,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="pPk-0x-a1r" id="KXI-6h-rTy"/>
                 <outlet property="propertyImageView" destination="V2K-cQ-q1d" id="fK7-ZM-qAE"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="207.92410714285714"/>
