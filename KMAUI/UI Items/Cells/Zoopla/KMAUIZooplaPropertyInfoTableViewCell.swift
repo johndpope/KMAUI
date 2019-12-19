@@ -61,5 +61,6 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathCountLabel.text = "\(zooplaProperty.numBathrooms)"
         // receptions
         receptCountLabel.text = "\(zooplaProperty.numReceptions)"
+        // Do we need a map here?
     }
 }
