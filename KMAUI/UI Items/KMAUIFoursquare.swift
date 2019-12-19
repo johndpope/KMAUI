@@ -117,7 +117,7 @@ public class KMAUIFoursquare {
                 do {
                     let json = try JSON(data: responseData)
                     print("Foursquare venue \(foursquareId).")
-                    print(json)
+//                    print(json)
                     /**
                      What data do we need?
                      Name

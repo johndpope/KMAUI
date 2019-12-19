@@ -37,7 +37,25 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
                 backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
                 propertyInfoLabel.textColor = UIColor.white
                 layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
-                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthRegular
+                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
+                // Your customized animation or add a overlay view
+            } else {
+                // Your customized animation or remove overlay view
+                backgroundColor = KMAUIConstants.shared.KMABgGray
+                propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+                layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+            }
+        }
+    }
+    
+    override public var isSelected: Bool {
+        didSet {
+            if self.isHighlighted {
+                backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+                propertyInfoLabel.textColor = UIColor.white
+                layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
+                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
                 // Your customized animation or add a overlay view
             } else {
                 // Your customized animation or remove overlay view

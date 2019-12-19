@@ -290,6 +290,8 @@ public struct KMAZooplaProperty {
     
     public mutating func fillFrom(propertyItem: JSON) {
         if let propertyItem = propertyItem.dictionary {
+            print(propertyItem)
+            
             // Location
             
             // Latitude
