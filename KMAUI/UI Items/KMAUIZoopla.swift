@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 public class KMAUIZoopla {
@@ -54,8 +55,52 @@ public class KMAUIZoopla {
             let averageSaleValue = salePrice/saleProperty.count
             averageSale = "£\(averageSaleValue.withCommas()) (\(saleProperty.count))"
         }
-
+        
         return (averageRent, averageSale)
+    }
+    
+    /**
+     Get property items
+     */
+    
+    public func getPropertyItems(jsonString: String) -> [KMAZooplaProperty] {
+        var zooplaPropertyArray = [KMAZooplaProperty]()
+        
+        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary,
+            let listing = json["listing"]?.array {
+            
+            for propertyItem in listing {
+                var zooplaProperty = KMAZooplaProperty()
+                zooplaProperty.fillFrom(propertyItem: propertyItem)
+                zooplaPropertyArray.append(zooplaProperty)
+            }
+        }
+        
+        return zooplaPropertyArray
+    }
+    
+    /**
+     Get the property list around the provided property
+     */
+    
+    public func zooplaProperty(location: String, completion: @escaping (_ property: [KMAZooplaProperty], _ jsonString: String, _ error: String)->()) {
+        let requestString = "https://api.zoopla.co.uk/api/v1/property_listings.js?\(location)&radius=0.62&order_by=age&ordering=descending&page_size=100&api_key=\(KMAUIConstants.shared.zooplaApiKey)" // 1 km radius around user's property
+        // The venues request
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonString = json.rawString() {
+                        let places = self.getPropertyItems(jsonString: jsonString)
+                        completion(places, jsonString, "")
+                    }
+                } catch {
+                    completion([KMAZooplaProperty](), "", error.localizedDescription)
+                }
+            }
+        }
     }
 }
 

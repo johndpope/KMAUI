@@ -62,21 +62,18 @@ public class KMAUIFoursquare {
     
     public func foursquareVenues(location: String, completion: @escaping (_ places: [KMAFoursquareVenue], _ jsonString: String, _ error: String)->()) {
         let requestString = "https://api.foursquare.com/v2/search/recommendations?ll=\(location)&radius=1000&categoryId=4d4b7105d754a06374d81259&limit=10&openNow=true&intent=food&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
-        var venues = [KMAFoursquareVenue]() // This is the formatted array to return
-        var jsonString = ""
-        
+
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
                     
-                    if let jsonStringValue = json.rawString() {
-                        jsonString = jsonStringValue
-                        venues = self.getVenues(jsonString: jsonString)
+                    if let jsonString = json.rawString() {
+                        let venues = self.getVenues(jsonString: jsonString)
                         completion(venues, jsonString, "")
                     }
                 } catch {
-                    completion(venues, jsonString, error.localizedDescription)
+                    completion([KMAFoursquareVenue](), "", error.localizedDescription)
                 }
             }
         }
