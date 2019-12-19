@@ -37,6 +37,7 @@
 		859C8B7323981C0200CAFF47 /* KMAUIStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */; };
 		859C8B762398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */; };
 		859C8B772398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */; };
+		85AE341523AB8BEE00BF94BA /* KMAUIAccuWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AE341423AB8BEE00BF94BA /* KMAUIAccuWeather.swift */; };
 		85D071E523A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85D071E323A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.swift */; };
 		85D071E623A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85D071E423A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.xib */; };
 		85E0B32323A813A200547786 /* KMAUIZooplaPropertyAnalysisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E0B32123A813A200547786 /* KMAUIZooplaPropertyAnalysisTableViewCell.swift */; };
@@ -79,6 +80,7 @@
 		859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUIStatusTableViewCell.xib; sourceTree = "<group>"; };
 		859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUISaveButtonTableViewCell.swift; sourceTree = "<group>"; };
 		859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUISaveButtonTableViewCell.xib; sourceTree = "<group>"; };
+		85AE341423AB8BEE00BF94BA /* KMAUIAccuWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIAccuWeather.swift; sourceTree = "<group>"; };
 		85D071E323A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIDashboardWelcomeTableViewCell.swift; sourceTree = "<group>"; };
 		85D071E423A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUIDashboardWelcomeTableViewCell.xib; sourceTree = "<group>"; };
 		85E0B32123A813A200547786 /* KMAUIZooplaPropertyAnalysisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIZooplaPropertyAnalysisTableViewCell.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				859BB2F923A13BEB00CD5ECB /* Buttons */,
 				855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */,
 				859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */,
+				85AE341423AB8BEE00BF94BA /* KMAUIAccuWeather.swift */,
 				8597E2EA23AAB0030053F3F7 /* KMAUIFoursquare.swift */,
 				8597E2E823AAAE3A0053F3F7 /* KMAUIZoopla.swift */,
 				855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */,
@@ -353,6 +356,7 @@
 				85113EAC23A8D96D0087DD3E /* KMAUIZooplaPropertyCollectionViewCell.swift in Sources */,
 				859BB2F823A13BE700CD5ECB /* KMAUIButtonFilled.swift in Sources */,
 				853D3AE623A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.swift in Sources */,
+				85AE341523AB8BEE00BF94BA /* KMAUIAccuWeather.swift in Sources */,
 				859C8B6C2398005A00CAFF47 /* KMAUISearchTableViewCell.swift in Sources */,
 				859BB2F523A12F5300CD5ECB /* KMAUIPropertyDataTableViewCell.swift in Sources */,
 				852181C323915A3400A6B891 /* KMAUIInfoLabel.swift in Sources */,
