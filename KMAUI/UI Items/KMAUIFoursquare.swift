@@ -174,7 +174,7 @@ public struct KMAFoursquareVenue {
     public mutating func fillFrom(venue: JSON) {
         if let venue = venue.dictionary {
             if let venueData = venue["venue"]?.dictionary {
-                if let id = venue["id"]?.string {
+                if let id = venueData["id"]?.string {
                     self.venueId = id
                 }
                 
