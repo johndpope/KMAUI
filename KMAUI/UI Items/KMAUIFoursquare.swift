@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 /// This class represents the method to communicate with the Foursquare Places API
@@ -25,6 +26,60 @@ public class KMAUIFoursquare {
         let dateValue = dateFormatter.string(from: Date())
         
         return dateValue
+    }
+    
+    /**
+     Get venues from places
+     */
+    
+    func getVenues(jsonString: String) -> [KMAFoursquareVenue] {
+        var foursquareVenues = [KMAFoursquareVenue]()
+                
+        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary,
+            let response = json["response"]?.dictionary,
+            let group = response["group"]?.dictionary,
+            let results = group["results"]?.array, !results.isEmpty {
+            
+            for venue in results {
+                var venueObject = KMAFoursquareVenue()
+                venueObject.fillFrom(venue: venue)
+                foursquareVenues.append(venueObject)
+                
+                // Currently, let's limit the venues count to 5
+                if foursquareVenues.count == 5 {
+                    break
+                }
+            }
+        }
+        
+        return foursquareVenues
+    }
+    
+    /**
+     Get the nearby venues
+     */
+    
+    public func foursquareVenues(location: String, completion: @escaping (_ places: [KMAFoursquareVenue], _ jsonString: String, _ error: String)->()) {
+        let requestString = "https://api.foursquare.com/v2/search/recommendations?ll=\(location)&radius=1000&categoryId=4d4b7105d754a06374d81259&limit=10&openNow=true&intent=food&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
+        var venues = [KMAFoursquareVenue]() // This is the formatted array to return
+        var jsonString = ""
+        
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                        venues = self.getVenues(jsonString: jsonString)
+                        completion(venues, jsonString, "")
+                    }
+                } catch {
+                    completion(venues, jsonString, error.localizedDescription)
+                }
+            }
+        }
     }
 }
 
