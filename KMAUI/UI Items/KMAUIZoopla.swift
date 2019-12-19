@@ -152,6 +152,7 @@ public struct KMAZooplaProperty {
     public var numFloors = 0 // 1, 2, 3
     public var numBathrooms = 0 // 1, 2, 3
     public var numBedrooms = 0 // 1, 2, 3
+    public var numReceptions = 0 // 1, 2, 3
     public var detailsURL = "" // https://www.zoopla.co.uk/to-rent/details/44440070?utm_source=v1:7OaVHSXLChfP5Rizees94WCsIgAk0bKW&utm_medium=api
     public var firstPublishedDate: Double = 0 // timeInterval value since 1970
     public var lastPublishedDate: Double = 0 // timeInterval value since 1970
@@ -205,7 +206,7 @@ public struct KMAZooplaProperty {
     public init() {
     }
     
-    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Bool, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, numReceptions: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Bool, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
         self.latitude = latitude
         self.longitude = longitude
         self.image50x38 = image50x38
@@ -227,6 +228,7 @@ public struct KMAZooplaProperty {
         self.numFloors = numFloors
         self.numBathrooms = numBathrooms
         self.numBedrooms = numBedrooms
+        self.numReceptions = numReceptions
         self.detailsURL = detailsURL
         self.firstPublishedDate = firstPublishedDate
         self.lastPublishedDate = lastPublishedDate
@@ -249,7 +251,7 @@ public struct KMAZooplaProperty {
         
         // bedrooms
         if numBedrooms > 0 {
-            propertyDescription = "\(numBedrooms) bedroom"
+            propertyDescription = "\(numBedrooms) bed"
         }
         
         // type
@@ -390,6 +392,10 @@ public struct KMAZooplaProperty {
             
             if let numBedrooms = propertyItem["num_bedrooms"]?.string, let num = Int(numBedrooms) {
                 self.numBedrooms = num
+            }
+            
+            if let numReceptions = propertyItem["num_recepts"]?.string, let num = Int(numReceptions) {
+                self.numReceptions = num
             }
             
             if let detailsURL = propertyItem["details_url"]?.string {
