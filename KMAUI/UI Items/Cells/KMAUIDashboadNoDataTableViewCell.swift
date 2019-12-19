@@ -21,7 +21,6 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var info = ""
     public var action = ""
-    public var isLoading = false
     public var actionCallback: ((Bool) -> Void)?
     public var type = ""
     public var isLoaded = false
@@ -44,21 +43,17 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
             if isLoaded {
                 info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
                 action = ""
-                isLoading = false
             } else {
                 info = "We're preparing the cafes & restaurants list for your home address..."
                 action = ""
-                isLoading = true
             }
         } else if type == "zoopla" {
             if isLoaded {
-                info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
-                action = ""
-                isLoading = false
+                info = "Unfortunately we don't have a property list to show for your home address location.\n\nThe home address should be inside the United Kingdom in order to see the data from Zoopla."
+                action = "Update home address"
             } else {
-                info = "We're preparing the cafes & restaurants list for your home address..."
+                info = "We're preparing the property list for your home address..."
                 action = ""
-                isLoading = true
             }
         }
         
@@ -75,15 +70,15 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
             actionButtonBottom.constant = 8
         }
         
-        if isLoading {
+        if isLoaded {
+            activityView.alpha = 0
+            activityViewWidth.constant = 0
+            activityViewLeft.constant = 0
+        } else {
             activityView.alpha = 1
             activityView.startAnimating()
             activityViewWidth.constant = 44
             activityViewLeft.constant = 8
-        } else {
-            activityView.alpha = 0
-            activityViewWidth.constant = 0
-            activityViewLeft.constant = 0
         }
     }
     
