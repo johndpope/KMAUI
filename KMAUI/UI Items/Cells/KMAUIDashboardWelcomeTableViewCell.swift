@@ -13,6 +13,10 @@ public class KMAUIDashboardWelcomeTableViewCell: UITableViewCell {
     @IBOutlet public weak var welcomeTitleLabel: KMAUITitleLabel!
     @IBOutlet public weak var welcomeTextLabel: KMAUITextLabel!
     
+    // MARK: - Variables
+    public var welcomeText = ""
+    public var homeSet = false
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,5 +29,14 @@ public class KMAUIDashboardWelcomeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+ 
+    public func setupCell() {
+        welcomeTitleLabel.text = welcomeText
+        
+        if homeSet {
+            welcomeTextLabel.text = "We're glad to provide you with up-to-date information about your home area.\nYou can review your home property, add water and electic bills, review some useful infomation from our partners."
+        } else {
+            welcomeTextLabel.text = "We're glad to provide you with up-to-date information about your home area.\nPlease add your home address to start receiving recommendations."
+        }
+    }
 }
