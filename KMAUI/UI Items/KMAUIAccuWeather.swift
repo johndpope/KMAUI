@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class KMAUIAccuWeather {
+public class KMAUIAccuWeather {
     
     // Access variable
     public static let shared = KMAUIAccuWeather()
