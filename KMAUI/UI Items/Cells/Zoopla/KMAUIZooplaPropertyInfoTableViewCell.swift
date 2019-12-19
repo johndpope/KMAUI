@@ -21,7 +21,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
-    var property = KMAZooplaProperty()
+    public var property = KMAZooplaProperty()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
