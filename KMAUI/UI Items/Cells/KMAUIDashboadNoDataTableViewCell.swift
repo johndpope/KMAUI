@@ -23,6 +23,8 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     public var action = ""
     public var isLoading = false
     public var actionCallback: ((Bool) -> Void)?
+    public var type = ""
+    public var isLoaded = false
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +40,28 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if type == "foursquare" {
+            if isLoaded {
+                info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
+                action = ""
+                isLoading = false
+            } else {
+                info = "We're preparing the cafes & restaurants list for your home address..."
+                action = ""
+                isLoading = true
+            }
+        } else if type == "zoopla" {
+            if isLoaded {
+                info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
+                action = ""
+                isLoading = false
+            } else {
+                info = "We're preparing the cafes & restaurants list for your home address..."
+                action = ""
+                isLoading = true
+            }
+        }
+        
         infoLabel.text = info
         actionButton.setTitle(action, for: .normal)
         
