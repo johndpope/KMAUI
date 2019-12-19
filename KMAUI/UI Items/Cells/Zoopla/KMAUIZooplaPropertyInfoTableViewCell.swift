@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet public weak var priceLabel: UILabel!
+    @IBOutlet public weak var priceLabel: KMAUITitleLabel!
     @IBOutlet public weak var nameLabel: KMAUITextLabel!
     @IBOutlet public weak var addressLabel: KMAUIInfoLabel!
     @IBOutlet public weak var bedIcon: UIImageView!
