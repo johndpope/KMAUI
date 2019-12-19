@@ -47,21 +47,24 @@ public class KMAUIAccuWeather {
         let requestString = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(KMAUIConstants.shared.accuweatherApiKey)&details=true"
         
         AF.request(requestString).responseJSON { response in
+            var jsonString = ""
+            var errorString = ""
+            
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
                     
-                    if let jsonArray = json.array, !jsonArray.isEmpty, let jsonString = json.rawString() {
-                        completion(self.getReadableConditions(jsonString: jsonString), jsonString, "")
-                    } else {
-                        completion(KMAWeather(), "", "Error")
+                    if let jsonArray = json.array, !jsonArray.isEmpty, let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
                     }
                 } catch {
-                    completion(KMAWeather(), "", error.localizedDescription)
+                    errorString = error.localizedDescription
                 }
             } else {
-                completion(KMAWeather(), "", "Error")
+                errorString = ""
             }
+            
+            completion(self.getReadableConditions(jsonString: jsonString), jsonString, errorString)
         }
     }
     
@@ -70,6 +73,16 @@ public class KMAUIAccuWeather {
      */
     
     public func getReadableConditions(jsonString: String) -> KMAWeather {
+        if jsonString.isEmpty {
+            // Should also have the completion handler here to display the error on the location cell
+            var weatherError = KMAWeather()
+            weatherError.title = "No weather data"
+            weatherError.text = "We're not able to display the weather at this moment, please try reloading the screen."
+            weatherError.image = "Error"
+            
+            return weatherError
+        }
+        
         var weatherObject = KMAWeather()
         weatherObject.fillFrom(jsonString: jsonString)
         
