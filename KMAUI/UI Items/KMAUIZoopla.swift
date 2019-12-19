@@ -115,8 +115,10 @@ public class KMAUIZoopla {
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
+                    print("JSON: \(json)")
                     
                     if let listing = json["listing"].array {
+                        print("COMPLETION: \(listing)")
                         completion(listing, "")
                     }
                 } catch {
