@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var propertyImageView: UIImageView!
+    
+    // MARK: - Valued
+    public var imageString = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -23,4 +27,22 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        // Round corners for image view
+        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+        propertyImageView.contentMode = .center
+        
+        if let imageURL = URL(string: imageString) {
+            propertyImageView.kf.setImage(with: imageURL) { result in
+                switch result {
+                case .success(let value):
+                    self.photoImageView.image = value.image
+                    self.propertyImageView.contentMode = .scaleAspectFill
+                case .failure(let error):
+                    print(error) // The error happens
+                }
+            }
+        }
+    }
 }

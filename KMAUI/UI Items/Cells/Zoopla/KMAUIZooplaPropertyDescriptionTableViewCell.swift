@@ -9,8 +9,11 @@
 import UIKit
 
 public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
-    // MARK: -
+    // MARK: - IBOutlets
     @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
+    
+    // MARK: - Variables
+    public var descriptionText = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -25,4 +28,11 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        if descriptionText.isEmpty {
+            propertyDescriptionLabel.text = "No description available."
+        } else {
+            propertyDescriptionLabel.text = descriptionText
+        }
+    }
 }
