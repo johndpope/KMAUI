@@ -54,17 +54,17 @@ public class KMAUIConstants {
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
     
     // MARK: - AccuWeather
-    let accuweatherApiKey = "ieshnLrs4i3JbLXAuO97CGGS5L1on6Kz"
+    public let accuweatherApiKey = "ieshnLrs4i3JbLXAuO97CGGS5L1on6Kz"
     // sircfc@me.com "ieshnLrs4i3JbLXAuO97CGGS5L1on6Kz"
     // sircfc+john@me.com "AXsdi3EjiJuq2eicR85FyRj9pZ4h0shH"
     // sircfc+lamps@me.com "fqCYgiPCaG5XxqPhTl3047ZCLztXY6Zk"
 
     // MARK: - Foursquare
-    let foursquareClientKey = "VOXV1M5DGZ35F3UANNVUSA34EYK30EWJYGBSWQ0ZVD3GGC4K"
-    let foursquareClientSecret = "YYRUX3MJYSNHGT54FR2PLLBQ3YUOOHK3BIS1A0VBBP2L3YRB"
+    public let foursquareClientKey = "VOXV1M5DGZ35F3UANNVUSA34EYK30EWJYGBSWQ0ZVD3GGC4K"
+    public let foursquareClientSecret = "YYRUX3MJYSNHGT54FR2PLLBQ3YUOOHK3BIS1A0VBBP2L3YRB"
     
     // MARK: - Zoopla
-    let zooplaApiKey = "z2jerfddwxkye3w653muzfjy"
+    public let zooplaApiKey = "z2jerfddwxkye3w653muzfjy"
 }
 
 // MARK: - Structures
