@@ -43,8 +43,6 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
         let propertyAnalysis = KMAUIZoopla.shared.getAverage(propertyArray: zooplaProperty)
         rentLabel.text = propertyAnalysis.0
         saleLabel.text = propertyAnalysis.1
-        // Register collection view cells
-        collectionView.register(UINib(nibName: "KMAUIZooplaPropertyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "KMAUIZooplaPropertyCell") // Bundle(identifier: "org.cocoapods.KMAUI")
     }
     
     @IBAction public func reviewButtonPressed(_ sender: Any) {

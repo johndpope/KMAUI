@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
@@ -35,6 +36,13 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
+        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+        
+        if let url = URL(string: propertyObject.image150x113) {
+            propertyImageView.kf.indicatorType = .activity
+            propertyImageView.kf.setImage(with: url)
+        }
+        
         let detailStrings = propertyObject.getPropertyDescription()
         propertyInfoLabel.text = detailStrings.0
         
