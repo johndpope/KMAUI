@@ -23,13 +23,13 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
-        // No selection required
-        selectionStyle = .none
-        
+
         // Rounded corners for the collectionView
         collectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         collectionView.clipsToBounds = true
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
