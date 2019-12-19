@@ -17,6 +17,7 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var buttomPressedCallback: ((Bool) -> Void)?
+    public var zooplaProperty = [KMAZooplaProperty]()
     
     // MARK: - Cell methods
     
@@ -35,6 +36,15 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        // Property rent and sale analysis
+        let propertyAnalysis = KMAUIZoopla.shared.getAverage(propertyArray: zooplaProperty)
+        rentLabel.text = propertyAnalysis.0
+        saleLabel.text = propertyAnalysis.1
+        // Register collection view cells
+        collectionView.register(UINib(nibName: "KMAUIZooplaPropertyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "KMAUIZooplaPropertyCell") // Bundle(identifier: "org.cocoapods.KMAUI")
     }
     
     @IBAction public func reviewButtonPressed(_ sender: Any) {
