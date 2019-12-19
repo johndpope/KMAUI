@@ -38,4 +38,30 @@ public class KMAUIAccuWeather {
             }
         }
     }
+    
+    /**
+     Get the current conditions for location key
+     */
+    
+    public func getCurrentConditions(locationKey: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let requestString = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(KMAUIConstants.shared.accuweatherApiKey)&details=true"
+        
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonArray = json.array, !jsonArray.isEmpty, let jsonString = json.rawString() {
+                        completion(jsonString, "")
+                    } else {
+                        completion("", "Error")
+                    }
+                } catch {
+                    completion("", error.localizedDescription)
+                }
+            } else {
+                completion("", "Error")
+            }
+        }
+    }
 }
