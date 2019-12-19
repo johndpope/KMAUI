@@ -195,8 +195,8 @@
 				859BB2F923A13BEB00CD5ECB /* Buttons */,
 				855BA98D238FFC2D00CE2709 /* KMAUIConstants.swift */,
 				859C8B6E2398059000CAFF47 /* KMAUIUtilities.swift */,
-				8597E2E823AAAE3A0053F3F7 /* KMAUIZoopla.swift */,
 				8597E2EA23AAB0030053F3F7 /* KMAUIFoursquare.swift */,
+				8597E2E823AAAE3A0053F3F7 /* KMAUIZoopla.swift */,
 				855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */,
 			);
 			path = "UI Items";
