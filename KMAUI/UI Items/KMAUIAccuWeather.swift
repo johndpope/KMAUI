@@ -43,7 +43,7 @@ public class KMAUIAccuWeather {
      Get the current conditions for location key
      */
     
-    public func getCurrentConditions(locationKey: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+    public func getCurrentConditions(locationKey: String, completion: @escaping (_ weatherObject: KMAWeather,_ jsonString: String, _ error: String)->()) {
         let requestString = "https://dataservice.accuweather.com/currentconditions/v1/\(locationKey)?apikey=\(KMAUIConstants.shared.accuweatherApiKey)&details=true"
         
         AF.request(requestString).responseJSON { response in
@@ -52,15 +52,87 @@ public class KMAUIAccuWeather {
                     let json = try JSON(data: responseData)
                     
                     if let jsonArray = json.array, !jsonArray.isEmpty, let jsonString = json.rawString() {
-                        completion(jsonString, "")
+                        completion(self.getReadableConditions(jsonString: jsonString), jsonString, "")
                     } else {
-                        completion("", "Error")
+                        completion(KMAWeather(), "", "Error")
                     }
                 } catch {
-                    completion("", error.localizedDescription)
+                    completion(KMAWeather(), "", error.localizedDescription)
                 }
             } else {
-                completion("", "Error")
+                completion(KMAWeather(), "", "Error")
+            }
+        }
+    }
+    
+    /**
+     Translate the current conditions jsonString into the readable format
+     */
+    
+    public func getReadableConditions(jsonString: String) -> KMAWeather {
+        var weatherObject = KMAWeather()
+        weatherObject.fillFrom(jsonString: jsonString)
+        
+        return weatherObject
+    }
+}
+
+// MARK: - Weather struct
+
+public struct KMAWeather {
+    public var title = ""
+    public var text = ""
+    public var image = ""
+    
+    public init() {
+    }
+    
+    public init(title: String, text: String, image: String) {
+        self.title = title
+        self.text = text
+        self.image = image
+    }
+    
+    public mutating func fillFrom(jsonString: String) {
+        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).array,
+            !json.isEmpty, let jsonDict = json[0].dictionary {
+
+            // Weather text + temperature
+            if let weatherText = jsonDict["WeatherText"]?.string {
+                self.title = weatherText
+                
+                if let temperature = jsonDict["Temperature"]?.dictionary,
+                    let metrictDegrees = temperature["Metric"]?.dictionary,
+                    let value = metrictDegrees["Value"]?.double {
+                    self.title = weatherText + ", \((Double(Int(value * 10)) / 10))°C"
+                }
+            }
+            
+            // Real feel + wind
+            if let realFeelTemperature = jsonDict["RealFeelTemperature"]?.dictionary,
+                let metrictDegrees = realFeelTemperature["Metric"]?.dictionary,
+                let value = metrictDegrees["Value"]?.double {
+                var windSpeed = ""
+                
+                if let wind = jsonDict["Wind"]?.dictionary,
+                    let speed = wind["Speed"]?.dictionary,
+                    let metrictDegrees = speed["Metric"]?.dictionary,
+                    let value = metrictDegrees["Value"]?.double {
+                    windSpeed = ", Wind: \(value) km/h"
+                }
+                
+                self.text = "RealFeel® \((Double(Int(value * 10)) / 10))°C" + windSpeed
+            }
+            
+            if let weatherIcon = jsonDict["WeatherIcon"]?.int {
+                var weatherIconString = "https://developer.accuweather.com/sites/default/files/\(weatherIcon)-s.png"
+                
+                if weatherIcon < 10 {
+                    weatherIconString = "https://developer.accuweather.com/sites/default/files/0\(weatherIcon)-s.png"
+                }
+                
+                self.image = weatherIconString
             }
         }
     }
