@@ -86,7 +86,7 @@ public class KMAUIFoursquare {
      Get the venues in the bounds provided
      */
     
-    func foursquareVenues(bounds: String, completion: @escaping (_ venues: [JSON])->()) {
+    public func foursquareVenues(bounds: String, completion: @escaping (_ venues: [JSON])->()) {
         let requestString = "https://api.foursquare.com/v2/venues/search?\(bounds)&categoryId=4d4b7105d754a06374d81259&intent=browse&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
