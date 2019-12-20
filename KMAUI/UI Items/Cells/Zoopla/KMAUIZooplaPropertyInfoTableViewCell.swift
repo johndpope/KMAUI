@@ -97,15 +97,15 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
             noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             nameLabel.textColor = KMAUIConstants.shared.KMATextColor
             addressLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-            bedIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
-            bedCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
-            bathIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
-            bathCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
-            receptIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
-            receptCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
-            floorIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
-            floorsCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
-            rightArrowImageView.tintColor = MAUIConstants.shared.KMATextGrayColor
+            bedIcon.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            bedCountLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            bathIcon.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            bathCountLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            receptIcon.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            receptCountLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            floorIcon.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            floorsCountLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }
     }
     
