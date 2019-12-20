@@ -29,6 +29,15 @@
                                 <color key="textColor" name="KMATitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" Note label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-pK-nVX" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="185.5" y="16" width="86.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aja-Ph-vNc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bedroom apartment for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="54" width="256" height="12"/>
                                 <constraints>
@@ -86,11 +95,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" Note label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-pK-nVX" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="185.5" y="16" width="86.5" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="floorsCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="c1T-53-rLI">
+                                <rect key="frame" x="209.5" y="119" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="aja-Ph-vNc"/>
+                                    <constraint firstAttribute="width" constant="30" id="55h-CN-VaF"/>
+                                    <constraint firstAttribute="height" constant="30" id="vDl-Wg-pzS"/>
                                 </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETF-8w-X1e" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="247.5" y="123.5" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -102,6 +115,7 @@
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="1ov-Lq-Pq7"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="leading" secondItem="fLf-yh-xtn" secondAttribute="trailing" constant="8" id="3Uz-Bt-Ozn"/>
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="centerY" secondItem="DRL-wl-Agb" secondAttribute="centerY" id="3YN-00-jI3"/>
+                            <constraint firstItem="ETF-8w-X1e" firstAttribute="leading" secondItem="c1T-53-rLI" secondAttribute="trailing" constant="8" id="5g7-eE-kCg"/>
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="top" secondItem="1f4-NP-J6s" secondAttribute="bottom" constant="8" id="6tp-E8-UnY"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="centerY" secondItem="gTE-Yk-gnx" secondAttribute="centerY" id="9D0-gh-avt"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="centerY" secondItem="bSU-Ni-e07" secondAttribute="centerY" id="AGf-di-wED"/>
@@ -109,11 +123,13 @@
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="leading" secondItem="gTE-Yk-gnx" secondAttribute="trailing" constant="16" id="IpS-gz-M5O"/>
                             <constraint firstAttribute="trailing" secondItem="T3k-pK-nVX" secondAttribute="trailing" constant="16" id="Iqs-jl-1f6"/>
                             <constraint firstAttribute="trailing" secondItem="ulm-Og-9rq" secondAttribute="trailing" constant="16" id="Jwk-AN-ZvZ"/>
+                            <constraint firstItem="c1T-53-rLI" firstAttribute="centerY" secondItem="GDk-Kc-Wgb" secondAttribute="centerY" id="M6S-FU-pyy"/>
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
                             <constraint firstAttribute="trailing" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="16" id="Sk5-0F-PYk"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="centerY" secondItem="fLf-yh-xtn" secondAttribute="centerY" id="T3I-Py-Kpb"/>
                             <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" constant="4" id="Ukc-07-2ge"/>
                             <constraint firstItem="ulm-Og-9rq" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="a2Q-HU-5Ua"/>
+                            <constraint firstItem="ETF-8w-X1e" firstAttribute="centerY" secondItem="c1T-53-rLI" secondAttribute="centerY" id="aVe-GF-2HP"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="leading" secondItem="DRL-wl-Agb" secondAttribute="trailing" constant="16" id="icx-Jc-u7y"/>
@@ -121,6 +137,7 @@
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="centerY" secondItem="lhe-6i-OOe" secondAttribute="centerY" id="r9W-3y-OXd"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="leading" secondItem="bSU-Ni-e07" secondAttribute="trailing" constant="8" id="tks-2h-iQZ"/>
                             <constraint firstItem="T3k-pK-nVX" firstAttribute="centerY" secondItem="1f4-NP-J6s" secondAttribute="centerY" id="vFC-Sc-nwi"/>
+                            <constraint firstItem="c1T-53-rLI" firstAttribute="leading" secondItem="GDk-Kc-Wgb" secondAttribute="trailing" constant="16" id="vGZ-nA-iih"/>
                             <constraint firstItem="1f4-NP-J6s" firstAttribute="top" secondItem="F9z-0y-Yb3" secondAttribute="top" constant="16" id="xP1-Ve-nRy"/>
                         </constraints>
                     </view>
@@ -140,6 +157,8 @@
                 <outlet property="bathIcon" destination="bSU-Ni-e07" id="Nkp-wu-O21"/>
                 <outlet property="bedCountLabel" destination="gTE-Yk-gnx" id="frc-Ds-qjg"/>
                 <outlet property="bedIcon" destination="fLf-yh-xtn" id="yGA-53-T25"/>
+                <outlet property="floorIcon" destination="c1T-53-rLI" id="Tlh-iu-0th"/>
+                <outlet property="floorsCountLabel" destination="ETF-8w-X1e" id="yXD-d6-5ij"/>
                 <outlet property="nameLabel" destination="Pik-qO-QV9" id="bcN-oO-Sym"/>
                 <outlet property="noteLabel" destination="T3k-pK-nVX" id="eaX-WS-RSh"/>
                 <outlet property="priceLabel" destination="1f4-NP-J6s" id="YUn-7D-G7q"/>
@@ -152,6 +171,7 @@
     <resources>
         <image name="bathIcon" width="33" height="33"/>
         <image name="bedIcon" width="33" height="33"/>
+        <image name="floorsCountIcon" width="33" height="33"/>
         <image name="receptIcon" width="33" height="33"/>
         <namedColor name="KMABackColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

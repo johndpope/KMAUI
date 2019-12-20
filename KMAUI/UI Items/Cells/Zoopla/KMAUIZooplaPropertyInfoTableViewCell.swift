@@ -11,6 +11,7 @@ import UIKit
 public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var priceLabel: KMAUITitleLabel!
+    @IBOutlet public weak var noteLabel: KMAUITextLabel!
     @IBOutlet public weak var nameLabel: KMAUITextLabel!
     @IBOutlet public weak var addressLabel: KMAUIInfoLabel!
     @IBOutlet public weak var bedIcon: UIImageView!
@@ -19,7 +20,8 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var bathCountLabel: KMAUIInfoLabel!
     @IBOutlet public weak var receptIcon: UIImageView!
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
-    @IBOutlet public weak var noteLabel: KMAUITextLabel!
+    @IBOutlet weak var floorIcon: UIImageView!
+    @IBOutlet weak var floorsCountLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
     public var zooplaProperty = KMAZooplaProperty()
@@ -36,6 +38,8 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathIcon.tintColor = KMAUIConstants.shared.KMALineGray
         receptIcon.image = KMAUIConstants.shared.receptIcon.withRenderingMode(.alwaysTemplate)
         receptIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        floorIcon.image = KMAUIConstants.shared.floorsCountIcon.withRenderingMode(.alwaysTemplate)
+        floorIcon.tintColor = KMAUIConstants.shared.KMALineGray
         
         noteLabel.text = ""
         noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
@@ -68,6 +72,8 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathCountLabel.text = "\(zooplaProperty.numBathrooms)"
         // receptions
         receptCountLabel.text = "\(zooplaProperty.numReceptions)"
+        // floors
+        floorsCountLabel.text = "\(zooplaProperty.numFloors)"
         // notes badge
         if zooplaProperty.newHome {
             noteLabel.text = "  New build  "

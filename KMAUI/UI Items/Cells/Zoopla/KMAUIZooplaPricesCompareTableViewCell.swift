@@ -63,7 +63,7 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
     }
     
     public func getPercent(value1: Int, value2: Int) -> Double {
-        let percent = Double(Int(((Double(value1) / Double(value2)) - 1) * 1000000)) / 10000
+        let percent = Double(Int(Double(Int(((Double(value1) / Double(value2)) - 1) * 10000)))) / 100
         
         return percent
     }
