@@ -11,6 +11,7 @@ import Kingfisher
 
 public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var priceLabel: KMAUITitleLabel!
     @IBOutlet public weak var noteLabel: KMAUITextLabel!
     @IBOutlet public weak var nameLabel: KMAUITextLabel!
@@ -61,9 +62,51 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+        
     }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    func setupColors(highlight: Bool) {
+        if highlight, isList {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            priceLabel.textColor = UIColor.white
+            noteLabel.textColor = UIColor.white
+            nameLabel.textColor = UIColor.white
+            addressLabel.textColor = UIColor.white
+            bedIcon.tintColor = UIColor.white
+            bedCountLabel.textColor = UIColor.white
+            bathIcon.tintColor = UIColor.white
+            bathCountLabel.textColor = UIColor.white
+            receptIcon.tintColor = UIColor.white
+            receptCountLabel.textColor = UIColor.white
+            floorIcon.tintColor = UIColor.white
+            floorsCountLabel.textColor = UIColor.white
+            rightArrowImageView.tintColor = UIColor.white
+        } else {
+//            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+//            requestDateLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+//            requestTitleLabel.textColor = KMAConstants.shared.KMATextColor
+//            requestDescriptionLabel.textColor = KMAConstants.shared.KMATextColor
+//            requestStatusLabel.textColor = UIColor.white
+//            authorLabel.textColor = KMAUIConstants.shared.KMATitleColor
+//            
+//            if let status = requestStatusLabel.text, status == "   new   " {
+//                requestStatusLabel.layer.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor.cgColor
+//            }
+        }
+    }
+    
+    /*
+
+
+     */
     
     public func setupCell() {
         // Get details data

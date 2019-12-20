@@ -166,6 +166,7 @@
                 <outlet property="bathIcon" destination="bSU-Ni-e07" id="Nkp-wu-O21"/>
                 <outlet property="bedCountLabel" destination="gTE-Yk-gnx" id="frc-Ds-qjg"/>
                 <outlet property="bedIcon" destination="fLf-yh-xtn" id="yGA-53-T25"/>
+                <outlet property="bgView" destination="F9z-0y-Yb3" id="ckD-wU-Fkq"/>
                 <outlet property="floorIcon" destination="c1T-53-rLI" id="Tlh-iu-0th"/>
                 <outlet property="floorsCountLabel" destination="ETF-8w-X1e" id="yXD-d6-5ij"/>
                 <outlet property="nameLabel" destination="Pik-qO-QV9" id="bcN-oO-Sym"/>
