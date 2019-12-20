@@ -28,4 +28,7 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
