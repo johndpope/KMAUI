@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="113" id="FZz-A2-XMi"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-mj-ZfU" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuI-mj-ZfU" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="4" y="113" width="142" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="0p3-BB-Knz"/>

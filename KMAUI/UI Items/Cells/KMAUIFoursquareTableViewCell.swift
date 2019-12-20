@@ -16,12 +16,16 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var detailLabel: KMAUIInfoLabel!
     @IBOutlet public weak var addressLabel: UILabel!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Setup the right arrow
+        KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
         
         // No selection required
         selectionStyle = .none
@@ -46,11 +50,13 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             nameLabel.textColor = UIColor.white
             detailLabel.textColor = UIColor.white
             addressLabel.textColor = UIColor.white
+            rightArrowImageView.tintColor = UIColor.white
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
             nameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             detailLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             addressLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }
     }
     

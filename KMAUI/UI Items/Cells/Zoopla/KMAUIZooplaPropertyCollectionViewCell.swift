@@ -12,7 +12,7 @@ import Kingfisher
 public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var propertyImageView: UIImageView!
-    @IBOutlet public weak var priceLabel: UILabel!
+    @IBOutlet public weak var priceLabel: KMAUITextLabel!
     @IBOutlet public weak var propertyInfoLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
