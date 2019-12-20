@@ -68,11 +68,19 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathCountLabel.text = "\(zooplaProperty.numBathrooms)"
         // receptions
         receptCountLabel.text = "\(zooplaProperty.numReceptions)"
-        
+        // notes badge
         if zooplaProperty.newHome {
             noteLabel.text = "  New build  "
         } else {
-            noteLabel.text = ""
+            let currentTime = Date().timeIntervalSince1970
+            
+            if zooplaProperty.lastPublishedDate > 0, (currentTime - zooplaProperty.lastPublishedDate) / 3600 < 24 {
+                noteLabel.text = "  Just updated  "
+            } else if zooplaProperty.firstPublishedDate > 0, (currentTime - zooplaProperty.firstPublishedDate) / 3600 < 24 {
+                noteLabel.text = "  Just added  "
+            } else {
+                noteLabel.text = ""
+            }
         }
     }
 }
