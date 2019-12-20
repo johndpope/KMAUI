@@ -19,9 +19,33 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRk-hw-lb4" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="288" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="highPrice" translatesAutoresizingMaskIntoConstraints="NO" id="NM6-tI-xXU">
+                                <rect key="frame" x="247" y="13.5" width="33" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="33" id="RTI-jQ-nq9"/>
+                                    <constraint firstAttribute="height" constant="33" id="o32-XL-IBm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2sx-Jc-jcg" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="10" width="231" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="P6X-Qb-J8F"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="NM6-tI-xXU" firstAttribute="centerY" secondItem="mRk-hw-lb4" secondAttribute="centerY" id="6lD-sU-qxs"/>
                             <constraint firstAttribute="height" constant="60" id="8CF-Fw-tYv"/>
+                            <constraint firstAttribute="trailing" secondItem="NM6-tI-xXU" secondAttribute="trailing" constant="8" id="DIv-aw-vLM"/>
+                            <constraint firstItem="NM6-tI-xXU" firstAttribute="leading" secondItem="2sx-Jc-jcg" secondAttribute="trailing" constant="8" id="Hj2-if-ZOC"/>
+                            <constraint firstItem="2sx-Jc-jcg" firstAttribute="top" secondItem="mRk-hw-lb4" secondAttribute="top" constant="10" id="Jbd-Up-pDL"/>
+                            <constraint firstAttribute="bottom" secondItem="2sx-Jc-jcg" secondAttribute="bottom" constant="10" id="WpG-kx-G6s"/>
+                            <constraint firstItem="2sx-Jc-jcg" firstAttribute="leading" secondItem="mRk-hw-lb4" secondAttribute="leading" constant="8" id="tb4-fZ-GBw"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -34,10 +58,15 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="priceImageView" destination="NM6-tI-xXU" id="AQr-1U-Ak2"/>
+                <outlet property="priceLabel" destination="2sx-Jc-jcg" id="eyZ-tF-Am9"/>
+            </connections>
             <point key="canvasLocation" x="-195.6521739130435" y="-96.428571428571431"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="highPrice" width="33" height="33"/>
         <namedColor name="KMABackColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
