@@ -35,7 +35,7 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
         } else if type == "description" {
             propertyDescriptionLabel.text = textValue
         } else if type == "letting fees" {
-            propertyDescriptionLabel.attributedText = textValue.htmlToAttributedString
+            propertyDescriptionLabel.text = textValue.htmlToString
         }
     }
 }
