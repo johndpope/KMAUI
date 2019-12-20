@@ -141,6 +141,9 @@ public struct KMAFoursquareVenue {
     public var prefix = ""
     public var suffix = ""
     public var venueId = ""
+    // Details data
+    public var canonicalUrl = ""
+    public var likesCount = 0
     
     public init() {
     }

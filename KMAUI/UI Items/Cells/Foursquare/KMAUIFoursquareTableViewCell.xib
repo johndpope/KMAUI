@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xt5-bx-Z5k" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="8" width="220" height="22"/>
+                                <rect key="frame" x="60" y="8" width="190" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="nWD-TB-Uts"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JwM-pI-YyK" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="56" width="272" height="35"/>
+                                <rect key="frame" x="8" y="56" width="242" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="y5j-d5-EJ3"/>
                                 </constraints>
@@ -70,13 +70,13 @@
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="top" secondItem="Xt5-bx-Z5k" secondAttribute="bottom" id="FCI-QY-Hi1"/>
                             <constraint firstItem="Xt5-bx-Z5k" firstAttribute="top" secondItem="9Un-JX-Gnh" secondAttribute="top" constant="8" id="Gaw-2Z-da8"/>
                             <constraint firstAttribute="bottom" secondItem="JwM-pI-YyK" secondAttribute="bottom" constant="4" id="SZT-y7-M14"/>
+                            <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="leading" secondItem="Xt5-bx-Z5k" secondAttribute="trailing" constant="8" id="Uj0-ad-XIn"/>
                             <constraint firstAttribute="trailing" secondItem="Fb4-5Y-Hf6" secondAttribute="trailing" constant="8" id="Uqu-Y2-zOE"/>
-                            <constraint firstAttribute="trailing" secondItem="Xt5-bx-Z5k" secondAttribute="trailing" constant="8" id="Y3R-yt-8EP"/>
+                            <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="leading" secondItem="JwM-pI-YyK" secondAttribute="trailing" constant="8" id="bpn-qG-AwJ"/>
                             <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="leading" secondItem="aq3-mV-IhY" secondAttribute="trailing" constant="8" id="fmf-BD-q47"/>
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="leading" secondItem="nrP-Gq-CA8" secondAttribute="trailing" constant="8" id="gOD-zx-Ucg"/>
                             <constraint firstItem="nrP-Gq-CA8" firstAttribute="top" secondItem="9Un-JX-Gnh" secondAttribute="top" constant="8" id="pOC-dA-an6"/>
                             <constraint firstItem="JwM-pI-YyK" firstAttribute="leading" secondItem="9Un-JX-Gnh" secondAttribute="leading" constant="8" id="s4B-20-Kf2"/>
-                            <constraint firstAttribute="trailing" secondItem="JwM-pI-YyK" secondAttribute="trailing" constant="8" id="vcX-Zq-RWM"/>
                             <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="centerY" secondItem="9Un-JX-Gnh" secondAttribute="centerY" id="zfF-Hs-EJV"/>
                         </constraints>
                     </view>
