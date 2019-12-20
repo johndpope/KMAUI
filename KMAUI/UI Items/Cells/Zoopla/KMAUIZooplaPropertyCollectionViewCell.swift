@@ -31,20 +31,28 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
         clipsToBounds = true
     }
     
-    override public var isHighlighted: Bool {
+    public func setHighlight(mode: Bool) {
+        if mode {
+            backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            propertyInfoLabel.textColor = UIColor.white
+            layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
+            layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
+        } else {
+            backgroundColor = KMAUIConstants.shared.KMABgGray
+            propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+            layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+        }
+    }
+    
+    /*override public var isHighlighted: Bool {
         didSet {
             if self.isHighlighted {
-                backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
-                propertyInfoLabel.textColor = UIColor.white
-                layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
-                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
+                
                 // Your customized animation or add a overlay view
             } else {
                 // Your customized animation or remove overlay view
-                backgroundColor = KMAUIConstants.shared.KMABgGray
-                propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-                layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
-                layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+                
             }
         }
     }
@@ -65,7 +73,7 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
                 layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
             }
         }
-    }
+    }*/
     
     /**
      Setup the data for cell

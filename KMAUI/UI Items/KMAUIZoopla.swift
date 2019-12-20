@@ -245,6 +245,12 @@ public struct KMAZooplaProperty {
         self.maxFloorArea = maxFloorArea
     }
     
+    /**
+     What to add for the Zoopla Details
+     Compare to average price
+     firstPublishedDate, lastPublishedDate, letttingFees (convert from HTML), billsIncluded badge, newHome badge, fllor area, avaialableFrom, imageCaption, num floors, floorPlan
+     */
+    
     public func getPropertyDescription() -> (String, String) {
         var propertyDescription = ""
         var priceString = ""
