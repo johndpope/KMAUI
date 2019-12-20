@@ -26,6 +26,15 @@
                                     <constraint firstAttribute="width" secondItem="V2K-cQ-q1d" secondAttribute="height" multiplier="288:193" id="c42-Wq-GEd"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abq-19-p93" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="163" width="42" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7Kh-wP-N67"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
@@ -33,6 +42,8 @@
                             <constraint firstAttribute="trailing" secondItem="V2K-cQ-q1d" secondAttribute="trailing" id="YCQ-D8-Jyi"/>
                             <constraint firstItem="V2K-cQ-q1d" firstAttribute="top" secondItem="pPk-0x-a1r" secondAttribute="top" id="fbO-dA-6ad"/>
                             <constraint firstItem="V2K-cQ-q1d" firstAttribute="leading" secondItem="pPk-0x-a1r" secondAttribute="leading" id="gdV-dy-TmK"/>
+                            <constraint firstAttribute="bottom" secondItem="abq-19-p93" secondAttribute="bottom" id="jOV-oc-qN4"/>
+                            <constraint firstItem="abq-19-p93" firstAttribute="leading" secondItem="pPk-0x-a1r" secondAttribute="leading" id="kRj-lc-SH5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -47,6 +58,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="pPk-0x-a1r" id="KXI-6h-rTy"/>
+                <outlet property="captionLabel" destination="abq-19-p93" id="P3j-4n-sie"/>
                 <outlet property="propertyImageView" destination="V2K-cQ-q1d" id="fK7-ZM-qAE"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="207.92410714285714"/>

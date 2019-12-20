@@ -13,13 +13,21 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var propertyImageView: UIImageView!
+    @IBOutlet public weak var captionLabel: KMAUITextLabel!
     
-    // MARK: - Valued
+    // MARK: - Variables
     public var imageString = ""
+    public var captionString = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Adjusting the UI for a caption label
+        captionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        captionLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        captionLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        captionLabel.clipsToBounds = true
+
         // No selection required
         selectionStyle = .none
     }
@@ -48,6 +56,12 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
                     print(error) // The error happens
                 }
             }
+        }
+        
+        if !captionString.isEmpty {
+            captionLabel.text = "  \(captionString)  "
+        } else {
+            captionLabel.text = ""
         }
     }
 }
