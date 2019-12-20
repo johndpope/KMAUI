@@ -201,6 +201,18 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    // MARK: - Right Arrow image view
+    
+    public func setupArrow(imageView: UIImageView) {
+        imageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        imageView.image = KMAUIConstants.shared.rightArrow.withRenderingMode(.alwaysTemplate)
+    }
+    
+    public func setupCheckmark(imageView: UIImageView) {
+        imageView.tintColor = KMAUIConstants.shared.KMABrightBlueColor
+        imageView.image = KMAUIConstants.shared.checkmarkIcon.withRenderingMode(.alwaysTemplate)
+    }
 }
 
 // MARK: - Int extension

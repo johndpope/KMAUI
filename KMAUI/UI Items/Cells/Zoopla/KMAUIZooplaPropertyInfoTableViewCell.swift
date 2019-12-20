@@ -23,9 +23,9 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
     @IBOutlet weak var floorIcon: UIImageView!
     @IBOutlet weak var floorsCountLabel: KMAUIInfoLabel!
-    @IBOutlet weak var propertyImageView: UIImageView!
-    @IBOutlet weak var propertyImageViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var propertyImageViewLeft: NSLayoutConstraint!
+//    @IBOutlet weak var propertyImageView: UIImageView!
+//    @IBOutlet weak var propertyImageViewWidth: NSLayoutConstraint!
+//    @IBOutlet weak var propertyImageViewLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public var zooplaProperty = KMAZooplaProperty()
@@ -92,6 +92,8 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
                 noteLabel.text = ""
             }
         }
+        
+        /*
         // Image view
         propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
         propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
@@ -109,6 +111,6 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
                     print(error) // The error happens
                 }
             }
-        }
+        }*/
     }
 }
