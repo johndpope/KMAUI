@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bed flat for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="54" width="256" height="28"/>
+                                <rect key="frame" x="16" y="54" width="234" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jsF-7G-ma4"/>
                                 </constraints>
@@ -48,7 +48,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Stamford Bridge, SW6 1HS, London" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Og-9rq" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="82" width="256" height="41"/>
+                                <rect key="frame" x="16" y="82" width="234" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="F3C-jA-5IS"/>
                                 </constraints>
@@ -108,9 +108,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHN-Dj-6ew">
-                                <rect key="frame" x="137" y="24" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="cHN-Dj-6ew">
+                                <rect key="frame" x="258" y="77.5" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="7aH-IX-reW"/>
+                                    <constraint firstAttribute="width" constant="22" id="qPz-ra-sIT"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
@@ -120,29 +123,31 @@
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="centerY" secondItem="DRL-wl-Agb" secondAttribute="centerY" id="3YN-00-jI3"/>
                             <constraint firstItem="ETF-8w-X1e" firstAttribute="leading" secondItem="c1T-53-rLI" secondAttribute="trailing" constant="8" id="5g7-eE-kCg"/>
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="top" secondItem="1f4-NP-J6s" secondAttribute="bottom" constant="8" id="6tp-E8-UnY"/>
+                            <constraint firstItem="cHN-Dj-6ew" firstAttribute="leading" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="8" id="8WA-8H-iRp"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="centerY" secondItem="gTE-Yk-gnx" secondAttribute="centerY" id="9D0-gh-avt"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="centerY" secondItem="bSU-Ni-e07" secondAttribute="centerY" id="AGf-di-wED"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="top" secondItem="ulm-Og-9rq" secondAttribute="bottom" constant="8" id="HgQ-Vu-BrB"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="leading" secondItem="gTE-Yk-gnx" secondAttribute="trailing" constant="16" id="IpS-gz-M5O"/>
                             <constraint firstAttribute="trailing" secondItem="T3k-pK-nVX" secondAttribute="trailing" constant="16" id="Iqs-jl-1f6"/>
-                            <constraint firstAttribute="trailing" secondItem="ulm-Og-9rq" secondAttribute="trailing" constant="16" id="Jwk-AN-ZvZ"/>
                             <constraint firstItem="c1T-53-rLI" firstAttribute="centerY" secondItem="GDk-Kc-Wgb" secondAttribute="centerY" id="M6S-FU-pyy"/>
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
-                            <constraint firstAttribute="trailing" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="16" id="Sk5-0F-PYk"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="centerY" secondItem="fLf-yh-xtn" secondAttribute="centerY" id="T3I-Py-Kpb"/>
                             <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" id="Ukc-07-2ge"/>
                             <constraint firstItem="ETF-8w-X1e" firstAttribute="centerY" secondItem="c1T-53-rLI" secondAttribute="centerY" id="aVe-GF-2HP"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>
+                            <constraint firstItem="cHN-Dj-6ew" firstAttribute="centerY" secondItem="F9z-0y-Yb3" secondAttribute="centerY" id="fNL-Hs-ncQ"/>
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="leading" secondItem="DRL-wl-Agb" secondAttribute="trailing" constant="16" id="icx-Jc-u7y"/>
                             <constraint firstItem="T3k-pK-nVX" firstAttribute="leading" secondItem="1f4-NP-J6s" secondAttribute="trailing" constant="8" id="ivz-pj-DBC"/>
                             <constraint firstItem="ulm-Og-9rq" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="jj5-b0-V9M"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="centerY" secondItem="lhe-6i-OOe" secondAttribute="centerY" id="r9W-3y-OXd"/>
+                            <constraint firstItem="cHN-Dj-6ew" firstAttribute="leading" secondItem="ulm-Og-9rq" secondAttribute="trailing" constant="8" id="t1W-RF-7MI"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="leading" secondItem="bSU-Ni-e07" secondAttribute="trailing" constant="8" id="tks-2h-iQZ"/>
                             <constraint firstItem="T3k-pK-nVX" firstAttribute="centerY" secondItem="1f4-NP-J6s" secondAttribute="centerY" id="vFC-Sc-nwi"/>
                             <constraint firstItem="c1T-53-rLI" firstAttribute="leading" secondItem="GDk-Kc-Wgb" secondAttribute="trailing" constant="16" id="vGZ-nA-iih"/>
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="w1d-AQ-c9N"/>
                             <constraint firstItem="1f4-NP-J6s" firstAttribute="top" secondItem="F9z-0y-Yb3" secondAttribute="top" constant="16" id="xP1-Ve-nRy"/>
+                            <constraint firstAttribute="trailing" secondItem="cHN-Dj-6ew" secondAttribute="trailing" constant="8" id="zo6-kI-a5r"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -168,6 +173,8 @@
                 <outlet property="priceLabel" destination="1f4-NP-J6s" id="YUn-7D-G7q"/>
                 <outlet property="receptCountLabel" destination="GDk-Kc-Wgb" id="0QC-xC-Qwc"/>
                 <outlet property="receptIcon" destination="lhe-6i-OOe" id="Gbr-MG-H7F"/>
+                <outlet property="rightArrowImageView" destination="cHN-Dj-6ew" id="Dgg-Lq-h20"/>
+                <outlet property="rightArrowImageViewWidth" destination="qPz-ra-sIT" id="zjU-gb-eep"/>
             </connections>
             <point key="canvasLocation" x="-26.086956521739133" y="94.084821428571431"/>
         </tableViewCell>
@@ -177,6 +184,7 @@
         <image name="bedIcon" width="33" height="33"/>
         <image name="floorsCountIcon" width="33" height="33"/>
         <image name="receptIcon" width="33" height="33"/>
+        <image name="rightArrow" width="33" height="33"/>
         <namedColor name="KMABackColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -21,14 +21,14 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var bathCountLabel: KMAUIInfoLabel!
     @IBOutlet public weak var receptIcon: UIImageView!
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
-    @IBOutlet weak var floorIcon: UIImageView!
-    @IBOutlet weak var floorsCountLabel: KMAUIInfoLabel!
-//    @IBOutlet weak var propertyImageView: UIImageView!
-//    @IBOutlet weak var propertyImageViewWidth: NSLayoutConstraint!
-//    @IBOutlet weak var propertyImageViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var floorIcon: UIImageView!
+    @IBOutlet public weak var floorsCountLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     
     // MARK: - Variables
     public var zooplaProperty = KMAZooplaProperty()
+    public var isList = false
     
     // MARK: - Cell methods
     
@@ -45,11 +45,15 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         floorIcon.image = KMAUIConstants.shared.floorsCountIcon.withRenderingMode(.alwaysTemplate)
         floorIcon.tintColor = KMAUIConstants.shared.KMALineGray
         
+        // Setting the not label UI
         noteLabel.text = ""
         noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
         noteLabel.textColor = UIColor.white
         noteLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         noteLabel.clipsToBounds = true
+        
+        // Setting the right arrow UI
+        KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
         
         // No selection required
         selectionStyle = .none
@@ -92,25 +96,13 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
                 noteLabel.text = ""
             }
         }
-        
-        /*
-        // Image view
-        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
-        propertyImageView.contentMode = .center
-        
-        propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        
-        if let imageURL = URL(string: zooplaProperty.image150x113) {
-            propertyImageView.kf.setImage(with: imageURL) { result in
-                switch result {
-                case .success(let value):
-                    self.propertyImageView.image = value.image
-                    self.propertyImageView.contentMode = .scaleAspectFill
-                case .failure(let error):
-                    print(error) // The error happens
-                }
-            }
-        }*/
+        // Setup the right arrow
+        if isList {
+            rightArrowImageView.alpha = 1
+            rightArrowImageViewWidth.constant = 22
+        } else {
+            rightArrowImageView.alpha = 0
+            rightArrowImageViewWidth.constant = 0
+        }
     }
 }
