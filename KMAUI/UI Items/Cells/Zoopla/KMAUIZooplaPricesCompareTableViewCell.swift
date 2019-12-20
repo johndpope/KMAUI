@@ -29,6 +29,19 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        
+        if rentValue > 0 {
+            if rentValue > averageRentValue {
+                let percent = Int(((Double(rentValue) / Double(averageRentValue)) - 1) * 100)
+                print("\(percent)% more expensive then an average rental price in the area.")
+            } else {
+                
+            }
+        } else if saleValue > 0 {
+            if saleValue > averageSaleValue {
+                
+            } else {
+                
+            }
+        }
     }
 }
