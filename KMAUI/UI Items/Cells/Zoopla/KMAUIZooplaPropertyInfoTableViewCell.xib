@@ -21,7 +21,7 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="165"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£123,433" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f4-NP-J6s" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="16" width="73" height="22"/>
+                                <rect key="frame" x="16" y="16" width="161.5" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="t0a-sg-cwK"/>
                                 </constraints>
@@ -86,7 +86,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Note label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-pK-nVX" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text=" Note label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-pK-nVX" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="185.5" y="12" width="86.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="aja-Ph-vNc"/>
@@ -117,6 +117,7 @@
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="leading" secondItem="DRL-wl-Agb" secondAttribute="trailing" constant="16" id="icx-Jc-u7y"/>
+                            <constraint firstItem="T3k-pK-nVX" firstAttribute="leading" secondItem="1f4-NP-J6s" secondAttribute="trailing" constant="8" id="ivz-pj-DBC"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="centerY" secondItem="lhe-6i-OOe" secondAttribute="centerY" id="r9W-3y-OXd"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="leading" secondItem="bSU-Ni-e07" secondAttribute="trailing" constant="8" id="tks-2h-iQZ"/>
                             <constraint firstItem="T3k-pK-nVX" firstAttribute="centerY" secondItem="1f4-NP-J6s" secondAttribute="centerY" id="vFC-Sc-nwi"/>

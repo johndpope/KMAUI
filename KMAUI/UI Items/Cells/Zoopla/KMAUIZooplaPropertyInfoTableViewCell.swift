@@ -37,10 +37,11 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         receptIcon.image = KMAUIConstants.shared.receptIcon.withRenderingMode(.alwaysTemplate)
         receptIcon.tintColor = KMAUIConstants.shared.KMALineGray
         
-        noteLabel.text = " New build "
+        noteLabel.text = ""
         noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
         noteLabel.textColor = UIColor.white
         noteLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        noteLabel.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -67,5 +68,11 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathCountLabel.text = "\(zooplaProperty.numBathrooms)"
         // receptions
         receptCountLabel.text = "\(zooplaProperty.numReceptions)"
+        
+        if zooplaProperty.newHome {
+            noteLabel.text = "  New build  "
+        } else {
+            noteLabel.text = ""
+        }
     }
 }
