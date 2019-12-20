@@ -21,9 +21,18 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="118"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfh-wv-UdG" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="16" width="256" height="86"/>
+                                <rect key="frame" x="16" y="34" width="256" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="DFq-Sh-8FS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWF-us-awj" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="8" width="256" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="ZLh-0V-pcX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -32,10 +41,13 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="JWF-us-awj" firstAttribute="top" secondItem="AOt-eO-Aza" secondAttribute="top" constant="8" id="56N-jP-6pZ"/>
                             <constraint firstItem="Mfh-wv-UdG" firstAttribute="leading" secondItem="AOt-eO-Aza" secondAttribute="leading" constant="16" id="D18-HA-Ypv"/>
                             <constraint firstAttribute="bottom" secondItem="Mfh-wv-UdG" secondAttribute="bottom" constant="16" id="DOR-rB-8y5"/>
                             <constraint firstAttribute="trailing" secondItem="Mfh-wv-UdG" secondAttribute="trailing" constant="16" id="Ihw-rV-exB"/>
-                            <constraint firstItem="Mfh-wv-UdG" firstAttribute="top" secondItem="AOt-eO-Aza" secondAttribute="top" constant="16" id="Yuo-cG-xQY"/>
+                            <constraint firstAttribute="trailing" secondItem="JWF-us-awj" secondAttribute="trailing" constant="16" id="ZfY-eI-nfS"/>
+                            <constraint firstItem="JWF-us-awj" firstAttribute="leading" secondItem="AOt-eO-Aza" secondAttribute="leading" constant="16" id="ZvT-i2-gTp"/>
+                            <constraint firstItem="Mfh-wv-UdG" firstAttribute="top" secondItem="JWF-us-awj" secondAttribute="bottom" constant="4" id="bdy-wn-2pg"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -50,6 +62,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="propertyDescriptionLabel" destination="Mfh-wv-UdG" id="8H5-0q-v0Z"/>
+                <outlet property="propertyTitleLabel" destination="JWF-us-awj" id="vR8-c5-fBb"/>
             </connections>
             <point key="canvasLocation" x="-82.608695652173921" y="2.6785714285714284"/>
         </tableViewCell>

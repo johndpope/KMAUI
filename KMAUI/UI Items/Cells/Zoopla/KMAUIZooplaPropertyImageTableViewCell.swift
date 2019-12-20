@@ -13,7 +13,7 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var propertyImageView: UIImageView!
-    @IBOutlet public weak var captionLabel: KMAUITextLabel!
+    @IBOutlet public weak var captionLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
     public var imageString = ""
@@ -24,6 +24,7 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
         
         // Adjusting the UI for a caption label
         captionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        captionLabel.textColor = UIColor.white
         captionLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         captionLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         captionLabel.clipsToBounds = true

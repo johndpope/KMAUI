@@ -19,7 +19,7 @@ public class KMAUIZoopla {
      Get the average formatted details from the KMAZooplaProperty array
      */
     
-    public func getAverage(propertyArray: [KMAZooplaProperty]) -> (String, String) {
+    public func getAverage(propertyArray: [KMAZooplaProperty]) -> (String, String, Int, Int) {
         var averageRent = "Not available"
         var averageSale = "Not available"
         
@@ -44,19 +44,22 @@ public class KMAUIZoopla {
             }
         }
         
+        var averageRentValue = 0
+        var averageSaleValue = 0
+        
         // Rent analysis
         if !saleProperty.isEmpty {
-            let averageRentValue = rentPrice/rentProperty.count
+            averageRentValue = rentPrice/rentProperty.count
             averageRent = "£\(averageRentValue.withCommas()) pcm (\(rentProperty.count))"
         }
 
         // Sale analysis
         if !saleProperty.isEmpty {
-            let averageSaleValue = salePrice/saleProperty.count
+            averageSaleValue = salePrice/saleProperty.count
             averageSale = "£\(averageSaleValue.withCommas()) (\(saleProperty.count))"
         }
         
-        return (averageRent, averageSale)
+        return (averageRent, averageSale, averageRentValue, averageSaleValue)
     }
     
     /**

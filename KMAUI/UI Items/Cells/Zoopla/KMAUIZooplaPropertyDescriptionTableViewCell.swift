@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet weak var propertyTitleLabel: KMAUITitleLabel!
     @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
@@ -30,6 +31,8 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        propertyTitleLabel.text = type.capitalized
+        
         if textValue.isEmpty {
             propertyDescriptionLabel.text = "No \(type) available."
         } else if type == "description" {
