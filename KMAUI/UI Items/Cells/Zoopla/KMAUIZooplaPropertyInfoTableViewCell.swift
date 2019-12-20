@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -22,6 +23,9 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
     @IBOutlet weak var floorIcon: UIImageView!
     @IBOutlet weak var floorsCountLabel: KMAUIInfoLabel!
+    @IBOutlet weak var propertyImageView: UIImageView!
+    @IBOutlet weak var propertyImageViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var propertyImageViewLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public var zooplaProperty = KMAZooplaProperty()
@@ -74,7 +78,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         receptCountLabel.text = "\(zooplaProperty.numReceptions)"
         // floors
         floorsCountLabel.text = "\(zooplaProperty.numFloors)"
-        // notes badge
+        // Notes badge
         if zooplaProperty.newHome {
             noteLabel.text = "  New build  "
         } else {
@@ -86,6 +90,24 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
                 noteLabel.text = "  Just added  "
             } else {
                 noteLabel.text = ""
+            }
+        }
+        // Image view
+        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+        propertyImageView.contentMode = .center
+        
+        propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        
+        if let imageURL = URL(string: zooplaProperty.image150x113) {
+            propertyImageView.kf.setImage(with: imageURL) { result in
+                switch result {
+                case .success(let value):
+                    self.propertyImageView.image = value.image
+                    self.propertyImageView.contentMode = .scaleAspectFill
+                case .failure(let error):
+                    print(error) // The error happens
+                }
             }
         }
     }

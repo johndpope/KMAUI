@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyInfoCell" rowHeight="181" id="KGk-i7-Jjw" customClass="KMAUIZooplaPropertyInfoTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPropertyInfoCell" rowHeight="189" id="KGk-i7-Jjw" customClass="KMAUIZooplaPropertyInfoTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="181"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="189"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-0y-Yb3" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="288" height="165"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9z-0y-Yb3" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="0.0" width="288" height="178"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="£123,433" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1f4-NP-J6s" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="16" width="161.5" height="30"/>
@@ -38,87 +38,94 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bedroom apartment for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="54" width="256" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bed flat for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="84" y="54" width="188" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jsF-7G-ma4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="jsF-7G-ma4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Stamford Bridge, SW6 1HS, London" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Og-9rq" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="70" width="256" height="41"/>
+                                <rect key="frame" x="84" y="76" width="188" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="F3C-jA-5IS"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="F3C-jA-5IS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-yh-xtn">
-                                <rect key="frame" x="16" y="119" width="30" height="30"/>
+                                <rect key="frame" x="16" y="128" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="HuT-mX-4D2"/>
                                     <constraint firstAttribute="height" constant="30" id="SLd-9c-ywD"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTE-Yk-gnx" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="54" y="123.5" width="10.5" height="21"/>
+                                <rect key="frame" x="54" y="132.5" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bathIcon" translatesAutoresizingMaskIntoConstraints="NO" id="bSU-Ni-e07">
-                                <rect key="frame" x="80.5" y="119" width="30" height="30"/>
+                                <rect key="frame" x="80.5" y="128" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="ViZ-dX-ZJ3"/>
                                     <constraint firstAttribute="height" constant="30" id="ggr-5h-X1l"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DRL-wl-Agb" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="118.5" y="123.5" width="10.5" height="21"/>
+                                <rect key="frame" x="118.5" y="132.5" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receptIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lhe-6i-OOe">
-                                <rect key="frame" x="145" y="119" width="30" height="30"/>
+                                <rect key="frame" x="145" y="128" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="gcj-1D-YL3"/>
                                     <constraint firstAttribute="height" constant="30" id="jLN-ub-qjd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDk-Kc-Wgb" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="183" y="123.5" width="10.5" height="21"/>
+                                <rect key="frame" x="183" y="132.5" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="floorsCountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="c1T-53-rLI">
-                                <rect key="frame" x="209.5" y="119" width="30" height="30"/>
+                                <rect key="frame" x="209.5" y="128" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="55h-CN-VaF"/>
                                     <constraint firstAttribute="height" constant="30" id="vDl-Wg-pzS"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETF-8w-X1e" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="247.5" y="123.5" width="10.5" height="21"/>
+                                <rect key="frame" x="247.5" y="132.5" width="10.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bBH-FZ-B7Q">
+                                <rect key="frame" x="16" y="56" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Rrc-A1-tBa"/>
+                                    <constraint firstAttribute="width" constant="60" id="iQy-bM-7BY"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="1f4-NP-J6s" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="1Xb-OT-AAX"/>
-                            <constraint firstItem="Pik-qO-QV9" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="1ov-Lq-Pq7"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="leading" secondItem="fLf-yh-xtn" secondAttribute="trailing" constant="8" id="3Uz-Bt-Ozn"/>
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="centerY" secondItem="DRL-wl-Agb" secondAttribute="centerY" id="3YN-00-jI3"/>
                             <constraint firstItem="ETF-8w-X1e" firstAttribute="leading" secondItem="c1T-53-rLI" secondAttribute="trailing" constant="8" id="5g7-eE-kCg"/>
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="top" secondItem="1f4-NP-J6s" secondAttribute="bottom" constant="8" id="6tp-E8-UnY"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="centerY" secondItem="gTE-Yk-gnx" secondAttribute="centerY" id="9D0-gh-avt"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="centerY" secondItem="bSU-Ni-e07" secondAttribute="centerY" id="AGf-di-wED"/>
+                            <constraint firstItem="bBH-FZ-B7Q" firstAttribute="top" secondItem="1f4-NP-J6s" secondAttribute="bottom" constant="10" id="CVw-0f-duY"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="top" secondItem="ulm-Og-9rq" secondAttribute="bottom" constant="8" id="HgQ-Vu-BrB"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="leading" secondItem="gTE-Yk-gnx" secondAttribute="trailing" constant="16" id="IpS-gz-M5O"/>
                             <constraint firstAttribute="trailing" secondItem="T3k-pK-nVX" secondAttribute="trailing" constant="16" id="Iqs-jl-1f6"/>
@@ -127,8 +134,9 @@
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
                             <constraint firstAttribute="trailing" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="16" id="Sk5-0F-PYk"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="centerY" secondItem="fLf-yh-xtn" secondAttribute="centerY" id="T3I-Py-Kpb"/>
-                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" constant="4" id="Ukc-07-2ge"/>
-                            <constraint firstItem="ulm-Og-9rq" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="a2Q-HU-5Ua"/>
+                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" id="Ukc-07-2ge"/>
+                            <constraint firstItem="bBH-FZ-B7Q" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="XAJ-2y-vyZ"/>
+                            <constraint firstItem="Pik-qO-QV9" firstAttribute="leading" secondItem="bBH-FZ-B7Q" secondAttribute="trailing" constant="8" id="XKN-aJ-9CX"/>
                             <constraint firstItem="ETF-8w-X1e" firstAttribute="centerY" secondItem="c1T-53-rLI" secondAttribute="centerY" id="aVe-GF-2HP"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>
@@ -139,6 +147,7 @@
                             <constraint firstItem="T3k-pK-nVX" firstAttribute="centerY" secondItem="1f4-NP-J6s" secondAttribute="centerY" id="vFC-Sc-nwi"/>
                             <constraint firstItem="c1T-53-rLI" firstAttribute="leading" secondItem="GDk-Kc-Wgb" secondAttribute="trailing" constant="16" id="vGZ-nA-iih"/>
                             <constraint firstItem="1f4-NP-J6s" firstAttribute="top" secondItem="F9z-0y-Yb3" secondAttribute="top" constant="16" id="xP1-Ve-nRy"/>
+                            <constraint firstItem="ulm-Og-9rq" firstAttribute="leading" secondItem="bBH-FZ-B7Q" secondAttribute="trailing" constant="8" id="z3a-jF-eXX"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -162,10 +171,13 @@
                 <outlet property="nameLabel" destination="Pik-qO-QV9" id="bcN-oO-Sym"/>
                 <outlet property="noteLabel" destination="T3k-pK-nVX" id="eaX-WS-RSh"/>
                 <outlet property="priceLabel" destination="1f4-NP-J6s" id="YUn-7D-G7q"/>
+                <outlet property="propertyImageView" destination="bBH-FZ-B7Q" id="nhA-Zb-ZZi"/>
+                <outlet property="propertyImageViewLeft" destination="XAJ-2y-vyZ" id="Ng8-y7-6hr"/>
+                <outlet property="propertyImageViewWidth" destination="iQy-bM-7BY" id="5G7-pH-peE"/>
                 <outlet property="receptCountLabel" destination="GDk-Kc-Wgb" id="0QC-xC-Qwc"/>
                 <outlet property="receptIcon" destination="lhe-6i-OOe" id="Gbr-MG-H7F"/>
             </connections>
-            <point key="canvasLocation" x="-26.086956521739133" y="90.066964285714278"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="92.745535714285708"/>
         </tableViewCell>
     </objects>
     <resources>
