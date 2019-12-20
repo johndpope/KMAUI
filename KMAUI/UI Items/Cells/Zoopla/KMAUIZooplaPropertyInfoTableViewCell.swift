@@ -77,7 +77,8 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         if highlight, isList {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             priceLabel.textColor = UIColor.white
-            noteLabel.textColor = UIColor.white
+            noteLabel.textColor = KMAUIConstants.shared.KMABrightBlueColor
+            noteLabel.backgroundColor = UIColor.white
             nameLabel.textColor = UIColor.white
             addressLabel.textColor = UIColor.white
             bedIcon.tintColor = UIColor.white
@@ -90,16 +91,21 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
             floorsCountLabel.textColor = UIColor.white
             rightArrowImageView.tintColor = UIColor.white
         } else {
-//            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
-//            requestDateLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-//            requestTitleLabel.textColor = KMAConstants.shared.KMATextColor
-//            requestDescriptionLabel.textColor = KMAConstants.shared.KMATextColor
-//            requestStatusLabel.textColor = UIColor.white
-//            authorLabel.textColor = KMAUIConstants.shared.KMATitleColor
-//            
-//            if let status = requestStatusLabel.text, status == "   new   " {
-//                requestStatusLabel.layer.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor.cgColor
-//            }
+            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            priceLabel.textColor = KMAUIConstants.shared.KMATitleColor
+            noteLabel.textColor = UIColor.white
+            noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            nameLabel.textColor = KMAUIConstants.shared.KMATextColor
+            addressLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            bedIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
+            bedCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
+            bathIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
+            bathCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
+            receptIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
+            receptCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
+            floorIcon.tintColor = MAUIConstants.shared.KMATextGrayColor
+            floorsCountLabel.textColor = MAUIConstants.shared.KMATextGrayColor
+            rightArrowImageView.tintColor = MAUIConstants.shared.KMATextGrayColor
         }
     }
     

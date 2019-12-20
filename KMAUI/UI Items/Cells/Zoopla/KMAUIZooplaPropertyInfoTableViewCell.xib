@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bed flat for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="54" width="234" height="28"/>
+                                <rect key="frame" x="16" y="54" width="234" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jsF-7G-ma4"/>
                                 </constraints>
@@ -132,7 +132,7 @@
                             <constraint firstItem="c1T-53-rLI" firstAttribute="centerY" secondItem="GDk-Kc-Wgb" secondAttribute="centerY" id="M6S-FU-pyy"/>
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="centerY" secondItem="fLf-yh-xtn" secondAttribute="centerY" id="T3I-Py-Kpb"/>
-                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" id="Ukc-07-2ge"/>
+                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" constant="4" id="Ukc-07-2ge"/>
                             <constraint firstItem="ETF-8w-X1e" firstAttribute="centerY" secondItem="c1T-53-rLI" secondAttribute="centerY" id="aVe-GF-2HP"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>
