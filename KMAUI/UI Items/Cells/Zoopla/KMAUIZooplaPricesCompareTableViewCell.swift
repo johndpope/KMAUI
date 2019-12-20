@@ -36,26 +36,35 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        if rentValue > 0 {
+        if rentValue > 0, averageRentValue > 0{
             if rentValue > averageRentValue {
-                let percent = Double(Int(((Double(rentValue) / Double(averageRentValue)) - 1) * 1000)) / 100
-                priceLabel.text = "\(percent)% more expensive then an average rental price in the area."
+                priceLabel.text = "\(getPercent(value1: rentValue, value2: averageRentValue))% more expensive then an average rental price in the area."
                 priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
             } else {
-                let percent = Double(Int(((Double(averageRentValue) / Double(rentValue)) - 1) * 1000)) / 100
-                priceLabel.text = "\(percent)% cheaper then an average rental price in the area."
+                priceLabel.text = "\(getPercent(value1: averageRentValue, value2: rentValue))% cheaper then an average rental price in the area."
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
-        } else if saleValue > 0 {
+            
+            priceImageView.alpha = 1
+        } else if saleValue > 0, averageSaleValue > 0 {
             if saleValue > averageSaleValue {
-                let percent = Double(Int(((Double(saleValue) / Double(averageSaleValue)) - 1) * 1000)) / 100
-                priceLabel.text = "\(percent)% more expensive then an average sale price in the area."
+                priceLabel.text = "\(getPercent(value1: saleValue, value2: averageSaleValue))% more expensive then an average sale price in the area."
                 priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
             } else {
-                let percent = Double(Int(((Double(averageSaleValue) / Double(saleValue)) - 1) * 1000)) / 100
-                priceLabel.text = "\(percent)% cheaper then an average sale price in the area."
+                priceLabel.text = "\(getPercent(value1: averageSaleValue, value2: saleValue))% cheaper then an average sale price in the area."
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
+            
+            priceImageView.alpha = 1
+        } else {
+            priceLabel.text = "No price data available."
+            priceImageView.alpha = 0
         }
+    }
+    
+    public func getPercent(value1: Int, value2: Int) -> Double {
+        let percent = Double(Int(((Double(value1) / Double(value2)) - 1) * 10000)) / 10000
+        
+        return percent
     }
 }
