@@ -25,7 +25,7 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
         // Adjusting the UI for a caption label
         captionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         captionLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        captionLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+        captionLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         captionLabel.clipsToBounds = true
 
         // No selection required
