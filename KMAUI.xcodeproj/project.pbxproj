@@ -127,6 +127,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		850642E123AD026C00389580 /* Foursquare */ = {
+			isa = PBXGroup;
+			children = (
+				85656AB723A3EB7F000CC21B /* KMAUIFoursquareTableViewCell.swift */,
+				85656AB823A3EB7F000CC21B /* KMAUIFoursquareTableViewCell.xib */,
+			);
+			path = Foursquare;
+			sourceTree = "<group>";
+		};
 		852181BC239159B200A6B891 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,10 +173,9 @@
 				85D071E423A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.xib */,
 				853D3AE423A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.swift */,
 				853D3AE523A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.xib */,
-				85656AB723A3EB7F000CC21B /* KMAUIFoursquareTableViewCell.swift */,
-				85656AB823A3EB7F000CC21B /* KMAUIFoursquareTableViewCell.xib */,
 				8597E2DE23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.swift */,
 				8597E2DF23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.xib */,
+				850642E123AD026C00389580 /* Foursquare */,
 				85AFA45923ABC82C009FE9E6 /* Zoopla */,
 			);
 			path = Cells;

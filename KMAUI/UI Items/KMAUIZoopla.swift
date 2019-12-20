@@ -74,7 +74,7 @@ public class KMAUIZoopla {
             let listing = json["listing"]?.array {
             
             for propertyItem in listing {
-                print("\nPROPERTY: \(propertyItem)\n")
+//                print("\nPROPERTY: \(propertyItem)\n")
                 var zooplaProperty = KMAZooplaProperty()
                 zooplaProperty.fillFrom(propertyItem: propertyItem)
                 zooplaPropertyArray.append(zooplaProperty)
@@ -124,7 +124,7 @@ public class KMAUIZoopla {
                         completion(listing, "")
                     }
                 } catch {
-                    print([JSON](), error.localizedDescription)
+                    completion([JSON](), error.localizedDescription)
                 }
             }
         }
