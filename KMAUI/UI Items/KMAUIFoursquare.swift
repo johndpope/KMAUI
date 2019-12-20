@@ -104,7 +104,7 @@ public class KMAUIFoursquare {
      Loading the Foursquare venue details
      */
     
-    public func foursquareVenueDetails(foursquareId: String) {
+    public func foursquareVenueDetails(foursquareId: String, completion: @escaping (_ venueDetails: String, _ error: String)->()) {
         // Preparing the request screen
         let requestString = "https://api.foursquare.com/v2/venues/\(foursquareId)?client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
         // The venues request
@@ -114,27 +114,13 @@ public class KMAUIFoursquare {
                     let json = try JSON(data: responseData)
                     print("Foursquare venue \(foursquareId).\n\(json)")
                     
-                    
-                    
-                    
-                    
-//
-                    /**
-                     What data do we need?
-                     Name
-                     Best Photo
-                     Rating
-                     Price level
-                     Likes count
-                     Formatted address
-                     Here now
-                     Accept credit cards
-                     Menu types
-                     Photos
-                     Categories
-                     */
+                    if let jsonString = json.rawString(), !jsonString.isEmpty {
+                        completion(jsonString, "")
+                    } else {
+                        print("", "Error")
+                    }
                 } catch {
-                    print(error.localizedDescription)
+                    print("", error.localizedDescription)
                 }
             }
         }
