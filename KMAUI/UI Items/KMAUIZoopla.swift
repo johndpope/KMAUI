@@ -248,7 +248,7 @@ public struct KMAZooplaProperty {
     /**
      What to add for the Zoopla Details
      Compare to average price
-     letttingFees (convert from HTML), billsIncluded badge, newHome badge, fllor area, avaialableFrom, imageCaption, num floors, floorPlan
+     billsIncluded badge, newHome badge, fllor area, avaialableFrom, imageCaption, num floors, floorPlan
      */
     
     public func getPropertyDescription() -> (String, String) {
