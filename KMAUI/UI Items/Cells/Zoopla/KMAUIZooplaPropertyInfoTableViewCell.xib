@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="3 bedroom apartment for sale" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pik-qO-QV9" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="46" width="256" height="16"/>
+                                <rect key="frame" x="16" y="46" width="256" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jsF-7G-ma4"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="Stamford Bridge, SW6 1HS, London" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulm-Og-9rq" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="62" width="256" height="41"/>
+                                <rect key="frame" x="16" y="70" width="256" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="F3C-jA-5IS"/>
                                 </constraints>
@@ -105,14 +105,14 @@
                             <constraint firstItem="Pik-qO-QV9" firstAttribute="top" secondItem="1f4-NP-J6s" secondAttribute="bottom" constant="8" id="6tp-E8-UnY"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="centerY" secondItem="gTE-Yk-gnx" secondAttribute="centerY" id="9D0-gh-avt"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="centerY" secondItem="bSU-Ni-e07" secondAttribute="centerY" id="AGf-di-wED"/>
-                            <constraint firstItem="fLf-yh-xtn" firstAttribute="top" secondItem="ulm-Og-9rq" secondAttribute="bottom" constant="16" id="HgQ-Vu-BrB"/>
+                            <constraint firstItem="fLf-yh-xtn" firstAttribute="top" secondItem="ulm-Og-9rq" secondAttribute="bottom" constant="8" id="HgQ-Vu-BrB"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="leading" secondItem="gTE-Yk-gnx" secondAttribute="trailing" constant="16" id="IpS-gz-M5O"/>
                             <constraint firstAttribute="trailing" secondItem="T3k-pK-nVX" secondAttribute="trailing" constant="16" id="Iqs-jl-1f6"/>
                             <constraint firstAttribute="trailing" secondItem="ulm-Og-9rq" secondAttribute="trailing" constant="16" id="Jwk-AN-ZvZ"/>
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
                             <constraint firstAttribute="trailing" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="16" id="Sk5-0F-PYk"/>
                             <constraint firstItem="gTE-Yk-gnx" firstAttribute="centerY" secondItem="fLf-yh-xtn" secondAttribute="centerY" id="T3I-Py-Kpb"/>
-                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" id="Ukc-07-2ge"/>
+                            <constraint firstItem="ulm-Og-9rq" firstAttribute="top" secondItem="Pik-qO-QV9" secondAttribute="bottom" constant="4" id="Ukc-07-2ge"/>
                             <constraint firstItem="ulm-Og-9rq" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="a2Q-HU-5Ua"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="leading" secondItem="lhe-6i-OOe" secondAttribute="trailing" constant="8" id="bsI-aZ-hU6"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="leading" secondItem="F9z-0y-Yb3" secondAttribute="leading" constant="16" id="f20-zm-PcV"/>

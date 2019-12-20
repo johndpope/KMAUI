@@ -248,7 +248,7 @@ public struct KMAZooplaProperty {
     /**
      What to add for the Zoopla Details
      Compare to average price
-     firstPublishedDate, lastPublishedDate, letttingFees (convert from HTML), billsIncluded badge, newHome badge, fllor area, avaialableFrom, imageCaption, num floors, floorPlan
+     letttingFees (convert from HTML), billsIncluded badge, newHome badge, fllor area, avaialableFrom, imageCaption, num floors, floorPlan
      */
     
     public func getPropertyDescription() -> (String, String) {
@@ -284,7 +284,7 @@ public struct KMAZooplaProperty {
                     propertyDescription += " to rent"
                     priceString = "£\(rentMonth.withCommas()) pcm"
                 } else if status == "sale" {
-                    propertyDescription += " for sale\n£\(salePrice.withCommas())"
+                    propertyDescription += " for sale"
                     priceString = "£\(salePrice.withCommas())"
                 }
             }
