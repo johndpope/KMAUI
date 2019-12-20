@@ -86,6 +86,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Note label " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3k-pK-nVX" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="185.5" y="12" width="86.5" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aja-Ph-vNc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
@@ -98,6 +107,7 @@
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="centerY" secondItem="bSU-Ni-e07" secondAttribute="centerY" id="AGf-di-wED"/>
                             <constraint firstItem="fLf-yh-xtn" firstAttribute="top" secondItem="ulm-Og-9rq" secondAttribute="bottom" constant="16" id="HgQ-Vu-BrB"/>
                             <constraint firstItem="bSU-Ni-e07" firstAttribute="leading" secondItem="gTE-Yk-gnx" secondAttribute="trailing" constant="16" id="IpS-gz-M5O"/>
+                            <constraint firstAttribute="trailing" secondItem="T3k-pK-nVX" secondAttribute="trailing" constant="16" id="Iqs-jl-1f6"/>
                             <constraint firstAttribute="trailing" secondItem="ulm-Og-9rq" secondAttribute="trailing" constant="16" id="Jwk-AN-ZvZ"/>
                             <constraint firstAttribute="bottom" secondItem="fLf-yh-xtn" secondAttribute="bottom" constant="16" id="RLd-gf-olQ"/>
                             <constraint firstAttribute="trailing" secondItem="Pik-qO-QV9" secondAttribute="trailing" constant="16" id="Sk5-0F-PYk"/>
@@ -109,6 +119,7 @@
                             <constraint firstItem="lhe-6i-OOe" firstAttribute="leading" secondItem="DRL-wl-Agb" secondAttribute="trailing" constant="16" id="icx-Jc-u7y"/>
                             <constraint firstItem="GDk-Kc-Wgb" firstAttribute="centerY" secondItem="lhe-6i-OOe" secondAttribute="centerY" id="r9W-3y-OXd"/>
                             <constraint firstItem="DRL-wl-Agb" firstAttribute="leading" secondItem="bSU-Ni-e07" secondAttribute="trailing" constant="8" id="tks-2h-iQZ"/>
+                            <constraint firstItem="T3k-pK-nVX" firstAttribute="centerY" secondItem="1f4-NP-J6s" secondAttribute="centerY" id="vFC-Sc-nwi"/>
                             <constraint firstItem="1f4-NP-J6s" firstAttribute="top" secondItem="F9z-0y-Yb3" secondAttribute="top" constant="16" id="xP1-Ve-nRy"/>
                         </constraints>
                     </view>
@@ -129,6 +140,7 @@
                 <outlet property="bedCountLabel" destination="gTE-Yk-gnx" id="frc-Ds-qjg"/>
                 <outlet property="bedIcon" destination="fLf-yh-xtn" id="yGA-53-T25"/>
                 <outlet property="nameLabel" destination="Pik-qO-QV9" id="bcN-oO-Sym"/>
+                <outlet property="noteLabel" destination="T3k-pK-nVX" id="eaX-WS-RSh"/>
                 <outlet property="priceLabel" destination="1f4-NP-J6s" id="YUn-7D-G7q"/>
                 <outlet property="receptCountLabel" destination="GDk-Kc-Wgb" id="0QC-xC-Qwc"/>
                 <outlet property="receptIcon" destination="lhe-6i-OOe" id="Gbr-MG-H7F"/>

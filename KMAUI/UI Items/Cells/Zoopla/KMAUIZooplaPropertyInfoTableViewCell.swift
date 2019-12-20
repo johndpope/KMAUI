@@ -19,6 +19,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var bathCountLabel: KMAUIInfoLabel!
     @IBOutlet public weak var receptIcon: UIImageView!
     @IBOutlet public weak var receptCountLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var noteLabel: KMAUITextLabel!
     
     // MARK: - Variables
     public var zooplaProperty = KMAZooplaProperty()
@@ -35,6 +36,11 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         bathIcon.tintColor = KMAUIConstants.shared.KMALineGray
         receptIcon.image = KMAUIConstants.shared.receptIcon.withRenderingMode(.alwaysTemplate)
         receptIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        
+        noteLabel.text = " New build "
+        noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+        noteLabel.textColor = UIColor.white
+        noteLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // No selection required
         selectionStyle = .none
