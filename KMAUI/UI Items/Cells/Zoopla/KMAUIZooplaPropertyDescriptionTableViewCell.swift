@@ -33,7 +33,7 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
         if textValue.isEmpty {
             propertyDescriptionLabel.text = "No \(type) available."
         } else if type == "description" {
-            propertyDescriptionLabel.text = textValue
+            propertyDescriptionLabel.text = textValue.htmlToString
         } else if type == "letting fees" {
             propertyDescriptionLabel.text = textValue.htmlToString
         }
