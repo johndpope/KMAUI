@@ -105,10 +105,6 @@ public class KMAUIFoursquare {
      */
     
     public func foursquareVenueDetails(foursquareId: String) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyymmdd"
-        let dateValue = dateFormatter.string(from: Date())
-        print(dateValue)
         // Preparing the request screen
         let requestString = "https://api.foursquare.com/v2/venues/\(foursquareId)?client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
         // The venues request
@@ -116,8 +112,13 @@ public class KMAUIFoursquare {
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
-                    print("Foursquare venue \(foursquareId).")
-//                    print(json)
+                    print("Foursquare venue \(foursquareId).\n\(json)")
+                    
+                    
+                    
+                    
+                    
+//
                     /**
                      What data do we need?
                      Name
