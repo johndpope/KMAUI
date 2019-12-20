@@ -13,7 +13,8 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
     @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
-    public var descriptionText = ""
+    public var type = ""
+    public var textValue = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -29,10 +30,12 @@ public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        if descriptionText.isEmpty {
-            propertyDescriptionLabel.text = "No description available."
-        } else {
-            propertyDescriptionLabel.text = descriptionText
+        if textValue.isEmpty {
+            propertyDescriptionLabel.text = "No \(type) available."
+        } else if type == "description" {
+            propertyDescriptionLabel.text = textValue
+        } else if type == "letting fees" {
+            propertyDescriptionLabel.attributedText = textValue.htmlToAttributedString
         }
     }
 }
