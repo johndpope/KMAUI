@@ -142,8 +142,30 @@ public struct KMAFoursquareVenue {
     public var suffix = ""
     public var venueId = ""
     // Details data
-    public var canonicalUrl = ""
-    public var likesCount = 0
+    public var createdAt = Date()
+    public var contact = "" // the JSON object of place's contacts
+    public var ratingSignals = 0 // count of ratings
+    public var likes = 0 // likes count
+    public var photos = "" // photos dictionary
+    public var timeZone = "" // the text with the time zone name for the place location
+    public var categories = "" // the JSON for the place categories, may be multiple categories
+    public var hours = "" // the JSON for the working hours
+    public var url = "" // the website
+    public var shortUrl = "" // the shortened url for a website
+    public var tips = "" // the JSON for the tips leaved by visitors
+    public var popular = "" // the JSON for the popular visiting times
+    public var hasMenu = false // indicates if we have a menu data
+    public var menu = "" // the JSON for the place menu
+    public var rating: Double = 0 // the place rating
+    public var canonicalUrl = "" // the url for place on Foursquare website
+    public var location = "" // the JSON for a location
+    public var ratingColor = "" // the HEX value for a rating color
+    public var bestPhoto = "" // the JSON for a best photo prepared by the Foursquare
+    public var price = "" // the JSON for a price
+    public var attributes = "" // the JSON for a place attributes
+    public var description = "" // the description
+    public var hierarchy = "" // the hierarcy JSON, if the place is inside of another place, for example: mall
+    public var parent = "" // the parent JSON, the info for a place in which the current place in
     
     public init() {
     }
