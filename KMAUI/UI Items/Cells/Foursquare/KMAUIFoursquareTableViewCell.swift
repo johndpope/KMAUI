@@ -17,8 +17,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     @IBOutlet public weak var detailLabel: KMAUIInfoLabel!
     @IBOutlet public weak var addressLabel: UILabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
-    @IBOutlet weak var rightArrowImageViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var rightArrowImageViewRight: NSLayoutConstraint!
+    @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
