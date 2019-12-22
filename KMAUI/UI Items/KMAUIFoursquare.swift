@@ -112,7 +112,7 @@ public class KMAUIFoursquare {
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
-                    print("Foursquare venue \(foursquareId).\n\(json)")
+//                    print("Foursquare venue \(foursquareId).\n\(json)")
                     
                     if let jsonString = json.rawString(), !jsonString.isEmpty {
                         completion(jsonString, "")
