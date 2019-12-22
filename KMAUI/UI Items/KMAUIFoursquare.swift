@@ -264,7 +264,7 @@ public struct KMAFoursquareVenue {
     }
     
     public mutating func fillFrom(jsonString: String) {
-        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
+        if !jsonString.isEmpty, let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary {
             
             if let response = json["response"]?.dictionary, let venueObject = response["venue"]?.dictionary {
@@ -471,3 +471,28 @@ public struct KMAFoursquareVenue {
         }
     }
 }
+
+/*
+ if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
+ let json = try? JSON(data: dataFromString).dictionary {
+ 
+ /*let usedKeys = ["createdAt", "contact", "ratingSignals", "likes", "photos", "timeZone", "categories", "hours", "url", "tips", "popular", "shortUrl", "hasMenu", "name", "menu", "rating", "canonicalUrl", "location", "ratingColor", "bestPhoto", "price", "attributes", "description", "hierarchy", "parent"]
+ let notNeededKeys = ["pageUpdates", "colors", "allowMenuUrlEdit", "dislike", "verified", "reasons", "beenHere", "hereNow", "stats", "ok", "inbox", "listed", "id", "specials", "page", "venuePage", "storeId"]
+ print("TOTAL KEYS: \(venueObject.keys.count)")
+ 
+ for (key, value) in venueObject {
+ if !usedKeys.contains(key), !notNeededKeys.contains(key) {
+ print("\nKEY: \(key), VALUE: \(value)")
+ }
+ }*/
+ 
+ if let response = json["response"]?.dictionary, let venueObject = response["venue"]?.dictionary {
+ 
+ //
+ //                            print("\n\(venueObject)\n")
+ //
+ //                            var venue = KMAFoursquareVenue()
+ //                            venue.fillFrom(venue: venueObject)
+ //                            print(venue)
+ }
+ }*/
