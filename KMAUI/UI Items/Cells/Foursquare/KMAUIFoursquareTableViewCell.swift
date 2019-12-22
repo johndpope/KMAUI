@@ -22,6 +22,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
+    public var canHighlight = true
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -32,7 +33,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+/Users/Stanislav/Documents/Freelance/Apps/GitHub/KMAUI/KMAUI/UI Items/Cells/KMAUIDashboadNoDataTableViewCell.swift
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -47,7 +48,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if highlight, canHighlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             nameLabel.textColor = UIColor.white
             detailLabel.textColor = UIColor.white
