@@ -49,8 +49,8 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
             addressLabel.text = property.address
         }
         
-        property.latitude
-        property.longitude
+        print(property.latitude)
+        print(property.longitude)
     }
     
     public func setupVenue() {
