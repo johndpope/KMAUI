@@ -120,8 +120,6 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             
             // Details screen
             rightArrowImageView.alpha = 0
-//            rightArrowImageViewWidth.constant = 0
-//            rightArrowImageViewRight.constant = 0
             
             if venue.rating > 0 {
                 ratingLabel.text = "\(venue.rating)"

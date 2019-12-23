@@ -110,8 +110,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
     }
     
     /*
-
-
+     Setup cell
      */
     
     public func setupCell() {
