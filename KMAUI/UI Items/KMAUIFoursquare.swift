@@ -466,6 +466,9 @@ public struct KMAFoursquareVenue {
                     //                             } else {
                     //                                 print("No parent")
                 }
+                
+                // details loaded
+                detailsLoaded = true
             }
         }
     }

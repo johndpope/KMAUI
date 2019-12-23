@@ -22,6 +22,13 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         // Setup right arrow
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
         
+        // No selection for mapView
+        mapView.isUserInteractionEnabled = false
+        
+        // MapView UI
+        mapView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        mapView.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
