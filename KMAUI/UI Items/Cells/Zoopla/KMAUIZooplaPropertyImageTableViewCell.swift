@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Kingfisher
 
 public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
@@ -18,6 +19,7 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var imageString = ""
     public var captionString = ""
+    public var venue = KMAFoursquareVenue()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -64,5 +66,25 @@ public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
         } else {
             captionLabel.text = ""
         }
+    }
+    
+    public func setupVenue() {
+        imageString = ""
+        captionString = ""
+        
+        if !venue.bestPhoto.isEmpty, let dataFromString = venue.bestPhoto.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+            // loading image from parts
+            if let prefix = json["prefix"]?.string, let suffix = json["suffix"]?.string, let width = json["width"]?.int, let height = json["height"]?.int {
+                let urlString = prefix + "\(width)x\(height)" + suffix
+                imageString = urlString
+            }
+            // loading the caption, image source
+            if let source = json["source"]?.dictionary, let name = source["name"]?.string {
+                captionString = name
+            }
+        }
+        
+        setupCell()
     }
 }
