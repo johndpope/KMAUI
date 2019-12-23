@@ -85,6 +85,8 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
             if let source = json["source"]?.dictionary, let name = source["name"]?.string {
                 captionString = name
             }
+        } else  if !venue.prefix.isEmpty, !venue.suffix.isEmpty {
+            imageString = venue.prefix + "44x44" + venue.suffix
         }
         
         setupCell()
