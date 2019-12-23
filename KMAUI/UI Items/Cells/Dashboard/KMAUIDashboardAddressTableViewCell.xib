@@ -68,6 +68,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="Phs-jc-PA1" id="A4e-vA-dAV"/>
+                <outlet property="bgView" destination="klL-Ok-z8t" id="IRT-dh-1LV"/>
                 <outlet property="mapView" destination="jI4-h3-Ckn" id="dQB-Mt-rHu"/>
                 <outlet property="rightArrowImageView" destination="QFN-Lw-nyM" id="aTc-MQ-ZmI"/>
             </connections>

@@ -11,6 +11,7 @@ import MapKit
 
 public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var mapView: MKMapView!
     @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
@@ -39,7 +40,25 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            addressLabel.textColor = UIColor.white
+            rightArrowImageView.tintColor = UIColor.white
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            addressLabel.textColor = KMAUIConstants.shared.KMATextColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        }
     }
     
     public func setupProperty() {
