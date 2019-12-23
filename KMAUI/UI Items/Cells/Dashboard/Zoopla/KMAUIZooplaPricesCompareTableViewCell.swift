@@ -40,10 +40,10 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
             let value = getPercent(value1: rentValue, value2: averageRentValue)
             
             if value > 0 {
-                priceLabel.text = "\(getPercent(value1: rentValue, value2: averageRentValue))% more expensive then an average rental price in the area."
+                priceLabel.text = "\(value)% more expensive then an average rental price in the area."
                 priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
             } else {
-                priceLabel.text = "\(abs(getPercent(value1: averageRentValue, value2: rentValue)))% cheaper then an average rental price in the area."
+                priceLabel.text = "\(abs(value))% cheaper then an average rental price in the area."
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
             
@@ -60,10 +60,10 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
             let value = getPercent(value1: saleValue, value2: averageSaleValue)
             
             if value > 0 {
-                priceLabel.text = "\(getPercent(value1: saleValue, value2: averageSaleValue))% more expensive then an average sale price in the area."
+                priceLabel.text = "\(value)% more expensive then an average sale price in the area."
                 priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
             } else {
-                priceLabel.text = "\(abs(getPercent(value1: averageSaleValue, value2: saleValue)))% cheaper then an average sale price in the area."
+                priceLabel.text = "\(abs(value))% cheaper then an average sale price in the area."
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
             
