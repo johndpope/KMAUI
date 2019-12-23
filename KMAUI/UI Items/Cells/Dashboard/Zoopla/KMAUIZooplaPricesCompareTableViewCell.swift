@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet public weak var priceLabel: KMAUITextLabel!
+    @IBOutlet public weak var priceLabel: KMAUITitleLabel!
     @IBOutlet public weak var priceImageView: UIImageView!
     
     // MARK: - Variables
