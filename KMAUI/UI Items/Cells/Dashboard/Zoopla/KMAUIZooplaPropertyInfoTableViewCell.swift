@@ -120,8 +120,6 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         priceLabel.text = info.1
         // name
         nameLabel.text = info.0
-        // address
-        addressLabel.text = zooplaProperty.address
         // bedrooms
         bedCountLabel.text = "\(zooplaProperty.numBedrooms)"
         // bathrooms
@@ -144,11 +142,16 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
                 noteLabel.text = ""
             }
         }
-        // Setup the right arrow
+        // Different UI for list and details
         if isList {
+            // address
+            addressLabel.text = zooplaProperty.address
+            // Setup right arrow
             rightArrowImageView.alpha = 1
             rightArrowImageViewWidth.constant = 22
         } else {
+            addressLabel.text = ""
+            // Setup right arrow
             rightArrowImageView.alpha = 0
             rightArrowImageViewWidth.constant = 0
         }

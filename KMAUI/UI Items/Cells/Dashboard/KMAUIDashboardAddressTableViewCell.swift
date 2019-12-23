@@ -15,6 +15,10 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
+    // MARK: - Variables
+    var venue = KMAFoursquareVenue()
+    var property = KMAZooplaProperty()
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -34,8 +38,27 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
+    public func setupProperty() {
+        if property.address.isEmpty {
+            addressLabel.text = "Address not available."
+        } else {
+            addressLabel.text = property.address
+        }
+    }
+    
+    public func setupVenue() {
+        if venue.detailsLoaded {
+            if venue.address.isEmpty {
+                addressLabel.text = "Address not available."
+            } else {
+                addressLabel.text = venue.address
+            }
+        } else {
+            addressLabel.text = "Loading address..."
+        }
+    }
 }
