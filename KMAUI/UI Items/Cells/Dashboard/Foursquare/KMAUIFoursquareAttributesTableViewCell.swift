@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     // MARK: - Variables
-    @IBOutlet public weak var titleLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var titleLabel: KMAUITitleLabel!
     @IBOutlet public weak var attributesLabel: KMAUITextLabel!
     
     // MARK: - Variables

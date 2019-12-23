@@ -20,8 +20,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQB-kM-zCc" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="288" height="108"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-Zo-sQl" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="8" width="42" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZK-Zo-sQl" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="8" width="42" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="aTT-Yl-wqp"/>
                                 </constraints>
@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbq-YP-ZKC" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="38" width="272" height="62"/>
+                                <rect key="frame" x="16" y="38" width="256" height="62"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="gGQ-hl-tLv"/>
                                 </constraints>
@@ -42,10 +42,10 @@
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="TZK-Zo-sQl" firstAttribute="top" secondItem="hQB-kM-zCc" secondAttribute="top" constant="8" id="0JC-BY-zCX"/>
-                            <constraint firstAttribute="trailing" secondItem="Pbq-YP-ZKC" secondAttribute="trailing" constant="8" id="2eh-tq-qoP"/>
-                            <constraint firstItem="TZK-Zo-sQl" firstAttribute="leading" secondItem="hQB-kM-zCc" secondAttribute="leading" constant="8" id="IlS-C3-dtf"/>
+                            <constraint firstAttribute="trailing" secondItem="Pbq-YP-ZKC" secondAttribute="trailing" constant="16" id="2eh-tq-qoP"/>
+                            <constraint firstItem="TZK-Zo-sQl" firstAttribute="leading" secondItem="hQB-kM-zCc" secondAttribute="leading" constant="16" id="IlS-C3-dtf"/>
                             <constraint firstAttribute="bottom" secondItem="Pbq-YP-ZKC" secondAttribute="bottom" constant="8" id="Oyj-3K-2L2"/>
-                            <constraint firstItem="Pbq-YP-ZKC" firstAttribute="leading" secondItem="hQB-kM-zCc" secondAttribute="leading" constant="8" id="Yte-kw-pZE"/>
+                            <constraint firstItem="Pbq-YP-ZKC" firstAttribute="leading" secondItem="hQB-kM-zCc" secondAttribute="leading" constant="16" id="Yte-kw-pZE"/>
                             <constraint firstItem="Pbq-YP-ZKC" firstAttribute="top" secondItem="TZK-Zo-sQl" secondAttribute="bottom" constant="8" id="fyC-dq-IKB"/>
                         </constraints>
                     </view>
