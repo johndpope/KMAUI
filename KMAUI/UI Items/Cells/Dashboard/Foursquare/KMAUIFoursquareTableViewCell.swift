@@ -22,11 +22,11 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     // Details UI
     @IBOutlet public weak var ratingLabel: KMAUITextLabel!
-
+    
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
     public var canHighlight = true
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -40,7 +40,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -85,7 +85,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             
             detailLabel.text = "\(venue.category), \(venue.distance)m, \(value)"
         }
-
+        
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         photoImageView.clipsToBounds = true
         photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
@@ -119,6 +119,13 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             ratingLabel.alpha = 0
         } else {
             addressLabel.text = "" // No need to have an address displayed
+            
+            if !venue.hours.isEmpty, let dataFromString = venue.hours.data(using: .utf8, allowLossyConversion: false),
+                let json = try? JSON(data: dataFromString).dictionary {
+                if let richStatus = json["richStatus"]?.dictionary, let text = richStatus["text"]?.string, !text.isEmpty {
+                    addressLabel.text = text
+                }
+            }
             
             if !venue.categoryPrefix.isEmpty, !venue.categorySuffix.isEmpty, let url = URL(string: venue.categoryPrefix + "44" + venue.categorySuffix) {
                 photoImageView.kf.setImage(with: url) { result in

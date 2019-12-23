@@ -31,30 +31,6 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-//        if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
-//            let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
-//            print("\nAttributes:")
-//
-//            for group in groups {
-//                if let group = group.dictionary, let groupName = group["name"]?.string, let items = group["items"]?.array, !items.isEmpty {
-//                    print("\nName: \(groupName):")
-//
-//                    for item in items {
-//                        if let item = item.dictionary, let displayName = item["displayName"]?.string, let displayValue = item["displayValue"]?.string {
-//                            if displayName != displayValue {
-//                                print("\(displayName) - \(displayValue)")
-//                            } else {
-//                                print(displayName)
-//                            }
-//
-//                        }
-//                    }
-//
-        //                    // Special items: Menus, Drinks, Dining Options - sepaparate cells
-        //                }
-        //            }
-        //        }
-        
         if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
             var yesArray = [String]()
