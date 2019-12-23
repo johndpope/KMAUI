@@ -101,6 +101,9 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
                     }
                 }
             }
+            
+            ratingLabel.text = ""
+            ratingLabel.alpha = 0
         } else {
             addressLabel.text = "" // No need to have an address displayed
             
@@ -119,6 +122,14 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             rightArrowImageView.alpha = 0
 //            rightArrowImageViewWidth.constant = 0
 //            rightArrowImageViewRight.constant = 0
+            
+            if venue.rating > 0 {
+                ratingLabel.text = "\(venue.rating)"
+                ratingLabel.alpha = 1
+            } else {
+                ratingLabel.text = ""
+                ratingLabel.alpha = 0
+            }
         }
     }
 }
