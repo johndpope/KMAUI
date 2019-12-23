@@ -86,7 +86,7 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
                 captionString = name
             }
         } else  if !venue.prefix.isEmpty, !venue.suffix.isEmpty {
-            imageString = venue.prefix + "44x44" + venue.suffix
+            imageString = venue.prefix + "288x193" + venue.suffix
         }
         
         setupCell()
