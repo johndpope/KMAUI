@@ -9,23 +9,27 @@
 import UIKit
 import MapKit
 
-class KMAUIDashboardAddressTableViewCell: UITableViewCell {
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var addressTitle: KMAUIInfoLabel!
-    @IBOutlet weak var addressLabel: KMAUITextLabel!
-    @IBOutlet weak var rightArrowImageView: UIImageView!
+public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var mapView: MKMapView!
+    @IBOutlet public weak var addressTitle: KMAUIInfoLabel!
+    @IBOutlet public weak var addressLabel: KMAUITextLabel!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setup right arrow
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
+        
+        // No selection required
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    
+
 }
