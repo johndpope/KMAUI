@@ -66,33 +66,53 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     public func setupCell() {
         nameLabel.text = venue.name
         detailLabel.text = "\(venue.distance)m, \(venue.category)"
-        addressLabel.text = venue.address
-        
+
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         photoImageView.clipsToBounds = true
-        photoImageView.layer.borderWidth = 0
+        photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        photoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        photoImageView.layer.borderWidth = 1
+        photoImageView.kf.indicatorType = .activity
         
         // Placeholder image for icon
         if let placeholderImage = UIImage(named: "venuePlaceholderIcon")?.withRenderingMode(.alwaysTemplate) {
             photoImageView.image = placeholderImage
         }
         
-        photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        photoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
-        photoImageView.layer.borderWidth = 1
-        photoImageView.kf.indicatorType = .activity
-        
-        if !venue.prefix.isEmpty, !venue.suffix.isEmpty, let url = URL(string: venue.prefix + "44x44" + venue.suffix) {
-            photoImageView.kf.setImage(with: url)
-        } else if !venue.categoryPrefix.isEmpty, !venue.categorySuffix.isEmpty, let url = URL(string: venue.categoryPrefix + "44" + venue.categorySuffix) {
-            photoImageView.kf.setImage(with: url) { result in
-                switch result {
-                case .success(let value):
-                    self.photoImageView.image = value.image.withRenderingMode(.alwaysTemplate)
-                case .failure(let error):
-                    print(error) // The error happens
+        if canHighlight {
+            // List mode
+            addressLabel.text = venue.address
+            
+            if !venue.prefix.isEmpty, !venue.suffix.isEmpty, let url = URL(string: venue.prefix + "44x44" + venue.suffix) {
+                photoImageView.kf.setImage(with: url)
+            } else if !venue.categoryPrefix.isEmpty, !venue.categorySuffix.isEmpty, let url = URL(string: venue.categoryPrefix + "44" + venue.categorySuffix) {
+                photoImageView.kf.setImage(with: url) { result in
+                    switch result {
+                    case .success(let value):
+                        self.photoImageView.image = value.image.withRenderingMode(.alwaysTemplate)
+                    case .failure(let error):
+                        print(error) // The error happens
+                    }
                 }
             }
+        } else {
+            addressLabel.text = "" // No need to have an address displayed
+            
+            if !venue.categoryPrefix.isEmpty, !venue.categorySuffix.isEmpty, let url = URL(string: venue.categoryPrefix + "44" + venue.categorySuffix) {
+                photoImageView.kf.setImage(with: url) { result in
+                    switch result {
+                    case .success(let value):
+                        self.photoImageView.image = value.image.withRenderingMode(.alwaysTemplate)
+                    case .failure(let error):
+                        print(error) // The error happens
+                    }
+                }
+            }
+            
+            // Details screen
+            rightArrowImageView.alpha = 0
+            rightArrowImageViewWidth.constant = 0
+            rightArrowImageViewRight.constant = 0
         }
     }
 }

@@ -171,10 +171,9 @@
 				859BB2F423A12F5300CD5ECB /* KMAUIPropertyDataTableViewCell.xib */,
 				85D071E323A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.swift */,
 				85D071E423A2782700DF6F9E /* KMAUIDashboardWelcomeTableViewCell.xib */,
-				853D3AE423A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.swift */,
-				853D3AE523A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.xib */,
 				8597E2DE23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.swift */,
 				8597E2DF23AA62980053F3F7 /* KMAUIDashboadNoDataTableViewCell.xib */,
+				857E933D23B105A700BD271B /* AccuWeather */,
 				850642E123AD026C00389580 /* Foursquare */,
 				85AFA45923ABC82C009FE9E6 /* Zoopla */,
 			);
@@ -224,6 +223,15 @@
 				855BA98F238FFC6C00CE2709 /* KMAUIAssets.xcassets */,
 			);
 			path = "UI Items";
+			sourceTree = "<group>";
+		};
+		857E933D23B105A700BD271B /* AccuWeather */ = {
+			isa = PBXGroup;
+			children = (
+				853D3AE423A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.swift */,
+				853D3AE523A3D19300C106EE /* KMAUIAccuWeatherTableViewCell.xib */,
+			);
+			path = AccuWeather;
 			sourceTree = "<group>";
 		};
 		859BB2F923A13BEB00CD5ECB /* Buttons */ = {
