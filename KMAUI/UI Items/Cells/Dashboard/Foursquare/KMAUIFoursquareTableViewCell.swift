@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Kingfisher
 
 public class KMAUIFoursquareTableViewCell: UITableViewCell {
@@ -82,7 +83,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
                 value += currency
             }
             
-            detailLabel.text += ", \(value)"
+            detailLabel.text = "\(venue.category), \(venue.distance)m, \(value)"
         }
 
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
