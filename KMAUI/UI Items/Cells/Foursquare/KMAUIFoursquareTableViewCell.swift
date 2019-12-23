@@ -19,7 +19,9 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
-    
+    // Details UI
+    @IBOutlet public weak var ratingLabel: KMAUITextLabel!
+
     // MARK: - Variables
     public var venue = KMAFoursquareVenue()
     public var canHighlight = true
@@ -29,6 +31,10 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         
         // Setup the right arrow
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
+        
+        // Setup the ratingLabel
+        ratingLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        ratingLabel.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -111,8 +117,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             
             // Details screen
             rightArrowImageView.alpha = 0
-            rightArrowImageViewWidth.constant = 0
-            rightArrowImageViewRight.constant = 0
+//            rightArrowImageViewWidth.constant = 0
+//            rightArrowImageViewRight.constant = 0
         }
     }
 }

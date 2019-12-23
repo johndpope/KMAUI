@@ -61,10 +61,21 @@
                                     <constraint firstAttribute="width" constant="22" id="X6E-4V-cKa"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8.9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPP-He-u35" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="250" y="32.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="g2b-k7-69k"/>
+                                    <constraint firstAttribute="width" constant="30" id="xYY-VU-vVh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="nrP-Gq-CA8" firstAttribute="leading" secondItem="9Un-JX-Gnh" secondAttribute="leading" constant="8" id="2fG-1v-aOw"/>
+                            <constraint firstItem="rPP-He-u35" firstAttribute="centerY" secondItem="9Un-JX-Gnh" secondAttribute="centerY" id="3Ch-5h-fs3"/>
                             <constraint firstItem="Xt5-bx-Z5k" firstAttribute="leading" secondItem="nrP-Gq-CA8" secondAttribute="trailing" constant="8" id="A6t-4B-9G0"/>
                             <constraint firstItem="JwM-pI-YyK" firstAttribute="top" secondItem="nrP-Gq-CA8" secondAttribute="bottom" constant="4" id="D8d-Mc-AZv"/>
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="top" secondItem="Xt5-bx-Z5k" secondAttribute="bottom" id="FCI-QY-Hi1"/>
@@ -76,6 +87,7 @@
                             <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="leading" secondItem="aq3-mV-IhY" secondAttribute="trailing" constant="8" id="fmf-BD-q47"/>
                             <constraint firstItem="aq3-mV-IhY" firstAttribute="leading" secondItem="nrP-Gq-CA8" secondAttribute="trailing" constant="8" id="gOD-zx-Ucg"/>
                             <constraint firstItem="nrP-Gq-CA8" firstAttribute="top" secondItem="9Un-JX-Gnh" secondAttribute="top" constant="8" id="pOC-dA-an6"/>
+                            <constraint firstAttribute="trailing" secondItem="rPP-He-u35" secondAttribute="trailing" constant="8" id="r3Y-kv-jgM"/>
                             <constraint firstItem="JwM-pI-YyK" firstAttribute="leading" secondItem="9Un-JX-Gnh" secondAttribute="leading" constant="8" id="s4B-20-Kf2"/>
                             <constraint firstItem="Fb4-5Y-Hf6" firstAttribute="centerY" secondItem="9Un-JX-Gnh" secondAttribute="centerY" id="zfF-Hs-EJV"/>
                         </constraints>
@@ -97,6 +109,7 @@
                 <outlet property="detailLabel" destination="aq3-mV-IhY" id="loV-CW-TXJ"/>
                 <outlet property="nameLabel" destination="Xt5-bx-Z5k" id="O5c-CH-Wiu"/>
                 <outlet property="photoImageView" destination="nrP-Gq-CA8" id="tQ0-U2-mnP"/>
+                <outlet property="ratingLabel" destination="rPP-He-u35" id="t62-pg-7Lu"/>
                 <outlet property="rightArrowImageView" destination="Fb4-5Y-Hf6" id="MyA-gC-n1k"/>
                 <outlet property="rightArrowImageViewRight" destination="Uqu-Y2-zOE" id="ZHT-WD-GSE"/>
                 <outlet property="rightArrowImageViewWidth" destination="X6E-4V-cKa" id="hr1-KE-aPh"/>
