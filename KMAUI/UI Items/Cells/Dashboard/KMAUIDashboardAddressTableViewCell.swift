@@ -12,7 +12,6 @@ import MapKit
 public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var mapView: MKMapView!
-    @IBOutlet public weak var addressTitle: KMAUIInfoLabel!
     @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
