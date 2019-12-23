@@ -31,15 +31,14 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        print("\nVenue details:")
 //        if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
 //            let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
 //            print("\nAttributes:")
-//            
+//
 //            for group in groups {
 //                if let group = group.dictionary, let groupName = group["name"]?.string, let items = group["items"]?.array, !items.isEmpty {
 //                    print("\nName: \(groupName):")
-//                    
+//
 //                    for item in items {
 //                        if let item = item.dictionary, let displayName = item["displayName"]?.string, let displayValue = item["displayValue"]?.string {
 //                            if displayName != displayValue {
@@ -47,15 +46,61 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
 //                            } else {
 //                                print(displayName)
 //                            }
-//                            
+//
 //                        }
 //                    }
-//                    
-//                    // Special items: Menus, Drinks, Dining Options - sepaparate cells
-//                }
-//            }
-//        }
+//
+        //                    // Special items: Menus, Drinks, Dining Options - sepaparate cells
+        //                }
+        //            }
+        //        }
         
-        print("\n")
+        if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
+            print("\nAttributes:")
+            
+            var yesArray = [String]()
+            var noArray = [String]()
+            
+            for group in groups {
+                if let group = group.dictionary, let items = group["items"]?.array, !items.isEmpty {
+                    for item in items {
+                        if let item = item.dictionary, let displayName = item["displayName"]?.string, let displayValue = item["displayValue"]?.string {
+                            if displayValue.starts(with: "Yes") {
+                                yesArray.append(displayName)
+                            } else if displayValue.starts(with: "No") {
+                                noArray.append(displayName)
+                            }
+                        }
+                    }
+                }
+            }
+            
+            titleLabel.text = "Services"
+            
+            if yesArray.isEmpty, noArray.isEmpty {
+                attributesLabel.text = "No data available"
+            } else {
+                var attributesString = ""
+                
+                for yesObject in yesArray {
+                    if attributesString.isEmpty {
+                        attributesString = "✓ " + yesObject
+                    } else {
+                        attributesString += "\n" + "✓ " + yesObject
+                    }
+                }
+                
+                for noObject in noArray {
+                    if attributesString.isEmpty {
+                        attributesString = "✗ " + noObject
+                    } else {
+                        attributesString += "\n" + "✗ " + noObject
+                    }
+                }
+                
+                attributesLabel.text = attributesString
+            }
+        }
     }
 }
