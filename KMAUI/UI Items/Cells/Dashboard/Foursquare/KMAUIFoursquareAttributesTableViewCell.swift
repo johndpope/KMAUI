@@ -57,8 +57,6 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
         
         if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
-            print("\nAttributes:")
-            
             var yesArray = [String]()
             var noArray = [String]()
             
