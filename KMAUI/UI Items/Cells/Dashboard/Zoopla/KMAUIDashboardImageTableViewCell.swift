@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Kingfisher
 
-public class KMAUIZooplaPropertyImageTableViewCell: UITableViewCell {
+public class KMAUIDashboardImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var propertyImageView: UIImageView!
