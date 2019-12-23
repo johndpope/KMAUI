@@ -67,9 +67,6 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = property.address
         }
-        
-        print(property.latitude)
-        print(property.longitude)
     }
     
     public func setupVenue() {
@@ -82,8 +79,5 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = "Loading address..."
         }
-        
-        print(venue.latitude)
-        print(venue.longitude)
     }
 }
