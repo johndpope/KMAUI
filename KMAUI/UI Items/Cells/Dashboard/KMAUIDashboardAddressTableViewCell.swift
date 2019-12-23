@@ -16,8 +16,8 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
-    var venue = KMAFoursquareVenue()
-    var property = KMAZooplaProperty()
+    public var venue = KMAFoursquareVenue()
+    public var property = KMAZooplaProperty()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +48,9 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = property.address
         }
+        
+        property.latitude
+        property.longitude
     }
     
     public func setupVenue() {
@@ -60,5 +63,8 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = "Loading address..."
         }
+        
+        print(venue.latitude)
+        print(venue.longitude)
     }
 }
