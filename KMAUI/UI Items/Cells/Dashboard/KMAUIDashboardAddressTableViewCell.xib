@@ -27,18 +27,18 @@
                                 </constraints>
                             </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Property address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9A-an-OGK" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="8" width="190" height="22"/>
+                                <rect key="frame" x="60" y="8" width="190" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="U8J-SK-Xi0"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="U8J-SK-Xi0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address string" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Phs-jc-PA1" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="30" width="220" height="22"/>
+                                <rect key="frame" x="60" y="28.5" width="190" height="20.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="8BV-5N-nKO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="8BV-5N-nKO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -57,13 +57,13 @@
                             <constraint firstItem="jI4-h3-Ckn" firstAttribute="leading" secondItem="klL-Ok-z8t" secondAttribute="leading" constant="8" id="9DN-dU-XeC"/>
                             <constraint firstItem="D9A-an-OGK" firstAttribute="top" secondItem="klL-Ok-z8t" secondAttribute="top" constant="8" id="AaA-4t-Pwg"/>
                             <constraint firstItem="D9A-an-OGK" firstAttribute="leading" secondItem="jI4-h3-Ckn" secondAttribute="trailing" constant="8" id="CZL-Ie-NfF"/>
-                            <constraint firstAttribute="trailing" secondItem="Phs-jc-PA1" secondAttribute="trailing" constant="8" id="GKl-U6-GkQ"/>
                             <constraint firstItem="jI4-h3-Ckn" firstAttribute="top" secondItem="klL-Ok-z8t" secondAttribute="top" constant="8" id="IXA-f2-pTW"/>
                             <constraint firstItem="Phs-jc-PA1" firstAttribute="top" secondItem="D9A-an-OGK" secondAttribute="bottom" id="Oh1-TP-CBY"/>
                             <constraint firstAttribute="height" constant="60" id="P62-gh-hLA"/>
                             <constraint firstItem="QFN-Lw-nyM" firstAttribute="centerY" secondItem="klL-Ok-z8t" secondAttribute="centerY" id="X4H-7h-VcO"/>
                             <constraint firstAttribute="bottom" secondItem="jI4-h3-Ckn" secondAttribute="bottom" constant="8" id="eke-no-sAW"/>
                             <constraint firstItem="Phs-jc-PA1" firstAttribute="leading" secondItem="jI4-h3-Ckn" secondAttribute="trailing" constant="8" id="fME-LK-0Uk"/>
+                            <constraint firstItem="QFN-Lw-nyM" firstAttribute="leading" secondItem="Phs-jc-PA1" secondAttribute="trailing" constant="8" id="gvH-oT-ovO"/>
                             <constraint firstAttribute="trailing" secondItem="QFN-Lw-nyM" secondAttribute="trailing" constant="8" id="ira-jf-NcZ"/>
                             <constraint firstItem="QFN-Lw-nyM" firstAttribute="leading" secondItem="D9A-an-OGK" secondAttribute="trailing" constant="8" id="p8l-5R-rTX"/>
                         </constraints>
