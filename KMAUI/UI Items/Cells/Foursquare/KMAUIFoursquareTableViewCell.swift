@@ -71,7 +71,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     
     public func setupCell() {
         nameLabel.text = venue.name
-        detailLabel.text = "\(venue.distance)m, \(venue.category)"
+        detailLabel.text = "\(venue.category), \(venue.distance)m"
 
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         photoImageView.clipsToBounds = true
@@ -126,6 +126,12 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             if venue.rating > 0 {
                 ratingLabel.text = "\(venue.rating)"
                 ratingLabel.alpha = 1
+                ratingLabel.backgroundColor = KMAUIConstants.shared.KMABgGray
+                ratingLabel.textColor = UIColor.white
+                
+                if !venue.ratingColor.isEmpty {
+                    ratingLabel.backgroundColor = KMAUIUtilities.shared.hexStringToUIColor(hex: "#\(venue.ratingColor)")
+                }
             } else {
                 ratingLabel.text = ""
                 ratingLabel.alpha = 0
