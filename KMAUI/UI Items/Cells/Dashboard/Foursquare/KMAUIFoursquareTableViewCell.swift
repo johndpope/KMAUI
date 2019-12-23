@@ -72,6 +72,18 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     public func setupCell() {
         nameLabel.text = venue.name
         detailLabel.text = "\(venue.category), \(venue.distance)m"
+        
+        if !venue.price.isEmpty,
+            let dataFromString = venue.price.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary, let tier = json["tier"]?.int, tier > 0, let currency = json["currency"]?.string {
+            var value = ""
+            
+            for _ in 0..<tier {
+                value += currency
+            }
+            
+            detailLabel.text += ", \(value)"
+        }
 
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         photoImageView.clipsToBounds = true
