@@ -175,7 +175,6 @@
 				859C8B7123981C0200CAFF47 /* KMAUIStatusTableViewCell.xib */,
 				859C8B742398230400CAFF47 /* KMAUISaveButtonTableViewCell.swift */,
 				859C8B752398230400CAFF47 /* KMAUISaveButtonTableViewCell.xib */,
-				85EEC393239E92EB009A6F63 /* KMAUILibraryTableViewCell.swift */,
 				857E933E23B1219200BD271B /* Dashboard */,
 			);
 			path = Cells;
@@ -238,6 +237,7 @@
 		857E933E23B1219200BD271B /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				85EEC393239E92EB009A6F63 /* KMAUILibraryTableViewCell.swift */,
 				85EEC394239E92EB009A6F63 /* KMAUILibraryTableViewCell.xib */,
 				859BB2F323A12F5300CD5ECB /* KMAUIPropertyDataTableViewCell.swift */,
 				859BB2F423A12F5300CD5ECB /* KMAUIPropertyDataTableViewCell.xib */,

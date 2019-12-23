@@ -14,8 +14,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var photoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
-    @IBOutlet public weak var detailLabel: KMAUIInfoLabel!
-    @IBOutlet public weak var addressLabel: UILabel!
+    @IBOutlet public weak var detailLabel: KMAUITextLabel!
+    @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
@@ -63,8 +63,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
             nameLabel.textColor = KMAUIConstants.shared.KMATitleColor
-            detailLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-            addressLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            detailLabel.textColor = KMAUIConstants.shared.KMATextColor
+            addressLabel.textColor = KMAUIConstants.shared.KMATextColor
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }
     }
