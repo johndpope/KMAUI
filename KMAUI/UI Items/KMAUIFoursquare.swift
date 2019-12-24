@@ -442,8 +442,8 @@ public struct KMAFoursquareVenue {
         if !attributes.isEmpty,
             let dataFromString = attributes.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
-            var yesArray = [String]()
-            var noArray = [String]()
+            yesArray = [String]()
+            noArray = [String]()
             
             for group in groups {
                 if let group = group.dictionary, let items = group["items"]?.array, !items.isEmpty {
@@ -461,5 +461,44 @@ public struct KMAFoursquareVenue {
         }
         
         return (yesArray, noArray)
+    }
+    
+    public func getWorkingHours() -> String {
+        var workingHours = ""
+        
+        if !hours.isEmpty,
+            let dataFromString = hours.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+
+            if let timeframes = json["timeframes"]?.array {
+                for timeframe in timeframes {
+                    if let timeframe = timeframe.dictionary {
+                        if let days = timeframe["days"]?.string, let open = timeframe["open"]?.array {
+                            var schedule = ""
+                            
+                            for openObject in open {
+                                if let openObject = openObject.dictionary, let renderedTime = openObject["renderedTime"]?.string {
+                                    if schedule.isEmpty {
+                                        schedule = renderedTime
+                                    } else {
+                                        schedule += ", " + renderedTime
+                                    }
+                                }
+                            }
+                            
+                            let dayString = days + ": " + schedule
+                            
+                            if workingHours.isEmpty {
+                                workingHours = dayString
+                            } else {
+                                workingHours += "\n" + dayString
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return workingHours
     }
 }

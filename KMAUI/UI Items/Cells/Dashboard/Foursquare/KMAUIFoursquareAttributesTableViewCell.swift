@@ -63,40 +63,7 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     
     public func setupWorkingHours() {
         titleLabel.text = "Working hours"
-        var workingHours = ""
-        
-        if !venue.hours.isEmpty,
-            let dataFromString = venue.hours.data(using: .utf8, allowLossyConversion: false),
-            let json = try? JSON(data: dataFromString).dictionary {
-
-            if let timeframes = json["timeframes"]?.array {
-                for timeframe in timeframes {
-                    if let timeframe = timeframe.dictionary {
-                        if let days = timeframe["days"]?.string, let open = timeframe["open"]?.array {
-                            var schedule = ""
-                            
-                            for openObject in open {
-                                if let openObject = openObject.dictionary, let renderedTime = openObject["renderedTime"]?.string {
-                                    if schedule.isEmpty {
-                                        schedule = renderedTime
-                                    } else {
-                                        schedule += ", " + renderedTime
-                                    }
-                                }
-                            }
-                            
-                            let dayString = days + ": " + schedule
-                            
-                            if workingHours.isEmpty {
-                                workingHours = dayString
-                            } else {
-                                workingHours += "\n" + dayString
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        let workingHours = venue.getWorkingHours()
         
         if workingHours.isEmpty {
             attributesLabel.text = "No data available"
