@@ -501,4 +501,64 @@ public struct KMAFoursquareVenue {
         
         return workingHours
     }
+    
+    public func getTip() -> (String, String, String, String,String) {
+        var tipImageString = ""
+        var createdAtString = ""
+        var authorString = ""
+        var authorImageString = ""
+        var tipString = ""
+        
+        if !tips.isEmpty,
+            let dataFromString = tips.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+            
+            if let groups = json["groups"]?.array {
+                for group in groups {
+                    if let group = group.dictionary, let items = group["items"]?.array {
+                        for item in items {
+                            if let item = item.dictionary {
+                                // photo url
+                                if let photourl = item["photourl"]?.string, let _ = URL(string: photourl) {
+                                    tipImageString = photourl
+                                }
+                                // created at
+                                if let createdAt = item["createdAt"]?.int {
+                                    createdAtString =  KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: Double(createdAt)))
+                                }
+                                // user
+                                if let user = item["user"]?.dictionary {
+                                    // firstName
+                                    if let firstName = user["firstName"]?.string {
+                                        print("firstName: \(firstName)")
+                                        authorString = firstName
+                                        
+                                        // lastName
+                                        if let lastName = user["lastName"]?.string {
+                                            authorString = firstName + " " + lastName
+                                        }
+                                    }
+                                    
+                                    //
+                                    if let photo = user["photo"]?.dictionary {
+                                        if let prefix = photo["prefix"]?.string, let suffix = photo["suffix"]?.string {
+                                            if let _ = URL(string: "\(prefix)44\(suffix)") {
+                                                authorImageString = "\(prefix)44\(suffix)"
+                                            }
+                                        }
+                                    }
+                                }
+                                // text
+                                if let text = item["text"]?.string {
+                                    tipString = text
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (tipImageString, createdAtString, authorString, authorImageString, tipString)
+    }
 }

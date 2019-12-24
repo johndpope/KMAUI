@@ -44,62 +44,32 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        tipLabel.text = ""
-        authorLabel.text = ""
-        createdAtLabel.text = ""
-        tipImageViewHeight.constant = 0
+        let tipData = venue.getTip()
         
-        if !venue.tips.isEmpty,
-            let dataFromString = venue.tips.data(using: .utf8, allowLossyConversion: false),
-            let json = try? JSON(data: dataFromString).dictionary {
-            
-            if let groups = json["groups"]?.array {
-                for group in groups {
-                    if let group = group.dictionary, let items = group["items"]?.array {
-                        for item in items {
-                            if let item = item.dictionary {
-                                // photo url
-                                if let photourl = item["photourl"]?.string, let url = URL(string: photourl) {
-                                    tipImageView.kf.indicatorType = .activity
-                                    tipImageView.kf.setImage(with: url)
-                                    tipImageViewHeight.constant = (KMAUIConstants.shared.KMAScreenWidth - 64) * 2 / 3
-                                }
-                                // created at
-                                if let createdAt = item["createdAt"]?.int {
-                                    createdAtLabel.text =  KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: Double(createdAt)))
-                                }
-                                // user
-                                if let user = item["user"]?.dictionary {
-                                    // firstName
-                                    if let firstName = user["firstName"]?.string {
-                                        print("firstName: \(firstName)")
-                                        authorLabel.text = firstName
-                                        
-                                        // lastName
-                                        if let lastName = user["lastName"]?.string {
-                                            authorLabel.text = firstName + " " + lastName
-                                        }
-                                    }
-                                    
-                                    //
-                                    if let photo = user["photo"]?.dictionary {
-                                        if let prefix = photo["prefix"]?.string, let suffix = photo["suffix"]?.string {
-                                            if let url = URL(string: "\(prefix)44\(suffix)") {
-                                                authorImageView.kf.indicatorType = .activity
-                                                authorImageView.kf.setImage(with: url)
-                                            }
-                                        }
-                                    }
-                                }
-                                // text
-                                if let text = item["text"]?.string {
-                                    tipLabel.text = text
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        // Tip image
+        if !tipData.0.isEmpty, let url = URL(string: tipData.0) {
+            tipImageView.kf.indicatorType = .activity
+            tipImageView.kf.setImage(with: url)
+            tipImageViewHeight.constant = (KMAUIConstants.shared.KMAScreenWidth - 64) * 2 / 3
+        } else {
+            tipImageViewHeight.constant = 0
         }
+        
+        // Created at
+        createdAtLabel.text = tipData.1
+        
+        // Author
+        authorLabel.text = tipData.2
+        
+        // Author image
+        if !tipData.3.isEmpty, let url = URL(string: tipData.3) {
+            authorImageView.kf.indicatorType = .activity
+            authorImageView.kf.setImage(with: url)
+        }
+        
+        // Tip
+        tipLabel.text = tipData.4
     }
 }
+
+
