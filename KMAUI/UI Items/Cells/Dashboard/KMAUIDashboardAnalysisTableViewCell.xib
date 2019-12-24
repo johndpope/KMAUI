@@ -116,7 +116,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="collectionView" destination="Vaj-g3-pbN" id="OKE-H6-GsW"/>
+                <outlet property="collectionView" destination="Vaj-g3-pbN" id="49B-db-KJO"/>
                 <outlet property="collectionViewTop" destination="8wp-jP-m3J" id="f7x-7v-WXw"/>
                 <outlet property="rentLabel" destination="K0A-Hi-8WA" id="HZG-fC-FV0"/>
                 <outlet property="rentTitleLabel" destination="rrh-ca-VwM" id="6Yh-cB-n8C"/>

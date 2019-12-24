@@ -10,12 +10,12 @@ import UIKit
 
 public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var rentTitleLabel: KMAUITextLabel!
+    @IBOutlet public weak var rentTitleLabel: KMAUITextLabel!
     @IBOutlet public weak var rentLabel: KMAUITitleLabel!
-    @IBOutlet weak var saleTitleLabel: KMAUITextLabel!
+    @IBOutlet public weak var saleTitleLabel: KMAUITextLabel!
     @IBOutlet public weak var saleLabel: KMAUITitleLabel!
     @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
-    @IBOutlet public weak var collectionView: UICollectionView!
+    @IBOutlet public weak var collectionView: KMAUICollectionView!
     @IBOutlet public weak var collectionViewTop: NSLayoutConstraint!
     
     // 22 8 22 8
