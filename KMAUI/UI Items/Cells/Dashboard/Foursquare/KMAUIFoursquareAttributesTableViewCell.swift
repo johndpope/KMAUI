@@ -30,8 +30,9 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setupCell() {
-        if !venue.attributes.isEmpty, let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
+    public func setupAttributes() {
+        if !venue.attributes.isEmpty,
+            let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
             var yesArray = [String]()
             var noArray = [String]()
@@ -75,6 +76,50 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
                 
                 attributesLabel.text = attributesString
             }
+        }
+    }
+    
+    public func setupWorkingHours() {
+        titleLabel.text = "Working hours"
+        var workingHours = ""
+        
+        if !venue.hours.isEmpty,
+            let dataFromString = venue.hours.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+
+            if let timeframes = json["timeframes"]?.array {
+                for timeframe in timeframes {
+                    if let timeframe = timeframe.dictionary {
+                        if let days = timeframe["days"]?.string, let open = timeframe["open"]?.array {
+                            var schedule = ""
+                            
+                            for openObject in open {
+                                if let openObject = openObject.dictionary, let renderedTime = openObject["renderedTime"]?.string {
+                                    if schedule.isEmpty {
+                                        schedule = renderedTime
+                                    } else {
+                                        schedule += ", " + renderedTime
+                                    }
+                                }
+                            }
+                            
+                            let dayString = days + ": " + schedule
+                            
+                            if workingHours.isEmpty {
+                                workingHours = dayString
+                            } else {
+                                workingHours += "\n" + dayString
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if workingHours.isEmpty {
+            attributesLabel.text = "No data available"
+        } else {
+            attributesLabel.text = workingHours
         }
     }
 }
