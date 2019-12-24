@@ -32,6 +32,8 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     
     public func setupAttributes() {
         let attributes = venue.getAttributes()
+        let yesArray = attributes.0
+        let noArray = attributes.1
         titleLabel.text = "Services"
         
         if yesArray.isEmpty, noArray.isEmpty {
