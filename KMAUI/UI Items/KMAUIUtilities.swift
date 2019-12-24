@@ -244,7 +244,7 @@ public class KMAUIUtilities {
      Get a date string in a short format
     */
     
-    func formatStringShort(date: Date) -> String {
+    public func formatStringShort(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
@@ -255,7 +255,7 @@ public class KMAUIUtilities {
      Converts the date into UTC string.
      */
     
-    func UTCStringFrom(date: Date, dateOnly: Bool? = nil) -> String {
+    public func UTCStringFrom(date: Date, dateOnly: Bool? = nil) -> String {
         if let utcTimeZone = TimeZone(abbreviation: "UTC") {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = utcTimeZone
@@ -275,7 +275,7 @@ public class KMAUIUtilities {
      Converts UTC string to date.
      */
     
-    func dateFromUTCString(string: String, dateOnly: Bool? = nil) -> Date {
+    public func dateFromUTCString(string: String, dateOnly: Bool? = nil) -> Date {
         if let utcTimeZone = TimeZone(abbreviation: "UTC") {
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = utcTimeZone
