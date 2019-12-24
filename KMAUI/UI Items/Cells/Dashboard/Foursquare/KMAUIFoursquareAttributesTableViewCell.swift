@@ -31,51 +31,31 @@ public class KMAUIFoursquareAttributesTableViewCell: UITableViewCell {
     }
     
     public func setupAttributes() {
-        if !venue.attributes.isEmpty,
-            let dataFromString = venue.attributes.data(using: .utf8, allowLossyConversion: false),
-            let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
-            var yesArray = [String]()
-            var noArray = [String]()
+        let attributes = venue.getAttributes()
+        titleLabel.text = "Services"
+        
+        if yesArray.isEmpty, noArray.isEmpty {
+            attributesLabel.text = "No data available"
+        } else {
+            var attributesString = ""
             
-            for group in groups {
-                if let group = group.dictionary, let items = group["items"]?.array, !items.isEmpty {
-                    for item in items {
-                        if let item = item.dictionary, let displayName = item["displayName"]?.string, let displayValue = item["displayValue"]?.string {
-                            if displayValue.starts(with: "Yes") {
-                                yesArray.append(displayName)
-                            } else if displayValue.starts(with: "No") {
-                                noArray.append(displayName)
-                            }
-                        }
-                    }
+            for yesObject in yesArray {
+                if attributesString.isEmpty {
+                    attributesString = "✓ " + yesObject
+                } else {
+                    attributesString += "\n" + "✓ " + yesObject
                 }
             }
             
-            titleLabel.text = "Services"
-            
-            if yesArray.isEmpty, noArray.isEmpty {
-                attributesLabel.text = "No data available"
-            } else {
-                var attributesString = ""
-                
-                for yesObject in yesArray {
-                    if attributesString.isEmpty {
-                        attributesString = "✓ " + yesObject
-                    } else {
-                        attributesString += "\n" + "✓ " + yesObject
-                    }
+            for noObject in noArray {
+                if attributesString.isEmpty {
+                    attributesString = "✗ " + noObject
+                } else {
+                    attributesString += "\n" + "✗ " + noObject
                 }
-                
-                for noObject in noArray {
-                    if attributesString.isEmpty {
-                        attributesString = "✗ " + noObject
-                    } else {
-                        attributesString += "\n" + "✗ " + noObject
-                    }
-                }
-                
-                attributesLabel.text = attributesString
             }
+            
+            attributesLabel.text = attributesString
         }
     }
     

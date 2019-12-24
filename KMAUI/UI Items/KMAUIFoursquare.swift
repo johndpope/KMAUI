@@ -434,4 +434,32 @@ public struct KMAFoursquareVenue {
         
         return (imageString, captionString)
     }
+    
+    public func getAttributes() -> ([String], [String]) {
+        var yesArray = [String]()
+        var noArray = [String]()
+        
+        if !attributes.isEmpty,
+            let dataFromString = attributes.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary, let groups = json["groups"]?.array {
+            var yesArray = [String]()
+            var noArray = [String]()
+            
+            for group in groups {
+                if let group = group.dictionary, let items = group["items"]?.array, !items.isEmpty {
+                    for item in items {
+                        if let item = item.dictionary, let displayName = item["displayName"]?.string, let displayValue = item["displayValue"]?.string {
+                            if displayValue.starts(with: "Yes") {
+                                yesArray.append(displayName)
+                            } else if displayValue.starts(with: "No") {
+                                noArray.append(displayName)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return (yesArray, noArray)
+    }
 }
