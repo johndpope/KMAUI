@@ -77,6 +77,28 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupVenue() {
+        itemImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+        itemImageView.kf.indicatorType = .activity
         
+        if !venue.prefix.isEmpty, !venue.suffix.isEmpty, let url = URL(string: venue.prefix + "150x113" + venue.suffix) {
+            itemImageView.kf.setImage(with: url)
+        } else if !venue.categoryPrefix.isEmpty, !venue.categorySuffix.isEmpty, let url = URL(string: venue.categoryPrefix + "44" + venue.categorySuffix) {
+            itemImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.itemImageView.image = value.image.withRenderingMode(.alwaysTemplate)
+                case .failure(let error):
+                    print(error) // The error happens
+                }
+            }
+        }
+
+        nameLabel.text = venue.name
+        
+        priceLabel.text = "\(venue.category), \(venue.distance)m"
+        priceLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        priceLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
+        priceLabel.clipsToBounds = true
+        priceLabel.alpha = 1
     }
 }
