@@ -97,9 +97,6 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         // Highlight annotation
         mapView.selectAnnotation(annotation, animated: true)
         mapView.setCenter(annotation.coordinate, animated: true)
-        
-        let span: MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let region: MKCoordinateRegion = MKCoordinateRegionMake(annotation.coordinate, span)
-        self.mapView.setRegion(region, animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 100, longitudinalMeters: 100), animated: true)
     }
 }
