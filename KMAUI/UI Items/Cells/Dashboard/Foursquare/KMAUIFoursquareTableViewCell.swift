@@ -37,6 +37,14 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         ratingLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         ratingLabel.clipsToBounds = true
         
+        // Setup the image view
+        photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        photoImageView.clipsToBounds = true
+        photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        photoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        photoImageView.layer.borderWidth = 1
+        photoImageView.kf.indicatorType = .activity
+        
         // No selection required
         selectionStyle = .none
     }
@@ -71,32 +79,16 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        nameLabel.text = venue.name
-        detailLabel.text = "\(venue.category), \(venue.distance)m"
-        
-        if !venue.price.isEmpty,
-            let dataFromString = venue.price.data(using: .utf8, allowLossyConversion: false),
-            let json = try? JSON(data: dataFromString).dictionary, let tier = json["tier"]?.int, tier > 0, let currency = json["currency"]?.string {
-            var value = ""
-            
-            for _ in 0..<tier {
-                value += currency
-            }
-            
-            detailLabel.text = "\(venue.category), \(venue.distance)m, \(value)"
-        }
-        
-        photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        photoImageView.clipsToBounds = true
-        photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        photoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
-        photoImageView.layer.borderWidth = 1
-        photoImageView.kf.indicatorType = .activity
-        
         // Placeholder image for icon
         if let placeholderImage = UIImage(named: "venuePlaceholderIcon")?.withRenderingMode(.alwaysTemplate) {
             photoImageView.image = placeholderImage
         }
+        
+        // name
+        nameLabel.text = venue.name
+        
+        // details
+        detailLabel.text =  venue.getDetails()
         
         if canHighlight {
             // List mode

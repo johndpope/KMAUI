@@ -265,201 +265,126 @@ public struct KMAFoursquareVenue {
                 // createdAt
                 if let createdAt = venueObject["createdAt"]?.int {
                     self.createdAt = Date(timeIntervalSince1970: Double(createdAt))
-                    //                                print("Created at: \(createdAt), \(Date(timeIntervalSince1970: Double(createdAt)))")
-                    //                            } else {
-                    //                                print("No created at")
                 }
                 
                 // contact
                 if let contact = venueObject["contact"]?.rawString() {
                     self.contact = contact
-                    //                                print("Contact: \(contact)")
-                    //                            } else {
-                    //                                print("No contact")
                 }
                 
                 // ratingSignals
                 if let ratingSignals = venueObject["ratingSignals"]?.int {
                     self.ratingSignals = ratingSignals
-                    //                                print("Rating signals: \(ratingSignals)")
-                    //                            } else {
-                    //                                print("No rating signals")
                 }
                 
                 // likes
                 if let likes = venueObject["likes"]?.dictionary, let likesCount = likes["count"]?.int {
                     self.likes = likesCount
-                    //                                print("Likes: \(likesCount)")
-                    //                            } else {
-                    //                                print("No likes")
                 }
                 
                 // photos
                 if let photos = venueObject["photos"]?.rawString() {
                     self.photos = photos
-                    //                                print("Photos: \(photos)")
-                    //                            } else {
-                    //                                print("No photos")
                 }
                 
                 // timeZone
                 if let timeZone = venueObject["timeZone"]?.string {
                     self.timeZone = timeZone
-                    //                                print("Time zone: \(timeZone)")
-                    //                            } else {
-                    //                                print("No time zone")
                 }
                 
                 // categories
                 if let categories = venueObject["categories"]?.rawString() {
                     self.categories = categories
-                    //                                print("Categories: \(categories)")
-                    //                            } else {
-                    //                                print("No categories")
                 }
                 
                 // hours
                 if let hours = venueObject["hours"]?.rawString() {
                     self.hours = hours
-                    //                                print("Hours: \(hours)")
-                    //                            } else {
-                    //                                print("No hours")
                 }
                 
                 // url
                 if let url = venueObject["url"]?.string {
                     self.url = url
-                    //                                print("URL: \(url)")
-                    //                            } else {
-                    //                                print("No url")
                 }
                 
                 // shortUrl
                 if let shortUrl = venueObject["shortUrl"]?.string {
                     self.shortUrl = shortUrl
-                    //                                print("Short URL: \(shortUrl)")
-                    //                            } else {
-                    //                                print("No short URL")
                 }
                 
                 // tips
                 if let tips = venueObject["tips"]?.rawString() {
                     self.tips = tips
-                    //                                print("Tips: \(tips)")
-                    //                            } else {
-                    //                                print("No tips")
                 }
                 
                 // popular
                 if let popular = venueObject["popular"]?.rawString() {
                     self.popular = popular
-                    //                                print("Popular: \(popular)")
-                    //                            } else {
-                    //                                print("No popular")
                 }
                 
                 // hasMenu
                 if let hasMenu = venueObject["hasMenu"]?.bool {
                     self.hasMenu = hasMenu
-                    //                                print("Has menu: \(hasMenu)")
-                    //                            } else {
-                    //                                print("No menu")
                 }
                 
                 // menu
                 if let menu = venueObject["menu"]?.rawString() {
                     self.menu = menu
-                    //            print("Menu: \(menu)")
-                    //        } else {
-                    //            print("No menu")
                 }
                 
                 // name
                 if let name = venueObject["name"]?.string {
                     self.name = name
-                    //                                print("Name: \(name)")
-                    //                            } else {
-                    //                                print("No name")
                 }
                 
                 // rating
                 if let rating = venueObject["rating"]?.double {
                     self.rating = rating
-                    //                                print("Rating: \(rating)")
-                    //                            } else {
-                    //                                print("No rating")
                 }
                 
                 // canonicalUrl
                 if let canonicalUrl = venueObject["canonicalUrl"]?.string {
                     self.canonicalUrl = canonicalUrl
-                    //                                print("Canonical URL: \(canonicalUrl)")
-                    //                            } else {
-                    //                                print("No canonical URL")
                 }
                 
                 // location
                 if let location = venueObject["location"]?.rawString() {
                     self.location = location
-                    //                                print("Location: \(location)")
-                    //                            } else {
-                    //                                print("No location")
                 }
                 
                 // ratingColor
                 if let ratingColor = venueObject["ratingColor"]?.string {
                     self.ratingColor = ratingColor
-                    //                                print("Rating color: \(ratingColor)")
-                    //                            } else {
-                    //                                print("No rating color")
                 }
                 
                 // bestPhoto
                 if let bestPhoto = venueObject["bestPhoto"]?.rawString() {
                     self.bestPhoto = bestPhoto
-                    //                                print("Best photo: \(bestPhoto)")
-                    //                            } else {
-                    //                                print("No best photo")
                 }
                 
                 // price
                 if let price = venueObject["price"]?.rawString() {
                     self.price = price
-                    //                                print("Price: \(price)")
-                    //                            } else {
-                    //                                print("No price")
                 }
                 
                 // attributes
                 if let attributes = venueObject["attributes"]?.rawString() {
                     self.attributes = attributes
-                    //                                print("Attributes: \(attributes)")
-                    //                            } else {
-                    //                                print("No attributes")
                 }
                 
                 // description
                 if let description = venueObject["description"]?.string {
                     self.description = description
-                    //                                 print("Description: \(description)")
-                    //                             } else {
-                    //                                 print("No description")
                 }
                 
                 // hierarchy
                 if let hierarchy = venueObject["hierarchy"]?.rawString() {
                     self.hierarchy = hierarchy
-                    //                                 print("Hierarchy: \(hierarchy)")
-                    //                             } else {
-                    //                                 print("No hierarchy")
                 }
                 
                 // parent
                 if let parent = venueObject["parent"]?.rawString() {
                     self.parent = parent
-                    //                                 print("Parent: \(parent)")
-                    //                             } else {
-                    //                                 print("No parent")
                 }
                 
                 // details loaded
@@ -467,29 +392,46 @@ public struct KMAFoursquareVenue {
             }
         }
     }
+    
+    // MARK: - Data methods
+    
+    public func getDetails() -> String {
+        var details = "\(category), \(distance)m"
+        
+        if !price.isEmpty,
+            let dataFromString = price.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary, let tier = json["tier"]?.int, tier > 0, let currency = json["currency"]?.string {
+            var value = ""
+            
+            for _ in 0..<tier {
+                value += currency
+            }
+            
+            details = "\(category), \(distance)m, \(value)"
+        }
+        
+        return details
+    }
+    
+    public func getImageString() -> (String, String) {
+        var imageString = ""
+        var captionString = ""
+        
+        if !bestPhoto.isEmpty, let dataFromString = bestPhoto.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+            // loading image from parts
+            if let prefix = json["prefix"]?.string, let suffix = json["suffix"]?.string, let width = json["width"]?.int, let height = json["height"]?.int {
+                let urlString = prefix + "\(width)x\(height)" + suffix
+                imageString = urlString
+            }
+            // loading the caption, image source
+            if let source = json["source"]?.dictionary, let name = source["name"]?.string {
+                captionString = name
+            }
+        } else  if !prefix.isEmpty, !suffix.isEmpty {
+            imageString = prefix + "288x193" + suffix
+        }
+        
+        return (imageString, captionString)
+    }
 }
-
-/*
- if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
- let json = try? JSON(data: dataFromString).dictionary {
- 
- /*let usedKeys = ["createdAt", "contact", "ratingSignals", "likes", "photos", "timeZone", "categories", "hours", "url", "tips", "popular", "shortUrl", "hasMenu", "name", "menu", "rating", "canonicalUrl", "location", "ratingColor", "bestPhoto", "price", "attributes", "description", "hierarchy", "parent"]
- let notNeededKeys = ["pageUpdates", "colors", "allowMenuUrlEdit", "dislike", "verified", "reasons", "beenHere", "hereNow", "stats", "ok", "inbox", "listed", "id", "specials", "page", "venuePage", "storeId"]
- print("TOTAL KEYS: \(venueObject.keys.count)")
- 
- for (key, value) in venueObject {
- if !usedKeys.contains(key), !notNeededKeys.contains(key) {
- print("\nKEY: \(key), VALUE: \(value)")
- }
- }*/
- 
- if let response = json["response"]?.dictionary, let venueObject = response["venue"]?.dictionary {
- 
- //
- //                            print("\n\(venueObject)\n")
- //
- //                            var venue = KMAFoursquareVenue()
- //                            venue.fillFrom(venue: venueObject)
- //                            print(venue)
- }
- }*/

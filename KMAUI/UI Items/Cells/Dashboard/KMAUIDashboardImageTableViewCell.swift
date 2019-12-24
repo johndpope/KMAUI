@@ -42,8 +42,6 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-//        print("Load image: \(imageString)")
-        
         // Round corners for image view
         propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
         propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
@@ -71,24 +69,11 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
     }
     
     public func setupVenue() {
-        imageString = ""
-        captionString = ""
-        
-        if !venue.bestPhoto.isEmpty, let dataFromString = venue.bestPhoto.data(using: .utf8, allowLossyConversion: false),
-            let json = try? JSON(data: dataFromString).dictionary {
-            // loading image from parts
-            if let prefix = json["prefix"]?.string, let suffix = json["suffix"]?.string, let width = json["width"]?.int, let height = json["height"]?.int {
-                let urlString = prefix + "\(width)x\(height)" + suffix
-                imageString = urlString
-            }
-            // loading the caption, image source
-            if let source = json["source"]?.dictionary, let name = source["name"]?.string {
-                captionString = name
-            }
-        } else  if !venue.prefix.isEmpty, !venue.suffix.isEmpty {
-            imageString = venue.prefix + "288x193" + venue.suffix
-        }
-        
+        // Getting an image URL and a caption string
+        let imageData = venue.getImageString()
+        imageString = imageData.0
+        captionString = imageData.1
+        // Setting up the UI
         setupCell()
     }
 }
