@@ -13,7 +13,7 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var mapView: MKMapView!
-    @IBOutlet public weak var addressLabel: KMAUITitleLabel!
+    @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
