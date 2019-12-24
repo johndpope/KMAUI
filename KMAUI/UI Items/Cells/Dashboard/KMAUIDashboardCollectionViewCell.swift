@@ -9,21 +9,22 @@
 import UIKit
 import Kingfisher
 
-public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
+public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
-    @IBOutlet public weak var propertyImageView: UIImageView!
+    @IBOutlet public weak var itemImageView: UIImageView!
     @IBOutlet public weak var priceLabel: KMAUITextLabel!
-    @IBOutlet public weak var propertyInfoLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var nameLabel: KMAUITextLabel!
     
     // MARK: - Variables
-    public var propertyObject = KMAZooplaProperty()
+    public var property = KMAZooplaProperty()
+    public var venue = KMAFoursquareVenue()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Round corners for image view
-        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+        itemImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        itemImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
 
         layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
@@ -34,31 +35,31 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
     public func setHighlight(mode: Bool) {
         if mode {
             backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
-            propertyInfoLabel.textColor = UIColor.white
+            nameLabel.textColor = UIColor.white
             layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
             layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
         } else {
             backgroundColor = KMAUIConstants.shared.KMABgGray
-            propertyInfoLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            nameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
             layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         }
     }
     
     /**
-     Setup the data for cell
+     Setup the data for property
      */
     
-    public func setupCell() {
-        propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
+    public func setupProperty() {
+        itemImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
         
-        if let url = URL(string: propertyObject.image150x113) {
-            propertyImageView.kf.indicatorType = .activity
-            propertyImageView.kf.setImage(with: url)
+        if let url = URL(string: property.image150x113) {
+            itemImageView.kf.indicatorType = .activity
+            itemImageView.kf.setImage(with: url)
         }
         
-        let detailStrings = propertyObject.getPropertyDescription()
-        propertyInfoLabel.text = detailStrings.0
+        let detailStrings = property.getPropertyDescription()
+        nameLabel.text = detailStrings.0
         
         if detailStrings.1.isEmpty {
             priceLabel.alpha = 0
@@ -69,5 +70,13 @@ public class KMAUIZooplaPropertyCollectionViewCell: UICollectionViewCell {
             priceLabel.clipsToBounds = true
             priceLabel.alpha = 1
         }
+    }
+    
+    /**
+     Setup the data for
+     */
+    
+    public func setupVenue() {
+        
     }
 }

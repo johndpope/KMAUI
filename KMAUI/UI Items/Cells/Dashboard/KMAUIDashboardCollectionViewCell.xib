@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIZooplaPropertyCell" id="gTV-IL-0wX" customClass="KMAUIZooplaPropertyCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIZooplaPropertyCell" id="gTV-IL-0wX" customClass="KMAUIDashboardCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="150" height="157"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -58,9 +58,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="itemImageView" destination="HTx-d5-0vm" id="eM6-So-RaV"/>
+                <outlet property="nameLabel" destination="kuI-mj-ZfU" id="Nef-Vf-DMF"/>
                 <outlet property="priceLabel" destination="37D-ip-V2M" id="7UB-t6-bcK"/>
-                <outlet property="propertyImageView" destination="HTx-d5-0vm" id="55E-df-EOw"/>
-                <outlet property="propertyInfoLabel" destination="kuI-mj-ZfU" id="RmD-Va-eY1"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </collectionViewCell>

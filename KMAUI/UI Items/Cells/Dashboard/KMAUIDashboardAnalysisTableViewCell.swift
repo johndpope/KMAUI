@@ -23,6 +23,7 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var buttomPressedCallback: ((Bool) -> Void)?
     public var property = [KMAZooplaProperty]()
+    public var venues = [KMAFoursquareVenue]()
     
     // MARK: - Cell methods
     
