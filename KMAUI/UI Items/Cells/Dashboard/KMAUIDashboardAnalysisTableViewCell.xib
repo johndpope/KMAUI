@@ -117,9 +117,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="Vaj-g3-pbN" id="OKE-H6-GsW"/>
+                <outlet property="collectionViewTop" destination="8wp-jP-m3J" id="f7x-7v-WXw"/>
                 <outlet property="rentLabel" destination="K0A-Hi-8WA" id="HZG-fC-FV0"/>
+                <outlet property="rentTitleLabel" destination="rrh-ca-VwM" id="6Yh-cB-n8C"/>
                 <outlet property="reviewButton" destination="xEw-Z2-CVD" id="8eA-aj-IkU"/>
                 <outlet property="saleLabel" destination="WoV-Mq-3aB" id="oY4-oK-PNN"/>
+                <outlet property="saleTitleLabel" destination="tFl-bJ-Frh" id="PSH-Sp-Zh9"/>
             </connections>
             <point key="canvasLocation" x="-69.565217391304358" y="-9.7098214285714288"/>
         </tableViewCell>

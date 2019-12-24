@@ -249,6 +249,8 @@
 				85DD748B23ABFFF900CC38B9 /* KMAUIDashboardImageTableViewCell.xib */,
 				857E933F23B124DA00BD271B /* KMAUIDashboardAddressTableViewCell.swift */,
 				857E934023B124DA00BD271B /* KMAUIDashboardAddressTableViewCell.xib */,
+				85E0B32123A813A200547786 /* KMAUIDashboardAnalysisTableViewCell.swift */,
+				85E0B32223A813A200547786 /* KMAUIDashboardAnalysisTableViewCell.xib */,
 				857E933D23B105A700BD271B /* AccuWeather */,
 				850642E123AD026C00389580 /* Foursquare */,
 				85AFA45923ABC82C009FE9E6 /* Zoopla */,
@@ -267,8 +269,6 @@
 		85AFA45923ABC82C009FE9E6 /* Zoopla */ = {
 			isa = PBXGroup;
 			children = (
-				85E0B32123A813A200547786 /* KMAUIDashboardAnalysisTableViewCell.swift */,
-				85E0B32223A813A200547786 /* KMAUIDashboardAnalysisTableViewCell.xib */,
 				85113EAA23A8D96D0087DD3E /* KMAUIZooplaPropertyCollectionViewCell.swift */,
 				85113EAB23A8D96D0087DD3E /* KMAUIZooplaPropertyCollectionViewCell.xib */,
 				85AFA45A23ABC943009FE9E6 /* KMAUIZooplaPropertyInfoTableViewCell.swift */,
