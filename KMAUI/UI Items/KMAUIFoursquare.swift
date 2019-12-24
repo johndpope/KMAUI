@@ -45,17 +45,9 @@ public class KMAUIFoursquare {
                 var venueObject = KMAFoursquareVenue()
                 venueObject.fillFrom(venue: venue)
                 foursquareVenues.append(venueObject)
-                
-                /*
-                // Currently, let's limit the venues count to 5
-                if foursquareVenues.count == 5 {
-                    break
-                }*/
             }
         }
-        
-        print("Venues loaded: \(foursquareVenues.count)")
-        
+
         return foursquareVenues
     }
     
