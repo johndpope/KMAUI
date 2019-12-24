@@ -18,7 +18,7 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
     @IBOutlet public weak var tipLabel: KMAUITextLabel!
 
     // MARK: - Cell methods
-    var venue = KMAFoursquareVenue()
+    public var venue = KMAFoursquareVenue()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
