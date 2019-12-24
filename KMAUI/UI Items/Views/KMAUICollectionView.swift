@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUICollectionView: UICollectionView {
     // MARK: - Variables
-    var type = ""
+    public var type = ""
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
