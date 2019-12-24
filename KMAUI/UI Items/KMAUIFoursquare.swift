@@ -530,7 +530,6 @@ public struct KMAFoursquareVenue {
                                 if let user = item["user"]?.dictionary {
                                     // firstName
                                     if let firstName = user["firstName"]?.string {
-                                        print("firstName: \(firstName)")
                                         authorString = firstName
                                         
                                         // lastName
