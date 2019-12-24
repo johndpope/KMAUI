@@ -97,7 +97,7 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
 
         nameLabel.text = venue.name
         
-        priceLabel.text = "\(venue.distance)m" //"\(venue.category), \(venue.distance)m"
+        priceLabel.text = " \(venue.distance)m "
         priceLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         priceLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner]
         priceLabel.clipsToBounds = true
