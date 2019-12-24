@@ -46,12 +46,15 @@ public class KMAUIFoursquare {
                 venueObject.fillFrom(venue: venue)
                 foursquareVenues.append(venueObject)
                 
+                /*
                 // Currently, let's limit the venues count to 5
                 if foursquareVenues.count == 5 {
                     break
-                }
+                }*/
             }
         }
+        
+        print("Venues loaded: \(foursquareVenues.count)")
         
         return foursquareVenues
     }
@@ -61,8 +64,8 @@ public class KMAUIFoursquare {
      */
     
     public func foursquareVenues(location: String, completion: @escaping (_ places: [KMAFoursquareVenue], _ jsonString: String, _ error: String)->()) {
-        let requestString = "https://api.foursquare.com/v2/search/recommendations?ll=\(location)&radius=1000&categoryId=4d4b7105d754a06374d81259&limit=10&openNow=true&intent=food&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
-        
+        let requestString =  "https://api.foursquare.com/v2/search/recommendations?ll=\(location)&radius=1000&categoryId=4d4b7105d754a06374d81259&openNow=true&intent=food&client_id=\(KMAUIConstants.shared.foursquareClientKey)&client_secret=\(KMAUIConstants.shared.foursquareClientSecret)&v=\(KMAUIFoursquare.shared.getVersion())"
+        // &limit=10
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
                 do {
