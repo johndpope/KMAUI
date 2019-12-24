@@ -36,7 +36,7 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
@@ -67,6 +67,8 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = property.address
         }
+        
+        setupPin(latitude: property.latitude, longitude: property.longitude)
     }
     
     public func setupVenue() {
@@ -79,5 +81,19 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
         } else {
             addressLabel.text = "Loading address..."
         }
+        
+        setupPin(latitude: venue.latitude, longitude: venue.longitude)
+    }
+    
+    public func setupPin(latitude: Double, longitude: Double) {
+        // Remove annotations
+        mapView.removeAnnotations(mapView.annotations)
+        // Add an annotation.
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mapView.addAnnotation(annotation)
+        // Highlight annotation
+        mapView.selectAnnotation(annotation, animated: true)
+        mapView.setCenter(annotation.coordinate, animated: true)
     }
 }
