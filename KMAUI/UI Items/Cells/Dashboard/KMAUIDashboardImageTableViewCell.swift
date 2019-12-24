@@ -42,7 +42,7 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        print("Load image: \(imageString)")
+//        print("Load image: \(imageString)")
         
         // Round corners for image view
         propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray

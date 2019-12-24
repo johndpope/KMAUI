@@ -237,6 +237,61 @@ public class KMAUIUtilities {
             alpha: CGFloat(1.0)
         )
     }
+    
+    // MARK: - DateFormatter methods
+    
+    /**
+     Get a date string in a short format
+    */
+    
+    func formatStringShort(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    /**
+     Converts the date into UTC string.
+     */
+    
+    func UTCStringFrom(date: Date, dateOnly: Bool? = nil) -> String {
+        if let utcTimeZone = TimeZone(abbreviation: "UTC") {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = utcTimeZone
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            if let dateOnly = dateOnly, dateOnly {
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+            }
+            
+            return dateFormatter.string(from: date)
+        }
+        
+        return "No date"
+    }
+    
+    /**
+     Converts UTC string to date.
+     */
+    
+    func dateFromUTCString(string: String, dateOnly: Bool? = nil) -> Date {
+        if let utcTimeZone = TimeZone(abbreviation: "UTC") {
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = utcTimeZone
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            if let dateOnly = dateOnly, dateOnly {
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+            }
+            
+            if let dateObject = dateFormatter.date(from: string) {
+                return dateObject
+            }
+        }
+        
+        return Date()
+    }
 }
 
 // MARK: - Int extension
