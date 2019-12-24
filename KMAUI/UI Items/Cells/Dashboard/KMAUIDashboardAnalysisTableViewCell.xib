@@ -68,7 +68,7 @@
                                     <action selector="reviewButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bw7-Na-WMF"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-g3-pbN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Vaj-g3-pbN" customClass="KMAUICollectionView" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="8" y="68" width="272" height="157"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
