@@ -25,9 +25,13 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        // Round corners for image view
+        // Round corners for image views
         authorImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         authorImageView.clipsToBounds = true
+        authorImageView.contentMode = .scaleAspectFill
+        tipImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        tipImageView.clipsToBounds = true
+        tipImageView.contentMode = .scaleAspectFill
         
         // No selection requried
         selectionStyle = .none
