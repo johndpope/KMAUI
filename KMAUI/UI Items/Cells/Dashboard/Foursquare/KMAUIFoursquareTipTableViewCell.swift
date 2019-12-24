@@ -12,17 +12,25 @@ import SwiftyJSON
 
 public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet public weak var tipImageView: UIImageView!
+    @IBOutlet public weak var authorImageView: UIImageView!
     @IBOutlet public weak var authorLabel: KMAUITextLabel!
     @IBOutlet public weak var createdAtLabel: KMAUIInfoLabel!
     @IBOutlet public weak var tipLabel: KMAUITextLabel!
-
+    @IBOutlet public weak var tipImageView: UIImageView!
+    @IBOutlet public weak var tipImageViewHeight: NSLayoutConstraint!
+    
     // MARK: - Cell methods
     public var venue = KMAFoursquareVenue()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Round corners for image view
+        authorImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        authorImageView.clipsToBounds = true
+        
+        // No selection requried
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,6 +43,7 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
         tipLabel.text = ""
         authorLabel.text = ""
         createdAtLabel.text = ""
+        tipImageViewHeight.constant = 0
         
         if !venue.tips.isEmpty,
             let dataFromString = venue.tips.data(using: .utf8, allowLossyConversion: false),
@@ -46,16 +55,13 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
                         for item in items {
                             if let item = item.dictionary {
                                 // photo url
-                                if let photourl = item["photourl"]?.string {
-//                                    print("photourl: \(photourl)")
-//                                    if let url = URL(string: photourl) {
-//                                        tipImageView.kf.indicatorType = .activity
-//                                        tipImageView.kf.setImage(with: url)
-//                                    }
+                                if let photourl = item["photourl"]?.string, let url = URL(string: photourl) {
+                                    tipImageView.kf.indicatorType = .activity
+                                    tipImageView.kf.setImage(with: url)
+                                    tipImageViewHeight.constant = (KMAUIConstants.shared.KMAScreenWidth - 64) * 2 / 3
                                 }
                                 // created at
                                 if let createdAt = item["createdAt"]?.int {
-//                                    print("createdAt: \()")
                                     createdAtLabel.text =  KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: Double(createdAt)))
                                 }
                                 // user
@@ -67,7 +73,6 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
                                         
                                         // lastName
                                         if let lastName = user["lastName"]?.string {
-//                                            print("lastName: \(lastName)")
                                             authorLabel.text = firstName + " " + lastName
                                         }
                                     }
@@ -76,15 +81,14 @@ public class KMAUIFoursquareTipTableViewCell: UITableViewCell {
                                     if let photo = user["photo"]?.dictionary {
                                         if let prefix = photo["prefix"]?.string, let suffix = photo["suffix"]?.string {
                                             if let url = URL(string: "\(prefix)44\(suffix)") {
-                                                tipImageView.kf.indicatorType = .activity
-                                                tipImageView.kf.setImage(with: url)
+                                                authorImageView.kf.indicatorType = .activity
+                                                authorImageView.kf.setImage(with: url)
                                             }
                                         }
                                     }
                                 }
                                 // text
                                 if let text = item["text"]?.string {
-//                                    print("text: \(text)")
                                     tipLabel.text = text
                                 }
                             }
