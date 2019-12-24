@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
+public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var rentLabel: KMAUITitleLabel!
     @IBOutlet public weak var saleLabel: KMAUITitleLabel!
@@ -17,7 +17,7 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var buttomPressedCallback: ((Bool) -> Void)?
-    public var zooplaProperty = [KMAZooplaProperty]()
+    public var property = [KMAZooplaProperty]()
     
     // MARK: - Cell methods
     
@@ -38,9 +38,9 @@ public class KMAUIZooplaPropertyAnalysisTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setupCell() {
+    public func setupProperty() {
         // Property rent and sale analysis
-        let propertyAnalysis = KMAUIZoopla.shared.getAverage(propertyArray: zooplaProperty)
+        let propertyAnalysis = KMAUIZoopla.shared.getAverage(propertyArray: property)
         rentLabel.text = propertyAnalysis.0
         saleLabel.text = propertyAnalysis.1
     }

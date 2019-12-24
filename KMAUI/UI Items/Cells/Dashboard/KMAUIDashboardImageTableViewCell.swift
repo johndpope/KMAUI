@@ -48,8 +48,8 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
         propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
         propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
         propertyImageView.contentMode = .center
-        
         propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        propertyImageView.kf.indicatorType = .activity
         
         if let imageURL = URL(string: imageString) {
             propertyImageView.kf.setImage(with: imageURL) { result in
