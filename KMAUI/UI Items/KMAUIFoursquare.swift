@@ -47,7 +47,7 @@ public class KMAUIFoursquare {
                     foursquareVenues.append(venueObject)
                 }
             } else if let venues = response["venues"]?.array {
-                for venue in results {
+                for venue in venues {
                     var venueObject = KMAFoursquareVenue()
                     venueObject.fillFrom(venue: venue)
                     foursquareVenues.append(venueObject)
