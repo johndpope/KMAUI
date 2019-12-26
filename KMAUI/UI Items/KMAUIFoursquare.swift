@@ -38,6 +38,7 @@ public class KMAUIFoursquare {
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary,
             let response = json["response"]?.dictionary {
+
             if let group = response["group"]?.dictionary,
                 let results = group["results"]?.array, !results.isEmpty {
                 
@@ -47,6 +48,8 @@ public class KMAUIFoursquare {
                     foursquareVenues.append(venueObject)
                 }
             } else if let venues = response["venues"]?.array {
+                print("ITEMS: \(venues)")
+                
                 for venue in venues {
                     var venueObject = KMAFoursquareVenue()
                     venueObject.fillFrom(venue: venue)
