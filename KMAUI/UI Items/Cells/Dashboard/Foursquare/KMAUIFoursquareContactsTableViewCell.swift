@@ -104,7 +104,7 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
     @IBAction public func instagramButtonPressed(_ sender: Any) {
         // Instagram
         let contactsData = venue.getContacts()
-        let urlString = "https://instagram.com" + contactsData.3
+        let urlString = "https://instagram.com/" + contactsData.3
         openSafari(urlString: urlString)
     }
     
