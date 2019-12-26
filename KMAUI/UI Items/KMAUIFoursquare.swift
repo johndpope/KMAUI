@@ -51,9 +51,12 @@ public class KMAUIFoursquare {
                 print("ITEMS: \(venues)")
                 
                 for venue in venues {
+                    if let venue = venue.dictionary {
                     var venueObject = KMAFoursquareVenue()
-                    venueObject.fillFrom(venue: venue)
+                    venueObject.setupData(venueData: venue)
+//                    venueObject.fillFrom(venue: venue)
                     foursquareVenues.append(venueObject)
+                    }
                 }
             }
         }
@@ -198,64 +201,7 @@ public struct KMAFoursquareVenue {
     public mutating func fillFrom(venue: JSON) {
         if let venue = venue.dictionary {
             if let venueData = venue["venue"]?.dictionary {
-                if let id = venueData["id"]?.string {
-                    self.venueId = id
-                }
-                
-                // name
-                if let name = venueData["name"]?.string {
-                    self.name = name
-                }
-                // category
-                if let categories = venueData["categories"]?.array {
-                    for category in categories {
-                        if let category = category.dictionary, let primary = category["primary"]?.bool, primary, let categoryName = category["name"]?.string {
-                            self.category = categoryName
-                            
-                            if let icon = category["icon"]?.dictionary {
-                                if let prefix = icon["prefix"]?.string {
-                                    self.categoryPrefix = prefix
-                                }
-                                
-                                if let suffix = icon["suffix"]?.string {
-                                    self.categorySuffix = suffix
-                                }
-                            }
-                        }
-                    }
-                }
-                // address
-                if let location = venueData["location"]?.dictionary {
-                    // latitude
-                    if let lat = location["lat"]?.double {
-                        self.latitude = lat
-                    }
-                    // longitude
-                    if let lng = location["lng"]?.double {
-                        self.longitude = lng
-                    }
-                    // formatted address
-                    if let formattedAddress = location["formattedAddress"]?.array {
-                        var address = ""
-                        
-                        for addressLine in formattedAddress {
-                            if let addressLine = addressLine.string, !addressLine.isEmpty {
-                                if address.isEmpty {
-                                    address = addressLine
-                                } else {
-                                    address += ", " + addressLine
-                                }
-                            }
-                        }
-                        
-                        self.address = address
-                    }
-                    // distance
-                    if let distance = location["distance"]?.int {
-                        self.distance = distance
-                    }
-                }
-                
+                setupData(venueData: venueData)
             }
             
             // photo
@@ -268,6 +214,70 @@ public struct KMAFoursquareVenue {
                 if let suffix = photoDict["suffix"]?.string {
                     self.suffix = suffix
                 }
+            }
+        }
+    }
+    
+    /**
+     Setup data
+     */
+    
+    public mutating func setupData(venueData: [String: JSON]) {
+        if let id = venueData["id"]?.string {
+            self.venueId = id
+        }
+        
+        // name
+        if let name = venueData["name"]?.string {
+            self.name = name
+        }
+        // category
+        if let categories = venueData["categories"]?.array {
+            for category in categories {
+                if let category = category.dictionary, let primary = category["primary"]?.bool, primary, let categoryName = category["name"]?.string {
+                    self.category = categoryName
+                    
+                    if let icon = category["icon"]?.dictionary {
+                        if let prefix = icon["prefix"]?.string {
+                            self.categoryPrefix = prefix
+                        }
+                        
+                        if let suffix = icon["suffix"]?.string {
+                            self.categorySuffix = suffix
+                        }
+                    }
+                }
+            }
+        }
+        // address
+        if let location = venueData["location"]?.dictionary {
+            // latitude
+            if let lat = location["lat"]?.double {
+                self.latitude = lat
+            }
+            // longitude
+            if let lng = location["lng"]?.double {
+                self.longitude = lng
+            }
+            // formatted address
+            if let formattedAddress = location["formattedAddress"]?.array {
+                var address = ""
+                
+                for addressLine in formattedAddress {
+                    if let addressLine = addressLine.string, !addressLine.isEmpty {
+                        if address.isEmpty {
+                            address = addressLine
+                        } else {
+                            address += ", " + addressLine
+                        }
+                    }
+                }
+                
+                self.address = address
+            }
+            // distance
+            if let distance = location["distance"]?.int {
+                self.distance = distance
             }
         }
     }
