@@ -48,14 +48,11 @@ public class KMAUIFoursquare {
                     foursquareVenues.append(venueObject)
                 }
             } else if let venues = response["venues"]?.array {
-                print("ITEMS: \(venues)")
-                
                 for venue in venues {
                     if let venue = venue.dictionary {
-                    var venueObject = KMAFoursquareVenue()
-                    venueObject.setupData(venueData: venue)
-//                    venueObject.fillFrom(venue: venue)
-                    foursquareVenues.append(venueObject)
+                        var venueObject = KMAFoursquareVenue()
+                        venueObject.setupData(venueData: venue)
+                        foursquareVenues.append(venueObject)
                     }
                 }
             }
