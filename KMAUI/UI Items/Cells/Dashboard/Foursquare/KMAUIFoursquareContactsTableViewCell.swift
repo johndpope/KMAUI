@@ -130,7 +130,7 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
     @IBAction public func phoneButtonPressed(_ sender: Any) {
         let contactsData = venue.getContacts()
         
-        if let url = URL(string: "tel://\(contactsData.6)"), UIApplication.shared.canOpenURL(url) {
+        if let url = URL(string: "tel://\(contactsData.5)"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
     }

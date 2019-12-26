@@ -577,7 +577,7 @@ public struct KMAFoursquareVenue {
         if !contact.isEmpty,
             let dataFromString = contact.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary {
-            print("\nContacts:")
+//            print("\nContacts:")
             
             if let fbNameValue = json["facebookName"]?.string {
                 fbName = fbNameValue
@@ -592,7 +592,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !fbName.isEmpty, !fbUsername.isEmpty, !fbId.isEmpty {
-                print("Facebook: \(fbName), \(fbUsername), \(fbId)")
+//                print("Facebook: \(fbName), \(fbUsername), \(fbId)")
             }
             
             if let instagramValue = json["instagram"]?.string {
@@ -600,7 +600,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !instagram.isEmpty {
-                print("Instagram: \(instagram)")
+//                print("Instagram: \(instagram)")
             }
 
             if let twitterValue = json["twitter"]?.string {
@@ -608,7 +608,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !twitter.isEmpty {
-                print("Twitter: \(twitter)")
+//                print("Twitter: \(twitter)")
             }
 
             if let phoneValue = json["phone"]?.string {
@@ -620,7 +620,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !phone.isEmpty || !formattedPhone.isEmpty {
-                print("Phone: \(phone), \(formattedPhone)")
+//                print("Phone: \(phone), \(formattedPhone)")
             }
         }
         
