@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -89,5 +90,55 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
         constant1.constant = 0
         constant2.constant = 0
         button.alpha = 0
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction public func facebookButtonPressed(_ sender: Any) {
+        // Facebook
+        let contactsData = venue.getContacts()
+        let urlString = "https://www.facebook.com/" + contactsData.1
+        openSafari(urlString: urlString)
+    }
+    
+    @IBAction public func instagramButtonPressed(_ sender: Any) {
+        // Instagram
+        let contactsData = venue.getContacts()
+        let urlString = "https://instagram.com" + contactsData.3
+        openSafari(urlString: urlString)
+    }
+    
+    @IBAction public func twitterButtonPressed(_ sender: Any) {
+        // Twitter
+        let contactsData = venue.getContacts()
+        let urlString = "https://twitter.com/" + contactsData.4
+        openSafari(urlString: urlString)
+    }
+    
+    /*
+     Open URL
+     */
+    
+    func openSafari(urlString: String) {
+        if let url = URL(string: urlString) {
+            let safariVC = SFSafariViewController(url: url)
+            safariVC.delegate = self
+            KMAUIUtilities.shared.displayAlert(viewController: safariVC)
+        }
+    }
+    
+    @IBAction public func phoneButtonPressed(_ sender: Any) {
+        let contactsData = venue.getContacts()
+        
+        if let url = URL(string: "tel://\(contactsData.6)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+}
+
+extension KMAUIFoursquareContactsTableViewCell: SFSafariViewControllerDelegate {
+    
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

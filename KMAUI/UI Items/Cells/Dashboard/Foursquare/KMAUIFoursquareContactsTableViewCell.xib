@@ -35,6 +35,9 @@
                                     <constraint firstAttribute="height" constant="22" id="q5P-oa-tw9"/>
                                 </constraints>
                                 <state key="normal" title="@username"/>
+                                <connections>
+                                    <action selector="facebookButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Mbz-mq-Psh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylA-80-Ih7" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="38" width="76.5" height="22"/>
@@ -51,6 +54,9 @@
                                     <constraint firstAttribute="height" constant="22" id="fW9-SR-xzz"/>
                                 </constraints>
                                 <state key="normal" title="@username"/>
+                                <connections>
+                                    <action selector="instagramButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bWa-v6-2Kn"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Afu-1R-BDu" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="68" width="53" height="22"/>
@@ -67,6 +73,9 @@
                                     <constraint firstAttribute="height" constant="22" id="Vc7-7A-RY9"/>
                                 </constraints>
                                 <state key="normal" title="@username"/>
+                                <connections>
+                                    <action selector="twitterButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zCe-xO-MmX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-QP-VFx" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="98" width="49" height="22"/>
@@ -83,6 +92,9 @@
                                     <constraint firstAttribute="height" constant="22" id="P83-bZ-u0u"/>
                                 </constraints>
                                 <state key="normal" title="number"/>
+                                <connections>
+                                    <action selector="phoneButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jbE-rR-38L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
