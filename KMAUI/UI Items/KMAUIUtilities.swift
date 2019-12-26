@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
+import CoreLocation
 
 public class KMAUIUtilities {
     // Access variable
@@ -305,3 +308,77 @@ public extension Int {
     }
 }
 
+// MARK: - UITableView extension
+
+extension UITableView {
+    
+    func setBottomInset(to value: CGFloat) {
+        let edgeInset = UIEdgeInsets(top: 0, left: 0, bottom: value, right: 0)
+        
+        self.contentInset = edgeInset
+        self.scrollIndicatorInsets = edgeInset
+    }
+}
+
+// MARK: - UIDevice extension
+
+/**
+ Detect if iPhone has a notch.
+ */
+
+extension UIDevice {
+    var hasNotch: Bool {
+        let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+        return bottom > 0
+    }
+}
+
+// MARK: Getting the mailing address format for address
+
+extension Formatter {
+    static let mailingAddress: CNPostalAddressFormatter = {
+        let formatter = CNPostalAddressFormatter()
+        formatter.style = .mailingAddress
+        return formatter
+    }()
+}
+
+extension CLPlacemark {
+    var mailingAddress: String? {
+        return postalAddress?.mailingAddress
+    }
+}
+
+extension CNPostalAddress {
+    var mailingAddress: String {
+        return Formatter.mailingAddress.string(from: self)
+    }
+}
+
+extension String {
+    var encodeUrl: String {
+        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+    }
+    
+    var decodeUrl: String {
+        return self.removingPercentEncoding!
+    }
+    
+    func formatUsername() -> String {
+        return "@" + self.replacingOccurrences(of: "@", with: "")
+    }
+}
+
+extension CLLocationCoordinate2D {
+    var isEmpty: Bool {
+        return ((self.latitude == 0 && self.longitude == 0) || self.latitude == -180 && self.longitude == -180)
+    }
+}
+
+// MARK: - Array extension
+
+extension Array where Element: Comparable {
+    func containsSameElements(as other: [Element]) -> Bool {
+        return self.count == other.count && self.sorted() == other.sorted()
+    }
+}
