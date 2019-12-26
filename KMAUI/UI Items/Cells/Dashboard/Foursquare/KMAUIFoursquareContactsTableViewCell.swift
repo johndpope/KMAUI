@@ -17,7 +17,7 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
     @IBOutlet public weak var instagramTitleLabel: KMAUITextLabel!
     @IBOutlet public weak var instagramTitleHeight: NSLayoutConstraint!
     @IBOutlet public weak var instagramTitleTop: NSLayoutConstraint!
-    @IBOutlet public weak var instagramUsernameLabel: UIButton!
+    @IBOutlet public weak var instagramUsernameButton: UIButton!
     @IBOutlet public weak var twitterTitleLabel: KMAUITextLabel!
     @IBOutlet public weak var twitterTitleHeight: NSLayoutConstraint!
     @IBOutlet public weak var twitterTitleTop: NSLayoutConstraint!
@@ -47,20 +47,23 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
         // Facebook
         if !contactsData.0.isEmpty, !contactsData.1.isEmpty, !contactsData.2.isEmpty {
             showItems(label: facebookTitleLabel, constant1: facebookTitleHeight, constant2: facebookTitleTop, button: facebookUsernameButton)
+            facebookUsernameButton.setTitle(contactsData.0, for: .normal)
         } else {
             hideItems(label: facebookTitleLabel, constant1: facebookTitleHeight, constant2: facebookTitleTop, button: facebookUsernameButton)
         }
         
         // Instagram
         if !contactsData.3.isEmpty {
-            showItems(label: instagramTitleLabel, constant1: instagramTitleHeight, constant2: instagramTitleTop, button: instagramUsernameLabel)
+            showItems(label: instagramTitleLabel, constant1: instagramTitleHeight, constant2: instagramTitleTop, button: instagramUsernameButton)
+            instagramUsernameButton.setTitle(contactsData.3, for: .normal)
         } else {
-            hideItems(label: instagramTitleLabel, constant1: instagramTitleHeight, constant2: instagramTitleTop, button: instagramUsernameLabel)
+            hideItems(label: instagramTitleLabel, constant1: instagramTitleHeight, constant2: instagramTitleTop, button: instagramUsernameButton)
         }
         
         // Twitter
         if !contactsData.4.isEmpty {
             showItems(label: twitterTitleLabel, constant1: twitterTitleHeight, constant2: twitterTitleTop, button: twitterUsernameButton)
+            twitterUsernameButton.setTitle(contactsData.4, for: .normal)
         } else {
             hideItems(label: twitterTitleLabel, constant1: twitterTitleHeight, constant2: twitterTitleTop, button: twitterUsernameButton)
         }
@@ -68,6 +71,7 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
         // Phone
         if !contactsData.5.isEmpty, !contactsData.6.isEmpty {
             showItems(label: phoneTitleLabel, constant1: phoneTitleHeight, constant2: phoneTitleTop, button: phoneNumberButton)
+            phoneNumberButton.setTitle(contactsData.6, for: .normal)
         } else {
             hideItems(label: phoneTitleLabel, constant1: phoneTitleHeight, constant2: phoneTitleTop, button: phoneNumberButton)
         }

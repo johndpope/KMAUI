@@ -128,7 +128,7 @@
                 <outlet property="instagramTitleHeight" destination="SzN-wk-kDT" id="mdi-wC-rK5"/>
                 <outlet property="instagramTitleLabel" destination="ylA-80-Ih7" id="eMK-Im-f7j"/>
                 <outlet property="instagramTitleTop" destination="yL1-wv-3Ca" id="6WP-Qo-Ajx"/>
-                <outlet property="instagramUsernameLabel" destination="nsT-6R-t5N" id="wUP-na-TCu"/>
+                <outlet property="instagramUsernameButton" destination="nsT-6R-t5N" id="NdJ-aA-aN0"/>
                 <outlet property="phoneNumberButton" destination="Z3n-JP-lyW" id="T9N-cd-Ihq"/>
                 <outlet property="phoneTitleHeight" destination="qLA-lC-vOd" id="GEi-dR-ofe"/>
                 <outlet property="phoneTitleLabel" destination="zFQ-QP-VFx" id="Bye-9f-qzn"/>
