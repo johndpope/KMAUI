@@ -88,6 +88,8 @@ public class KMAUIFoursquare {
                     
                     if let jsonString = json.rawString() {
                         places = self.getVenues(jsonString: jsonString)
+                        
+                        print("PLACES: \(places.count)")
                     }
                     
                     if let repsonseValue = json["response"].dictionary, let venues = repsonseValue["venues"]?.array, !venues.isEmpty {
