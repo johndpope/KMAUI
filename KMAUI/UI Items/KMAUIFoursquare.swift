@@ -560,4 +560,70 @@ public struct KMAFoursquareVenue {
         
         return (tipImageString, createdAtString, authorString, authorImageString, tipString)
     }
+    
+    public func getContacts() -> (String, String, String, String, String, String, String) {
+        // facebook
+        var fbName = ""
+        var fbUsername = ""
+        var fbId = ""
+        // instagram
+        var instagram = ""
+        // twitter
+        var twitter = ""
+        // phone
+        var phone = ""
+        var formattedPhone = ""
+        
+        if !contact.isEmpty,
+            let dataFromString = contact.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+            print("\nContacts:")
+            
+            if let fbNameValue = json["facebookName"]?.string {
+                fbName = fbNameValue
+            }
+            
+            if let fbUsernameValue = json["facebookUsername"]?.string {
+                fbUsername = fbUsernameValue
+            }
+            
+            if let fbIdValue = json["facebook"]?.string {
+                fbId = fbIdValue
+            }
+            
+            if !fbName.isEmpty, !fbUsername.isEmpty, !fbId.isEmpty {
+                print("Facebook: \(fbName), \(fbUsername), \(fbId)")
+            }
+            
+            if let instagramValue = json["instagram"]?.string {
+                instagram = instagramValue
+            }
+            
+            if !instagram.isEmpty {
+                print("Instagram: \(instagram)")
+            }
+
+            if let twitterValue = json["twitter"]?.string {
+                twitter = twitterValue
+            }
+            
+            if !twitter.isEmpty {
+                print("Twitter: \(twitter)")
+            }
+
+            if let phoneValue = json["phone"]?.string {
+                phone = phoneValue
+            }
+            
+            if let formattedPhoneValue = json["formattedPhone"]?.string {
+                formattedPhone = formattedPhoneValue
+            }
+            
+            if !phone.isEmpty || !formattedPhone.isEmpty {
+                print("Phone: \(phone), \(formattedPhone)")
+            }
+        }
+        
+        return (fbName, fbUsername, fbId, instagram, twitter, phone, formattedPhone)
+    }
 }
