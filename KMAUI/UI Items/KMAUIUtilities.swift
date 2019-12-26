@@ -310,7 +310,7 @@ public extension Int {
 
 // MARK: - UITableView extension
 
-extension UITableView {
+public extension UITableView {
     
     func setBottomInset(to value: CGFloat) {
         let edgeInset = UIEdgeInsets(top: 0, left: 0, bottom: value, right: 0)
@@ -326,7 +326,7 @@ extension UITableView {
  Detect if iPhone has a notch.
  */
 
-extension UIDevice {
+public extension UIDevice {
     var hasNotch: Bool {
         let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
         return bottom > 0
@@ -335,7 +335,7 @@ extension UIDevice {
 
 // MARK: Getting the mailing address format for address
 
-extension Formatter {
+public extension Formatter {
     static let mailingAddress: CNPostalAddressFormatter = {
         let formatter = CNPostalAddressFormatter()
         formatter.style = .mailingAddress
@@ -343,19 +343,19 @@ extension Formatter {
     }()
 }
 
-extension CLPlacemark {
+public extension CLPlacemark {
     var mailingAddress: String? {
         return postalAddress?.mailingAddress
     }
 }
 
-extension CNPostalAddress {
+public extension CNPostalAddress {
     var mailingAddress: String {
         return Formatter.mailingAddress.string(from: self)
     }
 }
 
-extension String {
+public extension String {
     var encodeUrl: String {
         return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
     }
@@ -369,7 +369,7 @@ extension String {
     }
 }
 
-extension CLLocationCoordinate2D {
+public extension CLLocationCoordinate2D {
     var isEmpty: Bool {
         return ((self.latitude == 0 && self.longitude == 0) || self.latitude == -180 && self.longitude == -180)
     }
@@ -377,7 +377,7 @@ extension CLLocationCoordinate2D {
 
 // MARK: - Array extension
 
-extension Array where Element: Comparable {
+public extension Array where Element: Comparable {
     func containsSameElements(as other: [Element]) -> Bool {
         return self.count == other.count && self.sorted() == other.sorted()
     }
