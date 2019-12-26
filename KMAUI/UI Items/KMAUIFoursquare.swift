@@ -37,17 +37,24 @@ public class KMAUIFoursquare {
         
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary,
-            let response = json["response"]?.dictionary,
-            let group = response["group"]?.dictionary,
-            let results = group["results"]?.array, !results.isEmpty {
-            
-            for venue in results {
-                var venueObject = KMAFoursquareVenue()
-                venueObject.fillFrom(venue: venue)
-                foursquareVenues.append(venueObject)
+            let response = json["response"]?.dictionary {
+            if let group = response["group"]?.dictionary,
+                let results = group["results"]?.array, !results.isEmpty {
+                
+                for venue in results {
+                    var venueObject = KMAFoursquareVenue()
+                    venueObject.fillFrom(venue: venue)
+                    foursquareVenues.append(venueObject)
+                }
+            } else if let venues = response["venues"]?.array {
+                for venue in results {
+                    var venueObject = KMAFoursquareVenue()
+                    venueObject.fillFrom(venue: venue)
+                    foursquareVenues.append(venueObject)
+                }
             }
         }
-
+        
         return foursquareVenues
     }
     
