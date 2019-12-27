@@ -247,8 +247,11 @@ public struct KMAFoursquareVenue {
                 }
             }
             
+            self.categoryIds = [String]()
+            
             if let jsonString = venueData["categories"]?.rawString() {
                 self.categories = jsonString
+                self.categoryIds = getCategoryIds()
             }
         }
         // address
@@ -324,17 +327,7 @@ public struct KMAFoursquareVenue {
                 
                 if let categories = venueObject["categories"]?.rawString() {
                     self.categories = categories
-                    
-                    if !categories.isEmpty,
-                        let dataFromString = categories.data(using: .utf8, allowLossyConversion: false),
-                        let jsonData = try? JSON(data: dataFromString).array {
-                        // Loop throught the categories to save the list of unique ids
-                        for category in jsonData {
-                            if let category = category.dictionary, let categoryId = category["id"]?.string, !categoryIds.contains(categoryId) {
-                                categoryIds.append(categoryId)
-                            }
-                        }
-                    }
+                    self.categoryIds = getCategoryIds()
                 }
                 
                 // hours
