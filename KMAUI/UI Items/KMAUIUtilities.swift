@@ -295,6 +295,24 @@ public class KMAUIUtilities {
         
         return Date()
     }
+    
+    // MARK: - Arrays intersection
+    
+    public func findIntersection (firstArray : [String], secondArray : [String]) -> [String] {
+        var someHash: [String: Bool] = [:]
+        
+        firstArray.forEach { someHash[$0] = true }
+        
+        var commonItems = [String]()
+        
+        secondArray.forEach { item in
+            if someHash[item] ?? false {
+                commonItems.append(item)
+            }
+        }
+        
+        return commonItems
+    }
 }
 
 // MARK: - Int extension
