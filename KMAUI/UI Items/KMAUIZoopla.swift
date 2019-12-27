@@ -120,6 +120,11 @@ public class KMAUIZoopla {
                 do {
                     let json = try JSON(data: responseData)
                     
+                    if let jsonString = json.rawString() {
+                        let places = self.getPropertyItems(jsonString: jsonString)
+                        print("PLACES (\(places.count)) FOR BOUNDS: \(places)")
+                    }
+                    
                     if let listing = json["listing"].array {
                         completion(listing, "")
                     }
