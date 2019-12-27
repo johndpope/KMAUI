@@ -39,7 +39,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        if type == "foursquare" {
+        if type == "venue" {
             if isLoaded {
                 info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
                 action = ""
@@ -47,7 +47,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the cafes & restaurants list for your home address..."
                 action = ""
             }
-        } else if type == "zoopla" {
+        } else if type == "property" {
             if isLoaded {
                 info = "Unfortunately we don't have a property list to show for your home address location.\n\nThe home address should be inside the United Kingdom in order to see the data from Zoopla."
                 action = "Update home address"
