@@ -111,7 +111,7 @@ public class KMAUIZoopla {
      Get the property pins inside the provided bounds
      */
     
-    public func zooplaProperty(bounds: String, completion: @escaping (_ property: [JSON], _ error: String)->()) {
+    public func zooplaProperty(bounds: String, completion: @escaping (_ property: [JSON], _ places: [KMAZooplaProperty], _ error: String)->()) {
         // Preparing the request string
         let requestString = "https://api.zoopla.co.uk/api/v1/property_listings.js?\(bounds)&page_size=100&api_key=z2jerfddwxkye3w653muzfjy"
         // The venues request
@@ -119,17 +119,17 @@ public class KMAUIZoopla {
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
+                    var places = [KMAZooplaProperty]()
                     
                     if let jsonString = json.rawString() {
-                        let places = self.getPropertyItems(jsonString: jsonString)
-                        print("PLACES (\(places.count)) FOR BOUNDS: \(places)")
+                        places = self.getPropertyItems(jsonString: jsonString)
                     }
                     
                     if let listing = json["listing"].array {
-                        completion(listing, "")
+                        completion(listing, places, "")
                     }
                 } catch {
-                    completion([JSON](), error.localizedDescription)
+                    completion([JSON](), [KMAZooplaProperty](), error.localizedDescription)
                 }
             }
         }
