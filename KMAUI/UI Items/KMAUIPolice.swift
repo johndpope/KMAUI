@@ -17,7 +17,7 @@ public class KMAUIPolice {
     
     // MARK: - Police.uk API
     
-    public func getPolice(location: String) {
+    public func getCrimeData(location: String) {
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?\(location)" // limited to the previous month
         print("POLICE REQUEST: \(requestString)")
         
