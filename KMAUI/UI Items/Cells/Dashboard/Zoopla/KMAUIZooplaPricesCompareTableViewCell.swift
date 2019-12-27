@@ -47,14 +47,6 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
             
-//            if rentValue > averageRentValue {
-//                priceLabel.text = "\(getPercent(value1: rentValue, value2: averageRentValue))% more expensive then an average rental price in the area."
-//                priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
-//            } else {
-//                priceLabel.text = "\(getPercent(value1: averageRentValue, value2: rentValue))% cheaper then an average rental price in the area."
-//                priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
-//            }
-            
             priceImageView.alpha = 1
         } else if saleValue > 0, averageSaleValue > 0 {
             let value = getPercent(value1: saleValue, value2: averageSaleValue)
@@ -67,14 +59,6 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
                 priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
             }
             
-//            if saleValue > averageSaleValue {
-//                priceLabel.text = "\(getPercent(value1: saleValue, value2: averageSaleValue))% more expensive then an average sale price in the area."
-//                priceImageView.image = KMAUIConstants.shared.highPrice.withRenderingMode(.alwaysTemplate)
-//            } else {
-//                priceLabel.text = "\(getPercent(value1: averageSaleValue, value2: saleValue))% cheaper then an average sale price in the area."
-//                priceImageView.image = KMAUIConstants.shared.lowPrice.withRenderingMode(.alwaysTemplate)
-//            }
-            
             priceImageView.alpha = 1
         } else {
             priceLabel.text = "No price data available."
@@ -83,11 +67,8 @@ public class KMAUIZooplaPricesCompareTableViewCell: UITableViewCell {
     }
     
     public func getPercent(value1: Int, value2: Int) -> Double {
-        
         let percent = Double(Int(Double(Int((Double(value1 - value2) / Double(value2)) * 10000)))) / 100
-        
-//        let percent = Double(Int(Double(Int(((Double(value1) / Double(value2)) - 1) * 10000)))) / 100
-        
+
         return percent
     }
 }
