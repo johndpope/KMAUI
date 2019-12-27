@@ -231,8 +231,6 @@ public struct KMAFoursquareVenue {
         }
         // category
         if let categories = venueData["categories"]?.array {
-            print("CATEGORIES: \(categories.count)")
-            
             for category in categories {
                 if let category = category.dictionary, let primary = category["primary"]?.bool, primary, let categoryName = category["name"]?.string {
                     self.category = categoryName
@@ -247,6 +245,10 @@ public struct KMAFoursquareVenue {
                         }
                     }
                 }
+            }
+            
+            if let jsonString = venueData["categories"]?.rawString() {
+                self.categories = jsonString
             }
         }
         // address
