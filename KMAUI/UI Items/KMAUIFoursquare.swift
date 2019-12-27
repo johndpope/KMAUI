@@ -231,6 +231,8 @@ public struct KMAFoursquareVenue {
         }
         // category
         if let categories = venueData["categories"]?.array {
+            print("CATEGORIES: \(categories.count)")
+            
             for category in categories {
                 if let category = category.dictionary, let primary = category["primary"]?.bool, primary, let categoryName = category["name"]?.string {
                     self.category = categoryName
@@ -669,5 +671,23 @@ public struct KMAFoursquareVenue {
         }
         
         return (fbName, fbUsername, fbId, instagram, twitter, phone, formattedPhone)
+    }
+    
+    public func getCategoryIds() -> [String] {
+        // categories
+        var categoryIdsArray = [String]()
+        
+        if !categories.isEmpty,
+            let dataFromString = categories.data(using: .utf8, allowLossyConversion: false),
+            let jsonData = try? JSON(data: dataFromString).array {
+            // Loop throught the categories to save the list of unique ids
+            for category in jsonData {
+                if let category = category.dictionary, let categoryId = category["id"]?.string, !categoryIdsArray.contains(categoryId) {
+                    categoryIdsArray.append(categoryId)
+                }
+            }
+        }
+        
+        return categoryIdsArray
     }
 }
