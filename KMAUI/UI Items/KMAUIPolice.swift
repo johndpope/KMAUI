@@ -17,27 +17,29 @@ public class KMAUIPolice {
     
     // MARK: - Police.uk API
     
-    public func getCrimeData(location: String) {
+    public func getCrimeData(location: String, completion: @escaping (_ crimeData: [KMACrimeObject], _ error: String)->()) {
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?\(location)" // limited to the previous month
-        print("POLICE REQUEST: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
+                    var crimeData = [KMACrimeObject]()
                     
                     if let crimeArray = json.array {
-                        print("POLICE RESPONSE (\(crimeArray.count)):")
-                        
                         for crimeValue in crimeArray {
                             if let crimeValue = crimeValue.dictionary {
                                 var crimeObject = KMACrimeObject()
                                 crimeObject.fillFrom(json: crimeValue)
+                                crimeData.append(crimeObject)
                             }
                         }
                     }
+                    
+                    completion(crimeData, "")
                 } catch {
                     print("Error: \(error.localizedDescription)")
+                    completion([KMACrimeObject](), error.localizedDescription)
                 }
             }
         }
