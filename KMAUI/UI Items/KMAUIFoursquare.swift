@@ -418,7 +418,11 @@ public struct KMAFoursquareVenue {
     // MARK: - Data methods
     
     public func getDetails() -> String {
-        var details = "\(category), \(distance)m"
+        var details = category
+        
+        if distance < 1000 {
+            details = "\(category), \(distance)m"
+        }
         
         if !price.isEmpty,
             let dataFromString = price.data(using: .utf8, allowLossyConversion: false),
@@ -429,7 +433,11 @@ public struct KMAFoursquareVenue {
                 value += currency
             }
             
-            details = "\(category), \(distance)m, \(value)"
+            details = "\(category), \(value)"
+            
+            if distance < 1000 {
+                details = "\(category), \(distance)m, \(value)"
+            }
         }
         
         return details
