@@ -31,8 +31,29 @@ public class KMAPoliceTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+        
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            headerLabel.textColor = UIColor.white
+            infoLabel.textColor = UIColor.white
+            rightArrowImageView.tintColor = UIColor.white
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            headerLabel.textColor = KMAUIConstants.shared.KMATitleColor
+            infoLabel.textColor = KMAUIConstants.shared.KMATextColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        }
     }
     
 }
