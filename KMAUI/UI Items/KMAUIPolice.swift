@@ -17,6 +17,34 @@ public class KMAUIPolice {
     
     // MARK: - Police.uk API
     
+    /**
+     Get the neighbourhood data for location
+     */
+    
+    public func getNeighbourhood(location: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let requestString = "https://data.police.uk/api/locate-neighbourhood?q=\(location)"
+        
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonString = json.rawString() {
+                        completion(jsonString, "")
+                    } else {
+                        completion("", "Error")
+                    }
+                } catch {
+                    completion("", error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    /**
+     Get crime data for a location
+     */
+    
     public func getCrimeData(location: String, completion: @escaping (_ crimeData: [KMACrimeObject], _ error: String)->()) {
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?\(location)" // limited to the previous month
         
