@@ -86,6 +86,9 @@ public struct KMAPoliceNeighbourhood {
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     
+    public init() {
+    }
+    
     public mutating func setupIdentifiers() {
         if !identifiers.isEmpty,
             let dataFromString = identifiers.data(using: .utf8, allowLossyConversion: false),
@@ -148,6 +151,9 @@ public struct KMACrimeObject {
     public var outcomeDate = ""
     public var context = ""
     public var month = ""
+    
+    public init() {
+    }
     
     public mutating func fillFrom(json: [String: JSON]) {
         if let id = json["id"]?.int {
