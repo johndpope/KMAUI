@@ -55,6 +55,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the property list for your home address..."
                 action = ""
             }
+        } else if type == "police" {
+            if isLoaded {
+               info = "Unfortunately we don't have a police information to show for you home address location.\n\nThe home address should be inside the United Kingdom in order to see the data from Police.uk."
+                action = "Update home address"
+            } else {
+                info = "We're preparing the police information for your home address..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
