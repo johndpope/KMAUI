@@ -61,6 +61,6 @@ public class KMAPoliceTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
-        headerLabel.text = "\(policeObject.forceId) Police"
+        headerLabel.text = "\(policeObject.forceId.capitalized) Police"
     }
 }
