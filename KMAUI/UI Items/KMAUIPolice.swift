@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 public class KMAUIPolice {
     
@@ -73,6 +74,65 @@ public class KMAUIPolice {
         }
     }
 }
+
+public struct KMAPoliceNeighbourhood {
+    public var forceId = ""
+    public var forceTeamId = ""
+    public var bounds = [CLLocationCoordinate2D]()
+    public var minLat: Double = 0
+    public var maxLat: Double = 0
+    public var minLong: Double = 0
+    public var maxLong: Double = 0
+    // JSON Strings
+    public var identifiers = "" // stores the forceId and forceTeamId
+    
+    public mutating func setupIdentifiers() {
+        if !identifiers.isEmpty,
+            let dataFromString = identifiers.data(using: .utf8, allowLossyConversion: false),
+            let json = try? JSON(data: dataFromString).dictionary {
+            // Get force
+            if let force = json["force"]?.string {
+                self.forceId = force
+            }
+            // get id
+            if let neighbourhood = json["neighbourhood"]?.string {
+                self.forceTeamId = neighbourhood
+            }
+        }
+    }
+    
+    public mutating func fillFrom(bounds: [JSON]) {
+        self.bounds = [CLLocationCoordinate2D]()
+        minLat = 0
+        maxLat = 0
+        minLong = 0
+        maxLong = 0
+        
+        for location in bounds {
+            if let location = location.dictionary, let latitude = location["latitude"]?.string, let latitudeValue = Double(latitude), let longitude = location["longitude"]?.string, let longitudeValue = Double(longitude) {
+                self.bounds.append(CLLocationCoordinate2D(latitude: latitudeValue, longitude: longitudeValue))
+                
+                // Getting the bounds
+                if minLat > latitudeValue || minLat == 0 {
+                    minLat = latitudeValue
+                }
+                
+                if maxLat < latitudeValue || maxLat == 0 {
+                    maxLat = latitudeValue
+                }
+                
+                if minLong > longitudeValue || minLong == 0 {
+                    minLong = longitudeValue
+                }
+                
+                if maxLong < longitudeValue || maxLong == 0 {
+                    maxLong = longitudeValue
+                }
+            }
+        }
+    }
+}
+
 
 public struct KMACrimeObject {
     public var crimeId = 0

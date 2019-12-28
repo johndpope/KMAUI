@@ -17,7 +17,7 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
-    var policeObject = KMAUIPolice()
+    public var policeObject = KMAPoliceNeighbourhood()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -56,4 +56,11 @@ public class KMAPoliceTableViewCell: UITableViewCell {
         }
     }
     
+    /**
+     Setup Cell
+     */
+    
+    public func setupCell() {
+        headerLabel.text = "\(policeObject.forceId) Police"
+    }
 }
