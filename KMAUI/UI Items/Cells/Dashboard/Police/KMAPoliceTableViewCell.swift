@@ -18,12 +18,18 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var policeObject = KMAPoliceNeighbourhood()
+    public var logo = ""
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setup the right arrow
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
+        
+        // Round corners for logo
+        logoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        logoImageView.layer.borderWidth = 1
+        logoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // No selection required
         selectionStyle = .none
@@ -62,5 +68,11 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     
     public func setupCell() {
         headerLabel.text = "\(policeObject.forceId.capitalized) Police"
+        
+        // Library logo
+        if !logo.isEmpty, let url = URL(string: logo) {
+            logoImageView.kf.indicatorType = .activity
+            logoImageView.kf.setImage(with: url)
+        }
     }
 }
