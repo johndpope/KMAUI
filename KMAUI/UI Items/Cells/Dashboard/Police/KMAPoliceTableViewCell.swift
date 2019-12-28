@@ -67,7 +67,7 @@ public class KMAPoliceTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
-        headerLabel.text = "\(policeObject.forceId.capitalized) Police"
+        headerLabel.text = "\(policeObject.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
         
         // Library logo
         if !logo.isEmpty, let url = URL(string: logo) {
