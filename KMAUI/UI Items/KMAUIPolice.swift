@@ -78,6 +78,7 @@ public class KMAUIPolice {
 public struct KMAPoliceNeighbourhood {
     public var forceId = ""
     public var forceTeamId = ""
+    public var location = ""
     public var bounds = [CLLocationCoordinate2D]()
     public var minLat: Double = 0
     public var maxLat: Double = 0
