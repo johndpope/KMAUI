@@ -30,7 +30,7 @@ public class KMAUIPolice {
                 do {
                     let json = try JSON(data: responseData)
                     
-                    if let jsonString = json.rawString() {
+                    if let jsonString = json.rawString(), !jsonString.isEmpty {
                         completion(jsonString, "")
                     } else {
                         completion("", "Error")
