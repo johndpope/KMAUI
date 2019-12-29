@@ -70,7 +70,7 @@ public class KMAUIPolice {
      Get crime in bounds
      */
     
-    func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+    public func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
         let point1 = "\(neighbourhood.minLong):\(neighbourhood.minLat)"
         let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
         let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
