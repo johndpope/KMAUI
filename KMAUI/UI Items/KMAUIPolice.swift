@@ -129,32 +129,36 @@ public struct KMAPoliceNeighbourhood {
         }
     }
     
-    public mutating func fillFrom(bounds: [JSON]) {
+    public mutating func fillFrom(boundary: String) {
+        // Clear the data
         self.bounds = [CLLocationCoordinate2D]()
-        minLat = 0
-        maxLat = 0
-        minLong = 0
-        maxLong = 0
-        
-        for location in bounds {
-            if let location = location.dictionary, let latitude = location["latitude"]?.string, let latitudeValue = Double(latitude), let longitude = location["longitude"]?.string, let longitudeValue = Double(longitude) {
-                self.bounds.append(CLLocationCoordinate2D(latitude: latitudeValue, longitude: longitudeValue))
-                
-                // Getting the bounds
-                if minLat > latitudeValue || minLat == 0 {
-                    minLat = latitudeValue
-                }
-                
-                if maxLat < latitudeValue || maxLat == 0 {
-                    maxLat = latitudeValue
-                }
-                
-                if minLong > longitudeValue || minLong == 0 {
-                    minLong = longitudeValue
-                }
-                
-                if maxLong < longitudeValue || maxLong == 0 {
-                    maxLong = longitudeValue
+        self.minLat = 0
+        self.maxLat = 0
+        self.minLong = 0
+        self.maxLong = 0
+        // Get the JSON array from the string
+        if !boundary.isEmpty, let dataFromString = boundary.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
+            // Preparing the data from the JSON array
+            for location in json {
+                if let location = location.dictionary, let latitude = location["latitude"]?.string, let latitudeValue = Double(latitude), let longitude = location["longitude"]?.string, let longitudeValue = Double(longitude) {
+                    self.bounds.append(CLLocationCoordinate2D(latitude: latitudeValue, longitude: longitudeValue))
+                    
+                    // Getting the bounds
+                    if minLat > latitudeValue || minLat == 0 {
+                        minLat = latitudeValue
+                    }
+                    
+                    if maxLat < latitudeValue || maxLat == 0 {
+                        maxLat = latitudeValue
+                    }
+                    
+                    if minLong > longitudeValue || minLong == 0 {
+                        minLong = longitudeValue
+                    }
+                    
+                    if maxLong < longitudeValue || maxLong == 0 {
+                        maxLong = longitudeValue
+                    }
                 }
             }
         }
