@@ -137,9 +137,11 @@ public struct KMAPoliceNeighbourhood {
     public var maxLat: Double = 0
     public var minLong: Double = 0
     public var maxLong: Double = 0
+    public var crimeArray = [KMACrimeObject]()
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
+    public var crime = "" // stores the full Crime information loaded
     
     public init() {
     }
@@ -160,6 +162,7 @@ public struct KMAPoliceNeighbourhood {
     }
     
     public mutating func fillFrom(boundary: String) {
+        self.boundary = boundary
         // Clear the data
         self.bounds = [CLLocationCoordinate2D]()
         self.minLat = 0
@@ -193,6 +196,27 @@ public struct KMAPoliceNeighbourhood {
             }
         }
     }
+    
+    /**
+     Checking if the crime object is inside the boundary
+     */
+    
+    public mutating func fillFrom(crime: String) {
+        self.crime = crime
+        print("We have the boundary of \(bounds.count) coordinates.")
+        print("Checking if the location is inside the boundary.")
+        // Get the JSON array from the string
+        if !crime.isEmpty, let dataFromString = crime.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
+            for crimeValue in json {
+                if let crimeValue = crimeValue.dictionary {
+                    var crimeObject = KMACrimeObject()
+                    crimeObject.fillFrom(json: crimeValue)
+                    
+                    print("Location: \(crimeObject.location)")
+                }
+            }
+        }
+    }
 }
 
 
@@ -201,8 +225,7 @@ public struct KMACrimeObject {
     public var persistentId = ""
     public var locationType = ""
     public var locationSubtype = ""
-    public var latitude: Double = 0
-    public var longitude: Double = 0
+    public var location = CLLocationCoordinate2D()
     public var streetName = ""
     public var streetId = 0
     public var category = ""
@@ -224,13 +247,18 @@ public struct KMACrimeObject {
         }
         
         if let location = json["location"]?.dictionary {
+            var latitudeDouble: Double = 0
+            var longitudeDouble: Double = 0
+            
             if let latitude = location["latitude"]?.string, let latitudeValue = Double(latitude) {
-                self.latitude = latitudeValue
+                latitudeDouble = latitudeValue
             }
             
             if let longitude = location["longitude"]?.string, let longitudeValue = Double(longitude) {
-                self.longitude = longitudeValue
+                longitudeDouble = longitudeValue
             }
+            
+            self.location = CLLocationCoordinate2D(latitude: latitudeDouble, longitude: longitudeDouble)
             
             if let street = location["street"]?.dictionary {
                 if let streetName = street["name"]?.string {
