@@ -43,6 +43,30 @@ public class KMAUIPolice {
     }
     
     /**
+     Get the neighbourhood bounds
+     */
+    
+    public func getNeighbourhoodBounds(neighbourhood: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let requestString = "https://data.police.uk/api/\(neighbourhood)/boundary"
+
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonString = json.rawString(), !jsonString.isEmpty {
+                        completion(jsonString, "")
+                    } else {
+                        completion("", "Error")
+                    }
+                } catch {
+                    completion("", error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    /**
      Get crime data for a location
      */
     
