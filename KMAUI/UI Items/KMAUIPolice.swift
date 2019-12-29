@@ -67,6 +67,34 @@ public class KMAUIPolice {
     }
     
     /**
+     Get crime in bounds
+     */
+    
+    func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let point1 = "\(neighbourhood.minLong):\(neighbourhood.minLat)"
+        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
+        let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
+        let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)&date=\(date)"
+        
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonString = json.rawString(), !jsonString.isEmpty {
+                        completion(jsonString, "")
+                    } else {
+                        completion("", "Error")
+                    }
+                } catch {
+                    completion("", error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    /**
      Get crime data for a location
      */
     
