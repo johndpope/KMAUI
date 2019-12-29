@@ -139,6 +139,7 @@ public struct KMAPoliceNeighbourhood {
     public var maxLong: Double = 0
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
+    public var boundary = "" // stores the boundary data
     
     public init() {
     }
