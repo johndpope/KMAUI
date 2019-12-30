@@ -58,12 +58,19 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         }
 
         if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
-            let mapRect = MKMapRect(x: neighbourhood.minLong, y: neighbourhood.minLat, width: neighbourhood.maxLong - neighbourhood.minLong, height: neighbourhood.maxLat - neighbourhood.minLat)
+            var region = MKCoordinateRegion()
+            var span = MKCoordinateSpan()
+            span.latitudeDelta = 1.2 * (neighbourhood.maxLat - neighbourhood.minLat)
+            span.longitudeDelta = 1.2 * (neighbourhood.maxLong - neighbourhood.minLong)
             
-            print("MAP RECT: \(mapRect)")
+            let location = CLLocationCoordinate2D(latitude: (neighbourhood.minLat + neighbourhood.maxLat) / 2, longitude: (neighbourhood.minLong + neighbourhood.maxLong) / 2)
             
-            let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
-            mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: true)
+            region.span = span
+            region.center = location
+            
+            mapView.setRegion(region, animated: true)
+            mapView.regionThatFits(region)
+            
         } else {
             mapView.showAnnotations(mapView.annotations, animated: true)
         }
