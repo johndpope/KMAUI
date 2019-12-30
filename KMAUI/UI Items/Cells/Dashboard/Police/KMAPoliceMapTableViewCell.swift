@@ -50,14 +50,14 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             mapView.addAnnotation(annotation)
         }
         
-        for crimeObject in neighbourhood.crimeNearby {
+        /*for crimeObject in neighbourhood.crimeNearby {
             let annotation = MKPointAnnotation()
             annotation.coordinate = crimeObject.location
             annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
             mapView.addAnnotation(annotation)
-        }
+        }*/
 
-//        if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
+        // Set the visible area
             var region = MKCoordinateRegion()
             var span = MKCoordinateSpan()
             span.latitudeDelta = 1.2 * (neighbourhood.maxLat - neighbourhood.minLat)
@@ -70,9 +70,6 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             
             mapView.setRegion(region, animated: true)
             mapView.regionThatFits(region)
-//        } else {
-//            mapView.showAnnotations(mapView.annotations, animated: true)
-//        }
     }
 }
 
