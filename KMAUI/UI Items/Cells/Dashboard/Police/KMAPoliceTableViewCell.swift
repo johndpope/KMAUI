@@ -15,11 +15,14 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     @IBOutlet public weak var headerLabel: KMAUITitleLabel!
     @IBOutlet public weak var infoLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public var policeObject = KMAPoliceNeighbourhood()
     public var logo = ""
     public var canHighlight = true
+    public var crimeLoaded = false
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -75,6 +78,12 @@ public class KMAPoliceTableViewCell: UITableViewCell {
         if !logo.isEmpty, let url = URL(string: logo) {
             logoImageView.kf.indicatorType = .activity
             logoImageView.kf.setImage(with: url)
+        }
+        
+        if !canHighlight {
+            rightArrowImageView.alpha = 0
+            rightArrowImageViewWidth.constant = 0
+            rightArrowImageViewRight.constant = 0
         }
     }
 }

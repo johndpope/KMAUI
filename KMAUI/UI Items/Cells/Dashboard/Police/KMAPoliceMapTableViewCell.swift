@@ -43,19 +43,19 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: neighbourhood.bounds)
         mapView.addOverlay(polygon)
         
-        /*for crimeObject in neighbourhood.crimeArray {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = crimeObject.location
-            annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
-            mapView.addAnnotation(annotation)
-        }*/
-        
-        for crimeObject in neighbourhood.crimeNearby {
+        for crimeObject in neighbourhood.crimeArray {
             let annotation = MKPointAnnotation()
             annotation.coordinate = crimeObject.location
             annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
             mapView.addAnnotation(annotation)
         }
+        
+        /*for crimeObject in neighbourhood.crimeNearby {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = crimeObject.location
+            annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
+            mapView.addAnnotation(annotation)
+        }*/
         
         mapView.showAnnotations(mapView.annotations, animated: true)
     }

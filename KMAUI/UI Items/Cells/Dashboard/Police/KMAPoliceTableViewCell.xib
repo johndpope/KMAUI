@@ -84,6 +84,8 @@
                 <outlet property="infoLabel" destination="V2K-h7-fyX" id="ZLk-2X-LjG"/>
                 <outlet property="logoImageView" destination="BbA-ap-KnU" id="RNa-xI-vAy"/>
                 <outlet property="rightArrowImageView" destination="DDx-5g-pPv" id="uwY-w3-9xk"/>
+                <outlet property="rightArrowImageViewRight" destination="1LL-xk-uHS" id="G8c-pR-EZN"/>
+                <outlet property="rightArrowImageViewWidth" destination="HTr-w1-awJ" id="ba9-h4-vMb"/>
             </connections>
             <point key="canvasLocation" x="-15.942028985507248" y="56.584821428571423"/>
         </tableViewCell>

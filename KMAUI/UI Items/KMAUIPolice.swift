@@ -140,6 +140,7 @@ public struct KMAPoliceNeighbourhood {
     public var maxLong: Double = 0
     public var crimeNearby = [KMACrimeObject]()
     public var crimeArray = [KMACrimeObject]()
+    public var crimeDate = ""
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
