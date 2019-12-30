@@ -209,11 +209,11 @@ public struct KMAPoliceNeighbourhood {
         self.crimeNearby = [KMACrimeObject]()
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
         self.crime = crime
-        print("We have the boundary of \(bounds.count) coordinates.")
-        print("Checking if the location is inside the boundary.")
+//        print("We have the boundary of \(bounds.count) coordinates.")
+//        print("Checking if the location is inside the boundary.")
         // Get the JSON array from the string
         if !crime.isEmpty, let dataFromString = crime.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
-            print("CRIME OBJECTS RETURNED: \(json.count)")
+//            print("CRIME OBJECTS RETURNED: \(json.count)")
             for crimeValue in json {
                 if let crimeValue = crimeValue.dictionary {
                     var crimeObject = KMACrimeObject()
@@ -228,7 +228,7 @@ public struct KMAPoliceNeighbourhood {
             }
         }
         
-        print("TOTAL CRIME OBJECTS VERIFIED: \(crimeArray.count)")
+//        print("TOTAL CRIME OBJECTS VERIFIED: \(crimeArray.count)")
     }
 }
 
