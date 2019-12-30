@@ -84,6 +84,10 @@ public class KMAPoliceTableViewCell: UITableViewCell {
             rightArrowImageView.alpha = 0
             rightArrowImageViewWidth.constant = 0
             rightArrowImageViewRight.constant = 0
+            
+            if crimeLoaded {
+                infoLabel.text = "Crime accidents nearby: \(policeObject.crimeArray.count)")
+            }
         }
     }
 }

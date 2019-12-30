@@ -50,12 +50,12 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             mapView.addAnnotation(annotation)
         }
         
-        /*for crimeObject in neighbourhood.crimeNearby {
+        for crimeObject in neighbourhood.crimeNearby {
             let annotation = MKPointAnnotation()
             annotation.coordinate = crimeObject.location
             annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
             mapView.addAnnotation(annotation)
-        }*/
+        }
         
         mapView.showAnnotations(mapView.annotations, animated: true)
     }
