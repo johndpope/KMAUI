@@ -16,8 +16,6 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
-//    public var crimeNearby = [KMACrimeObject]()
-//    public var crimeArray = [KMACrimeObject]()
     
     // MARK: - Cell methods
     
@@ -44,6 +42,15 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: neighbourhood.bounds)
         mapView.addOverlay(polygon)
+        
+        for crimeObject in neighbourhood.crimeArray {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = crimeObject.location
+            annotation.title = crimeObject.category
+            mapView.addAnnotation(annotation)
+        }
+        
+        mapView.showAnnotations(mapView.annotations, animated: true)
     }
 }
 
