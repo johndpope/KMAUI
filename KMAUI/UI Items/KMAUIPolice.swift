@@ -269,6 +269,7 @@ public struct KMAPoliceNeighbourhood {
         }
         
         self.crimeItems = KMAUIUtilities.shared.orderCount(crimes: crimeItems)
+        self.prepareCrimeString()
     }
     
     /**
