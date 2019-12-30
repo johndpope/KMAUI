@@ -57,7 +57,7 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             mapView.addAnnotation(annotation)
         }
 
-        if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
+//        if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
             var region = MKCoordinateRegion()
             var span = MKCoordinateSpan()
             span.latitudeDelta = 1.2 * (neighbourhood.maxLat - neighbourhood.minLat)
@@ -70,10 +70,9 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             
             mapView.setRegion(region, animated: true)
             mapView.regionThatFits(region)
-            
-        } else {
-            mapView.showAnnotations(mapView.annotations, animated: true)
-        }
+//        } else {
+//            mapView.showAnnotations(mapView.annotations, animated: true)
+//        }
     }
 }
 
