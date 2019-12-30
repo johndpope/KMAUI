@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMAUIZooplaPropertyDescriptionTableViewCell: UITableViewCell {
+public class KMAUIDashboardDescriptionTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var propertyTitleLabel: KMAUITitleLabel!
     @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
