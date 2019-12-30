@@ -42,7 +42,8 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     public func setupCell() {
         print("Nearby crime: \(neighbourhood.crimeNearby.count), crime: \(neighbourhood.crimeArray.count)")
         
-        let polygon = KMAUIUtilities.shared.getPolygon(bounds: <#T##[CLLocationCoordinate2D]#>)
+        let polygon = KMAUIUtilities.shared.getPolygon(bounds: neighbourhood.bounds)
+        mapView.addOverlay(polygon)
     }
 }
 
@@ -51,6 +52,14 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
 extension KMAPoliceMapTableViewCell: MKMapViewDelegate {
     
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        <#code#>
+        if overlay is MKPolygon {
+            let polygonView = MKPolygonRenderer(overlay: overlay)
+            polygonView.strokeColor = KMAUIConstants.shared.KMABrightBlueColor
+            polygonView.lineWidth = 2
+            
+            return polygonView
+        }
+        
+        return MKOverlayRenderer()
     }
 }
