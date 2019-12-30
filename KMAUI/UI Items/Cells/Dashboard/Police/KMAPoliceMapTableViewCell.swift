@@ -56,8 +56,14 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
             mapView.addAnnotation(annotation)
         }
-        
-        mapView.showAnnotations(mapView.annotations, animated: true)
+
+        if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
+            let mapRect = MKMapRect(x: neighbourhood.minLat, y: neighbourhood.minLong, width: neighbourhood.maxLat - neighbourhood.minLat, height: neighbourhood.maxLong - neighbourhood.minLong)
+            let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+            mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: true)
+        } else {
+            mapView.showAnnotations(mapView.annotations, animated: true)
+        }
     }
 }
 
