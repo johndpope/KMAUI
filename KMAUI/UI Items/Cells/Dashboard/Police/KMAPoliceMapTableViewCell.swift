@@ -60,8 +60,8 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         // Set the visible area
             var region = MKCoordinateRegion()
             var span = MKCoordinateSpan()
-            span.latitudeDelta = 1.2 * (neighbourhood.maxLat - neighbourhood.minLat)
-            span.longitudeDelta = 1.2 * (neighbourhood.maxLong - neighbourhood.minLong)
+            span.latitudeDelta = 1.05 * (neighbourhood.maxLat - neighbourhood.minLat)
+            span.longitudeDelta = 1.05 * (neighbourhood.maxLong - neighbourhood.minLong)
             
             let location = CLLocationCoordinate2D(latitude: (neighbourhood.minLat + neighbourhood.maxLat) / 2, longitude: (neighbourhood.minLong + neighbourhood.maxLong) / 2)
             
