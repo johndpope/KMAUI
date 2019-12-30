@@ -226,10 +226,10 @@ public struct KMAPoliceNeighbourhood {
                     crimeObject.fillFrom(json: crimeValue)
 
                     if checkIf(crimeObject.location, areInside: polygon) {
-                        print("Location: \(crimeObject.location), INSIDE")
+//                        print("Location: \(crimeObject.location), INSIDE")
                         crimeArray.append(crimeObject)
                     } else {
-                        print("Location: \(crimeObject.location), OUTSIDE")
+//                        print("Location: \(crimeObject.location), OUTSIDE")
                     }
                 }
             }
