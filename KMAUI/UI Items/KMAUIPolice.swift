@@ -226,6 +226,9 @@ public struct KMAPoliceNeighbourhood {
                 }
             }
         }
+        
+        // Prepare categories
+        self.prepareCrimeCategories()
     }
     
     /**
