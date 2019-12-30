@@ -15,8 +15,9 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Variables
-    public var crimeNearby = [KMACrimeObject]()
-    public var crimeArray = [KMACrimeObject]()
+    public var neighbourhood = KMAPoliceNeighbourhood()
+//    public var crimeNearby = [KMACrimeObject]()
+//    public var crimeArray = [KMACrimeObject]()
     
     // MARK: - Cell methods
     
@@ -26,6 +27,7 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         // Rounded corners for mapView
         mapView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         mapView.clipsToBounds = true
+        mapView.delegate = self
         
         // No selection required
         selectionStyle = .none
@@ -38,6 +40,17 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        print("Nearby crime: \(crimeNearby.count), crime: \(crimeArray.count)")
+        print("Nearby crime: \(neighbourhood.crimeNearby.count), crime: \(neighbourhood.crimeArray.count)")
+        
+        let polygon = KMAUIUtilities.shared.getPolygon(bounds: <#T##[CLLocationCoordinate2D]#>)
+    }
+}
+
+// MARK: - MapView extension
+
+extension KMAPoliceMapTableViewCell: MKMapViewDelegate {
+    
+    public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        <#code#>
     }
 }
