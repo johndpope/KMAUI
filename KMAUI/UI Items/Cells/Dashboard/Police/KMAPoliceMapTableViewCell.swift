@@ -59,6 +59,9 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
 
         if neighbourhood.crimeArray.isEmpty, neighbourhood.crimeNearby.isEmpty {
             let mapRect = MKMapRect(x: neighbourhood.minLat, y: neighbourhood.minLong, width: neighbourhood.maxLat - neighbourhood.minLat, height: neighbourhood.maxLong - neighbourhood.minLong)
+            
+            print("MAP RECT: \(mapRect)")
+            
             let edgePadding = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
             mapView.setVisibleMapRect(mapRect, edgePadding: edgePadding, animated: true)
         } else {
