@@ -141,6 +141,7 @@ public struct KMAPoliceNeighbourhood {
     public var crimeNearby = [KMACrimeObject]()
     public var crimeArray = [KMACrimeObject]()
     public var crimeDate = ""
+    public var crimeItems = [[String: AnyObject]]()
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
@@ -209,11 +210,9 @@ public struct KMAPoliceNeighbourhood {
         self.crimeNearby = [KMACrimeObject]()
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
         self.crime = crime
-//        print("We have the boundary of \(bounds.count) coordinates.")
-//        print("Checking if the location is inside the boundary.")
+
         // Get the JSON array from the string
         if !crime.isEmpty, let dataFromString = crime.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
-//            print("CRIME OBJECTS RETURNED: \(json.count)")
             for crimeValue in json {
                 if let crimeValue = crimeValue.dictionary {
                     var crimeObject = KMACrimeObject()
@@ -227,8 +226,45 @@ public struct KMAPoliceNeighbourhood {
                 }
             }
         }
+    }
+    
+    /**
+     Prepare an array of most common crime categories
+     */
+    
+    public mutating func prepareCrimeCategories() {
+        self.crimeItems = [[String: AnyObject]]()
         
-//        print("TOTAL CRIME OBJECTS VERIFIED: \(crimeArray.count)")
+        for crime in self.crimeArray {
+            var exists = false
+            
+            for (index, item) in self.crimeItems.enumerated() {
+                if let category = item["category"] as? String, category == crime.category, var ids = item["ids"] as? [String] {
+                    var item = item
+                    ids.append(crime.persistentId)
+                    item["ids"] = ids as AnyObject
+                    
+                    if let count = item["count"] as? Int {
+                        item["count"] = (count + 1) as AnyObject
+                    }
+                    
+                    self.crimeItems[index] = item
+                    exists = true
+                    
+                    break
+                }
+            }
+            
+            if !exists {
+                var dict = [String: AnyObject]()
+                dict["category"] = crime.category as AnyObject
+                dict["ids"] = [crime.persistentId] as AnyObject
+                dict["count"] = 1 as AnyObject
+                self.crimeItems.append(dict)
+            }
+        }
+        
+        self.crimeItems = KMAUIUtilities.shared.orderCount(crimes: crimeItems)
     }
 }
 

@@ -345,6 +345,22 @@ public class KMAUIUtilities {
         
         return polygon
     }
+    
+    // MARK: - Order
+    
+    /**
+     Order crimes by count
+     */
+    
+    func orderCount(crimes: [[String: AnyObject]]) -> [[String: AnyObject]] {
+        return crimes.sorted {
+            if let count = $0["count"] as? Int, let countCompare = $1["count"] as? Int {
+                return count > countCompare
+            }
+            
+            return false
+        }
+    }
 }
 
 // MARK: - Int extension
