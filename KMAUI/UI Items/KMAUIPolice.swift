@@ -138,6 +138,7 @@ public struct KMAPoliceNeighbourhood {
     public var maxLat: Double = 0
     public var minLong: Double = 0
     public var maxLong: Double = 0
+    public var crimeNearby = [KMACrimeObject]()
     public var crimeArray = [KMACrimeObject]()
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
@@ -203,7 +204,8 @@ public struct KMAPoliceNeighbourhood {
      */
     
     public mutating func fillFrom(crime: String) {
-        crimeArray = [KMACrimeObject]()
+        self.crimeArray = [KMACrimeObject]()
+        self.crimeNearby = [KMACrimeObject]()
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
         self.crime = crime
         print("We have the boundary of \(bounds.count) coordinates.")
@@ -218,10 +220,12 @@ public struct KMAPoliceNeighbourhood {
 
                     if KMAUIUtilities.shared.checkIf(crimeObject.location, areInside: polygon) {
 //                        print("Location: \(crimeObject.location), INSIDE")
-                        crimeArray.append(crimeObject)
+                        self.crimeArray.append(crimeObject)
                     } else {
 //                        print("Location: \(crimeObject.location), OUTSIDE")
                     }
+                    
+                    self.crimeNearby.append(crimeObject)
                 }
             }
         }
