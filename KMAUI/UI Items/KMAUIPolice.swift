@@ -142,6 +142,7 @@ public struct KMAPoliceNeighbourhood {
     public var crimeArray = [KMACrimeObject]()
     public var crimeDate = ""
     public var crimeItems = [[String: AnyObject]]()
+    public var crimeString = ""
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
@@ -268,6 +269,31 @@ public struct KMAPoliceNeighbourhood {
         }
         
         self.crimeItems = KMAUIUtilities.shared.orderCount(crimes: crimeItems)
+    }
+    
+    /**
+     Prepare the crime items string
+     */
+    
+    public mutating func prepareCrimeString() {
+        // Prepare the crime string
+        self.crimeString = ""
+        
+        for (index, crimeItem) in self.crimeItems.enumerated() {
+            if let category = crimeItem["category"] as? String, let count = crimeItem["count"] as? Int {
+                var endSymbol = ";"
+                
+                if index + 1 == self.crimeItems.count {
+                    endSymbol = "."
+                }
+                
+                if !self.crimeString.isEmpty {
+                    self.crimeString += "\n"
+                }
+                
+                self.crimeString += "● \(category) – \(count)\(endSymbol)"
+            }
+        }
     }
 }
 

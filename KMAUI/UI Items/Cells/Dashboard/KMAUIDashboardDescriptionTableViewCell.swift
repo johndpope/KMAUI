@@ -35,6 +35,8 @@ public class KMAUIDashboardDescriptionTableViewCell: UITableViewCell {
         
         if textValue.isEmpty {
             propertyDescriptionLabel.text = "No \(type) available."
+        } else if type == "common crime" {
+            propertyDescriptionLabel.text = textValue
         } else if type == "description" {
             propertyDescriptionLabel.text = textValue.htmlToString
         } else if type == "letting fees" {
