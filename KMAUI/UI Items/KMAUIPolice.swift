@@ -127,6 +127,39 @@ public class KMAUIPolice {
             }
         }
     }
+
+    /**
+     Get the neighbourhood team
+     */
+    
+    public func getNeighbourhoodTeam(neighbourhood: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let requestString = "https://data.police.uk/api/\(neighbourhood)/people"
+        
+        AF.request(requestString).responseJSON { response in
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    print(json)
+//                    var crimeData = [KMACrimeObject]()
+//
+//                    if let crimeArray = json.array {
+//                        for crimeValue in crimeArray {
+//                            if let crimeValue = crimeValue.dictionary {
+//                                var crimeObject = KMACrimeObject()
+//                                crimeObject.fillFrom(json: crimeValue)
+//                                crimeData.append(crimeObject)
+//                            }
+//                        }
+//                    }
+//
+//                    completion(crimeData, "")
+                } catch {
+//                    print("Error: \(error.localizedDescription)")
+//                    completion([KMACrimeObject](), error.localizedDescription)
+                }
+            }
+        }
+    }
 }
 
 public struct KMAPoliceNeighbourhood {
