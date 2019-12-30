@@ -10,8 +10,8 @@ import UIKit
 
 public class KMAUIDashboardDescriptionTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var propertyTitleLabel: KMAUITitleLabel!
-    @IBOutlet public weak var propertyDescriptionLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var itemLabel: KMAUITitleLabel!
+    @IBOutlet public weak var descriptionLabel: KMAUIInfoLabel!
     
     // MARK: - Variables
     public var type = ""
@@ -31,16 +31,14 @@ public class KMAUIDashboardDescriptionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        propertyTitleLabel.text = type.capitalized
+        itemLabel.text = type.capitalized
         
         if textValue.isEmpty {
-            propertyDescriptionLabel.text = "No \(type) available."
-        } else if type == "common crime" {
-            propertyDescriptionLabel.text = textValue
+            descriptionLabel.text = "No \(type) available."
         } else if type == "description" {
-            propertyDescriptionLabel.text = textValue.htmlToString
+            descriptionLabel.text = textValue.htmlToString
         } else if type == "letting fees" {
-            propertyDescriptionLabel.text = textValue.htmlToString
+            descriptionLabel.text = textValue.htmlToString
         }
     }
 }

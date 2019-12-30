@@ -20,19 +20,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-eO-Aza" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="288" height="118"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfh-wv-UdG" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="34" width="256" height="68"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWF-us-awj" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="8" width="256" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="DFq-Sh-8FS"/>
+                                    <constraint firstAttribute="height" constant="22" id="ZLh-0V-pcX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWF-us-awj" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="8" width="256" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfh-wv-UdG" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="34" width="256" height="68"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="ZLh-0V-pcX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="DFq-Sh-8FS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -61,8 +61,8 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="propertyDescriptionLabel" destination="Mfh-wv-UdG" id="8H5-0q-v0Z"/>
-                <outlet property="propertyTitleLabel" destination="JWF-us-awj" id="vR8-c5-fBb"/>
+                <outlet property="descriptionLabel" destination="Mfh-wv-UdG" id="s45-sK-mln"/>
+                <outlet property="itemLabel" destination="JWF-us-awj" id="TE8-EW-izg"/>
             </connections>
             <point key="canvasLocation" x="-82.608695652173921" y="2.6785714285714284"/>
         </tableViewCell>
