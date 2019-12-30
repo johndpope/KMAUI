@@ -219,13 +219,10 @@ public struct KMAPoliceNeighbourhood {
                     crimeObject.fillFrom(json: crimeValue)
 
                     if KMAUIUtilities.shared.checkIf(crimeObject.location, areInside: polygon) {
-//                        print("Location: \(crimeObject.location), INSIDE")
                         self.crimeArray.append(crimeObject)
                     } else {
-//                        print("Location: \(crimeObject.location), OUTSIDE")
+                        self.crimeNearby.append(crimeObject)
                     }
-                    
-                    self.crimeNearby.append(crimeObject)
                 }
             }
         }
