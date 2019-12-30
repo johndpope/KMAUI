@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import Contacts
 import ContactsUI
 import CoreLocation
@@ -312,6 +313,37 @@ public class KMAUIUtilities {
         }
         
         return commonItems
+    }
+    
+    // MARK: - Checking if location is insdie the polygon
+    
+    /**
+     Check if location is inside the polygon
+     */
+    
+    func checkIf(_ location: CLLocationCoordinate2D, areInside polygon: MKPolygon) -> Bool {
+        let polygonRenderer = MKPolygonRenderer(polygon: polygon)
+        let mapPoint = MKMapPoint(location)
+        let polygonPoint = polygonRenderer.point(for: mapPoint)
+
+        return polygonRenderer.path.contains(polygonPoint)
+    }
+    
+    /**
+     Prepare the polygon from coordinates
+     */
+    
+    func getPolygon(bounds: [CLLocationCoordinate2D]) -> MKPolygon {
+        var locations = [CLLocation]()
+        
+        for location in bounds {
+            locations.append(CLLocation(latitude: location.latitude, longitude: location.longitude))
+        }
+        
+        var coordinates = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
+        let polygon = MKPolygon(coordinates: &coordinates, count: locations.count)
+        
+        return polygon
     }
 }
 

@@ -204,16 +204,7 @@ public struct KMAPoliceNeighbourhood {
     
     public mutating func fillFrom(crime: String) {
         crimeArray = [KMACrimeObject]()
-        var locations = [CLLocation]()
-        
-        for location in bounds {
-            locations.append(CLLocation(latitude: location.latitude, longitude: location.longitude))
-        }
-        
-        var coordinates = locations.map({(location: CLLocation) -> CLLocationCoordinate2D in return location.coordinate})
-//        let polyline = MKPolyline(coordinates: &coordinates, count: locations.count)
-        let polygon = MKPolygon(coordinates: &coordinates, count: locations.count)
-        
+        let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
         self.crime = crime
         print("We have the boundary of \(bounds.count) coordinates.")
         print("Checking if the location is inside the boundary.")
@@ -225,7 +216,7 @@ public struct KMAPoliceNeighbourhood {
                     var crimeObject = KMACrimeObject()
                     crimeObject.fillFrom(json: crimeValue)
 
-                    if checkIf(crimeObject.location, areInside: polygon) {
+                    if KMAUIUtilities.shared.checkIf(crimeObject.location, areInside: polygon) {
 //                        print("Location: \(crimeObject.location), INSIDE")
                         crimeArray.append(crimeObject)
                     } else {
@@ -236,14 +227,6 @@ public struct KMAPoliceNeighbourhood {
         }
         
         print("TOTAL CRIME OBJECTS VERIFIED: \(crimeArray.count)")
-    }
-    
-    func checkIf(_ location: CLLocationCoordinate2D, areInside polygon: MKPolygon) -> Bool {
-        let polygonRenderer = MKPolygonRenderer(polygon: polygon)
-        let mapPoint = MKMapPoint(location)
-        let polygonPoint = polygonRenderer.point(for: mapPoint)
-
-        return polygonRenderer.path.contains(polygonPoint)
     }
 }
 
