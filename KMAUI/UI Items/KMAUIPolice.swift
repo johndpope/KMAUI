@@ -292,7 +292,7 @@ public struct KMAPoliceNeighbourhood {
                     self.crimeString += "\n"
                 }
                 
-                self.crimeString += "● \(category) – \(count)\(endSymbol)"
+                self.crimeString += "● \(category.capitalized.replacingOccurrences(of: "-", with: " ")) – \(count)\(endSymbol)"
             }
         }
     }
