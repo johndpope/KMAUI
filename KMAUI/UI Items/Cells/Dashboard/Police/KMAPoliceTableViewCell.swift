@@ -19,6 +19,7 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var policeObject = KMAPoliceNeighbourhood()
     public var logo = ""
+    public var canHighlight = true
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -49,7 +50,7 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if highlight, canHighligh {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             headerLabel.textColor = UIColor.white
             infoLabel.textColor = UIColor.white
