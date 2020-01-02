@@ -8,17 +8,36 @@
 
 import UIKit
 
-class KMAUIPolicemanTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
+public class KMAUIPolicemanTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var logoImageView: UIImageView!
+    @IBOutlet public weak var nameLabel: KMAUITitleLabel!
+    @IBOutlet public weak var rankLabel: KMAUITextLabel!
+    
+    // MARK: - Variables
+    var policeman = KMAPoliceman()
+    
+    override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Logo image
+        logoImageView.image = KMAUIConstants.shared.policemanIcon.withRenderingMode(.alwaysTemplate)
+        logoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        logoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        logoImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+        
+        // No selection required
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        nameLabel.text = policeman.name
+        rankLabel.text = policeman.rank
+    }
 }
