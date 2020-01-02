@@ -87,7 +87,7 @@ public class KMAUIPolice {
 //        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
 //        let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
 //        let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
-//        
+//
 //        print("\(point1), \(point2), \(point3), \(point4)")
         
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(polygon)" // &date=\(date)
@@ -106,6 +106,8 @@ public class KMAUIPolice {
                 } catch {
                     completion("", error.localizedDescription)
                 }
+            } else {
+                completion("", "Error")
             }
         }
     }
