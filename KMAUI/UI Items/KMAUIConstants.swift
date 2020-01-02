@@ -111,11 +111,11 @@ public struct KMAUITextFieldCellData {
     public init() {
     }
     
-//    public init(type: String, placeholderText: String, value: String) {
-//        self.type = type
-//        self.placeholderText = placeholderText
-//        self.value = value
-//    }
+    public init(type: String, placeholderText: String, value: String) {
+        self.type = type
+        self.placeholderText = placeholderText
+        self.value = value
+    }
 }
 
 // MARK: - String extension
