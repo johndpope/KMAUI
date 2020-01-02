@@ -67,7 +67,7 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
         }
         
         // Set the visible area
-        if !neighbourhood.crimeArray.isEmpty, !neighbourhood.crimeNearby.isEmpty {
+        if !neighbourhood.crimeArray.isEmpty || !neighbourhood.crimeNearby.isEmpty {
             mapView.showAnnotations(mapView.annotations, animated: true)
         } else {
             var region = MKCoordinateRegion()
