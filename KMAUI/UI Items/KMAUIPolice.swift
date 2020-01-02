@@ -76,7 +76,7 @@ public class KMAUIPolice {
         let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
         let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
         let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)&date=\(date)"
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
@@ -413,5 +413,16 @@ public struct KMACrimeObject {
             self.month = month
         }
     }
+}
+
+/**
+ Police workers
+ */
+
+public struct policeman {
+    public var name = ""
+    public var rank = ""
+    public var bio = ""
+    public var contact = ""
 }
 
