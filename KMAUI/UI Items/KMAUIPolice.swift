@@ -348,7 +348,7 @@ public struct KMAPoliceNeighbourhood {
      Get the team
      */
     
-    public mutating func fillFrom() {
+    public mutating func fillTeam() {
         if !team.isEmpty, let dataFromString = team.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
             self.teamArray = [KMAPoliceman]()
             
