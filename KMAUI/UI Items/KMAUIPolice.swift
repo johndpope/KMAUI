@@ -72,14 +72,22 @@ public class KMAUIPolice {
      */
     
     public func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
-        let horizontalDelta = neighbourhood.maxLat - neighbourhood.minLat
-        let verticalDelta = neighbourhood.maxLong - neighbourhood.minLong
+        /*
+         let horizontalDelta = neighbourhood.maxLat - neighbourhood.minLat
+         let verticalDelta = neighbourhood.maxLong - neighbourhood.minLong
+         
+         let point1 = "\(neighbourhood.minLong + verticalDelta / 2):\(neighbourhood.minLat + horizontalDelta / 2)"
+         let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat + horizontalDelta / 2)"
+         let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
+         let point4 = "\(neighbourhood.minLong + verticalDelta / 2):\(neighbourhood.maxLat)"
+         */
         
-        let point1 = "\(neighbourhood.minLong + verticalDelta / 2):\(neighbourhood.minLat + horizontalDelta / 2)"
-        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat + horizontalDelta / 2)"
+        let point1 = "\(neighbourhood.minLong):\(neighbourhood.minLat)"
+        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
         let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
-        let point4 = "\(neighbourhood.minLong + verticalDelta / 2):\(neighbourhood.maxLat)"
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
+        let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
+        
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
