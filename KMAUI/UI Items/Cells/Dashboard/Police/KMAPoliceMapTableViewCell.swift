@@ -40,10 +40,11 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     public func setupCell() {
         print("Nearby crime: \(neighbourhood.crimeNearby.count), crime: \(neighbourhood.crimeArray.count)")
         
-        let point1 = "\(neighbourhood.minLong):\(neighbourhood.minLat)"
-        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
-        let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
-        let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
+        
+        let point1 = CLLocationCoordinate2D(latitude: neighbourhood.minLat, longitude: neighbourhood.minLong)
+        let point2 = CLLocationCoordinate2D(latitude: neighbourhood.minLat, longitude: neighbourhood.maxLong)
+        let point3 = CLLocationCoordinate2D(latitude: neighbourhood.maxLat, longitude: neighbourhood.maxLong)
+        let point4 = CLLocationCoordinate2D(latitude: neighbourhood.maxLat, longitude: neighbourhood.minLong)
         let rectBounds = [point1, point2, point3, point4, point1]
         
         let rectPolygon = KMAUIUtilities.shared.getPolygon(bounds: rectBounds)
