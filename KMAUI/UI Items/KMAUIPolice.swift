@@ -71,8 +71,8 @@ public class KMAUIPolice {
      Get crime in bounds
      */
     
-    public func getCrime(polygon: String, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(polygon)" // &date=\(date)
+    public func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.polygonString)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
@@ -164,6 +164,7 @@ public struct KMAPoliceNeighbourhood {
     public var crimeDate = ""
     public var crimeItems = [[String: AnyObject]]()
     public var crimeString = ""
+    public var polygonString = ""
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
@@ -221,6 +222,9 @@ public struct KMAPoliceNeighbourhood {
                 }
             }
         }
+        
+        // Get the polygon string
+        self.getPolygonString()
     }
     
     /**
@@ -316,6 +320,26 @@ public struct KMAPoliceNeighbourhood {
                 self.crimeString += "• \(category.capitalized.replacingOccurrences(of: "-", with: " ")) – \(count)\(endSymbol)"
             }
         }
+    }
+    
+    /**
+     Get the polygon string
+     */
+    
+    public mutating func getPolygonString() {
+        let verticalDelta = maxLat - minLat
+        let horizontalDelta = maxLong - minLong
+        
+        let point1 = "\(minLong):\(minLat)"
+        let point2 = "\(minLong):\(minLat + verticalDelta)"
+        let point3 = "\(minLong):\(maxLat)"
+        let point4 = "\(minLong + horizontalDelta):\(maxLat)"
+        let point5 = "\(maxLong):\(maxLat)"
+        let point6 = "\(maxLong):\(maxLat - verticalDelta)"
+        let point7 = "\(maxLong):\(minLat)"
+        let point8 = "\(maxLong - horizontalDelta):\(minLat)"
+        
+        polygonString = "\(minLat),\(point1),\(point2),\(point3),\(point4),\(point5),\(point6),\(point7),\(point8),\(minLong)"
     }
 }
 
