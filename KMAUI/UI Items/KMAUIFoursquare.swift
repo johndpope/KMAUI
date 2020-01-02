@@ -181,20 +181,20 @@ public struct KMAFoursquareVenue {
     public init() {
     }
     
-    public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String, venueId: String) {
-        // The main variables from recommendations
-        self.name = name
-        self.category = category
-        self.categoryPrefix = categoryPrefix
-        self.categorySuffix = categorySuffix
-        self.latitude = latitude
-        self.longitude = longitude
-        self.address = address
-        self.prefix = prefix
-        self.suffix = suffix
-        self.venueId = venueId
-        // The details additional variables
-    }
+//    public init(name: String, category: String, categoryPrefix: String, categorySuffix: String, latitude: Double, longitude: Double, address: String, prefix: String, suffix: String, venueId: String) {
+//        // The main variables from recommendations
+//        self.name = name
+//        self.category = category
+//        self.categoryPrefix = categoryPrefix
+//        self.categorySuffix = categorySuffix
+//        self.latitude = latitude
+//        self.longitude = longitude
+//        self.address = address
+//        self.prefix = prefix
+//        self.suffix = suffix
+//        self.venueId = venueId
+//        // The details additional variables
+//    }
     
     public mutating func fillFrom(venue: JSON) {
         if let venue = venue.dictionary {

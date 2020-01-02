@@ -214,44 +214,44 @@ public struct KMAZooplaProperty {
     public init() {
     }
     
-    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, numReceptions: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Bool, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
-        self.latitude = latitude
-        self.longitude = longitude
-        self.image50x38 = image50x38
-        self.image354x255 = image354x255
-        self.image645x430 = image645x430
-        self.image80x60 = image80x60
-        self.image150x113 = image150x113
-        self.image = image
-        self.imageCaption = imageCaption
-        self.thumbnail = thumbnail
-        self.availableFrom = availableFrom
-        self.listingId = listingId
-        self.description = description
-        self.shortDescription = shortDescription
-        self.type = type
-        self.address = address
-        self.status = status
-        self.category = category
-        self.numFloors = numFloors
-        self.numBathrooms = numBathrooms
-        self.numBedrooms = numBedrooms
-        self.numReceptions = numReceptions
-        self.detailsURL = detailsURL
-        self.firstPublishedDate = firstPublishedDate
-        self.lastPublishedDate = lastPublishedDate
-        self.lettingFees = lettingFees
-        self.floorPlan = floorPlan
-        self.salePrice = salePrice
-        self.rentWeek = rentWeek
-        self.rentMonth = rentMonth
-        self.priceChange = priceChange
-        self.priceChangeSummary = priceChangeSummary
-        self.billsIncluded = billsIncluded
-        self.newHome = newHome
-        self.minFloorArea = minFloorArea
-        self.maxFloorArea = maxFloorArea
-    }
+//    public init(latitude: Double, longitude: Double, image50x38: String, image354x255: String, image645x430: String, image80x60: String, image150x113: String, image: String, imageCaption: String, thumbnail: String, availableFrom: String, listingId: String, description: String, shortDescription: String, type: String, address: String, status: String, category: String, numFloors: Int, numBathrooms: Int, numBedrooms: Int, numReceptions: Int, detailsURL: String, firstPublishedDate: Double, lastPublishedDate: Double, lettingFees: String, floorPlan: [String], salePrice: Int, rentWeek: Int, rentMonth: Int, priceChange: String, priceChangeSummary: String, billsIncluded: Bool, newHome: Bool, minFloorArea: String, maxFloorArea: String) {
+//        self.latitude = latitude
+//        self.longitude = longitude
+//        self.image50x38 = image50x38
+//        self.image354x255 = image354x255
+//        self.image645x430 = image645x430
+//        self.image80x60 = image80x60
+//        self.image150x113 = image150x113
+//        self.image = image
+//        self.imageCaption = imageCaption
+//        self.thumbnail = thumbnail
+//        self.availableFrom = availableFrom
+//        self.listingId = listingId
+//        self.description = description
+//        self.shortDescription = shortDescription
+//        self.type = type
+//        self.address = address
+//        self.status = status
+//        self.category = category
+//        self.numFloors = numFloors
+//        self.numBathrooms = numBathrooms
+//        self.numBedrooms = numBedrooms
+//        self.numReceptions = numReceptions
+//        self.detailsURL = detailsURL
+//        self.firstPublishedDate = firstPublishedDate
+//        self.lastPublishedDate = lastPublishedDate
+//        self.lettingFees = lettingFees
+//        self.floorPlan = floorPlan
+//        self.salePrice = salePrice
+//        self.rentWeek = rentWeek
+//        self.rentMonth = rentMonth
+//        self.priceChange = priceChange
+//        self.priceChangeSummary = priceChangeSummary
+//        self.billsIncluded = billsIncluded
+//        self.newHome = newHome
+//        self.minFloorArea = minFloorArea
+//        self.maxFloorArea = maxFloorArea
+//    }
     
     /**
      fllor area, avaialableFrom,  floorPlan

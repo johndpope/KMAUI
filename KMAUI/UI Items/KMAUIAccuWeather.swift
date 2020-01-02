@@ -100,11 +100,11 @@ public struct KMAWeather {
     public init() {
     }
     
-    public init(title: String, text: String, image: String) {
-        self.title = title
-        self.text = text
-        self.image = image
-    }
+//    public init(title: String, text: String, image: String) {
+//        self.title = title
+//        self.text = text
+//        self.image = image
+//    }
     
     public mutating func fillFrom(jsonString: String) {
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
