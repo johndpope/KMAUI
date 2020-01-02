@@ -165,10 +165,12 @@ public struct KMAPoliceNeighbourhood {
     public var crimeItems = [[String: AnyObject]]()
     public var crimeString = ""
     public var polygonString = ""
+    public var teamArray = [KMAPoliceman]()
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
     public var crime = "" // stores the full Crime information loaded
+    public var team = "" // store the full Team information loaded
     
     public init() {
     }
@@ -431,10 +433,30 @@ public struct KMACrimeObject {
  Police workers
  */
 
-public struct policeman {
+public struct KMAPoliceman {
     public var name = ""
     public var rank = ""
     public var bio = ""
     public var contact = ""
+    
+    public init() {
+    }
+    
+    public mutating func fillFrom(json: [String: JSON]) {
+        if let rank = json["rank"]?.string {
+            self.rank = rank
+        }
+        
+        if let name = json["name"]?.string {
+            self.name = name
+        }
+        
+        if let bio = json["bio"]?.string {
+            self.bio = bio
+        }
+        
+        if let contactDetails = json["contact_details"]?.rawString() {
+            self.contact = contactDetails
+        }
+    }
 }
-
