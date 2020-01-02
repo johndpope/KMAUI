@@ -69,7 +69,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSY-Nd-dHF" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="68" width="288" height="44"/>
+                        <rect key="frame" x="16" y="76" width="288" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="iea-J6-Vck"/>
                         </constraints>
@@ -82,10 +82,10 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="tqE-1u-LmF" secondAttribute="trailing" constant="16" id="53T-FU-c9A"/>
                     <constraint firstAttribute="trailing" secondItem="MSY-Nd-dHF" secondAttribute="trailing" constant="16" id="8Cy-7O-Rty"/>
-                    <constraint firstItem="MSY-Nd-dHF" firstAttribute="top" secondItem="tqE-1u-LmF" secondAttribute="bottom" constant="8" id="Ko0-hJ-PDs"/>
+                    <constraint firstItem="MSY-Nd-dHF" firstAttribute="top" secondItem="tqE-1u-LmF" secondAttribute="bottom" constant="16" id="Ko0-hJ-PDs"/>
                     <constraint firstItem="tqE-1u-LmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="a0W-bL-jaO"/>
                     <constraint firstItem="tqE-1u-LmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ggX-VY-WRO"/>
-                    <constraint firstAttribute="bottom" secondItem="MSY-Nd-dHF" secondAttribute="bottom" constant="8" id="tfF-Sk-TQG"/>
+                    <constraint firstAttribute="bottom" secondItem="MSY-Nd-dHF" secondAttribute="bottom" constant="16" id="tfF-Sk-TQG"/>
                     <constraint firstItem="MSY-Nd-dHF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xHJ-ww-i0s"/>
                 </constraints>
             </tableViewCellContentView>
@@ -98,6 +98,7 @@
                 <outlet property="logoImageView" destination="BbA-ap-KnU" id="RNa-xI-vAy"/>
                 <outlet property="reviewButton" destination="MSY-Nd-dHF" id="Iqt-BB-oaB"/>
                 <outlet property="reviewButtonHeight" destination="iea-J6-Vck" id="V1r-MG-87c"/>
+                <outlet property="reviewButtonTop" destination="Ko0-hJ-PDs" id="Geb-Pv-Fh6"/>
                 <outlet property="rightArrowImageView" destination="DDx-5g-pPv" id="uwY-w3-9xk"/>
                 <outlet property="rightArrowImageViewRight" destination="1LL-xk-uHS" id="G8c-pR-EZN"/>
                 <outlet property="rightArrowImageViewWidth" destination="HTr-w1-awJ" id="ba9-h4-vMb"/>

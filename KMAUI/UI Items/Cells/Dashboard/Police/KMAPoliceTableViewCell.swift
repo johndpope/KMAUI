@@ -18,6 +18,7 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
+    @IBOutlet weak var reviewButtonTop: NSLayoutConstraint!
     @IBOutlet public weak var reviewButtonHeight: NSLayoutConstraint!
     
     // MARK: - Variables
@@ -96,9 +97,11 @@ public class KMAPoliceTableViewCell: UITableViewCell {
         
         if hasButton {
             reviewButton.alpha = 1
+            reviewButtonTop.constant = 16
             reviewButtonHeight.constant = 44
         } else {
             reviewButton.alpha = 0
+            reviewButtonTop.constant = 0
             reviewButtonHeight.constant = 0
         }
     }
