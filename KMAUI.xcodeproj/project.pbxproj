@@ -227,8 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				855BA982238FFB3100CE2709 /* KMAUI.h */,
-				855BA98A238FFBD000CE2709 /* UI Items */,
 				855BA983238FFB3100CE2709 /* Info.plist */,
+				855BA98A238FFBD000CE2709 /* UI Items */,
 			);
 			path = KMAUI;
 			sourceTree = "<group>";

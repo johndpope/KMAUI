@@ -91,10 +91,14 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
 extension KMAPoliceMapTableViewCell: MKMapViewDelegate {
     
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let renderer = mapView.renderer(for: overlay) as? MKPolygonRenderer {
+            renderer.fillColor = KMAUIConstants.shared.KMABrightBlueColor.withAlphaComponent(0.1)
+        }
+        
         if overlay is MKPolygon {
             let polygonView = MKPolygonRenderer(overlay: overlay)
             polygonView.strokeColor = KMAUIConstants.shared.KMABrightBlueColor
-            polygonView.lineWidth = 2
+            polygonView.lineWidth = 3
             
             return polygonView
         }
