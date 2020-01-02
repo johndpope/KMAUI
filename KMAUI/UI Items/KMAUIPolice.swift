@@ -87,7 +87,9 @@ public class KMAUIPolice {
         let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
         let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
         
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
+        print("\(point1), \(point2), \(point3), \(point4)")
+        
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
