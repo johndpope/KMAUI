@@ -1,5 +1,5 @@
 //
-//  KMAPoliceMapTableViewCell.swift
+//  KMAUIPoliceMapTableViewCell.swift
 //  KMAUI
 //
 //  Created by Stanislav Rastvorov on 30.12.2019.
@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-public class KMAPoliceMapTableViewCell: UITableViewCell {
+public class KMAUIPoliceMapTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
     
@@ -88,7 +88,7 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
 
 // MARK: - MapView extension
 
-extension KMAPoliceMapTableViewCell: MKMapViewDelegate {
+extension KMAUIPoliceMapTableViewCell: MKMapViewDelegate {
     
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKPolygon {

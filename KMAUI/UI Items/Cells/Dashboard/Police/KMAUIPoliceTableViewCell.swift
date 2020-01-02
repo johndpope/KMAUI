@@ -1,5 +1,5 @@
 //
-//  KMAPoliceTableViewCell.swift
+//  KMAUIPoliceTableViewCell.swift
 //  KMAUI
 //
 //  Created by Stanislav Rastvorov on 28.12.2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMAPoliceTableViewCell: UITableViewCell {
+public class KMAUIPoliceTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var logoImageView: UIImageView!
