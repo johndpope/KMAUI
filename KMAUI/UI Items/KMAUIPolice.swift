@@ -71,7 +71,8 @@ public class KMAUIPolice {
      Get crime in bounds
      */
     
-    public func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+    public func getCrime(polygon: String, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+//        neighbourhood: KMAPoliceNeighbourhood
         /*
          let horizontalDelta = neighbourhood.maxLat - neighbourhood.minLat
          let verticalDelta = neighbourhood.maxLong - neighbourhood.minLong
@@ -89,7 +90,7 @@ public class KMAUIPolice {
         
         print("\(point1), \(point2), \(point3), \(point4)")
         
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.minLat),\(point1),\(point2),\(point3),\(point4),\(neighbourhood.minLong)" // &date=\(date)
+        let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(polygon)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
