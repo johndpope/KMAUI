@@ -40,6 +40,15 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
     public func setupCell() {
         print("Nearby crime: \(neighbourhood.crimeNearby.count), crime: \(neighbourhood.crimeArray.count)")
         
+        let point1 = "\(neighbourhood.minLong):\(neighbourhood.minLat)"
+        let point2 = "\(neighbourhood.maxLong):\(neighbourhood.minLat)"
+        let point3 = "\(neighbourhood.maxLong):\(neighbourhood.maxLat)"
+        let point4 = "\(neighbourhood.minLong):\(neighbourhood.maxLat)"
+        let rectBounds = [point1, point2, point3, point4, point1]
+        
+        let rectPolygon = KMAUIUtilities.shared.getPolygon(bounds: rectBounds)
+        mapView.addOverlay(rectPolygon)
+        
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: neighbourhood.bounds)
         mapView.addOverlay(polygon)
         
@@ -50,12 +59,12 @@ public class KMAPoliceMapTableViewCell: UITableViewCell {
             mapView.addAnnotation(annotation)
         }
         
-        /*for crimeObject in neighbourhood.crimeNearby {
+        for crimeObject in neighbourhood.crimeNearby {
             let annotation = MKPointAnnotation()
             annotation.coordinate = crimeObject.location
             annotation.title = crimeObject.category.capitalized.replacingOccurrences(of: "-", with: " ")
             mapView.addAnnotation(annotation)
-        }*/
+        }
 
         // Set the visible area
             var region = MKCoordinateRegion()
