@@ -135,23 +135,15 @@ public class KMAUIPolice {
             if let responseData = response.data {
                 do {
                     let json = try JSON(data: responseData)
-                    print(json)
-//                    var crimeData = [KMACrimeObject]()
-//
-//                    if let crimeArray = json.array {
-//                        for crimeValue in crimeArray {
-//                            if let crimeValue = crimeValue.dictionary {
-//                                var crimeObject = KMACrimeObject()
-//                                crimeObject.fillFrom(json: crimeValue)
-//                                crimeData.append(crimeObject)
-//                            }
-//                        }
-//                    }
-//
-//                    completion(crimeData, "")
+                    
+                    if let jsonString = json.rawString(), !jsonString.isEmpty {
+                        completion(jsonString, "")
+                    } else {
+                        completion("", "Error")
+                    }
                 } catch {
-//                    print("Error: \(error.localizedDescription)")
-//                    completion([KMACrimeObject](), error.localizedDescription)
+                    print("Error: \(error.localizedDescription)")
+                    completion("", error.localizedDescription)
                 }
             }
         }
