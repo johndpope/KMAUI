@@ -348,8 +348,16 @@ public struct KMAPoliceNeighbourhood {
      Get the team
      */
     
-    public mutating func fillFrom(team: String) {
-        
+    public mutating func fillFrom() {
+        if !team.isEmpty, let dataFromString = team.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
+            self.teamArray = [KMAPoliceman]()
+            
+            for item in json {
+                var policeman = KMAPoliceman()
+                policeman.fillFrom(json: item)
+                self.teamArray.append(policeman)
+            }
+        }
     }
 }
 
@@ -450,21 +458,23 @@ public struct KMAPoliceman {
     public init() {
     }
     
-    public mutating func fillFrom(json: [String: JSON]) {
-        if let rank = json["rank"]?.string {
-            self.rank = rank
-        }
-        
-        if let name = json["name"]?.string {
-            self.name = name
-        }
-        
-        if let bio = json["bio"]?.string {
-            self.bio = bio
-        }
-        
-        if let contactDetails = json["contact_details"]?.rawString() {
-            self.contact = contactDetails
+    public mutating func fillFrom(json: JSON) {
+        if let json = json.dictionary {
+            if let rank = json["rank"]?.string {
+                self.rank = rank
+            }
+            
+            if let name = json["name"]?.string {
+                self.name = name
+            }
+            
+            if let bio = json["bio"]?.string {
+                self.bio = bio
+            }
+            
+            if let contactDetails = json["contact_details"]?.rawString() {
+                self.contact = contactDetails
+            }
         }
     }
 }
