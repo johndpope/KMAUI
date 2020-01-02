@@ -343,6 +343,14 @@ public struct KMAPoliceNeighbourhood {
         
         polygonString = "\(minLat),\(point1),\(point2),\(point3),\(point4),\(point5),\(point6),\(point7),\(point8),\(minLong)"
     }
+    
+    /**
+     Get the team
+     */
+    
+    public mutating func fillFrom(team: String) {
+        
+    }
 }
 
 
