@@ -15,7 +15,7 @@ public class KMAUIPolicemanTableViewCell: UITableViewCell {
     @IBOutlet public weak var rankLabel: KMAUITextLabel!
     
     // MARK: - Variables
-    var policeman = KMAPoliceman()
+    public var policeman = KMAPoliceman()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
