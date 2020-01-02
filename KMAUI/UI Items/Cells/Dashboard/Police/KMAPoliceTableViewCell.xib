@@ -10,11 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPoliceCell" rowHeight="89" id="KGk-i7-Jjw" customClass="KMAPoliceTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPoliceCell" rowHeight="122" id="KGk-i7-Jjw" customClass="KMAPoliceTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-1u-LmF" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
@@ -68,12 +68,25 @@
                             <constraint firstItem="DDx-5g-pPv" firstAttribute="centerY" secondItem="tqE-1u-LmF" secondAttribute="centerY" id="urE-wU-9bm"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSY-Nd-dHF" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="68" width="288" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="iea-J6-Vck"/>
+                        </constraints>
+                        <state key="normal" title="Review team"/>
+                        <connections>
+                            <action selector="reviewButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rHK-PS-5sR"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="tqE-1u-LmF" secondAttribute="trailing" constant="16" id="53T-FU-c9A"/>
-                    <constraint firstAttribute="bottom" secondItem="tqE-1u-LmF" secondAttribute="bottom" constant="16" id="8rE-3Z-ukD"/>
+                    <constraint firstAttribute="trailing" secondItem="MSY-Nd-dHF" secondAttribute="trailing" constant="16" id="8Cy-7O-Rty"/>
+                    <constraint firstItem="MSY-Nd-dHF" firstAttribute="top" secondItem="tqE-1u-LmF" secondAttribute="bottom" constant="8" id="Ko0-hJ-PDs"/>
                     <constraint firstItem="tqE-1u-LmF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="a0W-bL-jaO"/>
                     <constraint firstItem="tqE-1u-LmF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ggX-VY-WRO"/>
+                    <constraint firstAttribute="bottom" secondItem="MSY-Nd-dHF" secondAttribute="bottom" constant="8" id="tfF-Sk-TQG"/>
+                    <constraint firstItem="MSY-Nd-dHF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xHJ-ww-i0s"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
@@ -83,11 +96,13 @@
                 <outlet property="headerLabel" destination="HJz-UY-wCN" id="lbs-Bg-nyM"/>
                 <outlet property="infoLabel" destination="V2K-h7-fyX" id="ZLk-2X-LjG"/>
                 <outlet property="logoImageView" destination="BbA-ap-KnU" id="RNa-xI-vAy"/>
+                <outlet property="reviewButton" destination="MSY-Nd-dHF" id="Iqt-BB-oaB"/>
+                <outlet property="reviewButtonHeight" destination="iea-J6-Vck" id="V1r-MG-87c"/>
                 <outlet property="rightArrowImageView" destination="DDx-5g-pPv" id="uwY-w3-9xk"/>
                 <outlet property="rightArrowImageViewRight" destination="1LL-xk-uHS" id="G8c-pR-EZN"/>
                 <outlet property="rightArrowImageViewWidth" destination="HTr-w1-awJ" id="ba9-h4-vMb"/>
             </connections>
-            <point key="canvasLocation" x="-15.942028985507248" y="56.584821428571423"/>
+            <point key="canvasLocation" x="-15.942028985507248" y="67.633928571428569"/>
         </tableViewCell>
     </objects>
     <resources>

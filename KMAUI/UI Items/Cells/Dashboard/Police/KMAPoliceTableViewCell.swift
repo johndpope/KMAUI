@@ -17,12 +17,16 @@ public class KMAPoliceTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
+    @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
+    @IBOutlet public weak var reviewButtonHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     public var policeObject = KMAPoliceNeighbourhood()
     public var logo = ""
+    public var hasButton = false
     public var canHighlight = true
     public var crimeLoaded = false
+    public var buttonPressedCallback: ((String) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -89,5 +93,19 @@ public class KMAPoliceTableViewCell: UITableViewCell {
                 infoLabel.text = "Crime accidents nearby: \(policeObject.crimeArray.count)"
             }
         }
+        
+        if hasButton {
+            reviewButton.alpha = 1
+            reviewButtonHeight.constant = 44
+        } else {
+            reviewButton.alpha = 0
+            reviewButtonHeight.constant = 0
+        }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction public func reviewButtonPressed(_ sender: Any) {
+        buttonPressedCallback?("pressed")
     }
 }
