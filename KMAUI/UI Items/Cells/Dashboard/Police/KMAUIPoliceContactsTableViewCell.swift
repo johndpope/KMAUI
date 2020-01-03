@@ -57,7 +57,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
         print("Phone: `\(neighbourhood.telephone)`")
         
         // Facebook
-        if !neighbourhood.facebook.isEmpty {
+        if neighbourhood.facebook.isEmpty {
             facebookButton.setTitle(neighbourhood.facebook, for: .normal)
             facebookButton.alpha = 1
             facebookLabel.alpha = 1
@@ -70,7 +70,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             facebookLabelHeight.constant = 0
         }
         // Twitter
-        if !neighbourhood.twitter.isEmpty {
+        if neighbourhood.twitter.isEmpty {
             twitterButton.setTitle(neighbourhood.twitter, for: .normal)
             twitterButton.alpha = 1
             twitterLabel.alpha = 1
@@ -83,7 +83,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             twitterLabelHeight.constant = 0
         }
         // Website
-        if !neighbourhood.website.isEmpty {
+        if neighbourhood.website.isEmpty {
             websiteButton.setTitle(neighbourhood.website, for: .normal)
             websiteButton.alpha = 1
             websiteLabel.alpha = 1
@@ -96,7 +96,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             websiteLabelHeight.constant = 0
         }
         // Email
-        if !neighbourhood.email.isEmpty {
+        if neighbourhood.email.isEmpty {
             emailButton.setTitle(neighbourhood.email, for: .normal)
             emailButton.alpha = 1
             emailLabel.alpha = 1
@@ -109,7 +109,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             emailLabelHeight.constant = 0
         }
         // Phone
-        if !neighbourhood.telephone.isEmpty {
+        if neighbourhood.telephone.isEmpty {
             phoneButton.setTitle(neighbourhood.telephone, for: .normal)
             phoneButton.alpha = 1
             phoneLabel.alpha = 1
