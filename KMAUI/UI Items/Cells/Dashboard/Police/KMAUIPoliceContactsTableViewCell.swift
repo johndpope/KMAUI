@@ -83,7 +83,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             phoneButton.setTitle(neighbourhood.telephone, for: .normal)
             KMAUIUtilities.shared.showItems(label: phoneLabel, constant1: phoneLabelHeight, constant2: phoneLabelTop, button: phoneButton)
         } else {
-            KMAUIUtilities.shared.hideItem(label: phoneLabel, constant1: phoneLabelHeight, constant2: phoneLabelTop, button: phoneButton)
+            KMAUIUtilities.shared.hideItems(label: phoneLabel, constant1: phoneLabelHeight, constant2: phoneLabelTop, button: phoneButton)
         }
     }
     
