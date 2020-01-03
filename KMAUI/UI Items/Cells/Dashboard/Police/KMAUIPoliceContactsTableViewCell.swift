@@ -103,7 +103,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
     
     @IBAction func phoneButtonPressed(_ sender: Any) {
-        if let url = URL(string: "tel://\(neighbourhood.telephone)"), UIApplication.shared.canOpenURL(url) {
+        if let url = URL(string: "tel://\(neighbourhood.telephone.onlyDigits())"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
         }
     }

@@ -460,6 +460,11 @@ public extension String {
     func formatUsername() -> String {
         return "@" + self.replacingOccurrences(of: "@", with: "")
     }
+    
+    func onlyDigits() -> String {
+        let filtredUnicodeScalars = unicodeScalars.filter { CharacterSet.decimalDigits.contains($0) }
+        return String(String.UnicodeScalarView(filtredUnicodeScalars))
+    }
 }
 
 public extension CLLocationCoordinate2D {
