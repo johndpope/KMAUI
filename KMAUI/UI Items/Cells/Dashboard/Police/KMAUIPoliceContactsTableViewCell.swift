@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -102,28 +103,15 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
     
     @IBAction func phoneButtonPressed(_ sender: Any) {
+        if let url = URL(string: "tel://\(neighbourhood.telephone)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
-/*
- // twitter
- if let twitter = contactDetails["twitter"]?.string {
-     self.twitter = twitter
- }
- // facebook
- if let facebook = contactDetails["facebook"]?.string {
-     self.facebook = facebook
- }
- // website
- if let website = contactDetails["website"]?.string {
-     self.website = website
- }
- // telephone
- if let telephone = contactDetails["telephone"]?.string {
-     self.telephone = telephone
- }
- // email
- if let email = contactDetails["email"]?.string {
-     self.email = email
- }
- */
+extension KMAUIPoliceContactsTableViewCell: SFSafariViewControllerDelegate {
+    
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}

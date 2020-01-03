@@ -101,6 +101,14 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
         openSafari(urlString: urlString)
     }
     
+    @IBAction public func phoneButtonPressed(_ sender: Any) {
+        let contactsData = venue.getContacts()
+        
+        if let url = URL(string: "tel://\(contactsData.5)"), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     /*
      Open URL
      */
@@ -110,14 +118,6 @@ public class KMAUIFoursquareContactsTableViewCell: UITableViewCell {
             let safariVC = SFSafariViewController(url: url)
             safariVC.delegate = self
             KMAUIUtilities.shared.displayAlert(viewController: safariVC)
-        }
-    }
-    
-    @IBAction public func phoneButtonPressed(_ sender: Any) {
-        let contactsData = venue.getContacts()
-        
-        if let url = URL(string: "tel://\(contactsData.5)"), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
         }
     }
 }
