@@ -261,7 +261,7 @@ public class KMAUIUtilities {
     
     public func formatStringMonth(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM yyyy"
+        dateFormatter.dateFormat = "MMMM yyyy"
         
         return dateFormatter.string(from: date)
     }
