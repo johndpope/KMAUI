@@ -65,8 +65,8 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
             KMAUIUtilities.shared.hideItems(label: twitterLabel, constant1: twitterLabelHeight, constant2: twitterLabelTop, button: twitterButton)
         }
         // Website
-        if !neighbourhood.website.isEmpty {
-            websiteButton.setTitle(neighbourhood.website, for: .normal)
+        if !neighbourhood.website.isEmpty, let url = URL(string: neighbourhood.website), let host = url.host {
+            websiteButton.setTitle(host, for: .normal)
             KMAUIUtilities.shared.showItems(label: websiteLabel, constant1: websiteLabelHeight, constant2: websiteLabelTop, button: websiteButton)
         } else {
             KMAUIUtilities.shared.hideItems(label: websiteLabel, constant1: websiteLabelHeight, constant2: websiteLabelTop, button: websiteButton)
