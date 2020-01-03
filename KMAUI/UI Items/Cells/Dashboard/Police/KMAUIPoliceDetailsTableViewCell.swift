@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMAPoliceDetailsTableViewCell: UITableViewCell {
+public class KMAUIPoliceDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!

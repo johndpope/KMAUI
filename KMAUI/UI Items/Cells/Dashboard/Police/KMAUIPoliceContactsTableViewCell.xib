@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPoliceContactsCell" rowHeight="134" id="KGk-i7-Jjw" customClass="KMAUIPoliceContactsTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPj-MR-8j9" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="0.0" width="288" height="120"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0V-Ed-jpc" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="8" width="256" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="aQh-WY-fLd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstItem="u0V-Ed-jpc" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="1wW-mh-q2k"/>
+                            <constraint firstAttribute="height" constant="120" id="AHA-91-l1a"/>
+                            <constraint firstItem="u0V-Ed-jpc" firstAttribute="top" secondItem="tPj-MR-8j9" secondAttribute="top" constant="8" id="BNk-6g-yG5"/>
+                            <constraint firstAttribute="trailing" secondItem="u0V-Ed-jpc" secondAttribute="trailing" constant="16" id="g3N-vu-YPU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="tPj-MR-8j9" secondAttribute="trailing" constant="16" id="eDZ-pN-0dw"/>
+                    <constraint firstAttribute="bottom" secondItem="tPj-MR-8j9" secondAttribute="bottom" constant="16" id="kwp-GS-C1n"/>
+                    <constraint firstItem="tPj-MR-8j9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mYb-Eh-Mcc"/>
+                    <constraint firstItem="tPj-MR-8j9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="sZz-4y-Oqf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="KMABgGray"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="-156.52173913043478" y="-95.089285714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMABackColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABgGray">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
