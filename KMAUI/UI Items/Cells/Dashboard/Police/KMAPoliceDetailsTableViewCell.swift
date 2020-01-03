@@ -18,6 +18,7 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
     public var logo = ""
+    public var crimeLoaded = false
     
     // MARK: - Cell methods
     
@@ -52,32 +53,36 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
         // Force
         forceLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
         
-        // Crimes count
-        var crimesCount = "1 crime"
-        
-        if neighbourhood.crimeArray.count != 1 {
-            crimesCount = "\(neighbourhood.crimeArray.count) crimes"
-        }
-        
-        // Month
-        var month = ""
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM"
-        
-        if !neighbourhood.crimeArray.isEmpty {
-            let crime = neighbourhood.crimeArray[0]
+        if crimeLoaded {
+            // Crimes count
+            var crimesCount = "1 crime"
             
-            if !crime.month.isEmpty {
-                if let date = dateFormatter.date(from: crime.month) {
-                    month = "In \(KMAUIUtilities.shared.formatStringMonth(date: date))"
+            if neighbourhood.crimeArray.count != 1 {
+                crimesCount = "\(neighbourhood.crimeArray.count) crimes"
+            }
+            
+            // Month
+            var month = ""
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM"
+            
+            if !neighbourhood.crimeArray.isEmpty {
+                let crime = neighbourhood.crimeArray[0]
+                
+                if !crime.month.isEmpty {
+                    if let date = dateFormatter.date(from: crime.month) {
+                        month = "In \(KMAUIUtilities.shared.formatStringMonth(date: date))"
+                    }
                 }
             }
+            
+            if !month.isEmpty {
+                crimesCount = " " + crimesCount
+            }
+            
+            notesLabel.text = month + crimesCount + " were recorded in this neighbourhood."
+        } else {
+            notesLabel.text = ""
         }
-        
-        if !month.isEmpty {
-            crimesCount = " " + crimesCount
-        }
-        
-        notesLabel.text = month + crimesCount + " were recorded in this neighbourhood."
     }
 }
