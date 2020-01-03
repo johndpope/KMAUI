@@ -160,11 +160,16 @@ public struct KMAPoliceNeighbourhood {
     public var crimeString = ""
     public var polygonString = ""
     public var teamArray = [KMAPoliceman]()
+    public var name = ""
+    public var twitter = ""
+    public var facebook = ""
+    public var website = ""
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
     public var crime = "" // stores the full Crime information loaded
     public var team = "" // store the full Team information loaded
+    public var details = "" // store the full Details information loaded
     
     public init() {
     }
@@ -249,6 +254,35 @@ public struct KMAPoliceNeighbourhood {
         
         // Prepare categories
         self.prepareCrimeCategories()
+    }
+    
+    /**
+     Fill details
+     */
+    
+    public mutating func fillDetails() {
+        // Get the JSON dictionary from the string
+        if !details.isEmpty, let dataFromString = details.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).dictionary {
+            // name
+            if let name = json["name"]?.string {
+                self.name = name
+            }
+            // contact details
+            if let contactDetails = json["contact_details"]?.dictionary {
+                // twitter
+                if let twitter = contactDetails["twitter"]?.string {
+                    self.twitter = twitter
+                }
+                // facebook
+                if let facebook = contactDetails["facebook"]?.string {
+                    self.facebook = facebook
+                }
+                // website
+                if let website = contactDetails["website"]?.string {
+                    self.website = website
+                }
+            }
+        }
     }
     
     /**
