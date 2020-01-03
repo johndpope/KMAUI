@@ -10,15 +10,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPoliceContactsCell" rowHeight="134" id="KGk-i7-Jjw" customClass="KMAUIPoliceContactsTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPoliceContactsCell" rowHeight="207" id="KGk-i7-Jjw" customClass="KMAUIPoliceContactsTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="134"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="207"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPj-MR-8j9" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="288" height="120"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="191"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0V-Ed-jpc" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="8" width="256" height="22"/>
@@ -29,13 +29,75 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czO-kr-FQM" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="38" width="74.5" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvL-9D-qAg">
+                                <rect key="frame" x="98.5" y="38" width="173.5" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="iUe-KJ-eLS"/>
+                                </constraints>
+                                <state key="normal" title="@facebook"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqN-PP-0NY" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="71" width="53" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="ddb-wn-9vl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CB-Z6-2f8" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="101" width="62" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Ez9-5p-p5p"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N09-0h-AKb" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="131" width="41" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="bVg-px-8Lc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBk-cu-6ur" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="161" width="49" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="1gZ-y5-ctz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="PvL-9D-qAg" firstAttribute="top" secondItem="u0V-Ed-jpc" secondAttribute="bottom" constant="8" id="1rD-4u-nFU"/>
                             <constraint firstItem="u0V-Ed-jpc" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="1wW-mh-q2k"/>
-                            <constraint firstAttribute="height" constant="120" id="AHA-91-l1a"/>
+                            <constraint firstItem="PvL-9D-qAg" firstAttribute="leading" secondItem="czO-kr-FQM" secondAttribute="trailing" constant="8" id="3a3-TM-2aJ"/>
                             <constraint firstItem="u0V-Ed-jpc" firstAttribute="top" secondItem="tPj-MR-8j9" secondAttribute="top" constant="8" id="BNk-6g-yG5"/>
+                            <constraint firstItem="MqN-PP-0NY" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="FyG-a7-JaE"/>
+                            <constraint firstItem="HBk-cu-6ur" firstAttribute="top" secondItem="N09-0h-AKb" secondAttribute="bottom" constant="8" id="K8A-Tj-Xxh"/>
+                            <constraint firstItem="HBk-cu-6ur" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="OAb-i6-8rD"/>
+                            <constraint firstAttribute="bottom" secondItem="HBk-cu-6ur" secondAttribute="bottom" constant="8" id="PFJ-gp-MGa"/>
+                            <constraint firstItem="MqN-PP-0NY" firstAttribute="top" secondItem="czO-kr-FQM" secondAttribute="bottom" constant="8" id="SWZ-CC-v4Q"/>
+                            <constraint firstItem="czO-kr-FQM" firstAttribute="top" secondItem="u0V-Ed-jpc" secondAttribute="bottom" constant="8" id="ZK2-j2-e6C"/>
+                            <constraint firstItem="1CB-Z6-2f8" firstAttribute="top" secondItem="MqN-PP-0NY" secondAttribute="bottom" constant="8" id="bh4-3k-Epn"/>
                             <constraint firstAttribute="trailing" secondItem="u0V-Ed-jpc" secondAttribute="trailing" constant="16" id="g3N-vu-YPU"/>
+                            <constraint firstItem="1CB-Z6-2f8" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="l0w-BG-AXg"/>
+                            <constraint firstAttribute="trailing" secondItem="PvL-9D-qAg" secondAttribute="trailing" constant="16" id="m8v-uk-W43"/>
+                            <constraint firstItem="N09-0h-AKb" firstAttribute="top" secondItem="1CB-Z6-2f8" secondAttribute="bottom" constant="8" id="mVl-iU-VZ2"/>
+                            <constraint firstItem="czO-kr-FQM" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="pVv-5i-i1c"/>
+                            <constraint firstItem="N09-0h-AKb" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="vfF-Xs-hmC"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -48,7 +110,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="-156.52173913043478" y="-95.089285714285708"/>
+            <point key="canvasLocation" x="-107.24637681159422" y="-102.79017857142857"/>
         </tableViewCell>
     </objects>
     <resources>

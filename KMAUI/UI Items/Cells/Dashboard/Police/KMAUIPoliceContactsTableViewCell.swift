@@ -12,6 +12,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     
     // MARK: - Variables
+    var neighbourhood = KMAPoliceNeighbourhood()
     
     // MARK: - Cell method
 
