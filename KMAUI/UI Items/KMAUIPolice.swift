@@ -47,7 +47,7 @@ public class KMAUIPolice {
      Get the neighbourhood details
      */
     
-    public func getNeighbourhoodDetails(neighbourhood: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+    public func getNeighbourhoodDetails(neighbourhood: KMAPoliceNeighbourhood, completion: @escaping (_ jsonString: String, _ error: String)->()) {
         let requestString = "https://data.police.uk/api/\(neighbourhood)"
 
         AF.request(requestString).responseJSON { response in
