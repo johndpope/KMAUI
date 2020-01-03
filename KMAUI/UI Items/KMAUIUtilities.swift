@@ -372,6 +372,22 @@ public class KMAUIUtilities {
             return false
         }
     }
+    
+    // MARK: - Label and button layout
+    
+    func showItems(label: UILabel, constant1: NSLayoutConstraint, constant2: NSLayoutConstraint, button: UIButton) {
+        label.alpha = 1
+        constant1.constant = 22
+        constant2.constant = 8
+        button.alpha = 1
+    }
+    
+    func hideItems(label: UILabel, constant1: NSLayoutConstraint, constant2: NSLayoutConstraint, button: UIButton) {
+        label.alpha = 0
+        constant1.constant = 0
+        constant2.constant = 0
+        button.alpha = 0
+    }
 }
 
 // MARK: - Int extension

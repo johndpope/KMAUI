@@ -50,83 +50,41 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
 
     public func setupCell() {
-        print("Facebook: `\(neighbourhood.facebook)`")
-        print("Twitter: `\(neighbourhood.twitter)`")
-        print("Website: `\(neighbourhood.website)`")
-        print("Email: `\(neighbourhood.email)`")
-        print("Phone: `\(neighbourhood.telephone)`")
-        
-        facebookButton.setTitle(neighbourhood.facebook, for: .normal)
-        twitterButton.setTitle(neighbourhood.twitter, for: .normal)
-        websiteButton.setTitle(neighbourhood.website, for: .normal)
-        emailButton.setTitle(neighbourhood.email, for: .normal)
-        phoneButton.setTitle(neighbourhood.telephone, for: .normal)
-        
         // Facebook
-//        if !neighbourhood.facebook.isEmpty {
-//            facebookButton.setTitle(neighbourhood.facebook, for: .normal)
-//            facebookButton.alpha = 1
-//            facebookLabel.alpha = 1
-//            facebookLabelTop.constant = 8
-//            facebookLabelHeight.constant = 44
-//        } else {
-//            facebookButton.alpha = 0
-//            facebookLabel.alpha = 0
-//            facebookLabelTop.constant = 0
-//            facebookLabelHeight.constant = 0
-//        }
-//        // Twitter
-//        if !neighbourhood.twitter.isEmpty {
-//            twitterButton.setTitle(neighbourhood.twitter, for: .normal)
-//            twitterButton.alpha = 1
-//            twitterLabel.alpha = 1
-//            twitterLabelTop.constant = 8
-//            twitterLabelHeight.constant = 44
-//        } else {
-//            twitterButton.alpha = 0
-//            twitterLabel.alpha = 0
-//            twitterLabelTop.constant = 0
-//            twitterLabelHeight.constant = 0
-//        }
-//        // Website
-//        if !neighbourhood.website.isEmpty {
-//            websiteButton.setTitle(neighbourhood.website, for: .normal)
-//            websiteButton.alpha = 1
-//            websiteLabel.alpha = 1
-//            websiteLabelTop.constant = 8
-//            websiteLabelHeight.constant = 44
-//        } else {
-//            websiteButton.alpha = 0
-//            websiteLabel.alpha = 0
-//            websiteLabelTop.constant = 0
-//            websiteLabelHeight.constant = 0
-//        }
-//        // Email
-//        if !neighbourhood.email.isEmpty {
-//            emailButton.setTitle(neighbourhood.email, for: .normal)
-//            emailButton.alpha = 1
-//            emailLabel.alpha = 1
-//            emailLabelTop.constant = 8
-//            emailLabelHeight.constant = 44
-//        } else {
-//            emailButton.alpha = 0
-//            emailLabel.alpha = 0
-//            emailLabelTop.constant = 0
-//            emailLabelHeight.constant = 0
-//        }
-//        // Phone
-//        if !neighbourhood.telephone.isEmpty {
-//            phoneButton.setTitle(neighbourhood.telephone, for: .normal)
-//            phoneButton.alpha = 1
-//            phoneLabel.alpha = 1
-//            phoneLabelTop.constant = 8
-//            phoneLabelHeight.constant = 44
-//        } else {
-//            phoneButton.alpha = 0
-//            phoneLabel.alpha = 0
-//            phoneLabelTop.constant = 0
-//            phoneLabelHeight.constant = 0
-//        }
+        if !neighbourhood.facebook.isEmpty {
+            facebookButton.setTitle(neighbourhood.facebook, for: .normal)
+            KMAUIUtilities.shared.showItems(label: facebookLabel, constant1: facebookLabelHeight, constant2: facebookLabelTop, button: facebookButton)
+        } else {
+            KMAUIUtilities.shared.hideItems(label: facebookLabel, constant1: facebookLabelHeight, constant2: facebookLabelTop, button: facebookButton)
+        }
+        // Twitter
+        if !neighbourhood.twitter.isEmpty {
+            twitterButton.setTitle(neighbourhood.twitter, for: .normal)
+            KMAUIUtilities.shared.showItems(label: twitterLabel, constant1: twitterLabelHeight, constant2: twitterLabelTop, button: twitterButton)
+        } else {
+            KMAUIUtilities.shared.hideItems(label: twitterLabel, constant1: twitterLabelHeight, constant2: twitterLabelTop, button: twitterButton)
+        }
+        // Website
+        if !neighbourhood.website.isEmpty {
+            websiteButton.setTitle(neighbourhood.website, for: .normal)
+            KMAUIUtilities.shared.showItems(label: websiteLabel, constant1: websiteLabelHeight, constant2: websiteLabelTop, button: websiteButton)
+        } else {
+            KMAUIUtilities.shared.hideItems(label: websiteLabel, constant1: websiteLabelHeight, constant2: websiteLabelTop, button: websiteButton)
+        }
+        // Email
+        if !neighbourhood.email.isEmpty {
+            emailButton.setTitle(neighbourhood.email, for: .normal)
+            KMAUIUtilities.shared.showItems(label: emailLabel, constant1: emailLabelHeight, constant2: emailLabelTop, button: emailButton)
+        } else {
+            KMAUIUtilities.shared.hideItems(label: emailLabel, constant1: emailLabelHeight, constant2: emailLabelTop, button: emailButton)
+        }
+        // Phone
+        if !neighbourhood.telephone.isEmpty {
+            phoneButton.setTitle(neighbourhood.telephone, for: .normal)
+            KMAUIUtilities.shared.showItems(label: phoneLabel, constant1: phoneLabelHeight, constant2: phoneLabelTop, button: phoneButton)
+        } else {
+            KMAUIUtilities.shared.hideItem(label: phoneLabel, constant1: phoneLabelHeight, constant2: phoneLabelTop, button: phoneButton)
+        }
     }
     
     // MARK: - IBActions
