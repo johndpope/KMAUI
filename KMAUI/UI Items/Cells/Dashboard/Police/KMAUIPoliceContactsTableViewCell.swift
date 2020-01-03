@@ -9,6 +9,11 @@
 import UIKit
 
 public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    
+    // MARK: - Variables
+    
+    // MARK: - Cell method
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -24,3 +29,26 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
     
 }
+
+/*
+ // twitter
+ if let twitter = contactDetails["twitter"]?.string {
+     self.twitter = twitter
+ }
+ // facebook
+ if let facebook = contactDetails["facebook"]?.string {
+     self.facebook = facebook
+ }
+ // website
+ if let website = contactDetails["website"]?.string {
+     self.website = website
+ }
+ // telephone
+ if let telephone = contactDetails["telephone"]?.string {
+     self.telephone = telephone
+ }
+ // email
+ if let email = contactDetails["email"]?.string {
+     self.email = email
+ }
+ */

@@ -166,6 +166,7 @@ public struct KMAPoliceNeighbourhood {
     public var website = ""
     public var telephone = ""
     public var email = ""
+    public var hasContacts = false
     // JSON Strings
     public var identifiers = "" // stores the forceId and forceTeamId
     public var boundary = "" // stores the boundary data
@@ -270,6 +271,8 @@ public struct KMAPoliceNeighbourhood {
                 self.name = name
             }
             // contact details
+            self.hasContacts = false
+            // Loading contact data
             if let contactDetails = json["contact_details"]?.dictionary {
                 // twitter
                 if let twitter = contactDetails["twitter"]?.string {
@@ -290,6 +293,10 @@ public struct KMAPoliceNeighbourhood {
                 // email
                 if let email = contactDetails["email"]?.string {
                     self.email = email
+                }
+                
+                if !self.twitter.isEmpty || !self.facebook.isEmpty || !self.website.isEmpty || !self.telephone.isEmpty || !self.email.isEmpty {
+                    self.hasContacts = true
                 }
             }
         }
