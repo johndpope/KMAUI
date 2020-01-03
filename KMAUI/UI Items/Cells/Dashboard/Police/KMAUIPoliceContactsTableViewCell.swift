@@ -60,7 +60,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
         }
         // Twitter
         if !neighbourhood.twitter.isEmpty {
-            twitterButton.setTitle(neighbourhood.twitter, for: .normal)
+            twitterButton.setTitle(neighbourhood.twitter.formatUsername(), for: .normal)
             KMAUIUtilities.shared.showItems(label: twitterLabel, constant1: twitterLabelHeight, constant2: twitterLabelTop, button: twitterButton)
         } else {
             KMAUIUtilities.shared.hideItems(label: twitterLabel, constant1: twitterLabelHeight, constant2: twitterLabelTop, button: twitterButton)
@@ -94,6 +94,9 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
     
     @IBAction func twitterButtonPressed(_ sender: Any) {
+        // Twitter
+        let urlString = "https://twitter.com/" + neighbourhood.twitter
+        openSafari(urlString: urlString)
     }
     
     @IBAction func websiteButtonPressed(_ sender: Any) {
@@ -105,6 +108,18 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     @IBAction func phoneButtonPressed(_ sender: Any) {
         if let url = URL(string: "tel://\(neighbourhood.telephone.onlyDigits())"), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
+        }
+    }
+    
+    /*
+     Open URL
+     */
+    
+    func openSafari(urlString: String) {
+        if let url = URL(string: urlString) {
+            let safariVC = SFSafariViewController(url: url)
+            safariVC.delegate = self
+            KMAUIUtilities.shared.displayAlert(viewController: safariVC)
         }
     }
 }
