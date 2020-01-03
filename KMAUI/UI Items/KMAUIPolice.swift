@@ -48,7 +48,8 @@ public class KMAUIPolice {
      */
     
     public func getNeighbourhoodDetails(neighbourhood: KMAPoliceNeighbourhood, completion: @escaping (_ jsonString: String, _ error: String)->()) {
-        let requestString = "https://data.police.uk/api/\(neighbourhood)"
+        let force = "\(neighbourhood.forceId)/\(neighbourhood.forceTeamId)"
+        let requestString = "https://data.police.uk/api/\(force)"
 
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
@@ -71,8 +72,9 @@ public class KMAUIPolice {
      Get the neighbourhood bounds
      */
     
-    public func getNeighbourhoodBounds(neighbourhood: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
-        let requestString = "https://data.police.uk/api/\(neighbourhood)/boundary"
+    public func getNeighbourhoodBounds(neighbourhood: KMAPoliceNeighbourhood, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let force = "\(neighbourhood.forceId)/\(neighbourhood.forceTeamId)"
+        let requestString = "https://data.police.uk/api/\(force)/boundary"
 
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
@@ -97,7 +99,6 @@ public class KMAUIPolice {
     
     public func getNeighbourhoodCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.polygonString)" // &date=\(date)
-        print("Crime data request: \(requestString)")
         
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
@@ -120,8 +121,9 @@ public class KMAUIPolice {
      Get the neighbourhood team
      */
     
-    public func getNeighbourhoodTeam(neighbourhood: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
-        let requestString = "https://data.police.uk/api/\(neighbourhood)/people"
+    public func getNeighbourhoodTeam(neighbourhood: KMAPoliceNeighbourhood, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+        let force = "\(neighbourhood.forceId)/\(neighbourhood.forceTeamId)"
+        let requestString = "https://data.police.uk/api/\(force)/people"
         
         AF.request(requestString).responseJSON { response in
             if let responseData = response.data {
