@@ -45,6 +45,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izo-wf-KkR" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="64" width="256" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Uli-W3-heZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
@@ -52,11 +61,14 @@
                             <constraint firstItem="vYo-wK-Nna" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="M4v-2j-dry"/>
                             <constraint firstAttribute="trailing" secondItem="YG0-tZ-Wmf" secondAttribute="trailing" constant="16" id="NGK-tf-RR0"/>
                             <constraint firstItem="YG0-tZ-Wmf" firstAttribute="top" secondItem="RSh-Zb-wRO" secondAttribute="bottom" id="SoC-OU-1FJ"/>
+                            <constraint firstItem="Izo-wf-KkR" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="cI2-aE-Fk8"/>
                             <constraint firstItem="vYo-wK-Nna" firstAttribute="top" secondItem="EO3-Qx-g7k" secondAttribute="top" constant="16" id="dyg-W9-gna"/>
                             <constraint firstAttribute="trailing" secondItem="RSh-Zb-wRO" secondAttribute="trailing" constant="16" id="k2a-P7-8mk"/>
                             <constraint firstItem="RSh-Zb-wRO" firstAttribute="leading" secondItem="vYo-wK-Nna" secondAttribute="trailing" constant="8" id="k2x-Ui-yJw"/>
                             <constraint firstItem="RSh-Zb-wRO" firstAttribute="top" secondItem="EO3-Qx-g7k" secondAttribute="top" constant="16" id="p63-hP-DKb"/>
+                            <constraint firstItem="Izo-wf-KkR" firstAttribute="top" secondItem="vYo-wK-Nna" secondAttribute="bottom" constant="4" id="tyH-FP-PP4"/>
                             <constraint firstAttribute="height" constant="142" id="uRr-bt-GPJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Izo-wf-KkR" secondAttribute="trailing" constant="16" id="wSw-SY-KsK"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -73,6 +85,7 @@
                 <outlet property="forceLabel" destination="YG0-tZ-Wmf" id="HvB-5l-Yfb"/>
                 <outlet property="logoImageView" destination="vYo-wK-Nna" id="ZTz-IB-fFs"/>
                 <outlet property="nameLabel" destination="RSh-Zb-wRO" id="cvz-4e-NGp"/>
+                <outlet property="notesLabel" destination="Izo-wf-KkR" id="dvN-CN-3Yd"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="190.84821428571428"/>
         </tableViewCell>

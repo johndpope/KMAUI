@@ -13,6 +13,7 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var forceLabel: KMAUITextLabel!
+    @IBOutlet public weak var notesLabel: KMAUITextLabel!
     
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
@@ -50,5 +51,33 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
         
         // Force
         forceLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
+        
+        // Crimes count
+        var crimesCount = "1 crime"
+        
+        if neighbourhood.crimeArray.count != 1 {
+            crimesCount = "\(neighbourhood.crimeArray.count) crimes"
+        }
+        
+        // Month
+        var month = ""
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM"
+        
+        if !neighbourhood.crimeArray.isEmpty {
+            let crime = neighbourhood.crimeArray[0]
+            
+            if !crime.month.isEmpty {
+                if let date = dateFormatter.date(from: crime.month) {
+                    month = "In \(KMAUIUtilities.shared.formatStringMonth(date: date))"
+                }
+            }
+        }
+        
+        if !month.isEmpty {
+            crimesCount = " " + crimesCount
+        }
+        
+        notesLabel.text = month + crimesCount + " were recorded in this neighbourhood."
     }
 }
