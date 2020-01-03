@@ -14,11 +14,14 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var forceLabel: KMAUITextLabel!
     @IBOutlet public weak var notesLabel: KMAUITextLabel!
+    @IBOutlet public weak var activityView: UIActivityIndicatorView!
     
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
     public var logo = ""
+    public var detailsLoaded = false
     public var crimeLoaded = false
+    public var hasButton = false
     
     // MARK: - Cell methods
     
@@ -41,17 +44,38 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Library logo
-        if !logo.isEmpty, let url = URL(string: logo) {
-            logoImageView.kf.indicatorType = .activity
-            logoImageView.kf.setImage(with: url)
+        if detailsLoaded {
+            // Name
+            nameLabel.text = neighbourhood.name
+            
+            // Force
+            forceLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
+            
+            // Show image
+            logoImageView.alpha = 1
+            
+            // Library logo
+            if !logo.isEmpty, let url = URL(string: logo) {
+                logoImageView.kf.indicatorType = .activity
+                logoImageView.kf.setImage(with: url)
+            }
+            
+            // Hide activity
+            activityView.alpha = 0
+        } else {
+            // Name
+            nameLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
+            
+            // Details
+            forceLabel.text = "Loading details..."
+            
+            // Hide image
+            logoImageView.alpha = 0
+            
+            // Show activity
+            activityView.alpha = 1
+            activityView.startAnimating()
         }
-        
-        // Name
-        nameLabel.text = neighbourhood.name
-        
-        // Force
-        forceLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
         
         if crimeLoaded {
             // Crimes count
