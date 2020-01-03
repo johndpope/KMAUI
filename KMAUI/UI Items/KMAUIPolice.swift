@@ -92,6 +92,7 @@ public class KMAUIPolice {
         }
     }
     
+    /*
     /**
      Get crime data for a location
      */
@@ -122,7 +123,7 @@ public class KMAUIPolice {
                 }
             }
         }
-    }
+    }*/
 
     /**
      Get the neighbourhood team
