@@ -52,12 +52,12 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
 
     public func setupCell() {
         // Facebook
-        if !neighbourhood.facebook.isEmpty {
-            facebookButton.setTitle(neighbourhood.facebook, for: .normal)
-            KMAUIUtilities.shared.showItems(label: facebookLabel, constant1: facebookLabelHeight, constant2: facebookLabelTop, button: facebookButton)
-        } else {
+//        if !neighbourhood.facebook.isEmpty {
+//            facebookButton.setTitle(neighbourhood.facebook, for: .normal)
+//            KMAUIUtilities.shared.showItems(label: facebookLabel, constant1: facebookLabelHeight, constant2: facebookLabelTop, button: facebookButton)
+//        } else {
             KMAUIUtilities.shared.hideItems(label: facebookLabel, constant1: facebookLabelHeight, constant2: facebookLabelTop, button: facebookButton)
-        }
+//        }
         // Twitter
         if !neighbourhood.twitter.isEmpty {
             twitterButton.setTitle(neighbourhood.twitter.formatUsername(), for: .normal)
@@ -104,7 +104,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     
     @IBAction func emailButtonPressed(_ sender: Any) {
         if let url = URL(string: "mailto:\(neighbourhood.email)") {
-            UIApplication.shared.openURL(url)
+            UIApplication.shared.open(url)
         }
     }
     
