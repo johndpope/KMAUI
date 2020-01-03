@@ -32,7 +32,7 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     @IBOutlet public weak var phoneButton: UIButton!
     
     // MARK: - Variables
-    var neighbourhood = KMAPoliceNeighbourhood()
+    public var neighbourhood = KMAPoliceNeighbourhood()
     
     // MARK: - Cell method
 
