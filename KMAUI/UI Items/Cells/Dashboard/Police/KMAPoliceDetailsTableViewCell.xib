@@ -36,7 +36,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YG0-tZ-Wmf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YG0-tZ-Wmf" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="68" y="38" width="204" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="GWu-Nf-xU5"/>
@@ -70,7 +70,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="forceLabel" destination="YG0-tZ-Wmf" id="4So-2p-JHV"/>
+                <outlet property="forceLabel" destination="YG0-tZ-Wmf" id="HvB-5l-Yfb"/>
                 <outlet property="logoImageView" destination="vYo-wK-Nna" id="ZTz-IB-fFs"/>
                 <outlet property="nameLabel" destination="RSh-Zb-wRO" id="cvz-4e-NGp"/>
             </connections>

@@ -256,6 +256,17 @@ public class KMAUIUtilities {
     }
     
     /**
+     Get a date string in a short format
+    */
+    
+    public func formatStringMonth(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM yyyy"
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    /**
      Converts the date into UTC string.
      */
     

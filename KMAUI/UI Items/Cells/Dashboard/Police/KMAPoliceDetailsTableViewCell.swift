@@ -12,7 +12,7 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
-    @IBOutlet public weak var forceLabel: UILabel!
+    @IBOutlet public weak var forceLabel: KMAUITextLabel!
     
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
