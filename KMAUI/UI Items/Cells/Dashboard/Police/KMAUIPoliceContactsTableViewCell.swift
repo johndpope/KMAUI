@@ -94,15 +94,18 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
     
     @IBAction func twitterButtonPressed(_ sender: Any) {
-        // Twitter
         let urlString = "https://twitter.com/" + neighbourhood.twitter
         openSafari(urlString: urlString)
     }
     
     @IBAction func websiteButtonPressed(_ sender: Any) {
+        openSafari(urlString: neighbourhood.website)
     }
     
     @IBAction func emailButtonPressed(_ sender: Any) {
+        if let url = URL(string: "mailto:\(neighbourhood.email)") {
+            UIApplication.shared.openURL(url)
+        }
     }
     
     @IBAction func phoneButtonPressed(_ sender: Any) {
