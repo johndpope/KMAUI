@@ -79,10 +79,10 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
         
         if crimeLoaded {
             // Crimes count
-            var crimesCount = "1 crime"
+            var crimesCount = "1 crime was"
             
             if neighbourhood.crimeArray.count != 1 {
-                crimesCount = "\(neighbourhood.crimeArray.count) crimes"
+                crimesCount = "\(neighbourhood.crimeArray.count) crimes were"
             }
             
             // Month
@@ -104,7 +104,7 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
                 crimesCount = " " + crimesCount
             }
             
-            notesLabel.text = month + crimesCount + " were recorded in this neighbourhood."
+            notesLabel.text = month + crimesCount + " recorded in this neighbourhood."
         } else {
             notesLabel.text = ""
         }
