@@ -158,7 +158,7 @@
                 <outlet property="twitterTitleTop" destination="vDH-Rd-XJ2" id="B0D-fB-amk"/>
                 <outlet property="twitterUsernameButton" destination="zr7-wc-sTe" id="hFM-z0-acC"/>
             </connections>
-            <point key="canvasLocation" x="-39.130434782608695" y="50.892857142857139"/>
+            <point key="canvasLocation" x="-36" y="21"/>
         </tableViewCell>
     </objects>
     <resources>
