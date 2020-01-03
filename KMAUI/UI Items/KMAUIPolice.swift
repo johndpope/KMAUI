@@ -71,7 +71,7 @@ public class KMAUIPolice {
      Get crime in bounds
      */
     
-    public func getCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
+    public func getNeighbourhoodCrime(neighbourhood: KMAPoliceNeighbourhood, date: String, completion: @escaping (_ jsonString: String, _ error: String)->()) {
         let requestString = "https://data.police.uk/api/crimes-street/all-crime?poly=\(neighbourhood.polygonString)" // &date=\(date)
         print("Crime data request: \(requestString)")
         
@@ -91,39 +91,6 @@ public class KMAUIPolice {
             }
         }
     }
-    
-    /*
-    /**
-     Get crime data for a location
-     */
-    
-    public func getCrimeData(location: String, completion: @escaping (_ crimeData: [KMACrimeObject], _ error: String)->()) {
-        let requestString = "https://data.police.uk/api/crimes-street/all-crime?\(location)" // limited to the previous month
-        
-        AF.request(requestString).responseJSON { response in
-            if let responseData = response.data {
-                do {
-                    let json = try JSON(data: responseData)
-                    var crimeData = [KMACrimeObject]()
-                    
-                    if let crimeArray = json.array {
-                        for crimeValue in crimeArray {
-                            if let crimeValue = crimeValue.dictionary {
-                                var crimeObject = KMACrimeObject()
-                                crimeObject.fillFrom(json: crimeValue)
-                                crimeData.append(crimeObject)
-                            }
-                        }
-                    }
-                    
-                    completion(crimeData, "")
-                } catch {
-                    print("Error: \(error.localizedDescription)")
-                    completion([KMACrimeObject](), error.localizedDescription)
-                }
-            }
-        }
-    }*/
 
     /**
      Get the neighbourhood team
