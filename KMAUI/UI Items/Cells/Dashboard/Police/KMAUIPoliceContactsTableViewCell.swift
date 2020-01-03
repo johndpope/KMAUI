@@ -50,6 +50,12 @@ public class KMAUIPoliceContactsTableViewCell: UITableViewCell {
     }
 
     public func setupCell() {
+        print("Facebook: `\(neighbourhood.facebook)`")
+        print("Twitter: `\(neighbourhood.twitter)`")
+        print("Website: `\(neighbourhood.website)`")
+        print("Email: `\(neighbourhood.email)`")
+        print("Phone: `\(neighbourhood.telephone)`")
+        
         // Facebook
         if !neighbourhood.facebook.isEmpty {
             facebookButton.setTitle(neighbourhood.facebook, for: .normal)
