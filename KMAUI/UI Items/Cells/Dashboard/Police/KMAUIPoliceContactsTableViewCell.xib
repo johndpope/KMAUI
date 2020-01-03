@@ -31,16 +31,21 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czO-kr-FQM" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="38" width="74.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="OBX-zB-ftF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvL-9D-qAg">
-                                <rect key="frame" x="98.5" y="38" width="173.5" height="22"/>
+                                <rect key="frame" x="98.5" y="39.5" width="173.5" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="iUe-KJ-eLS"/>
                                 </constraints>
-                                <state key="normal" title="@facebook"/>
+                                <state key="normal" title="@facebook">
+                                    <color key="titleColor" name="KMABrightBlueColor"/>
+                                </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MqN-PP-0NY" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="71" width="53" height="22"/>
@@ -51,6 +56,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS1-Nd-b7F">
+                                <rect key="frame" x="77" y="71" width="195" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="pzl-jZ-NX7"/>
+                                </constraints>
+                                <state key="normal" title="@twitter">
+                                    <color key="titleColor" name="KMABrightBlueColor"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CB-Z6-2f8" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="101" width="62" height="22"/>
                                 <constraints>
@@ -60,6 +74,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ai-aA-Gbq">
+                                <rect key="frame" x="86" y="101" width="186" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="fbb-Kw-bvh"/>
+                                </constraints>
+                                <state key="normal" title="website">
+                                    <color key="titleColor" name="KMABrightBlueColor"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N09-0h-AKb" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="131" width="41" height="22"/>
                                 <constraints>
@@ -69,6 +92,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wui-th-rkB">
+                                <rect key="frame" x="65" y="131" width="207" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="RCg-qy-0fN"/>
+                                </constraints>
+                                <state key="normal" title="email">
+                                    <color key="titleColor" name="KMABrightBlueColor"/>
+                                </state>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBk-cu-6ur" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="16" y="161" width="49" height="22"/>
                                 <constraints>
@@ -78,26 +110,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYt-Fb-cy8">
+                                <rect key="frame" x="73" y="161" width="199" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="d9C-Uq-XvD"/>
+                                </constraints>
+                                <state key="normal" title="phone">
+                                    <color key="titleColor" name="KMABrightBlueColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstItem="PvL-9D-qAg" firstAttribute="top" secondItem="u0V-Ed-jpc" secondAttribute="bottom" constant="8" id="1rD-4u-nFU"/>
                             <constraint firstItem="u0V-Ed-jpc" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="1wW-mh-q2k"/>
                             <constraint firstItem="PvL-9D-qAg" firstAttribute="leading" secondItem="czO-kr-FQM" secondAttribute="trailing" constant="8" id="3a3-TM-2aJ"/>
+                            <constraint firstItem="Wui-th-rkB" firstAttribute="leading" secondItem="N09-0h-AKb" secondAttribute="trailing" constant="8" id="9JO-wG-gEg"/>
                             <constraint firstItem="u0V-Ed-jpc" firstAttribute="top" secondItem="tPj-MR-8j9" secondAttribute="top" constant="8" id="BNk-6g-yG5"/>
+                            <constraint firstItem="cS1-Nd-b7F" firstAttribute="leading" secondItem="MqN-PP-0NY" secondAttribute="trailing" constant="8" id="BRJ-xW-zV0"/>
                             <constraint firstItem="MqN-PP-0NY" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="FyG-a7-JaE"/>
+                            <constraint firstItem="6Ai-aA-Gbq" firstAttribute="centerY" secondItem="1CB-Z6-2f8" secondAttribute="centerY" id="JXd-4E-EKL"/>
                             <constraint firstItem="HBk-cu-6ur" firstAttribute="top" secondItem="N09-0h-AKb" secondAttribute="bottom" constant="8" id="K8A-Tj-Xxh"/>
                             <constraint firstItem="HBk-cu-6ur" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="OAb-i6-8rD"/>
                             <constraint firstAttribute="bottom" secondItem="HBk-cu-6ur" secondAttribute="bottom" constant="8" id="PFJ-gp-MGa"/>
                             <constraint firstItem="MqN-PP-0NY" firstAttribute="top" secondItem="czO-kr-FQM" secondAttribute="bottom" constant="8" id="SWZ-CC-v4Q"/>
+                            <constraint firstItem="Wui-th-rkB" firstAttribute="centerY" secondItem="N09-0h-AKb" secondAttribute="centerY" id="Ueg-KC-bW9"/>
                             <constraint firstItem="czO-kr-FQM" firstAttribute="top" secondItem="u0V-Ed-jpc" secondAttribute="bottom" constant="8" id="ZK2-j2-e6C"/>
+                            <constraint firstItem="cS1-Nd-b7F" firstAttribute="centerY" secondItem="MqN-PP-0NY" secondAttribute="centerY" id="a2Q-06-uIz"/>
+                            <constraint firstItem="PvL-9D-qAg" firstAttribute="centerY" secondItem="czO-kr-FQM" secondAttribute="centerY" id="auK-iU-RKg"/>
                             <constraint firstItem="1CB-Z6-2f8" firstAttribute="top" secondItem="MqN-PP-0NY" secondAttribute="bottom" constant="8" id="bh4-3k-Epn"/>
+                            <constraint firstItem="ZYt-Fb-cy8" firstAttribute="leading" secondItem="HBk-cu-6ur" secondAttribute="trailing" constant="8" id="dhL-l4-F7B"/>
+                            <constraint firstAttribute="trailing" secondItem="6Ai-aA-Gbq" secondAttribute="trailing" constant="16" id="eSu-MH-Q0l"/>
                             <constraint firstAttribute="trailing" secondItem="u0V-Ed-jpc" secondAttribute="trailing" constant="16" id="g3N-vu-YPU"/>
+                            <constraint firstAttribute="trailing" secondItem="Wui-th-rkB" secondAttribute="trailing" constant="16" id="jHd-Kx-hzX"/>
+                            <constraint firstAttribute="trailing" secondItem="ZYt-Fb-cy8" secondAttribute="trailing" constant="16" id="kS3-nB-ycb"/>
                             <constraint firstItem="1CB-Z6-2f8" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="l0w-BG-AXg"/>
                             <constraint firstAttribute="trailing" secondItem="PvL-9D-qAg" secondAttribute="trailing" constant="16" id="m8v-uk-W43"/>
                             <constraint firstItem="N09-0h-AKb" firstAttribute="top" secondItem="1CB-Z6-2f8" secondAttribute="bottom" constant="8" id="mVl-iU-VZ2"/>
+                            <constraint firstItem="6Ai-aA-Gbq" firstAttribute="leading" secondItem="1CB-Z6-2f8" secondAttribute="trailing" constant="8" id="nRT-I4-88U"/>
                             <constraint firstItem="czO-kr-FQM" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="pVv-5i-i1c"/>
+                            <constraint firstAttribute="trailing" secondItem="cS1-Nd-b7F" secondAttribute="trailing" constant="16" id="v8F-p8-90M"/>
                             <constraint firstItem="N09-0h-AKb" firstAttribute="leading" secondItem="tPj-MR-8j9" secondAttribute="leading" constant="16" id="vfF-Xs-hmC"/>
+                            <constraint firstItem="ZYt-Fb-cy8" firstAttribute="centerY" secondItem="HBk-cu-6ur" secondAttribute="centerY" id="zvz-mM-VX3"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -110,6 +163,28 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="emailButton" destination="Wui-th-rkB" id="s6e-4K-YjF"/>
+                <outlet property="emailLabel" destination="N09-0h-AKb" id="2YH-dc-jVD"/>
+                <outlet property="emailLabelHeight" destination="bVg-px-8Lc" id="Bvp-5w-Muk"/>
+                <outlet property="emailLabelTop" destination="mVl-iU-VZ2" id="kZk-z8-nsP"/>
+                <outlet property="facebookButton" destination="PvL-9D-qAg" id="DLQ-8d-llP"/>
+                <outlet property="facebookLabel" destination="czO-kr-FQM" id="E8L-PO-1Hf"/>
+                <outlet property="facebookLabelHeight" destination="OBX-zB-ftF" id="rbI-cI-VJF"/>
+                <outlet property="facebookLabelTop" destination="ZK2-j2-e6C" id="U8K-z9-xHZ"/>
+                <outlet property="phoneButton" destination="ZYt-Fb-cy8" id="FqU-Jf-HLV"/>
+                <outlet property="phoneLabel" destination="HBk-cu-6ur" id="aoz-cH-uja"/>
+                <outlet property="phoneLabelHeight" destination="1gZ-y5-ctz" id="Lnc-kc-Pik"/>
+                <outlet property="phoneLabelTop" destination="K8A-Tj-Xxh" id="DJc-2B-i5Q"/>
+                <outlet property="twitterButton" destination="cS1-Nd-b7F" id="I7P-et-3M1"/>
+                <outlet property="twitterLabel" destination="MqN-PP-0NY" id="yZV-ln-YLh"/>
+                <outlet property="twitterLabelHeight" destination="ddb-wn-9vl" id="bJa-JO-LHL"/>
+                <outlet property="twitterLabelTop" destination="SWZ-CC-v4Q" id="RbT-6Z-Y5I"/>
+                <outlet property="websiteButton" destination="6Ai-aA-Gbq" id="TkJ-vm-36E"/>
+                <outlet property="websiteLabel" destination="1CB-Z6-2f8" id="JD7-8s-5MV"/>
+                <outlet property="websiteLabelHeight" destination="Ez9-5p-p5p" id="yGu-lC-ZtD"/>
+                <outlet property="websiteLabelTop" destination="bh4-3k-Epn" id="tYP-Aa-5h1"/>
+            </connections>
             <point key="canvasLocation" x="-107.24637681159422" y="-102.79017857142857"/>
         </tableViewCell>
     </objects>
@@ -119,6 +194,9 @@
         </namedColor>
         <namedColor name="KMABgGray">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABrightBlueColor">
+            <color red="0.15294117647058825" green="0.41568627450980394" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
