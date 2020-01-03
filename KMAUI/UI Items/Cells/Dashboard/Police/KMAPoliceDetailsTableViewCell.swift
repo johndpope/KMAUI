@@ -110,11 +110,11 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
             }
             
             notesLabel.text = month + crimesCount + " recorded in this neighbourhood."
-            notesLabel.alpha = 0
+            notesLabel.alpha = 1
             notesLabelTop.constant = 4
         } else {
             notesLabel.text = ""
-            notesLabel.alpha = 1
+            notesLabel.alpha = 0
             notesLabelTop.constant = 0
         }
         
