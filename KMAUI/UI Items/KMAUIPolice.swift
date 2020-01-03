@@ -184,8 +184,7 @@ public struct KMAPoliceNeighbourhood {
         }
     }
     
-    public mutating func fillFrom(boundary: String) {
-        self.boundary = boundary
+    public mutating func fillBoundary() {
         // Clear the data
         self.bounds = [CLLocationCoordinate2D]()
         self.minLat = 0
@@ -227,11 +226,10 @@ public struct KMAPoliceNeighbourhood {
      Checking if the crime object is inside the boundary
      */
     
-    public mutating func fillFrom(crime: String) {
+    public mutating func fillCrime() {
         self.crimeArray = [KMACrimeObject]()
         self.crimeNearby = [KMACrimeObject]()
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
-        self.crime = crime
 
         // Get the JSON array from the string
         if !crime.isEmpty, let dataFromString = crime.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
