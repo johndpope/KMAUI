@@ -11,8 +11,9 @@ import UIKit
 public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var logoImageView: UIImageView!
-    @IBOutlet weak var nameLabel: KMAUITitleLabel!
-
+    @IBOutlet public weak var nameLabel: KMAUITitleLabel!
+    @IBOutlet public weak var forceLabel: UILabel!
+    
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
     public var logo = ""
@@ -43,5 +44,11 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
             logoImageView.kf.indicatorType = .activity
             logoImageView.kf.setImage(with: url)
         }
+        
+        // Name
+        nameLabel.text = neighbourhood.name
+        
+        // Force
+        forceLabel.text = "\(neighbourhood.forceId.capitalized.replacingOccurrences(of: "-", with: " ")) Police"
     }
 }

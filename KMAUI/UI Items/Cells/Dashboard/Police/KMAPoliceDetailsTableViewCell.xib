@@ -36,10 +36,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YG0-tZ-Wmf">
+                                <rect key="frame" x="68" y="38" width="204" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="GWu-Nf-xU5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="YG0-tZ-Wmf" firstAttribute="leading" secondItem="vYo-wK-Nna" secondAttribute="trailing" constant="8" id="Ifc-ND-cDg"/>
                             <constraint firstItem="vYo-wK-Nna" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="M4v-2j-dry"/>
+                            <constraint firstAttribute="trailing" secondItem="YG0-tZ-Wmf" secondAttribute="trailing" constant="16" id="NGK-tf-RR0"/>
+                            <constraint firstItem="YG0-tZ-Wmf" firstAttribute="top" secondItem="RSh-Zb-wRO" secondAttribute="bottom" id="SoC-OU-1FJ"/>
                             <constraint firstItem="vYo-wK-Nna" firstAttribute="top" secondItem="EO3-Qx-g7k" secondAttribute="top" constant="16" id="dyg-W9-gna"/>
                             <constraint firstAttribute="trailing" secondItem="RSh-Zb-wRO" secondAttribute="trailing" constant="16" id="k2a-P7-8mk"/>
                             <constraint firstItem="RSh-Zb-wRO" firstAttribute="leading" secondItem="vYo-wK-Nna" secondAttribute="trailing" constant="8" id="k2x-Ui-yJw"/>
@@ -58,6 +70,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="forceLabel" destination="YG0-tZ-Wmf" id="4So-2p-JHV"/>
                 <outlet property="logoImageView" destination="vYo-wK-Nna" id="ZTz-IB-fFs"/>
                 <outlet property="nameLabel" destination="RSh-Zb-wRO" id="cvz-4e-NGp"/>
             </connections>
