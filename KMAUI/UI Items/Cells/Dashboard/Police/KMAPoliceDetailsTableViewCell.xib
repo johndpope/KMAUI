@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izo-wf-KkR" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="64" width="256" height="20.5"/>
+                                <rect key="frame" x="16" y="64" width="256" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Uli-W3-heZ"/>
                                 </constraints>
@@ -62,6 +62,16 @@
                                 </constraints>
                                 <color key="color" name="KMABrightBlueColor"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XNj-N5-NUr" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="90" width="256" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3Xy-bD-ziV"/>
+                                </constraints>
+                                <state key="normal" title="Review team"/>
+                                <connections>
+                                    <action selector="reviewTeamButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2DN-OH-FMA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
@@ -71,13 +81,16 @@
                             <constraint firstAttribute="trailing" secondItem="YG0-tZ-Wmf" secondAttribute="trailing" constant="16" id="NGK-tf-RR0"/>
                             <constraint firstItem="YhW-eZ-MzR" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="SBV-kJ-4q8"/>
                             <constraint firstItem="YG0-tZ-Wmf" firstAttribute="top" secondItem="RSh-Zb-wRO" secondAttribute="bottom" id="SoC-OU-1FJ"/>
+                            <constraint firstAttribute="trailing" secondItem="XNj-N5-NUr" secondAttribute="trailing" constant="16" id="WeI-i6-EPe"/>
+                            <constraint firstAttribute="bottom" secondItem="XNj-N5-NUr" secondAttribute="bottom" constant="8" id="YY1-FU-1he"/>
+                            <constraint firstItem="XNj-N5-NUr" firstAttribute="top" secondItem="Izo-wf-KkR" secondAttribute="bottom" constant="8" id="bIE-tF-wgk"/>
                             <constraint firstItem="Izo-wf-KkR" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="cI2-aE-Fk8"/>
                             <constraint firstItem="vYo-wK-Nna" firstAttribute="top" secondItem="EO3-Qx-g7k" secondAttribute="top" constant="16" id="dyg-W9-gna"/>
                             <constraint firstAttribute="trailing" secondItem="RSh-Zb-wRO" secondAttribute="trailing" constant="16" id="k2a-P7-8mk"/>
                             <constraint firstItem="RSh-Zb-wRO" firstAttribute="leading" secondItem="vYo-wK-Nna" secondAttribute="trailing" constant="8" id="k2x-Ui-yJw"/>
                             <constraint firstItem="RSh-Zb-wRO" firstAttribute="top" secondItem="EO3-Qx-g7k" secondAttribute="top" constant="16" id="p63-hP-DKb"/>
+                            <constraint firstItem="XNj-N5-NUr" firstAttribute="leading" secondItem="EO3-Qx-g7k" secondAttribute="leading" constant="16" id="r9v-AB-Xea"/>
                             <constraint firstItem="Izo-wf-KkR" firstAttribute="top" secondItem="vYo-wK-Nna" secondAttribute="bottom" constant="4" id="tyH-FP-PP4"/>
-                            <constraint firstAttribute="height" constant="142" id="uRr-bt-GPJ"/>
                             <constraint firstAttribute="trailing" secondItem="Izo-wf-KkR" secondAttribute="trailing" constant="16" id="wSw-SY-KsK"/>
                         </constraints>
                     </view>
@@ -97,6 +110,10 @@
                 <outlet property="logoImageView" destination="vYo-wK-Nna" id="ZTz-IB-fFs"/>
                 <outlet property="nameLabel" destination="RSh-Zb-wRO" id="cvz-4e-NGp"/>
                 <outlet property="notesLabel" destination="Izo-wf-KkR" id="dvN-CN-3Yd"/>
+                <outlet property="notesLabelTop" destination="tyH-FP-PP4" id="gXo-Fn-VwD"/>
+                <outlet property="reviewTeamButton" destination="XNj-N5-NUr" id="BP7-N6-ulI"/>
+                <outlet property="reviewTeamButtonHeight" destination="3Xy-bD-ziV" id="w8j-Bh-FrZ"/>
+                <outlet property="reviewTeamButtonTop" destination="bIE-tF-wgk" id="Mem-qN-Ly1"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="190.84821428571428"/>
         </tableViewCell>

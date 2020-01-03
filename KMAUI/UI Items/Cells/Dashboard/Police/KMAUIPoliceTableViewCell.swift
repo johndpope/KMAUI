@@ -18,7 +18,7 @@ public class KMAUIPoliceTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
-    @IBOutlet weak var reviewButtonTop: NSLayoutConstraint!
+    @IBOutlet public weak var reviewButtonTop: NSLayoutConstraint!
     @IBOutlet public weak var reviewButtonHeight: NSLayoutConstraint!
     
     // MARK: - Variables

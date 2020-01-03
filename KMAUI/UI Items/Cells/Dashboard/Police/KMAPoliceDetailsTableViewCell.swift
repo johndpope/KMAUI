@@ -14,14 +14,19 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUITitleLabel!
     @IBOutlet public weak var forceLabel: KMAUITextLabel!
     @IBOutlet public weak var notesLabel: KMAUITextLabel!
+    @IBOutlet public weak var notesLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var activityView: UIActivityIndicatorView!
+    @IBOutlet public weak var reviewTeamButton: KMAUIButtonFilled!
+    @IBOutlet public weak var reviewTeamButtonTop: NSLayoutConstraint!
+    @IBOutlet public weak var reviewTeamButtonHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     public var neighbourhood = KMAPoliceNeighbourhood()
     public var logo = ""
     public var detailsLoaded = false
     public var crimeLoaded = false
-    public var hasButton = false
+    public var teamLoaded = false
+    public var buttonPressedCallback: ((String) -> Void)?
     
     // MARK: - Cell methods
     
@@ -105,8 +110,25 @@ public class KMAPoliceDetailsTableViewCell: UITableViewCell {
             }
             
             notesLabel.text = month + crimesCount + " recorded in this neighbourhood."
+            notesLabel.alpha = 0
+            notesLabelTop.constant = 4
         } else {
             notesLabel.text = ""
+            notesLabel.alpha = 1
+            notesLabelTop.constant = 0
         }
+        
+        if teamLoaded {
+            reviewTeamButton.alpha = 1
+            reviewTeamButtonTop.constant = 8
+            reviewTeamButtonHeight.constant = 44
+        } else {
+            reviewTeamButton.alpha = 0
+            reviewTeamButtonTop.constant = 0
+            reviewTeamButtonHeight.constant = 0
+        }
+    }
+    @IBAction func reviewTeamButtonPressed(_ sender: Any) {
+        buttonPressedCallback?("pressed")
     }
 }
