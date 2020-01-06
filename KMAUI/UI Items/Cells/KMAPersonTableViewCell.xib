@@ -79,10 +79,10 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="fullNameLabel" destination="Yt0-Xh-uY1" id="JEz-5L-99y"/>
+                <outlet property="fullNameLabel" destination="Lxk-me-pd9" id="Y43-Lh-pZu"/>
                 <outlet property="profileImageView" destination="Fyg-lo-0cc" id="pc6-dO-7VL"/>
                 <outlet property="rightArrowImageView" destination="cTK-ZF-Aj4" id="g3g-fX-QNS"/>
-                <outlet property="usernameLabel" destination="Lxk-me-pd9" id="FGG-xC-tLy"/>
+                <outlet property="usernameLabel" destination="Yt0-Xh-uY1" id="pvz-wl-Ile"/>
             </connections>
             <point key="canvasLocation" x="-46.376811594202906" y="-53.236607142857139"/>
         </tableViewCell>

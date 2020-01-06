@@ -14,8 +14,8 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var profileImageView: UIImageView!
-    @IBOutlet public weak var fullNameLabel: KMAUITitleLabel!
-    @IBOutlet public weak var usernameLabel: KMAUITextLabel!
+    @IBOutlet public weak var fullNameLabel: KMAUITextLabel!
+    @IBOutlet public weak var usernameLabel: KMAUITitleLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
@@ -25,6 +25,12 @@ public class KMAPersonTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Set the profileImageView
+        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        profileImageView.layer.borderColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+        profileImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+        profileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // Right arrow image view
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
@@ -44,8 +50,9 @@ public class KMAPersonTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
+        usernameLabel.text = person.username.formatUsername()
         fullNameLabel.text = person.fullName
-        usernameLabel.text = person.username
+        profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
     }
 }
 
