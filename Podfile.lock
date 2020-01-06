@@ -1,26 +1,36 @@
 PODS:
   - Alamofire (5.0.0-rc.3)
+  - Bolts/Tasks (1.9.0)
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - Parse (1.17.3):
+    - Parse/Core (= 1.17.3)
+  - Parse/Core (1.17.3):
+    - Bolts/Tasks (~> 1.9)
   - SwiftyJSON (4.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - Kingfisher (~> 5.0)
+  - Parse
   - SwiftyJSON (~> 4.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Bolts
     - Kingfisher
+    - Parse
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: ca8c0de6906873be89d6deec5c8de279e00bf872
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 4724255bcd9a8841d0ad11e73253fd78a57974b6
+PODFILE CHECKSUM: a5ea2efe84fb55006e54d6c1255a563a78973ed1
 
-COCOAPODS: 1.8.0.beta.1
+COCOAPODS: 1.8.4

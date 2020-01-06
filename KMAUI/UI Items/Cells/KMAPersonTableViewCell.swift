@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Kingfisher
 
 public class KMAPersonTableViewCell: UITableViewCell {
     
@@ -15,6 +17,9 @@ public class KMAPersonTableViewCell: UITableViewCell {
     @IBOutlet public weak var fullNameLabel: KMAUITitleLabel!
     @IBOutlet public weak var usernameLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    
+    // MARK: - Variables
+    public var person = KMAPerson()
 
     // MARK: - Cell methods
 
@@ -34,4 +39,20 @@ public class KMAPersonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    /**
+     Setup cell
+     */
+    
+    public func setupCell() {
+        fullNameLabel.text = person.fullName
+        usernameLabel.text = person.username
+    }
+}
+
+// MARK: - Person struct
+
+public struct KMAPerson {
+    var username = ""
+    var fullName = ""
+    var profileImage = ""
 }
