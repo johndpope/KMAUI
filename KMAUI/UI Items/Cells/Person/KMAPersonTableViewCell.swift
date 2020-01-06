@@ -89,17 +89,21 @@ public class KMAPersonTableViewCell: UITableViewCell {
             
             activityView.alpha = 0
             profileImageView.alpha = 1
+            activityView.alpha = 1
         } else if status == "loading" {
             usernameLabel.text = "Loading people..."
             fullNameLabel.text = ""
             activityView.startAnimating()
             activityView.alpha = 1
             profileImageView.alpha = 0
+            activityView.alpha = 0
         } else if status == "no results" {
             usernameLabel.text = "No matching people"
             fullNameLabel.text = ""
             activityView.alpha = 0
+            profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             profileImageView.alpha = 1
+            activityView.alpha = 0
         }
     }
 }
