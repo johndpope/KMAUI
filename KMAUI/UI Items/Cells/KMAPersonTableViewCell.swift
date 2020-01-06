@@ -8,16 +8,17 @@
 
 import UIKit
 
-class KMAPersonTableViewCell: UITableViewCell {
+public class KMAPersonTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
-    @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var fullNameLabel: KMAUITitleLabel!
-    @IBOutlet weak var usernameLabel: KMAUITextLabel!
-    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var profileImageView: UIImageView!
+    @IBOutlet public weak var fullNameLabel: KMAUITitleLabel!
+    @IBOutlet public weak var usernameLabel: KMAUITextLabel!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
 
     // MARK: - Cell methods
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Right arrow image view
@@ -27,7 +28,7 @@ class KMAPersonTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
