@@ -31,6 +31,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
         profileImageView.layer.borderColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
         profileImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         profileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        profileImageView.kf.indicatorType = .activity
         
         // Right arrow image view
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
@@ -53,6 +54,10 @@ public class KMAPersonTableViewCell: UITableViewCell {
         usernameLabel.text = person.username.formatUsername()
         fullNameLabel.text = person.fullName
         profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+        
+        if let url = URL(string: person.profileImage) {
+            profileImageView.kf.setImage(with: url)
+        }
     }
 }
 
