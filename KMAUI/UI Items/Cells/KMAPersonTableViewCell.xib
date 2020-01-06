@@ -79,6 +79,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="Zxh-ml-1e7" id="bJN-sn-HD9"/>
                 <outlet property="fullNameLabel" destination="Lxk-me-pd9" id="Y43-Lh-pZu"/>
                 <outlet property="profileImageView" destination="Fyg-lo-0cc" id="pc6-dO-7VL"/>
                 <outlet property="rightArrowImageView" destination="cTK-ZF-Aj4" id="g3g-fX-QNS"/>
