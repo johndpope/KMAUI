@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="width" constant="44" id="tf0-nr-M1j"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-Xh-uY1" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yt0-Xh-uY1" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="68" y="8" width="182" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="xZf-Q7-XJX"/>
@@ -36,7 +36,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-me-pd9" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-me-pd9" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="68" y="30" width="182" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="NMm-ok-b7X"/>
@@ -52,17 +52,27 @@
                                     <constraint firstAttribute="width" constant="22" id="wZu-Nh-pCe"/>
                                 </constraints>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wRI-at-JiR">
+                                <rect key="frame" x="16" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="DWQ-5c-vcd"/>
+                                    <constraint firstAttribute="height" constant="44" id="nZR-6s-H5Z"/>
+                                </constraints>
+                                <color key="color" name="KMABrightBlueColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="Lxk-me-pd9" firstAttribute="leading" secondItem="Fyg-lo-0cc" secondAttribute="trailing" constant="8" id="0dJ-Ho-yZA"/>
                             <constraint firstItem="cTK-ZF-Aj4" firstAttribute="centerY" secondItem="Zxh-ml-1e7" secondAttribute="centerY" id="2hf-dh-N9d"/>
+                            <constraint firstItem="wRI-at-JiR" firstAttribute="top" secondItem="Zxh-ml-1e7" secondAttribute="top" constant="8" id="6CL-hi-5OD"/>
                             <constraint firstItem="Yt0-Xh-uY1" firstAttribute="leading" secondItem="Fyg-lo-0cc" secondAttribute="trailing" constant="8" id="6z0-RY-9Pm"/>
                             <constraint firstItem="cTK-ZF-Aj4" firstAttribute="leading" secondItem="Yt0-Xh-uY1" secondAttribute="trailing" constant="8" id="8Th-J5-vea"/>
                             <constraint firstItem="cTK-ZF-Aj4" firstAttribute="leading" secondItem="Lxk-me-pd9" secondAttribute="trailing" constant="8" id="AbC-Mu-4Qe"/>
                             <constraint firstItem="Fyg-lo-0cc" firstAttribute="leading" secondItem="Zxh-ml-1e7" secondAttribute="leading" constant="16" id="Un4-FJ-zei"/>
                             <constraint firstItem="Yt0-Xh-uY1" firstAttribute="top" secondItem="Zxh-ml-1e7" secondAttribute="top" constant="8" id="VQe-6D-h5Z"/>
                             <constraint firstAttribute="trailing" secondItem="cTK-ZF-Aj4" secondAttribute="trailing" constant="8" id="ahJ-0D-qxJ"/>
+                            <constraint firstItem="wRI-at-JiR" firstAttribute="leading" secondItem="Zxh-ml-1e7" secondAttribute="leading" constant="16" id="fYZ-qG-0ja"/>
                             <constraint firstItem="Fyg-lo-0cc" firstAttribute="centerY" secondItem="Zxh-ml-1e7" secondAttribute="centerY" id="iXJ-Xk-C0w"/>
                             <constraint firstAttribute="height" constant="60" id="jS0-4S-FHY"/>
                             <constraint firstItem="Lxk-me-pd9" firstAttribute="top" secondItem="Yt0-Xh-uY1" secondAttribute="bottom" id="kUw-hi-cMt"/>
@@ -79,6 +89,7 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityView" destination="wRI-at-JiR" id="m8O-Kw-yEi"/>
                 <outlet property="bgView" destination="Zxh-ml-1e7" id="bJN-sn-HD9"/>
                 <outlet property="fullNameLabel" destination="Lxk-me-pd9" id="Y43-Lh-pZu"/>
                 <outlet property="profileImageView" destination="Fyg-lo-0cc" id="pc6-dO-7VL"/>
@@ -94,6 +105,9 @@
         </namedColor>
         <namedColor name="KMABgGray">
             <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABrightBlueColor">
+            <color red="0.15294117647058825" green="0.41568627450980394" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

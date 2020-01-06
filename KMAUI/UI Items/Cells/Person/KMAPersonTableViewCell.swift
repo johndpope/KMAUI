@@ -18,9 +18,11 @@ public class KMAPersonTableViewCell: UITableViewCell {
     @IBOutlet public weak var usernameLabel: KMAUITitleLabel!
     @IBOutlet public weak var fullNameLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var activityView: UIActivityIndicatorView!
     
     // MARK: - Variables
     public var person = KMAPerson()
+    public var canHighlight = false
     
     // MARK: - Cell methods
     
@@ -56,7 +58,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if highlight, canHighlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             profileImageView.tintColor = UIColor.white
             usernameLabel.textColor = UIColor.white
@@ -76,12 +78,23 @@ public class KMAPersonTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
-        usernameLabel.text = person.username.formatUsername()
-        fullNameLabel.text = person.fullName
-        profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
-        
-        if let url = URL(string: person.profileImage) {
-            profileImageView.kf.setImage(with: url)
+        if canHighlight {
+            usernameLabel.text = person.username.formatUsername()
+            fullNameLabel.text = person.fullName
+            profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+            
+            if let url = URL(string: person.profileImage) {
+                profileImageView.kf.setImage(with: url)
+            }
+            
+            activityView.alpha = 0
+            profileImageView.alpha = 1
+        } else {
+            usernameLabel.text = "Loading people..."
+            fullNameLabel.text = ""
+            activityView.startAnimating()
+            activityView.alpha = 1
+            profileImageView.alpha = 0
         }
     }
 }
