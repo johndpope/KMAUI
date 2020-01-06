@@ -22,7 +22,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var person = KMAPerson()
-    public var canHighlight = false
+    public var status = ""
     
     // MARK: - Cell methods
     
@@ -58,7 +58,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight, canHighlight {
+        if highlight, status == "person" {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             profileImageView.tintColor = UIColor.white
             usernameLabel.textColor = UIColor.white
@@ -78,7 +78,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
-        if canHighlight {
+        if status == "person" {
             usernameLabel.text = person.username.formatUsername()
             fullNameLabel.text = person.fullName
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
@@ -89,12 +89,17 @@ public class KMAPersonTableViewCell: UITableViewCell {
             
             activityView.alpha = 0
             profileImageView.alpha = 1
-        } else {
+        } else if status == "loading" {
             usernameLabel.text = "Loading people..."
             fullNameLabel.text = ""
             activityView.startAnimating()
             activityView.alpha = 1
             profileImageView.alpha = 0
+        } else if status == "no results" {
+            usernameLabel.text = "No matching people"
+            fullNameLabel.text = ""
+            activityView.alpha = 0
+            profileImageView.alpha = 1
         }
     }
 }
