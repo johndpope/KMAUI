@@ -52,7 +52,10 @@ public class KMAPersonTableViewCell: UITableViewCell {
 // MARK: - Person struct
 
 public struct KMAPerson {
-    var username = ""
-    var fullName = ""
-    var profileImage = ""
+    public var username = ""
+    public var fullName = ""
+    public var profileImage = ""
+    
+    public init() {
+    }
 }
