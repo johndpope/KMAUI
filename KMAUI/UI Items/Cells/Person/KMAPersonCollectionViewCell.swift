@@ -27,6 +27,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
+        pieChartView.alpha = 0
+        
         if type == "gender" {
             var male: Double = 0
             var female: Double = 0
@@ -71,8 +73,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 let data = PieChartData(dataSet: dataSet)
                 pieChartView.data = data
                 pieChartView.notifyDataSetChanged()
-            } else {
-                pieChartView.alpha = 0
             }
         }
     }
