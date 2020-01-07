@@ -27,32 +27,34 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
-        var male = 0
-        var female = 0
-        var other = 0
-        
-        for person in peopleArray {
-            if person.gender == "Male" {
-                male += 1
-            } else if person.gender == "Female" {
-                female += 1
-            } else if person.gender == "Other" {
-                other += 1
+        if type == "gender" {
+            var male = 0
+            var female = 0
+            var other = 0
+            
+            for person in peopleArray {
+                if person.gender == "Male" {
+                    male += 1
+                } else if person.gender == "Female" {
+                    female += 1
+                } else if person.gender == "Other" {
+                    other += 1
+                }
             }
+            
+            let entry1 = PieChartDataEntry(value: Double(male), label: "Male")
+            let entry2 = PieChartDataEntry(value: Double(female), label: "Female")
+            let entry3 = PieChartDataEntry(value: Double(other), label: "Other")
+            let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "")
+            dataSet.colors = ChartColorTemplates.pastel()
+            let data = PieChartData(dataSet: dataSet)
+            pieChartView.data = data
+            
+            //All other additions to this function will go here
+            
+            //This must stay at end of function
+            pieChartView.notifyDataSetChanged()
         }
-
-        let entry1 = PieChartDataEntry(value: Double(male), label: "Male")
-        let entry2 = PieChartDataEntry(value: Double(female), label: "Female")
-        let entry3 = PieChartDataEntry(value: Double(other), label: "Other")
-        let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "")
-        dataSet.colors = ChartColorTemplates.pastel()
-        let data = PieChartData(dataSet: dataSet)
-        pieChartView.data = data
-
-        //All other additions to this function will go here
-
-        //This must stay at end of function
-        pieChartView.notifyDataSetChanged()
     }
 }
 
