@@ -40,13 +40,12 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 other += 1
             }
         }
-        
-        
-        let entry1 = PieChartDataEntry(value: Double(243), label: "Male")
-        let entry2 = PieChartDataEntry(value: Double(232), label: "Female")
-        let entry3 = PieChartDataEntry(value: Double(123), label: "Other")
+
+        let entry1 = PieChartDataEntry(value: Double(male), label: "Male")
+        let entry2 = PieChartDataEntry(value: Double(female), label: "Female")
+        let entry3 = PieChartDataEntry(value: Double(other), label: "Other")
         let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "")
-        dataSet.colors = ChartColorTemplates.material()
+        dataSet.colors = ChartColorTemplates.pastel()
         let data = PieChartData(dataSet: dataSet)
         pieChartView.data = data
 
