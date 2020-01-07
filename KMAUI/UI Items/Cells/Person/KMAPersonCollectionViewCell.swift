@@ -46,7 +46,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         let entry2 = PieChartDataEntry(value: Double(232), label: "Female")
         let entry3 = PieChartDataEntry(value: Double(123), label: "Other")
         let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "")
-        dataSet.colors = ChartColorTemplates.joyful()
+        dataSet.colors = ChartColorTemplates.material()
         let data = PieChartData(dataSet: dataSet)
         pieChartView.data = data
 
