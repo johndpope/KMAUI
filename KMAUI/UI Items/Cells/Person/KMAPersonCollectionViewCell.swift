@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import Charts
 
 public class KMAPersonCollectionViewCell: UICollectionViewCell {
-
+    // MARK: - Variables
+    var type = ""
+    var peopleArray = [KMAPerson]()
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    /**
+     Setup the data for cell
+     */
+    
+    func setupCell() {
+        
+    }
 }
 
