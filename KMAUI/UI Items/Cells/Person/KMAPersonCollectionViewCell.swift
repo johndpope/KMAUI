@@ -27,13 +27,29 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
      */
     
     public func setupCell() {
-        let entry1 = PieChartDataEntry(value: Double(243), label: "#1")
-        let entry2 = PieChartDataEntry(value: Double(232), label: "#2")
-        let entry3 = PieChartDataEntry(value: Double(123), label: "#3")
+        var male = 0
+        var female = 0
+        var other = 0
+        
+        for person in peopleArray {
+            if person.gender == "Male" {
+                male += 1
+            } else if person.gender == "Female" {
+                female += 1
+            } else if person.gender == "Other" {
+                other += 1
+            }
+        }
+        
+        
+        let entry1 = PieChartDataEntry(value: Double(243), label: "Male")
+        let entry2 = PieChartDataEntry(value: Double(232), label: "Female")
+        let entry3 = PieChartDataEntry(value: Double(123), label: "Other")
         let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "Widget Types")
+        dataSet.colors = ChartColorTemplates.pastel()
         let data = PieChartData(dataSet: dataSet)
         pieChartView.data = data
-        pieChartView.chartDescription?.text = "Share of Widgets by Type"
+        pieChartView.chartDescription?.text = "Gender distribution"
 
         //All other additions to this function will go here
 
