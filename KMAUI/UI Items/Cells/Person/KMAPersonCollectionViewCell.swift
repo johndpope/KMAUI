@@ -12,6 +12,7 @@ import Charts
 public class KMAPersonCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var pieChartView: PieChartView!
+    @IBOutlet weak var barChartView: BarChartView!
     
     // MARK: - Variables
     public var type = ""
@@ -28,6 +29,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     public func setupCell() {
         pieChartView.alpha = 0
+        barChartView.alpha = 0
         
         if type == "gender" {
             var male: Double = 0
@@ -72,6 +74,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 pieChartView.data = data
                 pieChartView.notifyDataSetChanged()
             }
+        } else if type == "age" {
+            barChartView.alpha = 1
         }
     }
 }

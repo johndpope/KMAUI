@@ -24,13 +24,21 @@
                                 <rect key="frame" x="8" y="8" width="226" height="204"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buE-UQ-91o" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="8kT-ki-gXt"/>
+                            <constraint firstItem="buE-UQ-91o" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="DUY-VT-Wls"/>
                             <constraint firstAttribute="trailing" secondItem="0RH-a9-9Op" secondAttribute="trailing" constant="8" id="Dqr-P1-zkE"/>
+                            <constraint firstItem="buE-UQ-91o" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="EVM-N9-eAj"/>
                             <constraint firstAttribute="bottom" secondItem="0RH-a9-9Op" secondAttribute="bottom" constant="8" id="ivN-Td-Ddt"/>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="rzz-lb-ksV"/>
+                            <constraint firstAttribute="bottom" secondItem="buE-UQ-91o" secondAttribute="bottom" constant="8" id="tpc-QP-8qi"/>
+                            <constraint firstAttribute="trailing" secondItem="buE-UQ-91o" secondAttribute="trailing" constant="8" id="vI5-cC-dOq"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,6 +53,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="258" height="232"/>
             <connections>
+                <outlet property="barChartView" destination="buE-UQ-91o" id="e0f-9K-Wl8"/>
                 <outlet property="pieChartView" destination="0RH-a9-9Op" id="Lgm-Df-cW6"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>
