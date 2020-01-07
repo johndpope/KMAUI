@@ -42,6 +42,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
+            print("Gender distribution: \(male), \(female), \(other)")
+            
             let entry1 = PieChartDataEntry(value: Double(male), label: "Male")
             let entry2 = PieChartDataEntry(value: Double(female), label: "Female")
             let entry3 = PieChartDataEntry(value: Double(other), label: "Other")
@@ -49,10 +51,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             dataSet.colors = ChartColorTemplates.pastel()
             let data = PieChartData(dataSet: dataSet)
             pieChartView.data = data
-            
-            //All other additions to this function will go here
-            
-            //This must stay at end of function
             pieChartView.notifyDataSetChanged()
         }
     }
