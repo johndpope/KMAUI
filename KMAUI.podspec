@@ -2,13 +2,13 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.ios.deployment_target = '12.0'
+s.ios.deployment_target = '11.0'
 s.name = "KMAUI"
 s.summary = "KMAUI allows you using the same design items across all of the KMA Apps."
 s.requires_arc = true
 
 # 2
-s.version = "0.7.10.89"
+s.version = "0.7.10.90"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
