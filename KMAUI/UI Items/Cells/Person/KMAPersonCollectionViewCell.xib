@@ -19,7 +19,19 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYc-dX-BIE" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="242" height="220"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-a9-9Op" customClass="PieChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="8kT-ki-gXt"/>
+                            <constraint firstAttribute="trailing" secondItem="0RH-a9-9Op" secondAttribute="trailing" constant="8" id="Dqr-P1-zkE"/>
+                            <constraint firstAttribute="bottom" secondItem="0RH-a9-9Op" secondAttribute="bottom" constant="8" id="ivN-Td-Ddt"/>
+                            <constraint firstItem="0RH-a9-9Op" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="rzz-lb-ksV"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -32,6 +44,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="258" height="232"/>
+            <connections>
+                <outlet property="pieChartView" destination="0RH-a9-9Op" id="Lgm-Df-cW6"/>
+            </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>
         </collectionViewCell>
     </objects>
