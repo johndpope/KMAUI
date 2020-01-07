@@ -21,16 +21,16 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     /**
      Setup the data for cell
      */
     
     public func setupCell() {
         if type == "gender" {
-            var male = 0
-            var female = 0
-            var other = 0
+            var male: Double = 0
+            var female: Double = 0
+            var other: Double = 0
             
             for person in peopleArray {
                 if person.gender == "Male" {
@@ -42,16 +42,38 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
-            print("Gender distribution: \(male), \(female), \(other)")
+            let total = male + female + other
             
-            let entry1 = PieChartDataEntry(value: Double(male), label: "Male")
-            let entry2 = PieChartDataEntry(value: Double(female), label: "Female")
-            let entry3 = PieChartDataEntry(value: Double(other), label: "Other")
-            let dataSet = PieChartDataSet(entries: [entry1, entry2, entry3], label: "")
-            dataSet.colors = ChartColorTemplates.pastel()
-            let data = PieChartData(dataSet: dataSet)
-            pieChartView.data = data
-            pieChartView.notifyDataSetChanged()
+            if total > 0 {
+                pieChartView.alpha = 1
+                male = (male / total) / 100
+                female = (female / total) / 100
+                other = (other / total) / 100
+                
+                print("Gender distribution: \(male), \(female), \(other)")
+                
+                var dataEntries = [PieChartDataEntry]()
+                
+                if male > 0 {
+                    dataEntries.append(PieChartDataEntry(value: male, label: "Male"))
+                }
+                
+                if female > 0 {
+                    dataEntries.append(PieChartDataEntry(value: female, label: "Female"))
+                }
+                
+                if other > 0 {
+                    dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
+                }
+                
+                let dataSet = PieChartDataSet(entries: dataEntries, label: "")
+                dataSet.colors = ChartColorTemplates.pastel()
+                let data = PieChartData(dataSet: dataSet)
+                pieChartView.data = data
+                pieChartView.notifyDataSetChanged()
+            } else {
+                pieChartView.alpha = 0
+            }
         }
     }
 }
