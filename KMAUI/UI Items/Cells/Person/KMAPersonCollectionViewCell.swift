@@ -52,8 +52,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 female = Double(Int((female / total) * 10000)) / 100
                 other = Double(Int((other / total) * 10000)) / 100
                 
-                print("Gender distribution: \(male), \(female), \(other)")
-                
                 var dataEntries = [PieChartDataEntry]()
                 
                 if male > 0 {
@@ -68,7 +66,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
                 }
                 
-                let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
+                let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution, %")
                 dataSet.colors = ChartColorTemplates.pastel()
                 let data = PieChartData(dataSet: dataSet)
                 pieChartView.data = data
