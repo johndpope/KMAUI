@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYc-dX-BIE" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="8" y="8" width="242" height="216"/>
+                        <rect key="frame" x="8" y="8" width="242" height="208"/>
                         <color key="backgroundColor" name="KMABackColor"/>
                     </view>
                 </subviews>
@@ -28,7 +28,7 @@
                 <constraint firstAttribute="trailing" secondItem="WYc-dX-BIE" secondAttribute="trailing" constant="8" id="3W0-ll-D4D"/>
                 <constraint firstItem="WYc-dX-BIE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Ee8-Gp-lVd"/>
                 <constraint firstItem="WYc-dX-BIE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="Llu-JE-R8g"/>
-                <constraint firstAttribute="bottom" secondItem="WYc-dX-BIE" secondAttribute="bottom" constant="8" id="NkH-wL-YoK"/>
+                <constraint firstAttribute="bottom" secondItem="WYc-dX-BIE" secondAttribute="bottom" constant="16" id="NkH-wL-YoK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="258" height="232"/>
