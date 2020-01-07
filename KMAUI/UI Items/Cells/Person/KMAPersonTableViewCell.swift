@@ -114,7 +114,48 @@ public struct KMAPerson {
     public var username = ""
     public var fullName = ""
     public var profileImage = ""
+    public var birthday: Double = 0
+    public var gender = ""
     
     public init() {
+    }
+    
+    public mutating func fillFrom(person: PFUser) {
+        if let username = person.username {
+            // Username
+            self.username = username
+            
+            // Full name
+            var fullName = ""
+            
+            if let firstName = person["firstName"] as? String {
+                fullName = firstName
+            }
+            
+            if let lastName = person["lastName"] as? String {
+                if fullName.isEmpty {
+                    fullName = lastName
+                } else {
+                    fullName += " " + lastName
+                }
+            }
+            
+            self.fullName = fullName
+            
+            // Profile image
+            if let profileImage = person["profileImage"] as? PFFileObject, let urlString = profileImage.url {
+                self.profileImage = urlString
+            }
+            
+            // Birthday
+            if let birthday = person["birthday"] as? Date {
+                self.birthday = birthday.timeIntervalSince1970
+            }
+            
+            // Gender
+            if let gender = person["gender"] as? String, !gender.isEmpty {
+                self.gender = gender
+            }
+        }
     }
 }
