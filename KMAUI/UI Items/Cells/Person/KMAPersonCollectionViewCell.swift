@@ -75,8 +75,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 pieChartView.notifyDataSetChanged()
             }
         } else if type == "age" {
-            barChartView.alpha = 1
-            
             let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
             let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
             var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
@@ -105,27 +103,28 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             var ageStringsArray = [String]()
             
             for (index, ageItem) in ageDistribution.enumerated() {
-                if ageItem != 0 {
+                if ageItem > 0 {
                     ageDistributionArray.append(ageItem)
                     ageStringsArray.append(ageStrings[index])
                 }
             }
             
-            print("Age distribution: \(ageStrings), \(ageDistribution)")
-
-            let entry1 = BarChartDataEntry(x: 0, y: 100)
-            let entry2 = BarChartDataEntry(x: 1, y: 250)
-            let entry3 = BarChartDataEntry(x: 2, y: 60)
-            let dataSet = BarChartDataSet(entries: [entry1, entry2, entry3], label: "Age distribution")
-            dataSet.colors = ChartColorTemplates.pastel()
-            let data = BarChartData(dataSets: [dataSet])
-            barChartView.data = data
-//            barChart.chartDescription?.text = "Number of Widgets by Type"
-
-            //All other additions to this function will go here
-
-            //This must stay at end of function
-            barChartView.notifyDataSetChanged()
+            if !ageDistributionArray.isEmpty {
+                barChartView.alpha = 1
+                print("Age distribution: \(ageStrings), \(ageDistribution)")
+                var dataEntries = [PieChartDataEntry]()
+                
+                for i in 0..<ageDistributionArray.count {
+                    let entry = BarChartDataEntry(x: Double(i), y: Double(ageDistributionArray[i]))
+                    
+                }
+                
+                dataSet.colors = ChartColorTemplates.pastel()
+                let data = BarChartData(dataSets: [dataSet])
+                barChartView.data = data
+                //This must stay at end of function
+                barChartView.notifyDataSetChanged()
+            }
         }
     }
 }
