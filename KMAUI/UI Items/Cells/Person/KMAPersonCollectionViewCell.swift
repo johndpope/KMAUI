@@ -14,6 +14,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var pieChartView: PieChartView!
     @IBOutlet public weak var barChartView: BarChartView!
     
+    var ageDistributionArray = [Double]()
+    var ageStringsArray = [String]()
+    
     // MARK: - Variables
     public var type = ""
     public var peopleArray = [KMAPerson]()
@@ -50,9 +53,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             if total > 0 {
                 pieChartView.alpha = 1
-                male = Double(Int((male / total) * 10000)) / 100
-                female = Double(Int((female / total) * 10000)) / 100
-                other = Double(Int((other / total) * 10000)) / 100
+                male = male / total
+                female = female / total
+                other = other / total
                 
                 var dataEntries = [PieChartDataEntry]()
                 
@@ -68,33 +71,109 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
                 }
                 
-                let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution, %")
+                let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
                 dataSet.colors = ChartColorTemplates.pastel()
                 let data = PieChartData(dataSet: dataSet)
+                
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .percent
+                pFormatter.maximumFractionDigits = 1
+                pFormatter.multiplier = 1
+                pFormatter.percentSymbol = "%"
+                data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+                
+                data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+                data.setValueTextColor(.white)
+                
                 pieChartView.data = data
                 pieChartView.notifyDataSetChanged()
             }
         } else if type == "age" {
+            barChartView.alpha = 1
             
+            let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+            let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
+            var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
             
-            /*if !ageDistributionArray.isEmpty {
+            ageDistributionArray = [Double]()
+            ageStringsArray = [String]()
+            
+            var total = 0
+            
+            for person in peopleArray {
+                if person.birthday != 0 {
+                    let birthday = Date(timeIntervalSince1970: person.birthday)
+                    let components = Set<Calendar.Component>([.year])
+                    let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
+                    
+                    if let age = differenceOfDate.year {
+                        print("\(person.username.formatUsername()), age: \(age)")
+                        
+                        for (index, ageRange) in ageRanges.enumerated() {
+                            if ageRange.count == 2, ageRange[0] <= age, ageRange[1] >= age {
+                                ageDistribution[index] = ageDistribution[index] + 1
+                                total += 1
+                            } else if ageRange.count == 1, ageRange[0] <= age {
+                                ageDistribution[index] = ageDistribution[index] + 1
+                                total += 1
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (index, ageItem) in ageDistribution.enumerated() {
+                if ageItem > 0 {
+                    ageDistributionArray.append(Double(ageItem) / Double(total) * 100)
+                    ageStringsArray.append(ageStrings[index])
+                }
+            }
+            
+            if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
-                print("Age distribution: \(ageStrings), \(ageDistribution)")
-                var dataEntries = [BarChartDataEntry]()
                 
-                for i in 0..<ageDistributionArray.count {
-                    let entry = BarChartDataEntry(x: Double(i), y: Double(ageDistributionArray[i]))
-                    dataEntries.append(entry)
+                let xAxis = barChartView.xAxis
+                xAxis.drawAxisLineEnabled = false
+                xAxis.drawGridLinesEnabled = false
+                xAxis.labelPosition = .bottom
+                
+                let leftAxis = barChartView.leftAxis
+                leftAxis.drawAxisLineEnabled = false
+                leftAxis.drawGridLinesEnabled = false
+                leftAxis.drawLabelsEnabled = false
+                
+                let rightAxis = barChartView.rightAxis
+                rightAxis.drawAxisLineEnabled = false
+                rightAxis.drawGridLinesEnabled = false
+                rightAxis.drawLabelsEnabled = false
+                
+                var yVals = [BarChartDataEntry]()
+                
+                for (index, item) in ageDistributionArray.enumerated() {
+                    yVals.append(BarChartDataEntry(x: Double(index), y: item))
                 }
                 
-                let dataSet = PieChartDataSet(entries: dataEntries, label: "Age distribution")
-                dataSet.colors = ChartColorTemplates.pastel()
-                let data = BarChartData(dataSets: [dataSet])
+                let set = BarChartDataSet(entries: yVals, label: "Age distribution")
+                set.colors = ChartColorTemplates.pastel()
+                set.valueColors = ChartColorTemplates.pastel()
+                
+                let data = BarChartData(dataSet: set)
+                data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+                
+                let formatter = NumberFormatter()
+                formatter.maximumFractionDigits = 1
+                data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+                data.barWidth = 0.9
+                
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .percent
+                pFormatter.maximumFractionDigits = 1
+                pFormatter.multiplier = 1
+                pFormatter.percentSymbol = "%"
+                data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+                
                 barChartView.data = data
-                //This must stay at end of function
-                barChartView.notifyDataSetChanged()
-            }*/
+            }
         }
     }
 }
-
