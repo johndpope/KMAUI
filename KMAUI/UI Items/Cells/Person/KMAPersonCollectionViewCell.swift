@@ -112,7 +112,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
                 print("Age distribution: \(ageStrings), \(ageDistribution)")
-                var dataEntries = [PieChartDataEntry]()
+                var dataEntries = [BarChartDataEntry]()
                 
                 for i in 0..<ageDistributionArray.count {
                     let entry = BarChartDataEntry(x: Double(i), y: Double(ageDistributionArray[i]))
