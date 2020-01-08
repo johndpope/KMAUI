@@ -77,7 +77,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         } else if type == "age" {
             barChartView.alpha = 1
             
-            var ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+            let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
             let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
             var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
             
@@ -116,7 +116,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             let entry1 = BarChartDataEntry(x: 0, y: 100)
             let entry2 = BarChartDataEntry(x: 1, y: 250)
             let entry3 = BarChartDataEntry(x: 2, y: 60)
-            let dataSet = BarChartDataSet(entries: [entry1, entry2, entry3], label: "Widgets Type")
+            let dataSet = BarChartDataSet(entries: [entry1, entry2, entry3], label: "Age distribution")
+            dataSet.colors = ChartColorTemplates.pastel()
             let data = BarChartData(dataSets: [dataSet])
             barChartView.data = data
 //            barChart.chartDescription?.text = "Number of Widgets by Type"
