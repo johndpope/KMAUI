@@ -101,19 +101,18 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
+            var ageDistributionArray = [Int]()
+            var ageStringsArray = [String]()
+            
             for (index, ageItem) in ageDistribution.enumerated() {
-                if ageItem == 0 {
-                    ageDistribution.remove(at: index)
-                    ageStrings.remove(at: index)
+                if ageItem != 0 {
+                    ageDistributionArray.append(ageItem)
+                    ageStringsArray.append(ageStrings[index])
                 }
             }
             
             print("Age distribution: \(ageStrings), \(ageDistribution)")
-        
-            
-            
-            
-            
+
             let entry1 = BarChartDataEntry(x: 0, y: 100)
             let entry2 = BarChartDataEntry(x: 0, y: 250)
             let entry3 = BarChartDataEntry(x: 0, y: 60)
