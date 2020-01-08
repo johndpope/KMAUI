@@ -19,6 +19,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var peopleArray = [KMAPerson]()
     public var ageDistributionArray = [Double]()
     public var ageStringsArray = [String]()
+    public weak var axisFormatDelegate: IAxisValueFormatter?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -127,9 +128,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     ageStringsArray.append(ageStrings[index])
                 }
             }
-            
-            barChartView.delegate = self as? ChartViewDelegate
-            
+                        
             if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
                 
@@ -137,6 +136,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 xAxis.drawAxisLineEnabled = false
                 xAxis.drawGridLinesEnabled = false
                 xAxis.labelPosition = .bottom
+                xAxis.valueFormatter = axisFormatDelegate
                 
                 let leftAxis = barChartView.leftAxis
                 leftAxis.drawAxisLineEnabled = false
