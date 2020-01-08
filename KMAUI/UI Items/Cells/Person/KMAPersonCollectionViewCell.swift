@@ -55,9 +55,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             if total > 0 {
                 pieChartView.alpha = 1
-                male = male / total
-                female = female / total
-                other = other / total
+                male = male / total * 100
+                female = female / total * 100
+                other = other / total * 100
                 
                 var dataEntries = [PieChartDataEntry]()
                 
