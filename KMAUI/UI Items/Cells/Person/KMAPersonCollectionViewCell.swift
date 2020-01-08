@@ -114,8 +114,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             print("Age distribution: \(ageStrings), \(ageDistribution)")
 
             let entry1 = BarChartDataEntry(x: 0, y: 100)
-            let entry2 = BarChartDataEntry(x: 0, y: 250)
-            let entry3 = BarChartDataEntry(x: 0, y: 60)
+            let entry2 = BarChartDataEntry(x: 1, y: 250)
+            let entry3 = BarChartDataEntry(x: 2, y: 60)
             let dataSet = BarChartDataSet(entries: [entry1, entry2, entry3], label: "Widgets Type")
             let data = BarChartData(dataSets: [dataSet])
             barChartView.data = data
