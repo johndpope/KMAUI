@@ -107,8 +107,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
                     
                     if let age = differenceOfDate.year {
-                        print("\(person.username.formatUsername()), age: \(age)")
-                        
+//                        print("\(person.username.formatUsername()), age: \(age)")
                         for (index, ageRange) in ageRanges.enumerated() {
                             if ageRange.count == 2, ageRange[0] <= age, ageRange[1] >= age {
                                 ageDistribution[index] = ageDistribution[index] + 1
