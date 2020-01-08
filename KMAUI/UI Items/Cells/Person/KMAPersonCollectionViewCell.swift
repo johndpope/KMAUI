@@ -116,7 +116,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 
                 for i in 0..<ageDistributionArray.count {
                     let entry = BarChartDataEntry(x: Double(i), y: Double(ageDistributionArray[i]))
-                    
+                    dataEntries.append(entry)
                 }
                 
                 let dataSet = PieChartDataSet(entries: dataEntries, label: "Age distribution")
