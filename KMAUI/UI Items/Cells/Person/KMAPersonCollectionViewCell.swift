@@ -77,17 +77,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         } else if type == "age" {
             barChartView.alpha = 1
             
-            for person in peopleArray {
-                if person.birthday != 0 {
-                    let birthday = Date(timeIntervalSince1970: person.birthday)
-                    let components = Set<Calendar.Component>([.year])
-                    let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
-                    
-                    if let age = differenceOfDate.year {
-                        print("\(person.username.formatUsername()), age: \(age)")
-                    }
-                }
-            }
+            
         }
     }
 }
