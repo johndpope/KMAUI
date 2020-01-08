@@ -119,6 +119,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     
                 }
                 
+                let dataSet = PieChartDataSet(entries: dataEntries, label: "Age distribution")
                 dataSet.colors = ChartColorTemplates.pastel()
                 let data = BarChartData(dataSets: [dataSet])
                 barChartView.data = data
