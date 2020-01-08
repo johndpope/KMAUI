@@ -23,7 +23,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Setting the delegate connection for axis
+        axisFormatDelegate = self
     }
     
     /**
