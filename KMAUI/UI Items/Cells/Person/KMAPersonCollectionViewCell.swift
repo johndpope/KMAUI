@@ -14,12 +14,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var pieChartView: PieChartView!
     @IBOutlet public weak var barChartView: BarChartView!
     
-    var ageDistributionArray = [Double]()
-    var ageStringsArray = [String]()
-    
     // MARK: - Variables
     public var type = ""
     public var peopleArray = [KMAPerson]()
+    public var ageDistributionArray = [Double]()
+    public var ageStringsArray = [String]()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -129,6 +128,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
+            barChartView.delegate = self as? ChartViewDelegate
+            
             if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
                 
@@ -175,5 +176,15 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 barChartView.data = data
             }
         }
+    }
+}
+
+extension KMAPersonCollectionViewCell: IAxisValueFormatter {
+    public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+        if Int(value) >= 0, Int(value) < ageStringsArray.count {
+            return ageStringsArray[Int(value)]
+        }
+        
+        return ""
     }
 }
