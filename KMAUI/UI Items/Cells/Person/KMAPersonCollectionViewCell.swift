@@ -11,8 +11,8 @@ import Charts
 
 public class KMAPersonCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var pieChartView: PieChartView!
-    @IBOutlet weak var barChartView: BarChartView!
+    @IBOutlet public weak var pieChartView: PieChartView!
+    @IBOutlet public weak var barChartView: BarChartView!
     
     // MARK: - Variables
     public var type = ""
@@ -75,41 +75,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 pieChartView.notifyDataSetChanged()
             }
         } else if type == "age" {
-            let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
-            let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
-            var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
             
-            for person in peopleArray {
-                if person.birthday != 0 {
-                    let birthday = Date(timeIntervalSince1970: person.birthday)
-                    let components = Set<Calendar.Component>([.year])
-                    let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
-                    
-                    if let age = differenceOfDate.year {
-                        print("\(person.username.formatUsername()), age: \(age)")
-                        
-                        for (index, ageRange) in ageRanges.enumerated() {
-                            if ageRange.count == 2, ageRange[0] <= age, ageRange[1] >= age {
-                                ageDistribution[index] = ageDistribution[index] + 1
-                            } else if ageRange.count == 1, ageRange[0] <= age {
-                                ageDistribution[index] = ageDistribution[index] + 1
-                            }
-                        }
-                    }
-                }
-            }
-            
-            var ageDistributionArray = [Int]()
-            var ageStringsArray = [String]()
-            
-            for (index, ageItem) in ageDistribution.enumerated() {
-                if ageItem > 0 {
-                    ageDistributionArray.append(ageItem)
-                    ageStringsArray.append(ageStrings[index])
-                }
-            }
-            
-            print("\(ageDistributionArray), \(ageStringsArray)")
             
             /*if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
