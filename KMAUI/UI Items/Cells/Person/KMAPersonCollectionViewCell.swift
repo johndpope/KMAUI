@@ -91,8 +91,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 pieChartView.notifyDataSetChanged()
             }
         } else if type == "age" {
-            barChartView.alpha = 1
-            
             let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
             let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
             var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
