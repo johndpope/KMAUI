@@ -131,6 +131,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                         
             if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
+                barChartView.doubleTapToZoomEnabled = false
                 
                 let xAxis = barChartView.xAxis
                 xAxis.drawAxisLineEnabled = false
