@@ -77,7 +77,55 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         } else if type == "age" {
             barChartView.alpha = 1
             
+            var ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
+            let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
+            var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
             
+            for person in peopleArray {
+                if person.birthday != 0 {
+                    let birthday = Date(timeIntervalSince1970: person.birthday)
+                    let components = Set<Calendar.Component>([.year])
+                    let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
+                    
+                    if let age = differenceOfDate.year {
+                        print("\(person.username.formatUsername()), age: \(age)")
+                        
+                        for (index, ageRange) in ageRanges.enumerated() {
+                            if ageRange.count == 2, ageRange[0] <= age, ageRange[1] >= age {
+                                ageDistribution[index] = ageDistribution[index] + 1
+                            } else if ageRange.count == 1, ageRange[0] <= age {
+                                ageDistribution[index] = ageDistribution[index] + 1
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (index, ageItem) in ageDistribution.enumerated() {
+                if ageItem == 0 {
+                    ageDistribution.remove(at: index)
+                    ageStrings.remove(at: index)
+                }
+            }
+            
+            print("Age distribution: \(ageStrings), \(ageDistribution)")
+        
+            
+            
+            
+            
+            let entry1 = BarChartDataEntry(x: 0, y: 100)
+            let entry2 = BarChartDataEntry(x: 0, y: 250)
+            let entry3 = BarChartDataEntry(x: 0, y: 60)
+            let dataSet = BarChartDataSet(entries: [entry1, entry2, entry3], label: "Widgets Type")
+            let data = BarChartData(dataSets: [dataSet])
+            barChartView.data = data
+//            barChart.chartDescription?.text = "Number of Widgets by Type"
+
+            //All other additions to this function will go here
+
+            //This must stay at end of function
+            barChartView.notifyDataSetChanged()
         }
     }
 }
