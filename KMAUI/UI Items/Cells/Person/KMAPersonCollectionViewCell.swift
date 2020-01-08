@@ -109,7 +109,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
-            if !ageDistributionArray.isEmpty {
+            print("\(ageDistributionArray), \(ageStringsArray)")
+            
+            /*if !ageDistributionArray.isEmpty {
                 barChartView.alpha = 1
                 print("Age distribution: \(ageStrings), \(ageDistribution)")
                 var dataEntries = [BarChartDataEntry]()
@@ -125,7 +127,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 barChartView.data = data
                 //This must stay at end of function
                 barChartView.notifyDataSetChanged()
-            }
+            }*/
         }
     }
 }
