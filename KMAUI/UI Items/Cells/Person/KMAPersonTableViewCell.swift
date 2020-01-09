@@ -116,6 +116,9 @@ public struct KMAPerson {
     public var profileImage = ""
     public var birthday: Double = 0
     public var gender = ""
+    public var formattedAddress = ""
+    public var city = ""
+    public var country = ""
     
     public init() {
     }
@@ -155,6 +158,22 @@ public struct KMAPerson {
             // Gender
             if let gender = person["gender"] as? String, !gender.isEmpty {
                 self.gender = gender
+            }
+            
+            // Address
+            if let homeAddress = person["homeAddress"] as? PFObject,
+                let building = homeAddress["building"] as? PFObject {
+                if let formattedAddress = building["formattedAddress"] as? String {
+                    self.formattedAddress = formattedAddress
+                }
+
+                if let city = building["city"] as? String {
+                    self.city = city
+                }
+                
+                if let country = building["country"] as? String {
+                    self.country = country
+                }
             }
         }
     }
