@@ -174,7 +174,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             set.valueColors = ChartColorTemplates.pastel()
             
             let data = BarChartData(dataSet: set)
-            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
             
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 1
@@ -248,9 +248,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
             data.setValueTextColor(.white)
-            data.setValueTextColor(KMAUIConstants.shared.KMATextColor)
             
             cityPieChartView.data = data
             cityPieChartView.notifyDataSetChanged()
