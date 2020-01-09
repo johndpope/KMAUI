@@ -98,8 +98,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
-            data.setValueTextColor(KMAUIConstants.shared.KMATurquoiseColor)
+            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
             
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
@@ -174,7 +174,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             set.valueColors = ChartColorTemplates.pastel()
             
             let data = BarChartData(dataSet: set)
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
             
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 1
@@ -216,7 +216,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         
         for (key, value) in areas {
             if areasArray.count < 5 {
-                areasArray.append(["city": key as AnyObject, "count": value as AnyObject])
+                let cityArray = key.components(separatedBy: ", ")
+                
+                if !cityArray.isEmpty {
+                    areasArray.append(["city": cityArray[0] as AnyObject, "count": value as AnyObject])
+                }
             }
         }
         
@@ -244,8 +248,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
-            data.setValueTextColor(KMAUIConstants.shared.KMATurquoiseColor)
+            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
             
             cityPieChartView.data = data
             cityPieChartView.notifyDataSetChanged()
