@@ -118,6 +118,8 @@ public struct KMAPerson {
     public var gender = ""
     public var formattedAddress = ""
     public var city = ""
+    public var subAdmin = ""
+    public var admin = ""
     public var country = ""
     public var uploadsCount = 0
     public var propertyCount = 0
@@ -171,6 +173,14 @@ public struct KMAPerson {
 
                 if let city = building["city"] as? String {
                     self.city = city
+                }
+                
+                if let subAdmin = building["subAdminArea"] as? String {
+                    self.subAdmin = subAdmin
+                }
+                
+                if let admin = building["adminArea"] as? String {
+                    self.admin = admin
                 }
                 
                 if let country = building["country"] as? String {
