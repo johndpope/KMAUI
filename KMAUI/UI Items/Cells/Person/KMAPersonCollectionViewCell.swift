@@ -215,7 +215,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         areasArray = [[String: AnyObject]]()
         
         for (key, value) in areas {
-            areasArray.append(["city": key as AnyObject, "count": value as AnyObject])
+            if areasArray.count < 5 {
+                areasArray.append(["city": key as AnyObject, "count": value as AnyObject])
+            }
         }
         
         areasArray = KMAUIUtilities.shared.orderCount(crimes: areasArray)
@@ -233,6 +235,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             let dataSet = PieChartDataSet(entries: dataEntries, label: "Area stats")
             dataSet.colors = ChartColorTemplates.pastel()
+            dataSet.valueLinePart1OffsetPercentage = 0.8
+            dataSet.valueLinePart1Length = 0.2
+            dataSet.valueLinePart2Length = 0.4
+            dataSet.yValuePosition = .outsideSlice
             let data = PieChartData(dataSet: dataSet)
             
             let pFormatter = NumberFormatter()
@@ -244,6 +250,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
             data.setValueTextColor(.white)
+            data.setValueTextColor(KMAUIConstants.shared.KMATextColor)
             
             cityPieChartView.data = data
             cityPieChartView.notifyDataSetChanged()
