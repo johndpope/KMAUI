@@ -50,6 +50,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup charts
     
     public func setupGenderChart() {
+        genderPieChartView.alpha = 1
         var male: Double = 0
         var female: Double = 0
         var other: Double = 0
@@ -67,7 +68,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         let total = male + female + other
         
         if total > 0 {
-            genderPieChartView.alpha = 1
             male = male / total * 100
             female = female / total * 100
             other = other / total * 100
@@ -106,6 +106,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     }
     
     public func setupAgeChart() {
+        ageBarChartView.alpha = 1
+        ageBarChartView.doubleTapToZoomEnabled = false
         let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
         let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
         var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
@@ -144,9 +146,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         }
         
         if !ageDistributionArray.isEmpty {
-            ageBarChartView.alpha = 1
-            ageBarChartView.doubleTapToZoomEnabled = false
-            
             let xAxis = ageBarChartView.xAxis
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
@@ -193,6 +192,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     }
     
     public func setupCityChart() {
+        cityPieChartView.alpha = 1
         /*var male: Double = 0
         var female: Double = 0
         var other: Double = 0
