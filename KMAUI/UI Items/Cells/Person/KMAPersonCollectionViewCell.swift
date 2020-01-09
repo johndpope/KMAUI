@@ -196,6 +196,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         cityPieChartView.alpha = 1
         
         var areas = [String: Int]()
+        var total = 0
         
         for personObject in peopleArray {
             if !personObject.city.isEmpty, !personObject.country.isEmpty {
@@ -206,54 +207,31 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 } else {
                     areas[cityCountry] = 1
                 }
+                
+                total += 1
             }
         }
         
         areasArray = [[String: AnyObject]]()
         
         for (key, value) in areas {
-            areasArray.append(["value": key as AnyObject, "count": value as AnyObject])
+            areasArray.append(["city": key as AnyObject, "count": value as AnyObject])
         }
         
         areasArray = KMAUIUtilities.shared.orderCount(crimes: areasArray)
         
-        /*var male: Double = 0
-        var female: Double = 0
-        var other: Double = 0
-        
-        for person in peopleArray {
-            if person.gender == "Male" {
-                male += 1
-            } else if person.gender == "Female" {
-                female += 1
-            } else if person.gender == "Other" {
-                other += 1
-            }
-        }
-        
-        let total = male + female + other
-        
-        if total > 0 {
-            genderPieChartView.alpha = 1
-            male = male / total * 100
-            female = female / total * 100
-            other = other / total * 100
-            
+        if !areasArray.isEmpty {
+            cityPieChartView.alpha = 1
+
             var dataEntries = [PieChartDataEntry]()
             
-            if male > 0 {
-                dataEntries.append(PieChartDataEntry(value: male, label: "Male"))
+            for area in areasArray {
+                if let city = area["city"] as? String, let count = area["count"] as? Int {
+                    dataEntries.append(PieChartDataEntry(value: Double(count) / Double(total) * 100, label: city))
+                }
             }
             
-            if female > 0 {
-                dataEntries.append(PieChartDataEntry(value: female, label: "Female"))
-            }
-            
-            if other > 0 {
-                dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
-            }
-            
-            let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
+            let dataSet = PieChartDataSet(entries: dataEntries, label: "Area stats")
             dataSet.colors = ChartColorTemplates.pastel()
             let data = PieChartData(dataSet: dataSet)
             
@@ -267,9 +245,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
             data.setValueTextColor(.white)
             
-            genderPieChartView.data = data
-            genderPieChartView.notifyDataSetChanged()
-        }*/
+            cityPieChartView.data = data
+            cityPieChartView.notifyDataSetChanged()
+        }
     }
 }
 
