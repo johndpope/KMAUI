@@ -200,7 +200,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         
         for personObject in peopleArray {
             if !personObject.city.isEmpty, !personObject.country.isEmpty {
-                let cityCountry = personObject.city + "\n" + personObject.country
+                let cityCountry = personObject.city + ", " + personObject.country
                 
                 if let value = areas[cityCountry] {
                     areas[cityCountry] = value + 1
@@ -216,11 +216,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         
         for (key, value) in areas {
             if areasArray.count < 5 {
-//                let cityArray = key.components(separatedBy: ", ")
-//
-//                if !cityArray.isEmpty { // cityArray[0]
-                    areasArray.append(["city": key as AnyObject, "count": value as AnyObject])
-//                }
+                let cityArray = key.components(separatedBy: ", ")
+                
+                if !cityArray.isEmpty {
+                    areasArray.append(["city": cityArray[0] as AnyObject, "count": value as AnyObject])
+                }
             }
         }
         
