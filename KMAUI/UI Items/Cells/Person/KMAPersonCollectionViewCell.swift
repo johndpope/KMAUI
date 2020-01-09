@@ -99,7 +99,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
-            data.setValueTextColor(KMAUIConstants.shared.KMABgGray)
+            data.setValueTextColor(KMAUIConstants.shared.KMALineGray)
             
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
@@ -245,7 +245,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
-            data.setValueTextColor(KMAUIConstants.shared.KMALightPurpleColor)
+            data.setValueTextColor(KMAUIConstants.shared.KMALineGray)
             
             cityPieChartView.data = data
             cityPieChartView.notifyDataSetChanged()
