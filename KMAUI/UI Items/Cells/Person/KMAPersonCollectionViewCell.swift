@@ -98,7 +98,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 10, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
             data.setValueTextColor(.white)
             
             genderPieChartView.data = data
@@ -235,10 +235,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             let dataSet = PieChartDataSet(entries: dataEntries, label: "Area stats")
             dataSet.colors = ChartColorTemplates.pastel()
-            dataSet.valueLinePart1OffsetPercentage = 0.8
-            dataSet.valueLinePart1Length = 0.2
-            dataSet.valueLinePart2Length = 0.4
-            dataSet.yValuePosition = .outsideSlice
             let data = PieChartData(dataSet: dataSet)
             
             let pFormatter = NumberFormatter()
