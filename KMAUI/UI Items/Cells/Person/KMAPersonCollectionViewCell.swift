@@ -36,6 +36,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupCell() {
         genderPieChartView.alpha = 0
         ageBarChartView.alpha = 0
+        cityPieChartView.alpha = 0
         
         if type == "gender" {
             setupGenderChart()
