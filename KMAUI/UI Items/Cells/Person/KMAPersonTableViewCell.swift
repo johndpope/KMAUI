@@ -119,6 +119,8 @@ public struct KMAPerson {
     public var formattedAddress = ""
     public var city = ""
     public var country = ""
+    public var uploadsCount = 0
+    public var propertyCount = 0
     
     public init() {
     }
@@ -174,6 +176,16 @@ public struct KMAPerson {
                 if let country = building["country"] as? String {
                     self.country = country
                 }
+            }
+            
+            // Uploads count
+            if let uploadsCount = person["uploadsCount"] as? Int {
+                self.uploadsCount = uploadsCount
+            }
+            
+            // Property count
+            if let propertyCount = person["propertyCount"] as? Int {
+                self.propertyCount = propertyCount
             }
         }
     }
