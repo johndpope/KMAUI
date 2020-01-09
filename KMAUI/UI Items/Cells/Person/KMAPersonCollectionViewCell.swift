@@ -87,12 +87,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
             dataSet.colors = ChartColorTemplates.pastel()
-            
-            dataSet.valueLinePart1OffsetPercentage = 0.8
-            dataSet.valueLinePart1Length = 0.2
-            dataSet.valueLinePart2Length = 0.4
-            dataSet.yValuePosition = .outsideSlice
-            
             let data = PieChartData(dataSet: dataSet)
             
             let pFormatter = NumberFormatter()
