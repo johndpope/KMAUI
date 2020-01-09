@@ -20,6 +20,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var peopleArray = [KMAPerson]()
     public var ageDistributionArray = [Double]()
     public var ageStringsArray = [String]()
+    public var areasArray = [[String: AnyObject]]()
     public weak var axisFormatDelegate: IAxisValueFormatter?
     
     override public func awakeFromNib() {
@@ -193,6 +194,29 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     public func setupCityChart() {
         cityPieChartView.alpha = 1
+        
+        var areas = [String: Int]()
+        
+        for personObject in peopleArray {
+            if !personObject.city.isEmpty, !personObject.country.isEmpty {
+                let cityCountry = personObject.city + ", " + personObject.country
+                
+                if let value = areas[cityCountry] {
+                    areas[cityCountry] = value + 1
+                } else {
+                    areas[cityCountry] = 1
+                }
+            }
+        }
+        
+        areasArray = [[String: AnyObject]]()
+        
+        for (key, value) in areas {
+            areasArray.append(["value": key as AnyObject, "count": value as AnyObject])
+        }
+        
+        areasArray = KMAUIUtilities.shared.orderCount(crimes: areasArray)
+        
         /*var male: Double = 0
         var female: Double = 0
         var other: Double = 0
