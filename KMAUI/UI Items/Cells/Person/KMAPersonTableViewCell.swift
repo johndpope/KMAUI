@@ -64,12 +64,16 @@ public class KMAPersonTableViewCell: UITableViewCell {
             profileImageView.tintColor = UIColor.white
             usernameLabel.textColor = UIColor.white
             fullNameLabel.textColor = UIColor.white
+            usernameLabel.text = person.username.formatUsername()
+            fullNameLabel.text = person.fullName
             rightArrowImageView.tintColor = UIColor.white
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
             profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
             usernameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             fullNameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
+            fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }
     }
@@ -80,10 +84,8 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     public func setupCell() {
         if status == "person" {
-            usernameLabel.text = person.username.formatUsername()
             usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
             
-            fullNameLabel.text = person.fullName
             fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
             
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
