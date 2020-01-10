@@ -24,6 +24,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var ageStringsArray = [String]()
     public var propertyStringsArray = ["Has property", "No property"]
     public var areasArray = [[String: AnyObject]]()
+    public var usernameVals = [String]()
     public weak var axisFormatDelegate: IAxisValueFormatter?
     
     override public func awakeFromNib() {
@@ -52,6 +53,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             setupCityChart()
         } else if type == "property" {
             setupPropertyPercentChart()
+        } else if type == "uploads" {
+            setupUploadsBarChart()
         }
     }
     
@@ -76,7 +79,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 let differenceOfDate = Calendar.current.dateComponents(components, from: birthday, to: Date())
                 
                 if let age = differenceOfDate.year {
-                    //                        print("\(person.username.formatUsername()), age: \(age)")
                     for (index, ageRange) in ageRanges.enumerated() {
                         if ageRange.count == 2, ageRange[0] <= age, ageRange[1] >= age {
                             ageDistribution[index] = ageDistribution[index] + 1
@@ -121,8 +123,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             for (index, item) in ageDistributionArray.enumerated() {
                 yVals.append(BarChartDataEntry(x: Double(index), y: item))
             }
-            
-//            print("Age values: \(yVals)")
             
             let set = BarChartDataSet(entries: yVals, label: "Age distribution")
             set.colors = ChartColorTemplates.pastel()
@@ -311,6 +311,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             var yVals = [BarChartDataEntry]()
             
+            propertyStringsArray = [String]()
+            
             if hasPercent > noPercent {
                 if hasPercent > 0 {
                     yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
@@ -319,6 +321,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 if noPercent > 0 {
                     yVals.append(BarChartDataEntry(x: 1, y: noPercent))
                 }
+                
+                propertyStringsArray = ["Has property", "No property"]
             } else if hasPercent < noPercent {
                 if noPercent > 0 {
                     yVals.append(BarChartDataEntry(x: 0, y: noPercent))
@@ -327,9 +331,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 if hasPercent > 0 {
                     yVals.append(BarChartDataEntry(x: 1, y: hasPercent))
                 }
+                
+                propertyStringsArray = ["No property", "Has property"]
             }
-            
-//            print("Property values: \(yVals)")
 
             let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
             set.colors = ChartColorTemplates.pastel()
@@ -354,6 +358,83 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             propertyBarChartView.notifyDataSetChanged()
         }
     }
+    
+    public func setupUploadsBarChart() {
+        uploadsHorizontalBarChartView.alpha = 1
+        var maxCount = 0
+        
+        var yVals = [BarChartDataEntry]()
+        var yValsBackup = [BarChartDataEntry]()
+        usernameVals = [String]()
+        var usernameValsBackup = [String]()
+        
+        for (index, personObject) in peopleArray.enumerated() {
+            if index >= 5 {
+                break
+            } else {
+                if personObject.uploadsCount > 0 {
+                    yValsBackup.append(BarChartDataEntry(x: Double(index), y: Double(personObject.uploadsCount)))
+                    usernameValsBackup.append(personObject.username.formatUsername())
+                    
+                    if maxCount < personObject.uploadsCount {
+                        maxCount = personObject.uploadsCount
+                    }
+                }
+            }
+        }
+        
+        if !yValsBackup.isEmpty {
+            for (index, item) in yValsBackup.enumerated() {
+                yVals.insert(BarChartDataEntry(x: Double(yValsBackup.count) - Double(index) - 1, y: item.y), at: 0)
+            }
+            
+            for item in usernameValsBackup {
+                usernameVals.insert(item, at: 0)
+            }
+            
+            print("Username vals: \(usernameVals)")
+            
+            let set = BarChartDataSet(entries: yVals, label: "Most active users by uploads")
+            set.drawIconsEnabled = false
+            
+            set.colors = ChartColorTemplates.pastel()
+            set.valueColors = ChartColorTemplates.pastel()
+            
+            let data = BarChartData(dataSet: set)
+            data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+            
+            let pFormatter = NumberFormatter()
+            pFormatter.numberStyle = .decimal
+            pFormatter.maximumFractionDigits = 0
+            pFormatter.multiplier = 1
+            data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            
+            let xAxis = uploadsHorizontalBarChartView.xAxis
+            xAxis.drawAxisLineEnabled = false
+            xAxis.drawGridLinesEnabled = false
+            xAxis.labelPosition = .bottom
+            
+            xAxis.axisMinimum = -0.5
+            xAxis.axisMaximum = Double(yVals.count - 1) + 0.5
+            xAxis.labelCount = yVals.count * 2 + 1
+                            xAxis.valueFormatter = axisFormatDelegate
+            
+            let leftAxis = uploadsHorizontalBarChartView.leftAxis
+            leftAxis.drawAxisLineEnabled = false
+            leftAxis.drawGridLinesEnabled = false
+            leftAxis.drawLabelsEnabled = false
+            
+            leftAxis.axisMinimum = 0
+            leftAxis.axisMaximum = Double(maxCount) * 1.1
+            
+            let rightAxis = uploadsHorizontalBarChartView.rightAxis
+            rightAxis.drawAxisLineEnabled = false
+            rightAxis.drawGridLinesEnabled = false
+            rightAxis.drawLabelsEnabled = false
+            
+            uploadsHorizontalBarChartView.data = data
+        }
+    }
 }
 
 extension KMAPersonCollectionViewCell: IAxisValueFormatter {
@@ -363,6 +444,8 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
             return ageStringsArray[Int(value)]
         } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
             return propertyStringsArray[Int(value)]
+        } else if type == "uploads", value % Double(Int(value)) == 0, Int(value) < usernameVals.count {
+            return usernameVals[Int(value)]
         }
         
         return ""
