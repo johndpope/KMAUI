@@ -23,13 +23,15 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var ageStringsArray = [String]()
     public var propertyStringsArray = ["Has property", "No property"]
     public var areasArray = [[String: AnyObject]]()
-    public weak var axisFormatDelegate: IAxisValueFormatter?
+    public weak var axisFormatAgeDelegate: IAxisValueFormatter?
+    public weak var axisFormatPropertyDelegate: IAxisValueFormatter?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setting the delegate connection for axis
-        axisFormatDelegate = self
+        axisFormatAgeDelegate = self
+        axisFormatPropertyDelegate = self
     }
     
     /**
@@ -100,7 +102,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-            xAxis.valueFormatter = axisFormatDelegate
+            xAxis.valueFormatter = axisFormatAgeDelegate
             
             let leftAxis = ageBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -287,7 +289,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-            xAxis.valueFormatter = axisFormatDelegate
+//            xAxis.valueFormatter = axisFormatPropertyDelegate
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -345,6 +347,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
 }
 
 extension KMAPersonCollectionViewCell: IAxisValueFormatter {
+    
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
             print("AGE, \(value): \(ageStringsArray[Int(value)])")
