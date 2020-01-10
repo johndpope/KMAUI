@@ -110,6 +110,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
             xAxis.valueFormatter = axisFormatDelegate
+            xAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
             
             let leftAxis = ageBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -312,6 +313,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.labelCount = 4
             xAxis.valueFormatter = axisFormatDelegate
             
+            xAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
+            
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
             leftAxis.drawGridLinesEnabled = false
@@ -428,12 +431,13 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.maximumFractionDigits = 0
             pFormatter.multiplier = 1
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-            data.setValueTextColor(KMAUIConstants.shared.KMATextColor)
             
             let xAxis = uploadsHorizontalBarChartView.xAxis
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
+            
+            xAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
             
             xAxis.axisMinimum = -0.5
             xAxis.axisMaximum = Double(yVals.count - 1) + 0.5
