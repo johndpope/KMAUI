@@ -388,6 +388,29 @@ public class KMAUIUtilities {
         constant2.constant = 0
         button.alpha = 0
     }
+    
+    // MARK: - Highlight the string on search
+    
+    /**
+     Highlight the part of the string.
+     */
+    
+    func attributedText(text: String, search: String) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString()
+        let boldFont = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
+        let normalString = NSMutableAttributedString(string: text)
+        
+        if !search.isEmpty {
+            let strNumber: NSString = text.lowercased() as NSString
+            let range = (strNumber).range(of: search.lowercased())
+            
+            normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
+        }
+        
+        attributedString.append(normalString)
+        
+        return attributedString
+    }
 }
 
 // MARK: - Int extension

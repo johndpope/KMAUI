@@ -23,6 +23,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var person = KMAPerson()
     public var status = ""
+    public var search = ""
     
     // MARK: - Cell methods
     
@@ -80,7 +81,11 @@ public class KMAPersonTableViewCell: UITableViewCell {
     public func setupCell() {
         if status == "person" {
             usernameLabel.text = person.username.formatUsername()
+            usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search)
+            
             fullNameLabel.text = person.fullName
+            fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search)
+            
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             
             if let url = URL(string: person.profileImage) {
