@@ -120,6 +120,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 yVals.append(BarChartDataEntry(x: Double(index), y: item))
             }
             
+            print("Age values: \(yVals)")
+            
             let set = BarChartDataSet(entries: yVals, label: "Age distribution")
             set.colors = ChartColorTemplates.pastel()
             set.valueColors = ChartColorTemplates.pastel()
@@ -320,6 +322,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                     yVals.append(BarChartDataEntry(x: 1, y: hasPercent))
                 }
             }
+            
+            print("Property values: \(yVals)")
 
             let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
             set.colors = ChartColorTemplates.pastel()
