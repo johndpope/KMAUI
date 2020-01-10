@@ -286,7 +286,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-            xAxis.valueFormatter = axisFormatDelegate
+//            xAxis.valueFormatter = axisFormatDelegate
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
