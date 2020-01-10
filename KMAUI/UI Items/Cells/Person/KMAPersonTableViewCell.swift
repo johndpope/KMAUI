@@ -18,12 +18,15 @@ public class KMAPersonTableViewCell: UITableViewCell {
     @IBOutlet public weak var usernameLabel: KMAUITitleLabel!
     @IBOutlet public weak var fullNameLabel: KMAUITextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var activityView: UIActivityIndicatorView!
     
     // MARK: - Variables
     public var person = KMAPerson()
     public var status = ""
     public var search = ""
+    public var canHighlight = true
     
     // MARK: - Cell methods
     
@@ -59,7 +62,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight, status == "person" {
+        if highlight, status == "person", canHighlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             profileImageView.tintColor = UIColor.white
             usernameLabel.textColor = UIColor.white
@@ -93,6 +96,16 @@ public class KMAPersonTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
+        if canHighlight {
+            rightArrowImageView.alpha = 1
+            rightArrowImageViewWidth.constant = 22
+            rightArrowImageViewRight.constant = 8
+        } else {
+            rightArrowImageView.alpha = 0
+            rightArrowImageViewWidth.constant = 0
+            rightArrowImageViewRight.constant = 0
+        }
+        
         if status == "person" {
             usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
             
