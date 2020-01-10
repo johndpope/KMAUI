@@ -72,8 +72,18 @@ public class KMAPersonTableViewCell: UITableViewCell {
             profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
             usernameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             fullNameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-            usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
-            fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
+            
+            if status == "no results" {
+                usernameLabel.text = "No matching people"
+                fullNameLabel.text = ""
+            } else if status == "loading" {
+                usernameLabel.text = "Loading people..."
+                fullNameLabel.text = ""
+            } else {
+                usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
+                fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
+            }
+            
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }
     }
