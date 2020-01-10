@@ -36,6 +36,14 @@ public class KMAPersonDetailsTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
+        itemNameLabel.text = type
         
+        if type == "Gender" {
+            itemValueLabel.text = person.gender
+        } else if type == "Date of birth" {
+            itemValueLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: person.birthday))
+        } else if type == "Home address" {
+            itemValueLabel.text = person.formattedAddress
+        }
     }
 }
