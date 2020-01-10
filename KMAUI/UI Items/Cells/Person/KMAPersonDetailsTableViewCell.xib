@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPersonDetailsCell" rowHeight="77" id="KGk-i7-Jjw" customClass="KMAPersonDetailsTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2m-fY-htL" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="0.0" width="288" height="60"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-a5-qq2" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="0.0" width="42" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Rq-Raw" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="58" y="0.0" width="222" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="3Ba-51-hbM"/>
+                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="leading" secondItem="0Ga-a5-qq2" secondAttribute="trailing" constant="8" id="A3w-GD-tsF"/>
+                            <constraint firstAttribute="trailing" secondItem="aMg-Rq-Raw" secondAttribute="trailing" constant="8" id="A53-Qg-SXN"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ga-a5-qq2" secondAttribute="bottom" id="F4f-cy-p6H"/>
+                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="K3f-rm-3cO"/>
+                            <constraint firstAttribute="bottom" secondItem="aMg-Rq-Raw" secondAttribute="bottom" id="KYe-Q3-HD3"/>
+                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="m2T-e9-PAz"/>
+                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="leading" secondItem="d2m-fY-htL" secondAttribute="leading" constant="8" id="y1X-RU-qsq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="d2m-fY-htL" secondAttribute="bottom" constant="16" id="Awz-01-HOJ"/>
+                    <constraint firstAttribute="trailing" secondItem="d2m-fY-htL" secondAttribute="trailing" constant="16" id="MOO-SW-DHZ"/>
+                    <constraint firstItem="d2m-fY-htL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zhw-1T-DNt"/>
+                    <constraint firstItem="d2m-fY-htL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bOs-ig-dnY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="KMABgGray"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bgView" destination="d2m-fY-htL" id="IC5-K7-vAu"/>
+                <outlet property="itemNameLabel" destination="0Ga-a5-qq2" id="Abd-tj-9p9"/>
+                <outlet property="itemValueLabel" destination="aMg-Rq-Raw" id="Mys-lq-LvS"/>
+            </connections>
+            <point key="canvasLocation" x="-117.39130434782609" y="76.674107142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMABackColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMABgGray">
+            <color red="0.98000001907348633" green="0.98000001907348633" blue="0.98000001907348633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
