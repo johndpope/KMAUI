@@ -81,10 +81,10 @@ public class KMAPersonTableViewCell: UITableViewCell {
     public func setupCell() {
         if status == "person" {
             usernameLabel.text = person.username.formatUsername()
-            usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search)
+            usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
             
             fullNameLabel.text = person.fullName
-            fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search)
+            fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
             
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             

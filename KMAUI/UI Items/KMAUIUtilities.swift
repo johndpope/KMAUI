@@ -395,16 +395,16 @@ public class KMAUIUtilities {
      Highlight the part of the string.
      */
     
-    func attributedText(text: String, search: String) -> NSAttributedString {
+    func attributedText(text: String, search: String, fontSize: CGFloat) -> NSAttributedString {
         let attributedString = NSMutableAttributedString()
-        let boldFont = UIFont.systemFont(ofSize: 15.0, weight: .semibold)
+        let boldFont = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         let normalString = NSMutableAttributedString(string: text)
         
         if !search.isEmpty {
             let strNumber: NSString = text.lowercased() as NSString
             let range = (strNumber).range(of: search.lowercased())
             
-            normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
+            normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont, NSAttributedString.Key.foregroundColor.rawValue: KMAUIConstants.shared.KMABrightBlueColor].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
         }
         
         attributedString.append(normalString)
