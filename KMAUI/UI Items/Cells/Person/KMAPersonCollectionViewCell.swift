@@ -280,7 +280,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             let hasPercent = Double(hasPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             let noPercent = Double(noPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             
-            print("Has property: \(hasPercent)%, no property: \(noPercent)%")
+//            print("Has property: \(hasPercent)%, no property: \(noPercent)%")
             
             let xAxis = propertyBarChartView.xAxis
             xAxis.drawAxisLineEnabled = false
@@ -336,8 +336,9 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
             return ageStringsArray[Int(value)]
-//        } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count {
-//            return propertyStringsArray[Int(value)]
+        } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count {
+            print("\(value): \(propertyStringsArray[Int(value)])")
+            return propertyStringsArray[Int(value)]
         }
         
         return ""
