@@ -444,7 +444,7 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
             return ageStringsArray[Int(value)]
         } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
             return propertyStringsArray[Int(value)]
-        } else if type == "uploads", value % Double(Int(value)) == 0, Int(value) < usernameVals.count {
+        } else if type == "uploads", floor(value) == value, Int(value) < usernameVals.count {
             return usernameVals[Int(value)]
         }
         
