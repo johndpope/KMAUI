@@ -291,12 +291,21 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-//            xAxis.valueFormatter = axisFormatPropertyDelegate
+            xAxis.valueFormatter = axisFormatPropertyDelegate
+            
+//            chartView.leftAxis.axisMinimum = 0
+//               chartView.leftAxis.axisMaximum = 5
+//               chartView.leftAxis.labelCount = 7
+
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
+            
+            leftAxis.axisMaximum = 0
+            leftAxis.axisMaximum = 1
+            leftAxis.labelCount = 2
             
             let rightAxis = propertyBarChartView.rightAxis
             rightAxis.drawAxisLineEnabled = false
@@ -354,14 +363,11 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
-            print("AGE, \(value): \(ageStringsArray[Int(value)])")
             return ageStringsArray[Int(value)]
         } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
-            print("PROPERTY, \(value): \(propertyStringsArray[Int(value)])")
             return propertyStringsArray[Int(value)]
         }
         
-        print("EMPTY, \(type), \(value)")
         return ""
     }
 }
