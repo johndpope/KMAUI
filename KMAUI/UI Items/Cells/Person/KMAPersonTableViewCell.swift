@@ -128,6 +128,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
 // MARK: - Person struct
 
 public struct KMAPerson {
+    public var objectId = ""
     public var username = ""
     public var fullName = ""
     public var profileImage = ""
@@ -146,6 +147,10 @@ public struct KMAPerson {
     
     public mutating func fillFrom(person: PFUser) {
         if let username = person.username {
+            if let objectId = person.objectId {
+                self.objectId = objectId
+            }
+            
             // Username
             self.username = username
             
