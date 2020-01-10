@@ -16,6 +16,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var cityPieChartView: PieChartView!
     @IBOutlet public weak var propertyBarChartView: BarChartView!
     @IBOutlet public weak var uploadsHorizontalBarChartView: HorizontalBarChartView!
+    @IBOutlet public weak var titleLabel: KMAUITitleLabel!
     
     // MARK: - Variables
     public var type = ""
@@ -63,6 +64,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupAgeChart() {
         ageBarChartView.alpha = 1
         ageBarChartView.doubleTapToZoomEnabled = false
+        ageBarChartView.legend.enabled = false
+        
+        titleLabel.text = "Age distribution"
+        
         let ageStrings = ["13-17", "18-24", "25-34", "35-44", "45-54", "55-64", "65+"]
         let ageRanges = [[13, 17], [18, 24], [25, 34], [35, 44], [45, 54], [55, 64], [65]]
         var ageDistribution = [0, 0, 0, 0, 0, 0, 0]
@@ -150,6 +155,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     public func setupGenderChart() {
         genderPieChartView.alpha = 1
+        genderPieChartView.legend.enabled = false
+        
+        titleLabel.text = "Gender distribution"
+        
         var male: Double = 0
         var female: Double = 0
         var other: Double = 0
@@ -206,6 +215,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     public func setupCityChart() {
         cityPieChartView.alpha = 1
+        cityPieChartView.legend.enabled = false
+        
+        titleLabel.text = "Area stats"
         
         var areas = [String: Int]()
         var total = 0
@@ -271,6 +283,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupPropertyPercentChart() {
         propertyBarChartView.alpha = 1
         propertyBarChartView.doubleTapToZoomEnabled = false
+        propertyBarChartView.legend.enabled = false
+        
+        titleLabel.text = "Property owners percentage
         
         var hasPropertyCount = 0
         var noPropertyCount = 0
@@ -362,6 +377,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupUploadsBarChart() {
         uploadsHorizontalBarChartView.alpha = 1
         uploadsHorizontalBarChartView.doubleTapToZoomEnabled = false
+        uploadsHorizontalBarChartView.legend.enabled = false
+        
+        titleLabel.text = "Most active users by uploads"
+        
         var maxCount = 0
         
         var yVals = [BarChartDataEntry]()
@@ -425,7 +444,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
             
-            leftAxis.axisMinimum = -5
+            leftAxis.axisMinimum = 0
             leftAxis.axisMaximum = Double(maxCount) * 1.1
             
             let rightAxis = uploadsHorizontalBarChartView.rightAxis

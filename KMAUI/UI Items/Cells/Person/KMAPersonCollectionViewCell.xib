@@ -21,46 +21,58 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYc-dX-BIE" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="242" height="220"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m2-uj-5yW" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="226" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="yu0-fg-O1U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buE-UQ-91o" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <rect key="frame" x="8" y="38" width="226" height="174"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-a9-9Op" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <rect key="frame" x="8" y="38" width="226" height="174"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mj8-7i-hHL" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <rect key="frame" x="8" y="38" width="226" height="174"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfG-rm-kmd" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <rect key="frame" x="8" y="38" width="226" height="174"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drm-US-PPB" customClass="HorizontalBarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <rect key="frame" x="8" y="38" width="226" height="174"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="TfG-rm-kmd" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="0Uh-bK-DgA"/>
-                            <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="8kT-ki-gXt"/>
+                            <constraint firstAttribute="trailing" secondItem="1m2-uj-5yW" secondAttribute="trailing" constant="8" id="1rc-Fx-mvS"/>
+                            <constraint firstItem="1m2-uj-5yW" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="6t0-0g-XD3"/>
                             <constraint firstItem="Drm-US-PPB" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="AV7-pE-CJF"/>
                             <constraint firstItem="buE-UQ-91o" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="DUY-VT-Wls"/>
                             <constraint firstAttribute="trailing" secondItem="0RH-a9-9Op" secondAttribute="trailing" constant="8" id="Dqr-P1-zkE"/>
-                            <constraint firstItem="buE-UQ-91o" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="EVM-N9-eAj"/>
-                            <constraint firstItem="TfG-rm-kmd" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="JB4-aM-w8i"/>
+                            <constraint firstItem="1m2-uj-5yW" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="G7M-Wi-gjE"/>
                             <constraint firstAttribute="bottom" secondItem="Mj8-7i-hHL" secondAttribute="bottom" constant="8" id="KRz-SX-MzN"/>
                             <constraint firstAttribute="bottom" secondItem="TfG-rm-kmd" secondAttribute="bottom" constant="8" id="Kue-HF-XE8"/>
-                            <constraint firstItem="Mj8-7i-hHL" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="Uru-ku-Qcq"/>
+                            <constraint firstItem="Drm-US-PPB" firstAttribute="top" secondItem="1m2-uj-5yW" secondAttribute="bottom" constant="8" id="Yln-jP-9SQ"/>
                             <constraint firstAttribute="trailing" secondItem="Drm-US-PPB" secondAttribute="trailing" constant="8" id="ajs-fT-bwJ"/>
                             <constraint firstItem="Mj8-7i-hHL" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="bQw-mZ-N0s"/>
+                            <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="1m2-uj-5yW" secondAttribute="bottom" constant="8" id="cFr-H7-otY"/>
                             <constraint firstAttribute="bottom" secondItem="0RH-a9-9Op" secondAttribute="bottom" constant="8" id="ivN-Td-Ddt"/>
                             <constraint firstAttribute="trailing" secondItem="Mj8-7i-hHL" secondAttribute="trailing" constant="8" id="oDy-nU-1NS"/>
-                            <constraint firstItem="Drm-US-PPB" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="oLp-34-zl4"/>
+                            <constraint firstItem="Mj8-7i-hHL" firstAttribute="top" secondItem="1m2-uj-5yW" secondAttribute="bottom" constant="8" id="p7q-kE-I6C"/>
+                            <constraint firstItem="TfG-rm-kmd" firstAttribute="top" secondItem="1m2-uj-5yW" secondAttribute="bottom" constant="8" id="qcq-2p-azQ"/>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="rzz-lb-ksV"/>
                             <constraint firstAttribute="bottom" secondItem="Drm-US-PPB" secondAttribute="bottom" constant="8" id="sHM-nM-2Ks"/>
+                            <constraint firstItem="buE-UQ-91o" firstAttribute="top" secondItem="1m2-uj-5yW" secondAttribute="bottom" constant="8" id="t7d-QO-HqZ"/>
                             <constraint firstAttribute="bottom" secondItem="buE-UQ-91o" secondAttribute="bottom" constant="8" id="tpc-QP-8qi"/>
                             <constraint firstAttribute="trailing" secondItem="buE-UQ-91o" secondAttribute="trailing" constant="8" id="vI5-cC-dOq"/>
                             <constraint firstAttribute="trailing" secondItem="TfG-rm-kmd" secondAttribute="trailing" constant="8" id="xIE-wq-aCF"/>
@@ -82,6 +94,7 @@
                 <outlet property="cityPieChartView" destination="Mj8-7i-hHL" id="HwQ-8C-Xwe"/>
                 <outlet property="genderPieChartView" destination="0RH-a9-9Op" id="ei7-mc-MCA"/>
                 <outlet property="propertyBarChartView" destination="TfG-rm-kmd" id="NC1-aS-6rA"/>
+                <outlet property="titleLabel" destination="1m2-uj-5yW" id="khD-SG-zyG"/>
                 <outlet property="uploadsHorizontalBarChartView" destination="Drm-US-PPB" id="klp-IH-HGd"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>
