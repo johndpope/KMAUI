@@ -21,16 +21,19 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2m-fY-htL" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="288" height="61"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-a5-qq2" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="0.0" width="206" height="61"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Date of birth" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-a5-qq2" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="0.0" width="82" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="DW8-uy-bKI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Rq-Raw" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="230" y="8" width="42" height="45"/>
+                                <rect key="frame" x="106" y="0.0" width="166" height="61"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mAZ-EN-p6Q"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Kom-gX-lvv"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -39,22 +42,21 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="3Ba-51-hbM"/>
-                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="leading" secondItem="0Ga-a5-qq2" secondAttribute="trailing" constant="8" id="A3w-GD-tsF"/>
-                            <constraint firstAttribute="trailing" secondItem="aMg-Rq-Raw" secondAttribute="trailing" constant="16" id="A53-Qg-SXN"/>
-                            <constraint firstAttribute="bottom" secondItem="0Ga-a5-qq2" secondAttribute="bottom" id="F4f-cy-p6H"/>
-                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" constant="8" id="K3f-rm-3cO"/>
-                            <constraint firstAttribute="bottom" secondItem="aMg-Rq-Raw" secondAttribute="bottom" constant="8" id="KYe-Q3-HD3"/>
-                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="m2T-e9-PAz"/>
-                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="leading" secondItem="d2m-fY-htL" secondAttribute="leading" constant="16" id="y1X-RU-qsq"/>
+                            <constraint firstAttribute="bottom" secondItem="aMg-Rq-Raw" secondAttribute="bottom" id="4RX-bd-nNH"/>
+                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="9kF-ff-gRa"/>
+                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="leading" secondItem="d2m-fY-htL" secondAttribute="leading" constant="16" id="CIb-sh-sIr"/>
+                            <constraint firstAttribute="bottom" secondItem="0Ga-a5-qq2" secondAttribute="bottom" id="fE2-A5-A4H"/>
+                            <constraint firstAttribute="trailing" secondItem="aMg-Rq-Raw" secondAttribute="trailing" constant="16" id="iGN-zj-33K"/>
+                            <constraint firstItem="0Ga-a5-qq2" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="ujd-Iv-IXQ"/>
+                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="leading" secondItem="0Ga-a5-qq2" secondAttribute="trailing" constant="8" id="yAg-XG-LGV"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="d2m-fY-htL" secondAttribute="bottom" constant="16" id="Awz-01-HOJ"/>
-                    <constraint firstAttribute="trailing" secondItem="d2m-fY-htL" secondAttribute="trailing" constant="16" id="MOO-SW-DHZ"/>
-                    <constraint firstItem="d2m-fY-htL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Zhw-1T-DNt"/>
-                    <constraint firstItem="d2m-fY-htL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bOs-ig-dnY"/>
+                    <constraint firstItem="d2m-fY-htL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3m6-H6-aUT"/>
+                    <constraint firstAttribute="bottom" secondItem="d2m-fY-htL" secondAttribute="bottom" constant="16" id="8DF-hc-xoJ"/>
+                    <constraint firstAttribute="trailing" secondItem="d2m-fY-htL" secondAttribute="trailing" constant="16" id="vwI-Mk-0LC"/>
+                    <constraint firstItem="d2m-fY-htL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="wzJ-cU-NgE"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
