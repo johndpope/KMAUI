@@ -417,14 +417,14 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.axisMinimum = -0.5
             xAxis.axisMaximum = Double(yVals.count - 1) + 0.5
             xAxis.labelCount = yVals.count * 2 + 1
-                            xAxis.valueFormatter = axisFormatDelegate
+            xAxis.valueFormatter = axisFormatDelegate
             
             let leftAxis = uploadsHorizontalBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
             
-            leftAxis.axisMinimum = 0
+//            leftAxis.axisMinimum = 0
             leftAxis.axisMaximum = Double(maxCount) * 1.1
             
             let rightAxis = uploadsHorizontalBarChartView.rightAxis
