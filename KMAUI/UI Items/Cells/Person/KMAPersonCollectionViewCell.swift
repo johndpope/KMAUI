@@ -285,7 +285,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         propertyBarChartView.doubleTapToZoomEnabled = false
         propertyBarChartView.legend.enabled = false
         
-        titleLabel.text = "Property owners percentage
+        titleLabel.text = "Property owners percentage"
         
         var hasPropertyCount = 0
         var noPropertyCount = 0
