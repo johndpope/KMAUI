@@ -14,12 +14,14 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var genderPieChartView: PieChartView!
     @IBOutlet public weak var ageBarChartView: BarChartView!
     @IBOutlet public weak var cityPieChartView: PieChartView!
+    @IBOutlet public weak var propertyBarChartView: BarChartView!
     
     // MARK: - Variables
     public var type = ""
     public var peopleArray = [KMAPerson]()
     public var ageDistributionArray = [Double]()
     public var ageStringsArray = [String]()
+    public var propertyStringsArray = ["Has property", "No property"]
     public var areasArray = [[String: AnyObject]]()
     public weak var axisFormatDelegate: IAxisValueFormatter?
     
@@ -38,73 +40,20 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         genderPieChartView.alpha = 0
         ageBarChartView.alpha = 0
         cityPieChartView.alpha = 0
+        propertyBarChartView.alpha = 0
         
-        if type == "gender" {
-            setupGenderChart()
-        } else if type == "age" {
+        if type == "age" {
             setupAgeChart()
+        } else if type == "gender" {
+            setupGenderChart()
         } else if type == "city" {
             setupCityChart()
+        } else if type == "property" {
+            setupPropertyPercentChart()
         }
     }
     
     // MARK: - Setup charts
-    
-    public func setupGenderChart() {
-        genderPieChartView.alpha = 1
-        var male: Double = 0
-        var female: Double = 0
-        var other: Double = 0
-        
-        for person in peopleArray {
-            if person.gender == "Male" {
-                male += 1
-            } else if person.gender == "Female" {
-                female += 1
-            } else if person.gender == "Other" {
-                other += 1
-            }
-        }
-        
-        let total = male + female + other
-        
-        if total > 0 {
-            male = male / total * 100
-            female = female / total * 100
-            other = other / total * 100
-            
-            var dataEntries = [PieChartDataEntry]()
-            
-            if male > 0 {
-                dataEntries.append(PieChartDataEntry(value: male, label: "Male"))
-            }
-            
-            if female > 0 {
-                dataEntries.append(PieChartDataEntry(value: female, label: "Female"))
-            }
-            
-            if other > 0 {
-                dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
-            }
-            
-            let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
-            dataSet.colors = ChartColorTemplates.pastel()
-            let data = PieChartData(dataSet: dataSet)
-            
-            let pFormatter = NumberFormatter()
-            pFormatter.numberStyle = .percent
-            pFormatter.maximumFractionDigits = 1
-            pFormatter.multiplier = 1
-            pFormatter.percentSymbol = "%"
-            data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-            
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
-            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
-            
-            genderPieChartView.data = data
-            genderPieChartView.notifyDataSetChanged()
-        }
-    }
     
     public func setupAgeChart() {
         ageBarChartView.alpha = 1
@@ -192,6 +141,62 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    public func setupGenderChart() {
+        genderPieChartView.alpha = 1
+        var male: Double = 0
+        var female: Double = 0
+        var other: Double = 0
+        
+        for person in peopleArray {
+            if person.gender == "Male" {
+                male += 1
+            } else if person.gender == "Female" {
+                female += 1
+            } else if person.gender == "Other" {
+                other += 1
+            }
+        }
+        
+        let total = male + female + other
+        
+        if total > 0 {
+            male = male / total * 100
+            female = female / total * 100
+            other = other / total * 100
+            
+            var dataEntries = [PieChartDataEntry]()
+            
+            if male > 0 {
+                dataEntries.append(PieChartDataEntry(value: male, label: "Male"))
+            }
+            
+            if female > 0 {
+                dataEntries.append(PieChartDataEntry(value: female, label: "Female"))
+            }
+            
+            if other > 0 {
+                dataEntries.append(PieChartDataEntry(value: other, label: "Other"))
+            }
+            
+            let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
+            dataSet.colors = ChartColorTemplates.pastel()
+            let data = PieChartData(dataSet: dataSet)
+            
+            let pFormatter = NumberFormatter()
+            pFormatter.numberStyle = .percent
+            pFormatter.maximumFractionDigits = 1
+            pFormatter.multiplier = 1
+            pFormatter.percentSymbol = "%"
+            data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            
+            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
+            
+            genderPieChartView.data = data
+            genderPieChartView.notifyDataSetChanged()
+        }
+    }
+    
     public func setupCityChart() {
         cityPieChartView.alpha = 1
         
@@ -255,12 +260,84 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             cityPieChartView.notifyDataSetChanged()
         }
     }
+    
+    public func setupPropertyPercentChart() {
+        propertyBarChartView.alpha = 1
+        propertyBarChartView.doubleTapToZoomEnabled = false
+        
+        var hasPropertyCount = 0
+        var noPropertyCount = 0
+        
+        for personObject in peopleArray {
+            if personObject.propertyCount > 0 {
+                hasPropertyCount += 1
+            } else {
+                noPropertyCount += 1
+            }
+        }
+        
+        if hasPropertyCount + noPropertyCount > 0 {
+            let hasPercent = Double(hasPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
+            let noPercent = Double(noPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
+            
+            print("Has property: \(hasPercent)%, no property: \(noPercent)%")
+            
+            let xAxis = propertyBarChartView.xAxis
+            xAxis.drawAxisLineEnabled = false
+            xAxis.drawGridLinesEnabled = false
+            xAxis.labelPosition = .bottom
+            xAxis.valueFormatter = axisFormatDelegate
+            
+            let leftAxis = propertyBarChartView.leftAxis
+            leftAxis.drawAxisLineEnabled = false
+            leftAxis.drawGridLinesEnabled = false
+            leftAxis.drawLabelsEnabled = false
+            
+            let rightAxis = propertyBarChartView.rightAxis
+            rightAxis.drawAxisLineEnabled = false
+            rightAxis.drawGridLinesEnabled = false
+            rightAxis.drawLabelsEnabled = false
+            
+            var yVals = [BarChartDataEntry]()
+            
+            if hasPercent > 0 {
+                yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
+            }
+            
+            if noPercent > 0 {
+                yVals.append(BarChartDataEntry(x: 1, y: noPercent))
+            }
+
+            let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
+            set.colors = ChartColorTemplates.pastel()
+            set.valueColors = ChartColorTemplates.pastel()
+            
+            let data = BarChartData(dataSet: set)
+            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            
+            let formatter = NumberFormatter()
+            formatter.maximumFractionDigits = 1
+            data.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+            data.barWidth = 0.9
+            
+            let pFormatter = NumberFormatter()
+            pFormatter.numberStyle = .percent
+            pFormatter.maximumFractionDigits = 1
+            pFormatter.multiplier = 1
+            pFormatter.percentSymbol = "%"
+            data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            
+            propertyBarChartView.data = data
+        }
+    }
 }
 
 extension KMAPersonCollectionViewCell: IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        if Int(value) >= 0, Int(value) < ageStringsArray.count {
+        if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
             return ageStringsArray[Int(value)]
+        } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count {
+            return propertyStringsArray[Int(value)]
         }
         
         return ""

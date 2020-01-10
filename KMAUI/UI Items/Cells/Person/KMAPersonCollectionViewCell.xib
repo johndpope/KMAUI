@@ -21,11 +21,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYc-dX-BIE" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="242" height="220"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-a9-9Op" customClass="PieChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buE-UQ-91o" customClass="BarChartView" customModule="Charts">
                                 <rect key="frame" x="8" y="8" width="226" height="204"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buE-UQ-91o" customClass="BarChartView" customModule="Charts">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-a9-9Op" customClass="PieChartView" customModule="Charts">
                                 <rect key="frame" x="8" y="8" width="226" height="204"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -33,14 +33,21 @@
                                 <rect key="frame" x="8" y="8" width="226" height="204"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfG-rm-kmd" customClass="BarChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
+                            <constraint firstItem="TfG-rm-kmd" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="0Uh-bK-DgA"/>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="8kT-ki-gXt"/>
                             <constraint firstItem="buE-UQ-91o" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="DUY-VT-Wls"/>
                             <constraint firstAttribute="trailing" secondItem="0RH-a9-9Op" secondAttribute="trailing" constant="8" id="Dqr-P1-zkE"/>
                             <constraint firstItem="buE-UQ-91o" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="EVM-N9-eAj"/>
+                            <constraint firstItem="TfG-rm-kmd" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="JB4-aM-w8i"/>
                             <constraint firstAttribute="bottom" secondItem="Mj8-7i-hHL" secondAttribute="bottom" constant="8" id="KRz-SX-MzN"/>
+                            <constraint firstAttribute="bottom" secondItem="TfG-rm-kmd" secondAttribute="bottom" constant="8" id="Kue-HF-XE8"/>
                             <constraint firstItem="Mj8-7i-hHL" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="Uru-ku-Qcq"/>
                             <constraint firstItem="Mj8-7i-hHL" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="bQw-mZ-N0s"/>
                             <constraint firstAttribute="bottom" secondItem="0RH-a9-9Op" secondAttribute="bottom" constant="8" id="ivN-Td-Ddt"/>
@@ -48,6 +55,7 @@
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="rzz-lb-ksV"/>
                             <constraint firstAttribute="bottom" secondItem="buE-UQ-91o" secondAttribute="bottom" constant="8" id="tpc-QP-8qi"/>
                             <constraint firstAttribute="trailing" secondItem="buE-UQ-91o" secondAttribute="trailing" constant="8" id="vI5-cC-dOq"/>
+                            <constraint firstAttribute="trailing" secondItem="TfG-rm-kmd" secondAttribute="trailing" constant="8" id="xIE-wq-aCF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -65,6 +73,7 @@
                 <outlet property="ageBarChartView" destination="buE-UQ-91o" id="HFW-bx-Pyu"/>
                 <outlet property="cityPieChartView" destination="Mj8-7i-hHL" id="HwQ-8C-Xwe"/>
                 <outlet property="genderPieChartView" destination="0RH-a9-9Op" id="ei7-mc-MCA"/>
+                <outlet property="propertyBarChartView" destination="TfG-rm-kmd" id="NC1-aS-6rA"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>
         </collectionViewCell>
