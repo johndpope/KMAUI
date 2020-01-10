@@ -21,33 +21,33 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYc-dX-BIE" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="8" y="0.0" width="242" height="220"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m2-uj-5yW" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="16" width="210" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m2-uj-5yW">
+                                <rect key="frame" x="16" y="16" width="210" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="yu0-fg-O1U"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="yu0-fg-O1U"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="buE-UQ-91o" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="46" width="226" height="166"/>
+                                <rect key="frame" x="8" y="24" width="226" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RH-a9-9Op" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="46" width="226" height="166"/>
+                                <rect key="frame" x="8" y="24" width="226" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mj8-7i-hHL" customClass="PieChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="46" width="226" height="166"/>
+                                <rect key="frame" x="8" y="24" width="226" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TfG-rm-kmd" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="46" width="226" height="166"/>
+                                <rect key="frame" x="8" y="24" width="226" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drm-US-PPB" customClass="HorizontalBarChartView" customModule="Charts">
-                                <rect key="frame" x="8" y="46" width="226" height="166"/>
+                                <rect key="frame" x="8" y="24" width="226" height="188"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                         </subviews>
@@ -94,7 +94,7 @@
                 <outlet property="cityPieChartView" destination="Mj8-7i-hHL" id="HwQ-8C-Xwe"/>
                 <outlet property="genderPieChartView" destination="0RH-a9-9Op" id="ei7-mc-MCA"/>
                 <outlet property="propertyBarChartView" destination="TfG-rm-kmd" id="NC1-aS-6rA"/>
-                <outlet property="titleLabel" destination="1m2-uj-5yW" id="khD-SG-zyG"/>
+                <outlet property="titleLabel" destination="1m2-uj-5yW" id="04R-cF-1zh"/>
                 <outlet property="uploadsHorizontalBarChartView" destination="Drm-US-PPB" id="klp-IH-HGd"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>

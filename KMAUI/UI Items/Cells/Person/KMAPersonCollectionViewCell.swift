@@ -16,7 +16,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var cityPieChartView: PieChartView!
     @IBOutlet public weak var propertyBarChartView: BarChartView!
     @IBOutlet public weak var uploadsHorizontalBarChartView: HorizontalBarChartView!
-    @IBOutlet public weak var titleLabel: KMAUITitleLabel!
+    @IBOutlet public weak var titleLabel: UILabel!
     
     // MARK: - Variables
     public var type = ""
@@ -65,6 +65,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         ageBarChartView.alpha = 1
         ageBarChartView.doubleTapToZoomEnabled = false
         ageBarChartView.legend.enabled = false
+        ageBarChartView.noDataTextColor = KMAUIConstants.shared.KMATextColor
         
         titleLabel.text = "Age distribution"
         
@@ -157,6 +158,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupGenderChart() {
         genderPieChartView.alpha = 1
         genderPieChartView.legend.enabled = false
+        genderPieChartView.noDataTextColor = KMAUIConstants.shared.KMATextColor
         
         titleLabel.text = "Gender distribution"
         
@@ -217,6 +219,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public func setupCityChart() {
         cityPieChartView.alpha = 1
         cityPieChartView.legend.enabled = false
+        cityPieChartView.noDataTextColor = KMAUIConstants.shared.KMATextColor
         
         titleLabel.text = "Area stats"
         
@@ -285,6 +288,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         propertyBarChartView.alpha = 1
         propertyBarChartView.doubleTapToZoomEnabled = false
         propertyBarChartView.legend.enabled = false
+        propertyBarChartView.noDataTextColor = KMAUIConstants.shared.KMATextColor
         
         titleLabel.text = "Property owners percentage"
         
@@ -381,6 +385,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         uploadsHorizontalBarChartView.alpha = 1
         uploadsHorizontalBarChartView.doubleTapToZoomEnabled = false
         uploadsHorizontalBarChartView.legend.enabled = false
+        uploadsHorizontalBarChartView.noDataTextColor = KMAUIConstants.shared.KMATextColor
         
         titleLabel.text = "Most active users by uploads"
         
