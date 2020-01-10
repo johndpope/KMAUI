@@ -138,6 +138,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             ageBarChartView.data = data
+            ageBarChartView.notifyDataSetChanged()
         }
     }
     
@@ -286,7 +287,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-//            xAxis.valueFormatter = axisFormatDelegate
+            xAxis.valueFormatter = axisFormatDelegate
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -300,12 +301,22 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             var yVals = [BarChartDataEntry]()
             
-            if hasPercent > 0 {
-                yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
-            }
-            
-            if noPercent > 0 {
-                yVals.append(BarChartDataEntry(x: 1, y: noPercent))
+            if hasPercent > noPercent {
+                if hasPercent > 0 {
+                    yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
+                }
+                
+                if noPercent > 0 {
+                    yVals.append(BarChartDataEntry(x: 1, y: noPercent))
+                }
+            } else if hasPercent < noPercent {
+                if noPercent > 0 {
+                    yVals.append(BarChartDataEntry(x: 1, y: noPercent))
+                }
+                
+                if hasPercent > 0 {
+                    yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
+                }
             }
 
             let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
@@ -328,6 +339,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             propertyBarChartView.data = data
+            propertyBarChartView.notifyDataSetChanged()
         }
     }
 }
