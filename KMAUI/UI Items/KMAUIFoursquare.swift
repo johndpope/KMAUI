@@ -177,6 +177,7 @@ public struct KMAFoursquareVenue {
     public var hierarchy = "" // the hierarcy JSON, if the place is inside of another place, for example: mall
     public var parent = "" // the parent JSON, the info for a place in which the current place in
     public var detailsLoaded = false
+    public var json = ""
     
     public init() {
     }
@@ -275,6 +276,7 @@ public struct KMAFoursquareVenue {
     public mutating func fillFrom(jsonString: String) {
         if !jsonString.isEmpty, let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary {
+            self.json = jsonString
             
             if let response = json["response"]?.dictionary, let venueObject = response["venue"]?.dictionary {
                 // createdAt
