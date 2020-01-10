@@ -303,7 +303,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
             
-            leftAxis.axisMaximum = 0
+            leftAxis.axisMinimum = 0
             leftAxis.axisMaximum = 1
             leftAxis.labelCount = 2
             
@@ -365,6 +365,7 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
             return ageStringsArray[Int(value)]
         } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
+            print("VALUE: \(value)")
             return propertyStringsArray[Int(value)]
         }
         
