@@ -14,21 +14,24 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAPersonDetailsCell" rowHeight="77" id="KGk-i7-Jjw" customClass="KMAPersonDetailsTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d2m-fY-htL" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="288" height="60"/>
+                        <rect key="frame" x="16" y="0.0" width="288" height="61"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-a5-qq2" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="8" y="0.0" width="42" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ga-a5-qq2" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="0.0" width="42" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Rq-Raw" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="58" y="0.0" width="222" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Rq-Raw" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="58" y="0.0" width="222" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="mAZ-EN-p6Q"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +39,7 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="60" id="3Ba-51-hbM"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="3Ba-51-hbM"/>
                             <constraint firstItem="aMg-Rq-Raw" firstAttribute="leading" secondItem="0Ga-a5-qq2" secondAttribute="trailing" constant="8" id="A3w-GD-tsF"/>
                             <constraint firstAttribute="trailing" secondItem="aMg-Rq-Raw" secondAttribute="trailing" constant="8" id="A53-Qg-SXN"/>
                             <constraint firstAttribute="bottom" secondItem="0Ga-a5-qq2" secondAttribute="bottom" id="F4f-cy-p6H"/>
