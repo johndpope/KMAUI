@@ -313,11 +313,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             } else if hasPercent < noPercent {
                 if noPercent > 0 {
-                    yVals.append(BarChartDataEntry(x: 1, y: noPercent))
+                    yVals.append(BarChartDataEntry(x: 0, y: noPercent))
                 }
                 
                 if hasPercent > 0 {
-                    yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
+                    yVals.append(BarChartDataEntry(x: 1, y: hasPercent))
                 }
             }
 
