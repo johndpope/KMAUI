@@ -37,11 +37,16 @@
                                 <rect key="frame" x="8" y="8" width="226" height="204"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Drm-US-PPB" customClass="HorizontalBarChartView" customModule="Charts">
+                                <rect key="frame" x="8" y="8" width="226" height="204"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
                             <constraint firstItem="TfG-rm-kmd" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="0Uh-bK-DgA"/>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="8kT-ki-gXt"/>
+                            <constraint firstItem="Drm-US-PPB" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="AV7-pE-CJF"/>
                             <constraint firstItem="buE-UQ-91o" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="DUY-VT-Wls"/>
                             <constraint firstAttribute="trailing" secondItem="0RH-a9-9Op" secondAttribute="trailing" constant="8" id="Dqr-P1-zkE"/>
                             <constraint firstItem="buE-UQ-91o" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="EVM-N9-eAj"/>
@@ -49,10 +54,13 @@
                             <constraint firstAttribute="bottom" secondItem="Mj8-7i-hHL" secondAttribute="bottom" constant="8" id="KRz-SX-MzN"/>
                             <constraint firstAttribute="bottom" secondItem="TfG-rm-kmd" secondAttribute="bottom" constant="8" id="Kue-HF-XE8"/>
                             <constraint firstItem="Mj8-7i-hHL" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="Uru-ku-Qcq"/>
+                            <constraint firstAttribute="trailing" secondItem="Drm-US-PPB" secondAttribute="trailing" constant="8" id="ajs-fT-bwJ"/>
                             <constraint firstItem="Mj8-7i-hHL" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="bQw-mZ-N0s"/>
                             <constraint firstAttribute="bottom" secondItem="0RH-a9-9Op" secondAttribute="bottom" constant="8" id="ivN-Td-Ddt"/>
                             <constraint firstAttribute="trailing" secondItem="Mj8-7i-hHL" secondAttribute="trailing" constant="8" id="oDy-nU-1NS"/>
+                            <constraint firstItem="Drm-US-PPB" firstAttribute="top" secondItem="WYc-dX-BIE" secondAttribute="top" constant="8" id="oLp-34-zl4"/>
                             <constraint firstItem="0RH-a9-9Op" firstAttribute="leading" secondItem="WYc-dX-BIE" secondAttribute="leading" constant="8" id="rzz-lb-ksV"/>
+                            <constraint firstAttribute="bottom" secondItem="Drm-US-PPB" secondAttribute="bottom" constant="8" id="sHM-nM-2Ks"/>
                             <constraint firstAttribute="bottom" secondItem="buE-UQ-91o" secondAttribute="bottom" constant="8" id="tpc-QP-8qi"/>
                             <constraint firstAttribute="trailing" secondItem="buE-UQ-91o" secondAttribute="trailing" constant="8" id="vI5-cC-dOq"/>
                             <constraint firstAttribute="trailing" secondItem="TfG-rm-kmd" secondAttribute="trailing" constant="8" id="xIE-wq-aCF"/>
@@ -74,6 +82,7 @@
                 <outlet property="cityPieChartView" destination="Mj8-7i-hHL" id="HwQ-8C-Xwe"/>
                 <outlet property="genderPieChartView" destination="0RH-a9-9Op" id="ei7-mc-MCA"/>
                 <outlet property="propertyBarChartView" destination="TfG-rm-kmd" id="NC1-aS-6rA"/>
+                <outlet property="uploadsHorizontalBarChartView" destination="Drm-US-PPB" id="klp-IH-HGd"/>
             </connections>
             <point key="canvasLocation" x="37.681159420289859" y="-9.375"/>
         </collectionViewCell>

@@ -15,6 +15,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var ageBarChartView: BarChartView!
     @IBOutlet public weak var cityPieChartView: PieChartView!
     @IBOutlet public weak var propertyBarChartView: BarChartView!
+    @IBOutlet public weak var uploadsHorizontalBarChartView: HorizontalBarChartView!
     
     // MARK: - Variables
     public var type = ""
@@ -23,15 +24,13 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var ageStringsArray = [String]()
     public var propertyStringsArray = ["Has property", "No property"]
     public var areasArray = [[String: AnyObject]]()
-    public weak var axisFormatAgeDelegate: IAxisValueFormatter?
-    public weak var axisFormatPropertyDelegate: IAxisValueFormatter?
+    public weak var axisFormatDelegate: IAxisValueFormatter?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setting the delegate connection for axis
-        axisFormatAgeDelegate = self
-        axisFormatPropertyDelegate = self
+        axisFormatDelegate = self
     }
     
     /**
@@ -43,6 +42,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
         ageBarChartView.alpha = 0
         cityPieChartView.alpha = 0
         propertyBarChartView.alpha = 0
+        uploadsHorizontalBarChartView.alpha = 0
         
         if type == "age" {
             setupAgeChart()
@@ -102,7 +102,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-            xAxis.valueFormatter = axisFormatAgeDelegate
+            xAxis.valueFormatter = axisFormatDelegate
             
             let leftAxis = ageBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -122,7 +122,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 yVals.append(BarChartDataEntry(x: Double(index), y: item))
             }
             
-            print("Age values: \(yVals)")
+//            print("Age values: \(yVals)")
             
             let set = BarChartDataSet(entries: yVals, label: "Age distribution")
             set.colors = ChartColorTemplates.pastel()
@@ -295,7 +295,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             xAxis.axisMinimum = -0.5
             xAxis.axisMaximum = 1.5
             xAxis.labelCount = 4
-            xAxis.valueFormatter = axisFormatPropertyDelegate
+            xAxis.valueFormatter = axisFormatDelegate
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -329,7 +329,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
                 }
             }
             
-            print("Property values: \(yVals)")
+//            print("Property values: \(yVals)")
 
             let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
             set.colors = ChartColorTemplates.pastel()
@@ -362,7 +362,6 @@ extension KMAPersonCollectionViewCell: IAxisValueFormatter {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
             return ageStringsArray[Int(value)]
         } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
-            print("VALUE: \(value)")
             return propertyStringsArray[Int(value)]
         }
         
