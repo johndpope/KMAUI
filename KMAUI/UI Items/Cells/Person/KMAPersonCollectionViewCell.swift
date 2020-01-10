@@ -206,7 +206,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
-            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
+            data.setValueTextColor(UIColor.white)
             
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
@@ -273,7 +273,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
-            data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
+            data.setValueTextColor(UIColor.white)
             
             cityPieChartView.data = data
             cityPieChartView.notifyDataSetChanged()
@@ -428,6 +428,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.maximumFractionDigits = 0
             pFormatter.multiplier = 1
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            data.setValueTextColor(KMAUIConstants.shared.KMATextColor)
             
             let xAxis = uploadsHorizontalBarChartView.xAxis
             xAxis.drawAxisLineEnabled = false
