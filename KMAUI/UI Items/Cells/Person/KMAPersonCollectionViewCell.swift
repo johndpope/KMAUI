@@ -196,7 +196,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
             
             genderPieChartView.data = data
@@ -260,7 +260,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(KMAUIConstants.shared.KMABackColor)
             
             cityPieChartView.data = data
@@ -340,7 +340,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             set.valueColors = ChartColorTemplates.pastel()
             
             let data = BarChartData(dataSet: set)
-            data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
+            data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             
             let formatter = NumberFormatter()
             formatter.maximumFractionDigits = 1
@@ -361,6 +361,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     
     public func setupUploadsBarChart() {
         uploadsHorizontalBarChartView.alpha = 1
+        uploadsHorizontalBarChartView.doubleTapToZoomEnabled = false
         var maxCount = 0
         
         var yVals = [BarChartDataEntry]()
@@ -401,7 +402,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             set.valueColors = ChartColorTemplates.pastel()
             
             let data = BarChartData(dataSet: set)
-            data.setValueFont(UIFont(name:"HelveticaNeue-Light", size:10)!)
+            data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             
             let pFormatter = NumberFormatter()
             pFormatter.numberStyle = .decimal
@@ -424,7 +425,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
             
-//            leftAxis.axisMinimum = 0
+            leftAxis.axisMinimum = -5
             leftAxis.axisMaximum = Double(maxCount) * 1.1
             
             let rightAxis = uploadsHorizontalBarChartView.rightAxis
