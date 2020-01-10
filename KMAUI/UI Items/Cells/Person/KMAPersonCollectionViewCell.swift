@@ -335,12 +335,14 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
 extension KMAPersonCollectionViewCell: IAxisValueFormatter {
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         if type == "age", Int(value) >= 0, Int(value) < ageStringsArray.count {
+            print("AGE, \(value): \(ageStringsArray[Int(value)])")
             return ageStringsArray[Int(value)]
-        } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1){
-            print("\(value): \(propertyStringsArray[Int(value)])")
+        } else if type == "property", Int(value) >= 0, Int(value) < propertyStringsArray.count, (value == 0 || value == 1) {
+            print("PROPERTY, \(value): \(propertyStringsArray[Int(value)])")
             return propertyStringsArray[Int(value)]
         }
         
+        print("EMPTY, \(type), \(value)")
         return ""
     }
 }
