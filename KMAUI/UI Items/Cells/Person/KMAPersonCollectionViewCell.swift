@@ -109,6 +109,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             leftAxis.drawGridLinesEnabled = false
             leftAxis.drawLabelsEnabled = false
             
+            leftAxis.axisMinimum = 0
+            
             let rightAxis = ageBarChartView.rightAxis
             rightAxis.drawAxisLineEnabled = false
             rightAxis.drawGridLinesEnabled = false
@@ -285,18 +287,15 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             let hasPercent = Double(hasPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             let noPercent = Double(noPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             
-//            print("Has property: \(hasPercent)%, no property: \(noPercent)%")
-            
             let xAxis = propertyBarChartView.xAxis
             xAxis.drawAxisLineEnabled = false
             xAxis.drawGridLinesEnabled = false
             xAxis.labelPosition = .bottom
-            xAxis.valueFormatter = axisFormatPropertyDelegate
             
-//            chartView.leftAxis.axisMinimum = 0
-//               chartView.leftAxis.axisMaximum = 5
-//               chartView.leftAxis.labelCount = 7
-
+            xAxis.axisMinimum = -0.5
+            xAxis.axisMaximum = 1.5
+            xAxis.labelCount = 4
+            xAxis.valueFormatter = axisFormatPropertyDelegate
             
             let leftAxis = propertyBarChartView.leftAxis
             leftAxis.drawAxisLineEnabled = false
@@ -304,8 +303,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             leftAxis.drawLabelsEnabled = false
             
             leftAxis.axisMinimum = 0
-            leftAxis.axisMaximum = 1
-            leftAxis.labelCount = 2
             
             let rightAxis = propertyBarChartView.rightAxis
             rightAxis.drawAxisLineEnabled = false
