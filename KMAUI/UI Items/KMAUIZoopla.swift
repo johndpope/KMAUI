@@ -265,15 +265,18 @@ public struct KMAZooplaProperty {
     }
     
     public mutating func fillFrom(jsonString: String) {
-        if !jsonString.isEmpty, let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString) {
-            self.json = jsonString
-            
+        if !jsonString.isEmpty, let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString) {            
             // Fill the data
             fillFrom(propertyItem: json)
         }
     }
     
     public mutating func fillFrom(propertyItem: JSON) {
+        // Save the JSON
+        if let jsonString = propertyItem.rawString() {
+            self.json = jsonString
+        }
+        
         if let propertyItem = propertyItem.dictionary {
             // Location
             
