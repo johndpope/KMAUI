@@ -15,6 +15,8 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     @IBOutlet public weak var saleTitleLabel: KMAUITextLabel!
     @IBOutlet public weak var saleLabel: KMAUITitleLabel!
     @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
+    @IBOutlet public weak var reviewButtonHeight: NSLayoutConstraint!
+    @IBOutlet public weak var reviewButtonBottom: NSLayoutConstraint!
     @IBOutlet public weak var collectionView: KMAUICollectionView!
     @IBOutlet public weak var collectionViewTop: NSLayoutConstraint!
     
@@ -66,6 +68,15 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
         rentLabel.alpha = 0
         saleTitleLabel.alpha = 0
         saleLabel.alpha = 0
+    }
+    
+    public func setupUserProperty() {
+        // Top offset for collectionView
+        collectionViewTop.constant = -52
+        // Hide the review button
+        reviewButton.alpha = 0
+        reviewButtonHeight.constant = 0
+        reviewButtonBottom.constant = 0
     }
     
     @IBAction public func reviewButtonPressed(_ sender: Any) {

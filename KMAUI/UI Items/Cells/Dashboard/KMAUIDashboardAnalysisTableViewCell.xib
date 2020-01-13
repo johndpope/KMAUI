@@ -122,6 +122,8 @@
                 <outlet property="rentLabel" destination="K0A-Hi-8WA" id="HZG-fC-FV0"/>
                 <outlet property="rentTitleLabel" destination="rrh-ca-VwM" id="6Yh-cB-n8C"/>
                 <outlet property="reviewButton" destination="xEw-Z2-CVD" id="8eA-aj-IkU"/>
+                <outlet property="reviewButtonBottom" destination="lhq-5N-1rK" id="A1C-sP-2K6"/>
+                <outlet property="reviewButtonHeight" destination="IZz-Wt-mwm" id="Bnl-MA-rrI"/>
                 <outlet property="saleLabel" destination="WoV-Mq-3aB" id="oY4-oK-PNN"/>
                 <outlet property="saleTitleLabel" destination="tFl-bJ-Frh" id="PSH-Sp-Zh9"/>
             </connections>
