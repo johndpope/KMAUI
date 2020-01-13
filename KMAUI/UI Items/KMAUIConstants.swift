@@ -62,6 +62,8 @@ public class KMAUIConstants {
     public let KMABorderWidthRegular: CGFloat = 1.0
     public let KMABorderWidthBold: CGFloat = 2.0
     
+    public let KMATranslucentBg: CGFloat = 0.9
+    
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
     
