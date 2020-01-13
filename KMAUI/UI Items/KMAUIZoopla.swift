@@ -74,7 +74,6 @@ public class KMAUIZoopla {
             let listing = json["listing"]?.array {
             
             for propertyItem in listing {
-//                print("\nPROPERTY: \(propertyItem)\n")
                 var zooplaProperty = KMAZooplaProperty()
                 zooplaProperty.fillFrom(propertyItem: propertyItem)
                 zooplaPropertyArray.append(zooplaProperty)
@@ -170,6 +169,7 @@ public struct KMAZooplaProperty {
     public var rentWeek = 0 // Int value in UK pounds
     public var rentMonth = 0 // Int value in UK pounds
     public var priceChange = "" // the array of price change details, includes price, percent, date and direction
+    public var json = ""
     /*
      [
      {
@@ -262,6 +262,15 @@ public struct KMAZooplaProperty {
         }
         
         return (propertyDescription, priceString)
+    }
+    
+    public mutating func fillFrom(jsonString: String) {
+        if !jsonString.isEmpty, let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString) {
+            self.json = jsonString
+            
+            // Fill the data
+            fillFrom(propertyItem: json)
+        }
     }
     
     public mutating func fillFrom(propertyItem: JSON) {

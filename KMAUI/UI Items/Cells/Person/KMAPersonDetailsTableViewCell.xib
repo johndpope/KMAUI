@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="752" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMg-Rq-Raw" customClass="KMAUITitleLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="106" y="0.0" width="166" height="61"/>
+                                <rect key="frame" x="106" y="8" width="166" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Kom-gX-lvv"/>
                                 </constraints>
@@ -42,8 +42,8 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="aMg-Rq-Raw" secondAttribute="bottom" id="4RX-bd-nNH"/>
-                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" id="9kF-ff-gRa"/>
+                            <constraint firstAttribute="bottom" secondItem="aMg-Rq-Raw" secondAttribute="bottom" constant="8" id="4RX-bd-nNH"/>
+                            <constraint firstItem="aMg-Rq-Raw" firstAttribute="top" secondItem="d2m-fY-htL" secondAttribute="top" constant="8" id="9kF-ff-gRa"/>
                             <constraint firstItem="0Ga-a5-qq2" firstAttribute="leading" secondItem="d2m-fY-htL" secondAttribute="leading" constant="16" id="CIb-sh-sIr"/>
                             <constraint firstAttribute="bottom" secondItem="0Ga-a5-qq2" secondAttribute="bottom" id="fE2-A5-A4H"/>
                             <constraint firstAttribute="trailing" secondItem="aMg-Rq-Raw" secondAttribute="trailing" constant="16" id="iGN-zj-33K"/>
