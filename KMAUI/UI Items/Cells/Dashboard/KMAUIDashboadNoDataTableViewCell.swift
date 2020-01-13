@@ -63,7 +63,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the police information for your home address..."
                 action = ""
             }
-        } else if type == "Uploaded items" {
+        } else if type == "Uploads" {
             if isLoaded {
                 info = "This citizen has no uploaded items yet."
                 action = ""
@@ -71,7 +71,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the uploaded items list..."
                 action = ""
             }
-        } else if type == "Citizen's property" {
+        } else if type == "Property" {
             if isLoaded {
                 info = "This citizen has no property data to display."
                 action = ""
