@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class KMAUIPerson {
+public class KMAUIPerson {
     
     // Access variable
     public static let shared = KMAUIPerson()
