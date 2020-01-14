@@ -99,7 +99,6 @@
                             <constraint firstItem="Vaj-g3-pbN" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" constant="8" id="gZa-fD-OkE"/>
                             <constraint firstItem="K0A-Hi-8WA" firstAttribute="leading" secondItem="rrh-ca-VwM" secondAttribute="trailing" constant="8" id="jhS-nq-tfU"/>
                             <constraint firstAttribute="bottom" secondItem="xEw-Z2-CVD" secondAttribute="bottom" constant="8" id="lhq-5N-1rK"/>
-                            <constraint firstAttribute="bottom" secondItem="xEw-Z2-CVD" secondAttribute="bottom" constant="8" id="tTo-oy-zLn"/>
                             <constraint firstItem="xEw-Z2-CVD" firstAttribute="leading" secondItem="1e4-7v-fd4" secondAttribute="leading" constant="8" id="tU3-ct-DrN"/>
                             <constraint firstItem="WoV-Mq-3aB" firstAttribute="top" secondItem="K0A-Hi-8WA" secondAttribute="bottom" constant="8" id="wkF-VC-ppA"/>
                             <constraint firstItem="xEw-Z2-CVD" firstAttribute="top" secondItem="Vaj-g3-pbN" secondAttribute="bottom" constant="8" id="x72-7y-mEw"/>
@@ -119,12 +118,15 @@
             <connections>
                 <outlet property="collectionView" destination="Vaj-g3-pbN" id="49B-db-KJO"/>
                 <outlet property="collectionViewHeight" destination="ezM-2H-PBw" id="fI7-hg-CQV"/>
+                <outlet property="collectionViewLeft" destination="gZa-fD-OkE" id="lpO-mY-NGT"/>
+                <outlet property="collectionViewRight" destination="cLm-j0-bKg" id="jMi-MK-F2a"/>
                 <outlet property="collectionViewTop" destination="8wp-jP-m3J" id="f7x-7v-WXw"/>
                 <outlet property="rentLabel" destination="K0A-Hi-8WA" id="HZG-fC-FV0"/>
                 <outlet property="rentTitleLabel" destination="rrh-ca-VwM" id="6Yh-cB-n8C"/>
                 <outlet property="reviewButton" destination="xEw-Z2-CVD" id="8eA-aj-IkU"/>
                 <outlet property="reviewButtonBottom" destination="lhq-5N-1rK" id="A1C-sP-2K6"/>
                 <outlet property="reviewButtonHeight" destination="IZz-Wt-mwm" id="Bnl-MA-rrI"/>
+                <outlet property="reviewButtonTop" destination="x72-7y-mEw" id="Roc-BS-wQd"/>
                 <outlet property="saleLabel" destination="WoV-Mq-3aB" id="oY4-oK-PNN"/>
                 <outlet property="saleTitleLabel" destination="tFl-bJ-Frh" id="PSH-Sp-Zh9"/>
             </connections>

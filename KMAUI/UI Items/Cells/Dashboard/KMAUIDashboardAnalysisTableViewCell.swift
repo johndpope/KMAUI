@@ -16,10 +16,13 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     @IBOutlet public weak var saleLabel: KMAUITitleLabel!
     @IBOutlet public weak var reviewButton: KMAUIButtonFilled!
     @IBOutlet public weak var reviewButtonHeight: NSLayoutConstraint!
+    @IBOutlet public weak var reviewButtonTop: NSLayoutConstraint!
     @IBOutlet public weak var reviewButtonBottom: NSLayoutConstraint!
     @IBOutlet public weak var collectionView: KMAUICollectionView!
     @IBOutlet public weak var collectionViewHeight: NSLayoutConstraint!
     @IBOutlet public weak var collectionViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var collectionViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var collectionViewRight: NSLayoutConstraint!
     
     // 22 8 22 8
     
@@ -57,7 +60,7 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
     
     func hideLabels() {
         // Top offset for collectionView
-        collectionViewTop.constant = -52
+        collectionViewTop.constant = -60
         // Hide labels
         rentTitleLabel.alpha = 0
         rentLabel.alpha = 0
@@ -65,11 +68,17 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
         saleLabel.alpha = 0
     }
     
-    func hideReviewButton() {
+    func hideButton() {
         // Hide the review button
         reviewButton.alpha = 0
         reviewButtonHeight.constant = 0
+        reviewButtonTop.constant = 0
         reviewButtonBottom.constant = 0
+        // Hide collectionView sides
+        collectionViewLeft.constant = 0
+        collectionViewRight.constant = 0
+        //
+        collectionViewHeight.constant = 240
     }
     
     public func setupProperty() {
@@ -86,9 +95,9 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
         hideLabels()
     }
     
-    public func setupUserProperty() {
+    public func setupCollection() {
         hideLabels()
-        hideReviewButton()
+        hideButton()
     }
     
     @IBAction public func reviewButtonPressed(_ sender: Any) {
