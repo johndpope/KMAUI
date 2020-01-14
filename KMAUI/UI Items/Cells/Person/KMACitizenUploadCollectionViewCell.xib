@@ -19,17 +19,17 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgB-nS-g5B" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="8" y="8" width="228" height="224"/>
+                        <rect key="frame" x="0.0" y="0.0" width="244" height="240"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                 </subviews>
             </view>
             <color key="backgroundColor" name="KMABgGray"/>
             <constraints>
-                <constraint firstItem="JgB-nS-g5B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="QZH-wv-khi"/>
-                <constraint firstItem="JgB-nS-g5B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="aih-xr-6vD"/>
-                <constraint firstAttribute="trailing" secondItem="JgB-nS-g5B" secondAttribute="trailing" constant="8" id="fhs-ma-3C0"/>
-                <constraint firstAttribute="bottom" secondItem="JgB-nS-g5B" secondAttribute="bottom" constant="8" id="g4Z-1H-0pa"/>
+                <constraint firstItem="JgB-nS-g5B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QZH-wv-khi"/>
+                <constraint firstItem="JgB-nS-g5B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aih-xr-6vD"/>
+                <constraint firstAttribute="trailing" secondItem="JgB-nS-g5B" secondAttribute="trailing" id="fhs-ma-3C0"/>
+                <constraint firstAttribute="bottom" secondItem="JgB-nS-g5B" secondAttribute="bottom" id="g4Z-1H-0pa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="244" height="240"/>
