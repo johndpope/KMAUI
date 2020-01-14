@@ -12,7 +12,7 @@ import Parse
 class KMAUIPerson {
     
     // Access variable
-    public static let shared = KMAUIPolice()
+    public static let shared = KMAUIPerson()
     
     // MARK: - Property
     
