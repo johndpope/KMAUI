@@ -52,6 +52,8 @@ public class KMAUIPerson {
         let query = PFQuery(className: "KMAUserUpload")
         query.whereKey("KMACitizen", equalTo: PFUser(withoutDataWithObjectId: personId))
         query.order(byDescending: "createdAt")
+        query.includeKey("departmentAssigned")
+        query.includeKey("category")
         query.skip = skip
         
         query.findObjectsInBackground { (uploadArray, error) in
