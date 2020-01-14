@@ -84,7 +84,7 @@ public class KMAUIPerson {
             uploads.append(uploadItem)
         }
         
-        return [KMACitizenUpload]()
+        return uploads
     }
 }
 
