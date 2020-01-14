@@ -16,6 +16,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var createdAtLabel: KMAUIInfoLabel!
     @IBOutlet public weak var processingStatusLabel: KMAUIInfoLabel!
     @IBOutlet public weak var uploadDescriptionLabel: KMAUITextLabel!
+    @IBOutlet public weak var departmentImageView: UIImageView!
+    @IBOutlet public weak var departmentHandleLabel: KMAUITitleLabel!
+    @IBOutlet public weak var departmentNameLabel: KMAUITextLabel!
     
     // MARK: - Variables
     public var upload = KMACitizenUpload()
@@ -49,5 +52,18 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Upload description
         uploadDescriptionLabel.text = upload.uploadDescription
+        
+        // Department logo
+        departmentImageView.kf.indicatorType = .activity
+        
+        if !upload.departmentLogo.isEmpty, let url = URL(string: upload.departmentLogo) {
+            departmentImageView.kf.setImage(with: url)
+        }
+        
+        // Department handle
+        departmentHandleLabel.text = upload.departmentHandle.formatUsername()
+        
+        // Department name
+        departmentNameLabel.text = upload.departmentName
     }
 }
