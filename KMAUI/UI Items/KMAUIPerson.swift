@@ -78,10 +78,14 @@ public class KMAUIPerson {
         var uploads = [KMACitizenUpload]()
         
         for uploadLoaded in uploadArrayCurrent {
-            // The property item
-            var uploadItem = KMACitizenUpload()
-            uploadItem.fillFromParse(uploadLoaded: uploadLoaded)
-            uploads.append(uploadItem)
+            if let _ = uploadLoaded["documentName"] as? String {
+                // It's a document
+            } else {
+                // The property item
+                var uploadItem = KMACitizenUpload()
+                uploadItem.fillFromParse(uploadLoaded: uploadLoaded)
+                uploads.append(uploadItem)
+            }
         }
         
         return uploads
