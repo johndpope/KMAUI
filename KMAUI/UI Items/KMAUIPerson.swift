@@ -30,7 +30,7 @@ public class KMAUIPerson {
             if let error = error {
                 print("Error getting user's property: `\(error.localizedDescription)`.")
                 completion(property, error.localizedDescription)
-            } else if let propertyArray = propertyArray, !propertyArray.isEmpty {
+            } else if let propertyArray = propertyArray {
                 print("User property: \(propertyArray.count)")
                 
                 for propertyLoaded in propertyArray {
@@ -47,7 +47,7 @@ public class KMAUIPerson {
     
     // MARK: - Uploads
     
-    public func getUploads(personId: String, skip: Int, uploadArrayCurrent: [PFObject], completion: @escaping (_ uploadArray: [PFObject], _ error: String)->()) {
+    public func getUploads(personId: String, skip: Int, uploadArrayCurrent: [PFObject], completion: @escaping (_ uploadArray: [KMACitizenUpload], _ error: String)->()) {
         var uploadArrayCurrent = uploadArrayCurrent
         let query = PFQuery(className: "KMAUserUpload")
         query.whereKey("KMACitizen", equalTo: PFUser(withoutDataWithObjectId: personId))
@@ -57,7 +57,7 @@ public class KMAUIPerson {
         query.findObjectsInBackground { (uploadArray, error) in
             if let error = error {
                 print("Error getting user's uploads: `\(error.localizedDescription)`.")
-                completion([PFObject](), error.localizedDescription)
+                completion([KMACitizenUpload](), error.localizedDescription)
             } else if let uploadArray = uploadArray {
                 uploadArrayCurrent.append(contentsOf: uploadArray)
                 
@@ -66,10 +66,23 @@ public class KMAUIPerson {
                         completion(uploadArrayValue, error)
                     }
                 } else {
-                    completion(uploadArrayCurrent, "")
+                    completion(self.processUploads(uploadArrayCurrent: uploadArrayCurrent), "")
                 }
             }
         }
+    }
+    
+    public func processUploads(uploadArrayCurrent: [PFObject]) -> [KMACitizenUpload] {
+        var uploads = [KMACitizenUpload]()
+        
+        for uploadLoaded in uploadArrayCurrent {
+            // The property item
+            var uploadItem = KMACitizenUpload()
+            uploadItem.fillFromParse(uploadLoaded: uploadLoaded)
+            uploads.append(uploadItem)
+        }
+        
+        return [KMACitizenUpload]()
     }
 }
 
