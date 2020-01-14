@@ -332,10 +332,10 @@ public struct KMACitizenUpload {
     public var uploadDescription = ""
     public var uploadBody = ""
     public var processingStatus = ""
-    public var city = ""
-    public var state = ""
-    public var country = ""
-    public var zip = ""
+//    public var city = ""
+//    public var state = ""
+//    public var country = ""
+//    public var zip = ""
     public var departmentId = ""
     public var departmentHandle = ""
     public var departmentName = ""
@@ -396,7 +396,7 @@ public struct KMACitizenUpload {
                 }
             }
             
-            if let cityValue = uploadLoaded["city"] as? String {
+            /*if let cityValue = uploadLoaded["city"] as? String {
                 self.city = cityValue
             }
             
@@ -410,7 +410,7 @@ public struct KMACitizenUpload {
             
             if let zipValue = uploadLoaded["zip"] as? String {
                 self.zip = zipValue
-            }
+            }*/
             
             if let uploadCategoryLoaded = uploadLoaded["category"] as? PFObject {
                 if let objectIdValue = uploadCategoryLoaded.objectId {
