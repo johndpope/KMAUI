@@ -59,7 +59,6 @@ public class KMAUIPerson {
                 print("Error getting user's uploads: `\(error.localizedDescription)`.")
                 completion([PFObject](), error.localizedDescription)
             } else if let uploadArray = uploadArray {
-                print("New user uploads: \(uploadArray.count)")
                 uploadArrayCurrent.append(contentsOf: uploadArray)
                 
                 if uploadArray.count == 100 {
@@ -176,13 +175,13 @@ public struct KMAPerson {
 // MARK: - Property document
 
 public struct KMAPropertyDocument {
-    var objectId = ""
-    var createdAt = Date()
-    var updatedAt = Date()
-    var name = ""
-    var descriptionText = ""
-    var issueDate = Date()
-    var files = ""
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var name = ""
+    public var descriptionText = ""
+    public var issueDate = Date()
+    public var files = ""
     
     public init() {
     }
@@ -302,6 +301,113 @@ public struct KMACitizenProperty {
                     var documentValue = KMAPropertyDocument()
                     documentValue.fillFrom(documentLoaded: documentObject)
                     documents.append(documentValue)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Citizen Upload
+
+public struct KMACitizenUpload {
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var location = CLLocationCoordinate2D()
+    public var uploadDescription = ""
+    public var uploadBody = ""
+    public var processingStatus = ""
+    public var city = ""
+    public var state = ""
+    public var country = ""
+    public var zip = ""
+    public var departmentId = ""
+    public var departmentHandle = ""
+    public var departmentName = ""
+    public var departmentAbout = ""
+    public var departmentLogo = ""
+    public var categoryId = ""
+    public var categoryName = ""
+    public var categoryLogo = ""
+    
+    public init() {
+    }
+    
+    public mutating func fillFromParse(uploadLoaded: PFObject) {
+        if let objectIdValue = uploadLoaded.objectId, let updatedAtValue = uploadLoaded.updatedAt {
+            self.objectId = objectIdValue
+            self.updatedAt = updatedAtValue
+            
+            if let createdAtValue = uploadLoaded.createdAt {
+                self.createdAt = createdAtValue
+            }
+            
+            if let uploadLocationLoaded = uploadLoaded["location"] as? PFGeoPoint {
+                self.location = CLLocationCoordinate2D(latitude: uploadLocationLoaded.latitude, longitude: uploadLocationLoaded.longitude)
+            }
+            
+            if let uploadDescriptionLoaded = uploadLoaded["uploadDescription"] as? String {
+                self.uploadDescription = uploadDescriptionLoaded
+            }
+            
+            if let uploadBodyLoaded = uploadLoaded["uploadBody"] as? String {
+                self.uploadBody = uploadBodyLoaded
+            }
+            
+            if let processingStatusLoaded = uploadLoaded["processingStatus"] as? String {
+                self.processingStatus = processingStatusLoaded
+            }
+            
+            // Update department if available
+            if let departmentLoaded = uploadLoaded["departmentAssigned"] as? PFObject {
+                if let objectIdValue = departmentLoaded.objectId {
+                    self.departmentId = objectIdValue
+                    
+                    if let handleValue = departmentLoaded["departmentHandle"] as? String {
+                        self.departmentHandle = handleValue
+                    }
+                    
+                    if let nameValue = departmentLoaded["departmentName"] as? String {
+                        self.departmentName = nameValue
+                    }
+                    
+                    if let aboutValue = departmentLoaded["departmentDescription"] as? String {
+                        self.departmentAbout = aboutValue
+                    }
+                    
+                    if let profileImageFile = departmentLoaded["departmentProfileImage"] as? PFFileObject, let profileImageURL = profileImageFile.url {
+                        self.departmentLogo = profileImageURL
+                    }
+                }
+            }
+            
+            if let cityValue = uploadLoaded["city"] as? String {
+                self.city = cityValue
+            }
+            
+            if let stateValue = uploadLoaded["state"] as? String {
+                self.state = stateValue
+            }
+            
+            if let countryValue = uploadLoaded["country"] as? String {
+                self.country = countryValue
+            }
+            
+            if let zipValue = uploadLoaded["zip"] as? String {
+                self.zip = zipValue
+            }
+            
+            if let uploadCategoryLoaded = uploadLoaded["category"] as? PFObject {
+                if let objectIdValue = uploadCategoryLoaded.objectId {
+                    self.categoryId = objectIdValue
+
+                    if let nameEValue = uploadCategoryLoaded["nameE"] as? String {
+                        self.categoryName = nameEValue
+                    }
+                    
+                    if let logoFile = uploadCategoryLoaded["logo"] as? PFFileObject, let urlString = logoFile.url {
+                        self.categoryLogo = urlString
+                    }
                 }
             }
         }
