@@ -21,6 +21,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgB-nS-g5B" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="244" height="240"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="240" id="Imc-nY-eJS"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
