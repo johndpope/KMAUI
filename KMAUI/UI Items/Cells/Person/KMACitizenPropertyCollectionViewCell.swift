@@ -8,9 +8,9 @@
 
 import UIKit
 
-class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
+public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
