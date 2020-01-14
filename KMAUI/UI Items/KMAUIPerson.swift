@@ -44,6 +44,34 @@ public class KMAUIPerson {
             }
         }
     }
+    
+    // MARK: - Uploads
+    
+    public func getUploads(personId: String, skip: Int, uploadArrayCurrent: [PFObject], completion: @escaping (_ uploadArray: [PFObject], _ error: String)->()) {
+        var uploadArrayCurrent = uploadArrayCurrent
+        let query = PFQuery(className: "KMAUserUpload")
+        query.whereKey("KMACitizen", equalTo: PFUser(withoutDataWithObjectId: personId))
+        query.order(byDescending: "createdAt")
+        query.skip = skip
+        
+        query.findObjectsInBackground { (uploadArray, error) in
+            if let error = error {
+                print("Error getting user's uploads: `\(error.localizedDescription)`.")
+                completion([PFObject](), error.localizedDescription)
+            } else if let uploadArray = uploadArray {
+                print("New user uploads: \(uploadArray.count)")
+                uploadArrayCurrent.append(contentsOf: uploadArray)
+                
+                if uploadArray.count == 100 {
+                    self.getUploads(personId: personId, skip: skip + 100, uploadArrayCurrent: uploadArrayCurrent) { (uploadArrayValue, error) in
+                        completion(uploadArrayValue, error)
+                    }
+                } else {
+                    completion(uploadArrayCurrent, "")
+                }
+            }
+        }
+    }
 }
 
 
