@@ -411,6 +411,24 @@ public class KMAUIUtilities {
         
         return attributedString
     }
+    
+    // MARK: - Processing status colors
+    
+    func getColor(status: String) -> UIColor {
+        var processingColor = UIColor.systemPurple
+        
+        if status == "Assigned" {
+            processingColor = UIColor.systemOrange
+        } else if status == "In progress" {
+            processingColor = UIColor.systemBlue
+        } else if status == "Resolved" {
+            processingColor = UIColor.systemGreen
+        } else if status == "Rejected" {
+            processingColor = UIColor.systemRed
+        }
+        
+        return processingColor
+    }
 }
 
 // MARK: - Int extension
