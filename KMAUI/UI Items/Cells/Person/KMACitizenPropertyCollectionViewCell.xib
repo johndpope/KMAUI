@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,14 +12,33 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMACitizenPropertyCollectionViewCell" id="gTV-IL-0wX" customClass="KMACitizenPropertyCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="272" height="366"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <rect key="frame" x="0.0" y="0.0" width="272" height="366"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qby-3Y-viV" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="272" height="366"/>
+                        <color key="backgroundColor" name="KMABackColor"/>
+                    </view>
+                </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="qby-3Y-viV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="CTE-XN-8fw"/>
+                <constraint firstAttribute="bottom" secondItem="qby-3Y-viV" secondAttribute="bottom" id="YFS-Za-iks"/>
+                <constraint firstAttribute="trailing" secondItem="qby-3Y-viV" secondAttribute="trailing" id="goY-xS-L97"/>
+                <constraint firstItem="qby-3Y-viV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qXE-wr-aKI"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <size key="customSize" width="272" height="418"/>
+            <point key="canvasLocation" x="-91.304347826086968" y="119.19642857142857"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="KMABackColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
