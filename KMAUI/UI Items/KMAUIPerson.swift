@@ -86,6 +86,8 @@ public class KMAUIPerson {
             }
         }
         
+        print("User uploads: \(uploads.count)")
+        
         return uploads
     }
 }

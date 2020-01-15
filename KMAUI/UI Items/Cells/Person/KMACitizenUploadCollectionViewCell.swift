@@ -38,6 +38,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Rounded corners for department logo
         departmentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         departmentImageView.clipsToBounds = true
+        departmentImageView.tintColor = KMAUIConstants.shared.KMATextColor
         
         // Round corners for the preview image view
         previewImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -49,6 +50,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         uploadDescriptionBgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         uploadDescriptionBgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         uploadDescriptionBgView.clipsToBounds = true
+        
+        // Categor logo tinto color
+        categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor
     }
 
     public func setupCell() {
@@ -56,7 +60,14 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         categoryImageView.kf.indicatorType = .activity
         
         if !upload.categoryLogo.isEmpty, let url = URL(string: upload.categoryLogo) {
-            categoryImageView.kf.setImage(with: url)
+            categoryImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.categoryImageView.image = value.image.withRenderingMode(.alwaysTemplate)
+                case .failure(let error):
+                    print(error) // The error happens
+                }
+            }
         }
         
         // Category name
@@ -94,7 +105,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     }
     
     public func hideDepartment() {
-        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
+        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder.withRenderingMode(.alwaysTemplate)
         departmentHandleLabel.text = "Not assigned yet"
         departmentNameLabel.text = "Ministry will assign a department for your upload"
     }
@@ -104,7 +115,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentImageView.contentMode = .scaleAspectFill
         departmentImageView.kf.indicatorType = .activity
         
-        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
+        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder.withRenderingMode(.alwaysTemplate)
         
         if !upload.departmentLogo.isEmpty, let url = URL(string: upload.departmentLogo) {
             departmentImageView.kf.setImage(with: url)
