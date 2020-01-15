@@ -70,8 +70,6 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Upload description
         uploadDescriptionLabel.text = " " + upload.uploadDescription + " "
-        uploadDescriptionLabel.numberOfLines = 2
-        uploadDescriptionLabel.minimumScaleFactor = 0.7
         
         if upload.departmentHandle.isEmpty {
             hideDepartment()
@@ -96,8 +94,8 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     
     public func hideDepartment() {
         departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
-        departmentHandleLabel.text = "No assigned"
-        departmentNameLabel.text = "Ministry will assign a department"
+        departmentHandleLabel.text = "Not assigned yet"
+        departmentNameLabel.text = "Ministry will assign a department for upload"
     }
     
     public func showDepartment() {
