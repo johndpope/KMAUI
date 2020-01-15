@@ -85,7 +85,6 @@
                                 <rect key="frame" x="8" y="65" width="256" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="emY-4y-yTp"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="p5X-6m-gbf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -105,7 +104,6 @@
                                 <rect key="frame" x="92" y="93.5" width="172" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="dbA-Ph-QVl"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="jDE-x1-oam"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
