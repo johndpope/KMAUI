@@ -96,7 +96,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     public func hideDepartment() {
         departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
         departmentHandleLabel.text = "Not assigned yet"
-        departmentNameLabel.text = "Ministry will assign a department for upload"
+        departmentNameLabel.text = "Ministry will assign a department for your upload"
     }
     
     public func showDepartment() {
