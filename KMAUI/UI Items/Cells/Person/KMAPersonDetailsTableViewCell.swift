@@ -40,9 +40,9 @@ public class KMAPersonDetailsTableViewCell: UITableViewCell {
         
         if type == "Gender" {
             itemValueLabel.text = person.gender
-        } else if type == "Date of birth" {
+        } else if type == "Date of\nbirth" {
             itemValueLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: person.birthday))
-        } else if type == "Home address" {
+        } else if type == "Home\naddress" {
             itemValueLabel.text = person.formattedAddress
         }
     }
