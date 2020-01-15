@@ -74,7 +74,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentImageView.alpha = 0
         departmentNameLabel.alpha = 0
         departmentHandleLabel.alpha = 0
-        line3Top.constant = -49
+        line3Top.constant = -57
     }
     
     public func showDepartment() {
