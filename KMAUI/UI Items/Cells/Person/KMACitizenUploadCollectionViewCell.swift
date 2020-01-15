@@ -58,6 +58,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         processingStatusLabel.text = "  " + upload.processingStatus + "  "
         processingStatusLabel.backgroundColor = KMAUIUtilities.shared.getColor(status: upload.processingStatus)
         
+        // Upload description
+        uploadDescriptionLabel.text = upload.uploadDescription
+        
         if upload.departmentHandle.isEmpty {
             hideDepartment()
         } else {
@@ -75,9 +78,6 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     }
     
     public func showDepartment() {
-        // Upload description
-        uploadDescriptionLabel.text = upload.uploadDescription
-        
         // Department logo
         departmentImageView.kf.indicatorType = .activity
         
@@ -92,7 +92,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentNameLabel.text = upload.departmentName
         
         // Show the UI items
-        line2.alpha = 1
+        line2.alpha = 0.2
         departmentImageView.alpha = 1
         departmentNameLabel.alpha = 1
         departmentHandleLabel.alpha = 1
