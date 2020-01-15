@@ -16,9 +16,12 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var propertyOwnershipFormLabel: KMAUIInfoLabel!
     @IBOutlet public weak var documentImageView: UIImageView!
     @IBOutlet public weak var documentNameBgView: UIView!
-    @IBOutlet public weak var documentNameLabel: UILabel!
-    @IBOutlet public weak var addressLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var documentNameLabel: KMAUITextLabel!
+    @IBOutlet public weak var addressLabel: KMAUITextLabel!
     @IBOutlet public weak var addressLabelTop: NSLayoutConstraint!
+    @IBOutlet public weak var residentsLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var residentNamesLabel: KMAUITextLabel!
+    @IBOutlet public weak var residentNamesTopLabel: NSLayoutConstraint!
     
     // MARK: - Variables
     public var property = KMACitizenProperty()
@@ -79,6 +82,29 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
             addressLabelTop.constant = 8
         }
         
+        // Residents
+        var residentsText = ""
+        
+        for resident in property.residents {
+            if let name = resident["name"] as? String, !name.isEmpty {
+                if residentsText.isEmpty {
+                    residentsText = name
+                } else {
+                    residentsText += ", " + name
+                }
+            }
+        }
+        
+        residentNamesLabel.text = residentsText
+        
+        if residentsText.isEmpty {
+            residentsLabel.text = ""
+            residentNamesTopLabel.constant = 0
+        } else {
+            residentsLabel.text = "Residents"
+            residentNamesTopLabel.constant = 8
+        }
+        
         // Document
         for document in property.documents {
             if !document.name.isEmpty {
@@ -100,7 +126,6 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
                 
                 break
             }
-            
         }
     }
     
