@@ -21,7 +21,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var departmentNameLabel: KMAUITextLabel!
     @IBOutlet public weak var line1: UIView!
     @IBOutlet public weak var line2: UIView!
-    @IBOutlet public weak var scrollViewParent: UIView!
+    @IBOutlet public weak var previewImageView: UIImageView!
     
     // MARK: - Variables
     public var upload = KMACitizenUpload()
@@ -37,6 +37,14 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Rounded corners for department logo
         departmentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         departmentImageView.clipsToBounds = true
+        
+        // Round corners for the preview image view
+        previewImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        previewImageView.clipsToBounds = true
+        
+        // Background for the upload description
+        uploadDescriptionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        uploadDescriptionLabel.textColor = UIColor.white
     }
 
     public func setupCell() {
@@ -65,21 +73,33 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         } else {
             showDepartment()
         }
+        
+        // Setup the preview image
+        let uploadItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: upload.uploadBody)
+        previewImageView.kf.indicatorType = .activity
+        previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        
+        for uploadItem in uploadItems {
+            if !uploadItem.previewURL.isEmpty, let url = URL(string: uploadItem.previewURL) {
+                previewImageView.kf.setImage(with: url)
+                
+                break
+            }
+        }
     }
     
     public func hideDepartment() {
-        departmentHandleLabel.text = "Handle"
-        departmentNameLabel.text = "Name"
-        // Hide the UI itmes
-        departmentImageView.alpha = 0
-        departmentNameLabel.alpha = 0
-        departmentHandleLabel.alpha = 0
+        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
+        departmentHandleLabel.text = "No assigned"
+        departmentNameLabel.text = "Ministry will assign a department"
     }
     
     public func showDepartment() {
         // Department logo
         departmentImageView.contentMode = .scaleAspectFill
         departmentImageView.kf.indicatorType = .activity
+        
+        departmentImageView.image = KMAUIConstants.shared.departmentPlaceholder
         
         if !upload.departmentLogo.isEmpty, let url = URL(string: upload.departmentLogo) {
             departmentImageView.kf.setImage(with: url)
@@ -93,10 +113,5 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Minimum fornt size for the department name
         departmentNameLabel.numberOfLines = 2
         departmentNameLabel.minimumScaleFactor = 0.5
-        
-        // Show the UI items
-        departmentImageView.alpha = 1
-        departmentNameLabel.alpha = 1
-        departmentHandleLabel.alpha = 1
     }
 }
