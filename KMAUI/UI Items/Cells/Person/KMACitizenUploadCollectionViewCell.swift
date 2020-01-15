@@ -41,7 +41,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Minimum fornt size for the department name
         departmentNameLabel.numberOfLines = 2
-        departmentNameLabel.minimumScaleFactor = 0.5
+        departmentNameLabel.minimumScaleFactor = 0.25
     }
 
     public func setupCell() {
