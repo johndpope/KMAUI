@@ -20,7 +20,54 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qby-3Y-viV" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="272" height="366"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o0H-hb-3Lt">
+                                <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="tou-PA-Aji"/>
+                                    <constraint firstAttribute="height" constant="40" id="ybO-rJ-SL0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZN-QH-MK8" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="56" y="8" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1a8-9J-xUZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUK-Z5-syw" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="56" y="28" width="208" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="tBN-uh-ceA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMk-Od-G8p" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="222" y="8" width="42" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="k1E-tW-aTE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
+                        <constraints>
+                            <constraint firstItem="GUK-Z5-syw" firstAttribute="top" secondItem="mZN-QH-MK8" secondAttribute="bottom" id="LpK-uz-3F9"/>
+                            <constraint firstItem="mZN-QH-MK8" firstAttribute="top" secondItem="qby-3Y-viV" secondAttribute="top" constant="8" id="PL3-pc-fo5"/>
+                            <constraint firstItem="SMk-Od-G8p" firstAttribute="top" secondItem="qby-3Y-viV" secondAttribute="top" constant="8" id="Qc6-k5-cRY"/>
+                            <constraint firstItem="o0H-hb-3Lt" firstAttribute="leading" secondItem="qby-3Y-viV" secondAttribute="leading" constant="8" id="SzD-Wv-b0e"/>
+                            <constraint firstItem="GUK-Z5-syw" firstAttribute="leading" secondItem="o0H-hb-3Lt" secondAttribute="trailing" constant="8" id="T2y-Rr-dGY"/>
+                            <constraint firstItem="o0H-hb-3Lt" firstAttribute="top" secondItem="qby-3Y-viV" secondAttribute="top" constant="8" id="YkP-hm-nDo"/>
+                            <constraint firstAttribute="trailing" secondItem="SMk-Od-G8p" secondAttribute="trailing" constant="8" id="aeQ-aL-1bf"/>
+                            <constraint firstItem="mZN-QH-MK8" firstAttribute="leading" secondItem="o0H-hb-3Lt" secondAttribute="trailing" constant="8" id="gcX-eE-zpW"/>
+                            <constraint firstAttribute="trailing" secondItem="GUK-Z5-syw" secondAttribute="trailing" constant="8" id="pne-my-DxH"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
@@ -33,6 +80,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="272" height="418"/>
+            <connections>
+                <outlet property="propertyCreatedAtLabel" destination="GUK-Z5-syw" id="YXR-SL-pX8"/>
+                <outlet property="propertyOwnershipFormLabel" destination="SMk-Od-G8p" id="mLf-or-Fr2"/>
+                <outlet property="propertyTypeImageView" destination="o0H-hb-3Lt" id="kpR-mm-qkI"/>
+                <outlet property="propertyTypeLabel" destination="mZN-QH-MK8" id="fvo-1x-Ixi"/>
+            </connections>
             <point key="canvasLocation" x="-91.304347826086968" y="119.19642857142857"/>
         </collectionViewCell>
     </objects>
