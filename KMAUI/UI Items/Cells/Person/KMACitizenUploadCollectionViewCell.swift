@@ -21,8 +21,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var departmentNameLabel: KMAUITextLabel!
     @IBOutlet public weak var line1: UIView!
     @IBOutlet public weak var line2: UIView!
-    @IBOutlet public weak var line3: UIView!
-    @IBOutlet public weak var line3Top: NSLayoutConstraint!
+    @IBOutlet public weak var scrollViewParent: UIView!
     
     // MARK: - Variables
     public var upload = KMACitizenUpload()
@@ -72,11 +71,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentHandleLabel.text = "Handle"
         departmentNameLabel.text = "Name"
         // Hide the UI itmes
-        line2.alpha = 0
         departmentImageView.alpha = 0
         departmentNameLabel.alpha = 0
         departmentHandleLabel.alpha = 0
-        line3Top.constant = -57
     }
     
     public func showDepartment() {
@@ -98,10 +95,8 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentNameLabel.minimumScaleFactor = 0.5
         
         // Show the UI items
-        line2.alpha = 0.2
         departmentImageView.alpha = 1
         departmentNameLabel.alpha = 1
         departmentHandleLabel.alpha = 1
-        line3Top.constant = 8
     }
 }
