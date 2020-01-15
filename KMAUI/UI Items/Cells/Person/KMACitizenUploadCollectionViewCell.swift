@@ -43,6 +43,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Round corners for the preview image view
         previewImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         previewImageView.clipsToBounds = true
+        previewImageView.kf.indicatorType = .activity
+        previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        previewImageView.contentMode = .scaleAspectFill
         
         // Background for the upload description
         uploadDescriptionBgView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
@@ -91,9 +94,6 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Setup the preview image
         let uploadItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: upload.uploadBody)
-        previewImageView.kf.indicatorType = .activity
-        previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
-        previewImageView.contentMode = .scaleAspectFill
         
         for uploadItem in uploadItems {
             if !uploadItem.previewURL.isEmpty, let url = URL(string: uploadItem.previewURL) {

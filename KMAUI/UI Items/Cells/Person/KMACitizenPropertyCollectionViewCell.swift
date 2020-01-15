@@ -14,6 +14,8 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var propertyTypeLabel: KMAUITextLabel!
     @IBOutlet public weak var propertyCreatedAtLabel: KMAUIInfoLabel!
     @IBOutlet public weak var propertyOwnershipFormLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var documentImageView: UIImageView!
+    @IBOutlet public weak var documentNameLabel: UILabel!
     
     // MARK: - Variables
     public var property = KMACitizenProperty()
@@ -28,6 +30,13 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         propertyOwnershipFormLabel.textColor = UIColor.white
         propertyOwnershipFormLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         propertyOwnershipFormLabel.clipsToBounds = true
+        
+        // Document image view
+        documentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        documentImageView.clipsToBounds = true
+        documentImageView.kf.indicatorType = .activity
+        documentImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        documentImageView.contentMode = .scaleAspectFill
     }
     
     public func setupCell() {
@@ -50,6 +59,30 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         
         // Created at
         propertyCreatedAtLabel.text = KMAUIUtilities.shared.formatStringShort(date: property.createdAt)
+        
+        // Document
+        for document in property.documents {
+            if !document.name.isEmpty {
+                documentNameLabel.text = document.name
+                
+                let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
+                
+                for file in files {
+                    if !file.previewURL.isEmpty {
+                        break
+                    }
+                    
+                    if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+                        documentImageView.kf.setImage(with: url)
+                        
+                        break
+                    }
+                }
+                
+                break
+            }
+            
+        }
     }
     
 }
