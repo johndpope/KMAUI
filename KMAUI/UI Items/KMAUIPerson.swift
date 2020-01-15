@@ -78,7 +78,7 @@ public class KMAUIPerson {
         var uploads = [KMACitizenUpload]()
         
         for uploadLoaded in uploadArrayCurrent {
-            if _ = uploadLoaded["category"] as? PFObject {
+            if let _ = uploadLoaded["category"] as? PFObject {
                 // The property item
                 var uploadItem = KMACitizenUpload()
                 uploadItem.fillFromParse(uploadLoaded: uploadLoaded)
