@@ -19,6 +19,10 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var departmentImageView: UIImageView!
     @IBOutlet public weak var departmentHandleLabel: KMAUITitleLabel!
     @IBOutlet public weak var departmentNameLabel: KMAUITextLabel!
+    @IBOutlet public weak var line1: UIView!
+    @IBOutlet public weak var line2: UIView!
+    @IBOutlet public weak var line3: UIView!
+    @IBOutlet public weak var line3Top: NSLayoutConstraint!
     
     // MARK: - Variables
     public var upload = KMACitizenUpload()
@@ -30,6 +34,10 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         processingStatusLabel.textColor = UIColor.white
         processingStatusLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         processingStatusLabel.clipsToBounds = true
+        
+        // Rounded corners for department logo
+        departmentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        departmentImageView.clipsToBounds = true
     }
 
     public func setupCell() {
@@ -50,6 +58,23 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         processingStatusLabel.text = "  " + upload.processingStatus + "  "
         processingStatusLabel.backgroundColor = KMAUIUtilities.shared.getColor(status: upload.processingStatus)
         
+        if upload.departmentHandle.isEmpty {
+            hideDepartment()
+        } else {
+            showDepartment()
+        }
+    }
+    
+    public func hideDepartment() {
+        // Hide the UI itmes
+        line2.alpha = 0
+        departmentImageView.alpha = 0
+        departmentNameLabel.alpha = 0
+        departmentHandleLabel.alpha = 0
+        line3Top.constant = -49
+    }
+    
+    public func showDepartment() {
         // Upload description
         uploadDescriptionLabel.text = upload.uploadDescription
         
@@ -65,5 +90,12 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Department name
         departmentNameLabel.text = upload.departmentName
+        
+        // Show the UI items
+        line2.alpha = 1
+        departmentImageView.alpha = 1
+        departmentNameLabel.alpha = 1
+        departmentHandleLabel.alpha = 1
+        line3Top.constant = 8
     }
 }

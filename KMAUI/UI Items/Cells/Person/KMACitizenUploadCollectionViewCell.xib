@@ -69,6 +69,13 @@
                                     <constraint firstAttribute="height" constant="1" id="776-sb-Yvd"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0D-Ac-dMf">
+                                <rect key="frame" x="0.0" y="150.5" width="244" height="1"/>
+                                <color key="backgroundColor" name="KMALineGray"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="x95-0S-NAx"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YhN-7w-Ulf" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="8" y="65" width="228" height="20.5"/>
                                 <constraints>
@@ -109,6 +116,7 @@
                             <constraint firstItem="nb0-fU-ruc" firstAttribute="leading" secondItem="JgB-nS-g5B" secondAttribute="leading" id="0y1-pX-UlX"/>
                             <constraint firstAttribute="trailing" secondItem="Mkc-ZB-wU0" secondAttribute="trailing" constant="8" id="4Ho-iA-CeQ"/>
                             <constraint firstItem="Mkc-ZB-wU0" firstAttribute="top" secondItem="3Dt-zD-s0c" secondAttribute="bottom" id="6Gp-fl-XMl"/>
+                            <constraint firstItem="x0D-Ac-dMf" firstAttribute="top" secondItem="gMy-JH-a7W" secondAttribute="bottom" constant="8" id="6NF-eb-AtZ"/>
                             <constraint firstItem="YhN-7w-Ulf" firstAttribute="top" secondItem="VFu-Kq-HG0" secondAttribute="bottom" constant="8" id="70H-zH-bB3"/>
                             <constraint firstAttribute="height" constant="240" id="Imc-nY-eJS"/>
                             <constraint firstAttribute="trailing" secondItem="nb0-fU-ruc" secondAttribute="trailing" id="JIF-Wq-QT2"/>
@@ -116,6 +124,7 @@
                             <constraint firstItem="46T-Nb-gyL" firstAttribute="leading" secondItem="JgB-nS-g5B" secondAttribute="leading" constant="8" id="PyB-DG-oyC"/>
                             <constraint firstItem="s8P-AA-cxK" firstAttribute="leading" secondItem="46T-Nb-gyL" secondAttribute="trailing" constant="8" id="SA1-9E-ahd"/>
                             <constraint firstItem="o1f-7A-dfE" firstAttribute="top" secondItem="JgB-nS-g5B" secondAttribute="top" constant="8" id="TOc-sI-Ymw"/>
+                            <constraint firstItem="x0D-Ac-dMf" firstAttribute="leading" secondItem="JgB-nS-g5B" secondAttribute="leading" id="V05-fi-dhQ"/>
                             <constraint firstItem="3Dt-zD-s0c" firstAttribute="leading" secondItem="gMy-JH-a7W" secondAttribute="trailing" constant="8" id="VdP-ZA-LRl"/>
                             <constraint firstItem="3Dt-zD-s0c" firstAttribute="top" secondItem="nb0-fU-ruc" secondAttribute="bottom" constant="8" id="Vgc-Zk-HcH"/>
                             <constraint firstAttribute="trailing" secondItem="3Dt-zD-s0c" secondAttribute="trailing" constant="8" id="csX-xW-JBu"/>
@@ -133,6 +142,7 @@
                             <constraint firstItem="VFu-Kq-HG0" firstAttribute="leading" secondItem="JgB-nS-g5B" secondAttribute="leading" id="ugs-hU-O23"/>
                             <constraint firstItem="46T-Nb-gyL" firstAttribute="top" secondItem="JgB-nS-g5B" secondAttribute="top" constant="8" id="wWe-0c-Zbm"/>
                             <constraint firstAttribute="trailing" secondItem="s8P-AA-cxK" secondAttribute="trailing" constant="8" id="xBa-dT-EuL"/>
+                            <constraint firstAttribute="trailing" secondItem="x0D-Ac-dMf" secondAttribute="trailing" id="ypC-x6-86n"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -153,6 +163,10 @@
                 <outlet property="departmentHandleLabel" destination="3Dt-zD-s0c" id="xga-an-kVt"/>
                 <outlet property="departmentImageView" destination="gMy-JH-a7W" id="Xhk-pD-UBx"/>
                 <outlet property="departmentNameLabel" destination="Mkc-ZB-wU0" id="UZL-G9-QrH"/>
+                <outlet property="line1" destination="VFu-Kq-HG0" id="1s6-T3-AQh"/>
+                <outlet property="line2" destination="nb0-fU-ruc" id="Xju-Mo-DJA"/>
+                <outlet property="line3" destination="x0D-Ac-dMf" id="o6A-ZL-hlv"/>
+                <outlet property="line3Top" destination="6NF-eb-AtZ" id="8GH-sm-2lV"/>
                 <outlet property="processingStatusLabel" destination="o1f-7A-dfE" id="VMl-PE-chl"/>
                 <outlet property="uploadDescriptionLabel" destination="YhN-7w-Ulf" id="ned-OP-DXy"/>
             </connections>
