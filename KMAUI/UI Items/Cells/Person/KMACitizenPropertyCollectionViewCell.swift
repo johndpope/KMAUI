@@ -40,7 +40,7 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         // Document image view
         documentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         documentImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthRegular
-        documentImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2)
+        documentImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
         documentImageView.clipsToBounds = true
         documentImageView.kf.indicatorType = .activity
         documentImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
