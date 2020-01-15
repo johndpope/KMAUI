@@ -42,6 +42,8 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Round corners for the preview image view
         previewImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        previewImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthRegular
+        previewImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2)
         previewImageView.clipsToBounds = true
         previewImageView.kf.indicatorType = .activity
         previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
