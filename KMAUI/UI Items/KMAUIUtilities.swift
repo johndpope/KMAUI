@@ -429,6 +429,60 @@ public class KMAUIUtilities {
         
         return processingColor
     }
+    
+    // MARK: - Upload Body data
+    
+    /**
+     Get items from uploadBody JSON
+    */
+    
+    public func getItemsFrom(uploadBody: String) -> [KMADocumentData] {
+        var items = [KMADocumentData]()
+        
+        if !uploadBody.isEmpty {
+            let uploadBodyDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: uploadBody)
+            
+            if let filesArray = uploadBodyDictionary["files"] as? [AnyObject] {
+                for fileObject in filesArray {
+                    if let fileObject = fileObject as? [String: String] {
+                        var fileValue = KMADocumentData()
+                        fileValue.fillFrom(dictionary: fileObject)
+                        items.append(fileValue)
+                    }
+                }
+            }
+        }
+        
+        return items
+    }
+    
+    // MARK: - JSON <-> Dictionary convert methods
+    
+    /**
+     Converting the JSON String into the Dictionary object.
+     */
+    
+    public func jsonToDictionary(jsonText: String) -> [String: AnyObject]  {
+        if let data = jsonText.data(using: .utf8) {
+            do {
+                let jsonDict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject]
+                return jsonDict!
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+        return [String: AnyObject]()
+    }
+    
+    /**
+     Converting the Dictionary object into the JSON String.
+     */
+    
+    public func dictionaryToJSONData(dict: [String: Any]) -> Data {
+        let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+        return jsonData!
+    }
 }
 
 // MARK: - Int extension
@@ -519,5 +573,41 @@ public extension CLLocationCoordinate2D {
 public extension Array where Element: Comparable {
     func containsSameElements(as other: [Element]) -> Bool {
         return self.count == other.count && self.sorted() == other.sorted()
+    }
+}
+
+// MARK: - Structures
+
+// MARK: - Document struct
+
+public struct KMADocumentData {
+    // Create data
+    public var type = ""
+    public var name = ""
+    public var url: URL?
+    public var image = UIImage()
+    // Get from Parse data
+    public var previewURL = ""
+    public var fileURL = ""
+    
+    public init() {
+    }
+    
+    public mutating func fillFrom(dictionary: [String: String]) {
+        if let nameValue = dictionary["name"] {
+            self.name = nameValue
+        }
+        
+        if let typeValue = dictionary["type"] {
+            self.type = typeValue
+        }
+        
+        if let previewURLValue = dictionary["previewURL"] {
+            self.previewURL = previewURLValue
+        }
+        
+        if let fileURLValue = dictionary["fileURL"] {
+            self.fileURL = fileURLValue
+        }
     }
 }
