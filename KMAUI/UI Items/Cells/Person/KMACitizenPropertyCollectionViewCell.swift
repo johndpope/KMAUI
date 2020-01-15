@@ -63,9 +63,12 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         // Document
         for document in property.documents {
             if !document.name.isEmpty {
+                print("\nDocument: \(document)")
+                
                 documentNameLabel.text = document.name
                 
                 let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
+                print("Files: \(files)")
                 
                 for file in files {
                     if !file.previewURL.isEmpty {
