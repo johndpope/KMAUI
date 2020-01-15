@@ -73,6 +73,7 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
                     }
                     
                     if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+                        print("URL: \(file.previewURL)")
                         documentImageView.kf.setImage(with: url)
                         
                         break
