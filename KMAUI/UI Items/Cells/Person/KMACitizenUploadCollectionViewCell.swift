@@ -69,6 +69,8 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     }
     
     public func hideDepartment() {
+        departmentHandleLabel.text = "Handle"
+        departmentNameLabel.text = "Name"
         // Hide the UI itmes
         line2.alpha = 0
         departmentImageView.alpha = 0
