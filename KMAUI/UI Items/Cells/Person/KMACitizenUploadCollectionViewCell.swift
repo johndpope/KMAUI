@@ -45,6 +45,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Background for the upload description
         uploadDescriptionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         uploadDescriptionLabel.textColor = UIColor.white
+        uploadDescriptionLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        uploadDescriptionLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        uploadDescriptionLabel.clipsToBounds = true
     }
 
     public func setupCell() {
@@ -66,7 +69,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         processingStatusLabel.backgroundColor = KMAUIUtilities.shared.getColor(status: upload.processingStatus)
         
         // Upload description
-        uploadDescriptionLabel.text = upload.uploadDescription
+        uploadDescriptionLabel.text = " " + upload.uploadDescription + " "
+        uploadDescriptionLabel.numberOfLines = 2
+        uploadDescriptionLabel.minimumScaleFactor = 0.7
         
         if upload.departmentHandle.isEmpty {
             hideDepartment()
@@ -78,6 +83,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         let uploadItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: upload.uploadBody)
         previewImageView.kf.indicatorType = .activity
         previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        previewImageView.contentMode = .scaleAspectFill
         
         for uploadItem in uploadItems {
             if !uploadItem.previewURL.isEmpty, let url = URL(string: uploadItem.previewURL) {
@@ -112,6 +118,6 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         departmentNameLabel.text = upload.departmentName
         // Minimum fornt size for the department name
         departmentNameLabel.numberOfLines = 2
-        departmentNameLabel.minimumScaleFactor = 0.5
+        departmentNameLabel.minimumScaleFactor = 0.7
     }
 }
