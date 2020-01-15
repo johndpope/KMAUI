@@ -78,7 +78,7 @@ public class KMAUIDashboardAnalysisTableViewCell: UITableViewCell {
         collectionViewLeft.constant = 0
         collectionViewRight.constant = 0
         //
-        collectionViewHeight.constant = 240
+        collectionViewHeight.constant = 366
     }
     
     public func setupProperty() {
