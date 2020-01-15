@@ -15,6 +15,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var categoryLabel: KMAUITextLabel!
     @IBOutlet public weak var createdAtLabel: KMAUIInfoLabel!
     @IBOutlet public weak var processingStatusLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var uploadDescriptionBgView: UIView!
     @IBOutlet public weak var uploadDescriptionLabel: KMAUITextLabel!
     @IBOutlet public weak var departmentImageView: UIImageView!
     @IBOutlet public weak var departmentHandleLabel: KMAUITitleLabel!
@@ -43,11 +44,11 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         previewImageView.clipsToBounds = true
         
         // Background for the upload description
-        uploadDescriptionLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        uploadDescriptionBgView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         uploadDescriptionLabel.textColor = UIColor.white
-        uploadDescriptionLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        uploadDescriptionLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        uploadDescriptionLabel.clipsToBounds = true
+        uploadDescriptionBgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        uploadDescriptionBgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        uploadDescriptionBgView.clipsToBounds = true
     }
 
     public func setupCell() {
@@ -69,7 +70,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         processingStatusLabel.backgroundColor = KMAUIUtilities.shared.getColor(status: upload.processingStatus)
         
         // Upload description
-        uploadDescriptionLabel.text = " " + upload.uploadDescription + " "
+        uploadDescriptionLabel.text = upload.uploadDescription
         
         if upload.departmentHandle.isEmpty {
             hideDepartment()
