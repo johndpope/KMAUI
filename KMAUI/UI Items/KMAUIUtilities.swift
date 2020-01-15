@@ -414,7 +414,7 @@ public class KMAUIUtilities {
     
     // MARK: - Processing status colors
     
-    func getColor(status: String) -> UIColor {
+    public func getColor(status: String) -> UIColor {
         var processingColor = UIColor.systemPurple
         
         if status == "Assigned" {

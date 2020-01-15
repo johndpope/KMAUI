@@ -38,10 +38,6 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Rounded corners for department logo
         departmentImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         departmentImageView.clipsToBounds = true
-        
-        // Minimum fornt size for the department name
-        departmentNameLabel.numberOfLines = 2
-        departmentNameLabel.minimumScaleFactor = 0.25
     }
 
     public func setupCell() {
@@ -95,6 +91,9 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         
         // Department name
         departmentNameLabel.text = upload.departmentName
+        // Minimum fornt size for the department name
+        departmentNameLabel.numberOfLines = 2
+        departmentNameLabel.minimumScaleFactor = 0.5
         
         // Show the UI items
         line2.alpha = 0.2
