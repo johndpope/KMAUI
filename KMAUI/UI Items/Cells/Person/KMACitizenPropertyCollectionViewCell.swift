@@ -15,7 +15,10 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var propertyCreatedAtLabel: KMAUIInfoLabel!
     @IBOutlet public weak var propertyOwnershipFormLabel: KMAUIInfoLabel!
     @IBOutlet public weak var documentImageView: UIImageView!
+    @IBOutlet public weak var documentNameBgView: UIView!
     @IBOutlet public weak var documentNameLabel: UILabel!
+    @IBOutlet public weak var addressLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var addressLabelTop: NSLayoutConstraint!
     
     // MARK: - Variables
     public var property = KMACitizenProperty()
@@ -37,6 +40,13 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         documentImageView.kf.indicatorType = .activity
         documentImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
         documentImageView.contentMode = .scaleAspectFill
+        
+        // Background for the document name
+        documentNameBgView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        documentNameLabel.textColor = UIColor.white
+        documentNameBgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        documentNameBgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        documentNameBgView.clipsToBounds = true
     }
     
     public func setupCell() {
@@ -59,6 +69,15 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         
         // Created at
         propertyCreatedAtLabel.text = KMAUIUtilities.shared.formatStringShort(date: property.createdAt)
+        
+        // Formatted address
+        addressLabel.text = property.formattedAddress
+        
+        if property.formattedAddress.isEmpty {
+            addressLabelTop.constant = 0
+        } else {
+            addressLabelTop.constant = 8
+        }
         
         // Document
         for document in property.documents {
