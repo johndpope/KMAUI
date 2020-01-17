@@ -166,6 +166,7 @@ Test</string>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="244" height="240"/>
             <connections>
+                <outlet property="bgView" destination="JgB-nS-g5B" id="xGQ-GV-ZDS"/>
                 <outlet property="categoryImageView" destination="46T-Nb-gyL" id="lMf-hE-iIR"/>
                 <outlet property="categoryLabel" destination="iXF-Lw-Rcz" id="OhS-dP-maW"/>
                 <outlet property="createdAtLabel" destination="s8P-AA-cxK" id="dj7-pn-pRy"/>

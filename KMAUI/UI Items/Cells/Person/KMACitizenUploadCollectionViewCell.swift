@@ -11,6 +11,7 @@ import Kingfisher
 
 public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var categoryImageView: UIImageView!
     @IBOutlet public weak var categoryLabel: KMAUITextLabel!
     @IBOutlet public weak var createdAtLabel: KMAUIInfoLabel!
@@ -62,7 +63,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
     
     public func setHighlight(mode: Bool) {
         if mode {
-            backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             categoryLabel.textColor = UIColor.white
             createdAtLabel.textColor = UIColor.white
             categoryImageView.tintColor = UIColor.white
@@ -70,7 +71,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
             departmentHandleLabel.textColor = UIColor.white
             departmentNameLabel.textColor = UIColor.white
         } else {
-            backgroundColor = KMAUIConstants.shared.KMABgGray
+            bgView.backgroundColor = KMAUIConstants.shared.KMABgGray
             categoryLabel.textColor = KMAUIConstants.shared.KMATextColor
             createdAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor
