@@ -79,11 +79,8 @@ public class KMAPersonTableViewCell: UITableViewCell {
             if status == "no results" {
                 usernameLabel.text = "No matching people"
                 fullNameLabel.text = ""
-            } else if status == "loading" {
-                usernameLabel.text = "Loading people..."
-                fullNameLabel.text = ""
             } else if status.starts(with: "loading") {
-                usernameLabel.text = "Loading person..."
+                usernameLabel.text = "Loading people..."
 
                 if status.contains("profile") {
                     usernameLabel.text = "Loading profile..."
