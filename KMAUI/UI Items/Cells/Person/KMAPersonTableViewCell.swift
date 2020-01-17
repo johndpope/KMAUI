@@ -82,6 +82,14 @@ public class KMAPersonTableViewCell: UITableViewCell {
             } else if status == "loading" {
                 usernameLabel.text = "Loading people..."
                 fullNameLabel.text = ""
+            } else if status.starts(with: "loading") {
+                usernameLabel.text = "Loading person..."
+
+                if status.contains("profile") {
+                    usernameLabel.text = "Loading profile..."
+                }
+                
+                fullNameLabel.text = ""
             } else {
                 usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
                 fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
@@ -120,8 +128,13 @@ public class KMAPersonTableViewCell: UITableViewCell {
             activityView.alpha = 0
             profileImageView.alpha = 1
             activityView.alpha = 0
-        } else if status == "loading" {
+        } else if status.starts(with: "loading") {
             usernameLabel.text = "Loading people..."
+            
+            if status.contains("profile") {
+                usernameLabel.text = "Loading profile..."
+            }
+            
             fullNameLabel.text = ""
             activityView.startAnimating()
             activityView.alpha = 1
