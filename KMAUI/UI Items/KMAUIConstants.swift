@@ -88,7 +88,9 @@ public class KMAUIConstants {
     // W33Y0YKBGEWUTSZW3X0EIB2E5T3GMZWSJ03ODCUB2IZT0GMI
     
     // MARK: - Zoopla
-    public let zooplaApiKey = "z2jerfddwxkye3w653muzfjy"
+    public let zooplaApiKey = "vb8sbaprpy7a85dygjdpjznf"
+    
+//    "z2jerfddwxkye3w653muzfjy"
 }
 
 // MARK: - Structures
