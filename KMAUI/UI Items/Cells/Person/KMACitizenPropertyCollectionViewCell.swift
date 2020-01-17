@@ -26,13 +26,13 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Variables
     public var property = KMACitizenProperty()
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Property type tint color
         propertyTypeImageView.tintColor = KMAUIConstants.shared.KMATextColor
-    
+        
         // Ownership form label
         propertyOwnershipFormLabel.textColor = UIColor.white
         propertyOwnershipFormLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -131,16 +131,12 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         // Document
         for document in property.documents {
             if !document.name.isEmpty {
-                print("\nDocument: \(document)")
-                
                 documentNameLabel.text = document.name
                 
                 let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
-                print("Files: \(files)")
                 
                 for file in files {
                     if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
-                        print("URL: \(file.previewURL)")
                         documentImageView.kf.setImage(with: url)
                         
                         break
