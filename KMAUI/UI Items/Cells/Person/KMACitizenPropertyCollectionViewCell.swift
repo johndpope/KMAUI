@@ -10,6 +10,7 @@ import UIKit
 
 public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var propertyTypeImageView: UIImageView!
     @IBOutlet public weak var propertyTypeLabel: KMAUITextLabel!
     @IBOutlet public weak var propertyCreatedAtLabel: KMAUIInfoLabel!
@@ -52,6 +53,26 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         documentNameBgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         documentNameBgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         documentNameBgView.clipsToBounds = true
+    }
+    
+    public func setHighlight(mode: Bool) {
+        if mode {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            propertyTypeImageView.tintColor = UIColor.white
+            propertyTypeLabel.textColor = UIColor.white
+            propertyCreatedAtLabel.textColor = UIColor.white
+            addressLabel.textColor = UIColor.white
+            residentsLabel.textColor = UIColor.white
+            residentNamesLabel.textColor = UIColor.white
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+            propertyTypeImageView.tintColor = KMAUIConstants.shared.KMATextColor
+            propertyTypeLabel.textColor = KMAUIConstants.shared.KMATextColor
+            propertyCreatedAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            addressLabel.textColor = KMAUIConstants.shared.KMATextColor
+            residentsLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            residentNamesLabel.textColor = KMAUIConstants.shared.KMATextColor
+        }
     }
     
     public func setupCell() {

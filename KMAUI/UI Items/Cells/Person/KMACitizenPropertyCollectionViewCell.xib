@@ -158,6 +158,7 @@
             <connections>
                 <outlet property="addressLabel" destination="soT-od-ea1" id="mmW-aa-Epu"/>
                 <outlet property="addressLabelTop" destination="wHw-yu-Ynp" id="xUh-D2-a0m"/>
+                <outlet property="bgView" destination="qby-3Y-viV" id="IBx-7u-Ees"/>
                 <outlet property="documentImageView" destination="6Es-lr-tyP" id="LBX-p0-frW"/>
                 <outlet property="documentNameBgView" destination="nNR-FI-51l" id="aoU-aU-SIR"/>
                 <outlet property="documentNameLabel" destination="TlK-CJ-9h3" id="1sR-Fj-onr"/>
