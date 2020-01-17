@@ -59,6 +59,26 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         // Categor logo tinto color
         categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor
     }
+    
+    public func setHighlight(mode: Bool) {
+        if mode {
+            backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            categoryLabel.textColor = UIColor.white
+            createdAtLabel.textColor = UIColor.white
+            categoryImageView.tintColor = UIColor.white
+            departmentImageView.tintColor = UIColor.white
+            departmentHandleLabel.textColor = UIColor.white
+            departmentNameLabel.textColor = UIColor.white
+        } else {
+            backgroundColor = KMAUIConstants.shared.KMABgGray
+            categoryLabel.textColor = KMAUIConstants.shared.KMATextColor
+            createdAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
+            categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor
+            departmentImageView.tintColor = KMAUIConstants.shared.KMATextColor
+            departmentHandleLabel.textColor = KMAUIConstants.shared.KMATitleColor
+            departmentNameLabel.textColor = KMAUIConstants.shared.KMATextColor
+        }
+    }
 
     public func setupCell() {
         // Category image
