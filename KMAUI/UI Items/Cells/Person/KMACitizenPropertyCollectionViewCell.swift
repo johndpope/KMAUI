@@ -65,7 +65,7 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
             residentsLabel.textColor = UIColor.white
             residentNamesLabel.textColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
             propertyTypeImageView.tintColor = KMAUIConstants.shared.KMATextColor
             propertyTypeLabel.textColor = KMAUIConstants.shared.KMATextColor
             propertyCreatedAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor

@@ -71,7 +71,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
             departmentHandleLabel.textColor = UIColor.white
             departmentNameLabel.textColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
             categoryLabel.textColor = KMAUIConstants.shared.KMATextColor
             createdAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor
