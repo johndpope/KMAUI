@@ -46,7 +46,7 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                        <real key="value" value="0.75"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -125,7 +125,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                        <real key="value" value="0.89000000000000001"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -175,7 +175,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                        <real key="value" value="0.65000000000000002"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
@@ -225,7 +225,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="progress">
-                                                        <real key="value" value="0.34999999999999998"/>
+                                                        <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
