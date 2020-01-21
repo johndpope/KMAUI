@@ -8,7 +8,7 @@ s.summary = "KMAUI allows you using the same design items across all of the KMA 
 s.requires_arc = true
 
 # 2
-s.version = "0.7.12.66"
+s.version = "0.7.12.68"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
