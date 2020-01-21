@@ -80,7 +80,7 @@
                                     <constraint firstAttribute="height" constant="1" id="tEF-RP-pGI"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
                                 <rect key="frame" x="16" y="96" width="278" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1H0-Kx-Uut">
