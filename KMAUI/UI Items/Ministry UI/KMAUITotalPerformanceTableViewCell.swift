@@ -54,7 +54,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(regionPerformance.performance[2])%", search: "\(regionPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize)
         
         // Progress views
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 1.0) {
             self.totalProgressView.progress = Double(self.regionPerformance.totalPerformance) / 100
             self.communityProgressView.progress = Double(self.regionPerformance.performance[0]) / 100
             self.serviceProgressView.progress = Double(self.regionPerformance.performance[1]) / 100

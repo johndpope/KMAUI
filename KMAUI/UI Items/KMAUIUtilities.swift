@@ -395,7 +395,7 @@ public class KMAUIUtilities {
      Highlight the part of the string.
      */
     
-    func attributedText(text: String, search: String, fontSize: CGFloat) -> NSAttributedString {
+    func attributedText(text: String, search: String, fontSize: CGFloat, noColor: Bool? = nil) -> NSAttributedString {
         let attributedString = NSMutableAttributedString()
         let boldFont = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         let normalString = NSMutableAttributedString(string: text)
@@ -404,7 +404,11 @@ public class KMAUIUtilities {
             let strNumber: NSString = text.lowercased() as NSString
             let range = (strNumber).range(of: search.lowercased())
             
-            normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont, NSAttributedString.Key.foregroundColor.rawValue: KMAUIConstants.shared.KMABrightBlueColor].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
+            if let noColor = noColor, noColor {
+                normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
+            } else {
+                normalString.addAttributes(Dictionary(uniqueKeysWithValues: [NSAttributedString.Key.font.rawValue: boldFont, NSAttributedString.Key.foregroundColor.rawValue: KMAUIConstants.shared.KMABrightBlueColor].map { key, value in (NSAttributedString.Key(rawValue: key), value)}), range: range)
+            }
         }
         
         attributedString.append(normalString)
