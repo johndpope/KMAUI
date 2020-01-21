@@ -22,12 +22,17 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var serviceProgressLabel: UILabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
     @IBOutlet public weak var securityProgressLabel: UILabel!
+    @IBOutlet public weak var clearButton: UIButton!
     
     // MARK - Variables
     public var regionPerformance = KMARegionPerformance()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Setup the clear button to have an image on the right
+        clearButton.semanticContentAttribute = UIApplication.shared
+            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
         // No selection required
         selectionStyle = .none
@@ -60,6 +65,11 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
             self.serviceProgressView.progress = Double(self.regionPerformance.performance[1]) / 100
             self.securityProgressView.progress = Double(self.regionPerformance.performance[2]) / 100
         }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func clearButtonPressed(_ sender: Any) {
     }
 }
 

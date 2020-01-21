@@ -86,6 +86,9 @@
                                 <state key="normal" title="Clear" image="closeIcon">
                                     <color key="titleColor" name="KMATextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="clearButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vrs-bW-ULk"/>
+                                </connections>
                             </button>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XH-FGV">
                                 <rect key="frame" x="16" y="85" width="278" height="1"/>
@@ -284,6 +287,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="clearButton" destination="lfB-bD-mEY" id="SY1-Sb-NHt"/>
                 <outlet property="communityProgressLabel" destination="lvg-Z1-oTJ" id="bpQ-wG-8E0"/>
                 <outlet property="communityProgressView" destination="uxB-xq-5T9" id="fSl-Ft-xcN"/>
                 <outlet property="horizontalLineLabel" destination="3eW-XH-FGV" id="L7E-rO-B6g"/>
@@ -305,7 +309,7 @@
             <color red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMABgGray">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMALineGray">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
