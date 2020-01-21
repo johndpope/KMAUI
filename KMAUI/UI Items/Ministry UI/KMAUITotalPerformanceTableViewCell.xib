@@ -11,18 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITotalPerformanceTableViewCell" rowHeight="188" id="KGk-i7-Jjw" customClass="KMAUITotalPerformanceTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="188"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITotalPerformanceTableViewCell" rowHeight="170" id="KGk-i7-Jjw" customClass="KMAUITotalPerformanceTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="170"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="188"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="170"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-8G-edw" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="16" width="310" height="148"/>
+                        <rect key="frame" x="16" y="16" width="310" height="130"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-PM-zJo" customClass="MKRingProgressView">
-                                <rect key="frame" x="16" y="19.5" width="48" height="48"/>
+                                <rect key="frame" x="16" y="18.5" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="lnm-Sx-6HO"/>
@@ -51,16 +51,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-6w-GFh">
-                                <rect key="frame" x="76" y="16" width="218" height="55"/>
+                                <rect key="frame" x="76" y="16" width="218" height="53"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total Performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWC-hi-CfK">
-                                        <rect key="frame" x="0.0" y="0.0" width="218" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="218" height="18.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="KMATextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="England" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-F0-E8L">
-                                        <rect key="frame" x="0.0" y="28.5" width="218" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="26.5" width="218" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="KMATitleColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,20 +68,20 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFz-rO-Jz7">
-                                <rect key="frame" x="25" y="35" width="30" height="17"/>
+                                <rect key="frame" x="25" y="34" width="30" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XH-FGV">
-                                <rect key="frame" x="16" y="87" width="278" height="1"/>
+                                <rect key="frame" x="16" y="85" width="278" height="1"/>
                                 <color key="backgroundColor" name="KMALineGray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="tEF-RP-pGI"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
-                                <rect key="frame" x="16" y="96" width="278" height="44"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
+                                <rect key="frame" x="16" y="86" width="278" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1H0-Kx-Uut">
                                         <rect key="frame" x="0.0" y="0.0" width="109.5" height="44"/>
@@ -133,7 +133,7 @@
                                             <constraint firstItem="lvg-Z1-oTJ" firstAttribute="top" secondItem="1H0-Kx-Uut" secondAttribute="top" id="pav-AI-LtU"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9a-cj-OxF">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9a-cj-OxF">
                                         <rect key="frame" x="117.5" y="0.0" width="79" height="44"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-aG-ctI" customClass="MKRingProgressView">
@@ -165,7 +165,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Service 65%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4o4-yM-FXP">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Service 65%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4o4-yM-FXP">
                                                 <rect key="frame" x="16" y="0.0" width="63" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -183,7 +183,7 @@
                                             <constraint firstAttribute="height" constant="44" id="t15-fW-gPT"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-wH-YV5">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-wH-YV5">
                                         <rect key="frame" x="204.5" y="0.0" width="73.5" height="44"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtJ-PM-Ydw" customClass="MKRingProgressView">
@@ -215,7 +215,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Security 35%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-hO-7j8">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Security 35%" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-hO-7j8">
                                                 <rect key="frame" x="16" y="0.0" width="57.5" height="44"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -243,7 +243,7 @@
                         <constraints>
                             <constraint firstItem="fPx-PM-zJo" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="16" id="37p-1f-G68"/>
                             <constraint firstItem="fPx-PM-zJo" firstAttribute="centerY" secondItem="jYF-6w-GFh" secondAttribute="centerY" id="IHl-Vv-nU6"/>
-                            <constraint firstItem="3kc-AH-vue" firstAttribute="top" secondItem="3eW-XH-FGV" secondAttribute="bottom" constant="8" id="MNX-r9-WWM"/>
+                            <constraint firstItem="3kc-AH-vue" firstAttribute="top" secondItem="3eW-XH-FGV" secondAttribute="bottom" id="MNX-r9-WWM"/>
                             <constraint firstItem="jYF-6w-GFh" firstAttribute="leading" secondItem="fPx-PM-zJo" secondAttribute="trailing" constant="12" id="PNe-5z-UZb"/>
                             <constraint firstItem="wFz-rO-Jz7" firstAttribute="centerX" secondItem="fPx-PM-zJo" secondAttribute="centerX" id="PUd-9o-g7g"/>
                             <constraint firstItem="3eW-XH-FGV" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="16" id="Poc-gf-GT9"/>
@@ -254,7 +254,7 @@
                             <constraint firstAttribute="trailing" secondItem="3kc-AH-vue" secondAttribute="trailing" constant="16" id="l04-nr-WfS"/>
                             <constraint firstItem="3eW-XH-FGV" firstAttribute="top" secondItem="jYF-6w-GFh" secondAttribute="bottom" constant="16" id="npt-Kk-b2p"/>
                             <constraint firstItem="3kc-AH-vue" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="16" id="rlh-H0-ad5"/>
-                            <constraint firstAttribute="bottom" secondItem="3kc-AH-vue" secondAttribute="bottom" constant="8" id="wEH-v0-nIS"/>
+                            <constraint firstAttribute="bottom" secondItem="3kc-AH-vue" secondAttribute="bottom" id="wEH-v0-nIS"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -267,7 +267,7 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="-116.54676258992806" y="-134.67336683417085"/>
+            <point key="canvasLocation" x="-116.54676258992806" y="-139.1959798994975"/>
         </tableViewCell>
     </objects>
     <resources>
