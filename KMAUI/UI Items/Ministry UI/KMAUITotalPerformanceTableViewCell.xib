@@ -11,18 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITotalPerformanceTableViewCell" rowHeight="170" id="KGk-i7-Jjw" customClass="KMAUITotalPerformanceTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="342" height="170"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITotalPerformanceTableViewCell" rowHeight="156" id="KGk-i7-Jjw" customClass="KMAUITotalPerformanceTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="342" height="156"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="342" height="170"/>
+                <rect key="frame" x="0.0" y="0.0" width="342" height="156"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-8G-edw" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="16" width="310" height="130"/>
+                        <rect key="frame" x="16" y="0.0" width="310" height="132"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-PM-zJo" customClass="MKRingProgressView">
-                                <rect key="frame" x="16" y="18.5" width="48" height="48"/>
+                                <rect key="frame" x="16" y="19.5" width="48" height="48"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="lnm-Sx-6HO"/>
@@ -51,16 +51,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-6w-GFh">
-                                <rect key="frame" x="76" y="16" width="166" height="53"/>
+                                <rect key="frame" x="76" y="16" width="166" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total Performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWC-hi-CfK">
-                                        <rect key="frame" x="0.0" y="0.0" width="166" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="166" height="28.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="KMATextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="England" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-F0-E8L">
-                                        <rect key="frame" x="0.0" y="26.5" width="166" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="166" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="KMATitleColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,7 +68,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFz-rO-Jz7">
-                                <rect key="frame" x="25" y="34" width="30" height="17"/>
+                                <rect key="frame" x="25" y="35" width="30" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -91,14 +91,14 @@
                                 </connections>
                             </button>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XH-FGV">
-                                <rect key="frame" x="16" y="85" width="278" height="1"/>
+                                <rect key="frame" x="16" y="87" width="278" height="1"/>
                                 <color key="backgroundColor" name="KMALineGray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="tEF-RP-pGI"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
-                                <rect key="frame" x="16" y="86" width="278" height="44"/>
+                                <rect key="frame" x="16" y="88" width="278" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1H0-Kx-Uut">
                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="44"/>
@@ -282,7 +282,7 @@
                     <constraint firstItem="Wke-8G-edw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PCQ-xX-9je"/>
                     <constraint firstAttribute="trailing" secondItem="Wke-8G-edw" secondAttribute="trailing" constant="16" id="SlA-F0-538"/>
                     <constraint firstAttribute="bottom" secondItem="Wke-8G-edw" secondAttribute="bottom" constant="24" id="ct2-HM-qSX"/>
-                    <constraint firstItem="Wke-8G-edw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="pGl-XW-F6X"/>
+                    <constraint firstItem="Wke-8G-edw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="pGl-XW-F6X"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -300,7 +300,7 @@
                 <outlet property="serviceProgressView" destination="CJf-aG-ctI" id="0Ud-n3-PXM"/>
                 <outlet property="totalProgressView" destination="fPx-PM-zJo" id="TpA-sT-oSB"/>
             </connections>
-            <point key="canvasLocation" x="-116.54676258992806" y="-139.1959798994975"/>
+            <point key="canvasLocation" x="-116.54676258992806" y="-142.71356783919597"/>
         </tableViewCell>
     </objects>
     <resources>
