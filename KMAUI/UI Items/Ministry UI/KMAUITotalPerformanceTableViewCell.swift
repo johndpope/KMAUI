@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import MKRingProgressView
 
 public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var totalProgressView: RingProgressView!
+    @IBOutlet public weak var progressPercentLabel: UILabel!
+    @IBOutlet public weak var itemTitleLabel: UILabel!
+    @IBOutlet public weak var itemValueLabel: UILabel!
+    @IBOutlet public weak var horizontalLineLabel: UIView!
+    @IBOutlet public weak var communityProgressView: RingProgressView!
+    @IBOutlet public weak var communityProgressLabel: UILabel!
+    @IBOutlet public weak var serviceProgressView: RingProgressView!
+    @IBOutlet public weak var serviceProgressLabel: UILabel!
+    @IBOutlet public weak var securityProgressView: RingProgressView!
+    @IBOutlet public weak var securityProgressLabel: UILabel!
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -24,4 +36,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
