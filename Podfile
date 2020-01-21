@@ -11,5 +11,6 @@ pod 'SwiftyJSON', '~> 4.0'
 pod 'Kingfisher', '~> 5.0'
 pod 'Charts'
 pod 'Parse'
+pod 'MKRingProgressView'
 
 end

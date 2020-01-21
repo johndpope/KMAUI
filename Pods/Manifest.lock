@@ -7,6 +7,7 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - MKRingProgressView (2.2.2)
   - Parse (1.17.3):
     - Parse/Core (= 1.17.3)
   - Parse/Core (1.17.3):
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - Alamofire (~> 5.0.0-rc.3)
   - Charts
   - Kingfisher (~> 5.0)
+  - MKRingProgressView
   - Parse
   - SwiftyJSON (~> 4.0)
 
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Bolts
     - Charts
     - Kingfisher
+    - MKRingProgressView
     - Parse
     - SwiftyJSON
 
@@ -34,9 +37,10 @@ SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  MKRingProgressView: b558eff66a648bd77b11f61cfc5603ae96008077
   Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 323c7897164ee0fb9054208d788307e292245abd
+PODFILE CHECKSUM: ad7c3f3af9748be3311f7291ef1ff368d89c16df
 
 COCOAPODS: 1.8.4
