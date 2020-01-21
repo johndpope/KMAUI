@@ -77,11 +77,11 @@
                             <constraint firstAttribute="height" constant="1" id="vtr-fa-TZK"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
                         <rect key="frame" x="16" y="93" width="288" height="32"/>
                         <subviews>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1H0-Kx-Uut">
-                                <rect key="frame" x="0.0" y="0.0" width="110.5" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="110" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxB-xq-5T9" customClass="MKRingProgressView">
                                         <rect key="frame" x="8" y="10" width="12" height="12"/>
@@ -112,15 +112,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Community" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lvg-Z1-oTJ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Community" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="lvg-Z1-oTJ">
                                         <rect key="frame" x="28" y="0.0" width="74" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H49-cn-5As">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="H49-cn-5As">
                                         <rect key="frame" x="110" y="0.0" width="178" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -134,13 +134,13 @@
                                     <constraint firstAttribute="bottom" secondItem="H49-cn-5As" secondAttribute="bottom" id="XgW-He-CqI"/>
                                     <constraint firstAttribute="bottom" secondItem="lvg-Z1-oTJ" secondAttribute="bottom" id="bLS-2b-J8p"/>
                                     <constraint firstItem="uxB-xq-5T9" firstAttribute="centerY" secondItem="1H0-Kx-Uut" secondAttribute="centerY" id="lC3-7t-0fI"/>
-                                    <constraint firstItem="H49-cn-5As" firstAttribute="leading" secondItem="lvg-Z1-oTJ" secondAttribute="trailing" constant="8" symbolic="YES" id="oxW-1P-opY"/>
+                                    <constraint firstItem="H49-cn-5As" firstAttribute="leading" secondItem="lvg-Z1-oTJ" secondAttribute="trailing" constant="4" id="oxW-1P-opY"/>
                                     <constraint firstItem="H49-cn-5As" firstAttribute="top" secondItem="1H0-Kx-Uut" secondAttribute="top" id="pLN-Rd-kdd"/>
                                     <constraint firstAttribute="height" constant="32" id="xMA-S5-dPs"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q9a-cj-OxF">
-                                <rect key="frame" x="110.5" y="0.0" width="56.5" height="32"/>
+                                <rect key="frame" x="118" y="0.0" width="67" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-aG-ctI" customClass="MKRingProgressView">
                                         <rect key="frame" x="8" y="10" width="12" height="12"/>
@@ -171,15 +171,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4o4-yM-FXP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="4o4-yM-FXP">
                                         <rect key="frame" x="28" y="0.0" width="74" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wK-gD-go5">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="7wK-gD-go5">
                                         <rect key="frame" x="110" y="0.0" width="178" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -191,7 +191,7 @@
                                     <constraint firstAttribute="height" constant="32" id="75g-Fb-8o1"/>
                                     <constraint firstAttribute="bottom" secondItem="4o4-yM-FXP" secondAttribute="bottom" id="BXz-rW-nkJ"/>
                                     <constraint firstItem="CJf-aG-ctI" firstAttribute="leading" secondItem="Q9a-cj-OxF" secondAttribute="leading" constant="8" id="PG2-dX-oqq"/>
-                                    <constraint firstItem="7wK-gD-go5" firstAttribute="leading" secondItem="4o4-yM-FXP" secondAttribute="trailing" constant="8" symbolic="YES" id="Vee-PJ-xJk"/>
+                                    <constraint firstItem="7wK-gD-go5" firstAttribute="leading" secondItem="4o4-yM-FXP" secondAttribute="trailing" constant="4" id="Vee-PJ-xJk"/>
                                     <constraint firstItem="CJf-aG-ctI" firstAttribute="centerY" secondItem="Q9a-cj-OxF" secondAttribute="centerY" id="YPv-8R-ZfF"/>
                                     <constraint firstItem="7wK-gD-go5" firstAttribute="top" secondItem="Q9a-cj-OxF" secondAttribute="top" id="fEH-8x-Op7"/>
                                     <constraint firstAttribute="trailing" secondItem="7wK-gD-go5" secondAttribute="trailing" id="iDR-5I-3SM"/>
@@ -199,7 +199,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ogz-wH-YV5">
-                                <rect key="frame" x="167" y="0.0" width="121" height="32"/>
+                                <rect key="frame" x="193" y="0.0" width="95" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtJ-PM-Ydw" customClass="MKRingProgressView">
                                         <rect key="frame" x="8" y="10" width="12" height="12"/>
@@ -230,15 +230,15 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-hO-7j8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-hO-7j8">
                                         <rect key="frame" x="28" y="0.0" width="74" height="32"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OY-vz-9ip">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="89%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="5OY-vz-9ip">
                                         <rect key="frame" x="110" y="0.0" width="178" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -254,7 +254,7 @@
                                     <constraint firstItem="5OY-vz-9ip" firstAttribute="top" secondItem="ogz-wH-YV5" secondAttribute="top" id="ond-RD-gMN"/>
                                     <constraint firstAttribute="bottom" secondItem="5OY-vz-9ip" secondAttribute="bottom" id="qXF-ci-KLs"/>
                                     <constraint firstItem="JaZ-hO-7j8" firstAttribute="top" secondItem="ogz-wH-YV5" secondAttribute="top" id="u6f-fK-N9g"/>
-                                    <constraint firstItem="5OY-vz-9ip" firstAttribute="leading" secondItem="JaZ-hO-7j8" secondAttribute="trailing" constant="8" symbolic="YES" id="wP6-gs-8eD"/>
+                                    <constraint firstItem="5OY-vz-9ip" firstAttribute="leading" secondItem="JaZ-hO-7j8" secondAttribute="trailing" constant="4" id="wP6-gs-8eD"/>
                                 </constraints>
                             </view>
                         </subviews>
