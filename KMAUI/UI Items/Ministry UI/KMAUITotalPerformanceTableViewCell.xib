@@ -82,9 +82,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="tintColor" name="KMATextColor"/>
                                 <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                 <state key="normal" title="Clear" image="closeIcon">
                                     <color key="titleColor" name="KMATextColor"/>
+                                </state>
+                                <state key="selected" title="Clear" image="closeIcon">
+                                    <color key="titleColor" name="KMALineGray"/>
+                                </state>
+                                <state key="highlighted" title="Clear" image="closeIcon">
+                                    <color key="titleColor" name="KMALineGray"/>
                                 </state>
                                 <connections>
                                     <action selector="clearButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Vrs-bW-ULk"/>
