@@ -9,7 +9,8 @@
 import UIKit
 
 public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
-
+    // MARK: - IBOutlets
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
