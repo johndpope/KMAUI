@@ -49,9 +49,9 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         progressPercentLabel.text = "\(regionPerformance.totalPerformance)%"
         
         // Effectivity
-        communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(regionPerformance.performance[0])%", search: "\(regionPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize)
-        serviceProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Service \(regionPerformance.performance[1])%", search: "\(regionPerformance.performance[1])%", fontSize: serviceProgressLabel.font.pointSize)
-        securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(regionPerformance.performance[2])%", search: "\(regionPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize)
+        communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(regionPerformance.performance[0])%", search: "\(regionPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize, noColor: true)
+        serviceProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Service \(regionPerformance.performance[1])%", search: "\(regionPerformance.performance[1])%", fontSize: serviceProgressLabel.font.pointSize, noColor: true)
+        securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(regionPerformance.performance[2])%", search: "\(regionPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize, noColor: true)
         
         // Progress views
         UIView.animate(withDuration: 1.0) {
