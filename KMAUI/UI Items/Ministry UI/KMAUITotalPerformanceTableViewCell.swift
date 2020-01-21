@@ -33,6 +33,8 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         // Setup the clear button to have an image on the right
         clearButton.semanticContentAttribute = UIApplication.shared
             .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
+        clearButton.setImage(KMAUIConstants.shared.closeIcon, for: .highlighted)
+        clearButton.setImage(KMAUIConstants.shared.closeIcon, for: .selected)
         
         // No selection required
         selectionStyle = .none
