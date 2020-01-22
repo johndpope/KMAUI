@@ -492,10 +492,10 @@ public class KMAUIUtilities {
     // MARK: - Tint color for the Ring Process view
     
     public func setupColor(ring: RingProgressView) {
-        if ring.progress >= 0.8 {
+        if ring.progress >= 0.7 {
             ring.startColor = KMAUIConstants.shared.KMAProgressGreen
             ring.endColor = KMAUIConstants.shared.KMAProgressGreen
-        } else if ring.progress >= 0.5 {
+        } else if ring.progress >= 0.4 {
             ring.startColor = KMAUIConstants.shared.KMAProgressYellow
             ring.endColor = KMAUIConstants.shared.KMAProgressYellow
         } else {
