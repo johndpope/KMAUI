@@ -14,14 +14,14 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var totalProgressView: RingProgressView!
     @IBOutlet public weak var progressPercentLabel: UILabel!
     @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var itemValueLabel: UILabel!
+    @IBOutlet public weak var itemValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var horizontalLineLabel: UIView!
     @IBOutlet public weak var communityProgressView: RingProgressView!
-    @IBOutlet public weak var communityProgressLabel: UILabel!
+    @IBOutlet public weak var communityProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var serviceProgressView: RingProgressView!
-    @IBOutlet public weak var serviceProgressLabel: UILabel!
+    @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
-    @IBOutlet public weak var securityProgressLabel: UILabel!
+    @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var clearButton: UIButton!
     
     // MARK - Variables
@@ -33,6 +33,12 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         // Setup the clear button to have an image on the right
         clearButton.semanticContentAttribute = UIApplication.shared
             .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
+        
+        // Setup the font size
+        itemValueLabel.font = itemValueLabel.font.withSize(22)
+        communityProgressLabel.font = communityProgressLabel.font.withSize(12)
+        serviceProgressLabel.font = serviceProgressLabel.font.withSize(12)
+        securityProgressLabel.font = securityProgressLabel.font.withSize(12)
         
         // No selection required
         selectionStyle = .none

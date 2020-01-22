@@ -12,8 +12,8 @@ import MKRingProgressView
 public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var regionPerformanceView: RingProgressView!
-    @IBOutlet public weak var regionPerformanceLabel: UILabel!
-    @IBOutlet public weak var regionNameLabel: UILabel!
+    @IBOutlet public weak var regionPerformanceLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var regionNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var detailsStackView: UIStackView!
 
     // MARK: - Variables
@@ -23,6 +23,9 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Setup font size
+        regionNameLabel.font = regionNameLabel.font.withSize(22)
         
         // No selection required
         selectionStyle = .none
