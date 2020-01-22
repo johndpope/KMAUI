@@ -61,6 +61,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
                 
                 // Creating the title label
                 let titleLabel = KMAUIRegularTextLabel()
+                titleLabel.textAlignment = .left
                 
                 if let title = statItem["title"] {
                     titleLabel.text = title
@@ -71,6 +72,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
                 
                 // Creating the text label
                 let valueLabel = KMAUIBoldTextLabel()
+                valueLabel.textAlignment = .right
 
                 if let value = statItem["value"] {
                     valueLabel.text = value
