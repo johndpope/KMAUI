@@ -23,7 +23,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-PM-zJo" customClass="MKRingProgressView">
                                 <rect key="frame" x="16" y="19.5" width="48" height="48"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="lnm-Sx-6HO"/>
                                     <constraint firstAttribute="width" secondItem="fPx-PM-zJo" secondAttribute="height" multiplier="1:1" id="wXE-Qv-eaa"/>
@@ -110,7 +110,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uxB-xq-5T9" customClass="MKRingProgressView">
                                                 <rect key="frame" x="0.0" y="16" width="12" height="12"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="3to-e4-pNm"/>
                                                     <constraint firstAttribute="width" constant="12" id="NKv-yl-G1o"/>
@@ -144,7 +144,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="uxB-xq-5T9" firstAttribute="leading" secondItem="1H0-Kx-Uut" secondAttribute="leading" id="4o7-8A-bUs"/>
                                             <constraint firstAttribute="height" constant="44" id="7Oc-vq-7g3"/>
@@ -160,7 +160,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CJf-aG-ctI" customClass="MKRingProgressView">
                                                 <rect key="frame" x="0.0" y="16" width="12" height="12"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="IfA-J6-BL7"/>
                                                     <constraint firstAttribute="width" constant="12" id="gkc-ky-27p"/>
@@ -194,7 +194,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="CJf-aG-ctI" firstAttribute="centerY" secondItem="Q9a-cj-OxF" secondAttribute="centerY" id="Esr-PP-W6I"/>
                                             <constraint firstItem="CJf-aG-ctI" firstAttribute="leading" secondItem="Q9a-cj-OxF" secondAttribute="leading" id="GEU-kB-B3B"/>
@@ -210,7 +210,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FtJ-PM-Ydw" customClass="MKRingProgressView">
                                                 <rect key="frame" x="0.0" y="16" width="12" height="12"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="12" id="M02-1w-iHG"/>
                                                     <constraint firstAttribute="width" constant="12" id="dcu-pe-4qB"/>
@@ -244,7 +244,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="JaZ-hO-7j8" secondAttribute="bottom" id="5uI-le-bCd"/>
                                             <constraint firstItem="JaZ-hO-7j8" firstAttribute="top" secondItem="ogz-wH-YV5" secondAttribute="top" id="GDs-1z-gYq"/>
