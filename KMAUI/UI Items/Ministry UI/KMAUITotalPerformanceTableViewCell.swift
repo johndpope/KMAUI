@@ -52,7 +52,16 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         // Region details
         itemValueLabel.text = regionPerformance.regionName
         
-        let totalPerformance = (regionPerformance.performance[1] + regionPerformance.performance[2] + regionPerformance.performance[3]) / 3
+        var totalPerformance = 0
+        
+        if !regionPerformance.performance.isEmpty {
+            for performanceItem in regionPerformance.performance {
+                totalPerformance += performanceItem
+            }
+            
+            totalPerformance /= regionPerformance.performance.count
+        }
+        
         progressPercentLabel.text = "\(totalPerformance)%"
         
         // Effectivity
