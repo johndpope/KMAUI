@@ -22,34 +22,69 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // No selection required
+        selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     public func setupCell() {
-        /*// Clear current subviews
+        // Clear current subviews
         for subview in bgView.subviews {
             subview.removeFromSuperview()
         }
         
         // Initialize
         let segmentControl = UISegmentedControl(items: segmentItems)
-        segmentControl.selectedSegmentIndex = selectedIndex
-
-        // Style the Segmented Control
-//        segmentControl.layer.cornerRadius =  // Don't let background bleed
-//        segmentControl.backgroundColor = UIColor.blackColor()
-//        segmentControl.tintColor = UIColor.whiteColor()
-
+        segmentControl.selectedSegmentIndex = 0
+        segmentControl.tintColor = KMAUIConstants.shared.KMATextColor
+        segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        segmentControl.backgroundColor =  KMAUIConstants.shared.KMABackColor
+        segmentControl.layer.borderColor = UIColor.clear.cgColor
+        
+        if #available(iOS 13.0, *) {
+            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMATextColor
+        }
+        
+        segmentControl.layer.borderWidth = 1
+        
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMATextColor]
+        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor]
+        segmentControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
+        
         // Add target action method
-//        segmentControl.addTarget(self, action: "changeColor:", forControlEvents: .ValueChanged)
-
+        segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)
+        
+        
         // Add this custom Segmented Control to our view
-        bgView.addSubview(customSC)*/
+        bgView.addSubview(segmentControl)
+        fixBackgroundSegmentControl(segmentControl)
+        
+        KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
+    }
+    
+    @objc public func segmentControlValueChanged(item: UISegmentedControl) {
+        print(item.selectedSegmentIndex)
+    }
+    
+    // Getting the correct background color without a shadow
+    func fixBackgroundSegmentControl( _ segmentControl: UISegmentedControl){
+        if #available(iOS 13.0, *) {
+            //just to be sure it is full loaded
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                for i in 0...(segmentControl.numberOfSegments-1)  {
+                    let backgroundSegmentView = segmentControl.subviews[i]
+                    //it is not enogh changing the background color. It has some kind of shadow layer
+                    backgroundSegmentView.isHidden = true
+                }
+            }
+        }
     }
 }
