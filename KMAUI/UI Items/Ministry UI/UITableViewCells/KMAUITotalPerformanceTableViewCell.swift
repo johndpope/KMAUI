@@ -69,17 +69,10 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
             securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(countryPerformance.performance[2])%", search: "\(countryPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize, noColor: true)
             
             // Progress views
-            self.totalProgressView.progress = 0
-            self.communityProgressView.progress = 0
-            self.serviceProgressView.progress = 0
-            self.securityProgressView.progress = 0
-            
-            UIView.animate(withDuration: 1.0) {
-                self.totalProgressView.progress = Double(totalPerformance) / 100
-                self.communityProgressView.progress = Double(self.countryPerformance.performance[0]) / 100
-                self.serviceProgressView.progress = Double(self.countryPerformance.performance[1]) / 100
-                self.securityProgressView.progress = Double(self.countryPerformance.performance[2]) / 100
-            }
+            totalProgressView.progress = Double(totalPerformance) / 100
+            communityProgressView.progress = Double(countryPerformance.performance[0]) / 100
+            serviceProgressView.progress = Double(countryPerformance.performance[1]) / 100
+            securityProgressView.progress = Double(countryPerformance.performance[2]) / 100
             
             KMAUIUtilities.shared.setupColor(ring: totalProgressView)
             KMAUIUtilities.shared.setupColor(ring: communityProgressView)

@@ -40,60 +40,53 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     public func setupCell() {
         regionNameLabel.text = regionPerformance.regionName
         regionPerformanceLabel.text = "\(regionPerformance.performance)%"
-        regionPerformanceView.progress = 0
-        
-        UIView.animate(withDuration: 1.0) {
-            self.regionPerformanceView.progress = Double(self.regionPerformance.performance) / 100
-        }
-        
+        regionPerformanceView.progress = Double(regionPerformance.performance) / 100
         KMAUIUtilities.shared.setupColor(ring: regionPerformanceView)
         
         if !regionPerformance.stats.isEmpty {
             setupStats()
-
-            // Clear existing subviews
-            for subview in detailsStackView.subviews {
-                subview.removeFromSuperview()
-            }
-            
-            for statItem in regionPerformance.stats {
-                // Creating hte horizontal stack view
-                let stackView = UIStackView()
-                stackView.axis = NSLayoutConstraint.Axis.horizontal
-                stackView.distribution = UIStackView.Distribution.fill
-                stackView.alignment = UIStackView.Alignment.fill
-                stackView.spacing = 8.0
-                
-                // Creating the title label
-                let titleLabel = KMAUIRegularTextLabel()
-                titleLabel.textAlignment = .left
-                
-                if let title = statItem["title"] {
-                    titleLabel.text = title
-                }
-                
-                titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
-                stackView.addArrangedSubview(titleLabel)
-                
-                // Creating the text label
-                let valueLabel = KMAUIBoldTextLabel()
-                valueLabel.textAlignment = .right
-                valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
-
-                if let value = statItem["value"] {
-                    valueLabel.text = value
-                }
-                
-                valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
-                stackView.addArrangedSubview(valueLabel)
-                
-                detailsStackView.addArrangedSubview(stackView)
-            }
         }
     }
     
     public func setupStats() {
+        // Clear existing subviews
+        for subview in detailsStackView.subviews {
+            subview.removeFromSuperview()
+        }
         
+        for statItem in regionPerformance.stats {
+            // Creating hte horizontal stack view
+            let stackView = UIStackView()
+            stackView.axis = NSLayoutConstraint.Axis.horizontal
+            stackView.distribution = UIStackView.Distribution.fill
+            stackView.alignment = UIStackView.Alignment.fill
+            stackView.spacing = 8.0
+            
+            // Creating the title label
+            let titleLabel = KMAUIRegularTextLabel()
+            titleLabel.textAlignment = .left
+            
+            if let title = statItem["title"] {
+                titleLabel.text = title
+            }
+            
+            titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            stackView.addArrangedSubview(titleLabel)
+            
+            // Creating the text label
+            let valueLabel = KMAUIBoldTextLabel()
+            valueLabel.textAlignment = .right
+            valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
+
+            if let value = statItem["value"] {
+                valueLabel.text = value
+            }
+            
+            valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+            stackView.addArrangedSubview(valueLabel)
+            
+            detailsStackView.addArrangedSubview(stackView)
+        }
     }
 }
 
