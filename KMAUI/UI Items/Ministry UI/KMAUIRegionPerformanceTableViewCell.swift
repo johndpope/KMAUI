@@ -12,12 +12,13 @@ import MKRingProgressView
 public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var regionPerformanceView: RingProgressView!
+    @IBOutlet public weak var regionPerformanceLabel: UILabel!
     @IBOutlet public weak var regionNameLabel: UILabel!
     @IBOutlet public weak var detailsStackView: UIStackView!
     @IBOutlet public weak var avgCostLabel: UILabel!
     @IBOutlet public weak var marketSizeLabel: UILabel!
     @IBOutlet public weak var vacancyRateLabel: UILabel!
-    
+
     // MARK: - Variables
     public var regionPerformance = KMARegionPerformance()
     
@@ -38,6 +39,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     
     public func setupCell() {
         regionNameLabel.text = regionPerformance.regionName
+        progressPercentLabel.text = "\(regionPerformance.performance)%"
         regionPerformanceView.progress = 0
         
         UIView.animate(withDuration: 1.0) {
