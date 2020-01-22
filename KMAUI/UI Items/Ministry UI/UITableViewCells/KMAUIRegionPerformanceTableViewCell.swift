@@ -17,7 +17,11 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var detailsStackView: UIStackView!
 
     // MARK: - Variables
-    public var regionPerformance = KMARegionPerformance()
+    public var regionPerformance = KMARegionPerformance() {
+        didSet {
+            self.setupCell()
+        }
+    }
     
     // MARK: - Cell methods
     

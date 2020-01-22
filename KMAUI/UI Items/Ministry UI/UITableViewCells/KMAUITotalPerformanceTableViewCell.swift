@@ -24,7 +24,11 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
     
     // MARK - Variables
-    public var countryPerformance = KMACountryPerformance()
+    public var countryPerformance = KMACountryPerformance() {
+        didSet {
+            self.setupCell()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
