@@ -39,7 +39,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     
     public func setupCell() {
         regionNameLabel.text = regionPerformance.regionName
-        progressPercentLabel.text = "\(regionPerformance.performance)%"
+        regionPerformanceLabel.text = "\(regionPerformance.performance)%"
         regionPerformanceView.progress = 0
         
         UIView.animate(withDuration: 1.0) {
