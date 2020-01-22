@@ -19,7 +19,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var vacancyRateLabel: UILabel!
     
     // MARK: - Variables
-    var regionPerformance = KMARegionPerformance()
+    public var regionPerformance = KMARegionPerformance()
     
     // MARK: - Cell methods
     
