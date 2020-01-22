@@ -17,6 +17,7 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
         }
     }
     public var selectedIndex = 0
+    public var selectedIndexCallback: ((Int) -> Void)?
     
     // MARK: - Cell methods
     
@@ -41,7 +42,7 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
         
         // Initialize
         let segmentControl = UISegmentedControl(items: segmentItems)
-        segmentControl.selectedSegmentIndex = 0
+        segmentControl.selectedSegmentIndex = selectedIndex
         segmentControl.tintColor = KMAUIConstants.shared.KMATextColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         segmentControl.backgroundColor =  KMAUIConstants.shared.KMABackColor
@@ -71,7 +72,8 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
-        print(item.selectedSegmentIndex)
+        selectedIndex = item.selectedSegmentIndex
+        selectedIndexCallback?(selectedIndex)
     }
     
     // Getting the correct background color without a shadow
