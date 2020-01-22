@@ -73,6 +73,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
                 // Creating the text label
                 let valueLabel = KMAUIBoldTextLabel()
                 valueLabel.textAlignment = .right
+                valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
 
                 if let value = statItem["value"] {
                     valueLabel.text = value
