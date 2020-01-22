@@ -504,7 +504,7 @@ public class KMAUIUtilities {
         }
     }
     
-    // MARK: - Register cell for tableView
+    // MARK: - Register cell for tableView / collectionView
     
     public func registerCells(identifiers: [String], tableView: UITableView) {
         for identifier in identifiers {
@@ -514,6 +514,16 @@ public class KMAUIUtilities {
     
     public func registerCell(identifier: String, tableView: UITableView) {
         tableView.register(UINib(nibName: identifier, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: identifier)
+    }
+    
+    public func registerCells(identifiers: [String], collectionView: UICollectionView) {
+        for identifier in identifiers {
+            registerCell(identifier: identifier, collectionView: collectionView)
+        }
+    }
+    
+    public func registerCell(identifier: String, collectionView: UICollectionView) {
+        collectionView.register(UINib(nibName: identifier, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellWithReuseIdentifier: identifier)
     }
 }
 
