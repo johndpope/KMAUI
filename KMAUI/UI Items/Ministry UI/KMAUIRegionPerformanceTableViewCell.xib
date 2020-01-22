@@ -22,7 +22,7 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="4Ll-Wu-B2d" customClass="MKRingProgressView">
-                                <rect key="frame" x="224" y="29" width="48" height="48"/>
+                                <rect key="frame" x="224" y="21" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4Ll-Wu-B2d" secondAttribute="height" multiplier="1:1" id="DVH-dX-QjY"/>
@@ -51,16 +51,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-5f-CSp">
-                                <rect key="frame" x="16" y="16" width="196" height="73.5"/>
+                                <rect key="frame" x="16" y="16" width="196" height="57.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-T2-icQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="47"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="31"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="KMATextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-YM-XGT">
-                                        <rect key="frame" x="0.0" y="47" width="196" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="31" width="196" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="KMATitleColor"/>
                                         <nil key="highlightedColor"/>
@@ -68,14 +68,14 @@
                                 </subviews>
                             </stackView>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZJ-s6-xR0">
-                                <rect key="frame" x="16" y="116" width="256" height="1"/>
+                                <rect key="frame" x="16" y="100" width="256" height="1"/>
                                 <color key="backgroundColor" name="KMALineGray"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Aty-8m-R2z"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wJW-nq-j19">
-                                <rect key="frame" x="16" y="125" width="256" height="67"/>
+                                <rect key="frame" x="16" y="117" width="256" height="67"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoL-4f-aOb">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
@@ -133,10 +133,10 @@
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
                         <constraints>
-                            <constraint firstItem="wJW-nq-j19" firstAttribute="top" secondItem="YZJ-s6-xR0" secondAttribute="bottom" constant="8" id="5V7-vT-okl"/>
+                            <constraint firstItem="wJW-nq-j19" firstAttribute="top" secondItem="YZJ-s6-xR0" secondAttribute="bottom" constant="16" id="5V7-vT-okl"/>
                             <constraint firstItem="hhF-5f-CSp" firstAttribute="top" secondItem="egC-4K-fLc" secondAttribute="top" constant="16" id="BHY-dt-AQg"/>
                             <constraint firstItem="4Ll-Wu-B2d" firstAttribute="leading" secondItem="hhF-5f-CSp" secondAttribute="trailing" constant="12" id="Bzl-GA-9dQ"/>
-                            <constraint firstAttribute="bottom" secondItem="wJW-nq-j19" secondAttribute="bottom" constant="8" id="HjD-TW-TbG"/>
+                            <constraint firstAttribute="bottom" secondItem="wJW-nq-j19" secondAttribute="bottom" constant="16" id="HjD-TW-TbG"/>
                             <constraint firstItem="hhF-5f-CSp" firstAttribute="leading" secondItem="egC-4K-fLc" secondAttribute="leading" constant="16" id="Tcq-f0-beN"/>
                             <constraint firstAttribute="trailing" secondItem="4Ll-Wu-B2d" secondAttribute="trailing" constant="16" id="UDc-BL-EEX"/>
                             <constraint firstAttribute="trailing" secondItem="wJW-nq-j19" secondAttribute="trailing" constant="16" id="ZzF-an-Vs8"/>
@@ -157,6 +157,11 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailsStackView" destination="wJW-nq-j19" id="Cgy-6x-TyX"/>
+                <outlet property="regionNameLabel" destination="UVG-YM-XGT" id="QZ0-R8-x2K"/>
+                <outlet property="regionPerformanceView" destination="4Ll-Wu-B2d" id="s3V-Js-nZn"/>
+            </connections>
             <point key="canvasLocation" x="-40.579710144927539" y="-44.196428571428569"/>
         </tableViewCell>
     </objects>

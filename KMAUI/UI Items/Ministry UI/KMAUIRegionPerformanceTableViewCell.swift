@@ -7,9 +7,16 @@
 //
 
 import UIKit
+import MKRingProgressView
 
 public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
-
+    // MARK: - IBOutlets
+    @IBOutlet public weak var regionPerformanceView: RingProgressView!
+    @IBOutlet public weak var regionNameLabel: UILabel!
+    @IBOutlet public weak var detailsStackView: UIStackView!
+    
+    // MARK: - Cell methods
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -23,4 +30,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
