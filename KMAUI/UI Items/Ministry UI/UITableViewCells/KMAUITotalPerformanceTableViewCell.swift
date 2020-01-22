@@ -13,7 +13,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var totalProgressView: RingProgressView!
     @IBOutlet public weak var progressPercentLabel: UILabel!
-    @IBOutlet public weak var itemTitleLabel: UILabel!
+    @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var itemValueLabel: UILabel!
     @IBOutlet public weak var horizontalLineLabel: UIView!
     @IBOutlet public weak var communityProgressView: RingProgressView!

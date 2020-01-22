@@ -15,9 +15,6 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var regionPerformanceLabel: UILabel!
     @IBOutlet public weak var regionNameLabel: UILabel!
     @IBOutlet public weak var detailsStackView: UIStackView!
-    @IBOutlet public weak var avgCostLabel: UILabel!
-    @IBOutlet public weak var marketSizeLabel: UILabel!
-    @IBOutlet public weak var vacancyRateLabel: UILabel!
 
     // MARK: - Variables
     public var regionPerformance = KMARegionPerformance()
@@ -47,10 +44,48 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
         }
         
         if !regionPerformance.stats.isEmpty {
-            avgCostLabel.text = regionPerformance.stats[0]
-            marketSizeLabel.text = regionPerformance.stats[1]
-            vacancyRateLabel.text = regionPerformance.stats[2]
+            setupStats()
+
+            // Clear existing subviews
+            for subview in detailsStackView.subviews {
+                subview.removeFromSuperview()
+            }
+            
+            for statItem in regionPerformance.stats {
+                // Creating hte horizontal stack view
+                let stackView = UIStackView()
+                stackView.axis = NSLayoutConstraint.Axis.horizontal
+                stackView.distribution = UIStackView.Distribution.fill
+                stackView.alignment = UIStackView.Alignment.fill
+                stackView.spacing = 8.0
+                
+                // Creating the title label
+                let titleLabel = UILabel()
+                
+                if let title = statItem["title"] {
+                    titleLabel.text = title
+                }
+                
+                titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+                stackView.addArrangedSubview(titleLabel)
+                
+                // Creating the text label
+                let valueLabel = UILabel()
+
+                if let value = statItem["value"] {
+                    valueLabel.text = value
+                }
+                
+                valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+                stackView.addArrangedSubview(valueLabel)
+                
+                detailsStackView.addArrangedSubview(stackView)
+            }
         }
+    }
+    
+    public func setupStats() {
+        
     }
 }
 
@@ -59,12 +94,12 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
 public struct KMARegionPerformance {
     public var regionName = ""
     public var performance = 0
-    public var stats = [String]()
+    public var stats = [[String: String]]()
     
     public init() {
     }
     
-    public init(regionName: String, performance: Int, stats: [String]) {
+    public init(regionName: String, performance: Int, stats: [[String: String]]) {
         self.regionName = regionName
         self.performance = performance
         self.stats = stats
