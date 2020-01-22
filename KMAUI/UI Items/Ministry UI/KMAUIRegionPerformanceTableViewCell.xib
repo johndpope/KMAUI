@@ -22,7 +22,7 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="200"/>
                         <subviews>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="4Ll-Wu-B2d" customClass="MKRingProgressView">
-                                <rect key="frame" x="224" y="21" width="48" height="48"/>
+                                <rect key="frame" x="224" y="26" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4Ll-Wu-B2d" secondAttribute="height" multiplier="1:1" id="DVH-dX-QjY"/>
@@ -51,16 +51,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hhF-5f-CSp">
-                                <rect key="frame" x="16" y="16" width="196" height="57.5"/>
+                                <rect key="frame" x="16" y="16" width="196" height="68"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-T2-icQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="41.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="KMATextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVG-YM-XGT">
-                                        <rect key="frame" x="0.0" y="31" width="196" height="26.5"/>
+                                        <rect key="frame" x="0.0" y="41.5" width="196" height="26.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="KMATitleColor"/>
                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WoL-4f-aOb">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23G-L7-e8M">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avg. cost" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23G-L7-e8M">
                                                 <rect key="frame" x="0.0" y="0.0" width="218.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="KMATextColor"/>
@@ -89,7 +89,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6M-cE-G44">
                                                 <rect key="frame" x="218.5" y="0.0" width="37.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="KMATextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -97,7 +97,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wvC-Xu-zjO">
                                         <rect key="frame" x="0.0" y="25" width="256" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYk-q5-bkj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of market (mil sq ft)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYk-q5-bkj">
                                                 <rect key="frame" x="0.0" y="0.0" width="218.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="KMATextColor"/>
@@ -106,7 +106,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7a-Gm-zNM">
                                                 <rect key="frame" x="218.5" y="0.0" width="37.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="KMATextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -114,7 +114,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFJ-La-4vV">
                                         <rect key="frame" x="0.0" y="50" width="256" height="17"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddk-tu-fmD">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vacancy rate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddk-tu-fmD">
                                                 <rect key="frame" x="0.0" y="0.0" width="218.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" name="KMATextColor"/>
@@ -123,7 +123,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Pm-GO-OH8">
                                                 <rect key="frame" x="218.5" y="0.0" width="37.5" height="17"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="KMATextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -141,7 +141,7 @@
                             <constraint firstAttribute="trailing" secondItem="4Ll-Wu-B2d" secondAttribute="trailing" constant="16" id="UDc-BL-EEX"/>
                             <constraint firstAttribute="trailing" secondItem="wJW-nq-j19" secondAttribute="trailing" constant="16" id="ZzF-an-Vs8"/>
                             <constraint firstAttribute="trailing" secondItem="YZJ-s6-xR0" secondAttribute="trailing" constant="16" id="sYl-Vp-PQw"/>
-                            <constraint firstItem="YZJ-s6-xR0" firstAttribute="top" secondItem="hhF-5f-CSp" secondAttribute="bottom" constant="26.5" id="tk2-aM-X9r"/>
+                            <constraint firstItem="YZJ-s6-xR0" firstAttribute="top" secondItem="hhF-5f-CSp" secondAttribute="bottom" constant="16" id="tk2-aM-X9r"/>
                             <constraint firstItem="4Ll-Wu-B2d" firstAttribute="centerY" secondItem="hhF-5f-CSp" secondAttribute="centerY" id="wml-AS-V6a"/>
                             <constraint firstItem="wJW-nq-j19" firstAttribute="leading" secondItem="egC-4K-fLc" secondAttribute="leading" constant="16" id="xAK-lt-iNv"/>
                             <constraint firstItem="YZJ-s6-xR0" firstAttribute="leading" secondItem="egC-4K-fLc" secondAttribute="leading" constant="16" id="yTV-mO-r59"/>
@@ -158,9 +158,12 @@
             <color key="backgroundColor" name="KMABgGray"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="avgCostLabel" destination="C6M-cE-G44" id="YEY-bi-ZN3"/>
                 <outlet property="detailsStackView" destination="wJW-nq-j19" id="Cgy-6x-TyX"/>
+                <outlet property="marketSizeLabel" destination="o7a-Gm-zNM" id="mx7-Gs-pgZ"/>
                 <outlet property="regionNameLabel" destination="UVG-YM-XGT" id="QZ0-R8-x2K"/>
                 <outlet property="regionPerformanceView" destination="4Ll-Wu-B2d" id="s3V-Js-nZn"/>
+                <outlet property="vacancyRateLabel" destination="4Pm-GO-OH8" id="lpC-Iv-bzy"/>
             </connections>
             <point key="canvasLocation" x="-40.579710144927539" y="-44.196428571428569"/>
         </tableViewCell>

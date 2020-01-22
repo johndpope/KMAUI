@@ -25,7 +25,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var clearButton: UIButton!
     
     // MARK - Variables
-    public var regionPerformance = KMARegionPerformance()
+    public var countryPerformance = KMACountryPerformance()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -50,36 +50,35 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Region details
-        itemValueLabel.text = regionPerformance.regionName
-        
-        var totalPerformance = 0
-        
-        if !regionPerformance.performance.isEmpty {
-            for performanceItem in regionPerformance.performance {
+        itemValueLabel.text = countryPerformance.countryName
+
+        if !countryPerformance.performance.isEmpty {
+            var totalPerformance = 0
+            
+            for performanceItem in countryPerformance.performance {
                 totalPerformance += performanceItem
             }
             
-            totalPerformance /= regionPerformance.performance.count
-        }
-        
-        progressPercentLabel.text = "\(totalPerformance)%"
-        
-        // Effectivity
-        communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(regionPerformance.performance[0])%", search: "\(regionPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize, noColor: true)
-        serviceProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Service \(regionPerformance.performance[1])%", search: "\(regionPerformance.performance[1])%", fontSize: serviceProgressLabel.font.pointSize, noColor: true)
-        securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(regionPerformance.performance[2])%", search: "\(regionPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize, noColor: true)
-        
-        // Progress views
-        self.totalProgressView.progress = 0
-        self.communityProgressView.progress = 0
-        self.serviceProgressView.progress = 0
-        self.securityProgressView.progress = 0
-        
-        UIView.animate(withDuration: 1.0) {
-            self.totalProgressView.progress = Double(totalPerformance) / 100
-            self.communityProgressView.progress = Double(self.regionPerformance.performance[0]) / 100
-            self.serviceProgressView.progress = Double(self.regionPerformance.performance[1]) / 100
-            self.securityProgressView.progress = Double(self.regionPerformance.performance[2]) / 100
+            totalPerformance /= countryPerformance.performance.count
+            progressPercentLabel.text = "\(totalPerformance)%"
+            
+            // Effectivity
+            communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(countryPerformance.performance[0])%", search: "\(countryPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize, noColor: true)
+            serviceProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Service \(countryPerformance.performance[1])%", search: "\(countryPerformance.performance[1])%", fontSize: serviceProgressLabel.font.pointSize, noColor: true)
+            securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(countryPerformance.performance[2])%", search: "\(countryPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize, noColor: true)
+            
+            // Progress views
+            self.totalProgressView.progress = 0
+            self.communityProgressView.progress = 0
+            self.serviceProgressView.progress = 0
+            self.securityProgressView.progress = 0
+            
+            UIView.animate(withDuration: 1.0) {
+                self.totalProgressView.progress = Double(totalPerformance) / 100
+                self.communityProgressView.progress = Double(self.countryPerformance.performance[0]) / 100
+                self.serviceProgressView.progress = Double(self.countryPerformance.performance[1]) / 100
+                self.securityProgressView.progress = Double(self.countryPerformance.performance[2]) / 100
+            }
         }
     }
     
@@ -91,15 +90,15 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
 
 // MARK: - Region performance struct, stores the performance percent and region name
 
-public struct KMARegionPerformance {
-    public var regionName = ""
+public struct KMACountryPerformance {
+    public var countryName = ""
     public var performance = [Int]()
     
     public init() {
     }
     
-    public init(regionName: String, performance: [Int]) {
-        self.regionName = regionName
+    public init(countryName: String, performance: [Int]) {
+        self.countryName = countryName
         self.performance = performance
     }
 }

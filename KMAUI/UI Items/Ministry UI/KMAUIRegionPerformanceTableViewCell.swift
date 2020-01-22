@@ -14,6 +14,12 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var regionPerformanceView: RingProgressView!
     @IBOutlet public weak var regionNameLabel: UILabel!
     @IBOutlet public weak var detailsStackView: UIStackView!
+    @IBOutlet public weak var avgCostLabel: UILabel!
+    @IBOutlet public weak var marketSizeLabel: UILabel!
+    @IBOutlet public weak var vacancyRateLabel: UILabel!
+    
+    // MARK: - Variables
+    var regionPerformance = KMARegionPerformance()
     
     // MARK: - Cell methods
     
@@ -31,6 +37,35 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        regionNameLabel.text = regionPerformance.regionName
+        regionPerformanceView.progress = 0
         
+        UIView.animate(withDuration: 1.0) {
+            self.regionPerformanceView.progress = Double(self.regionPerformance.performance) / 100
+        }
+        
+        if !regionPerformance.stats.isEmpty {
+            avgCostLabel.text = regionPerformance.stats[0]
+            marketSizeLabel.text = regionPerformance.stats[1]
+            vacancyRateLabel.text = regionPerformance.stats[2]
+        }
     }
 }
+
+// MARK: - Region performance struct, stores the performance percent and region name
+
+public struct KMARegionPerformance {
+    public var regionName = ""
+    public var performance = 0
+    public var stats = [String]()
+    
+    public init() {
+    }
+    
+    public init(regionName: String, performance: Int, stats: [String]) {
+        self.regionName = regionName
+        self.performance = performance
+        self.stats = stats
+    }
+}
+
