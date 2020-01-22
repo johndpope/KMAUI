@@ -11,6 +11,7 @@ import MapKit
 import Contacts
 import ContactsUI
 import CoreLocation
+import MKRingProgressView
 
 public class KMAUIUtilities {
     // Access variable
@@ -486,6 +487,21 @@ public class KMAUIUtilities {
     public func dictionaryToJSONData(dict: [String: Any]) -> Data {
         let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
         return jsonData!
+    }
+    
+    // MARK: - Tint color for the Ring Process view
+    
+    public func setupColor(ring: RingProgressView) {
+        if ring.progress >= 80 {
+            ring.startColor = KMAUIConstants.shared.KMAProgressGreen
+            ring.endColor = KMAUIConstants.shared.KMAProgressGreen
+        } else if ring.progress >= 50 {
+            ring.startColor = KMAUIConstants.shared.KMAProgressYellow
+            ring.endColor = KMAUIConstants.shared.KMAProgressYellow
+        } else {
+            ring.startColor = KMAUIConstants.shared.KMAProgressRed
+            ring.endColor = KMAUIConstants.shared.KMAProgressRed
+        }
     }
 }
 

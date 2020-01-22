@@ -80,7 +80,14 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
                 self.serviceProgressView.progress = Double(self.countryPerformance.performance[1]) / 100
                 self.securityProgressView.progress = Double(self.countryPerformance.performance[2]) / 100
             }
+            
+            KMAUIUtilities.shared.setupColor(ring: totalProgressView)
+            KMAUIUtilities.shared.setupColor(ring: communityProgressView)
+            KMAUIUtilities.shared.setupColor(ring: serviceProgressView)
+            KMAUIUtilities.shared.setupColor(ring: securityProgressView)
         }
     }
+    
+    
 }
 

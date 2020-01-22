@@ -46,6 +46,8 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
             self.regionPerformanceView.progress = Double(self.regionPerformance.performance) / 100
         }
         
+        KMAUIUtilities.shared.setupColor(ring: regionPerformanceView)
+        
         if !regionPerformance.stats.isEmpty {
             setupStats()
 
