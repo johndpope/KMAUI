@@ -32,7 +32,7 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Clear current subviews
+        /*// Clear current subviews
         for subview in bgView.subviews {
             subview.removeFromSuperview()
         }
@@ -50,6 +50,6 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
 //        segmentControl.addTarget(self, action: "changeColor:", forControlEvents: .ValueChanged)
 
         // Add this custom Segmented Control to our view
-        bgView.addSubview(customSC)
+        bgView.addSubview(customSC)*/
     }
 }
