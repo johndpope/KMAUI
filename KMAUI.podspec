@@ -8,7 +8,7 @@ s.summary = "KMAUI allows you using the same design items across all of the KMA 
 s.requires_arc = true
 
 # 2
-s.version = "0.7.13.22"
+s.version = "0.7.13.23"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -41,5 +41,6 @@ s.dependency 'Kingfisher', '~> 5.0'
 s.dependency 'Charts'
 s.dependency 'Parse'
 s.dependency 'MKRingProgressView'
+s.dependency 'TOSegmentedControl'
 
 end
