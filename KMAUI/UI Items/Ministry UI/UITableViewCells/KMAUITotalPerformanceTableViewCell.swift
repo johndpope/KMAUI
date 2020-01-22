@@ -22,18 +22,13 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
     @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var clearButton: UIButton!
     
     // MARK - Variables
     public var countryPerformance = KMACountryPerformance()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
-        // Setup the clear button to have an image on the right
-        clearButton.semanticContentAttribute = UIApplication.shared
-            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
-        
+
         // Setup the font size
         itemValueLabel.font = itemValueLabel.font.withSize(22)
         communityProgressLabel.font = communityProgressLabel.font.withSize(12)
@@ -86,11 +81,6 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
                 self.securityProgressView.progress = Double(self.countryPerformance.performance[2]) / 100
             }
         }
-    }
-    
-    // MARK: - IBActions
-    
-    @IBAction func clearButtonPressed(_ sender: Any) {
     }
 }
 
