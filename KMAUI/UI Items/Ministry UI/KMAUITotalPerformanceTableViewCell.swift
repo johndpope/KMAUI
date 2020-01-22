@@ -51,7 +51,9 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     public func setupCell() {
         // Region details
         itemValueLabel.text = regionPerformance.regionName
-        progressPercentLabel.text = "\(regionPerformance.totalPerformance)%"
+        
+        let totalPerformance = (regionPerformance.performance[1] + regionPerformance.performance[2] + regionPerformance.performance[3]) / 3
+        progressPercentLabel.text = "\(totalPerformance)%"
         
         // Effectivity
         communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(regionPerformance.performance[0])%", search: "\(regionPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize, noColor: true)
@@ -65,7 +67,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
         self.securityProgressView.progress = 0
         
         UIView.animate(withDuration: 1.0) {
-            self.totalProgressView.progress = Double(self.regionPerformance.totalPerformance) / 100
+            self.totalProgressView.progress = Double(totalPerformance) / 100
             self.communityProgressView.progress = Double(self.regionPerformance.performance[0]) / 100
             self.serviceProgressView.progress = Double(self.regionPerformance.performance[1]) / 100
             self.securityProgressView.progress = Double(self.regionPerformance.performance[2]) / 100
@@ -82,15 +84,13 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
 
 public struct KMARegionPerformance {
     public var regionName = ""
-    public var totalPerformance = 0
     public var performance = [Int]()
     
     public init() {
     }
     
-    public init(regionName: String, performance: [Int], totalPerformance: Int) {
+    public init(regionName: String, performance: [Int]) {
         self.regionName = regionName
         self.performance = performance
-        self.totalPerformance = totalPerformance
     }
 }
