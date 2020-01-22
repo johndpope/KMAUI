@@ -88,17 +88,3 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     }
 }
 
-// MARK: - Region performance struct, stores the performance percent and region name
-
-public struct KMACountryPerformance {
-    public var countryName = ""
-    public var performance = [Int]()
-    
-    public init() {
-    }
-    
-    public init(countryName: String, performance: [Int]) {
-        self.countryName = countryName
-        self.performance = performance
-    }
-}

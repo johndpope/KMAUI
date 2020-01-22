@@ -580,38 +580,9 @@ public extension Array where Element: Comparable {
     }
 }
 
-// MARK: - Structures
+// MARK: - UILabel extension
 
-// MARK: - Document struct
-
-public struct KMADocumentData {
-    // Create data
-    public var type = ""
-    public var name = ""
-    public var url: URL?
-    public var image = UIImage()
-    // Get from Parse data
-    public var previewURL = ""
-    public var fileURL = ""
+public extension UILabel {
     
-    public init() {
-    }
     
-    public mutating func fillFrom(dictionary: [String: String]) {
-        if let nameValue = dictionary["name"] {
-            self.name = nameValue
-        }
-        
-        if let typeValue = dictionary["type"] {
-            self.type = typeValue
-        }
-        
-        if let previewURLValue = dictionary["previewURL"] {
-            self.previewURL = previewURLValue
-        }
-        
-        if let fileURLValue = dictionary["fileURL"] {
-            self.fileURL = fileURLValue
-        }
-    }
 }

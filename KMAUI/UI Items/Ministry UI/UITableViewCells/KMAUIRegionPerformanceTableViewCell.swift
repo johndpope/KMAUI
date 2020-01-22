@@ -60,7 +60,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
                 stackView.spacing = 8.0
                 
                 // Creating the title label
-                let titleLabel = UILabel()
+                let titleLabel = KMAUIRegularTextLabel()
                 
                 if let title = statItem["title"] {
                     titleLabel.text = title
@@ -70,7 +70,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
                 stackView.addArrangedSubview(titleLabel)
                 
                 // Creating the text label
-                let valueLabel = UILabel()
+                let valueLabel = KMAUIBoldTextLabel()
 
                 if let value = statItem["value"] {
                     valueLabel.text = value
@@ -86,23 +86,6 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
     
     public func setupStats() {
         
-    }
-}
-
-// MARK: - Region performance struct, stores the performance percent and region name
-
-public struct KMARegionPerformance {
-    public var regionName = ""
-    public var performance = 0
-    public var stats = [[String: String]]()
-    
-    public init() {
-    }
-    
-    public init(regionName: String, performance: Int, stats: [[String: String]]) {
-        self.regionName = regionName
-        self.performance = performance
-        self.stats = stats
     }
 }
 

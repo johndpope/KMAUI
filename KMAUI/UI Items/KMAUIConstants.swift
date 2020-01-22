@@ -99,40 +99,6 @@ public class KMAUIConstants {
 //    "z2jerfddwxkye3w653muzfjy"
 }
 
-// MARK: - Structures
-
-public struct KMAUITextFieldCellData {
-    public var type = "textField"
-    public var placeholderText = ""
-    public var value = ""
-    
-    // Fill the data from the dictionary
-    public mutating func setupStruct(cellObject: [String: AnyObject]) {
-        if let placeholderTextValue = cellObject["placeholderText"] as? String {
-            placeholderText = placeholderTextValue
-        }
-        
-        // For request
-        if let defaultValue = cellObject["defaultValue"] as? String {
-            value = defaultValue
-        }
-        
-        // For answer
-        if let answerValue = cellObject["answer"] as? String {
-            value = answerValue
-        }
-    }
-    
-    public init() {
-    }
-    
-    public init(type: String, placeholderText: String, value: String) {
-        self.type = type
-        self.placeholderText = placeholderText
-        self.value = value
-    }
-}
-
 // MARK: - String extension
 
 public extension String {
