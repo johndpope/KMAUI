@@ -30,10 +30,10 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                        <color key="value" name="KMAProgressGreen"/>
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                        <color key="value" name="KMAProgressGreen"/>
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
                                         <color key="value" name="KMAUIGreyProgressColor"/>
@@ -95,10 +95,10 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                        <color key="value" name="KMAProgressGreen"/>
+                                                        <color key="value" name="KMAUIGreenProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                        <color key="value" name="KMAProgressGreen"/>
+                                                        <color key="value" name="KMAUIGreenProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
@@ -145,10 +145,10 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                        <color key="value" name="KMAProgressYellow"/>
+                                                        <color key="value" name="KMAUIYellowProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                        <color key="value" name="KMAProgressYellow"/>
+                                                        <color key="value" name="KMAUIYellowProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
@@ -195,10 +195,10 @@
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                        <color key="value" name="KMAProgressRed"/>
+                                                        <color key="value" name="KMAUIRedProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                        <color key="value" name="KMAProgressRed"/>
+                                                        <color key="value" name="KMAUIRedProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
@@ -285,20 +285,14 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMAProgressGreen">
-            <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAProgressRed">
-            <color red="1" green="0.28235294117647058" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAProgressYellow">
-            <color red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="KMATextColor">
             <color red="0.066666666666666666" green="0.082352941176470587" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMATitleColor">
             <color red="0.066666666666666666" green="0.082352941176470587" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreenProgressColor">
+            <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -309,8 +303,14 @@
         <namedColor name="KMAUIMainBgColor">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="KMAUIRedProgressColor">
+            <color red="1" green="0.28235294117647058" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIYellowProgressColor">
+            <color red="1" green="0.80784313725490198" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

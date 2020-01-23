@@ -20,11 +20,11 @@ public class KMAUIUtilities {
     
     /**
      Returns the UIView for a header with the headerTitle set for a label.
-    */
+     */
     
     public func headerView(title: String, isRound: Bool? = nil) -> UITableViewHeaderFooterView {
         var offset: CGFloat = 0
-
+        
         if let isRound = isRound, isRound {
             offset = 20
         }
@@ -60,7 +60,7 @@ public class KMAUIUtilities {
         
         // Auto-layout for headerView
         KMAUIUtilities.shared.setConstaints(parentView: contentView, childView: headerView, left: 0, right: 0, top: 0, bottom: 0)
-
+        
         return headerViewObject
     }
     
@@ -99,7 +99,7 @@ public class KMAUIUtilities {
     
     /**
      Show the loading alert.
-    */
+     */
     
     public func startLoading(title: String) {
         let alert = UIAlertController(title: nil, message: title, preferredStyle: .alert)
@@ -117,7 +117,7 @@ public class KMAUIUtilities {
     
     /**
      Displaying the upload progress.
-    */
+     */
     
     public func uploadProgressAlert(title: String, message: String) {
         uploadAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -135,7 +135,7 @@ public class KMAUIUtilities {
     
     /**
      Hide the loading alert.
-    */
+     */
     
     public func stopLoadingWith(completion: @escaping (_ hide: String)->()) {
         guard let topController = KMAUIUtilities.shared.getTopVisibleController() else {
@@ -223,18 +223,18 @@ public class KMAUIUtilities {
     
     public func hexStringToUIColor(hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-
+        
         if (cString.hasPrefix("#")) {
             cString.remove(at: cString.startIndex)
         }
-
+        
         if ((cString.count) != 6) {
             return UIColor.gray
         }
-
+        
         var rgbValue:UInt64 = 0
         Scanner(string: cString).scanHexInt64(&rgbValue)
-
+        
         return UIColor(
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -247,7 +247,7 @@ public class KMAUIUtilities {
     
     /**
      Get a date string in a short format
-    */
+     */
     
     public func formatStringShort(date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -258,7 +258,7 @@ public class KMAUIUtilities {
     
     /**
      Get a date string in a short format
-    */
+     */
     
     public func formatStringMonth(date: Date) -> String {
         let dateFormatter = DateFormatter()
@@ -305,7 +305,7 @@ public class KMAUIUtilities {
                 return dateObject
             }
         }
- 
+        
         return Date()
     }
     
@@ -337,7 +337,7 @@ public class KMAUIUtilities {
         let polygonRenderer = MKPolygonRenderer(polygon: polygon)
         let mapPoint = MKMapPoint(location)
         let polygonPoint = polygonRenderer.point(for: mapPoint)
-
+        
         return polygonRenderer.path.contains(polygonPoint)
     }
     
@@ -439,7 +439,7 @@ public class KMAUIUtilities {
     
     /**
      Get items from uploadBody JSON
-    */
+     */
     
     public func getItemsFrom(uploadBody: String) -> [KMADocumentData] {
         var items = [KMADocumentData]()
