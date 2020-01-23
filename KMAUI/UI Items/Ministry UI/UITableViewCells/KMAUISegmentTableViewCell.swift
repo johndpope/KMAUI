@@ -56,10 +56,10 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         segmentControl.layer.borderWidth = 0
         
-        let normalAttritutes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont.withSize(12)] as! [NSAttributedString.Key: Any]
+        let normalAttritutes = [NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont.withSize(12), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor] as! [NSAttributedString.Key: Any]
         segmentControl.setTitleTextAttributes(normalAttritutes, for: .normal)
         
-        let selectedAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont.withSize(12)] as! [NSAttributedString.Key: Any]
+        let selectedAttributes = [, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont.withSize(12), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor] as! [NSAttributedString.Key: Any]
         segmentControl.setTitleTextAttributes(selectedAttributes, for: .selected)
         
         // Add target action method
