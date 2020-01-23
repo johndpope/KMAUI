@@ -45,27 +45,26 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Create the new segmentControl
         let segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
-        segmentControl.tintColor = KMAUIConstants.shared.KMAUITextColor
+        segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDark
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        segmentControl.backgroundColor =  KMAUIConstants.shared.KMABackColor
-        segmentControl.layer.borderColor = UIColor.clear.cgColor
+        segmentControl.backgroundColor = KMAUIConstants.shared.KMABackColor
+//        segmentControl.layer.borderColor = UIColor.clear.cgColor
         
         if #available(iOS 13.0, *) {
-            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUITextColor
+            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUIBlueDark
         }
         
-        segmentControl.layer.borderWidth = 1
+        segmentControl.layer.borderWidth = 0
         
-        let normalAttritutes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont] as! [NSAttributedString.Key: Any]
+        let normalAttritutes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont.withSize(12)] as! [NSAttributedString.Key: Any]
         segmentControl.setTitleTextAttributes(normalAttritutes, for: .normal)
         
-        let selectedAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont] as! [NSAttributedString.Key: Any]
+        let selectedAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont.withSize(12)] as! [NSAttributedString.Key: Any]
         segmentControl.setTitleTextAttributes(selectedAttributes, for: .selected)
         
         // Add target action method
         segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)
-        
-        
+
         // Add this custom Segmented Control to our view
         bgView.addSubview(segmentControl)
         fixBackgroundSegmentControl(segmentControl)

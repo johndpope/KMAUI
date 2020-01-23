@@ -18,6 +18,7 @@ public class KMAUIConstants {
     
     // MARK: - KMAUIColors
     public let KMAUITextColor = UIColor(named: "KMAUITextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIBlueDark = UIColor(named: "KMAUIBlueDark", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
