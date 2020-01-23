@@ -34,10 +34,10 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
 
         // Setup the font size
-        itemValueLabel.font = itemValueLabel.font.withSize(22)
-        communityProgressLabel.font = communityProgressLabel.font.withSize(12)
-        serviceProgressLabel.font = serviceProgressLabel.font.withSize(12)
-        securityProgressLabel.font = securityProgressLabel.font.withSize(12)
+        itemValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
+        communityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        serviceProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         
         // No selection required
         selectionStyle = .none

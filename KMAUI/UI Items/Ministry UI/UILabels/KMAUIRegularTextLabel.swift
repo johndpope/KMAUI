@@ -13,16 +13,16 @@ public class KMAUIRegularTextLabel: UILabel {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
-        textColor = KMAUIConstants.shared.KMATextColor
+        font = KMAUIConstants.shared.KMAUIRegularFont
+        textColor = KMAUIConstants.shared.KMAUITextColor
         numberOfLines = 0
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
-        textColor = KMAUIConstants.shared.KMATextColor
+        font = KMAUIConstants.shared.KMAUIRegularFont
+        textColor = KMAUIConstants.shared.KMAUITextColor
         numberOfLines = 0
     }
 }

@@ -12,6 +12,13 @@ public class KMAUIConstants {
     // Access variable
     public static let shared = KMAUIConstants()
     
+    // MARK: - Fonts
+    public let KMAUIRegularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
+    public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+    
+    // MARK: - KMAUIColors
+    public let KMAUITextColor = UIColor(named: "KMAUITextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMABgGray = UIColor(named: "KMABgGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!

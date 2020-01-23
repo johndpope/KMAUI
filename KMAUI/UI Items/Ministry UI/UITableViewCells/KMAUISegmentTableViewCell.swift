@@ -8,8 +8,10 @@
 
 import UIKit
 
-public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
+public class KMAUISegmentTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    
     // MARK: - Variables
     public var segmentItems = [String]() {
         didSet {
@@ -40,25 +42,25 @@ public class KMAUISegmentSelectionTableViewCell: UITableViewCell {
             subview.removeFromSuperview()
         }
         
-        // Initialize
+        // Create the new segmentControl
         let segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
-        segmentControl.tintColor = KMAUIConstants.shared.KMATextColor
+        segmentControl.tintColor = KMAUIConstants.shared.KMAUITextColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         segmentControl.backgroundColor =  KMAUIConstants.shared.KMABackColor
         segmentControl.layer.borderColor = UIColor.clear.cgColor
         
         if #available(iOS 13.0, *) {
-            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMATextColor
+            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUITextColor
         }
         
         segmentControl.layer.borderWidth = 1
         
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMATextColor]
-        segmentControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        let normalAttritutes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont] as! [NSAttributedString.Key: Any]
+        segmentControl.setTitleTextAttributes(normalAttritutes, for: .normal)
         
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor]
-        segmentControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
+        let selectedAttributes = [NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABackColor, NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont] as! [NSAttributedString.Key: Any]
+        segmentControl.setTitleTextAttributes(selectedAttributes, for: .selected)
         
         // Add target action method
         segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)
