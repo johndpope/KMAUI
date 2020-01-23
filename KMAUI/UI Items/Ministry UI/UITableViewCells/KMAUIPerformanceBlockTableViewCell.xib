@@ -24,13 +24,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="06T-pL-JVL">
                                 <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMS-u2-JNz">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMS-u2-JNz" customClass="MKRingProgressView">
                                         <rect key="frame" x="0.0" y="0.0" width="38" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="Zr2-fd-iVN"/>
                                             <constraint firstAttribute="width" constant="38" id="dYr-Xi-rUP"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                                <color key="value" name="KMAUIGreyProgressColor"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nz-cq-m4l" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
                                         <rect key="frame" x="38" y="0.0" width="112" height="50"/>
@@ -54,7 +59,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="KMABackColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="06T-pL-JVL" secondAttribute="trailing" id="BBK-By-fpR"/>
                             <constraint firstAttribute="bottom" secondItem="06T-pL-JVL" secondAttribute="bottom" id="BW2-nI-48A"/>
@@ -64,7 +69,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="KMABgGray"/>
+                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                 <constraints>
                     <constraint firstItem="Tsa-kR-Yej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D0D-9c-VI5"/>
                     <constraint firstAttribute="bottom" secondItem="Tsa-kR-Yej" secondAttribute="bottom" constant="16" id="D4c-cy-b2T"/>
@@ -72,16 +77,20 @@
                     <constraint firstItem="Tsa-kR-Yej" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Nmx-kq-Mse"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="1.4492753623188408" y="-10.714285714285714"/>
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMABackColor">
-            <color red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="KMABgGray">
+        <namedColor name="KMAUIMainBgColor">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

@@ -45,13 +45,12 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Create the new segmentControl
         let segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
-        segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDark
+        segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        segmentControl.backgroundColor = KMAUIConstants.shared.KMABackColor
-//        segmentControl.layer.borderColor = UIColor.clear.cgColor
+        segmentControl.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         
         if #available(iOS 13.0, *) {
-            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUIBlueDark
+            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         }
         
         segmentControl.layer.borderWidth = 0

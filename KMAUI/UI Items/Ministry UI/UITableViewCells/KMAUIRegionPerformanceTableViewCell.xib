@@ -36,7 +36,7 @@
                                         <color key="value" name="KMAProgressGreen"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
-                                        <color key="value" name="KMAProgressGray"/>
+                                        <color key="value" name="KMAUIGreyProgressColor"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
                                         <real key="value" value="4"/>
@@ -75,7 +75,7 @@
                             </stackView>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YZJ-s6-xR0">
                                 <rect key="frame" x="16" y="83.5" width="256" height="1"/>
-                                <color key="backgroundColor" name="KMALineGray"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Aty-8m-R2z"/>
                                 </constraints>
@@ -84,7 +84,7 @@
                                 <rect key="frame" x="16" y="100.5" width="256" height="33.5"/>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" name="KMABackColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="wJW-nq-j19" firstAttribute="top" secondItem="YZJ-s6-xR0" secondAttribute="bottom" constant="16" id="5V7-vT-okl"/>
                             <constraint firstItem="hhF-5f-CSp" firstAttribute="top" secondItem="egC-4K-fLc" secondAttribute="top" constant="16" id="BHY-dt-AQg"/>
@@ -103,6 +103,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                 <constraints>
                     <constraint firstItem="egC-4K-fLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6LG-F9-ZMz"/>
                     <constraint firstItem="egC-4K-fLc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="RFQ-vm-P4y"/>
@@ -110,7 +111,7 @@
                     <constraint firstAttribute="trailing" secondItem="egC-4K-fLc" secondAttribute="trailing" constant="16" id="zMF-Kb-jkD"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="KMABgGray"/>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="detailsStackView" destination="wJW-nq-j19" id="Cgy-6x-TyX"/>
@@ -122,18 +123,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMABackColor">
-            <color red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMABgGray">
-            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMALineGray">
-            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAProgressGray">
-            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="KMAProgressGreen">
             <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -142,6 +131,18 @@
         </namedColor>
         <namedColor name="KMATitleColor">
             <color red="0.066666666666666666" green="0.082352941176470587" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

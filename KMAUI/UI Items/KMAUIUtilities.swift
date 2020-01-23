@@ -493,14 +493,14 @@ public class KMAUIUtilities {
     
     public func setupColor(ring: RingProgressView) {
         if ring.progress >= 0.7 {
-            ring.startColor = KMAUIConstants.shared.KMAProgressGreen
-            ring.endColor = KMAUIConstants.shared.KMAProgressGreen
+            ring.startColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+            ring.endColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else if ring.progress >= 0.4 {
-            ring.startColor = KMAUIConstants.shared.KMAProgressYellow
-            ring.endColor = KMAUIConstants.shared.KMAProgressYellow
+            ring.startColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+            ring.endColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         } else {
-            ring.startColor = KMAUIConstants.shared.KMAProgressRed
-            ring.endColor = KMAUIConstants.shared.KMAProgressRed
+            ring.startColor = KMAUIConstants.shared.KMAUIRedProgressColor
+            ring.endColor = KMAUIConstants.shared.KMAUIRedProgressColor
         }
     }
     
