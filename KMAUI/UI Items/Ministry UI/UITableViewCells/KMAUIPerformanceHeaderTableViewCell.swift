@@ -9,7 +9,7 @@
 import UIKit
 import MKRingProgressView
 
-public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
+public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var totalProgressView: RingProgressView!
     @IBOutlet public weak var progressPercentLabel: UILabel!
@@ -24,7 +24,7 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
     
     // MARK - Variables
-    public var countryPerformance = KMACountryPerformance() {
+    public var performanceStruct = KMAPerformanceStruct() {
         didSet {
             self.setupCell()
         }
@@ -54,37 +54,34 @@ public class KMAUITotalPerformanceTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
-        // Region details
-        itemValueLabel.text = countryPerformance.countryName
+        // Item details
+        itemTitleLabel.text = performanceStruct.itemTitle
+        itemValueLabel.text = performanceStruct.itemName
+        
+        // Total performance (average from the items) Community, Service and Security for an item
 
-        if !countryPerformance.performance.isEmpty {
+        if performanceStruct.performanceArray.count == 3 {
             var totalPerformance = 0
+            let performanceTitles = ["Community", "Service", "Security"]
+            let labelArray = [communityProgressLabel, serviceProgressLabel, securityProgressLabel]
+            let performanceViewArray = [communityProgressView, serviceProgressView, securityProgressView]
             
-            for performanceItem in countryPerformance.performance {
-                totalPerformance += performanceItem
+            for (index, performace) in performanceStruct.performanceArray.enumerated() {
+                // Increment the total performance
+                totalPerformance += performace
+                // Setup the data for label and progress view
+                if let label = labelArray[index], let progressView = performanceViewArray[index] {
+                    label.attributedText = KMAUIUtilities.shared.attributedText(text: "\(performanceTitles[index]) \(performace)%", search: "\(performace)%", fontSize: label.font.pointSize, noColor: true)
+                    progressView.progress = Double(performace) / 100
+                    KMAUIUtilities.shared.setupColor(ring: progressView)
+                }
             }
             
-            totalPerformance /= countryPerformance.performance.count
+            // Setup the total performance
+            totalPerformance /= performanceStruct.performanceArray.count
             progressPercentLabel.text = "\(totalPerformance)%"
-            
-            // Effectivity
-            communityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Community \(countryPerformance.performance[0])%", search: "\(countryPerformance.performance[0])%", fontSize: communityProgressLabel.font.pointSize, noColor: true)
-            serviceProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Service \(countryPerformance.performance[1])%", search: "\(countryPerformance.performance[1])%", fontSize: serviceProgressLabel.font.pointSize, noColor: true)
-            securityProgressLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "Security \(countryPerformance.performance[2])%", search: "\(countryPerformance.performance[2])%", fontSize: securityProgressLabel.font.pointSize, noColor: true)
-            
-            // Progress views
             totalProgressView.progress = Double(totalPerformance) / 100
-            communityProgressView.progress = Double(countryPerformance.performance[0]) / 100
-            serviceProgressView.progress = Double(countryPerformance.performance[1]) / 100
-            securityProgressView.progress = Double(countryPerformance.performance[2]) / 100
-            
-            KMAUIUtilities.shared.setupColor(ring: totalProgressView)
-            KMAUIUtilities.shared.setupColor(ring: communityProgressView)
-            KMAUIUtilities.shared.setupColor(ring: serviceProgressView)
-            KMAUIUtilities.shared.setupColor(ring: securityProgressView)
-        }
+            KMAUIUtilities.shared.setupColor(ring: totalProgressView)        }
     }
-    
-    
 }
 

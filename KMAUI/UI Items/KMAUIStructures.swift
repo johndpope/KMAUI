@@ -46,16 +46,18 @@ public struct KMADocumentData {
 
 // MARK: - Region performance struct, stores the performance percent and region name
 
-public struct KMACountryPerformance {
-    public var countryName = ""
-    public var performance = [Int]()
+public struct KMAPerformanceStruct {
+    public var itemTitle = ""
+    public var itemName = ""
+    public var performanceArray = [Int]()
     
     public init() {
     }
     
-    public init(countryName: String, performance: [Int]) {
-        self.countryName = countryName
-        self.performance = performance
+    public init(itemTitle: String, itemName: String, performanceArray: [Int]) {
+        self.itemTitle = itemTitle
+        self.itemName = itemName
+        self.performanceArray = performanceArray
     }
 }
 
