@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import MKRingProgressView
 
-class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
+public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var progressView: RingProgressView!
+    @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var itemStatLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var starButton: UIButton!
+    @IBOutlet public weak var arrowIndicatorView: UIImageView!
+    
+    override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // No selection required
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
