@@ -21,7 +21,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-    public var vibilityChangedCallback: ((Int) -> Void)?
+    public var visibilityChangedCallback: ((Int, Bool) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -111,6 +111,17 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
     // MARK: - IBActions
     
     @objc public func visibilityButtonPressed(button: UIButton) {
-        vibilityChangedCallback?(button.tag - 100)
+        var isOn = true
+        
+        if button.tintColor == UIColor.white {
+            isOn = false
+            button.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            button.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        } else {
+            button.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            button.tintColor = UIColor.white
+        }
+        
+        visibilityChangedCallback?(button.tag - 100, isOn)
     }
 }
