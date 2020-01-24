@@ -70,7 +70,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             starButton.backgroundColor = KMAUIConstants.shared.KMABlueColor
         } else {
             starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            starButton.backgroundColor = KMAUIConstants.shared.KMAUIGreyProgressColor
+            starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
 }
