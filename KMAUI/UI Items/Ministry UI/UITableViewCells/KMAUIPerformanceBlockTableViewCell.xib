@@ -117,7 +117,7 @@
                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                 <constraints>
                     <constraint firstItem="Tsa-kR-Yej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="D0D-9c-VI5"/>
-                    <constraint firstAttribute="bottom" secondItem="Tsa-kR-Yej" secondAttribute="bottom" constant="16" id="D4c-cy-b2T"/>
+                    <constraint firstAttribute="bottom" secondItem="Tsa-kR-Yej" secondAttribute="bottom" constant="8" id="D4c-cy-b2T"/>
                     <constraint firstAttribute="trailing" secondItem="Tsa-kR-Yej" secondAttribute="trailing" constant="16" id="NCh-I3-JES"/>
                     <constraint firstItem="Tsa-kR-Yej" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Nmx-kq-Mse"/>
                 </constraints>
