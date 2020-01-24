@@ -26,6 +26,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     }
     public var isOnCallback: ((Bool) -> Void)?
     
+    // MARK: - Cell methods
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         

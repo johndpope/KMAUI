@@ -1,0 +1,33 @@
+//
+//  KMAUIAnalysisBlockTableViewCell.swift
+//  KMAUI
+//
+//  Created by Stanislav Rastvorov on 24.01.2020.
+//  Copyright © 2020 Stanislav Rastvorov. All rights reserved.
+//
+
+import UIKit
+
+public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var optionsButton: UIButton!
+    @IBOutlet public weak var stackView: UIStackView!
+    
+    // MARK: - Variables
+
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override public func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        
+    }
+}

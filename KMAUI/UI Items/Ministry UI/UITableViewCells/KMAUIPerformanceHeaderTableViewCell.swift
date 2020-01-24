@@ -30,6 +30,8 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Cell methods
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
 
