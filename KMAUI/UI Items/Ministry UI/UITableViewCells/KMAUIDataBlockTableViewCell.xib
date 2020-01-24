@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7na-DC-OVB">
-                                <rect key="frame" x="12" y="84" width="264" height="72"/>
+                                <rect key="frame" x="12" y="84" width="264" height="64"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="B7d-h3-e7R" firstAttribute="leading" secondItem="5J1-AU-Iqv" secondAttribute="leading" constant="12" id="9bm-9a-xBG"/>
                             <constraint firstItem="iv6-Ye-7J1" firstAttribute="top" secondItem="B7d-h3-e7R" secondAttribute="bottom" constant="8" id="adg-D0-nGo"/>
                             <constraint firstItem="B7d-h3-e7R" firstAttribute="top" secondItem="5J1-AU-Iqv" secondAttribute="top" constant="16" id="bLW-Lm-vzN"/>
-                            <constraint firstAttribute="bottom" secondItem="7na-DC-OVB" secondAttribute="bottom" constant="8" id="d3g-tH-LAG"/>
+                            <constraint firstAttribute="bottom" secondItem="7na-DC-OVB" secondAttribute="bottom" constant="16" id="d3g-tH-LAG"/>
                             <constraint firstItem="iv6-Ye-7J1" firstAttribute="leading" secondItem="hZs-L0-g5u" secondAttribute="trailing" constant="8" id="gZI-pX-avf"/>
                             <constraint firstAttribute="trailing" secondItem="B7d-h3-e7R" secondAttribute="trailing" constant="12" id="gdT-a1-zI9"/>
                             <constraint firstAttribute="trailing" secondItem="7na-DC-OVB" secondAttribute="trailing" constant="12" id="ngE-3t-s6a"/>

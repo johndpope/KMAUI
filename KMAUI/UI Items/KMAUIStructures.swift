@@ -97,6 +97,25 @@ public struct KMAUIItemPerformance {
     }
 }
 
+// MARK: - Data item struct
+
+public struct KMAUIDataItem {
+    public var itemName = ""
+    public var itemHandle = ""
+    public var lastUpdate = Date()
+    public var rows = [[String: AnyObject]]()
+    
+    public init() {
+    }
+    
+    public init(itemName: String, itemHandle: String, lastUpdate: Date, rows: [[String: AnyObject]]) {
+        self.itemName = itemName
+        self.itemHandle = itemHandle
+        self.lastUpdate = lastUpdate
+        self.rows = rows
+    }
+}
+
 // MARK: - TextFieldCellData
 
 public struct KMAUITextFieldCellData {

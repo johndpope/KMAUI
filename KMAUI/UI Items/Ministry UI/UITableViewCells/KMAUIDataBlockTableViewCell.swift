@@ -9,10 +9,18 @@
 import UIKit
 
 public class KMAUIDataBlockTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemHandleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var lastUpdatedLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var stackView: UIStackView!
+    
+    // MARK: - Variables
+    var dataItem = KMAUIDataItem() {
+        didSet {
+            setupCell()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +34,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+ 
+    public func setupCell() {
+        
+    }
 }
