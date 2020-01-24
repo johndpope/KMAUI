@@ -21,6 +21,7 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
         }
     }
     public static let id = "KMAUIAnalysisBlockTableViewCell"
+    public var optionsCallback: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -40,5 +41,11 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     
     public func setupCell() {
         itemNameLabel.text = dataItem.itemName
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        optionsCallback?(true)
     }
 }
