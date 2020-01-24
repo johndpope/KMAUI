@@ -24,6 +24,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var isOnCallback: ((Bool) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -65,6 +66,14 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         starButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         starButton.clipsToBounds = true
         
+        setupStarTint()
+    }
+    
+    /**
+     Setup tint for image
+     */
+    
+    public func setupStarTint() {
         if itemPerformance.isOn {
             starButton.tintColor = UIColor.white
             starButton.backgroundColor = KMAUIConstants.shared.KMABlueColor
@@ -72,5 +81,13 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func starButtonPressed(_ sender: Any) {
+        itemPerformance.isOn = !itemPerformance.isOn
+        setupStarTint()
+        isOnCallback?(itemPerformance.isOn)
     }
 }
