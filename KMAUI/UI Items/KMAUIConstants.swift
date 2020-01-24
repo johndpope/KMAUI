@@ -74,6 +74,7 @@ public class KMAUIConstants {
     public let closeIcon = UIImage(named: "closeIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let starIcon = UIImage(named: "starIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let arrowIndicator = UIImage(named: "arrowIndicator", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let eyeIcon = UIImage(named: "eyeIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6

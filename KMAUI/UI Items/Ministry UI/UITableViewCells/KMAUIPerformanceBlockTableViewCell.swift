@@ -76,7 +76,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public func setupStarTint() {
         if itemPerformance.isOn {
             starButton.tintColor = UIColor.white
-            starButton.backgroundColor = KMAUIConstants.shared.KMABlueColor
+            starButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         } else {
             starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
