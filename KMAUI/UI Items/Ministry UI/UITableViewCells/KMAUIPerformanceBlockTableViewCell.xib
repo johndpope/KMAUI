@@ -124,6 +124,7 @@
                 <outlet property="itemStatLabel" destination="iAP-BP-CkC" id="ha3-uo-Qsk"/>
                 <outlet property="progressLabel" destination="9hw-zZ-8Bu" id="iFn-HP-1j4"/>
                 <outlet property="progressView" destination="zMS-u2-JNz" id="BNR-6U-wFV"/>
+                <outlet property="stackView" destination="06T-pL-JVL" id="aoU-9Q-RXZ"/>
                 <outlet property="starButton" destination="j3Q-fX-JJh" id="mq8-k4-kaX"/>
             </connections>
             <point key="canvasLocation" x="1.4492753623188408" y="-10.714285714285714"/>
