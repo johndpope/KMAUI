@@ -21,6 +21,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var vibilityChangedCallback: ((Int) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -89,6 +90,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             visibilityButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
             visibilityButton.clipsToBounds = true
             visibilityButton.tag = index + 100
+            visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
             itemView.addArrangedSubview(visibilityButton)
             
             stackView.addArrangedSubview(itemView)
@@ -104,5 +106,11 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
                 lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 12).isActive = true
             }
         }
+    }
+    
+    // MARK: - IBActions
+    
+    @objc public func visibilityButtonPressed(button: UIButton) {
+        vibilityChangedCallback?(button.tag - 100)
     }
 }
