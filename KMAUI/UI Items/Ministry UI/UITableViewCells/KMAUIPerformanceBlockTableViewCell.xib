@@ -22,14 +22,14 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="60"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="06T-pL-JVL">
-                                <rect key="frame" x="0.0" y="0.0" width="288" height="60"/>
+                                <rect key="frame" x="16" y="0.0" width="256" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMS-u2-JNz" customClass="MKRingProgressView">
-                                        <rect key="frame" x="8" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="44" id="1gD-dL-7K7"/>
-                                            <constraint firstAttribute="height" constant="44" id="Lc3-Yi-lbS"/>
+                                            <constraint firstAttribute="width" constant="48" id="1gD-dL-7K7"/>
+                                            <constraint firstAttribute="height" constant="48" id="Lc3-Yi-lbS"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
@@ -53,20 +53,26 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hw-zZ-8Bu" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="9" y="0.0" width="30" height="50"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nz-cq-m4l" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="0.0" width="100" height="44"/>
+                                        <rect key="frame" x="47" y="0.0" width="89" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAP-BP-CkC" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="168" y="0.0" width="42" height="44"/>
+                                        <rect key="frame" x="144" y="0.0" width="42" height="50"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="253" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j3Q-fX-JJh">
-                                        <rect key="frame" x="218" y="0.0" width="44" height="44"/>
+                                        <rect key="frame" x="194" y="6" width="44" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="j3Q-fX-JJh" secondAttribute="height" multiplier="1:1" id="Ocm-Ff-3VU"/>
                                             <constraint firstAttribute="height" constant="44" id="vGX-Ly-INg"/>
@@ -75,7 +81,7 @@
                                         <state key="normal" image="starIcon"/>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="254" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="02Y-Yv-huQ">
-                                        <rect key="frame" x="270" y="24" width="10" height="20"/>
+                                        <rect key="frame" x="246" y="30" width="10" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="9bt-iS-vtr"/>
                                             <constraint firstAttribute="width" constant="10" id="gaD-Jb-an6"/>
@@ -83,17 +89,18 @@
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="zMS-u2-JNz" firstAttribute="leading" secondItem="06T-pL-JVL" secondAttribute="leading" constant="8" id="HFA-Pv-1u2"/>
-                                    <constraint firstAttribute="trailing" secondItem="02Y-Yv-huQ" secondAttribute="trailing" constant="8" id="kyx-dF-ioM"/>
+                                    <constraint firstItem="9hw-zZ-8Bu" firstAttribute="centerX" secondItem="zMS-u2-JNz" secondAttribute="centerX" id="0bo-yu-FAP"/>
+                                    <constraint firstItem="9hw-zZ-8Bu" firstAttribute="centerY" secondItem="zMS-u2-JNz" secondAttribute="centerY" id="LKk-o2-g5J"/>
+                                    <constraint firstAttribute="height" constant="60" id="mmU-ly-fyP"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="06T-pL-JVL" secondAttribute="trailing" id="BBK-By-fpR"/>
+                            <constraint firstAttribute="trailing" secondItem="06T-pL-JVL" secondAttribute="trailing" constant="16" id="BBK-By-fpR"/>
                             <constraint firstAttribute="bottom" secondItem="06T-pL-JVL" secondAttribute="bottom" id="BW2-nI-48A"/>
                             <constraint firstAttribute="height" constant="60" id="MEd-4o-FiK"/>
-                            <constraint firstItem="06T-pL-JVL" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" id="QND-fN-lNh"/>
+                            <constraint firstItem="06T-pL-JVL" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="16" id="QND-fN-lNh"/>
                             <constraint firstItem="06T-pL-JVL" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" id="d9u-GR-F5a"/>
                         </constraints>
                     </view>
@@ -112,6 +119,7 @@
                 <outlet property="arrowIndicatorView" destination="02Y-Yv-huQ" id="bvO-W7-a8w"/>
                 <outlet property="itemNameLabel" destination="3Nz-cq-m4l" id="oEh-1L-9nV"/>
                 <outlet property="itemStatLabel" destination="iAP-BP-CkC" id="ha3-uo-Qsk"/>
+                <outlet property="progressLabel" destination="9hw-zZ-8Bu" id="iFn-HP-1j4"/>
                 <outlet property="progressView" destination="zMS-u2-JNz" id="BNR-6U-wFV"/>
                 <outlet property="starButton" destination="j3Q-fX-JJh" id="mq8-k4-kaX"/>
             </connections>

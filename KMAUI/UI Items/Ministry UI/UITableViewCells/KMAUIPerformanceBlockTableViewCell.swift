@@ -12,6 +12,7 @@ import MKRingProgressView
 public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var progressView: RingProgressView!
+    @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemStatLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var starButton: UIButton!
