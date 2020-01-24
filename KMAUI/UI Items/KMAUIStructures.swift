@@ -83,16 +83,16 @@ public struct KMARegionPerformance {
 public struct KMAItemPerformance {
     public var progress = 0
     public var itemName = ""
-    public var itemStat = ""
+    public var avgCost = 0
     public var isOn = false
     
     public init() {
     }
     
-    public init(progress: Int, itemName: String, itemStat: String, isOn: Bool) {
+    public init(progress: Int, itemName: String, avgCost: Int, isOn: Bool) {
         self.progress = progress
         self.itemName = itemName
-        self.itemStat = itemStat
+        self.avgCost = avgCost
         self.isOn = isOn
     }
 }

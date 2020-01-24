@@ -47,11 +47,17 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         progressLabel.text = "\(itemPerformance.progress)%"
         
         // Item name label
-        itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         itemNameLabel.text = itemPerformance.itemName
         
         // Item stat label
-        itemStatLabel.text = itemPerformance.itemStat
+        var costValue = "+\(itemPerformance.avgCost)%"
+        
+        if itemPerformance.avgCost < 0 {
+            costValue = "-\(itemPerformance.avgCost)%"
+        }
+        
+        itemStatLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "avg.cost \(costValue)", search: costValue, fontSize: KMAUIConstants.shared.KMAUIBoldFont.pointSize, noColor: true)
         
         // Star button
         starButton.setTitle("", for: .normal)
