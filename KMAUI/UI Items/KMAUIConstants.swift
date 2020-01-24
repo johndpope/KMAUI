@@ -110,8 +110,7 @@ public class KMAUIConstants {
     // "77ercg9phrbdz8mp8mgfprdq"
     // "3kkfx7unbbewky5vx3qb7yjt"
     // "vb8sbaprpy7a85dygjdpjznf"
-    
-//    "z2jerfddwxkye3w653muzfjy"
+    //    "z2jerfddwxkye3w653muzfjy"
 }
 
 // MARK: - String extension

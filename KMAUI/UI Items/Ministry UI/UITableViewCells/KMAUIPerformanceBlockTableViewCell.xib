@@ -21,20 +21,87 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-kR-Yej" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="288" height="60"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="06T-pL-JVL">
-                                <rect key="frame" x="16" y="0.0" width="256" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhS-xN-EHs" customClass="MKRingProgressView">
+                                <rect key="frame" x="16" y="6" width="48" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="mmU-ly-fyP"/>
+                                    <constraint firstAttribute="height" constant="48" id="6ie-ZB-w6r"/>
+                                    <constraint firstAttribute="width" constant="48" id="DYh-39-XNL"/>
                                 </constraints>
-                            </stackView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                        <color key="value" name="KMAUIGreyProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyR-9R-OyF" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="19" y="19.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL4-wb-Ryj">
+                                <rect key="frame" x="80" y="8" width="88" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-FU-lBu" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="176" y="8" width="42" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1u-8s-Ijs">
+                                <rect key="frame" x="226" y="16" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="90V-GN-YOR"/>
+                                    <constraint firstAttribute="width" constant="28" id="UUX-EZ-RwJ"/>
+                                </constraints>
+                                <state key="normal" image="starIcon"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="KX9-Il-L9H">
+                                <rect key="frame" x="262" y="20" width="10" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="9wP-9c-pSL"/>
+                                    <constraint firstAttribute="height" constant="20" id="VqM-P6-ziQ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="06T-pL-JVL" secondAttribute="trailing" constant="16" id="BBK-By-fpR"/>
-                            <constraint firstAttribute="bottom" secondItem="06T-pL-JVL" secondAttribute="bottom" id="BW2-nI-48A"/>
+                            <constraint firstItem="KX9-Il-L9H" firstAttribute="centerY" secondItem="Tsa-kR-Yej" secondAttribute="centerY" id="1Hd-pa-ZC8"/>
+                            <constraint firstItem="e1u-8s-Ijs" firstAttribute="centerY" secondItem="Tsa-kR-Yej" secondAttribute="centerY" id="5j9-Qc-VhY"/>
+                            <constraint firstItem="aL4-wb-Ryj" firstAttribute="leading" secondItem="nhS-xN-EHs" secondAttribute="trailing" constant="16" id="8Wf-A8-Xdb"/>
+                            <constraint firstItem="nhS-xN-EHs" firstAttribute="centerY" secondItem="Tsa-kR-Yej" secondAttribute="centerY" id="Ase-5u-kVL"/>
+                            <constraint firstItem="e1u-8s-Ijs" firstAttribute="leading" secondItem="mR5-FU-lBu" secondAttribute="trailing" constant="8" id="AxF-Qe-tCy"/>
+                            <constraint firstItem="QyR-9R-OyF" firstAttribute="centerY" secondItem="nhS-xN-EHs" secondAttribute="centerY" id="D3o-1G-TjB"/>
+                            <constraint firstItem="mR5-FU-lBu" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="8" id="Hn1-m1-wDP"/>
+                            <constraint firstAttribute="bottom" secondItem="aL4-wb-Ryj" secondAttribute="bottom" constant="8" id="KKR-Px-BYL"/>
                             <constraint firstAttribute="height" constant="60" id="MEd-4o-FiK"/>
-                            <constraint firstItem="06T-pL-JVL" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="16" id="QND-fN-lNh"/>
-                            <constraint firstItem="06T-pL-JVL" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" id="d9u-GR-F5a"/>
+                            <constraint firstItem="nhS-xN-EHs" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="16" id="Nwj-YD-VK2"/>
+                            <constraint firstItem="QyR-9R-OyF" firstAttribute="centerX" secondItem="nhS-xN-EHs" secondAttribute="centerX" id="UoO-Ed-mze"/>
+                            <constraint firstItem="mR5-FU-lBu" firstAttribute="leading" secondItem="aL4-wb-Ryj" secondAttribute="trailing" constant="8" id="VbT-id-ShL"/>
+                            <constraint firstAttribute="bottom" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="8" id="gIh-Em-Y7L"/>
+                            <constraint firstItem="aL4-wb-Ryj" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="8" id="ldN-xd-kec"/>
+                            <constraint firstItem="KX9-Il-L9H" firstAttribute="leading" secondItem="e1u-8s-Ijs" secondAttribute="trailing" constant="8" id="xGg-js-pHR"/>
+                            <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" constant="16" id="yrs-6S-OBf"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -49,12 +116,25 @@
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="stackView" destination="06T-pL-JVL" id="aoU-9Q-RXZ"/>
+                <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
+                <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
+                <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
+                <outlet property="progressLabel" destination="QyR-9R-OyF" id="dF0-HL-59e"/>
+                <outlet property="progressView" destination="nhS-xN-EHs" id="b5C-Py-CBF"/>
+                <outlet property="starButton" destination="e1u-8s-Ijs" id="vtO-xJ-ruI"/>
             </connections>
             <point key="canvasLocation" x="1.4492753623188408" y="-10.714285714285714"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrowIndicator" width="7" height="12"/>
+        <image name="starIcon" width="38" height="38"/>
+        <namedColor name="KMAUIGreenProgressColor">
+            <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
