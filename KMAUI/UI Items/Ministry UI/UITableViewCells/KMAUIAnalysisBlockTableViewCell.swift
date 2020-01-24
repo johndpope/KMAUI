@@ -15,6 +15,11 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var stackView: UIStackView!
     
     // MARK: - Variables
+    public var dataItem = KMAUIDataItem() {
+        didSet {
+            setupCell()
+        }
+    }
     public static let id = "KMAUIAnalysisBlockTableViewCell"
 
     override public func awakeFromNib() {
@@ -34,6 +39,6 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        
+        itemNameLabel.text = dataItem.itemName
     }
 }
