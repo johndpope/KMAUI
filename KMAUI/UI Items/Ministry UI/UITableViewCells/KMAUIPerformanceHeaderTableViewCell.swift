@@ -42,10 +42,10 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -59,7 +59,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         itemValueLabel.text = performanceStruct.itemName
         
         // Total performance (average from the items) Community, Service and Security for an item
-
+        
         if performanceStruct.performanceArray.count == 3 {
             var totalPerformance = 0
             let performanceTitles = ["Community", "Service", "Security"]
@@ -81,7 +81,8 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             totalPerformance /= performanceStruct.performanceArray.count
             progressPercentLabel.text = "\(totalPerformance)%"
             totalProgressView.progress = Double(totalPerformance) / 100
-            KMAUIUtilities.shared.setupColor(ring: totalProgressView)        }
+            KMAUIUtilities.shared.setupColor(ring: totalProgressView)
+        }
     }
 }
 

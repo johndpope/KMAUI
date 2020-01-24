@@ -29,6 +29,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Star button corner radius
+        starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         starButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         starButton.clipsToBounds = true
         
@@ -43,6 +44,18 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        progressView.progress = Double(itemPerformance.progress) / 100
+        KMAUIUtilities.shared.setupColor(ring: progressView)
+        progressLabel.text = "\(itemPerformance.progress)%"
+        itemNameLabel.text = itemPerformance.itemName
+        itemStatLabel.text = itemPerformance.itemStat
         
+        if itemPerformance.isOn {
+            starButton.tintColor = UIColor.white
+            starButton.backgroundColor = KMAUIConstants.shared.KMABlueColor
+        } else {
+            starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            starButton.backgroundColor = KMAUIConstants.shared.KMAUIGreyProgressColor
+        }
     }
 }
