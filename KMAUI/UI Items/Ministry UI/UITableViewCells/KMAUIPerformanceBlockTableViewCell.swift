@@ -19,7 +19,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var arrowIndicator: UIImageView!
     
     // MARK: - Variables
-    public var itemPerformance = KMAItemPerformance() {
+    public var itemPerformance = KMAUIItemPerformance() {
         didSet {
             setupCell()
         }

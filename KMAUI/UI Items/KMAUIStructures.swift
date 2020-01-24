@@ -80,7 +80,7 @@ public struct KMARegionPerformance {
 
 // MARK: - Item performace struct
 
-public struct KMAItemPerformance {
+public struct KMAUIItemPerformance {
     public var progress = 0
     public var itemName = ""
     public var avgCost = 0
