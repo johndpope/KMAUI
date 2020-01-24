@@ -78,6 +78,25 @@ public struct KMARegionPerformance {
     }
 }
 
+// MARK: - Item performace struct
+
+public struct KMAItemPerformance {
+    public var progress = 0
+    public var itemName = ""
+    public var itemStat = ""
+    public var isOn = false
+    
+    public init() {
+    }
+    
+    public init(progress: Int, itemName: String, itemStat: String, isOn: Bool) {
+        self.progress = progress
+        self.itemName = itemName
+        self.itemStat = itemStat
+        self.isOn = isOn
+    }
+}
+
 // MARK: - TextFieldCellData
 
 public struct KMAUITextFieldCellData {

@@ -18,8 +18,19 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var starButton: UIButton!
     @IBOutlet public weak var arrowIndicatorView: UIImageView!
     
+    // MARK: - Variables
+    var itemPerformance = KMAItemPerformance() {
+        didSet {
+            setupCell()
+        }
+    }
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Star button corner radius
+        starButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        starButton.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -31,4 +42,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
