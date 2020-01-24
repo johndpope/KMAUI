@@ -10,8 +10,8 @@ import UIKit
 
 public class KMAUIDataBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var itemHandleLabel: UILabel!
-    @IBOutlet public weak var lastUpdatedLabel: UILabel!
+    @IBOutlet public weak var itemHandleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var lastUpdatedLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var stackView: UIStackView!
     
     override public func awakeFromNib() {
