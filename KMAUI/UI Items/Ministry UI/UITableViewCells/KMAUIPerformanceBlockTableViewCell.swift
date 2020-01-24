@@ -25,6 +25,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         }
     }
     public var isOnCallback: ((Bool) -> Void)?
+    public static let id = "KMAUIPerformanceBlockTableViewCell"
     
     // MARK: - Cell methods
     

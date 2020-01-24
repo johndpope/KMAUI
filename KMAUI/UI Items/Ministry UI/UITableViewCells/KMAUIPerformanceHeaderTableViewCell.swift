@@ -29,6 +29,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             self.setupCell()
         }
     }
+    public static let id = "KMAUIPerformanceHeaderTableViewCell"
     
     // MARK: - Cell methods
     

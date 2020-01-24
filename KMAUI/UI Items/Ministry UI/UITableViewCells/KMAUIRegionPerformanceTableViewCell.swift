@@ -22,6 +22,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
             self.setupCell()
         }
     }
+    public static let id = "KMAUIRegionPerformanceTableViewCell"
     
     // MARK: - Cell methods
     

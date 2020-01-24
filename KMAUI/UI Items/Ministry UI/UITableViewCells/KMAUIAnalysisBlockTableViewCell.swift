@@ -15,10 +15,16 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var stackView: UIStackView!
     
     // MARK: - Variables
+    public static let id = "KMAUIAnalysisBlockTableViewCell"
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        optionsButton.setImage(KMAUIConstants.shared.optionsIcon.withRenderingMode(.alwaysTemplate), for: .normal)
+        optionsButton.tintColor = KMAUIConstants.shared.KMAUITextColor
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

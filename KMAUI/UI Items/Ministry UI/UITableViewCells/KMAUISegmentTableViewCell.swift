@@ -20,6 +20,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     }
     public var selectedIndex = 0
     public var selectedIndexCallback: ((Int) -> Void)?
+    public static let id = "KMAUISegmentTableViewCell"
     
     // MARK: - Cell methods
     

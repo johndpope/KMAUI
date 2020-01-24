@@ -22,6 +22,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         }
     }
     public var visibilityChangedCallback: ((Int, Bool) -> Void)?
+    public static let id = "KMAUIDataBlockTableViewCell"
     
     // MARK: - Cell methods
     
