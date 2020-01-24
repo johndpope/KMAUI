@@ -78,6 +78,12 @@
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="itemHandleLabel" destination="hZs-L0-g5u" id="n1b-za-JSN"/>
+                <outlet property="itemNameLabel" destination="B7d-h3-e7R" id="rGA-zJ-bqr"/>
+                <outlet property="lastUpdatedLabel" destination="iv6-Ye-7J1" id="3YA-af-hpT"/>
+                <outlet property="stackView" destination="7na-DC-OVB" id="1y2-qo-v9z"/>
+            </connections>
             <point key="canvasLocation" x="21.739130434782609" y="88.392857142857139"/>
         </tableViewCell>
     </objects>
