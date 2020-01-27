@@ -303,8 +303,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
         }
         
-        print("\nVALUES: \(hasPropertyCount) + \(noPropertyCount)")
-        
         if hasPropertyCount + noPropertyCount > 0 {
             let hasPercent = Double(hasPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             let noPercent = Double(noPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
@@ -379,6 +377,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             propertyBarChartView.data = data
+            
+            print("PROPERTY DATA: \(data)")
+            
             propertyBarChartView.notifyDataSetChanged()
         }
     }
