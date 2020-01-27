@@ -51,8 +51,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
         // Prepare the rows
         for (index, row) in dataItem.rows.enumerated() {
-            let itemView = UIStackView()
-            
+            let itemView = UIStackView()            
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
