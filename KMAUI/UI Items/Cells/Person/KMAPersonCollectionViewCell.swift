@@ -335,7 +335,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             propertyStringsArray = [String]()
             
-            if hasPercent > noPercent {
+            if hasPercent >= noPercent {
                 if hasPercent > 0 {
                     yVals.append(BarChartDataEntry(x: 0, y: hasPercent))
                 }
@@ -377,8 +377,6 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             
             propertyBarChartView.data = data
-            
-            print("PROPERTY DATA: \(data)")
             
             propertyBarChartView.notifyDataSetChanged()
         }
