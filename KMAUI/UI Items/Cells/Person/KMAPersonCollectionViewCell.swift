@@ -303,6 +303,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
         }
         
+        print("\nVALUES: \(hasPropertyCount) + \(noPropertyCount)")
+        
         if hasPropertyCount + noPropertyCount > 0 {
             let hasPercent = Double(hasPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
             let noPercent = Double(noPropertyCount) / Double(hasPropertyCount + noPropertyCount) * 100
