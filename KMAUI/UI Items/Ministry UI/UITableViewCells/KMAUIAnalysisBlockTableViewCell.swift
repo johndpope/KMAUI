@@ -22,6 +22,7 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     }
     public static let id = "KMAUIAnalysisBlockTableViewCell"
     public var optionsCallback: ((Bool) -> Void)?
+    public var pointCallback: ((Int) -> Void)?
     public var rowViews = [UIView]()
     public var selectedIndex = -1
 
@@ -135,7 +136,25 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
     // MARK: - IBActions
     
     @objc func selectionButtonPressed(button: UIButton) {
-        print("Button pressed: \(button.tag - 100)")
+        let newIndex = button.tag - 100
+        
+        if newIndex == selectedIndex {
+            // Deselect index
+            selectedIndex = -1
+        } else {
+            // Select new index
+            selectedIndex = newIndex
+        }
+        
+        for (index, rowBgView) in rowViews.enumerated() {
+            if selectedIndex == index {
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+            } else {
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            }
+        }
+        
+        pointCallback?(button.tag - 100)
     }
     
     @IBAction func optionsButtonPressed(_ sender: Any) {
