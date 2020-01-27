@@ -51,7 +51,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
         // Prepare the rows
         for (index, row) in dataItem.rows.enumerated() {
-            let itemView = UIStackView()            
+            let itemView = UIStackView()
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
@@ -110,8 +110,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
                 lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.1)
                 lineView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
                 stackView.addArrangedSubview(lineView)
-                lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 12).isActive = true
-                lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 12).isActive = true
+                lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+                lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0).isActive = true
             }
         }
     }
