@@ -154,7 +154,7 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
             }
         }
         
-        pointCallback?(button.tag - 100)
+        pointCallback?(selectedIndex)
     }
     
     @IBAction func optionsButtonPressed(_ sender: Any) {
