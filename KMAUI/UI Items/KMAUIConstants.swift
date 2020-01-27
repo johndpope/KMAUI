@@ -76,6 +76,9 @@ public class KMAUIConstants {
     public let arrowIndicator = UIImage(named: "arrowIndicator", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let eyeIcon = UIImage(named: "eyeIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let optionsIcon = UIImage(named: "optionsIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let mapTabIcon = UIImage(named: "mapTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let requestsTabIcon = UIImage(named: "requestsTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let profileTabIcon = UIImage(named: "profileTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
