@@ -60,11 +60,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             // Row name label
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
-            
-            if let rowName = row["rowName"] as? String {
-                rowNameLabel.text = rowName
-            }
-            
+                rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
             rowNameLabel.leadingAnchor.constraint(equalTo: itemView.leadingAnchor, constant: 0).isActive = true
@@ -72,11 +68,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
-            
-            if let rowValue = row["rowValue"] as? String {
-                rowValueLabel.text = rowValue
-            }
-            
+                rowValueLabel.text = row.rowValue
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
@@ -87,7 +79,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             visibilityButton.setTitle("", for: .normal)
             visibilityButton.setImage(KMAUIConstants.shared.eyeIcon.withRenderingMode(.alwaysTemplate), for: .normal)
             
-            if let visibility = row["visibility"] as? Bool, visibility {
+            if row.visibility {
                 visibilityButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
                 visibilityButton.tintColor = UIColor.white
             } else {

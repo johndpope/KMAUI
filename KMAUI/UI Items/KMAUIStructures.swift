@@ -103,16 +103,33 @@ public struct KMAUIDataItem {
     public var itemName = ""
     public var itemHandle = ""
     public var lastUpdate = Date()
-    public var rows = [[String: AnyObject]]()
+    public var rows = [KMAUIRowData]()
     
     public init() {
     }
     
-    public init(itemName: String, itemHandle: String, lastUpdate: Date, rows: [[String: AnyObject]]) {
+    public init(itemName: String, itemHandle: String, lastUpdate: Date, rows: [KMAUIRowData]) {
         self.itemName = itemName
         self.itemHandle = itemHandle
         self.lastUpdate = lastUpdate
         self.rows = rows
+    }
+}
+
+// MARK: - Row data struct
+
+public struct KMAUIRowData {
+    public var rowName = ""
+    public var rowValue = ""
+    public var visibility = false
+    
+    public init() {
+    }
+    
+    public init(rowName: String, rowValue: String, visibility: Bool) {
+        self.rowName = rowName
+        self.rowValue = rowValue
+        self.visibility = visibility
     }
 }
 
