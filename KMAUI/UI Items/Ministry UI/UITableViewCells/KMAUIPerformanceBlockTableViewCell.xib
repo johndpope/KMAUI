@@ -87,9 +87,9 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="KX9-Il-L9H">
-                                <rect key="frame" x="273" y="22" width="10" height="20"/>
+                                <rect key="frame" x="273" y="22" width="18" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="10" id="9wP-9c-pSL"/>
+                                    <constraint firstAttribute="width" constant="18" id="9wP-9c-pSL"/>
                                     <constraint firstAttribute="height" constant="20" id="VqM-P6-ziQ"/>
                                 </constraints>
                             </imageView>
@@ -110,7 +110,7 @@
                             <constraint firstAttribute="bottom" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="8" id="gIh-Em-Y7L"/>
                             <constraint firstItem="aL4-wb-Ryj" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="8" id="ldN-xd-kec"/>
                             <constraint firstItem="KX9-Il-L9H" firstAttribute="leading" secondItem="e1u-8s-Ijs" secondAttribute="trailing" constant="8" id="xGg-js-pHR"/>
-                            <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" constant="8" id="yrs-6S-OBf"/>
+                            <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" id="yrs-6S-OBf"/>
                         </constraints>
                     </view>
                 </subviews>
