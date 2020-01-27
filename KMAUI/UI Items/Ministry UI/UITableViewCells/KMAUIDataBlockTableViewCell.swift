@@ -49,6 +49,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             subview.removeFromSuperview()
         }
         
+        // Prepare the rows
         for (index, row) in dataItem.rows.enumerated() {
             let itemView = UIStackView()
             
