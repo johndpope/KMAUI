@@ -21,8 +21,25 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wke-8G-edw" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="16" y="0.0" width="310" height="132"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-6w-GFh">
+                                <rect key="frame" x="12" y="16" width="230" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWC-hi-CfK" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="29.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="KMATextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-F0-E8L" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="37.5" width="230" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" name="KMATitleColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="fPx-PM-zJo" customClass="MKRingProgressView">
-                                <rect key="frame" x="12" y="19.5" width="48" height="48"/>
+                                <rect key="frame" x="250" y="24" width="48" height="48"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="lnm-Sx-6HO"/>
@@ -51,35 +68,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFz-rO-Jz7" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="21" y="35" width="30" height="17"/>
+                                <rect key="frame" x="259" y="39.5" width="30" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jYF-6w-GFh">
-                                <rect key="frame" x="72" y="16" width="226" height="55"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="754" text="Total performance" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWC-hi-CfK" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="226" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" name="KMATextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eg-F0-E8L" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28.5" width="226" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" name="KMATitleColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3eW-XH-FGV">
-                                <rect key="frame" x="12" y="87" width="286" height="1"/>
-                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="tEF-RP-pGI"/>
-                                </constraints>
-                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3kc-AH-vue">
                                 <rect key="frame" x="12" y="88" width="286" height="44"/>
                                 <subviews>
@@ -241,18 +234,15 @@
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
-                            <constraint firstItem="fPx-PM-zJo" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="37p-1f-G68"/>
                             <constraint firstItem="fPx-PM-zJo" firstAttribute="centerY" secondItem="jYF-6w-GFh" secondAttribute="centerY" id="IHl-Vv-nU6"/>
-                            <constraint firstItem="3kc-AH-vue" firstAttribute="top" secondItem="3eW-XH-FGV" secondAttribute="bottom" id="MNX-r9-WWM"/>
-                            <constraint firstAttribute="trailing" secondItem="jYF-6w-GFh" secondAttribute="trailing" constant="12" id="Ngh-5t-RPE"/>
-                            <constraint firstItem="jYF-6w-GFh" firstAttribute="leading" secondItem="fPx-PM-zJo" secondAttribute="trailing" constant="12" id="PNe-5z-UZb"/>
                             <constraint firstItem="wFz-rO-Jz7" firstAttribute="centerX" secondItem="fPx-PM-zJo" secondAttribute="centerX" id="PUd-9o-g7g"/>
-                            <constraint firstItem="3eW-XH-FGV" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="Poc-gf-GT9"/>
+                            <constraint firstItem="fPx-PM-zJo" firstAttribute="leading" secondItem="jYF-6w-GFh" secondAttribute="trailing" constant="8" id="T3O-3J-eDR"/>
                             <constraint firstItem="jYF-6w-GFh" firstAttribute="top" secondItem="Wke-8G-edw" secondAttribute="top" constant="16" id="T3n-Pd-rDT"/>
                             <constraint firstItem="wFz-rO-Jz7" firstAttribute="centerY" secondItem="fPx-PM-zJo" secondAttribute="centerY" id="TPd-mC-nvU"/>
-                            <constraint firstAttribute="trailing" secondItem="3eW-XH-FGV" secondAttribute="trailing" constant="12" id="d0g-Pg-8kA"/>
+                            <constraint firstItem="3kc-AH-vue" firstAttribute="top" secondItem="jYF-6w-GFh" secondAttribute="bottom" constant="8" id="XUV-vD-r9s"/>
+                            <constraint firstAttribute="trailing" secondItem="fPx-PM-zJo" secondAttribute="trailing" constant="12" id="h6T-Wi-hKX"/>
                             <constraint firstAttribute="trailing" secondItem="3kc-AH-vue" secondAttribute="trailing" constant="12" id="l04-nr-WfS"/>
-                            <constraint firstItem="3eW-XH-FGV" firstAttribute="top" secondItem="jYF-6w-GFh" secondAttribute="bottom" constant="16" id="npt-Kk-b2p"/>
+                            <constraint firstItem="jYF-6w-GFh" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="pF1-7h-WPw"/>
                             <constraint firstItem="3kc-AH-vue" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="rlh-H0-ad5"/>
                             <constraint firstAttribute="bottom" secondItem="3kc-AH-vue" secondAttribute="bottom" id="wEH-v0-nIS"/>
                         </constraints>
@@ -271,7 +261,6 @@
             <connections>
                 <outlet property="communityProgressLabel" destination="lvg-Z1-oTJ" id="bpQ-wG-8E0"/>
                 <outlet property="communityProgressView" destination="uxB-xq-5T9" id="fSl-Ft-xcN"/>
-                <outlet property="horizontalLineLabel" destination="3eW-XH-FGV" id="L7E-rO-B6g"/>
                 <outlet property="itemTitleLabel" destination="kWC-hi-CfK" id="ZZV-38-K9d"/>
                 <outlet property="itemValueLabel" destination="1Eg-F0-E8L" id="utP-q6-4f2"/>
                 <outlet property="progressPercentLabel" destination="wFz-rO-Jz7" id="xZS-Pq-EYO"/>
@@ -279,6 +268,7 @@
                 <outlet property="securityProgressView" destination="FtJ-PM-Ydw" id="zWc-Dt-RbV"/>
                 <outlet property="serviceProgressLabel" destination="4o4-yM-FXP" id="tE5-Au-a3Z"/>
                 <outlet property="serviceProgressView" destination="CJf-aG-ctI" id="0Ud-n3-PXM"/>
+                <outlet property="stackView" destination="3kc-AH-vue" id="Eb3-7M-Wyi"/>
                 <outlet property="totalProgressView" destination="fPx-PM-zJo" id="TpA-sT-oSB"/>
             </connections>
             <point key="canvasLocation" x="-116.54676258992806" y="-142.71356783919597"/>
@@ -293,9 +283,6 @@
         </namedColor>
         <namedColor name="KMAUIGreenProgressColor">
             <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAUIGreyLineColor">
-            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIGreyProgressColor">
             <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
