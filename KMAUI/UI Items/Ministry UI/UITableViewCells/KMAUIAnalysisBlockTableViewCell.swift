@@ -25,7 +25,6 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
         optionsButton.setImage(KMAUIConstants.shared.optionsIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         optionsButton.tintColor = KMAUIConstants.shared.KMAUITextColor
         

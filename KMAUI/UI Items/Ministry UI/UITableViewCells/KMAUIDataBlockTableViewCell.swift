@@ -44,6 +44,11 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         itemHandleLabel.text = dataItem.itemHandle
         lastUpdatedLabel.text = "Last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate))"
         
+        // Clear existing subviews
+        for subview in stackView.subviews {
+            subview.removeFromSuperview()
+        }
+        
         for (index, row) in dataItem.rows.enumerated() {
             let itemView = UIStackView()
             
