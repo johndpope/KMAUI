@@ -384,10 +384,10 @@
 			children = (
 				85A2453723D713DB00ABBEC7 /* KMAUIPerformanceHeaderTableViewCell.swift */,
 				85A2453823D713DB00ABBEC7 /* KMAUIPerformanceHeaderTableViewCell.xib */,
-				85D8913D23D89621009C89E0 /* KMAUISegmentTableViewCell.swift */,
-				85D8913E23D89621009C89E0 /* KMAUISegmentTableViewCell.xib */,
 				85EC95D723D76C3A005C544D /* KMAUIRegionPerformanceTableViewCell.swift */,
 				85EC95D823D76C3A005C544D /* KMAUIRegionPerformanceTableViewCell.xib */,
+				85D8913D23D89621009C89E0 /* KMAUISegmentTableViewCell.swift */,
+				85D8913E23D89621009C89E0 /* KMAUISegmentTableViewCell.xib */,
 				85D1419E23D8C2850095C5B3 /* KMAUIPerformanceBlockTableViewCell.swift */,
 				85D1419F23D8C2850095C5B3 /* KMAUIPerformanceBlockTableViewCell.xib */,
 				85CC2AFF23DB71F600BCC124 /* KMAUIDataBlockTableViewCell.swift */,

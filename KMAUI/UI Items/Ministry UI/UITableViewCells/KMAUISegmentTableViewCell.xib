@@ -14,7 +14,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUISegmentTableViewCell" rowHeight="52" id="KGk-i7-Jjw" customClass="KMAUISegmentTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -31,7 +31,7 @@
                     <constraint firstItem="QXB-hz-ca7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6wu-wf-hdT"/>
                     <constraint firstItem="QXB-hz-ca7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9EO-5Y-av7"/>
                     <constraint firstAttribute="trailing" secondItem="QXB-hz-ca7" secondAttribute="trailing" constant="16" id="gp3-Eg-cbI"/>
-                    <constraint firstAttribute="bottom" secondItem="QXB-hz-ca7" secondAttribute="bottom" constant="16" id="hSW-I2-BDL"/>
+                    <constraint firstAttribute="bottom" secondItem="QXB-hz-ca7" secondAttribute="bottom" constant="8" id="hSW-I2-BDL"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
