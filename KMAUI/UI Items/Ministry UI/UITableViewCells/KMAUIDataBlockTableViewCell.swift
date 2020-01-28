@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MKRingProgressView
 
 public class KMAUIDataBlockTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -73,8 +74,16 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             
             if hasProgress {
             // Progress view
-                let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
-                progressView.backgroundColor = UIColor.red
+                let progressView = RingProgressView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+                progressView.widthAnchor.constraint(equalToConstant: 12.0).isActive = true
+                progressView.heightAnchor.constraint(equalToConstant: 12.0).isActive = true
+                progressView.backgroundRingColor = KMAUIConstants.shared.KMAUIGreyProgressColor
+                progressView.ringWidth = 2
+                progressView.hidesRingForZeroProgress = false
+                progressView.backgroundColor = UIColor.clear
+                progressView.progress = 0.75
+                KMAUIUtilities.shared.setupColor(ring: progressView)
+                
                 itemView.addArrangedSubview(progressView)
             }
             

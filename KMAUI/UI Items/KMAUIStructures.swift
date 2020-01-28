@@ -107,14 +107,19 @@ public struct KMAUIRowData {
     public var rowName = ""
     public var rowValue = ""
     public var visibility = false
+    public var progress: Double = 0
     
     public init() {
     }
     
-    public init(rowName: String, rowValue: String, visibility: Bool) {
+    public init(rowName: String, rowValue: String, visibility: Bool, progress: Double? = nil) {
         self.rowName = rowName
         self.rowValue = rowValue
         self.visibility = visibility
+        
+        if let progress = progress {
+            self.progress = progress
+        }
     }
 }
 
