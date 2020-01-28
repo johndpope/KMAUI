@@ -36,13 +36,13 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
- 
+    
     public func setupCell() {
         itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         itemNameLabel.text = dataItem.itemName
@@ -73,32 +73,35 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemView.spacing = 8.0
             
             if hasProgress {
-            // Progress view
-                let progressView = RingProgressView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
-                progressView.widthAnchor.constraint(equalToConstant: 12.0).isActive = true
-                progressView.heightAnchor.constraint(equalToConstant: 12.0).isActive = true
+                let progressBgView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 28))
+                progressBgView.widthAnchor.constraint(equalToConstant: 12.0).isActive = true
+                progressBgView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+                progressBgView.backgroundColor = UIColor.clear
+                // Progress view
+                let progressView = RingProgressView(frame: CGRect(x: 0, y: 9, width: 12, height: 12))
                 progressView.backgroundRingColor = KMAUIConstants.shared.KMAUIGreyProgressColor
                 progressView.ringWidth = 2
                 progressView.hidesRingForZeroProgress = false
                 progressView.backgroundColor = UIColor.clear
-                progressView.progress = 0.75
+                progressView.progress = row.progress
                 KMAUIUtilities.shared.setupColor(ring: progressView)
                 
-                itemView.addArrangedSubview(progressView)
+                progressBgView.addSubview(progressView)
+                itemView.addArrangedSubview(progressBgView)
             }
             
             // Row name label
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
-                rowNameLabel.text = row.rowName
+            rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
-            rowNameLabel.leadingAnchor.constraint(equalTo: itemView.leadingAnchor, constant: 0).isActive = true
+            // rowNameLabel.leadingAnchor.constraint(equalTo: itemView.leadingAnchor, constant: 0).isActive = true
             
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
-                rowValueLabel.text = row.rowValue
+            rowValueLabel.text = row.rowValue
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
@@ -120,7 +123,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             visibilityButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
             visibilityButton.clipsToBounds = true
             visibilityButton.tag = index + 100
-            visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
+            //                    visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
             itemView.addArrangedSubview(visibilityButton)
             
             stackView.addArrangedSubview(itemView)
