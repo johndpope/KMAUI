@@ -46,7 +46,6 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Create the new segmentControl
         let segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
-        segmentControl.tag = 1234
         segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         segmentControl.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
@@ -68,12 +67,8 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
 
         // Add this custom Segmented Control to our view
         bgView.addSubview(segmentControl)
+        KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
         fixBackgroundSegmentControl(segmentControl)
-     
-//        segmentControl.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
-//        segmentControl.topAnchor.constraint(equalTo: bgView.topAnchor, constant: 2).isActive = true
-//        segmentControl.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: 2).isActive = true
-//        segmentControl.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: 2).isActive = true
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
