@@ -72,7 +72,6 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
             
             // Row stack view
             let itemView = UIStackView()
-            itemView.backgroundColor = UIColor.green
             
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
