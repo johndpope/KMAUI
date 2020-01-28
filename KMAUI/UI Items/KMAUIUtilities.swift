@@ -249,7 +249,14 @@ public class KMAUIUtilities {
      Get a date string in a short format
      */
     
-    public func formatStringShort(date: Date) -> String {
+    public func formatStringShort(date: Date, numOnly: Bool? = nil) -> String {
+        if let numOnly = numOnly, numOnly {
+            let dateFormatterNum = DateFormatter()
+            dateFormatterNum.dateFormat = "dd.MM.yy"
+            
+            return dateFormatterNum.string(from: date)
+        }
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         
