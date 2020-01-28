@@ -242,13 +242,13 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-1q-N2K">
-                                <rect key="frame" x="8" y="119.5" width="317" height="85.5"/>
+                                <rect key="frame" x="12" y="119.5" width="309" height="85.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
-                            <constraint firstItem="FgR-1q-N2K" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="8" id="34G-lJ-TaH"/>
+                            <constraint firstItem="FgR-1q-N2K" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="34G-lJ-TaH"/>
                             <constraint firstItem="fPx-PM-zJo" firstAttribute="centerY" secondItem="jYF-6w-GFh" secondAttribute="centerY" id="IHl-Vv-nU6"/>
                             <constraint firstAttribute="bottom" secondItem="FgR-1q-N2K" secondAttribute="bottom" constant="16" id="Ng4-Zq-e6i"/>
                             <constraint firstItem="wFz-rO-Jz7" firstAttribute="centerX" secondItem="fPx-PM-zJo" secondAttribute="centerX" id="PUd-9o-g7g"/>
@@ -261,7 +261,7 @@
                             <constraint firstItem="dtE-ID-bzT" firstAttribute="top" secondItem="jYF-6w-GFh" secondAttribute="bottom" constant="8" id="kwh-Bn-8lV"/>
                             <constraint firstAttribute="trailing" secondItem="dtE-ID-bzT" secondAttribute="trailing" constant="8" id="nDT-rx-uMi"/>
                             <constraint firstItem="jYF-6w-GFh" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="12" id="pF1-7h-WPw"/>
-                            <constraint firstAttribute="trailing" secondItem="FgR-1q-N2K" secondAttribute="trailing" constant="8" id="vD0-nw-YM3"/>
+                            <constraint firstAttribute="trailing" secondItem="FgR-1q-N2K" secondAttribute="trailing" constant="12" id="vD0-nw-YM3"/>
                         </constraints>
                     </view>
                 </subviews>
