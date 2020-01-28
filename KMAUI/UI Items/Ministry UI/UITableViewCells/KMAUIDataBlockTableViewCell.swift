@@ -123,7 +123,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             visibilityButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
             visibilityButton.clipsToBounds = true
             visibilityButton.tag = index + 100
-            //                    visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
+            visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
             itemView.addArrangedSubview(visibilityButton)
             
             stackView.addArrangedSubview(itemView)
