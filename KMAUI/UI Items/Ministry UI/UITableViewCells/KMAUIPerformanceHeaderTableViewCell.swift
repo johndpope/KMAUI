@@ -93,6 +93,37 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             totalProgressView.progress = Double(totalPerformance) / 100
             KMAUIUtilities.shared.setupColor(ring: totalProgressView)
         }
+        
+        // Clear existing subviews
+        for subview in detailsStackView.subviews {
+            subview.removeFromSuperview()
+        }
+
+        for statItem in performanceStruct.rows {
+            // Creating hte horizontal stack view
+            let stackView = UIStackView()
+            stackView.axis = NSLayoutConstraint.Axis.horizontal
+            stackView.distribution = UIStackView.Distribution.fill
+            stackView.alignment = UIStackView.Alignment.fill
+            stackView.spacing = 8.0
+            
+            // Creating the title label
+            let titleLabel = KMAUIRegularTextLabel()
+            titleLabel.textAlignment = .left
+            titleLabel.text = statItem.rowName
+            titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            stackView.addArrangedSubview(titleLabel)
+            
+            // Creating the text label
+            let valueLabel = KMAUIBoldTextLabel()
+            valueLabel.textAlignment = .right
+            valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
+            valueLabel.text = statItem.rowValue
+            valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+            stackView.addArrangedSubview(valueLabel)
+            
+            detailsStackView.addArrangedSubview(stackView)
+        }
     }
 }
 
