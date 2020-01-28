@@ -13,7 +13,15 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var stackView: UIStackView!
     
     // MARK: - Variables
+    public var items = [KMAUIItemPerformance]() {
+        didSet {
+                setupCell()
+            }
+        }
     public static let id = "KMAUISelectableHeaderTableViewCell"
+    public var lineViews = [UIView]()
+    public var selectedIndex = -1
+    public var selectedCallback: ((Int) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -28,4 +36,73 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        // Clear subviews
+        lineViews = [UIView]()
+        
+        for subview in stackView.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        // Fill subviews
+        for (index, item) in items.enumerated() {
+            // Background item view
+            let itemBg = UIView()
+            itemBg.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+            
+            // Item stack view
+            let itemView = UIStackView()
+            itemView.axis = .vertical
+            itemView.alignment = .center
+            itemView.distribution = .fill
+            itemView.spacing = 4.0
+            itemBg.addSubview(itemView)
+            KMAUIUtilities.shared.setConstaints(parentView: itemBg, childView: itemView, left: 0, right: 0, top: 0, bottom: 0)
+            
+            // Item label
+            let itemLabel = UILabel()
+            itemLabel.text = item.itemName
+            itemLabel.textAlignment = .left
+            itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+            itemView.addArrangedSubview(itemLabel)
+            
+            // Active line
+            let activeView = UIView()
+            
+            if item.isOn {
+                selectedIndex = index
+                activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+            } else {
+                activeView.backgroundColor = UIColor.clear
+            }
+            activeView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
+            activeView.heightAnchor.constraint(equalToConstant: 2.0).isActive = true
+            itemView.addArrangedSubview(activeView)
+            lineViews.append(activeView)
+            
+            // Item button
+            let itemButton = UIButton()
+            itemButton.setTitle("", for: .normal)
+            itemButton.tag = index + 100
+            itemButton.addTarget(self, action: #selector(itemButtonPressed(button:)), for: .touchUpInside)
+            itemBg.addSubview(itemButton)
+            KMAUIUtilities.shared.setConstaints(parentView: itemBg, childView: itemButton, left: 0, right: 0, top: 0, bottom: 0)
+            
+            stackView.addArrangedSubview(itemBg)
+        }
+    }
+    
+    @objc public func itemButtonPressed(button: UIButton) {
+        selectedIndex = button.tag - 100
+        
+        for (index, activeView) in lineViews.enumerated() {
+            if index == selectedIndex {
+                activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+            } else {
+                activeView.backgroundColor = UIColor.clear
+            }
+        }
+        
+        selectedCallback?(selectedIndex)
+    }
 }
