@@ -69,7 +69,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         bgView.addSubview(segmentControl)
         fixBackgroundSegmentControl(segmentControl)
      
-        segmentControl.heightAnchor.constraint(equalToConstant: 36.0).isActive = true
+        segmentControl.heightAnchor.constraint(equalToConstant: 34.0).isActive = true
         segmentControl.topAnchor.constraint(equalTo: bgView.topAnchor, constant: 2).isActive = true
         segmentControl.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: 2).isActive = true
         segmentControl.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: 2).isActive = true
