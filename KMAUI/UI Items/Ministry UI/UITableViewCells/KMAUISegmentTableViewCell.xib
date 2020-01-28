@@ -31,7 +31,7 @@
                     <constraint firstItem="QXB-hz-ca7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="6wu-wf-hdT"/>
                     <constraint firstItem="QXB-hz-ca7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="9EO-5Y-av7"/>
                     <constraint firstAttribute="trailing" secondItem="QXB-hz-ca7" secondAttribute="trailing" constant="16" id="gp3-Eg-cbI"/>
-                    <constraint firstAttribute="bottom" secondItem="QXB-hz-ca7" secondAttribute="bottom" constant="8" id="hSW-I2-BDL"/>
+                    <constraint firstAttribute="bottom" secondItem="QXB-hz-ca7" secondAttribute="bottom" constant="24" id="hSW-I2-BDL"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
