@@ -71,8 +71,7 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
             rowViews.append(rowBgView)
             
             // Row stack view
-            let itemView = UIStackView()
-            
+            let itemView = UIStackView()            
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill

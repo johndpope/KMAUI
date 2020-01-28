@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fFA-Ci-cTa">
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="fFA-Ci-cTa">
                         <rect key="frame" x="16" y="0.0" width="288" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="ysL-2i-I5d"/>
@@ -28,7 +28,7 @@
                 <constraints>
                     <constraint firstItem="fFA-Ci-cTa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4ZK-Gq-GRL"/>
                     <constraint firstItem="fFA-Ci-cTa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Dpm-c1-4cA"/>
-                    <constraint firstAttribute="trailing" secondItem="fFA-Ci-cTa" secondAttribute="trailing" constant="16" id="T6r-bh-0cE"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fFA-Ci-cTa" secondAttribute="trailing" constant="16" id="T6r-bh-0cE"/>
                     <constraint firstAttribute="bottom" secondItem="fFA-Ci-cTa" secondAttribute="bottom" constant="16" id="gJf-fR-Fv1"/>
                 </constraints>
             </tableViewCellContentView>
