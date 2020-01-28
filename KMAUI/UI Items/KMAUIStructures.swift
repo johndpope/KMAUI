@@ -63,38 +63,19 @@ public struct KMAPerformanceStruct {
     }
 }
 
-// MARK: - Region performance struct, stores the performance percent and region name
-
-public struct KMARegionPerformance {
-    public var regionName = ""
-    public var performance = 0
-    public var rows = [KMAUIRowData]()
-    
-    public init() {
-    }
-    
-    public init(regionName: String, performance: Int, rows: [KMAUIRowData]) {
-        self.regionName = regionName
-        self.performance = performance
-        self.rows = rows
-    }
-}
-
 // MARK: - Item performace struct
 
 public struct KMAUIItemPerformance {
     public var progress = 0
     public var itemName = ""
-    public var avgCost = 0
     public var isOn = false
     
     public init() {
     }
     
-    public init(progress: Int, itemName: String, avgCost: Int, isOn: Bool) {
+    public init(progress: Int, itemName: String, isOn: Bool) {
         self.progress = progress
         self.itemName = itemName
-        self.avgCost = avgCost
         self.isOn = isOn
     }
 }
