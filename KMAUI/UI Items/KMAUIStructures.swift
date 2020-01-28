@@ -69,14 +69,16 @@ public struct KMAUIItemPerformance {
     public var progress = 0
     public var itemName = ""
     public var isOn = false
+    public var avgCost = 0
     
     public init() {
     }
     
-    public init(progress: Int, itemName: String, isOn: Bool) {
+    public init(progress: Int, itemName: String, isOn: Bool, avgCost: Int) {
         self.progress = progress
         self.itemName = itemName
         self.isOn = isOn
+        self.avgCost = avgCost
     }
 }
 

@@ -14,6 +14,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var progressView: RingProgressView!
     @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemNameLabel: UILabel!
+    @IBOutlet public weak var itemStatLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var starButton: UIButton!
     @IBOutlet public weak var arrowIndicator: UIImageView!
     
@@ -53,7 +54,16 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         // Item name label
         itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         itemNameLabel.text = itemPerformance.itemName
-                
+        
+        // Item stat label
+        var costValue = "+\(itemPerformance.avgCost)%"
+        
+        if itemPerformance.avgCost < 0 {
+            costValue = "-\(itemPerformance.avgCost)%"
+        }
+        
+        itemStatLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "avg.cost \(costValue)", search: costValue, fontSize: KMAUIConstants.shared.KMAUIBoldFont.pointSize, noColor: true)
+        
         // Star button
         starButton.setTitle("", for: .normal)
         starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)
