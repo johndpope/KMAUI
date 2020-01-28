@@ -68,8 +68,11 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Add this custom Segmented Control to our view
         bgView.addSubview(segmentControl)
         fixBackgroundSegmentControl(segmentControl)
-        
-        KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 2, right: 2, top: 2, bottom: 4)
+     
+        segmentControl.heightAnchor.constraint(equalToConstant: 36.0).isActive = true
+        segmentControl.topAnchor.constraint(equalTo: bgView.topAnchor, constant: 2).isActive = true
+        segmentControl.leadingAnchor.constraint(equalTo: bgView.leadingAnchor, constant: 2).isActive = true
+        segmentControl.trailingAnchor.constraint(equalTo: bgView.trailingAnchor, constant: 2).isActive = true
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
