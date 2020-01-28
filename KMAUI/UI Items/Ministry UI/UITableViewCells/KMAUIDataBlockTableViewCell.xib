@@ -80,6 +80,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="itemHandleLabel" destination="hZs-L0-g5u" id="n1b-za-JSN"/>
+                <outlet property="itemHandleLabelTop" destination="wUL-Xv-b5j" id="hCe-VO-9dH"/>
+                <outlet property="itemHandleLableHeight" destination="3GH-ZU-hT4" id="220-q5-Pef"/>
                 <outlet property="itemNameLabel" destination="B7d-h3-e7R" id="rGA-zJ-bqr"/>
                 <outlet property="lastUpdatedLabel" destination="iv6-Ye-7J1" id="3YA-af-hpT"/>
                 <outlet property="stackView" destination="7na-DC-OVB" id="1y2-qo-v9z"/>

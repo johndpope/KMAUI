@@ -12,10 +12,13 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemHandleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var itemHandleLableHeight: NSLayoutConstraint!
+    @IBOutlet public weak var itemHandleLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var lastUpdatedLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var stackView: UIStackView!
     
     // MARK: - Variables
+    public var hasProgress = false
     public var dataItem = KMAUIDataItem() {
         didSet {
             setupCell()
@@ -40,9 +43,20 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
     }
  
     public func setupCell() {
+        itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         itemNameLabel.text = dataItem.itemName
-        itemHandleLabel.text = dataItem.itemHandle
-        lastUpdatedLabel.text = "Last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
+        
+        if hasProgress {
+            itemHandleLabel.text = ""
+            lastUpdatedLabel.text = ""
+            itemHandleLabelTop.constant = 0
+            itemHandleLableHeight.constant = 0
+        } else {
+            itemHandleLabel.text = dataItem.itemHandle
+            lastUpdatedLabel.text = "Last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
+            itemHandleLabelTop.constant = 8
+            itemHandleLableHeight.constant = 22
+        }
         
         // Clear existing subviews
         for subview in stackView.subviews {
