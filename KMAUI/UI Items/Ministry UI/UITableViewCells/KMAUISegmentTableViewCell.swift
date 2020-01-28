@@ -69,7 +69,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         bgView.addSubview(segmentControl)
         fixBackgroundSegmentControl(segmentControl)
         
-        KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 2, right: 2, top: 2, bottom: 2)
+        KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 2, right: 2, top: 2, bottom: 4)
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
