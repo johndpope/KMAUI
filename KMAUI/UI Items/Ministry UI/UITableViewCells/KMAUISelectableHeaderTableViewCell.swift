@@ -65,7 +65,6 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
             let itemLabel = UILabel()
             itemLabel.text = item.itemName
             itemLabel.textAlignment = .left
-            itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
             itemView.addArrangedSubview(itemLabel)
             itemLabels.append(itemLabel)
             
@@ -73,11 +72,11 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
             let activeView = UIView()
             activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
             if item.isOn {
-                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
                 selectedIndex = index
                 activeView.alpha = 1
             } else {
-                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(18)
                 activeView.alpha = 0
             }
             activeView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
@@ -108,13 +107,13 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
                     activeView.alpha = 1
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
             } else if index != selectedIndex, activeView.alpha == 1 {
                 UIView.animate(withDuration: 0.15) {
                     activeView.alpha = 0
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(18)
             }
         }
         
