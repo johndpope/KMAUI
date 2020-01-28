@@ -21,8 +21,9 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
     @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var stackViewBgView: UIView!
     @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var detailsStackView: UIStackView!
+    //@IBOutlet weak var detailsStackView: UIStackView!
     
     // MARK - Variables
     public var performanceStruct = KMAPerformanceStruct() {
@@ -44,9 +45,9 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         
         // Stack view background color and corners
-        stackView.addBackground(color: UIColor.black)
-        stackView.layer.cornerRadius = 22
-        stackView.clipsToBounds = true
+        stackViewBgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        stackViewBgView.layer.cornerRadius = 22
+        stackViewBgView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
