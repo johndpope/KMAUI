@@ -50,14 +50,16 @@ public struct KMAPerformanceStruct {
     public var itemTitle = ""
     public var itemName = ""
     public var performanceArray = [Int]()
+    public var rows = [KMAUIRowData]()
     
     public init() {
     }
     
-    public init(itemTitle: String, itemName: String, performanceArray: [Int]) {
+    public init(itemTitle: String, itemName: String, performanceArray: [Int], rows: [KMAUIRowData]) {
         self.itemTitle = itemTitle
         self.itemName = itemName
         self.performanceArray = performanceArray
+        self.rows = rows
     }
 }
 

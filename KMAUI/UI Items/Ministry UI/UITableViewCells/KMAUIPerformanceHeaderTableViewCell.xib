@@ -241,8 +241,8 @@
                                     <constraint firstItem="3kc-AH-vue" firstAttribute="leading" secondItem="dtE-ID-bzT" secondAttribute="leading" constant="8" id="xNm-44-zqM"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-1q-N2K">
-                                <rect key="frame" x="8" y="127.5" width="317" height="77.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-1q-N2K">
+                                <rect key="frame" x="8" y="119.5" width="317" height="85.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
@@ -255,7 +255,7 @@
                             <constraint firstItem="fPx-PM-zJo" firstAttribute="leading" secondItem="jYF-6w-GFh" secondAttribute="trailing" constant="8" id="T3O-3J-eDR"/>
                             <constraint firstItem="jYF-6w-GFh" firstAttribute="top" secondItem="Wke-8G-edw" secondAttribute="top" constant="16" id="T3n-Pd-rDT"/>
                             <constraint firstItem="wFz-rO-Jz7" firstAttribute="centerY" secondItem="fPx-PM-zJo" secondAttribute="centerY" id="TPd-mC-nvU"/>
-                            <constraint firstItem="FgR-1q-N2K" firstAttribute="top" secondItem="dtE-ID-bzT" secondAttribute="bottom" constant="8" id="WLj-cL-faH"/>
+                            <constraint firstItem="FgR-1q-N2K" firstAttribute="top" secondItem="dtE-ID-bzT" secondAttribute="bottom" id="WLj-cL-faH"/>
                             <constraint firstAttribute="trailing" secondItem="fPx-PM-zJo" secondAttribute="trailing" constant="12" id="h6T-Wi-hKX"/>
                             <constraint firstItem="dtE-ID-bzT" firstAttribute="leading" secondItem="Wke-8G-edw" secondAttribute="leading" constant="8" id="kc8-P6-lh8"/>
                             <constraint firstItem="dtE-ID-bzT" firstAttribute="top" secondItem="jYF-6w-GFh" secondAttribute="bottom" constant="8" id="kwh-Bn-8lV"/>
