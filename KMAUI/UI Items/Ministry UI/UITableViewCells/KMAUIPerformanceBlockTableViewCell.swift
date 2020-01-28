@@ -47,6 +47,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         KMAUIUtilities.shared.setupColor(ring: progressView)
         
         // Progress label
+        progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         progressLabel.text = "\(itemPerformance.progress)%"
         
         // Item name label

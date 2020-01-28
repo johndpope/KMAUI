@@ -22,11 +22,11 @@
                         <rect key="frame" x="16" y="0.0" width="291" height="95"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhS-xN-EHs" customClass="MKRingProgressView">
-                                <rect key="frame" x="12" y="23.5" width="48" height="48"/>
+                                <rect key="frame" x="12" y="27.5" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="6ie-ZB-w6r"/>
-                                    <constraint firstAttribute="width" constant="48" id="DYh-39-XNL"/>
+                                    <constraint firstAttribute="height" constant="40" id="6ie-ZB-w6r"/>
+                                    <constraint firstAttribute="width" constant="40" id="DYh-39-XNL"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="startColor">
@@ -51,15 +51,15 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyR-9R-OyF" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="15" y="37" width="42" height="21"/>
+                                <rect key="frame" x="11" y="37" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Birmingham" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aL4-wb-Ryj" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="68" y="16" width="159" height="63"/>
+                                <rect key="frame" x="60" y="16" width="167" height="63"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="klC-LH-Zw7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="klC-LH-Zw7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -122,7 +122,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowIndicator" width="7" height="12"/>
+        <image name="arrowIndicator" width="10" height="16"/>
         <image name="starIcon" width="38" height="38"/>
         <namedColor name="KMAUIGreenProgressColor">
             <color red="0.0" green="0.74901960784313726" blue="0.42745098039215684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
