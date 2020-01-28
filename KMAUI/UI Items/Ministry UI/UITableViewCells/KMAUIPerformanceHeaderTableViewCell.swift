@@ -44,7 +44,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         
         // Stack view background color and corners
-        stackView.addBackground(color: KMAUIConstants.shared.KMABgGray)
+        stackView.addBackground(color: UIColor.black)
         stackView.layer.cornerRadius = 22
         stackView.clipsToBounds = true
         
