@@ -15,10 +15,13 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemNameLabel: UILabel!
     @IBOutlet public weak var itemStatLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var itemStatLabelWidth: NSLayoutConstraint!
+    @IBOutlet public weak var itemStatLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var starButton: UIButton!
     @IBOutlet public weak var arrowIndicator: UIImageView!
     
     // MARK: - Variables
+    public var hasStat = false
     public var itemPerformance = KMAUIItemPerformance() {
         didSet {
             setupCell()
@@ -55,15 +58,23 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         itemNameLabel.text = itemPerformance.itemName
         
-        // Item stat label
-        var costValue = "+\(itemPerformance.avgCost)%"
-        
-        if itemPerformance.avgCost < 0 {
-            costValue = "-\(itemPerformance.avgCost)%"
+        if hasStat {
+            // Item stat label
+            var costValue = "+\(itemPerformance.avgCost)%"
+            
+            if itemPerformance.avgCost < 0 {
+                costValue = "-\(itemPerformance.avgCost)%"
+            }
+            
+            itemStatLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "avg.cost \(costValue)", search: costValue, fontSize: KMAUIConstants.shared.KMAUIBoldFont.pointSize, noColor: true)
+            itemStatLabelWidth.constant = 56
+            itemStatLabelLeft.constant = 4
+        } else {
+            itemStatLabel.text = ""
+            itemStatLabelWidth.constant = 0
+            itemStatLabelLeft.constant = 0
         }
-        
-        itemStatLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "avg.cost \(costValue)", search: costValue, fontSize: KMAUIConstants.shared.KMAUIBoldFont.pointSize, noColor: true)
-        
+
         // Star button
         starButton.setTitle("", for: .normal)
         starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)

@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-kR-Yej" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="291" height="64"/>
+                        <rect key="frame" x="16" y="0.0" width="291" height="72"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhS-xN-EHs" customClass="MKRingProgressView">
-                                <rect key="frame" x="12" y="12" width="40" height="40"/>
+                                <rect key="frame" x="12" y="16" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="6ie-ZB-w6r"/>
@@ -51,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyR-9R-OyF" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="11" y="21.5" width="42" height="21"/>
+                                <rect key="frame" x="11" y="25.5" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,9 +66,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="avg.cost +25%" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mR5-FU-lBu" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="165.5" y="8" width="58.5" height="48"/>
+                                <rect key="frame" x="165.5" y="16" width="58.5" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="M5M-dr-wxV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="M5M-dr-wxV"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="tK3-jx-rHO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -76,7 +76,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1u-8s-Ijs">
-                                <rect key="frame" x="232" y="18" width="28" height="28"/>
+                                <rect key="frame" x="232" y="22" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="90V-GN-YOR"/>
                                     <constraint firstAttribute="width" constant="28" id="UUX-EZ-RwJ"/>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="KX9-Il-L9H">
-                                <rect key="frame" x="272" y="26" width="7" height="12"/>
+                                <rect key="frame" x="272" y="30" width="7" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="7" id="9wP-9c-pSL"/>
                                     <constraint firstAttribute="height" constant="12" id="VqM-P6-ziQ"/>
@@ -102,12 +102,12 @@
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="centerY" secondItem="Tsa-kR-Yej" secondAttribute="centerY" id="Ase-5u-kVL"/>
                             <constraint firstItem="e1u-8s-Ijs" firstAttribute="leading" secondItem="mR5-FU-lBu" secondAttribute="trailing" constant="8" id="AxF-Qe-tCy"/>
                             <constraint firstItem="QyR-9R-OyF" firstAttribute="centerY" secondItem="nhS-xN-EHs" secondAttribute="centerY" id="D3o-1G-TjB"/>
-                            <constraint firstItem="mR5-FU-lBu" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="8" id="Hn1-m1-wDP"/>
+                            <constraint firstItem="mR5-FU-lBu" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="16" id="Hn1-m1-wDP"/>
                             <constraint firstAttribute="bottom" secondItem="aL4-wb-Ryj" secondAttribute="bottom" constant="16" id="KKR-Px-BYL"/>
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="Nwj-YD-VK2"/>
                             <constraint firstItem="QyR-9R-OyF" firstAttribute="centerX" secondItem="nhS-xN-EHs" secondAttribute="centerX" id="UoO-Ed-mze"/>
                             <constraint firstItem="mR5-FU-lBu" firstAttribute="leading" secondItem="aL4-wb-Ryj" secondAttribute="trailing" constant="4" id="VbT-id-ShL"/>
-                            <constraint firstAttribute="bottom" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="8" id="gIh-Em-Y7L"/>
+                            <constraint firstAttribute="bottom" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="16" id="gIh-Em-Y7L"/>
                             <constraint firstItem="aL4-wb-Ryj" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="16" id="ldN-xd-kec"/>
                             <constraint firstItem="KX9-Il-L9H" firstAttribute="leading" secondItem="e1u-8s-Ijs" secondAttribute="trailing" constant="12" id="xGg-js-pHR"/>
                             <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" constant="12" id="yrs-6S-OBf"/>
@@ -128,6 +128,8 @@
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
                 <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
                 <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
+                <outlet property="itemStatLabelLeft" destination="VbT-id-ShL" id="FfE-wI-VIv"/>
+                <outlet property="itemStatLabelWidth" destination="tK3-jx-rHO" id="x7k-BY-UHi"/>
                 <outlet property="progressLabel" destination="QyR-9R-OyF" id="dF0-HL-59e"/>
                 <outlet property="progressView" destination="nhS-xN-EHs" id="b5C-Py-CBF"/>
                 <outlet property="starButton" destination="e1u-8s-Ijs" id="vtO-xJ-ruI"/>
