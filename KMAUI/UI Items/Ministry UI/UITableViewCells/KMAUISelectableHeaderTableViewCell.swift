@@ -20,6 +20,7 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
         }
     public static let id = "KMAUISelectableHeaderTableViewCell"
     public var lineViews = [UIView]()
+    public var itemLabels = [UILabel]()
     public var selectedIndex = -1
     public var selectedCallback: ((Int) -> Void)?
 
@@ -39,6 +40,7 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
     public func setupCell() {
         // Clear subviews
         lineViews = [UIView]()
+        itemLabels = [UILabel]()
         
         for subview in stackView.subviews {
             subview.removeFromSuperview()
@@ -65,15 +67,18 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
             itemLabel.textAlignment = .left
             itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
             itemView.addArrangedSubview(itemLabel)
+            itemLabels.append(itemLabel)
             
             // Active line
             let activeView = UIView()
-            
+            activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
             if item.isOn {
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont
                 selectedIndex = index
-                activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+                activeView.alpha = 1
             } else {
-                activeView.backgroundColor = UIColor.clear
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+                activeView.alpha = 0
             }
             activeView.widthAnchor.constraint(equalToConstant: 18.0).isActive = true
             activeView.heightAnchor.constraint(equalToConstant: 2.0).isActive = true
@@ -96,10 +101,20 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
         selectedIndex = button.tag - 100
         
         for (index, activeView) in lineViews.enumerated() {
-            if index == selectedIndex {
-                activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
-            } else {
-                activeView.backgroundColor = UIColor.clear
+            let itemLabel = itemLabels[index]
+            
+            if index == selectedIndex, activeView.alpha == 0 {
+                UIView.animate(withDuration: 0.15) {
+                    activeView.alpha = 1
+                }
+                
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+            } else if index != selectedIndex, activeView.alpha == 1 {
+                UIView.animate(withDuration: 0.15) {
+                    activeView.alpha = 0
+                }
+                
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont
             }
         }
         
