@@ -21,9 +21,9 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
     @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
-    @IBOutlet weak var stackViewBgView: UIView!
-    @IBOutlet weak var stackView: UIStackView!
-    @IBOutlet weak var detailsStackView: UIStackView!
+    @IBOutlet public weak var stackViewBgView: UIView!
+    @IBOutlet public weak var stackView: UIStackView!
+    @IBOutlet public weak var detailsStackView: UIStackView!
     
     // MARK - Variables
     public var performanceStruct = KMAPerformanceStruct() {
