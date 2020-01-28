@@ -71,6 +71,13 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 8.0
             
+            if hasProgress {
+            // Progress view
+                let progressView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 12))
+                progressView.backgroundColor = UIColor.red
+                itemView.addArrangedSubview(progressView)
+            }
+            
             // Row name label
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
