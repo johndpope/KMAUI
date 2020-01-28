@@ -68,15 +68,15 @@ public struct KMAPerformanceStruct {
 public struct KMARegionPerformance {
     public var regionName = ""
     public var performance = 0
-    public var stats = [[String: String]]()
+    public var rows = [KMAUIRowData]()
     
     public init() {
     }
     
-    public init(regionName: String, performance: Int, stats: [[String: String]]) {
+    public init(regionName: String, performance: Int, rows: [KMAUIRowData]) {
         self.regionName = regionName
         self.performance = performance
-        self.stats = stats
+        self.rows = rows
     }
 }
 

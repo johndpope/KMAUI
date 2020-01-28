@@ -47,19 +47,16 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
         regionPerformanceLabel.text = "\(regionPerformance.performance)%"
         regionPerformanceView.progress = Double(regionPerformance.performance) / 100
         KMAUIUtilities.shared.setupColor(ring: regionPerformanceView)
-        
-        if !regionPerformance.stats.isEmpty {
-            setupStats()
-        }
+        setupRows()
     }
     
-    public func setupStats() {
+    public func setupRows() {
         // Clear existing subviews
         for subview in detailsStackView.subviews {
             subview.removeFromSuperview()
         }
         
-        for statItem in regionPerformance.stats {
+        for rowItem in regionPerformance.rows {
             // Creating hte horizontal stack view
             let stackView = UIStackView()
             stackView.axis = NSLayoutConstraint.Axis.horizontal
@@ -70,11 +67,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
             // Creating the title label
             let titleLabel = KMAUIRegularTextLabel()
             titleLabel.textAlignment = .left
-            
-            if let title = statItem["title"] {
-                titleLabel.text = title
-            }
-            
+            titleLabel.text = rowItem.rowName
             titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             stackView.addArrangedSubview(titleLabel)
             
@@ -82,11 +75,7 @@ public class KMAUIRegionPerformanceTableViewCell: UITableViewCell {
             let valueLabel = KMAUIBoldTextLabel()
             valueLabel.textAlignment = .right
             valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
-
-            if let value = statItem["value"] {
-                valueLabel.text = value
-            }
-            
+            valueLabel.text = rowItem.rowValue
             valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             stackView.addArrangedSubview(valueLabel)
             
