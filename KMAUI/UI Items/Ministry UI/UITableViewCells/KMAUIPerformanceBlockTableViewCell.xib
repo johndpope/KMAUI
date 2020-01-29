@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPerformanceBlockTableViewCell" rowHeight="121" id="KGk-i7-Jjw" customClass="KMAUIPerformanceBlockTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="323" height="121"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPerformanceBlockTableViewCell" rowHeight="185" id="KGk-i7-Jjw" customClass="KMAUIPerformanceBlockTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="323" height="121"/>
+                <rect key="frame" x="0.0" y="0.0" width="323" height="185"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsa-kR-Yej" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="0.0" width="291" height="113"/>
+                        <rect key="frame" x="16" y="0.0" width="291" height="177"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhS-xN-EHs" customClass="MKRingProgressView">
                                 <rect key="frame" x="12" y="16" width="40" height="40"/>
@@ -51,7 +51,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyR-9R-OyF" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="11" y="25.5" width="42" height="21"/>
+                                <rect key="frame" x="11" y="26" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -100,31 +100,43 @@
                                     <constraint firstAttribute="height" constant="1" id="gG7-t7-CTI"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-Wb-m38">
-                                <rect key="frame" x="12" y="73" width="267" height="24"/>
-                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S4y-jq-S8e">
+                                <rect key="frame" x="12" y="73" width="267" height="96"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-Wb-m38">
+                                        <rect key="frame" x="0.0" y="0.0" width="267" height="96"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" id="1y3-yj-GCu"/>
+                                    <constraint firstItem="Ljc-Wb-m38" firstAttribute="top" secondItem="S4y-jq-S8e" secondAttribute="top" id="CLj-NL-1QN"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ljc-Wb-m38" secondAttribute="trailing" id="I0e-vY-Eta"/>
+                                    <constraint firstItem="Ljc-Wb-m38" firstAttribute="leading" secondItem="S4y-jq-S8e" secondAttribute="leading" id="xJv-Dp-UZh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="aL4-wb-Ryj" firstAttribute="leading" secondItem="nhS-xN-EHs" secondAttribute="trailing" constant="8" id="8Wf-A8-Xdb"/>
                             <constraint firstItem="e1u-8s-Ijs" firstAttribute="leading" secondItem="mR5-FU-lBu" secondAttribute="trailing" constant="8" id="AxF-Qe-tCy"/>
                             <constraint firstItem="QyR-9R-OyF" firstAttribute="centerY" secondItem="nhS-xN-EHs" secondAttribute="centerY" id="D3o-1G-TjB"/>
-                            <constraint firstAttribute="trailing" secondItem="Ljc-Wb-m38" secondAttribute="trailing" constant="12" id="F3Q-8d-WLD"/>
                             <constraint firstItem="mR5-FU-lBu" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="16" id="Hn1-m1-wDP"/>
+                            <constraint firstAttribute="bottom" secondItem="S4y-jq-S8e" secondAttribute="bottom" constant="8" id="IA3-U9-Psx"/>
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="Nwj-YD-VK2"/>
-                            <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" constant="16" id="Qjs-Fo-QIc"/>
                             <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="8" id="UTa-Rj-Nim"/>
                             <constraint firstItem="QyR-9R-OyF" firstAttribute="centerX" secondItem="nhS-xN-EHs" secondAttribute="centerX" id="UoO-Ed-mze"/>
                             <constraint firstItem="mR5-FU-lBu" firstAttribute="leading" secondItem="aL4-wb-Ryj" secondAttribute="trailing" constant="4" id="VbT-id-ShL"/>
                             <constraint firstAttribute="trailing" secondItem="aTk-qW-9yI" secondAttribute="trailing" constant="12" id="Zsc-h2-X2o"/>
                             <constraint firstItem="aTk-qW-9yI" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="cDf-rK-qBN"/>
+                            <constraint firstItem="S4y-jq-S8e" firstAttribute="top" secondItem="aTk-qW-9yI" secondAttribute="bottom" constant="8" id="cS2-eo-Oqw"/>
+                            <constraint firstItem="S4y-jq-S8e" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="eDQ-aY-kj9"/>
+                            <constraint firstAttribute="trailing" secondItem="S4y-jq-S8e" secondAttribute="trailing" constant="12" id="fx0-Hr-glM"/>
                             <constraint firstItem="KX9-Il-L9H" firstAttribute="centerY" secondItem="e1u-8s-Ijs" secondAttribute="centerY" id="iCf-qB-lHq"/>
                             <constraint firstItem="aL4-wb-Ryj" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="16" id="ldN-xd-kec"/>
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="centerY" secondItem="aL4-wb-Ryj" secondAttribute="centerY" id="m17-TX-bGi"/>
                             <constraint firstItem="e1u-8s-Ijs" firstAttribute="centerY" secondItem="mR5-FU-lBu" secondAttribute="centerY" id="mjQ-WC-ucj"/>
-                            <constraint firstItem="Ljc-Wb-m38" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="nbh-QJ-eJe"/>
                             <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="aL4-wb-Ryj" secondAttribute="bottom" constant="8" id="pKQ-gj-ezo"/>
-                            <constraint firstItem="Ljc-Wb-m38" firstAttribute="top" secondItem="aTk-qW-9yI" secondAttribute="bottom" constant="8" id="t73-Os-8FZ"/>
                             <constraint firstItem="KX9-Il-L9H" firstAttribute="leading" secondItem="e1u-8s-Ijs" secondAttribute="trailing" constant="12" id="xGg-js-pHR"/>
                             <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" constant="12" id="yrs-6S-OBf"/>
                         </constraints>
@@ -143,7 +155,7 @@
             <connections>
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
                 <outlet property="detailsStackView" destination="Ljc-Wb-m38" id="2Ia-FY-UAM"/>
-                <outlet property="detailsStackViewTop" destination="Hn1-m1-wDP" id="TEO-Iv-yKc"/>
+                <outlet property="detailsStackViewTop" destination="CLj-NL-1QN" id="Jgd-eU-xPb"/>
                 <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
                 <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
                 <outlet property="itemStatLabelLeft" destination="VbT-id-ShL" id="FfE-wI-VIv"/>
@@ -155,7 +167,7 @@
                 <outlet property="progressView" destination="nhS-xN-EHs" id="b5C-Py-CBF"/>
                 <outlet property="starButton" destination="e1u-8s-Ijs" id="vtO-xJ-ruI"/>
             </connections>
-            <point key="canvasLocation" x="-3.956834532374101" y="-17.839195979899497"/>
+            <point key="canvasLocation" x="-28.417266187050362" y="-67.085427135678387"/>
         </tableViewCell>
     </objects>
     <resources>
