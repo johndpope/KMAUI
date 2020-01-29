@@ -54,7 +54,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemHandleLableHeight.constant = 0
         } else {
             itemHandleLabel.text = dataItem.itemHandle
-            lastUpdatedLabel.text = "Last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
+            lastUpdatedLabel.text = "last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
             itemHandleLabelTop.constant = 8
             itemHandleLableHeight.constant = 22
         }
