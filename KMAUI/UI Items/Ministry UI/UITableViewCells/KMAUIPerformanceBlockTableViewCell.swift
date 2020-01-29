@@ -181,7 +181,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         detailsStackView.alpha = 1
         detailsStackViewTop.constant = 1
         
-        detailsStackViewHeight.isActive = false
+        detailsStackViewHeight.constant = 1000
     }
     
     /**
@@ -201,8 +201,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         detailsStackView.alpha = 0
         detailsStackViewTop.constant = 0
         
-        detailsStackViewHeight.isActive = true
-        detailsStackViewHeight.constant = 1
+        detailsStackViewHeight.constant = 0
     }
     
     // MARK: - IBActions

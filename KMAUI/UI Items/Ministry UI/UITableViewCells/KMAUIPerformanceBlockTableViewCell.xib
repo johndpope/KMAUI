@@ -109,7 +109,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="0FW-4P-jAo"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="96" id="0FW-4P-jAo"/>
                                     <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" id="1y3-yj-GCu"/>
                                     <constraint firstItem="Ljc-Wb-m38" firstAttribute="top" secondItem="S4y-jq-S8e" secondAttribute="top" id="CLj-NL-1QN"/>
                                     <constraint firstAttribute="trailing" secondItem="Ljc-Wb-m38" secondAttribute="trailing" id="I0e-vY-Eta"/>
