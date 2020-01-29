@@ -72,7 +72,6 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         
         if performanceStruct.performanceArray.count == 3 {
             var totalPerformance = 0
-            let performanceTitles = ["Community", "Service", "Security"]
             let labelArray = [communityProgressLabel, serviceProgressLabel, securityProgressLabel]
             let performanceViewArray = [communityProgressView, serviceProgressView, securityProgressView]
             
@@ -81,7 +80,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
                 totalPerformance += performace
                 // Setup the data for label and progress view
                 if let label = labelArray[index], let progressView = performanceViewArray[index] {
-                    label.attributedText = KMAUIUtilities.shared.attributedText(text: "\(performanceTitles[index]) \(performace)%", search: "\(performace)%", fontSize: label.font.pointSize, noColor: true)
+                    label.attributedText = KMAUIUtilities.shared.attributedText(text: "\(KMAUIConstants.shared.performanceTitles[index]) \(performace)%", search: "\(performace)%", fontSize: label.font.pointSize, noColor: true)
                     progressView.progress = Double(performace) / 100
                     KMAUIUtilities.shared.setupColor(ring: progressView)
                 }
@@ -105,7 +104,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             stackView.axis = NSLayoutConstraint.Axis.horizontal
             stackView.distribution = UIStackView.Distribution.fill
             stackView.alignment = UIStackView.Alignment.fill
-            stackView.spacing = 8.0
+            stackView.spacing = 8
             
             // Creating the title label
             let titleLabel = KMAUIRegularTextLabel()

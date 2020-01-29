@@ -142,10 +142,15 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
+                <outlet property="detailsStackView" destination="Ljc-Wb-m38" id="2Ia-FY-UAM"/>
+                <outlet property="detailsStackViewTop" destination="Hn1-m1-wDP" id="TEO-Iv-yKc"/>
                 <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
                 <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
                 <outlet property="itemStatLabelLeft" destination="VbT-id-ShL" id="FfE-wI-VIv"/>
                 <outlet property="itemStatLabelWidth" destination="tK3-jx-rHO" id="x7k-BY-UHi"/>
+                <outlet property="lineView" destination="aTk-qW-9yI" id="h7b-4m-Xys"/>
+                <outlet property="lineViewTop1" destination="pKQ-gj-ezo" id="9rI-jr-MnM"/>
+                <outlet property="lineViewTop2" destination="UTa-Rj-Nim" id="mpt-RJ-Dqn"/>
                 <outlet property="progressLabel" destination="QyR-9R-OyF" id="dF0-HL-59e"/>
                 <outlet property="progressView" destination="nhS-xN-EHs" id="b5C-Py-CBF"/>
                 <outlet property="starButton" destination="e1u-8s-Ijs" id="vtO-xJ-ruI"/>

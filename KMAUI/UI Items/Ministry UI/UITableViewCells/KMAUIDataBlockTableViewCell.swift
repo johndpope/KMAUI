@@ -70,12 +70,12 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
-            itemView.spacing = 8.0
+            itemView.spacing = 8
             
             if hasProgress {
                 let progressBgView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 28))
-                progressBgView.widthAnchor.constraint(equalToConstant: 12.0).isActive = true
-                progressBgView.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+                progressBgView.widthAnchor.constraint(equalToConstant: 12).isActive = true
+                progressBgView.heightAnchor.constraint(equalToConstant: 28).isActive = true
                 progressBgView.backgroundColor = UIColor.clear
                 // Progress view
                 let progressView = RingProgressView(frame: CGRect(x: 0, y: 9, width: 12, height: 12))
@@ -107,8 +107,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             
             // Visibility button
             let visibilityButton = UIButton()
-            visibilityButton.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
-            visibilityButton.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
+            visibilityButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+            visibilityButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
             visibilityButton.setTitle("", for: .normal)
             visibilityButton.setImage(KMAUIConstants.shared.eyeIcon.withRenderingMode(.alwaysTemplate), for: .normal)
             

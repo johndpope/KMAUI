@@ -75,7 +75,7 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
-            itemView.spacing = 8.0
+            itemView.spacing = 8
             
             // Add the item view into the rowBgView
             rowBgView.addSubview(itemView)

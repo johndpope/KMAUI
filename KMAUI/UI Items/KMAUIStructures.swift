@@ -66,7 +66,7 @@ public struct KMAPerformanceStruct {
 // MARK: - Item performace struct
 
 public struct KMAUIItemPerformance {
-    public var progress = 0
+    public var performanceArray = [Int]()
     public var itemName = ""
     public var isOn = false
     public var avgCost = 0
@@ -74,9 +74,9 @@ public struct KMAUIItemPerformance {
     public init() {
     }
     
-    public init(progress: Int? = nil, itemName: String, isOn: Bool, avgCost: Int? = nil) {
-        if let progress = progress {
-            self.progress = progress
+    public init(performanceArray: [Int]? = nil, itemName: String, isOn: Bool, avgCost: Int? = nil) {
+        if let performanceArray = performanceArray {
+            self.performanceArray = performanceArray
         }
         
         self.itemName = itemName
