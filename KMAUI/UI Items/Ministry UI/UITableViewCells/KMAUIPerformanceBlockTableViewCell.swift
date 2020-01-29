@@ -94,7 +94,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             var costValue = "+\(itemPerformance.avgCost)%"
             
             if itemPerformance.avgCost < 0 {
-                costValue = "-\(itemPerformance.avgCost)%"
+                costValue = "\(itemPerformance.avgCost)%"
             }
             
             itemStatLabel.attributedText = KMAUIUtilities.shared.attributedText(text: "avg.cost \(costValue)", search: costValue, fontSize: KMAUIConstants.shared.KMAUIBoldFont.pointSize, noColor: true)
