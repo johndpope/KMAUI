@@ -109,7 +109,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="96" id="0FW-4P-jAo"/>
                                     <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" id="1y3-yj-GCu"/>
                                     <constraint firstItem="Ljc-Wb-m38" firstAttribute="top" secondItem="S4y-jq-S8e" secondAttribute="top" id="CLj-NL-1QN"/>
                                     <constraint firstAttribute="trailing" secondItem="Ljc-Wb-m38" secondAttribute="trailing" id="I0e-vY-Eta"/>
@@ -157,7 +156,6 @@
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
                 <outlet property="detailsStackBgView" destination="S4y-jq-S8e" id="7K2-LX-9yB"/>
                 <outlet property="detailsStackView" destination="Ljc-Wb-m38" id="2Ia-FY-UAM"/>
-                <outlet property="detailsStackViewHeight" destination="0FW-4P-jAo" id="ioP-3b-A9S"/>
                 <outlet property="detailsStackViewTop" destination="cS2-eo-Oqw" id="y7A-4a-ly8"/>
                 <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
                 <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
