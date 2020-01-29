@@ -157,8 +157,8 @@
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
                 <outlet property="detailsStackBgView" destination="S4y-jq-S8e" id="7K2-LX-9yB"/>
                 <outlet property="detailsStackView" destination="Ljc-Wb-m38" id="2Ia-FY-UAM"/>
-                <outlet property="detailsStackViewHeight" destination="0FW-4P-jAo" id="HoQ-rN-ZGf"/>
-                <outlet property="detailsStackViewTop" destination="CLj-NL-1QN" id="Jgd-eU-xPb"/>
+                <outlet property="detailsStackViewHeight" destination="0FW-4P-jAo" id="ioP-3b-A9S"/>
+                <outlet property="detailsStackViewTop" destination="cS2-eo-Oqw" id="y7A-4a-ly8"/>
                 <outlet property="itemNameLabel" destination="aL4-wb-Ryj" id="tDD-Uu-5K4"/>
                 <outlet property="itemStatLabel" destination="mR5-FU-lBu" id="dNg-P0-kv3"/>
                 <outlet property="itemStatLabelLeft" destination="VbT-id-ShL" id="FfE-wI-VIv"/>

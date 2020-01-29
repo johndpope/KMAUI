@@ -175,11 +175,11 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         }
         
         lineView.alpha = 0.1
-        lineViewTop1.constant = 8
-        lineViewTop2.constant = 8
+        lineViewTop1.constant = 16
+        lineViewTop2.constant = 16
         
         detailsStackView.alpha = 1
-        detailsStackViewTop.constant = 1
+        detailsStackViewTop.constant = 8
         
         detailsStackViewHeight.constant = 1000
     }
