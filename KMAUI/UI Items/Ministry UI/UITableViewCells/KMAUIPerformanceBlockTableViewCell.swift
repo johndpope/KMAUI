@@ -192,8 +192,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         }
         
         lineView.alpha = 0
-        lineViewTop1.constant = 0
-        lineViewTop2.constant = 0
+        lineViewTop1.constant = 8
+        lineViewTop2.constant = 8
         
         detailsStackView.alpha = 0
         detailsStackViewTop.constant = 0
