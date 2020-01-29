@@ -29,6 +29,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var hasStat = false
     public var itemPerformance = KMAUIItemPerformance()
+    public var isExpandable = false
     public var isExpanded = false {
         didSet {
             setupCell()
@@ -179,6 +180,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         
         detailsStackView.alpha = 1
         detailsStackViewTop.constant = 8
+        
+        arrowIndicator.image = KMAUIConstants.shared.arrowUpIndicator
     }
     
     /**
@@ -197,6 +200,12 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         
         detailsStackView.alpha = 0
         detailsStackViewTop.constant = 0
+        
+        if isExpandable {
+            arrowIndicator.image = KMAUIConstants.shared.arrowDownIndicator
+        } else {
+            arrowIndicator.image = KMAUIConstants.shared.arrowIndicator
+        }
     }
     
     // MARK: - IBActions
