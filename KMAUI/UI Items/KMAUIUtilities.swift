@@ -532,6 +532,21 @@ public class KMAUIUtilities {
     public func registerCell(identifier: String, collectionView: UICollectionView) {
         collectionView.register(UINib(nibName: identifier, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellWithReuseIdentifier: identifier)
     }
+    
+    // MARK: - Get the clear button
+    
+    public func getClearBarButton() -> UIBarButtonItem {
+        // Clear selection
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 32))
+        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont
+        clearButton.setTitleColor(UIColor.white, for: .normal)
+        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        clearButton.setTitle("Clear selection", for: .normal)
+        clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        clearButton.layer.cornerRadius = 16
+        
+        return UIBarButtonItem(customView: clearButton)
+    }
 }
 
 // MARK: - Int extension
