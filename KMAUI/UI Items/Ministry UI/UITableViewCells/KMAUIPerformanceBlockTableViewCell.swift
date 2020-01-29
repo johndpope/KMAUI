@@ -24,6 +24,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var lineViewTop2: NSLayoutConstraint!
     @IBOutlet public weak var detailsStackView: UIStackView!
     @IBOutlet public weak var detailsStackViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var detailsStackViewHeight: NSLayoutConstraint!
     
     // MARK: - Variables
     public var hasStat = false
@@ -178,6 +179,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         
         detailsStackView.alpha = 1
         detailsStackViewTop.constant = 1
+        
+        detailsStackViewHeight.isActive = false
     }
     
     /**
@@ -196,6 +199,9 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         
         detailsStackView.alpha = 0
         detailsStackViewTop.constant = 0
+        
+        detailsStackViewHeight.isActive = true
+        detailsStackViewHeight.constant = 1
     }
     
     // MARK: - IBActions
