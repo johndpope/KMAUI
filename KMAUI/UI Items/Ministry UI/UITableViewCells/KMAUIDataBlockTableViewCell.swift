@@ -107,7 +107,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             
             // Visibility button
             let visibilityButton = UIButton()
-            visibilityButton.widthAnchor.constraint(equalToConstant: 33.0).isActive = true
+            visibilityButton.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
             visibilityButton.heightAnchor.constraint(equalToConstant: 28.0).isActive = true
             visibilityButton.setTitle("", for: .normal)
             visibilityButton.setImage(KMAUIConstants.shared.eyeIcon.withRenderingMode(.alwaysTemplate), for: .normal)
