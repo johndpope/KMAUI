@@ -24,6 +24,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     @IBOutlet public weak var lineViewTop2: NSLayoutConstraint!
     @IBOutlet public weak var detailsStackView: UIStackView!
     @IBOutlet public weak var detailsStackViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var detailsStackBgView: UIView!
     @IBOutlet public weak var detailsStackViewHeight: NSLayoutConstraint!
     
     // MARK: - Variables
