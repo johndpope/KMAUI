@@ -94,14 +94,14 @@
                                 </constraints>
                             </imageView>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTk-qW-9yI">
-                                <rect key="frame" x="12" y="70" width="267" height="1"/>
+                                <rect key="frame" x="12" y="64" width="267" height="1"/>
                                 <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="gG7-t7-CTI"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-Wb-m38">
-                                <rect key="frame" x="12" y="79" width="267" height="26"/>
+                                <rect key="frame" x="12" y="73" width="267" height="24"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
@@ -112,8 +112,8 @@
                             <constraint firstAttribute="trailing" secondItem="Ljc-Wb-m38" secondAttribute="trailing" constant="12" id="F3Q-8d-WLD"/>
                             <constraint firstItem="mR5-FU-lBu" firstAttribute="top" secondItem="Tsa-kR-Yej" secondAttribute="top" constant="16" id="Hn1-m1-wDP"/>
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="Nwj-YD-VK2"/>
-                            <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" constant="8" id="Qjs-Fo-QIc"/>
-                            <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="14" id="UTa-Rj-Nim"/>
+                            <constraint firstAttribute="bottom" secondItem="Ljc-Wb-m38" secondAttribute="bottom" constant="16" id="Qjs-Fo-QIc"/>
+                            <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="mR5-FU-lBu" secondAttribute="bottom" constant="8" id="UTa-Rj-Nim"/>
                             <constraint firstItem="QyR-9R-OyF" firstAttribute="centerX" secondItem="nhS-xN-EHs" secondAttribute="centerX" id="UoO-Ed-mze"/>
                             <constraint firstItem="mR5-FU-lBu" firstAttribute="leading" secondItem="aL4-wb-Ryj" secondAttribute="trailing" constant="4" id="VbT-id-ShL"/>
                             <constraint firstAttribute="trailing" secondItem="aTk-qW-9yI" secondAttribute="trailing" constant="12" id="Zsc-h2-X2o"/>
@@ -123,7 +123,7 @@
                             <constraint firstItem="nhS-xN-EHs" firstAttribute="centerY" secondItem="aL4-wb-Ryj" secondAttribute="centerY" id="m17-TX-bGi"/>
                             <constraint firstItem="e1u-8s-Ijs" firstAttribute="centerY" secondItem="mR5-FU-lBu" secondAttribute="centerY" id="mjQ-WC-ucj"/>
                             <constraint firstItem="Ljc-Wb-m38" firstAttribute="leading" secondItem="Tsa-kR-Yej" secondAttribute="leading" constant="12" id="nbh-QJ-eJe"/>
-                            <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="aL4-wb-Ryj" secondAttribute="bottom" constant="14" id="pKQ-gj-ezo"/>
+                            <constraint firstItem="aTk-qW-9yI" firstAttribute="top" secondItem="aL4-wb-Ryj" secondAttribute="bottom" constant="8" id="pKQ-gj-ezo"/>
                             <constraint firstItem="Ljc-Wb-m38" firstAttribute="top" secondItem="aTk-qW-9yI" secondAttribute="bottom" constant="8" id="t73-Os-8FZ"/>
                             <constraint firstItem="KX9-Il-L9H" firstAttribute="leading" secondItem="e1u-8s-Ijs" secondAttribute="trailing" constant="12" id="xGg-js-pHR"/>
                             <constraint firstAttribute="trailing" secondItem="KX9-Il-L9H" secondAttribute="trailing" constant="12" id="yrs-6S-OBf"/>

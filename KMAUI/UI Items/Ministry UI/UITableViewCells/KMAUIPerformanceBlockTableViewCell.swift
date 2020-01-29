@@ -134,7 +134,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
-            itemView.spacing = 8
+            itemView.spacing = 4
             
             // Progress view
             let progressBgView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 28))
@@ -172,7 +172,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             itemView.leadingAnchor.constraint(equalTo: detailsStackView.leadingAnchor, constant: 0).isActive = true
         }
         
-        lineView.alpha = 1
+        lineView.alpha = 0.1
         lineViewTop1.constant = 8
         lineViewTop2.constant = 8
         
