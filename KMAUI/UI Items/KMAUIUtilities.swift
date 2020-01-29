@@ -551,13 +551,13 @@ public class KMAUIUtilities {
     // MARK: - Hide the navigation bar line
     
     public func hideBarLine(navigationController: UINavigationController) {
-        navigationController.navigationBar.setBackgroundImage(UIImage(), for:.default)
+//        navigationController.navigationBar.setBackgroundImage(UIImage(), for:.default)
         navigationController.navigationBar.shadowImage = UIImage()
         navigationController.navigationBar.layoutIfNeeded()
     }
     
     public func restoreBarLine(navigationController: UINavigationController) {
-        navigationController.navigationBar.setBackgroundImage(nil, for:.default)
+//        navigationController.navigationBar.setBackgroundImage(nil, for:.default)
         navigationController.navigationBar.shadowImage = nil
         navigationController.navigationBar.layoutIfNeeded()
     }
