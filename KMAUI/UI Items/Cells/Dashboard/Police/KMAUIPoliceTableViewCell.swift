@@ -64,7 +64,7 @@ public class KMAUIPoliceTableViewCell: UITableViewCell {
             infoLabel.textColor = UIColor.white
             rightArrowImageView.tintColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             headerLabel.textColor = KMAUIConstants.shared.KMATitleColor
             infoLabel.textColor = KMAUIConstants.shared.KMATextColor
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor

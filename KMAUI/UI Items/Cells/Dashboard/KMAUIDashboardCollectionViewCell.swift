@@ -39,7 +39,7 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
             layer.borderColor = KMAUIConstants.shared.KMABrightBlueColor.cgColor
             layer.borderWidth = KMAUIConstants.shared.KMABorderWidthBold
         } else {
-            backgroundColor = KMAUIConstants.shared.KMABgGray
+            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             nameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
             layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight

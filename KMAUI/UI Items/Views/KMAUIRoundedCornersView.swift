@@ -15,7 +15,7 @@ public class KMAUIRoundedCornersView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        backgroundColor = KMAUIConstants.shared.KMABackColor
+        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         // Shadow

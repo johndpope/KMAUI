@@ -47,7 +47,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
         previewImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
         previewImageView.clipsToBounds = true
         previewImageView.kf.indicatorType = .activity
-        previewImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         previewImageView.contentMode = .scaleAspectFill
         
         // Background for the upload description
@@ -71,7 +71,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
             departmentHandleLabel.textColor = UIColor.white
             departmentNameLabel.textColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             categoryLabel.textColor = KMAUIConstants.shared.KMATextColor
             createdAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             categoryImageView.tintColor = KMAUIConstants.shared.KMATextColor

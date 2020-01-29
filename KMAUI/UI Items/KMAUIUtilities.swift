@@ -38,8 +38,8 @@ public class KMAUIUtilities {
         
         // Header view
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: KMAUIConstants.shared.KMAScreenWidth, height: 44 + offset))
-        headerView.backgroundColor = KMAUIConstants.shared.KMABgGray
-        backgroundView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        headerView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        backgroundView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         headerView.addSubview(backgroundView)
         
         // Header title label
@@ -54,7 +54,7 @@ public class KMAUIUtilities {
         // Create a view cell and attach the custom view to it
         let headerViewObject = UITableViewHeaderFooterView()
         headerViewObject.backgroundView = UIView(frame: headerView.bounds)
-        headerViewObject.backgroundView?.backgroundColor = KMAUIConstants.shared.KMABgGray
+        headerViewObject.backgroundView?.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         let contentView = headerViewObject.contentView
         contentView.addSubview(headerView)
         

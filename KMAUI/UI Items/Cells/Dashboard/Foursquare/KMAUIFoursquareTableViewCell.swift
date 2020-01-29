@@ -70,7 +70,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             addressLabel.textColor = UIColor.white
             rightArrowImageView.tintColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             nameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             detailLabel.textColor = KMAUIConstants.shared.KMATextColor
             addressLabel.textColor = KMAUIConstants.shared.KMATextColor
@@ -136,7 +136,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
             if venue.rating > 0 {
                 ratingLabel.text = "\(venue.rating)"
                 ratingLabel.alpha = 1
-                ratingLabel.backgroundColor = KMAUIConstants.shared.KMABgGray
+                ratingLabel.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
                 ratingLabel.textColor = UIColor.white
                 
                 if !venue.ratingColor.isEmpty {

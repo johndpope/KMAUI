@@ -154,6 +154,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="arrowIndicator" destination="KX9-Il-L9H" id="N2N-EU-u9O"/>
+                <outlet property="bgView" destination="Tsa-kR-Yej" id="Fo7-8N-E67"/>
                 <outlet property="detailsStackBgView" destination="S4y-jq-S8e" id="7K2-LX-9yB"/>
                 <outlet property="detailsStackView" destination="Ljc-Wb-m38" id="2Ia-FY-UAM"/>
                 <outlet property="detailsStackViewTop" destination="cS2-eo-Oqw" id="y7A-4a-ly8"/>

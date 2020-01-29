@@ -57,9 +57,9 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
             let rowBgView = UIView()
             
             if selectedIndex == index {
-                rowBgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             } else {
-                rowBgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             }
             
             rowBgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -138,9 +138,9 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
         
         for (index, rowBgView) in rowViews.enumerated() {
             if selectedIndex == index {
-                rowBgView.backgroundColor = KMAUIConstants.shared.KMABgGray
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             } else {
-                rowBgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+                rowBgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             }
         }
         

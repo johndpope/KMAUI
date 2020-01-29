@@ -44,7 +44,7 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
         documentImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
         documentImageView.clipsToBounds = true
         documentImageView.kf.indicatorType = .activity
-        documentImageView.backgroundColor = KMAUIConstants.shared.KMABgGray
+        documentImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         documentImageView.contentMode = .scaleAspectFill
         
         // Background for the document name
@@ -65,7 +65,7 @@ public class KMACitizenPropertyCollectionViewCell: UICollectionViewCell {
             residentsLabel.textColor = UIColor.white
             residentNamesLabel.textColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             propertyTypeImageView.tintColor = KMAUIConstants.shared.KMATextColor
             propertyTypeLabel.textColor = KMAUIConstants.shared.KMATextColor
             propertyCreatedAtLabel.textColor = KMAUIConstants.shared.KMATextGrayColor

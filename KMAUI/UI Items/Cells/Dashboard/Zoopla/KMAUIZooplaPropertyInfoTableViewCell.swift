@@ -91,7 +91,7 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
             floorsCountLabel.textColor = UIColor.white
             rightArrowImageView.tintColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             priceLabel.textColor = KMAUIConstants.shared.KMATitleColor
             noteLabel.textColor = UIColor.white
             noteLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor

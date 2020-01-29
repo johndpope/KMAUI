@@ -55,7 +55,7 @@ public class KMAUIDashboardAddressTableViewCell: UITableViewCell {
             addressLabel.textColor = UIColor.white
             rightArrowImageView.tintColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             addressLabel.textColor = KMAUIConstants.shared.KMATextColor
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         }

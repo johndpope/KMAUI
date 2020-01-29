@@ -71,7 +71,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             fullNameLabel.text = person.fullName
             rightArrowImageView.tintColor = UIColor.white
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABackColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
             usernameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             fullNameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
