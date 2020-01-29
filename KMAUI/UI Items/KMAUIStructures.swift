@@ -74,11 +74,17 @@ public struct KMAUIItemPerformance {
     public init() {
     }
     
-    public init(progress: Int, itemName: String, isOn: Bool, avgCost: Int) {
-        self.progress = progress
+    public init(progress: Int? = nil, itemName: String, isOn: Bool, avgCost: Int? = nil) {
+        if let progress = progress {
+            self.progress = progress
+        }
+        
         self.itemName = itemName
         self.isOn = isOn
-        self.avgCost = avgCost
+        
+        if let avgCost = avgCost {
+            self.avgCost = avgCost
+        }
     }
 }
 
@@ -93,10 +99,17 @@ public struct KMAUIDataItem {
     public init() {
     }
     
-    public init(itemName: String, itemHandle: String, lastUpdate: Date, rows: [KMAUIRowData]) {
+    public init(itemName: String, itemHandle: String? = nil, lastUpdate: Date? = nil, rows: [KMAUIRowData]) {
         self.itemName = itemName
-        self.itemHandle = itemHandle
-        self.lastUpdate = lastUpdate
+        
+        if let itemHandle = itemHandle {
+            self.itemHandle = itemHandle
+        }
+        
+        if let lastUpdate = lastUpdate {
+            self.lastUpdate = lastUpdate
+        }
+        
         self.rows = rows
     }
 }
@@ -112,10 +125,13 @@ public struct KMAUIRowData {
     public init() {
     }
     
-    public init(rowName: String, rowValue: String, visibility: Bool, progress: Double? = nil) {
+    public init(rowName: String, rowValue: String, visibility: Bool? = nil, progress: Double? = nil) {
         self.rowName = rowName
         self.rowValue = rowValue
-        self.visibility = visibility
+        
+        if let visibility = visibility {
+            self.visibility = visibility
+        }
         
         if let progress = progress {
             self.progress = progress
