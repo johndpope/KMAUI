@@ -12,9 +12,16 @@ public class KMAUISelectedCellsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var valueLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var valueLabelTop: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUISelectedCellsTableViewCell"
+    public var title = ""
+    public var value = "" {
+        didSet {
+            setupCell()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -32,4 +39,14 @@ public class KMAUISelectedCellsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        titleLabel.text = title
+        valueLabel.text = value
+        
+        if value.isEmpty {
+            valueLabelTop.constant = 0
+        } else {
+            valueLabelTop.constant = 16
+        }
+    }
 }
