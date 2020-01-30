@@ -14,7 +14,7 @@ public class KMAUISelectedCellsTableViewCell: UITableViewCell {
     @IBOutlet public weak var valueLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    public static let id = "KMAUIColumnsDataTableViewCell"
+    public static let id = "KMAUISelectedCellsTableViewCell"
     
     override public func awakeFromNib() {
         super.awakeFromNib()
