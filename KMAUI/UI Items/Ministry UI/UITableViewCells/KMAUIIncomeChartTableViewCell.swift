@@ -72,6 +72,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         }
         
         leftAxis.axisMaximum = Double((maxIncome / 10000 + 1) * 10000)
+        leftAxis.labelCount = maxIncome / 10000 + 1
         
         leftAxis.valueFormatter = KMAYValueFormatter()
         leftAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
