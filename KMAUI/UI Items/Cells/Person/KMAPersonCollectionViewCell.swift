@@ -132,8 +132,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
             
             let set = BarChartDataSet(entries: yVals, label: "Age distribution")
-            set.colors = ChartColorTemplates.pastel()
-            set.valueColors = ChartColorTemplates.pastel()
+            set.colors = ChartColorTemplates.colorful()
+            set.valueColors = ChartColorTemplates.colorful()
             
             let data = BarChartData(dataSet: set)
             data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
@@ -198,7 +198,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
             
             let dataSet = PieChartDataSet(entries: dataEntries, label: "Gender distribution")
-            dataSet.colors = ChartColorTemplates.pastel()
+            dataSet.colors = ChartColorTemplates.colorful()
             let data = PieChartData(dataSet: dataSet)
             
             let pFormatter = NumberFormatter()
@@ -266,7 +266,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
             
             let dataSet = PieChartDataSet(entries: dataEntries, label: "Area stats")
-            dataSet.colors = ChartColorTemplates.pastel()
+            dataSet.colors = ChartColorTemplates.colorful()
             let data = PieChartData(dataSet: dataSet)
             
             let pFormatter = NumberFormatter()
@@ -358,8 +358,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             }
 
             let set = BarChartDataSet(entries: yVals, label: "Property owners percentage")
-            set.colors = ChartColorTemplates.pastel()
-            set.valueColors = ChartColorTemplates.pastel()
+            set.colors = ChartColorTemplates.colorful()
+            set.valueColors = ChartColorTemplates.colorful()
             
             let data = BarChartData(dataSet: set)
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
@@ -426,8 +426,8 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             let set = BarChartDataSet(entries: yVals, label: "Most active users by uploads")
             set.drawIconsEnabled = false
             
-            set.colors = ChartColorTemplates.pastel()
-            set.valueColors = ChartColorTemplates.pastel()
+            set.colors = ChartColorTemplates.colorful()
+            set.valueColors = ChartColorTemplates.colorful()
             
             let data = BarChartData(dataSet: set)
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
