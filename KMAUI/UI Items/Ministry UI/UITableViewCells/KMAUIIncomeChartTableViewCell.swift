@@ -66,8 +66,8 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         var maxIncome = 0
         
         for item in incomeData {
-            if maxIncome < item.itemIncome {
-                maxIncome = item.itemIncome
+            if maxIncome < (item.femaleSalary + item.maleSalary) / 2 {
+                maxIncome = (item.femaleSalary + item.maleSalary) / 2
             }
         }
         
@@ -86,7 +86,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         var yVals = [BarChartDataEntry]()
         
         for (index, item) in incomeData.enumerated() {
-            yVals.append(BarChartDataEntry(x: Double(index), y: Double(item.itemIncome)))
+            yVals.append(BarChartDataEntry(x: Double(index), y: Double((item.femaleSalary + item.maleSalary) / 2)))
         }
         
         let set = BarChartDataSet(entries: yVals, label: "Age distribution")

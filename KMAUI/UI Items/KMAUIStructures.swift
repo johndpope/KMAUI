@@ -143,14 +143,16 @@ public struct KMAUIRowData {
 
 public struct KMAUIIncomeData {
     public var itemName = ""
-    public var itemIncome = 0
+    public var femaleSalary = 0
+    public var maleSalary = 0
     
     public init() {
     }
     
-    public init(itemName: String, itemIncome: Int) {
+    public init(itemName: String, femaleSalary: Int, maleSalary: Int) {
         self.itemName = itemName
-        self.itemIncome = itemIncome
+        self.femaleSalary = femaleSalary
+        self.maleSalary = maleSalary
     }
 }
 
