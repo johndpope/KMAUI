@@ -539,7 +539,7 @@ public class KMAUIUtilities {
         // Clear selection
         let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 32))
         clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont
-        clearButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
+        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
         clearButton.setTitle("Clear selection", for: .normal)
         clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
