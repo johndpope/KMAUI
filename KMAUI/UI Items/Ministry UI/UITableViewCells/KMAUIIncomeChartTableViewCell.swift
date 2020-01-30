@@ -54,7 +54,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         xAxis.labelPosition = .bottom
         xAxis.valueFormatter = axisFormatDelegate
         xAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
-        xAxis.labelFont = KMAUIConstants.shared.KMAUIRegularFont
+        xAxis.labelFont = KMAUIConstants.shared.KMAUIRegularFont.withSize(10)
         //
         let leftAxis = incomeChart.leftAxis
         leftAxis.drawAxisLineEnabled = false
@@ -76,7 +76,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         
         leftAxis.valueFormatter = KMAYValueFormatter()
         leftAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
-        leftAxis.labelFont = KMAUIConstants.shared.KMAUIRegularFont
+        leftAxis.labelFont = KMAUIConstants.shared.KMAUIRegularFont.withSize(10)
         
         let rightAxis = incomeChart.rightAxis
         rightAxis.drawAxisLineEnabled = false
