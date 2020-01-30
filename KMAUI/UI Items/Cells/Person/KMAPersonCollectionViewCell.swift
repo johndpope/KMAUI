@@ -215,7 +215,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
             genderPieChartView.highlightPerTapEnabled = false
-            genderPieChartView.isDrawHoleEnabled = false
+            genderPieChartView.drawHoleEnabled = false
         }
     }
     
@@ -284,7 +284,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             cityPieChartView.data = data
             cityPieChartView.highlightPerTapEnabled = false
-            cityPieChartView.isDrawHoleEnabled = false
+            cityPieChartView.drawHoleEnabled = false
             cityPieChartView.notifyDataSetChanged()
         }
     }
