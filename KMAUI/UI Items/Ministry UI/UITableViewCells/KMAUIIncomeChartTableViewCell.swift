@@ -96,7 +96,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         let data = BarChartData(dataSet: set)
         data.setValueFont(.systemFont(ofSize: 12, weight: .regular))
         
-        data.barWidth = 0.5
+        data.barWidth = 0.4
         data.highlightEnabled = false
         incomeChart.data = data
         
