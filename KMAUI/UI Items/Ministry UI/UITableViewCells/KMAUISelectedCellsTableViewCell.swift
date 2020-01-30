@@ -18,7 +18,12 @@ public class KMAUISelectedCellsTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // The title font size is 18 dots
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
