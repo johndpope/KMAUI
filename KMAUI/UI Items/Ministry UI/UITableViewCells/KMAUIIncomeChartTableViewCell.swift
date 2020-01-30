@@ -23,7 +23,6 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         }
     }
     
-//    public let cityArray = ["Birmingham", "Dudley", "Walsall", "Khaybar", "Wolverhampton", "Stourbridge"]
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -49,8 +48,6 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         // Setting the delegate connection for axis
         axisFormatDelegate = self
         
-//        let incomeArray = [22000, 14000, 21000, 10000, 28000, 17000]
-        
         let xAxis = incomeChart.xAxis
         xAxis.drawAxisLineEnabled = true
         xAxis.drawGridLinesEnabled = false
@@ -65,7 +62,16 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         leftAxis.drawLabelsEnabled = true
         
         leftAxis.axisMinimum = 0
-        leftAxis.axisMaximum = 40000
+        
+        var maxIncome = 0
+        
+        for item in incomeData {
+            if maxIncome < item.itemIncome {
+                maxIncome = item.itemIncome
+            }
+        }
+        
+        leftAxis.axisMaximum = Double((maxIncome / 10000 + 1) * 10000)
         
         leftAxis.valueFormatter = KMAYValueFormatter()
         leftAxis.labelTextColor = KMAUIConstants.shared.KMATextColor
