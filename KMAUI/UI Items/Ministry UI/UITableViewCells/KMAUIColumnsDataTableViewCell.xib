@@ -19,11 +19,14 @@
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0mq-FA-7ML">
                         <rect key="frame" x="8" y="24" width="304" height="47"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GcU-Ui-awz">
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GcU-Ui-awz">
                         <rect key="frame" x="8" y="71" width="304" height="131"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="GcU-Ui-awz" secondAttribute="bottom" constant="24" id="2AA-Vh-8SA"/>
                     <constraint firstAttribute="trailing" secondItem="0mq-FA-7ML" secondAttribute="trailing" constant="8" id="2zq-Sa-jTt"/>
@@ -34,6 +37,7 @@
                     <constraint firstItem="GcU-Ui-awz" firstAttribute="top" secondItem="0mq-FA-7ML" secondAttribute="bottom" id="vvA-B0-1z4"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="detailsStackView" destination="GcU-Ui-awz" id="yMU-cS-3Z4"/>
