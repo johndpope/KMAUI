@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,7 +34,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 <constraints>
                     <constraint firstItem="jpR-4g-yNn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="8Wx-FT-vQM"/>
                     <constraint firstAttribute="trailing" secondItem="ynD-vo-PpT" secondAttribute="trailing" constant="12" id="CDo-ag-KCo"/>
@@ -46,7 +45,7 @@
                     <constraint firstItem="ynD-vo-PpT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ghN-0l-zm2"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="KMAUIViewBgColor"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="incomeChart" destination="ynD-vo-PpT" id="HZo-dJ-RrU"/>
@@ -55,9 +54,4 @@
             <point key="canvasLocation" x="-128.98550724637681" y="77.008928571428569"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <namedColor name="KMAUIViewBgColor">
-            <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>
