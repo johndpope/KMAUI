@@ -150,7 +150,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
             data.highlightEnabled = false
-            
+
             ageBarChartView.data = data
             ageBarChartView.notifyDataSetChanged()
         }
@@ -211,11 +211,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(UIColor.white)
-            data.highlightEnabled = false
             
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
-            genderPieChartView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            genderPieChartView.highlightPerTapEnabled = false
+            genderPieChartView.isDrawHoleEnabled = false
         }
     }
     
@@ -281,10 +281,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(UIColor.white)
-            data.highlightEnabled = false
             
             cityPieChartView.data = data
-            cityPieChartView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            cityPieChartView.highlightPerTapEnabled = false
+            cityPieChartView.isDrawHoleEnabled = false
             cityPieChartView.notifyDataSetChanged()
         }
     }

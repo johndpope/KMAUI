@@ -17,7 +17,11 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
     // MARK: - Variables
     public static let id = "KMAUIIncomeChartTableViewCell"
     public weak var axisFormatDelegate: IAxisValueFormatter?
-    public var incomeData = [KMAUIIncomeData]()
+    public var incomeData = [KMAUIIncomeData]() {
+        didSet {
+            setupCell()
+        }
+    }
     
 //    public let cityArray = ["Birmingham", "Dudley", "Walsall", "Khaybar", "Wolverhampton", "Stourbridge"]
     
