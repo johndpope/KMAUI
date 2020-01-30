@@ -559,6 +559,7 @@ public class KMAUIUtilities {
         navigationController.navigationBar.shadowImage = nil
         navigationController.navigationBar.layoutIfNeeded()
     }
+    
 }
 
 // MARK: - Int extension
@@ -569,6 +570,12 @@ public extension Int {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         return numberFormatter.string(from: NSNumber(value:self))!
+    }
+    
+    func withDollarK() -> String {
+        let doubleValue = Double(Int((Double(self) / 1000) * 10)) / 10
+        
+        return "$\(doubleValue)k"
     }
 }
 
