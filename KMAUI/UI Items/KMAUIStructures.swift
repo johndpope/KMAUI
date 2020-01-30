@@ -139,6 +139,21 @@ public struct KMAUIRowData {
     }
 }
 
+// MARK: - Income struct
+
+public struct KMAUIIncomeData {
+    public var itemName = ""
+    public var itemIncome = 0
+    
+    public init() {
+    }
+    
+    public init(itemName: String, itemIncome: Int) {
+        self.itemName = itemName
+        self.itemIncome = itemIncome
+    }
+}
+
 // MARK: - TextFieldCellData
 
 public struct KMAUITextFieldCellData {

@@ -17,8 +17,9 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
     // MARK: - Variables
     public static let id = "KMAUIIncomeChartTableViewCell"
     public weak var axisFormatDelegate: IAxisValueFormatter?
+    public var incomeData = [KMAUIIncomeData]()
     
-    public let cityArray = ["Birmingham", "Dudley", "Walsall", "Khaybar", "Wolverhampton", "Stourbridge"]
+//    public let cityArray = ["Birmingham", "Dudley", "Walsall", "Khaybar", "Wolverhampton", "Stourbridge"]
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -44,7 +45,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         // Setting the delegate connection for axis
         axisFormatDelegate = self
         
-        let incomeArray = [22000, 14000, 21000, 10000, 28000, 17000]
+//        let incomeArray = [22000, 14000, 21000, 10000, 28000, 17000]
         
         let xAxis = incomeChart.xAxis
         xAxis.drawAxisLineEnabled = true
@@ -73,8 +74,8 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         
         var yVals = [BarChartDataEntry]()
         
-        for (index, item) in incomeArray.enumerated() {
-            yVals.append(BarChartDataEntry(x: Double(index), y: Double(item)))
+        for (index, item) in incomeData.enumerated() {
+            yVals.append(BarChartDataEntry(x: Double(index), y: Double(item.itemIncome)))
         }
         
         let set = BarChartDataSet(entries: yVals, label: "Age distribution")
@@ -95,7 +96,13 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
 extension KMAUIIncomeChartTableViewCell: IAxisValueFormatter {
     
     public func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-        return cityArray[Int(value)]
+        if incomeData.count > Int(value) {
+            let incomeItem = incomeData[Int(value)]
+            
+            return incomeItem.itemName
+        }
+        
+        return ""
     }
 }
 

@@ -149,6 +149,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.multiplier = 1
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            data.highlightEnabled = false
             
             ageBarChartView.data = data
             ageBarChartView.notifyDataSetChanged()
@@ -210,9 +211,11 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(UIColor.white)
+            data.highlightEnabled = false
             
             genderPieChartView.data = data
             genderPieChartView.notifyDataSetChanged()
+            genderPieChartView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     
@@ -278,8 +281,10 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
             data.setValueTextColor(UIColor.white)
+            data.highlightEnabled = false
             
             cityPieChartView.data = data
+            cityPieChartView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             cityPieChartView.notifyDataSetChanged()
         }
     }
@@ -375,9 +380,9 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             pFormatter.multiplier = 1
             pFormatter.percentSymbol = "%"
             data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+            data.highlightEnabled = false
             
             propertyBarChartView.data = data
-            
             propertyBarChartView.notifyDataSetChanged()
         }
     }
@@ -431,6 +436,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
             
             let data = BarChartData(dataSet: set)
             data.setValueFont(.systemFont(ofSize: 12, weight: .light))
+            data.highlightEnabled = false
             
             let pFormatter = NumberFormatter()
             pFormatter.numberStyle = .decimal
