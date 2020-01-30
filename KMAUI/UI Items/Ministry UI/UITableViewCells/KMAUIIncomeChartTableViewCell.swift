@@ -40,7 +40,6 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         incomeChart.doubleTapToZoomEnabled = false
         incomeChart.legend.enabled = false
         incomeChart.noDataTextColor = KMAUIConstants.shared.KMATextColor
-        incomeChart.backgroundColor = UIColor.clear
         
         // Setting the delegate connection for axis
         axisFormatDelegate = self
