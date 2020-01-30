@@ -12,8 +12,7 @@ public class KMAUIColumnsDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var headerStackView: UIStackView!
     @IBOutlet public weak var detailsStackView: UIStackView!
-    
-    
+        
     // MARK: - Variables
     public static let id = "KMAUIIncomeChartTableViewCell"
 
