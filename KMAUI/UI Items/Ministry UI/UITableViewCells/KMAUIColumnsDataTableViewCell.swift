@@ -14,7 +14,7 @@ public class KMAUIColumnsDataTableViewCell: UITableViewCell {
     @IBOutlet public weak var detailsStackView: UIStackView!
         
     // MARK: - Variables
-    public static let id = "KMAUIIncomeChartTableViewCell"
+    public static let id = "KMAUIColumnsDataTableViewCell"
 
     override public func awakeFromNib() {
         super.awakeFromNib()
