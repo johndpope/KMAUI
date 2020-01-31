@@ -24,7 +24,8 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     public var actionCallback: ((Bool) -> Void)?
     public var type = ""
     public var isLoaded = false
-    
+    public static let id = "KMAUIDashboadNoDataTableViewCell"
+
     override public func awakeFromNib() {
         super.awakeFromNib()
         

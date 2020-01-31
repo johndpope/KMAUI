@@ -70,12 +70,13 @@ public struct KMAUIItemPerformance {
     public var itemName = ""
     public var isOn = false
     public var avgCost = 0
+    public var location = CLLocationCoordinate2D()
     public var isExpanded = false
     
     public init() {
     }
     
-    public init(performanceArray: [Int]? = nil, itemName: String, isOn: Bool, avgCost: Int? = nil) {
+    public init(performanceArray: [Int]? = nil, itemName: String, isOn: Bool, avgCost: Int? = nil, location: CLLocationCoordinate2D? = nil) {
         if let performanceArray = performanceArray {
             self.performanceArray = performanceArray
         }
@@ -85,6 +86,10 @@ public struct KMAUIItemPerformance {
         
         if let avgCost = avgCost {
             self.avgCost = avgCost
+        }
+        
+        if let location = location {
+            self.location = location
         }
     }
 }

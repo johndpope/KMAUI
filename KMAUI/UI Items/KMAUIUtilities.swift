@@ -591,8 +591,8 @@ public class KMAUIUtilities {
                 print("City array: \(cityArray.count)")
                 
                 for city in cityArray {
-                    if let name = city["nameE"] as? String, let community = city["community"] as? Int, let service = city["service"] as? Int, let security = city["security"] as? Int {
-                        let cityValue = KMAUIItemPerformance(performanceArray: [community, service, security], itemName: name, isOn: false)
+                    if let name = city["nameE"] as? String, let community = city["community"] as? Int, let service = city["service"] as? Int, let security = city["security"] as? Int, let location = city["location"] as? PFGeoPoint {
+                        let cityValue = KMAUIItemPerformance(performanceArray: [community, service, security], itemName: name, isOn: false, location: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude))
                         cities.append(cityValue)
                     }
                 }
