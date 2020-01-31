@@ -567,7 +567,7 @@ public class KMAUIUtilities {
     Get the city in bounds area
     */
     
-    public func getCities(_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D, completion: @escaping (_ cities: [KMAUIItemPerformance])->()) {
+    public func getCities(_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D, _ limit: Int, completion: @escaping (_ cities: [KMAUIItemPerformance])->()) {
         let query = PFQuery(className: "KMACity")
         // Getting visible cities
         query.whereKey("location", withinGeoBoxFromSouthwest: PFGeoPoint(latitude: sw.latitude, longitude: sw.longitude), toNortheast: PFGeoPoint(latitude: ne.latitude, longitude: ne.longitude))
@@ -575,12 +575,13 @@ public class KMAUIUtilities {
         query.whereKey("isActive", equalTo: true)
         // Should be from database hude
 //        query.whereKey("fromDatabaseHub", equalTo: true)
+//         Should have a population data
         // Order cities by population, largest on top
         query.order(byDescending: "population")
         // Include the country details
         query.includeKey("country")
         // Limit to 20 largest cities
-        query.limit = 20
+        query.limit = limit
         
         query.findObjectsInBackground { (cityArray, error) in
             var cities = [KMAUIItemPerformance]()
