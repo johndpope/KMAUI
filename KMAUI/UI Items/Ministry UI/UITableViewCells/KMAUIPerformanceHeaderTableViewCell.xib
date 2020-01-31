@@ -276,6 +276,7 @@
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="Wke-8G-edw" id="u68-Z1-Kk3"/>
                 <outlet property="communityProgressLabel" destination="lvg-Z1-oTJ" id="bpQ-wG-8E0"/>
                 <outlet property="communityProgressView" destination="uxB-xq-5T9" id="fSl-Ft-xcN"/>
                 <outlet property="detailsStackView" destination="FgR-1q-N2K" id="zjc-rk-jUn"/>

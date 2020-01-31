@@ -11,6 +11,7 @@ import MKRingProgressView
 
 public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var totalProgressView: RingProgressView!
     @IBOutlet public weak var progressPercentLabel: UILabel!
     @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
@@ -56,7 +57,21 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        }
     }
     
     /**
