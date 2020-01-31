@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import MapKit
 import Contacts
 import ContactsUI
@@ -560,6 +561,66 @@ public class KMAUIUtilities {
         navigationController.navigationBar.layoutIfNeeded()
     }
     
+    // MARK: - Get cities from Parse for the area
+    
+    /**
+    Get the city in bounds area
+    */
+    
+    public func getCities(_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D, completion: @escaping (_ cities: [KMAUIItemPerformance])->()) {
+        let query = PFQuery(className: "KMACity")
+        // Getting visible cities
+        query.whereKey("location", withinGeoBoxFromSouthwest: PFGeoPoint(latitude: sw.latitude, longitude: sw.longitude), toNortheast: PFGeoPoint(latitude: ne.latitude, longitude: ne.longitude))
+        // Should be active in database
+        query.whereKey("isActive", equalTo: true)
+        // Should be from database hude
+        query.whereKey("fromDatabaseHub", equalTo: true)
+        // Order cities by population, largest on top
+        query.order(byDescending: "population")
+        // Include the country details
+        query.includeKey("country")
+        // Limit to 20 largest cities
+        query.limit = 20
+        
+        query.findObjectsInBackground { (cityArray, error) in
+            var cities = [KMAUIItemPerformance]()
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let cityArray = cityArray {
+                print("City array: \(cityArray.count)")
+                
+                for city in cityArray {
+                    if let name = city["nameE"] as? String, let community = city["community"] as? Int, let service = city["service"] as? Int, let security = city["security"] as? Int {
+                        let cityValue = KMAUIItemPerformance(performanceArray: [community, service, security], itemName: name, isOn: false)
+                        cities.append(cityValue)
+                    }
+                }
+                
+                /**
+                 objectId
+                 createdAt
+                 updatedAt
+                 nameE
+                 cityId
+                 isCapital
+                 community
+                 service
+                 security
+                 population
+                 location
+                 adminCode
+                 
+                 country
+                 emoji
+                 name
+                 code
+                 */
+            }
+            
+            completion(cities)
+        }
+    }
 }
 
 // MARK: - Int extension
