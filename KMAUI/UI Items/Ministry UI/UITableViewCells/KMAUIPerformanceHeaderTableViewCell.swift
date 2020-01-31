@@ -27,6 +27,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var detailsStackView: UIStackView!
     
     // MARK - Variables
+    public var canHighlight = false
     public var performanceStruct = KMAPerformanceStruct() {
         didSet {
             self.setupCell()
@@ -67,7 +68,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if highlight, canHighlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
