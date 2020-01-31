@@ -50,6 +50,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         
         let xAxis = incomeChart.xAxis
         xAxis.drawAxisLineEnabled = true
+        xAxis.axisLineColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.1)
         xAxis.drawGridLinesEnabled = false
         xAxis.labelPosition = .bottom
         xAxis.valueFormatter = axisFormatDelegate
@@ -59,6 +60,7 @@ public class KMAUIIncomeChartTableViewCell: UITableViewCell {
         let leftAxis = incomeChart.leftAxis
         leftAxis.drawAxisLineEnabled = false
         leftAxis.drawGridLinesEnabled = true
+        leftAxis.gridColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.1)
         leftAxis.drawLabelsEnabled = true
         
         leftAxis.axisMinimum = 0
