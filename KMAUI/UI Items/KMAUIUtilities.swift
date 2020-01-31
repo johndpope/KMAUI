@@ -574,7 +574,7 @@ public class KMAUIUtilities {
         // Should be active in database
         query.whereKey("isActive", equalTo: true)
         // Should be from database hude
-        query.whereKey("fromDatabaseHub", equalTo: true)
+//        query.whereKey("fromDatabaseHub", equalTo: true)
         // Order cities by population, largest on top
         query.order(byDescending: "population")
         // Include the country details
