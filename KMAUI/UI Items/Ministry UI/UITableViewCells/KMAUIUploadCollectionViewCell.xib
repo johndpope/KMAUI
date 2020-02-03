@@ -74,7 +74,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderUploadImage" translatesAutoresizingMaskIntoConstraints="NO" id="xr4-jb-1mc">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="160"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  new  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-h4-bQ7" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-h4-bQ7" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
                                 <rect key="frame" x="250" y="12" width="50" height="24"/>
                                 <color key="backgroundColor" name="KMATurquoiseColor"/>
                                 <constraints>
