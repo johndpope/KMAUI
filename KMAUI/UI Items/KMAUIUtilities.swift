@@ -545,7 +545,7 @@ public class KMAUIUtilities {
         let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 32))
         clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
-        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
         clearButton.setTitle("Clear selection", for: .normal)
         clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         clearButton.layer.cornerRadius = 16
@@ -561,7 +561,7 @@ public class KMAUIUtilities {
         let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
-        filterButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor.withAlphaComponent(0.75), for: .highlighted)
         filterButton.setTitle("Filter", for: .normal)
         filterButton.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.25)
         filterButton.setImage(KMAUIConstants.shared.filterBarIcon.withRenderingMode(.alwaysTemplate), for: .normal)
@@ -581,7 +581,7 @@ public class KMAUIUtilities {
         let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
         showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
         showOnMapButton.setTitleColor(UIColor.white, for: .normal)
-        showOnMapButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        showOnMapButton.setTitleColor(UIColor.white.withAlphaComponent(0.75), for: .highlighted)
         showOnMapButton.setTitle("Show on map", for: .normal)
         showOnMapButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         showOnMapButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
