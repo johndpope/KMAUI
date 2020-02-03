@@ -11,17 +11,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIUploadCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUIUploadCollectionViewCell" customModule="Business" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIUploadCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUIUploadCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-zI-SID">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAS-zI-SID" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-xv-Ric" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-xv-Ric">
                                 <rect key="frame" x="0.0" y="120" width="240" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjo-mM-igb">
@@ -56,7 +56,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstItem="tzR-dh-wft" firstAttribute="top" secondItem="BQb-SS-UhK" secondAttribute="bottom" id="ABu-6g-anX"/>
                                     <constraint firstItem="rDG-ZE-OnM" firstAttribute="top" secondItem="JgX-xv-Ric" secondAttribute="top" constant="10" id="Exu-hl-scR"/>
@@ -89,7 +89,7 @@
                                 <state key="normal" title="Button"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
                             <constraint firstItem="JgX-xv-Ric" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="6nX-n3-V5Y"/>
                             <constraint firstItem="xr4-jb-1mc" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="DVn-x5-mKC"/>
@@ -108,7 +108,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" name="KMAUIMainBgColor"/>
+            <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="SAS-zI-SID" secondAttribute="bottom" id="3Cs-YL-luZ"/>
                 <constraint firstAttribute="trailing" secondItem="SAS-zI-SID" secondAttribute="trailing" id="71M-x2-9bD"/>
