@@ -558,7 +558,7 @@ public class KMAUIUtilities {
      */
     
     public func getFilterBarButton() -> UIBarButtonItem {
-        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 32))
+        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 30))
         filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor.withAlphaComponent(0.75), for: .highlighted)
@@ -578,7 +578,7 @@ public class KMAUIUtilities {
      */
     
     public func getShowOnMapBarButton() -> UIBarButtonItem {
-        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
+        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
         showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         showOnMapButton.setTitleColor(UIColor.white, for: .normal)
         showOnMapButton.setTitleColor(UIColor.white.withAlphaComponent(0.75), for: .highlighted)
