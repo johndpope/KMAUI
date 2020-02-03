@@ -119,6 +119,11 @@
             <size key="customSize" width="240" height="180"/>
             <connections>
                 <outlet property="bgView" destination="SAS-zI-SID" id="gaH-gT-ThG"/>
+                <outlet property="dateLabel" destination="rDG-ZE-OnM" id="Tvw-Km-3Fg"/>
+                <outlet property="nameLabel" destination="BQb-SS-UhK" id="Dvy-jc-Aks"/>
+                <outlet property="newLabel" destination="5H2-h4-bQ7" id="bMk-qQ-HpC"/>
+                <outlet property="placeLabel" destination="tzR-dh-wft" id="cxP-YB-9o5"/>
+                <outlet property="profileImageView" destination="gjo-mM-igb" id="10c-2Z-jY7"/>
             </connections>
             <point key="canvasLocation" x="5.7971014492753632" y="60.267857142857139"/>
         </collectionViewCell>
