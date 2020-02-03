@@ -24,6 +24,9 @@ public class KMAUIUploadsHorizontalTableViewCell: UITableViewCell {
         // Set the font size for title
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
+        // Round corners for collection view
+        collectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        
         // No selection required
         selectionStyle = .none
     }
