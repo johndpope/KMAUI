@@ -542,13 +542,13 @@ public class KMAUIUtilities {
     
     public func getClearBarButton() -> UIBarButtonItem {
         // Clear selection
-        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 32))
-        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
         clearButton.setTitle("Clear selection", for: .normal)
         clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
-        clearButton.layer.cornerRadius = 16
+        clearButton.layer.cornerRadius = 15
         
         return UIBarButtonItem(customView: clearButton)
     }
@@ -558,8 +558,8 @@ public class KMAUIUtilities {
      */
     
     public func getFilterBarButton() -> UIBarButtonItem {
-        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
-        filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
+        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 32))
+        filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor.withAlphaComponent(0.75), for: .highlighted)
         filterButton.setTitle("Filter", for: .normal)
@@ -578,8 +578,8 @@ public class KMAUIUtilities {
      */
     
     public func getShowOnMapBarButton() -> UIBarButtonItem {
-        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
-        showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
+        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 32))
+        showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         showOnMapButton.setTitleColor(UIColor.white, for: .normal)
         showOnMapButton.setTitleColor(UIColor.white.withAlphaComponent(0.75), for: .highlighted)
         showOnMapButton.setTitle("Show on map", for: .normal)
