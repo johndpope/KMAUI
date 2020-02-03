@@ -10,13 +10,15 @@ import UIKit
 import KMAUI
 
 public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
-    @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     // MARK: - Variables
     public static let id = "KMAUIUploadCollectionViewCell"
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-        
+    }
+    
+    public func setupCell() {
         
     }
 }
