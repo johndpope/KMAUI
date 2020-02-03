@@ -29,6 +29,8 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         bgView.clipsToBounds = true
         
         // New label background color and corner radius
+        newLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        newLabel.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         newLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         newLabel.clipsToBounds = true
         newLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
