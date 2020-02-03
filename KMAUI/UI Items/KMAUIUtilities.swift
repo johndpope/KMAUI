@@ -534,7 +534,11 @@ public class KMAUIUtilities {
         collectionView.register(UINib(nibName: identifier, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellWithReuseIdentifier: identifier)
     }
     
-    // MARK: - Get the clear button
+    // MARK: - Get the bar buttons
+    
+    /**
+     Clear bar button
+     */
     
     public func getClearBarButton() -> UIBarButtonItem {
         // Clear selection
@@ -547,6 +551,42 @@ public class KMAUIUtilities {
         clearButton.layer.cornerRadius = 16
         
         return UIBarButtonItem(customView: clearButton)
+    }
+    
+    /**
+     Filter bar button
+     */
+    
+    public func getFilterBarButton() -> UIBarButtonItem {
+        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
+        filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
+        filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
+        filterButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        filterButton.setTitle("Filter", for: .normal)
+        filterButton.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.25)
+        filterButton.setImage(KMAUIConstants.shared.filterBarIcon.withRenderingMode(.alwaysTemplate), for: .normal)
+        filterButton.tintColor = KMAUIConstants.shared.KMAUITextColor
+        filterButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        filterButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
+        filterButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        
+        return UIBarButtonItem(customView: filterButton)
+    }
+    
+    /**
+     Show on map bar button
+     */
+    
+    public func getShowOnMapBarButton() -> UIBarButtonItem {
+        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
+        showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont//.withSize(12)
+        showOnMapButton.setTitleColor(UIColor.white, for: .normal)
+        showOnMapButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyProgressColor, for: .highlighted)
+        showOnMapButton.setTitle("Show on map", for: .normal)
+        showOnMapButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        showOnMapButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        
+        return UIBarButtonItem(customView: showOnMapButton)
     }
     
     // MARK: - Hide the navigation bar line
