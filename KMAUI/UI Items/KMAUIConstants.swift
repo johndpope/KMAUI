@@ -83,6 +83,7 @@ public class KMAUIConstants {
     public let requestsIcon = UIImage(named: "requestsIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let infoIcon = UIImage(named: "infoIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let filterBarIcon = UIImage(named: "filterBarIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let playIcon = UIImage(named: "playIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6

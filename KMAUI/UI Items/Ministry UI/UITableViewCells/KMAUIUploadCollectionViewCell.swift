@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
@@ -33,6 +32,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         newLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         newLabel.clipsToBounds = true
         newLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        newLabel.text = " new "
         
         // The placeholder data for items
         profileImageView.backgroundColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.75)
