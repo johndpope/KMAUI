@@ -13,16 +13,13 @@ public class KMAParse: NSObject {
     // Access variable
     public static let shared = KMAParse()
     
-    public func getMapArea(type: String, parentObjectId: String? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    public func getMapArea(level: Int, parentObjectId: String? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
+        mapAreaQuery.whereKey("level", equalTo: level)
         mapAreaQuery.order(byAscending: "nameE")
-        
-        // Filter by required parameters
-        if type == "country" {
-            mapAreaQuery.whereKey("type", equalTo: "country")
-            mapAreaQuery.includeKey("country")
-        }
+        mapAreaQuery.includeKey("country")
+        mapAreaQuery.includeKey("city")
 
         // Get inf from Parse, prepare an array and return the items with the completion handler
         mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
