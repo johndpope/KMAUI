@@ -93,6 +93,12 @@ public struct KMAUIItemPerformance {
         }
     }
     
+    public init(item: KMAMapAreaStruct) {
+        self.performanceArray = [item.community, item.service, item.security]
+        self.itemName = item.nameE
+        self.isOn = item.isOn
+    }
+    
     public mutating func fillFrom(item: KMAMapAreaStruct) {
         self.performanceArray = [item.community, item.service, item.security]
         self.itemName = item.nameE
