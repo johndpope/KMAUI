@@ -1827,3 +1827,90 @@ public struct KMACitizenUpload {
         }
     }
 }
+
+public struct KMAMapAreaStruct {
+   var objectId = ""
+   var createdAt = Date()
+   var updatedAt = Date()
+   var nameE = ""
+   var nameA = ""
+   var level = -1
+   var type = ""
+   var performance = -1
+   var community = -1
+   var service = -1
+   var security = -1
+   var location = CLLocationCoordinate2D()
+   var sw = CLLocationCoordinate2D()
+   var ne = CLLocationCoordinate2D()
+   var geojson = ""
+   var isActive = false
+   
+   public init() {}
+   
+   public mutating func fillFrom(object: PFObject) {
+       if let objectId = object.objectId {
+           self.objectId = objectId
+       }
+       
+       if let createdAt = object.createdAt {
+           self.createdAt = createdAt
+       }
+       
+       if let updatedAt = object.updatedAt {
+           self.updatedAt = updatedAt
+       }
+       
+       if let nameE = object["nameE"] as? String {
+           self.nameE = nameE
+       }
+       
+       if let nameA = object["nameA"] as? String {
+           self.nameA = nameA
+       }
+       
+       if let level = object["level"] as? Int {
+           self.level = level
+       }
+       
+       if let type = object["type"] as? String {
+           self.type = type
+       }
+       
+       if let performance = object["performance"] as? Int {
+           self.performance = performance
+       }
+       
+       if let community = object["community"] as? Int {
+           self.community = community
+       }
+       
+       if let service = object["service"] as? Int {
+           self.service = service
+       }
+       
+       if let security = object["security"] as? Int {
+           self.security = security
+       }
+       
+       if let location = object["location"] as? PFGeoPoint {
+           self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+       }
+       
+       if let minX = object["minX"] as? Double, let minY = object["minY"] as? Double {
+           self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+       }
+       
+       if let maxX = object["maxX"] as? Double, let maxY = object["maxY"] as? Double {
+           self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+       }
+       
+       if let geojson = object["geojson"] as? String {
+           self.geojson = geojson
+       }
+       
+       if let isActive = object["isActive"] as? Bool {
+           self.isActive = isActive
+       }
+   }
+}
