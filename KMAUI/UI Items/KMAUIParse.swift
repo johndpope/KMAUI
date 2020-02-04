@@ -9,11 +9,11 @@
 import UIKit
 import Parse
 
-public class KMAParse: NSObject {
+public class KMAUIParse {
     // Access variable
-    public static let shared = KMAParse()
+    public static let shared = KMAUIParse()
     
-    public func getMapArea(level: Int, parentObjectId: String? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    public func getMapArea(level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         mapAreaQuery.whereKey("level", equalTo: level)

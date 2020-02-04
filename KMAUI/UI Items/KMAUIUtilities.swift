@@ -672,6 +672,16 @@ public class KMAUIUtilities {
             completion(cities)
         }
     }
+    
+    // MARK: - Get empty cell
+    
+    public func getEmptyCell() -> UITableViewCell {
+        let emptyCell = UITableViewCell()
+        emptyCell.backgroundColor = UIColor.clear
+        emptyCell.selectionStyle = .none
+        
+        return emptyCell
+    }
 }
 
 // MARK: - Int extension
