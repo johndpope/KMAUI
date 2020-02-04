@@ -537,6 +537,18 @@ public class KMAUIUtilities {
     // MARK: - Get the bar buttons
     
     /**
+     Get info button
+     */
+    
+    public func getInfoBarButton() -> UIBarButtonItem {
+        // Info button
+        let infoButton = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        infoButton.setImage(KMAUIConstants.shared.infoIcon, for: .normal)
+        
+        return UIBarButtonItem(customView: infoButton)
+    }
+    
+    /**
      Clear bar button
      */
     
