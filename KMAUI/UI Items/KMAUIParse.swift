@@ -35,7 +35,10 @@ public class KMAUIParse {
                         print("\(index + 1). \(nameE)")
                         var item = KMAMapAreaStruct()
                         item.fillFrom(object: country)
-                        items.append(item)
+                        
+                        if item.isActive {
+                            items.append(item)
+                        }
                     }
                 }
             }
