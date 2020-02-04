@@ -26,6 +26,7 @@ public class KMAUIConstants {
     public let KMAUIRedProgressColor = UIColor(named: "KMAUIRedProgressColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIYellowProgressColor = UIColor(named: "KMAUIYellowProgressColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIGreenProgressColor = UIColor(named: "KMAUIGreenProgressColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIBlueDarkColorBarTint = UIColor(named: "KMAUIBlueDarkColorBarTint", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!    
     // This is used for the Detail part of the UISplitViewController, where we need the white background and the Dark items are reserved
     public let KMAUIMainBgColorReverse = UIColor(named: "KMAUIMainBgColorReverse", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIViewBgColorReverse = UIColor(named: "KMAUIViewBgColorReverse", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
