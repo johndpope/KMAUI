@@ -29,7 +29,7 @@
                     </label>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Wmy-Ji-ojN">
                         <rect key="frame" x="0.0" y="46" width="320" height="240"/>
-                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColorReverse"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="240" id="X1g-jg-Ci7"/>
                         </constraints>
@@ -41,7 +41,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                 </subviews>
-                <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                <color key="backgroundColor" name="KMAUIViewBgColorReverse"/>
                 <constraints>
                     <constraint firstItem="Wmy-Ji-ojN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6zk-be-zAA"/>
                     <constraint firstAttribute="trailing" secondItem="Wmy-Ji-ojN" secondAttribute="trailing" id="ATm-oW-PBi"/>
@@ -52,7 +52,7 @@
                     <constraint firstItem="QjG-NT-VSB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="w5Y-mq-25J"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="KMAUIViewBgColor"/>
+            <color key="backgroundColor" name="KMAUIViewBgColorReverse"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionView" destination="Wmy-Ji-ojN" id="EBP-Gu-qWu"/>
@@ -62,7 +62,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMAUIViewBgColor">
+        <namedColor name="KMAUIViewBgColorReverse">
             <color red="0.99199998378753662" green="0.99199998378753662" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
