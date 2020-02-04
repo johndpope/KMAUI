@@ -23,7 +23,11 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     public var action = ""
     public var actionCallback: ((Bool) -> Void)?
     public var type = ""
-    public var isLoaded = false
+    public var isLoaded = false {
+        didSet {
+            setupCell()
+        }
+    }
     public static let id = "KMAUIDashboadNoDataTableViewCell"
 
     override public func awakeFromNib() {
@@ -78,6 +82,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 action = ""
             } else {
                 info = "We're preparing the property data..."
+                action = ""
+            }
+        } else if type == "items" {
+            if isLoaded {
+                info = "No items to display."
+                action = ""
+            } else {
+                info = "We're preparing the items..."
                 action = ""
             }
         }
