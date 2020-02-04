@@ -7,10 +7,43 @@
 //
 
 import UIKit
+import Parse
 
 public class KMAParse: NSObject {
     // Access variable
-    public static let shared = KMAUIConstants()
+    public static let shared = KMAParse()
     
-    
+    public func getMapArea(type: String, parentObjectId: String? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+        // Get the countries list
+        let mapAreaQuery = PFQuery(className: "KMAMapArea")
+        mapAreaQuery.order(byAscending: "nameE")
+        
+        // Filter by required parameters
+        if type == "country" {
+            mapAreaQuery.whereKey("type", equalTo: "country")
+            mapAreaQuery.includeKey("country")
+        }
+
+        // Get inf from Parse, prepare an array and return the items with the completion handler
+        mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
+            var items = [KMAMapAreaStruct]()
+            
+            if let error = error {
+                print("Error getting countries: \(error.localizedDescription).")
+            } else if let countriesArray = countriesArray {
+                print("Total countries loaded: \(countriesArray.count)")
+
+                for (index, country) in countriesArray.enumerated() {
+                    if let nameE = country["nameE"] as? String {
+                        print("\(index + 1). \(nameE)")
+                        var item = KMAMapAreaStruct()
+                        item.fillFrom(object: country)
+                        items.append(item)
+                    }
+                }
+            }
+            
+            completion(items)
+        }
+    }
 }
