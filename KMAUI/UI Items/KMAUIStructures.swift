@@ -92,6 +92,12 @@ public struct KMAUIItemPerformance {
             self.location = location
         }
     }
+    
+    public mutating func fillFrom(item: KMAMapAreaStruct) {
+        self.performanceArray = [item.community, item.service, item.security]
+        self.itemName = item.nameE
+        self.isOn = item.isOn
+    }
 }
 
 // MARK: - Data item struct
@@ -1829,24 +1835,25 @@ public struct KMACitizenUpload {
 }
 
 public struct KMAMapAreaStruct {
-   public var objectId = ""
-   public var createdAt = Date()
-   public var updatedAt = Date()
-   public var nameE = ""
-   public var nameA = ""
-   public var level = -1
-   public var type = ""
-   public var performance = -1
-   public var community = -1
-   public var service = -1
-   public var security = -1
-   public var location = CLLocationCoordinate2D()
-   public var sw = CLLocationCoordinate2D()
-   public var ne = CLLocationCoordinate2D()
-   public var geojson = ""
-   public var isActive = false
-   
-   public init() {}
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var nameE = ""
+    public var nameA = ""
+    public var level = -1
+    public var type = ""
+    public var performance = -1
+    public var community = -1
+    public var service = -1
+    public var security = -1
+    public var location = CLLocationCoordinate2D()
+    public var sw = CLLocationCoordinate2D()
+    public var ne = CLLocationCoordinate2D()
+    public var geojson = ""
+    public var isActive = false
+    public var isOn = false
+    
+    public init() {}
    
    public mutating func fillFrom(object: PFObject) {
        if let objectId = object.objectId {
