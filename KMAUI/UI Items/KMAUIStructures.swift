@@ -1829,22 +1829,22 @@ public struct KMACitizenUpload {
 }
 
 public struct KMAMapAreaStruct {
-   var objectId = ""
-   var createdAt = Date()
-   var updatedAt = Date()
-   var nameE = ""
-   var nameA = ""
-   var level = -1
-   var type = ""
-   var performance = -1
-   var community = -1
-   var service = -1
-   var security = -1
-   var location = CLLocationCoordinate2D()
-   var sw = CLLocationCoordinate2D()
-   var ne = CLLocationCoordinate2D()
-   var geojson = ""
-   var isActive = false
+   public var objectId = ""
+   public var createdAt = Date()
+   public var updatedAt = Date()
+   public var nameE = ""
+   public var nameA = ""
+   public var level = -1
+   public var type = ""
+   public var performance = -1
+   public var community = -1
+   public var service = -1
+   public var security = -1
+   public var location = CLLocationCoordinate2D()
+   public var sw = CLLocationCoordinate2D()
+   public var ne = CLLocationCoordinate2D()
+   public var geojson = ""
+   public var isActive = false
    
    public init() {}
    
