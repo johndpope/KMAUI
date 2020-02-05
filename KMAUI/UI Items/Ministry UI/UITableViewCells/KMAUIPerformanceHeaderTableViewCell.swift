@@ -25,6 +25,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var stackViewBgView: UIView!
     @IBOutlet public weak var stackView: UIStackView!
     @IBOutlet public weak var detailsStackView: UIStackView!
+    @IBOutlet public weak var detailsStackViewTop: NSLayoutConstraint!
     
     // MARK - Variables
     public var canHighlight = false
@@ -112,6 +113,12 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         // Clear existing subviews
         for subview in detailsStackView.subviews {
             subview.removeFromSuperview()
+        }
+        
+        if performanceStruct.rows.isEmpty {
+            detailsStackViewTop.constant = 0
+        } else {
+            detailsStackViewTop.constant = 8
         }
 
         for statItem in performanceStruct.rows {
