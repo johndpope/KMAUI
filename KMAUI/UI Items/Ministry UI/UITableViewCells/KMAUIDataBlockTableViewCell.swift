@@ -26,7 +26,9 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         }
     }
     public var visibilityChangedCallback: ((Int, Bool) -> Void)?
+    public var rowClickedCallback: ((Int) -> Void)?
     public static let id = "KMAUIDataBlockTableViewCell"
+    public var rowViews = [UIView]()
     
     // MARK: - Cell methods
     
@@ -69,16 +71,19 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             let itemView = UIStackView()
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
-            itemView.alignment = UIStackView.Alignment.fill
+            itemView.alignment = UIStackView.Alignment.center
             itemView.spacing = 8
             
+            itemView.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+            itemView.isLayoutMarginsRelativeArrangement = true
+
             if hasProgress {
-                let progressBgView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 28))
+                let progressBgView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: 36))
                 progressBgView.widthAnchor.constraint(equalToConstant: 12).isActive = true
-                progressBgView.heightAnchor.constraint(equalToConstant: 28).isActive = true
+                progressBgView.heightAnchor.constraint(equalToConstant: 36).isActive = true
                 progressBgView.backgroundColor = UIColor.clear
                 // Progress view
-                let progressView = RingProgressView(frame: CGRect(x: 0, y: 9, width: 12, height: 12))
+                let progressView = RingProgressView(frame: CGRect(x: 0, y: 12, width: 12, height: 12))
                 progressView.backgroundRingColor = KMAUIConstants.shared.KMAUIGreyProgressColor
                 progressView.ringWidth = 2
                 progressView.hidesRingForZeroProgress = false
@@ -125,9 +130,29 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             visibilityButton.tag = index + 100
             visibilityButton.addTarget(self, action: #selector(visibilityButtonPressed(button:)), for: .touchUpInside)
             itemView.addArrangedSubview(visibilityButton)
+
+            let rowView = UIView()
+            rowViews.append(rowView)
+            rowView.backgroundColor = UIColor.clear // KMAUIConstants.shared.KMAUIMainBgColor
+                                
+            rowView.addSubview(itemView)
+            rowView.tag = index + 300
+            rowView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+            rowView.clipsToBounds = true
+            KMAUIUtilities.shared.setConstaints(parentView: rowView, childView: itemView, left: 0, right: 0, top: 0, bottom: 0)
             
-            stackView.addArrangedSubview(itemView)
-            itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+            let rowButton = UIButton()
+            rowButton.setTitle("", for: .normal)
+            rowButton.tag = index + 200
+            rowButton.addTarget(self, action: #selector(rowButtonPressed(button:)), for: .touchUpInside)
+            rowButton.addTarget(self, action: #selector(rowButtonHighlight(button:)), for: .touchDown)
+            rowButton.addTarget(self, action: #selector(rowButtonUnhighlight(button:)), for: .touchDragOutside)
+            rowView.addSubview(rowButton)
+            rowButton.backgroundColor = UIColor.clear
+            KMAUIUtilities.shared.setConstaints(parentView: rowView, childView: rowButton, left: 0, right: -38, top: 0, bottom: 0)
+            
+            stackView.addArrangedSubview(rowView)
+            rowView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
             
             if index < dataItem.rows.count - 1 {
                 // Line view
@@ -156,5 +181,29 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         }
         
         visibilityChangedCallback?(button.tag - 100, isVisible)
+    }
+        
+    @objc public func rowButtonPressed(button: UIButton) {
+        let rowView = rowViews[button.tag - 200]
+        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            rowView.backgroundColor = UIColor.clear
+        }
+        
+        rowClickedCallback?(button.tag - 200)
+    }
+    
+    @objc public func rowButtonHighlight(button: UIButton) {
+        let rowView = rowViews[button.tag - 200]
+        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+    }
+    
+    @objc public func rowButtonUnhighlight(button: UIButton) {
+        let rowView = rowViews[button.tag - 200]
+
+        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
+            rowView.backgroundColor = UIColor.clear
+        }
     }
 }
