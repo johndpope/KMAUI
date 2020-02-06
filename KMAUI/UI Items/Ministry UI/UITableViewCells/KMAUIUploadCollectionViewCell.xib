@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JgX-xv-Ric">
                                 <rect key="frame" x="0.0" y="180" width="320" height="60"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderProfileImage" translatesAutoresizingMaskIntoConstraints="NO" id="gjo-mM-igb">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gjo-mM-igb">
                                         <rect key="frame" x="12" y="10" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="1wQ-T7-59d"/>
@@ -71,7 +71,7 @@
                                     <constraint firstItem="BQb-SS-UhK" firstAttribute="top" secondItem="JgX-xv-Ric" secondAttribute="top" constant="8" id="zMS-mJ-OeY"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholderUploadImage" translatesAutoresizingMaskIntoConstraints="NO" id="xr4-jb-1mc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xr4-jb-1mc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5H2-h4-bQ7" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
@@ -86,14 +86,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-cZ-lHf">
-                                <rect key="frame" x="80" y="10" width="160" height="160"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                 <state key="normal" image="playIcon"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="QuD-lF-vVA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIMainBgColorReverse"/>
                         <constraints>
                             <constraint firstItem="JgX-xv-Ric" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="6nX-n3-V5Y"/>
                             <constraint firstItem="xr4-jb-1mc" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="DVn-x5-mKC"/>
+                            <constraint firstItem="Sug-cZ-lHf" firstAttribute="width" secondItem="xr4-jb-1mc" secondAttribute="width" id="FYU-rB-ebv"/>
                             <constraint firstItem="JgX-xv-Ric" firstAttribute="top" secondItem="xr4-jb-1mc" secondAttribute="bottom" id="WPY-eT-iaE"/>
                             <constraint firstAttribute="trailing" secondItem="JgX-xv-Ric" secondAttribute="trailing" id="b0q-na-MDL"/>
                             <constraint firstItem="Sug-cZ-lHf" firstAttribute="centerX" secondItem="xr4-jb-1mc" secondAttribute="centerX" id="fNA-6n-zlB"/>
@@ -105,6 +109,7 @@
                             <constraint firstItem="5H2-h4-bQ7" firstAttribute="top" secondItem="SAS-zI-SID" secondAttribute="top" constant="12" id="uEP-L2-MZD"/>
                             <constraint firstItem="Sug-cZ-lHf" firstAttribute="centerY" secondItem="xr4-jb-1mc" secondAttribute="centerY" id="xFn-Fa-WhZ"/>
                             <constraint firstAttribute="height" constant="240" id="xxR-x7-jWM"/>
+                            <constraint firstItem="Sug-cZ-lHf" firstAttribute="height" secondItem="xr4-jb-1mc" secondAttribute="height" id="ySF-mj-z1p"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -124,14 +129,14 @@
                 <outlet property="nameLabel" destination="BQb-SS-UhK" id="Dvy-jc-Aks"/>
                 <outlet property="newLabel" destination="5H2-h4-bQ7" id="bMk-qQ-HpC"/>
                 <outlet property="placeLabel" destination="tzR-dh-wft" id="cxP-YB-9o5"/>
+                <outlet property="playButton" destination="Sug-cZ-lHf" id="1Ko-ll-ZCa"/>
+                <outlet property="previewImageView" destination="xr4-jb-1mc" id="S9c-kd-IA8"/>
                 <outlet property="profileImageView" destination="gjo-mM-igb" id="10c-2Z-jY7"/>
             </connections>
             <point key="canvasLocation" x="5.7971014492753632" y="60.267857142857139"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="placeholderProfileImage" width="114" height="114"/>
-        <image name="placeholderUploadImage" width="1164" height="552"/>
         <image name="playIcon" width="80" height="80"/>
         <namedColor name="KMATurquoiseColor">
             <color red="0.26666666666666666" green="0.83921568627450982" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

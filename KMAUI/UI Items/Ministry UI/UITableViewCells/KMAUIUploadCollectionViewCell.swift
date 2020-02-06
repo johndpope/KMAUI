@@ -11,19 +11,21 @@ import UIKit
 public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var newLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var placeLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var playButton: UIButton!
     // MARK: - Variables
     public static let id = "KMAUIUploadCollectionViewCell"
+    public var playCallback: ((Bool) -> Void)?
+    public var isPlaying = false
     
     override public func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    public func setupCell() {
+        
         // Background view corner raidus
         bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         bgView.clipsToBounds = true
@@ -35,14 +37,26 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         newLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         newLabel.clipsToBounds = true
         newLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
-
+        
         // The placeholder data for items
         profileImageView.backgroundColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.75)
         profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
-        nameLabel.text = "Russel Stephens"
+        
         placeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        placeLabel.text = "Life in Riyadh, Saudi Arabia"
+        
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(), numOnly: true)
+    }
+    
+    public func setupCell() {
+        nameLabel.text = "Russel Stephens"
+        placeLabel.text = "Life in Riyadh, Saudi Arabia"
+        previewImageView.image = KMAUIConstants.shared.placeholderUploadImage
+        profileImageView.image = KMAUIConstants.shared.placeholderProfileImage
+    }
+    
+    @IBAction func playButtonPressed(_ sender: Any) {
+        isPlaying = !isPlaying
+        playCallback?(isPlaying)
     }
 }
