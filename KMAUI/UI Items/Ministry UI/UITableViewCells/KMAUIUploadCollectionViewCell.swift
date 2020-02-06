@@ -44,8 +44,6 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         profileImageView.clipsToBounds = true
         
         placeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        
-        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(), numOnly: true)
     }
     
     public func setupCell() {
@@ -53,6 +51,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         placeLabel.text = "Life in Riyadh, Saudi Arabia"
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImage
         profileImageView.image = KMAUIConstants.shared.placeholderProfileImage
+        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(), numOnly: true)
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
