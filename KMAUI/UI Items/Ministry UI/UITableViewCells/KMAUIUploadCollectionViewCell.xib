@@ -86,7 +86,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-cZ-lHf">
-                                <rect key="frame" x="120" y="50" width="80" height="80"/>
+                                <rect key="frame" x="80" y="10" width="160" height="160"/>
                                 <state key="normal" image="playIcon"/>
                             </button>
                         </subviews>
