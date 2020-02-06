@@ -48,8 +48,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7na-DC-OVB">
-                                <rect key="frame" x="8" y="84" width="272" height="64"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="7na-DC-OVB">
+                                <rect key="frame" x="4" y="84" width="280" height="64"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
@@ -61,11 +61,11 @@
                             <constraint firstAttribute="bottom" secondItem="7na-DC-OVB" secondAttribute="bottom" constant="16" id="d3g-tH-LAG"/>
                             <constraint firstItem="iv6-Ye-7J1" firstAttribute="leading" secondItem="hZs-L0-g5u" secondAttribute="trailing" constant="8" id="gZI-pX-avf"/>
                             <constraint firstAttribute="trailing" secondItem="B7d-h3-e7R" secondAttribute="trailing" constant="12" id="gdT-a1-zI9"/>
-                            <constraint firstAttribute="trailing" secondItem="7na-DC-OVB" secondAttribute="trailing" constant="8" id="ngE-3t-s6a"/>
+                            <constraint firstAttribute="trailing" secondItem="7na-DC-OVB" secondAttribute="trailing" constant="4" id="ngE-3t-s6a"/>
                             <constraint firstItem="hZs-L0-g5u" firstAttribute="leading" secondItem="5J1-AU-Iqv" secondAttribute="leading" constant="12" id="ohY-6U-hGx"/>
                             <constraint firstItem="7na-DC-OVB" firstAttribute="top" secondItem="hZs-L0-g5u" secondAttribute="bottom" constant="16" id="vbX-pR-dFl"/>
                             <constraint firstItem="hZs-L0-g5u" firstAttribute="top" secondItem="B7d-h3-e7R" secondAttribute="bottom" constant="8" id="wUL-Xv-b5j"/>
-                            <constraint firstItem="7na-DC-OVB" firstAttribute="leading" secondItem="5J1-AU-Iqv" secondAttribute="leading" constant="8" id="zSB-Pc-6dC"/>
+                            <constraint firstItem="7na-DC-OVB" firstAttribute="leading" secondItem="5J1-AU-Iqv" secondAttribute="leading" constant="4" id="zSB-Pc-6dC"/>
                         </constraints>
                     </view>
                 </subviews>
