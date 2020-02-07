@@ -21,31 +21,14 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     public var selectedIndex = 0
     public var selectedIndexCallback: ((Int) -> Void)?
     public static let id = "KMAUISegmentTableViewCell"
+    public var segmentControl = UISegmentedControl()
     
     // MARK: - Cell methods
     
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        // No selection required
-        selectionStyle = .none
-    }
-    
-    override public func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    public func setupCell() {
-        // Clear current subviews
-        for subview in bgView.subviews {
-            subview.removeFromSuperview()
-        }
-        
-        // Create the new segmentControl
-        let segmentControl = UISegmentedControl(items: segmentItems)
-        segmentControl.selectedSegmentIndex = selectedIndex
+        // Setup the segment control UI
         segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         segmentControl.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
@@ -64,11 +47,31 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         // Add target action method
         segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)
-
+        
         // Add this custom Segmented Control to our view
         bgView.addSubview(segmentControl)
         KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
         fixBackgroundSegmentControl(segmentControl)
+        
+        // No selection required
+        selectionStyle = .none
+    }
+    
+    override public func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        // Clear current subviews
+        for subview in bgView.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        // Create the new segmentControl
+        segmentControl = UISegmentedControl(items: segmentItems)
+        segmentControl.selectedSegmentIndex = selectedIndex
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
