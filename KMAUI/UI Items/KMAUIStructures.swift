@@ -222,7 +222,7 @@ public struct KMAWeather {
         if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).array,
             !json.isEmpty, let jsonDict = json[0].dictionary {
-
+            
             // Weather text + temperature
             if let weatherText = jsonDict["WeatherText"]?.string {
                 self.title = weatherText
@@ -624,7 +624,7 @@ public struct KMAFoursquareVenue {
         if !hours.isEmpty,
             let dataFromString = hours.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary {
-
+            
             if let timeframes = json["timeframes"]?.array {
                 for timeframe in timeframes {
                     if let timeframe = timeframe.dictionary {
@@ -732,7 +732,7 @@ public struct KMAFoursquareVenue {
         if !contact.isEmpty,
             let dataFromString = contact.data(using: .utf8, allowLossyConversion: false),
             let json = try? JSON(data: dataFromString).dictionary {
-//            print("\nContacts:")
+            //            print("\nContacts:")
             
             if let fbNameValue = json["facebookName"]?.string {
                 fbName = fbNameValue
@@ -747,7 +747,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !fbName.isEmpty, !fbUsername.isEmpty, !fbId.isEmpty {
-//                print("Facebook: \(fbName), \(fbUsername), \(fbId)")
+                //                print("Facebook: \(fbName), \(fbUsername), \(fbId)")
             }
             
             if let instagramValue = json["instagram"]?.string {
@@ -755,17 +755,17 @@ public struct KMAFoursquareVenue {
             }
             
             if !instagram.isEmpty {
-//                print("Instagram: \(instagram)")
+                //                print("Instagram: \(instagram)")
             }
-
+            
             if let twitterValue = json["twitter"]?.string {
                 twitter = twitterValue
             }
             
             if !twitter.isEmpty {
-//                print("Twitter: \(twitter)")
+                //                print("Twitter: \(twitter)")
             }
-
+            
             if let phoneValue = json["phone"]?.string {
                 phone = phoneValue
             }
@@ -775,7 +775,7 @@ public struct KMAFoursquareVenue {
             }
             
             if !phone.isEmpty || !formattedPhone.isEmpty {
-//                print("Phone: \(phone), \(formattedPhone)")
+                //                print("Phone: \(phone), \(formattedPhone)")
             }
         }
         
@@ -1216,14 +1216,14 @@ public struct KMAPoliceNeighbourhood {
         self.crimeArray = [KMACrimeObject]()
         self.crimeNearby = [KMACrimeObject]()
         let polygon = KMAUIUtilities.shared.getPolygon(bounds: self.bounds)
-
+        
         // Get the JSON array from the string
         if !crime.isEmpty, let dataFromString = crime.data(using: .utf8, allowLossyConversion: false), let json = try? JSON(data: dataFromString).array {
             for crimeValue in json {
                 if let crimeValue = crimeValue.dictionary {
                     var crimeObject = KMACrimeObject()
                     crimeObject.fillFrom(json: crimeValue)
-
+                    
                     if KMAUIUtilities.shared.checkIf(crimeObject.location, areInside: polygon) {
                         self.crimeArray.append(crimeObject)
                     } else {
@@ -1567,7 +1567,7 @@ public struct KMAPerson {
                 if let formattedAddress = building["formattedAddress"] as? String {
                     self.formattedAddress = formattedAddress
                 }
-
+                
                 if let city = building["city"] as? String {
                     self.city = city
                 }
@@ -1667,11 +1667,11 @@ public struct KMACitizenProperty {
         if let objectIdValue = propertyLoaded.objectId, let updatedAtValue = propertyLoaded.updatedAt {
             self.objectId = objectIdValue
             self.updatedAt = updatedAtValue
-
+            
             if let createdAtValue = propertyLoaded.createdAt {
                 self.createdAt = createdAtValue
             }
-
+            
             if let typeLoaded = propertyLoaded["type"] as? String {
                 self.type = typeLoaded
             }
@@ -1679,7 +1679,7 @@ public struct KMACitizenProperty {
             if let ownershipFormLoaded = propertyLoaded["ownershipForm"] as? String {
                 self.ownershipForm = ownershipFormLoaded
             }
-
+            
             if let location = propertyLoaded["location"] as? PFGeoPoint {
                 self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             }
@@ -1687,11 +1687,11 @@ public struct KMACitizenProperty {
             if let residentsCountLoaded = propertyLoaded["residentsCount"] as? Int {
                 self.residentsCount = residentsCountLoaded
             }
-
+            
             if let documentIdsLoaded = propertyLoaded["documentIds"] as? [String] {
                 self.documentIds = documentIdsLoaded
             }
-
+            
             if let apartmentValue = propertyLoaded["apartment"] as? Int {
                 apartment = apartmentValue
             }
@@ -1721,7 +1721,7 @@ public struct KMACitizenProperty {
                     country = countryValue
                 }
             }
-
+            
             if let documentPointers = propertyLoaded["documentPointers"] as? [PFObject] {
                 for documentObject in documentPointers {
                     var documentValue = KMAPropertyDocument()
@@ -1743,10 +1743,10 @@ public struct KMACitizenUpload {
     public var uploadDescription = ""
     public var uploadBody = ""
     public var processingStatus = ""
-//    public var city = ""
-//    public var state = ""
-//    public var country = ""
-//    public var zip = ""
+    //    public var city = ""
+    //    public var state = ""
+    //    public var country = ""
+    //    public var zip = ""
     public var departmentId = ""
     public var departmentHandle = ""
     public var departmentName = ""
@@ -1808,25 +1808,25 @@ public struct KMACitizenUpload {
             }
             
             /*if let cityValue = uploadLoaded["city"] as? String {
-                self.city = cityValue
-            }
-            
-            if let stateValue = uploadLoaded["state"] as? String {
-                self.state = stateValue
-            }
-            
-            if let countryValue = uploadLoaded["country"] as? String {
-                self.country = countryValue
-            }
-            
-            if let zipValue = uploadLoaded["zip"] as? String {
-                self.zip = zipValue
-            }*/
+             self.city = cityValue
+             }
+             
+             if let stateValue = uploadLoaded["state"] as? String {
+             self.state = stateValue
+             }
+             
+             if let countryValue = uploadLoaded["country"] as? String {
+             self.country = countryValue
+             }
+             
+             if let zipValue = uploadLoaded["zip"] as? String {
+             self.zip = zipValue
+             }*/
             
             if let uploadCategoryLoaded = uploadLoaded["category"] as? PFObject {
                 if let objectIdValue = uploadCategoryLoaded.objectId {
                     self.categoryId = objectIdValue
-
+                    
                     if let nameEValue = uploadCategoryLoaded["nameE"] as? String {
                         self.categoryName = nameEValue
                     }
@@ -1863,70 +1863,82 @@ public struct KMAMapAreaStruct {
     public var population = 0
     
     public init() {}
-   
-   public mutating func fillFrom(object: PFObject) {
-       if let objectId = object.objectId {
-           self.objectId = objectId
-       }
-       
-       if let createdAt = object.createdAt {
-           self.createdAt = createdAt
-       }
-       
-       if let updatedAt = object.updatedAt {
-           self.updatedAt = updatedAt
-       }
-       
-       if let nameE = object["nameE"] as? String {
-           self.nameE = nameE
-       }
-       
-       if let nameA = object["nameA"] as? String {
-           self.nameA = nameA
-       }
-       
-       if let level = object["level"] as? Int {
-           self.level = level
-       }
-       
-       if let type = object["type"] as? String {
-           self.type = type
-       }
-       
-       if let performance = object["performance"] as? Int {
-           self.performance = performance
-       }
-       
-       if let community = object["community"] as? Int {
-           self.community = community
-       }
-       
-       if let service = object["service"] as? Int {
-           self.service = service
-       }
-       
-       if let security = object["security"] as? Int {
-           self.security = security
-       }
-       
-       if let location = object["location"] as? PFGeoPoint {
-           self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-       }
-       
-       if let minX = object["minX"] as? Double, let minY = object["minY"] as? Double {
-           self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
-       }
-       
-       if let maxX = object["maxX"] as? Double, let maxY = object["maxY"] as? Double {
-           self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
-       }
-       
-       if let geojson = object["geojson"] as? String {
-           self.geojson = geojson
-       }
-       
-       if let isActive = object["isActive"] as? Bool {
-           self.isActive = isActive
-       }
-   }
+    
+    public mutating func fillFrom(object: PFObject) {
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        
+        if let nameE = object["nameE"] as? String {
+            self.nameE = nameE
+        }
+        
+        if let nameA = object["nameA"] as? String {
+            self.nameA = nameA
+        }
+        
+        if let level = object["level"] as? Int {
+            self.level = level
+        }
+        
+        if let type = object["type"] as? String {
+            self.type = type
+        }
+        
+        if let performance = object["performance"] as? Int {
+            self.performance = performance
+        }
+        
+        if let community = object["community"] as? Int {
+            self.community = community
+        }
+        
+        if let service = object["service"] as? Int {
+            self.service = service
+        }
+        
+        if let security = object["security"] as? Int {
+            self.security = security
+        }
+        
+        if let location = object["location"] as? PFGeoPoint {
+            self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        }
+        
+        if let minX = object["minX"] as? Double, let minY = object["minY"] as? Double {
+            self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+        }
+        
+        if let maxX = object["maxX"] as? Double, let maxY = object["maxY"] as? Double {
+            self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+        }
+        
+        if let geojson = object["geojson"] as? String {
+            self.geojson = geojson
+        }
+        
+        if let isActive = object["isActive"] as? Bool {
+            self.isActive = isActive
+        }
+        
+        if let childrenCount = object["childrenCount"] as? Int {
+            self.childrenCount = childrenCount
+        }
+        
+        if let nextType = object["nextType"] as? String {
+            self.nextType = nextType
+        }
+        
+        if let population = object["population"] as? Int {
+            self.population = population
+        }
+    }
 }
