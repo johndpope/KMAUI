@@ -280,7 +280,7 @@
                 <outlet property="communityProgressLabel" destination="lvg-Z1-oTJ" id="bpQ-wG-8E0"/>
                 <outlet property="communityProgressView" destination="uxB-xq-5T9" id="fSl-Ft-xcN"/>
                 <outlet property="detailsStackView" destination="FgR-1q-N2K" id="zjc-rk-jUn"/>
-                <outlet property="detailsStackViewTop" destination="vD0-nw-YM3" id="vd3-CE-Ije"/>
+                <outlet property="detailsStackViewTop" destination="WLj-cL-faH" id="li8-gD-WXX"/>
                 <outlet property="itemTitleLabel" destination="kWC-hi-CfK" id="ZZV-38-K9d"/>
                 <outlet property="itemValueLabel" destination="1Eg-F0-E8L" id="utP-q6-4f2"/>
                 <outlet property="progressPercentLabel" destination="wFz-rO-Jz7" id="xZS-Pq-EYO"/>

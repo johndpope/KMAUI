@@ -116,7 +116,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         }
         
         if performanceStruct.rows.isEmpty {
-            detailsStackViewTop.constant = -8
+            detailsStackViewTop.constant = -4
         } else {
             detailsStackViewTop.constant = 8
         }
