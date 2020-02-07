@@ -47,11 +47,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         // Add target action method
         segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)
-        
-        // Add this custom Segmented Control to our view
-        bgView.addSubview(segmentControl)
-        
-        
+
         // No selection required
         selectionStyle = .none
     }
@@ -72,6 +68,8 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
         
+        // Add this custom Segmented Control to our view
+        bgView.addSubview(segmentControl)
         KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
         fixBackgroundSegmentControl(segmentControl)
     }
