@@ -1861,6 +1861,7 @@ public struct KMAMapAreaStruct {
     public var childrenCount = 0
     public var nextType = ""
     public var population = 0
+    public var isExpanded = false
     
     public init() {}
     
