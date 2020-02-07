@@ -1858,6 +1858,9 @@ public struct KMAMapAreaStruct {
     public var geojson = ""
     public var isActive = false
     public var isOn = false
+    public var childrenCount = 0
+    public var nextType = ""
+    public var population = 0
     
     public init() {}
    
