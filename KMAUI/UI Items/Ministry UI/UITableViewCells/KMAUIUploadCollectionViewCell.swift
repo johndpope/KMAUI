@@ -45,7 +45,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         newLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         
         // The placeholder data for items
-        profileImageView.backgroundColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.75)
+//        profileImageView.backgroundColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.75)
         profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
         
