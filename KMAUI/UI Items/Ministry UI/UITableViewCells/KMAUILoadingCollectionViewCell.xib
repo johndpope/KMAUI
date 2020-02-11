@@ -21,7 +21,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54s-Op-ade">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="136"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-Q8-WmI" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-Q8-WmI">
                                 <rect key="frame" x="8" y="8" width="184" height="120"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-cv-9Rl">
@@ -82,6 +82,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="202" height="152"/>
             <connections>
+                <outlet property="bgView" destination="AYn-Q8-WmI" id="BqW-gv-oKg"/>
                 <outlet property="loadingActivityView" destination="F88-4u-BK2" id="biL-93-944"/>
                 <outlet property="loadingLabel" destination="09u-QD-SZC" id="gr6-Ow-mjL"/>
             </connections>

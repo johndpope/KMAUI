@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: KMAUIBoldTextLabel!
 
@@ -18,7 +19,9 @@ public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        bgView.clipsToBounds = true
     }
 
 }
