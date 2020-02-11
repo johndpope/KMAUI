@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUILoadingHorizontalCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUILoadingHorizontalCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="307" height="58"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="307" height="58"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtg-X9-Fi9">
+                        <rect key="frame" x="0.0" y="0.0" width="307" height="58"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-we-MqU">
+                                <rect key="frame" x="8" y="10.5" width="37" height="37"/>
+                                <color key="color" name="KMAUIBlueDarkColorBarTint"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-tV-4ob" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="53" y="18.5" width="246" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                        <constraints>
+                            <constraint firstItem="WPv-we-MqU" firstAttribute="leading" secondItem="vtg-X9-Fi9" secondAttribute="leading" constant="8" id="Co9-6P-sq4"/>
+                            <constraint firstItem="Kif-tV-4ob" firstAttribute="centerY" secondItem="vtg-X9-Fi9" secondAttribute="centerY" id="III-BK-iI3"/>
+                            <constraint firstItem="Kif-tV-4ob" firstAttribute="leading" secondItem="WPv-we-MqU" secondAttribute="trailing" constant="8" id="Xte-Nu-KJF"/>
+                            <constraint firstAttribute="trailing" secondItem="Kif-tV-4ob" secondAttribute="trailing" constant="8" id="hUc-Bq-OlS"/>
+                            <constraint firstItem="WPv-we-MqU" firstAttribute="centerY" secondItem="vtg-X9-Fi9" secondAttribute="centerY" id="jGF-sv-wjN"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="vtg-X9-Fi9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7u7-9c-mwl"/>
+                <constraint firstItem="vtg-X9-Fi9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HKu-dW-jSX"/>
+                <constraint firstAttribute="bottom" secondItem="vtg-X9-Fi9" secondAttribute="bottom" id="cgI-6T-7qi"/>
+                <constraint firstAttribute="trailing" secondItem="vtg-X9-Fi9" secondAttribute="trailing" id="oZ4-SI-OV5"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="307" height="58"/>
+            <connections>
+                <outlet property="bgView" destination="vtg-X9-Fi9" id="aps-fo-RhZ"/>
+                <outlet property="loadingActivityView" destination="WPv-we-MqU" id="vWt-jP-zEX"/>
+                <outlet property="loadingLabel" destination="Kif-tV-4ob" id="PUu-Yq-U4j"/>
+            </connections>
+            <point key="canvasLocation" x="290.57971014492756" y="87.053571428571431"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIBlueDarkColorBarTint">
+            <color red="0.093999996781349182" green="0.059000000357627869" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
