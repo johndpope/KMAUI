@@ -75,8 +75,8 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
                 switch result {
                 case .success(let value):
                     self.profileImageView.image = value.image
-                    self.alpha = 1
-                    self.layer.cornerRadius = 20
+                    self.profileImageView.alpha = 1
+                    self.profileImageView.layer.cornerRadius = 20
                 case .failure(let error):
                     print(error) // The error happens
                 }
@@ -95,7 +95,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
                 switch result {
                 case .success(let value):
                     self.previewImageView.image = value.image
-                    self.alpha = 1
+                    self.previewImageView.alpha = 1
                 case .failure(let error):
                     print(error) // The error happens
                 }
