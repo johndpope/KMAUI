@@ -43,7 +43,7 @@ public class KMAUIProgressView: UIView {
         // Centering in the view
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
-        progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 8).isActive = true
+        progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
         progressView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         // Adjusting the height for a progress
