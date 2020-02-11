@@ -23,6 +23,8 @@ public class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
         bgView.clipsToBounds = true
         
         loadingLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        
+        loadingActivityView.startAnimating()
     }
 
 }
