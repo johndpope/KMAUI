@@ -24,14 +24,20 @@ public class KMAUIProgressView: UIView {
             subview.removeFromSuperview()
         }
         
+        // Clear background
+        self.backgroundColor = UIColor.clear
+        
         // Adding the progressView
         self.addSubview(progressView)
         
+        // Centering in the view
         progressView.translatesAutoresizingMaskIntoConstraints = false
         progressView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
         progressView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 8).isActive = true
         progressView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-
+        
+        // Adjusting the height for a progress
+        progress.transform = CGAffineTransformScale(masteryProgress.transform, 1, 8)
     }
     
     public func updateProgress() {
