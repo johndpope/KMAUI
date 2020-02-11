@@ -19,14 +19,20 @@ public class KMAUIProgressView: UIView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        // Setup the progress view
         addProgressView()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
         
+        // Setup the progress view
         addProgressView()
     }
+    
+    /**
+     Add the progress for the view
+     */
     
     public func addProgressView() {
         // Remove the subviews
@@ -53,6 +59,10 @@ public class KMAUIProgressView: UIView {
         progressView.layer.cornerRadius = progressView.frame.height / 2
         progressView.clipsToBounds = true
     }
+    
+    /**
+     Setup the progress for the view
+     */
     
     public func updateProgress() {
         progressView.progress = progress
