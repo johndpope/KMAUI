@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var bgView: UIView!
-    @IBOutlet public  weak var loadingActivityView: UIActivityIndicatorView!
+    @IBOutlet public weak var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet public weak var loadingLabel: UILabel!
     
     // MARK: - Variables

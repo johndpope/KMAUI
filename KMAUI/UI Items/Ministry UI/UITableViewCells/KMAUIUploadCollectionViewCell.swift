@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
@@ -22,6 +23,11 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     public static let id = "KMAUIUploadCollectionViewCell"
     public var playCallback: ((Bool) -> Void)?
     public var isPlaying = false
+    public var uploadItem = KMAUIUploadItem() {
+        didSet {
+            setupCell()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -46,12 +52,37 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         placeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
     }
     
-    public func setupCell() {
+    public func demoSetupCell() {
         nameLabel.text = "Russel Stephens"
         placeLabel.text = "Life in Riyadh, Saudi Arabia"
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImage
         profileImageView.image = KMAUIConstants.shared.placeholderProfileImage
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(), numOnly: true)
+    }
+    
+    public func setupCell() {
+        // Citizen name
+        nameLabel.text = uploadItem.citizenImage
+        
+        // Citizen image
+        profileImageView.image = KMAUIConstants.shared.profileIcon.noir
+        profileImageView.alpha = 0.25
+        
+        // Upload name
+        placeLabel.text = uploadItem.uploadName
+        
+        // Upload image
+        previewImageView.image = KMAUIConstants.shared.placeholderUploadImage.noir
+        previewImageView.alpha = 0.25
+        
+        // Upload date
+        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
+        
+        // isNew
+        newLabel.isHidden = !uploadItem.isNew
+        
+        // isVideo
+        playButton.isHidden = !uploadItem.isVideo
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {

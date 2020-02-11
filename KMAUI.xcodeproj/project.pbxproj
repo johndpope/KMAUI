@@ -413,6 +413,17 @@
 			path = Zoopla;
 			sourceTree = "<group>";
 		};
+		85CD593A23F2ED1F00CD2B09 /* UICollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				857A9C6F23F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.swift */,
+				857A9C7023F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.xib */,
+				85CD593623F2E2E200CD2B09 /* KMAUILoadingHorizontalCollectionViewCell.swift */,
+				85CD593723F2E2E200CD2B09 /* KMAUILoadingHorizontalCollectionViewCell.xib */,
+			);
+			path = UICollectionViewCells;
+			sourceTree = "<group>";
+		};
 		85D8913523D86E58009C89E0 /* UITableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,10 +449,6 @@
 				8579FC9C23E864910053857B /* KMAUIUploadCollectionViewCell.xib */,
 				8579FC9B23E864910053857B /* KMAUIUploadsHorizontalTableViewCell.swift */,
 				8579FC9A23E864900053857B /* KMAUIUploadsHorizontalTableViewCell.xib */,
-				857A9C6F23F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.swift */,
-				857A9C7023F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.xib */,
-				85CD593623F2E2E200CD2B09 /* KMAUILoadingHorizontalCollectionViewCell.swift */,
-				85CD593723F2E2E200CD2B09 /* KMAUILoadingHorizontalCollectionViewCell.xib */,
 			);
 			path = UITableViewCells;
 			sourceTree = "<group>";
@@ -493,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				85D8913623D86E62009C89E0 /* UILabels */,
+				85CD593A23F2ED1F00CD2B09 /* UICollectionViewCells */,
 				85D8913523D86E58009C89E0 /* UITableViewCells */,
 			);
 			path = "Ministry UI";

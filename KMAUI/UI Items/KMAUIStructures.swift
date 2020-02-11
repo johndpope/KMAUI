@@ -10,6 +10,31 @@ import UIKit
 import Parse
 import SwiftyJSON
 
+// MARK: - Upload struct
+
+public struct KMAUIUploadItem {
+    public var citizenName = ""
+    public var citizenImage = ""
+    public var uploadName = ""
+    public var uploadImage = ""
+    public var uploadDate = Date()
+    public var isNew = false
+    public var isVideo = false
+    
+    public init() {
+    }
+    
+    public init(citizenName: String, citizenImage: String, uploadName: String, uploadImage: String, uploadDate: Date, isNew: Bool, isVideo: Bool) {
+        self.citizenName = citizenName
+        self.citizenImage = citizenImage
+        self.uploadName = uploadName
+        self.uploadImage = uploadImage
+        self.uploadDate = uploadDate
+        self.isNew = isNew
+        self.isVideo = isVideo
+    }
+}
+
 // MARK: - Document struct
 
 public struct KMADocumentData {
