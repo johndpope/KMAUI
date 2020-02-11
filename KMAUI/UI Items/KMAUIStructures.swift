@@ -24,11 +24,18 @@ public struct KMAUIUploadItem {
     public init() {
     }
     
-    public init(citizenName: String, citizenImage: String, uploadName: String, uploadImage: String, uploadDate: Date, isNew: Bool, isVideo: Bool) {
+    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool) {
         self.citizenName = citizenName
-        self.citizenImage = citizenImage
+        
+        if let citizenImage = citizenImage {
+            self.citizenImage = citizenImage
+        }
         self.uploadName = uploadName
-        self.uploadImage = uploadImage
+        
+        if let uploadImage = uploadImage {
+            self.uploadImage = uploadImage
+        }
+        
         self.uploadDate = uploadDate
         self.isNew = isNew
         self.isVideo = isVideo
