@@ -18,66 +18,55 @@
                 <rect key="frame" x="0.0" y="0.0" width="200" height="136"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54s-Op-ade">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-Q8-WmI">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="136"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-Q8-WmI">
-                                <rect key="frame" x="8" y="8" width="184" height="120"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-cv-9Rl">
+                                <rect key="frame" x="8" y="35.5" width="184" height="65.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-cv-9Rl">
-                                        <rect key="frame" x="8" y="27.5" width="168" height="65.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09u-QD-SZC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="45" width="152" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="KMAUITextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F88-4u-BK2">
-                                                <rect key="frame" x="65.5" y="0.0" width="37" height="37"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="37" id="U3Y-A7-qmj"/>
-                                                    <constraint firstAttribute="height" constant="37" id="yN1-lE-fR8"/>
-                                                </constraints>
-                                                <color key="color" name="KMAUIBlueDarkColor"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09u-QD-SZC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="45" width="168" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="KMAUITextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F88-4u-BK2">
+                                        <rect key="frame" x="73.5" y="0.0" width="37" height="37"/>
                                         <constraints>
-                                            <constraint firstItem="F88-4u-BK2" firstAttribute="centerX" secondItem="HLc-cv-9Rl" secondAttribute="centerX" id="Jcx-ff-jDr"/>
-                                            <constraint firstAttribute="bottom" secondItem="09u-QD-SZC" secondAttribute="bottom" id="WLa-Vh-t2O"/>
-                                            <constraint firstItem="F88-4u-BK2" firstAttribute="top" secondItem="HLc-cv-9Rl" secondAttribute="top" id="ayH-17-Ac7"/>
-                                            <constraint firstItem="09u-QD-SZC" firstAttribute="leading" secondItem="HLc-cv-9Rl" secondAttribute="leading" constant="8" id="dEU-Fv-9oU"/>
-                                            <constraint firstItem="09u-QD-SZC" firstAttribute="top" secondItem="F88-4u-BK2" secondAttribute="bottom" constant="8" id="rfY-tM-Nmy"/>
-                                            <constraint firstAttribute="trailing" secondItem="09u-QD-SZC" secondAttribute="trailing" constant="8" id="zcY-qg-4Kd"/>
+                                            <constraint firstAttribute="width" constant="37" id="U3Y-A7-qmj"/>
+                                            <constraint firstAttribute="height" constant="37" id="yN1-lE-fR8"/>
                                         </constraints>
-                                    </view>
+                                        <color key="color" name="KMAUIBlueDarkColor"/>
+                                    </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" constant="8" id="3eD-G6-DPT"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HLc-cv-9Rl" secondAttribute="bottom" constant="8" id="L7R-3H-Ss9"/>
-                                    <constraint firstItem="HLc-cv-9Rl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AYn-Q8-WmI" secondAttribute="top" constant="8" id="PG9-iX-Oz6"/>
-                                    <constraint firstItem="HLc-cv-9Rl" firstAttribute="centerY" secondItem="AYn-Q8-WmI" secondAttribute="centerY" id="Yby-sl-lgP"/>
-                                    <constraint firstAttribute="trailing" secondItem="HLc-cv-9Rl" secondAttribute="trailing" constant="8" id="jES-m5-7Ue"/>
+                                    <constraint firstItem="F88-4u-BK2" firstAttribute="centerX" secondItem="HLc-cv-9Rl" secondAttribute="centerX" id="Jcx-ff-jDr"/>
+                                    <constraint firstAttribute="bottom" secondItem="09u-QD-SZC" secondAttribute="bottom" id="WLa-Vh-t2O"/>
+                                    <constraint firstItem="F88-4u-BK2" firstAttribute="top" secondItem="HLc-cv-9Rl" secondAttribute="top" id="ayH-17-Ac7"/>
+                                    <constraint firstItem="09u-QD-SZC" firstAttribute="leading" secondItem="HLc-cv-9Rl" secondAttribute="leading" constant="8" id="dEU-Fv-9oU"/>
+                                    <constraint firstItem="09u-QD-SZC" firstAttribute="top" secondItem="F88-4u-BK2" secondAttribute="bottom" constant="8" id="rfY-tM-Nmy"/>
+                                    <constraint firstAttribute="trailing" secondItem="09u-QD-SZC" secondAttribute="trailing" constant="8" id="zcY-qg-4Kd"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="AYn-Q8-WmI" secondAttribute="bottom" constant="8" id="9qK-wA-YUx"/>
-                            <constraint firstItem="AYn-Q8-WmI" firstAttribute="top" secondItem="54s-Op-ade" secondAttribute="top" constant="8" id="Knw-hw-a9H"/>
-                            <constraint firstAttribute="trailing" secondItem="AYn-Q8-WmI" secondAttribute="trailing" constant="8" id="dlm-eK-VNx"/>
-                            <constraint firstItem="AYn-Q8-WmI" firstAttribute="leading" secondItem="54s-Op-ade" secondAttribute="leading" constant="8" id="gWr-10-P4K"/>
+                            <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" constant="8" id="3eD-G6-DPT"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HLc-cv-9Rl" secondAttribute="bottom" constant="8" id="L7R-3H-Ss9"/>
+                            <constraint firstItem="HLc-cv-9Rl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AYn-Q8-WmI" secondAttribute="top" constant="8" id="PG9-iX-Oz6"/>
+                            <constraint firstItem="HLc-cv-9Rl" firstAttribute="centerY" secondItem="AYn-Q8-WmI" secondAttribute="centerY" id="Yby-sl-lgP"/>
+                            <constraint firstAttribute="trailing" secondItem="HLc-cv-9Rl" secondAttribute="trailing" constant="8" id="jES-m5-7Ue"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="54s-Op-ade" secondAttribute="bottom" id="ETQ-28-hsC"/>
-                <constraint firstAttribute="trailing" secondItem="54s-Op-ade" secondAttribute="trailing" id="IBE-DA-QAp"/>
-                <constraint firstItem="54s-Op-ade" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TXp-cY-A2j"/>
-                <constraint firstItem="54s-Op-ade" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lvy-U5-x9e"/>
+                <constraint firstItem="AYn-Q8-WmI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0V7-ND-phF"/>
+                <constraint firstAttribute="bottom" secondItem="AYn-Q8-WmI" secondAttribute="bottom" id="eLV-XR-Xpx"/>
+                <constraint firstAttribute="trailing" secondItem="AYn-Q8-WmI" secondAttribute="trailing" id="hhA-BG-hog"/>
+                <constraint firstItem="AYn-Q8-WmI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m4m-1V-RBl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="202" height="152"/>
