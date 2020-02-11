@@ -1862,8 +1862,6 @@ public struct KMAMapAreaStruct {
     public var nextType = ""
     public var population = 0
     public var cityId = ""
-    public var parentSub = ""
-    public var parentRegion = ""
 
     public init() {}
     
@@ -1946,14 +1944,6 @@ public struct KMAMapAreaStruct {
         
         if let cityId = object["cityId"] as? String {
             self.cityId = cityId
-        }
-        
-        if let parentSub = object["parentSub"] as? String {
-            self.parentSub = parentSub
-        }
-        
-        if let parentRegion = object["parentRegion"] as? String {
-            self.parentRegion = parentRegion
         }
     }
 }
