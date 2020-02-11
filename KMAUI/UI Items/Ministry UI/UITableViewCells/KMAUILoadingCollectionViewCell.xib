@@ -56,6 +56,8 @@
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" constant="8" id="3eD-G6-DPT"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HLc-cv-9Rl" secondAttribute="bottom" constant="8" id="L7R-3H-Ss9"/>
+                                    <constraint firstItem="HLc-cv-9Rl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AYn-Q8-WmI" secondAttribute="top" constant="8" id="PG9-iX-Oz6"/>
                                     <constraint firstItem="HLc-cv-9Rl" firstAttribute="centerY" secondItem="AYn-Q8-WmI" secondAttribute="centerY" id="Yby-sl-lgP"/>
                                     <constraint firstAttribute="trailing" secondItem="HLc-cv-9Rl" secondAttribute="trailing" constant="8" id="jES-m5-7Ue"/>
                                 </constraints>
