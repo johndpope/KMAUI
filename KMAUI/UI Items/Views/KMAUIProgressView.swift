@@ -16,9 +16,19 @@ public class KMAUIProgressView: UIView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        addProgressView()
+    }
+    
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        addProgressView()
+    }
+    
+    public func addProgressView() {
         // Remove the subviews
         for subview in self.subviews {
             subview.removeFromSuperview()
