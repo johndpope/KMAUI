@@ -30,7 +30,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09u-QD-SZC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="45" width="152" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
+                                                <color key="textColor" name="KMAUITextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F88-4u-BK2">
@@ -42,7 +42,7 @@
                                                 <color key="color" name="KMAUIBlueDarkColor"/>
                                             </activityIndicatorView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="F88-4u-BK2" firstAttribute="centerX" secondItem="HLc-cv-9Rl" secondAttribute="centerX" id="Jcx-ff-jDr"/>
                                             <constraint firstAttribute="bottom" secondItem="09u-QD-SZC" secondAttribute="bottom" id="WLa-Vh-t2O"/>
@@ -53,7 +53,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" constant="8" id="3eD-G6-DPT"/>
                                     <constraint firstItem="HLc-cv-9Rl" firstAttribute="centerY" secondItem="AYn-Q8-WmI" secondAttribute="centerY" id="Yby-sl-lgP"/>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="AYn-Q8-WmI" secondAttribute="bottom" constant="8" id="9qK-wA-YUx"/>
                             <constraint firstItem="AYn-Q8-WmI" firstAttribute="top" secondItem="54s-Op-ade" secondAttribute="top" constant="8" id="Knw-hw-a9H"/>
@@ -79,6 +79,10 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="202" height="152"/>
+            <connections>
+                <outlet property="loadingActivityView" destination="F88-4u-BK2" id="biL-93-944"/>
+                <outlet property="loadingLabel" destination="09u-QD-SZC" id="gr6-Ow-mjL"/>
+            </connections>
             <point key="canvasLocation" x="-34.782608695652179" y="48.883928571428569"/>
         </collectionViewCell>
     </objects>
@@ -88,6 +92,12 @@
         </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUITextColor">
+            <color red="0.067000001668930054" green="0.082000002264976501" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

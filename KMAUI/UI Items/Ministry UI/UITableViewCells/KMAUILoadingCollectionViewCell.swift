@@ -9,7 +9,10 @@
 import UIKit
 
 public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
-    
+    // MARK: - IBOutlets
+    @IBOutlet weak var loadingActivityView: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: KMAUIBoldTextLabel!
+
     // MARK: - Variables
     public static let id = "KMAUILoadingCollectionViewCell"
 
