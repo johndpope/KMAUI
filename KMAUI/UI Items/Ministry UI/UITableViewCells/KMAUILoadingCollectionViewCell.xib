@@ -36,7 +36,7 @@
                                             <constraint firstAttribute="width" constant="37" id="U3Y-A7-qmj"/>
                                             <constraint firstAttribute="height" constant="37" id="yN1-lE-fR8"/>
                                         </constraints>
-                                        <color key="color" name="KMAUIBlueDarkColor"/>
+                                        <color key="color" name="KMAUIBlueDarkColorBarTint"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -79,8 +79,8 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="KMAUIBlueDarkColor">
-            <color red="0.094117647058823528" green="0.058823529411764705" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIBlueDarkColorBarTint">
+            <color red="0.093999996781349182" green="0.059000000357627869" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

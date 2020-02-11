@@ -10,9 +10,9 @@ import UIKit
 
 public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var loadingActivityView: UIActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var loadingActivityView: UIActivityIndicatorView!
+    @IBOutlet public weak var loadingLabel: KMAUIBoldTextLabel!
 
     // MARK: - Variables
     public static let id = "KMAUILoadingCollectionViewCell"
@@ -22,6 +22,8 @@ public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
         
         bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         bgView.clipsToBounds = true
+        
+        loadingLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
     }
 
 }
