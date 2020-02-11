@@ -21,24 +21,39 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtg-X9-Fi9">
                         <rect key="frame" x="0.0" y="0.0" width="307" height="58"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-we-MqU">
-                                <rect key="frame" x="16" y="10.5" width="37" height="37"/>
-                                <color key="color" name="KMAUIBlueDarkColorBarTint"/>
-                            </activityIndicatorView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-tV-4ob" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="61" y="18.5" width="230" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="KMAUITextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-NA-hRg">
+                                <rect key="frame" x="73.5" y="7" width="160" height="44"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-we-MqU">
+                                        <rect key="frame" x="20" y="3.5" width="37" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="XzC-X1-LMe"/>
+                                            <constraint firstAttribute="width" constant="37" id="dGv-tS-lgO"/>
+                                        </constraints>
+                                        <color key="color" name="KMAUIBlueDarkColorBarTint"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kif-tV-4ob" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="65" y="11.5" width="75" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" name="KMAUITextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Kif-tV-4ob" firstAttribute="centerY" secondItem="RU0-NA-hRg" secondAttribute="centerY" id="4KV-KF-ujm"/>
+                                    <constraint firstItem="WPv-we-MqU" firstAttribute="centerY" secondItem="RU0-NA-hRg" secondAttribute="centerY" id="G9g-fO-eSD"/>
+                                    <constraint firstItem="WPv-we-MqU" firstAttribute="leading" secondItem="RU0-NA-hRg" secondAttribute="leading" constant="20" symbolic="YES" id="KdT-3f-Bag"/>
+                                    <constraint firstItem="Kif-tV-4ob" firstAttribute="leading" secondItem="WPv-we-MqU" secondAttribute="trailing" constant="8" id="NHd-kw-bie"/>
+                                    <constraint firstAttribute="height" constant="44" id="alW-UN-InE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Kif-tV-4ob" secondAttribute="trailing" constant="20" symbolic="YES" id="iXa-fC-gnh"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
-                            <constraint firstItem="WPv-we-MqU" firstAttribute="leading" secondItem="vtg-X9-Fi9" secondAttribute="leading" constant="16" id="Co9-6P-sq4"/>
-                            <constraint firstItem="Kif-tV-4ob" firstAttribute="centerY" secondItem="vtg-X9-Fi9" secondAttribute="centerY" id="III-BK-iI3"/>
-                            <constraint firstItem="Kif-tV-4ob" firstAttribute="leading" secondItem="WPv-we-MqU" secondAttribute="trailing" constant="8" id="Xte-Nu-KJF"/>
-                            <constraint firstAttribute="trailing" secondItem="Kif-tV-4ob" secondAttribute="trailing" constant="16" id="hUc-Bq-OlS"/>
-                            <constraint firstItem="WPv-we-MqU" firstAttribute="centerY" secondItem="vtg-X9-Fi9" secondAttribute="centerY" id="jGF-sv-wjN"/>
+                            <constraint firstItem="RU0-NA-hRg" firstAttribute="centerX" secondItem="vtg-X9-Fi9" secondAttribute="centerX" id="6dx-HA-tt8"/>
+                            <constraint firstItem="RU0-NA-hRg" firstAttribute="centerY" secondItem="vtg-X9-Fi9" secondAttribute="centerY" id="GL0-ry-Swq"/>
                         </constraints>
                     </view>
                 </subviews>
