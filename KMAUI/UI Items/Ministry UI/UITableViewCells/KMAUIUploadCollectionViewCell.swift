@@ -45,11 +45,12 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         newLabel.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         
         // The placeholder data for items
-//        profileImageView.backgroundColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.75)
-        profileImageView.layer.cornerRadius = 20
         profileImageView.clipsToBounds = true
         
         placeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        
+        profileImageView.kf.indicatorType = .activity
+        previewImageView.kf.indicatorType = .activity
     }
     
     public func demoSetupCell() {
@@ -67,6 +68,20 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profileIcon.noir
         profileImageView.alpha = 0.25
+        profileImageView.layer.cornerRadius = 0
+        
+        if !uploadItem.citizenImage.isEmpty, let url = URL(string: uploadItem.citizenImage) {
+            profileImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.profileImageView.image = value.image
+                    self.alpha = 1
+                    self.layer.cornerRadius = 20
+                case .failure(let error):
+                    print(error) // The error happens
+                }
+            }
+        }
         
         // Upload name
         placeLabel.text = uploadItem.uploadName
@@ -74,6 +89,18 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         // Upload image
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImage.noir
         previewImageView.alpha = 0.25
+        
+        if !uploadItem.uploadImage.isEmpty, let url = URL(string: uploadItem.uploadImage) {
+            previewImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.previewImageView.image = value.image
+                    self.alpha = 1
+                case .failure(let error):
+                    print(error) // The error happens
+                }
+            }
+        }
         
         // Upload date
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
