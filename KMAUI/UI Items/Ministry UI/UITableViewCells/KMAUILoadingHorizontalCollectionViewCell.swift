@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
+public class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public  weak var loadingActivityView: UIActivityIndicatorView!
     @IBOutlet public weak var loadingLabel: UILabel!
@@ -16,7 +16,7 @@ class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     public static let id = "KMAUILoadingHorizontalCollectionViewCell"
     
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
