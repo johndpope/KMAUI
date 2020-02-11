@@ -50,7 +50,7 @@ public class KMAUIProgressView: UIView {
         progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
         
         // Round corners
-        progressView.layer.cornerRadius = 4
+        progressView.layer.cornerRadius = progressView.frame.height / 2
         progressView.clipsToBounds = true
     }
     
