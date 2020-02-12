@@ -19,8 +19,8 @@ public class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        bgView.clipsToBounds = true
+        // bgView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        // bgView.clipsToBounds = true
         
         loadingLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
