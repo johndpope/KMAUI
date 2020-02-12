@@ -109,7 +109,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         newLabel.isHidden = !uploadItem.isNew
         
         // isVideo
-        playButton.isHidden = !uploadItem.isVideo
+        playButton.isHidden = true //!uploadItem.isVideo
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
