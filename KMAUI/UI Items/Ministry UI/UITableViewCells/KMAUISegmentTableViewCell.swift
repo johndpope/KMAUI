@@ -13,7 +13,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     
     // MARK: - Variables
-    public var segmentItems = [String]() {
+    public var segmentItems = ["Item 1", "Item 2", "Item 3"] {
         didSet {
             self.setupCell()
         }
@@ -27,17 +27,6 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        // No selection required
-        selectionStyle = .none
-    }
-    
-    override public func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
-    public func setupCell() {
         // Clear current subviews
         for subview in bgView.subviews {
             subview.removeFromSuperview()
@@ -69,6 +58,20 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         bgView.addSubview(segmentControl)
         KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
         fixBackgroundSegmentControl(segmentControl)
+        
+        // No selection required
+        selectionStyle = .none
+    }
+    
+    override public func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        // Update the segment titles
+        // Update the segment selected index
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
