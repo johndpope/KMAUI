@@ -53,7 +53,9 @@ public class KMAUIProgressView: UIView {
         progressView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         
         // Adjusting the height for a progress
-        progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
+        if progressView.frame.height < 8 {
+            progressView.transform = progressView.transform.scaledBy(x: 1, y: 2)
+        }
         
         // Round corners
         progressView.layer.cornerRadius = progressView.frame.height / 2
