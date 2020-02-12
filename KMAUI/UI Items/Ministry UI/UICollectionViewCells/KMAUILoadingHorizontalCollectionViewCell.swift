@@ -26,5 +26,4 @@ public class KMAUILoadingHorizontalCollectionViewCell: UICollectionViewCell {
         
         loadingActivityView.startAnimating()
     }
-
 }

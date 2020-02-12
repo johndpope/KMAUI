@@ -73,6 +73,8 @@
             <connections>
                 <outlet property="bgView" destination="AYn-Q8-WmI" id="BqW-gv-oKg"/>
                 <outlet property="loadingActivityView" destination="F88-4u-BK2" id="biL-93-944"/>
+                <outlet property="loadingActivityViewBottom" destination="rfY-tM-Nmy" id="8qK-gx-bcZ"/>
+                <outlet property="loadingActivityViewHeight" destination="yN1-lE-fR8" id="zFt-PH-Apm"/>
                 <outlet property="loadingLabel" destination="09u-QD-SZC" id="gr6-Ow-mjL"/>
             </connections>
             <point key="canvasLocation" x="-34.782608695652179" y="48.883928571428569"/>
