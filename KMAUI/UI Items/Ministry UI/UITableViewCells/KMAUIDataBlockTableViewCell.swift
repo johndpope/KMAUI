@@ -106,7 +106,18 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
-            rowValueLabel.text = row.rowValue
+            
+            if !row.rowValue.isEmpty {
+                rowValueLabel.text = row.rowValue
+            } else {
+                rowValueLabel.text = "-/-"
+                
+                if let count = row.count {
+                    rowValueLabel.text = String(format: "%d", count)
+                }
+            }
+            
+            
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
