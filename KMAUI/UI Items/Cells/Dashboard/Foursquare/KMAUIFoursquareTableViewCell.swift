@@ -102,7 +102,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
                     case .success(let value):
                         self.photoImageView.image = value.image.withRenderingMode(.alwaysTemplate)
                     case .failure(let error):
-                        print(error) // The error happens
+                        print(error.localizedDescription) // The error happens
                     }
                 }
             }
@@ -125,7 +125,7 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
                     case .success(let value):
                         self.photoImageView.image = value.image.withRenderingMode(.alwaysTemplate)
                     case .failure(let error):
-                        print(error) // The error happens
+                        print(error.localizedDescription) // The error happens
                     }
                 }
             }

@@ -91,7 +91,7 @@ public class KMACitizenUploadCollectionViewCell: UICollectionViewCell {
                 case .success(let value):
                     self.categoryImageView.image = value.image.withRenderingMode(.alwaysTemplate)
                 case .failure(let error):
-                    print(error) // The error happens
+                    print(error.localizedDescription) // The error happens
                 }
             }
         }

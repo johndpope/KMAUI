@@ -90,7 +90,7 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
                     self.itemImageView.image = value.image.withRenderingMode(.alwaysTemplate)
                     self.itemImageView.contentMode = .center
                 case .failure(let error):
-                    print(error) // The error happens
+                    print(error.localizedDescription) // The error happens
                 }
             }
         }

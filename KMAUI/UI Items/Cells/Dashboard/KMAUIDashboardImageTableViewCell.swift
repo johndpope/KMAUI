@@ -56,7 +56,7 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
                     self.propertyImageView.image = value.image
                     self.propertyImageView.contentMode = .scaleAspectFill
                 case .failure(let error):
-                    print(error) // The error happens
+                    print(error.localizedDescription) // The error happens
                 }
             }
         }
