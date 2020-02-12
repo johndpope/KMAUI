@@ -22,16 +22,16 @@
                         <rect key="frame" x="12" y="12" width="176" height="112"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-cv-9Rl">
-                                <rect key="frame" x="8" y="23.5" width="160" height="65.5"/>
+                                <rect key="frame" x="0.0" y="23.5" width="176" height="65.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09u-QD-SZC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="45" width="144" height="20.5"/>
+                                        <rect key="frame" x="8" y="45" width="160" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="KMAUITextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F88-4u-BK2">
-                                        <rect key="frame" x="61.5" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="69.5" y="0.0" width="37" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="37" id="U3Y-A7-qmj"/>
                                             <constraint firstAttribute="height" constant="37" id="yN1-lE-fR8"/>
@@ -52,11 +52,11 @@
                         </subviews>
                         <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
-                            <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" constant="8" id="3eD-G6-DPT"/>
+                            <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" id="3eD-G6-DPT"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HLc-cv-9Rl" secondAttribute="bottom" constant="8" id="L7R-3H-Ss9"/>
                             <constraint firstItem="HLc-cv-9Rl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AYn-Q8-WmI" secondAttribute="top" constant="8" id="PG9-iX-Oz6"/>
                             <constraint firstItem="HLc-cv-9Rl" firstAttribute="centerY" secondItem="AYn-Q8-WmI" secondAttribute="centerY" id="Yby-sl-lgP"/>
-                            <constraint firstAttribute="trailing" secondItem="HLc-cv-9Rl" secondAttribute="trailing" constant="8" id="jES-m5-7Ue"/>
+                            <constraint firstAttribute="trailing" secondItem="HLc-cv-9Rl" secondAttribute="trailing" id="jES-m5-7Ue"/>
                         </constraints>
                     </view>
                 </subviews>
