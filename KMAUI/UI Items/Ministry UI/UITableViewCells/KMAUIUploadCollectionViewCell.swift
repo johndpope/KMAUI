@@ -78,7 +78,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
                     self.profileImageView.alpha = 1
                     self.profileImageView.layer.cornerRadius = 20
                 case .failure(let error):
-                    print(error) // The error happens
+                    print(error.localizedDescription) // The error happens
                 }
             }
         }
@@ -97,7 +97,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
                     self.previewImageView.image = value.image
                     self.previewImageView.alpha = 1
                 case .failure(let error):
-                    print(error) // The error happens
+                    print(error.localizedDescription) // The error happens
                 }
             }
         }
