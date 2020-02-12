@@ -19,19 +19,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYn-Q8-WmI">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="136"/>
+                        <rect key="frame" x="8" y="8" width="184" height="120"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLc-cv-9Rl">
-                                <rect key="frame" x="8" y="35.5" width="184" height="65.5"/>
+                                <rect key="frame" x="8" y="27.5" width="168" height="65.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="09u-QD-SZC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="45" width="168" height="20.5"/>
+                                        <rect key="frame" x="8" y="45" width="152" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" name="KMAUITextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="F88-4u-BK2">
-                                        <rect key="frame" x="73.5" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="65.5" y="0.0" width="37" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="37" id="U3Y-A7-qmj"/>
                                             <constraint firstAttribute="height" constant="37" id="yN1-lE-fR8"/>
@@ -63,10 +63,10 @@
             </view>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <constraints>
-                <constraint firstItem="AYn-Q8-WmI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0V7-ND-phF"/>
-                <constraint firstAttribute="bottom" secondItem="AYn-Q8-WmI" secondAttribute="bottom" id="eLV-XR-Xpx"/>
-                <constraint firstAttribute="trailing" secondItem="AYn-Q8-WmI" secondAttribute="trailing" id="hhA-BG-hog"/>
-                <constraint firstItem="AYn-Q8-WmI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="m4m-1V-RBl"/>
+                <constraint firstItem="AYn-Q8-WmI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="0V7-ND-phF"/>
+                <constraint firstAttribute="bottom" secondItem="AYn-Q8-WmI" secondAttribute="bottom" constant="8" id="eLV-XR-Xpx"/>
+                <constraint firstAttribute="trailing" secondItem="AYn-Q8-WmI" secondAttribute="trailing" constant="8" id="hhA-BG-hog"/>
+                <constraint firstItem="AYn-Q8-WmI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="m4m-1V-RBl"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="202" height="152"/>

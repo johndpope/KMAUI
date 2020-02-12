@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtg-X9-Fi9">
-                        <rect key="frame" x="0.0" y="0.0" width="307" height="58"/>
+                        <rect key="frame" x="8" y="8" width="291" height="42"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-NA-hRg">
-                                <rect key="frame" x="73.5" y="7" width="160" height="44"/>
+                                <rect key="frame" x="65.5" y="-1" width="160" height="44"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="WPv-we-MqU">
                                         <rect key="frame" x="20" y="3.5" width="37" height="37"/>
@@ -59,10 +59,10 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="vtg-X9-Fi9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7u7-9c-mwl"/>
-                <constraint firstItem="vtg-X9-Fi9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="HKu-dW-jSX"/>
-                <constraint firstAttribute="bottom" secondItem="vtg-X9-Fi9" secondAttribute="bottom" id="cgI-6T-7qi"/>
-                <constraint firstAttribute="trailing" secondItem="vtg-X9-Fi9" secondAttribute="trailing" id="oZ4-SI-OV5"/>
+                <constraint firstItem="vtg-X9-Fi9" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="7u7-9c-mwl"/>
+                <constraint firstItem="vtg-X9-Fi9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="HKu-dW-jSX"/>
+                <constraint firstAttribute="bottom" secondItem="vtg-X9-Fi9" secondAttribute="bottom" constant="8" id="cgI-6T-7qi"/>
+                <constraint firstAttribute="trailing" secondItem="vtg-X9-Fi9" secondAttribute="trailing" constant="8" id="oZ4-SI-OV5"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="307" height="58"/>
