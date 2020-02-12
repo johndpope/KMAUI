@@ -112,8 +112,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             } else {
                 rowValueLabel.text = "-/-"
                 
-                if let count = row.count {
-                    rowValueLabel.text = String(format: "%d", count)
+                if row.count != -1 {
+                    rowValueLabel.text = String(format: "%d", row.count)
                 }
             }
             
