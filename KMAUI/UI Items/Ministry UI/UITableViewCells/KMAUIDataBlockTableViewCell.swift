@@ -101,7 +101,6 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
-            // rowNameLabel.leadingAnchor.constraint(equalTo: itemView.leadingAnchor, constant: 0).isActive = true
             
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
@@ -142,8 +141,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemView.addArrangedSubview(visibilityButton)
 
             let rowView = UIView()
-            rowViews.append(rowView)
-            rowView.backgroundColor = UIColor.clear // KMAUIConstants.shared.KMAUIMainBgColor
+            rowView.backgroundColor = UIColor.clear
                                 
             rowView.addSubview(itemView)
             rowView.tag = index + 300
@@ -173,6 +171,9 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
                 lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
                 lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0).isActive = true
             }
+            
+            rowViews.append(rowView)
+            rowView.backgroundColor = UIColor.green
         }
     }
     
@@ -195,25 +196,25 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
     @objc public func rowButtonPressed(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = UIColor.red //KMAUIConstants.shared.KMAUIMainBgColor
+        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-//            rowView.backgroundColor = UIColor.clear
-//        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            rowView.backgroundColor = UIColor.clear
+        }
         
         rowClickedCallback?(button.tag - 200)
     }
     
     @objc public func rowButtonHighlight(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = UIColor.red //KMAUIConstants.shared.KMAUIMainBgColor
+        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
     }
     
     @objc public func rowButtonUnhighlight(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
 
-//        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
-//            rowView.backgroundColor = UIColor.clear
-//        }
+        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
+            rowView.backgroundColor = UIColor.clear
+        }
     }
 }
