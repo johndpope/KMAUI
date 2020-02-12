@@ -117,7 +117,6 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
                 }
             }
             
-            
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
@@ -196,25 +195,25 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
     @objc public func rowButtonPressed(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        rowView.backgroundColor = UIColor.red //KMAUIConstants.shared.KMAUIMainBgColor
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            rowView.backgroundColor = UIColor.clear
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+//            rowView.backgroundColor = UIColor.clear
+//        }
         
         rowClickedCallback?(button.tag - 200)
     }
     
     @objc public func rowButtonHighlight(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        rowView.backgroundColor = UIColor.red //KMAUIConstants.shared.KMAUIMainBgColor
     }
     
     @objc public func rowButtonUnhighlight(button: UIButton) {
         let rowView = rowViews[button.tag - 200]
 
-        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
-            rowView.backgroundColor = UIColor.clear
-        }
+//        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
+//            rowView.backgroundColor = UIColor.clear
+//        }
     }
 }
