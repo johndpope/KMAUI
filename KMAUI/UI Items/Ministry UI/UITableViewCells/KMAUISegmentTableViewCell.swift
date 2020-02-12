@@ -21,6 +21,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     public var selectedIndex = 0
     public var selectedIndexCallback: ((Int) -> Void)?
     public static let id = "KMAUISegmentTableViewCell"
+    public let segmentControl = UISegmentedControl(items: ["Item 1", "Item 2", "Item 3"])
     
     // MARK: - Cell methods
     
@@ -33,7 +34,6 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         }
         
         // Create the new segmentControl
-        let segmentControl = UISegmentedControl(items: segmentItems)
         segmentControl.selectedSegmentIndex = selectedIndex
         segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -71,7 +71,14 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Update the segment titles
+        for (index, item) in segmentItems.enumerated() {
+            if segmentControl.numberOfSegments > index {
+                segmentControl.setTitle(item, forSegmentAt: index)
+            }
+        }
+        
         // Update the segment selected index
+        segmentControl.selectedSegmentIndex = selectedIndex
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
