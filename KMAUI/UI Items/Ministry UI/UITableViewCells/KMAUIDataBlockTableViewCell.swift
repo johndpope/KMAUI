@@ -66,6 +66,9 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             subview.removeFromSuperview()
         }
         
+        // Clear the row views
+        rowViews = [UIView]()
+        
         // Prepare the rows
         for (index, row) in dataItem.rows.enumerated() {
             let itemView = UIStackView()
@@ -193,28 +196,34 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
         visibilityChangedCallback?(button.tag - 100, isVisible)
     }
-        
+    
     @objc public func rowButtonPressed(button: UIButton) {
-        let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            rowView.backgroundColor = UIColor.clear
+        if rowViews.count > button.tag - 200 {
+            let rowView = rowViews[button.tag - 200]
+            rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                rowView.backgroundColor = UIColor.clear
+            }
         }
         
         rowClickedCallback?(button.tag - 200)
     }
     
     @objc public func rowButtonHighlight(button: UIButton) {
-        let rowView = rowViews[button.tag - 200]
-        rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        if rowViews.count > button.tag - 200 {
+            let rowView = rowViews[button.tag - 200]
+            rowView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        }
     }
     
     @objc public func rowButtonUnhighlight(button: UIButton) {
-        let rowView = rowViews[button.tag - 200]
-
-        if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
-            rowView.backgroundColor = UIColor.clear
+        if rowViews.count > button.tag - 200 {
+            let rowView = rowViews[button.tag - 200]
+            
+            if rowView.backgroundColor == KMAUIConstants.shared.KMAUIMainBgColor {
+                rowView.backgroundColor = UIColor.clear
+            }
         }
     }
 }
