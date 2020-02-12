@@ -142,7 +142,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
 
             let rowView = UIView()
             rowView.backgroundColor = UIColor.clear
-                                
+                            
+            itemView.backgroundColor = UIColor.clear
             rowView.addSubview(itemView)
             rowView.tag = index + 300
             rowView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
@@ -155,8 +156,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             rowButton.addTarget(self, action: #selector(rowButtonPressed(button:)), for: .touchUpInside)
             rowButton.addTarget(self, action: #selector(rowButtonHighlight(button:)), for: .touchDown)
             rowButton.addTarget(self, action: #selector(rowButtonUnhighlight(button:)), for: .touchDragOutside)
-            rowView.addSubview(rowButton)
             rowButton.backgroundColor = UIColor.clear
+            rowView.addSubview(rowButton)
             KMAUIUtilities.shared.setConstaints(parentView: rowView, childView: rowButton, left: 0, right: -38, top: 0, bottom: 0)
             
             stackView.addArrangedSubview(rowView)
@@ -173,7 +174,6 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             }
             
             rowViews.append(rowView)
-            rowView.backgroundColor = UIColor.green
         }
     }
     
