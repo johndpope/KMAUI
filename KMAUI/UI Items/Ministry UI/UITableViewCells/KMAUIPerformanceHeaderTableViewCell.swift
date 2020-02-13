@@ -113,7 +113,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         // Clear existing subviews
         for subview in detailsStackView.subviews {
             detailsStackView.removeArrangedSubview(subview)
-            //subview.removeFromSuperview()
+            subview.removeFromSuperview()
         }
         
         if performanceStruct.rows.isEmpty {

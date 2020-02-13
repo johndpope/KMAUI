@@ -48,8 +48,8 @@ public class KMAUIAnalysisBlockTableViewCell: UITableViewCell {
         rowViews = [UIView]()
         
         for subview in stackView.subviews {
-//            subview.removeFromSuperview()
             stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
         }
         
         // Prepare the rows
