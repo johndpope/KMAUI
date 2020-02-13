@@ -47,7 +47,7 @@ public class KMAUIParse {
             if let error = error {
                 print("Error getting countries: \(error.localizedDescription).")
             } else if let countriesArray = countriesArray {
-                print("Total countries loaded: \(countriesArray.count)")
+                print("\nTotal items loaded: \(countriesArray.count)")
 
                 for (index, country) in countriesArray.enumerated() {
                     if let nameE = country["nameE"] as? String {
