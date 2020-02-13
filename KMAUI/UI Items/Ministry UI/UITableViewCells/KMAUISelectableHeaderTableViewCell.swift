@@ -43,7 +43,8 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
         itemLabels = [UILabel]()
         
         for subview in stackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            stackView.removeArrangedSubview(subview)
         }
         
         // Fill subviews

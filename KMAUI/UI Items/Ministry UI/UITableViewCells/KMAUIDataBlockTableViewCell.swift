@@ -63,7 +63,8 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         
         // Clear existing subviews
         for subview in stackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            stackView.removeArrangedSubview(subview)
         }
         
         // Clear the row views

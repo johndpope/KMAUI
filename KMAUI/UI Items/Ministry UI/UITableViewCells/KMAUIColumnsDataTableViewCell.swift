@@ -36,7 +36,8 @@ public class KMAUIColumnsDataTableViewCell: UITableViewCell {
     public func setupCell() {
         // Clear headers subviews
         for subview in headerStackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            headerStackView.removeArrangedSubview(subview)
         }
         
         // Setup headers data
@@ -49,7 +50,8 @@ public class KMAUIColumnsDataTableViewCell: UITableViewCell {
         
         // Clear details subviews
         for subview in detailsStackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            detailsStackView.removeArrangedSubview(subview)
         }
 
         // Setup details data

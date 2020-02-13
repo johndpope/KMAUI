@@ -142,7 +142,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public func showDetailsStackView() {
         // Remove subviews
         for subview in detailsStackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            detailsStackView.removeArrangedSubview(subview)
         }
         
         // Prepare the rows
@@ -206,7 +207,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public func hideDetailsStackView() {
         // Remove subviews
         for subview in detailsStackView.subviews {
-            subview.removeFromSuperview()
+//            subview.removeFromSuperview()
+            detailsStackView.removeArrangedSubview(subview)
         }
         
         lineView.alpha = 0
