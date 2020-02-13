@@ -682,6 +682,20 @@ public class KMAUIUtilities {
         
         return emptyCell
     }
+    
+    // MARK: - Screen size
+    
+    public func getScreenSize () -> (description: String, size: CGRect) {
+        let size = UIScreen.main.bounds
+        let str = "SCREEN SIZE:\nwidth: \(size.width)\nheight: \(size.height)"
+        return (str, size)
+    }
+    
+    public func getApplicationSize () -> (description: String, size: CGRect) {
+        let size = UIApplication.shared.windows[0].bounds
+        let str = "\n\nAPPLICATION SIZE:\nwidth: \(size.width)\nheight: \(size.height)"
+        return (str, size)
+    }
 }
 
 // MARK: - Int extension
