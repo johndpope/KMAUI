@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="KMAUIMainBgColorReverse"/>
                         <constraints>
                             <constraint firstItem="HLc-cv-9Rl" firstAttribute="leading" secondItem="AYn-Q8-WmI" secondAttribute="leading" id="3eD-G6-DPT"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="HLc-cv-9Rl" secondAttribute="bottom" constant="8" id="L7R-3H-Ss9"/>
@@ -83,6 +83,9 @@
     <resources>
         <namedColor name="KMAUIBlueDarkColorBarTint">
             <color red="0.093999996781349182" green="0.059000000357627869" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIMainBgColorReverse">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUITextColor">
             <color red="0.067000001668930054" green="0.082000002264976501" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
