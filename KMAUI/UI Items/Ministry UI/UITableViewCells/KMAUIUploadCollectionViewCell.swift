@@ -66,7 +66,8 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         nameLabel.text = uploadItem.citizenName
         
         // Citizen image
-        profileImageView.image = KMAUIConstants.shared.profileIcon//.noir
+        profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
+        profileImageView.tintColor = KMAUIConstants.shared.KMALineGray
         profileImageView.alpha = 0.25
         profileImageView.layer.cornerRadius = 0
         
@@ -87,7 +88,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         placeLabel.text = uploadItem.uploadName
         
         // Upload image
-        previewImageView.image = KMAUIConstants.shared.placeholderUploadImage//.noir
+        previewImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         previewImageView.alpha = 0.25
         
         if !uploadItem.uploadImage.isEmpty, let url = URL(string: uploadItem.uploadImage) {
