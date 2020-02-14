@@ -26,9 +26,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-Cr-hnk" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="64" y="12" width="120" height="22"/>
+                        <rect key="frame" x="64" y="12" width="140" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="Pgv-Y3-oVE"/>
+                            <constraint firstAttribute="width" constant="140" id="Pgv-Y3-oVE"/>
                             <constraint firstAttribute="height" constant="22" id="kxM-5s-uUY"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -36,22 +36,15 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-E9-nvp" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="64" y="34" width="120" height="22"/>
+                        <rect key="frame" x="64" y="34" width="140" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="8nc-2S-Cyh"/>
-                            <constraint firstAttribute="width" constant="120" id="PPy-5F-9oG"/>
+                            <constraint firstAttribute="width" constant="140" id="PPy-5F-9oG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbH-UG-Jub">
-                        <rect key="frame" x="196" y="0.0" width="1" height="358"/>
-                        <color key="backgroundColor" name="KMAUIGreyLineColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="1" id="XAj-1c-ESC"/>
-                        </constraints>
-                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-YK-chf">
                         <rect key="frame" x="209" y="12" width="334" height="334"/>
                         <subviews>
@@ -117,12 +110,9 @@
                     <constraint firstItem="YaI-E9-nvp" firstAttribute="top" secondItem="bSd-Cr-hnk" secondAttribute="bottom" id="3NM-Pa-qxR"/>
                     <constraint firstItem="eo5-YK-chf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Bte-LU-YuQ"/>
                     <constraint firstItem="bSd-Cr-hnk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Fhl-gM-3ZS"/>
-                    <constraint firstAttribute="bottom" secondItem="xbH-UG-Jub" secondAttribute="bottom" id="I7N-iC-I9L"/>
-                    <constraint firstItem="xbH-UG-Jub" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QcV-sb-RlO"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WQW-T9-rEy"/>
                     <constraint firstItem="eo5-YK-chf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="209" id="XWV-o1-EwA"/>
                     <constraint firstItem="YaI-E9-nvp" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="Xpz-tR-Iid"/>
-                    <constraint firstItem="xbH-UG-Jub" firstAttribute="leading" secondItem="bSd-Cr-hnk" secondAttribute="trailing" constant="12" id="ao9-dX-Eat"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="d62-tV-lcg"/>
                     <constraint firstAttribute="trailing" secondItem="eo5-YK-chf" secondAttribute="trailing" constant="12" id="gW3-HS-u23"/>
                     <constraint firstItem="bSd-Cr-hnk" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="nnA-kn-inx"/>
@@ -141,16 +131,12 @@
                 <outlet property="playButton" destination="D7f-ex-CsH" id="PEy-zS-5OW"/>
                 <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
                 <outlet property="usernameLabel" destination="YaI-E9-nvp" id="fAo-fL-nWh"/>
-                <outlet property="verticalLineView" destination="xbH-UG-Jub" id="i4M-RU-6dx"/>
             </connections>
             <point key="canvasLocation" x="23.913043478260871" y="83.705357142857139"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="playIcon" width="80" height="80"/>
-        <namedColor name="KMAUIGreyLineColor">
-            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

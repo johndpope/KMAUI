@@ -20,7 +20,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var containerViewTop: NSLayoutConstraint!
     @IBOutlet public weak var containerView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var verticalLineView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -111,14 +110,12 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         
         if UIDevice.current.orientation.isLandscape {
 //            print("LANDSCAPE")
-            containerViewLeft.constant = 209
+            containerViewLeft.constant = 216
             containerViewTop.constant = 12
-            verticalLineView.alpha = 1
         } else {
 //            print("PORTRAIT")
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
-            verticalLineView.alpha = 0
         }
     }
     
