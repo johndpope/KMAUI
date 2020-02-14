@@ -321,7 +321,7 @@ public class KMAUIUtilities {
      Format date
      */
     
-    public dateTime(date: Date) -> String {
+    public func dateTime(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .medium
