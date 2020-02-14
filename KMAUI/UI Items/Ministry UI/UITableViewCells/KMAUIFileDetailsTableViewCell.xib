@@ -69,11 +69,42 @@
                                     <action selector="playButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K4P-q8-3ug"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FFi-4n-nsv">
+                                <rect key="frame" x="0.0" y="290" width="334" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RsE-3m-LsD" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="0.0" width="256" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh7-Pa-w0e" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="280" y="0.0" width="42" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yh7-Pa-w0e" secondAttribute="trailing" constant="12" id="0EA-dK-vzh"/>
+                                    <constraint firstItem="RsE-3m-LsD" firstAttribute="leading" secondItem="FFi-4n-nsv" secondAttribute="leading" constant="12" id="5FJ-o0-Wwt"/>
+                                    <constraint firstAttribute="bottom" secondItem="yh7-Pa-w0e" secondAttribute="bottom" id="Hyi-H5-RqB"/>
+                                    <constraint firstItem="yh7-Pa-w0e" firstAttribute="leading" secondItem="RsE-3m-LsD" secondAttribute="trailing" constant="12" id="YAy-Yd-hbg"/>
+                                    <constraint firstAttribute="height" constant="44" id="cdq-oD-7Qb"/>
+                                    <constraint firstAttribute="bottom" secondItem="RsE-3m-LsD" secondAttribute="bottom" id="gJ3-r8-MPu"/>
+                                    <constraint firstItem="yh7-Pa-w0e" firstAttribute="top" secondItem="FFi-4n-nsv" secondAttribute="top" id="meA-Pk-3eK"/>
+                                    <constraint firstItem="RsE-3m-LsD" firstAttribute="top" secondItem="FFi-4n-nsv" secondAttribute="top" id="vDU-6h-rch"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eo5-YK-chf" secondAttribute="height" multiplier="1:1" id="1Gw-6L-Lhy"/>
+                            <constraint firstAttribute="trailing" secondItem="FFi-4n-nsv" secondAttribute="trailing" id="BVW-TM-75K"/>
                             <constraint firstItem="eFV-7g-Jhm" firstAttribute="top" secondItem="eo5-YK-chf" secondAttribute="top" id="C93-vf-veh"/>
+                            <constraint firstAttribute="bottom" secondItem="FFi-4n-nsv" secondAttribute="bottom" id="Jkg-58-cZh"/>
+                            <constraint firstItem="FFi-4n-nsv" firstAttribute="leading" secondItem="eo5-YK-chf" secondAttribute="leading" id="K3K-3j-M2v"/>
                             <constraint firstAttribute="trailing" secondItem="eFV-7g-Jhm" secondAttribute="trailing" id="W35-5T-iUe"/>
                             <constraint firstItem="eFV-7g-Jhm" firstAttribute="leading" secondItem="eo5-YK-chf" secondAttribute="leading" id="d9w-NS-2G3"/>
                             <constraint firstItem="D7f-ex-CsH" firstAttribute="centerY" secondItem="eo5-YK-chf" secondAttribute="centerY" id="hrY-Ye-d09"/>
@@ -101,7 +132,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="eo5-YK-chf" id="ZGd-MI-jqR"/>
+                <outlet property="dateLabel" destination="yh7-Pa-w0e" id="MzV-Gn-ewS"/>
                 <outlet property="fileImageView" destination="eFV-7g-Jhm" id="ee6-s3-aad"/>
+                <outlet property="filenameLabel" destination="RsE-3m-LsD" id="Ohc-zD-XbZ"/>
                 <outlet property="nameLabel" destination="bSd-Cr-hnk" id="1NY-M5-1RA"/>
                 <outlet property="playButton" destination="D7f-ex-CsH" id="PEy-zS-5OW"/>
                 <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
@@ -114,6 +147,9 @@
         <image name="playIcon" width="80" height="80"/>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

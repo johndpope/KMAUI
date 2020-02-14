@@ -17,6 +17,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var fileImageView: UIImageView!
     @IBOutlet public weak var playButton: UIButton!
     @IBOutlet public weak var containerView: UIView!
+    @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -44,7 +45,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        print("\nSetup cell with item:\n\(uploadItem)\n")
+//        print("\nSetup cell with item:\n\(uploadItem)\n")
         
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
@@ -70,6 +71,9 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         
         // Username
         usernameLabel.text = uploadItem.citizenUsername
+        
+        // Upload name
+        filenameLabel.text = uploadItem.uploadName
         
         // Upload date
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
@@ -100,6 +104,12 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             playButton.setImage(KMAUIConstants.shared.playIcon, for: .normal)
         } else {
             playButton.setImage(UIImage(), for: .normal)
+        }
+        
+        if UIDevice.current.orientation.isLandscape {
+            print("LANDSCAPE")
+        } else {
+            print("PORTRAIT")
         }
     }
     
