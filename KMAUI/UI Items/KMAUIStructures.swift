@@ -16,6 +16,7 @@ public struct KMAUIUploadItem {
     public var citizenName = ""
     public var citizenImage = ""
     public var uploadName = ""
+    public var previewImage = ""
     public var uploadImage = ""
     public var uploadDate = Date()
     public var isNew = false
@@ -24,7 +25,7 @@ public struct KMAUIUploadItem {
     public init() {
     }
     
-    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool) {
+    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool, previewImage: String? = nil) {
         self.citizenName = citizenName
         
         if let citizenImage = citizenImage {
@@ -34,6 +35,10 @@ public struct KMAUIUploadItem {
         
         if let uploadImage = uploadImage {
             self.uploadImage = uploadImage
+        }
+        
+        if let previewImage = previewImage {
+            self.previewImage = previewImage
         }
         
         self.uploadDate = uploadDate
