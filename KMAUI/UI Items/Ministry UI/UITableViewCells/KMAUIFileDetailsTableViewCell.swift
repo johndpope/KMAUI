@@ -10,9 +10,13 @@ import UIKit
 
 public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var profileImageView: UIImageView!
+    @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var uploadDateLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var fileImageView: UIImageView!
     
     // MARK: - Variables
-    public static let id = "KMAUIUploadsHorizontalTableViewCell"
+    public static let id = "KMAUIFileDetailsTableViewCell"
     public var uploadItem = KMAUIUploadItem() {
         didSet {
             setupCell()

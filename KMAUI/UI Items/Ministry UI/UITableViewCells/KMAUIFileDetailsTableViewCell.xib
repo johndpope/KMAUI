@@ -76,6 +76,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="fileImageView" destination="eFV-7g-Jhm" id="ee6-s3-aad"/>
+                <outlet property="nameLabel" destination="bSd-Cr-hnk" id="1NY-M5-1RA"/>
+                <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
+                <outlet property="uploadDateLabel" destination="YaI-E9-nvp" id="PxE-WW-Ezm"/>
+            </connections>
             <point key="canvasLocation" x="23.913043478260871" y="83.705357142857139"/>
         </tableViewCell>
     </objects>
