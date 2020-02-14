@@ -29,7 +29,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-    public var openPreview: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -125,13 +124,12 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     
     @IBAction func playButtonPressed(_ sender: Any) {
         // Open preview or image
-//        previewImages()
-        openPreview?(true)
+        previewImages()
     }
     
     // MARK: - Image / Video preview
     
-    public func previewImages() -> LightboxController {
+    public func previewImages() {
         var images = [LightboxImage]()
         
         if uploadItem.isVideo {
@@ -153,7 +151,5 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             KMAUIConstants.shared.lightboxVisible = true
             KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
         }
-        
-        return LightboxController()
     }
 }
