@@ -128,10 +128,10 @@
                 <outlet property="dateLabel" destination="yh7-Pa-w0e" id="MzV-Gn-ewS"/>
                 <outlet property="fileImageView" destination="eFV-7g-Jhm" id="ee6-s3-aad"/>
                 <outlet property="filenameLabel" destination="RsE-3m-LsD" id="Ohc-zD-XbZ"/>
-                <outlet property="nameLabel" destination="bSd-Cr-hnk" id="1NY-M5-1RA"/>
+                <outlet property="nameLabel" destination="YaI-E9-nvp" id="QSj-kE-k5f"/>
                 <outlet property="playButton" destination="D7f-ex-CsH" id="PEy-zS-5OW"/>
                 <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
-                <outlet property="usernameLabel" destination="YaI-E9-nvp" id="fAo-fL-nWh"/>
+                <outlet property="usernameLabel" destination="bSd-Cr-hnk" id="gPL-ew-E9h"/>
             </connections>
             <point key="canvasLocation" x="23.913043478260871" y="83.705357142857139"/>
         </tableViewCell>

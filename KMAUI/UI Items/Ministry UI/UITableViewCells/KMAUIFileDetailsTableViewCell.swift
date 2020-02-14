@@ -12,8 +12,8 @@ import Lightbox
 public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var profileImageView: UIImageView!
-    @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var usernameLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var nameLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var usernameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIInfoLabel!
     @IBOutlet public weak var fileImageView: UIImageView!
     @IBOutlet public weak var playButton: UIButton!
@@ -73,7 +73,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         nameLabel.text = uploadItem.citizenName
         
         // Username
-        usernameLabel.text = uploadItem.citizenUsername
+        usernameLabel.text = uploadItem.citizenUsername.formatUsername()
         
         // Upload name
         filenameLabel.text = uploadItem.uploadName
