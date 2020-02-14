@@ -56,7 +56,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     
     public func setHighlight(mode: Bool) {
         if mode {
-            selectionView.alpha = 0.1
+            selectionView.alpha = 0.25
         } else {
             selectionView.alpha = 0
         }
