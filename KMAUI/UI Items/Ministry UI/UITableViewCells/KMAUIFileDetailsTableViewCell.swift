@@ -12,9 +12,11 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var usernameLabel: KMAUIInfoLabel!
     @IBOutlet public weak var dateLabel: KMAUIInfoLabel!
     @IBOutlet public weak var fileImageView: UIImageView!
     @IBOutlet public weak var playButton: UIButton!
+    @IBOutlet public weak var containerView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -26,6 +28,10 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Container view
+        containerView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        containerView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -62,13 +68,15 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         // Citizen name
         nameLabel.text = uploadItem.citizenName
         
+        // Username
+        usernameLabel.text = uploadItem.citizenUsername
+        
         // Upload date
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
         
         // Upload image
         fileImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         fileImageView.alpha = 0.25
-        fileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         var imageString = uploadItem.uploadImage
         
