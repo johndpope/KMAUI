@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Lightbox
 
 public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -124,5 +125,30 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBAction func playButtonPressed(_ sender: Any) {
         // Open preview or image
         print("Button pressed - open preview")
+    }
+    
+    // MARK: - Image / Video preview
+    
+    func previewImages(index: Int) {
+        var images = [LightboxImage]()
+        
+        if uploadItem.isVideo {
+            if let imageURL = URL(string: uploadItem.previewImage), let videoURL = URL(string: uploadItem.uploadImage) {
+                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName, videoURL: videoURL))
+            }
+        } else {
+            if let imageURL = URL(string: uploadItem.uploadImage) {
+                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName))
+            }
+        }
+        
+        if !images.isEmpty {
+            // Add images for the preview and setup UI
+            let lightboxController = LightboxController(images: images, startIndex: 0)
+            lightboxController.modalPresentationStyle = .fullScreen
+            lightboxController.dynamicBackground = true
+            // Present your controller.
+            KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
+        }
     }
 }
