@@ -19,6 +19,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var placeLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var playButton: UIButton!
+    @IBOutlet public weak var selectionView: UIView!
     // MARK: - Variables
     public static let id = "KMAUIUploadCollectionViewCell"
     public var playCallback: ((Bool) -> Void)?
@@ -51,6 +52,14 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         
         profileImageView.kf.indicatorType = .activity
         previewImageView.kf.indicatorType = .activity
+    }
+    
+    public func setHighlight(mode: Bool) {
+        if mode {
+            selectionView.alpha = 0.1
+        } else {
+            selectionView.alpha = 0
+        }
     }
     
     public func demoSetupCell() {
@@ -111,6 +120,9 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         
         // isVideo
         playButton.isHidden = true //!uploadItem.isVideo
+        
+        // Hide the selection view
+        setHighlight(mode: false)
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {

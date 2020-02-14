@@ -85,6 +85,10 @@
                                 <color key="textColor" name="KMAUIViewBgColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOw-ja-T4s">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-cZ-lHf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
                                 <state key="normal" image="playIcon"/>
@@ -95,9 +99,12 @@
                         </subviews>
                         <color key="backgroundColor" name="KMAUIMainBgColorReverse"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="jOw-ja-T4s" secondAttribute="bottom" id="1Ap-WI-XMl"/>
                             <constraint firstItem="JgX-xv-Ric" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="6nX-n3-V5Y"/>
                             <constraint firstItem="xr4-jb-1mc" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="DVn-x5-mKC"/>
+                            <constraint firstItem="jOw-ja-T4s" firstAttribute="leading" secondItem="SAS-zI-SID" secondAttribute="leading" id="FNO-4a-AN2"/>
                             <constraint firstItem="Sug-cZ-lHf" firstAttribute="width" secondItem="xr4-jb-1mc" secondAttribute="width" id="FYU-rB-ebv"/>
+                            <constraint firstAttribute="trailing" secondItem="jOw-ja-T4s" secondAttribute="trailing" id="N3a-Qd-oBa"/>
                             <constraint firstItem="JgX-xv-Ric" firstAttribute="top" secondItem="xr4-jb-1mc" secondAttribute="bottom" id="WPY-eT-iaE"/>
                             <constraint firstAttribute="trailing" secondItem="JgX-xv-Ric" secondAttribute="trailing" id="b0q-na-MDL"/>
                             <constraint firstItem="Sug-cZ-lHf" firstAttribute="centerX" secondItem="xr4-jb-1mc" secondAttribute="centerX" id="fNA-6n-zlB"/>
@@ -105,6 +112,7 @@
                             <constraint firstItem="xr4-jb-1mc" firstAttribute="top" secondItem="SAS-zI-SID" secondAttribute="top" id="gLq-0f-jWC"/>
                             <constraint firstAttribute="trailing" secondItem="xr4-jb-1mc" secondAttribute="trailing" id="gQF-vX-Izw"/>
                             <constraint firstAttribute="bottom" secondItem="JgX-xv-Ric" secondAttribute="bottom" id="kcP-z7-cyL"/>
+                            <constraint firstItem="jOw-ja-T4s" firstAttribute="top" secondItem="SAS-zI-SID" secondAttribute="top" id="nRP-ig-TEs"/>
                             <constraint firstAttribute="trailing" secondItem="5H2-h4-bQ7" secondAttribute="trailing" id="rPK-MW-nI9"/>
                             <constraint firstItem="5H2-h4-bQ7" firstAttribute="top" secondItem="SAS-zI-SID" secondAttribute="top" constant="12" id="uEP-L2-MZD"/>
                             <constraint firstItem="Sug-cZ-lHf" firstAttribute="centerY" secondItem="xr4-jb-1mc" secondAttribute="centerY" id="xFn-Fa-WhZ"/>
@@ -132,6 +140,7 @@
                 <outlet property="playButton" destination="Sug-cZ-lHf" id="1Ko-ll-ZCa"/>
                 <outlet property="previewImageView" destination="xr4-jb-1mc" id="S9c-kd-IA8"/>
                 <outlet property="profileImageView" destination="gjo-mM-igb" id="10c-2Z-jY7"/>
+                <outlet property="selectionView" destination="jOw-ja-T4s" id="cHu-5t-Zl8"/>
             </connections>
             <point key="canvasLocation" x="5.7971014492753632" y="60.267857142857139"/>
         </collectionViewCell>
@@ -140,6 +149,9 @@
         <image name="playIcon" width="80" height="80"/>
         <namedColor name="KMATurquoiseColor">
             <color red="0.26666666666666666" green="0.83921568627450982" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIMainBgColorReverse">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
