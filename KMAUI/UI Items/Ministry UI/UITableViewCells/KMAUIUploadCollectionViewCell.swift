@@ -100,7 +100,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         previewImageView.alpha = 0.25
         
-        if !uploadItem.uploadImage.isEmpty, let url = URL(string: uploadItem.uploadImage) {
+        if !uploadItem.uploadImage.isEmpty, let url = URL(string: uploadItem.previewImage) {
             previewImageView.kf.setImage(with: url) { result in
                 switch result {
                 case .success(let value):
