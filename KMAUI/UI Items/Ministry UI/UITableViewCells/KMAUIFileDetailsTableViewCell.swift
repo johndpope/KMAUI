@@ -8,17 +8,29 @@
 
 import UIKit
 
-class KMAUIFileDetailsTableViewCell: UITableViewCell {
+public class KMAUIFileDetailsTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    
+    // MARK: - Variables
+    public static let id = "KMAUIUploadsHorizontalTableViewCell"
+    public var uploadItem = KMAUIUploadItem() {
+        didSet {
+            setupCell()
+        }
+    }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
