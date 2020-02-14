@@ -14,6 +14,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIInfoLabel!
     @IBOutlet public weak var fileImageView: UIImageView!
+    @IBOutlet public weak var playButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -67,6 +68,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         // Upload image
         fileImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         fileImageView.alpha = 0.25
+        fileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
         var imageString = uploadItem.uploadImage
         
@@ -85,5 +87,18 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
                 }
             }
         }
+        
+        if uploadItem.isVideo {
+            playButton.setImage(KMAUIConstants.shared.playIcon, for: .normal)
+        } else {
+            playButton.setImage(UIImage(), for: .normal)
+        }
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func playButtonPressed(_ sender: Any) {
+        // Open preview or image
+        print("Button pressed - open preview")
     }
 }
