@@ -696,6 +696,44 @@ public class KMAUIUtilities {
         let str = "\n\nAPPLICATION SIZE:\nwidth: \(size.width)\nheight: \(size.height)"
         return (str, size)
     }
+    
+    // MARK: - Get width and items count for collectionView
+    
+    public func getCollectionViewItemWidth(view: UIView) -> CGFloat {
+        var itemsCount: CGFloat = 2
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let widthProportion = KMAUIUtilities.shared.getApplicationSize().size.width / KMAUIUtilities.shared.getScreenSize().size.width
+            
+            if KMAUIUtilities.shared.getScreenSize().size == KMAUIUtilities.shared.getApplicationSize().size {
+                if UIDevice.current.orientation.isLandscape {
+                    itemsCount = 3
+                } else {
+                    itemsCount = 2
+                }
+            } else {
+                if widthProportion < 0.4 {
+                    itemsCount = 1
+                } else {
+                    itemsCount = 2
+                }
+            }
+        } else {
+            if UIDevice.current.orientation.isLandscape {
+                itemsCount = 2
+            } else {
+                itemsCount = 1
+            }
+        }
+        
+        var itemWidth = (view.frame.width - (itemsCount + 1) * 12) / itemsCount
+        
+        if UIDevice.current.userInterfaceIdiom == .phone, UIDevice.current.orientation.isLandscape {
+            itemWidth -= 34
+        }
+        
+        return itemWidth
+    }
 }
 
 // MARK: - Int extension
