@@ -124,12 +124,12 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     
     @IBAction func playButtonPressed(_ sender: Any) {
         // Open preview or image
-        print("Button pressed - open preview")
+        previewImages()
     }
     
     // MARK: - Image / Video preview
     
-    func previewImages(index: Int) {
+    func previewImages() {
         var images = [LightboxImage]()
         
         if uploadItem.isVideo {
