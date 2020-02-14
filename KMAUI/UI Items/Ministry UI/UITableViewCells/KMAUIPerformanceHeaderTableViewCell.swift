@@ -12,6 +12,7 @@ import MKRingProgressView
 public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var totalProgressView: RingProgressView!
     @IBOutlet public weak var progressPercentLabel: UILabel!
     @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
@@ -29,6 +30,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     
     // MARK - Variables
     public var canHighlight = false
+    public var isFirst = false
     public var performanceStruct = KMAPerformanceStruct() {
         didSet {
             self.setupCell()
@@ -81,6 +83,12 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
+        if isFirst {
+            bgViewTop.constant = 12
+        } else {
+            bgViewTop.constant = 0
+        }
+        
         // Item details
         itemTitleLabel.text = performanceStruct.itemTitle
         itemValueLabel.text = performanceStruct.itemName

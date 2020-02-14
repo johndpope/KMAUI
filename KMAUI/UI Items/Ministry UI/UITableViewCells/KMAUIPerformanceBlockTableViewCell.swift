@@ -12,6 +12,7 @@ import MKRingProgressView
 public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var progressView: RingProgressView!
     @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemNameLabel: UILabel!
@@ -31,6 +32,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public var hasStat = false
     public var itemPerformance = KMAUIItemPerformance()
     public var isExpandable = false
+    public var isFirst = false
     public var isExpanded = false {
         didSet {
             setupCell()
@@ -69,6 +71,12 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if isFirst {
+            bgViewTop.constant = 12
+        } else {
+            bgViewTop.constant = 0
+        }
+        
         if !itemPerformance.performanceArray.isEmpty {
             var progress = 0
             

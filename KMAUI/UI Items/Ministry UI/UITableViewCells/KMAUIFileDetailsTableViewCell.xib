@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIFileDetailsTableViewCell" rowHeight="331" id="KGk-i7-Jjw" customClass="KMAUIFileDetailsTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="555" height="331"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="555" height="331"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BT9-ut-DAY">
+                        <rect key="frame" x="12" y="12" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="TYv-JA-AOr"/>
+                            <constraint firstAttribute="width" constant="44" id="anr-yh-ee5"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-Cr-hnk" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="64" y="12" width="120" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="Pgv-Y3-oVE"/>
+                            <constraint firstAttribute="height" constant="22" id="kxM-5s-uUY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-E9-nvp" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="64" y="34" width="120" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="8nc-2S-Cyh"/>
+                            <constraint firstAttribute="width" constant="120" id="PPy-5F-9oG"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.10000000000000001" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbH-UG-Jub">
+                        <rect key="frame" x="212" y="20" width="240" height="291"/>
+                        <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YaI-E9-nvp" firstAttribute="top" secondItem="bSd-Cr-hnk" secondAttribute="bottom" id="3NM-Pa-qxR"/>
+                    <constraint firstItem="bSd-Cr-hnk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Fhl-gM-3ZS"/>
+                    <constraint firstAttribute="bottom" secondItem="xbH-UG-Jub" secondAttribute="bottom" constant="20" symbolic="YES" id="I7N-iC-I9L"/>
+                    <constraint firstItem="xbH-UG-Jub" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" symbolic="YES" id="QcV-sb-RlO"/>
+                    <constraint firstItem="BT9-ut-DAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WQW-T9-rEy"/>
+                    <constraint firstItem="YaI-E9-nvp" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="Xpz-tR-Iid"/>
+                    <constraint firstItem="xbH-UG-Jub" firstAttribute="leading" secondItem="bSd-Cr-hnk" secondAttribute="trailing" constant="12" id="ao9-dX-Eat"/>
+                    <constraint firstItem="BT9-ut-DAY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="d62-tV-lcg"/>
+                    <constraint firstItem="bSd-Cr-hnk" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="nnA-kn-inx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="23.913043478260871" y="74.665178571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
