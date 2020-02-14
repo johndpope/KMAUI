@@ -14,6 +14,8 @@ import SwiftyJSON
 
 public struct KMAUIUploadItem {
     public var citizenName = ""
+    public var citizenId = ""
+    public var citizenUsername = ""
     public var citizenImage = ""
     public var uploadName = ""
     public var previewImage = ""
@@ -21,17 +23,23 @@ public struct KMAUIUploadItem {
     public var uploadDate = Date()
     public var isNew = false
     public var isVideo = false
+    public var uploadId = ""
     
     public init() {
     }
     
-    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool, previewImage: String? = nil) {
+    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool, previewImage: String? = nil, citizenId: String? = nil, citizenUsername: String? = nil, uploadId: String? = nil) {
         self.citizenName = citizenName
         
         if let citizenImage = citizenImage {
             self.citizenImage = citizenImage
         }
         self.uploadName = uploadName
+        self.uploadDate = uploadDate
+        self.isNew = isNew
+        self.isVideo = isVideo
+        
+        // New details
         
         if let uploadImage = uploadImage {
             self.uploadImage = uploadImage
@@ -41,9 +49,17 @@ public struct KMAUIUploadItem {
             self.previewImage = previewImage
         }
         
-        self.uploadDate = uploadDate
-        self.isNew = isNew
-        self.isVideo = isVideo
+        if let citizenId = citizenId {
+            self.citizenId = citizenId
+        }
+        
+        if let citizenUsername = citizenUsername {
+            self.citizenUsername = citizenUsername
+        }
+        
+        if let uploadId = uploadId {
+            self.uploadId = uploadId
+        }
     }
 }
 
