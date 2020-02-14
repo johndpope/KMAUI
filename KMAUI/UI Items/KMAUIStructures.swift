@@ -24,6 +24,7 @@ public struct KMAUIUploadItem {
     public var isNew = false
     public var isVideo = false
     public var uploadId = ""
+    public var uploadDescription = ""
     
     public init() {
     }
