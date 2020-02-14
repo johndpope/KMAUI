@@ -85,7 +85,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                                <color key="backgroundColor" name="KMAUIViewBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="yh7-Pa-w0e" secondAttribute="trailing" constant="12" id="0EA-dK-vzh"/>
                                     <constraint firstItem="RsE-3m-LsD" firstAttribute="leading" secondItem="FFi-4n-nsv" secondAttribute="leading" constant="12" id="5FJ-o0-Wwt"/>
@@ -120,8 +120,8 @@
                     <constraint firstAttribute="bottom" secondItem="xbH-UG-Jub" secondAttribute="bottom" id="I7N-iC-I9L"/>
                     <constraint firstItem="xbH-UG-Jub" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QcV-sb-RlO"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WQW-T9-rEy"/>
+                    <constraint firstItem="eo5-YK-chf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="209" id="XWV-o1-EwA"/>
                     <constraint firstItem="YaI-E9-nvp" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="Xpz-tR-Iid"/>
-                    <constraint firstItem="eo5-YK-chf" firstAttribute="leading" secondItem="xbH-UG-Jub" secondAttribute="trailing" constant="12" id="aKE-bv-ePQ"/>
                     <constraint firstItem="xbH-UG-Jub" firstAttribute="leading" secondItem="bSd-Cr-hnk" secondAttribute="trailing" constant="12" id="ao9-dX-Eat"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="d62-tV-lcg"/>
                     <constraint firstAttribute="trailing" secondItem="eo5-YK-chf" secondAttribute="trailing" constant="12" id="gW3-HS-u23"/>
@@ -132,6 +132,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="eo5-YK-chf" id="ZGd-MI-jqR"/>
+                <outlet property="containerViewLeft" destination="XWV-o1-EwA" id="tGH-bp-hye"/>
+                <outlet property="containerViewTop" destination="Bte-LU-YuQ" id="2Z1-Tm-iHI"/>
                 <outlet property="dateLabel" destination="yh7-Pa-w0e" id="MzV-Gn-ewS"/>
                 <outlet property="fileImageView" destination="eFV-7g-Jhm" id="ee6-s3-aad"/>
                 <outlet property="filenameLabel" destination="RsE-3m-LsD" id="Ohc-zD-XbZ"/>
@@ -139,6 +141,7 @@
                 <outlet property="playButton" destination="D7f-ex-CsH" id="PEy-zS-5OW"/>
                 <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
                 <outlet property="usernameLabel" destination="YaI-E9-nvp" id="fAo-fL-nWh"/>
+                <outlet property="verticalLineView" destination="xbH-UG-Jub" id="i4M-RU-6dx"/>
             </connections>
             <point key="canvasLocation" x="23.913043478260871" y="83.705357142857139"/>
         </tableViewCell>
@@ -147,9 +150,6 @@
         <image name="playIcon" width="80" height="80"/>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAUIMainBgColor">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

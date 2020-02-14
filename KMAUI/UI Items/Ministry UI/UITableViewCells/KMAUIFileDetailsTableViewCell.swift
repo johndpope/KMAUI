@@ -16,8 +16,11 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var dateLabel: KMAUIInfoLabel!
     @IBOutlet public weak var fileImageView: UIImageView!
     @IBOutlet public weak var playButton: UIButton!
+    @IBOutlet public weak var containerViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var containerViewTop: NSLayoutConstraint!
     @IBOutlet public weak var containerView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var verticalLineView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -107,9 +110,15 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         }
         
         if UIDevice.current.orientation.isLandscape {
-            print("LANDSCAPE")
+//            print("LANDSCAPE")
+            containerViewLeft.constant = 209
+            containerViewTop.constant = 12
+            verticalLineView.alpha = 1
         } else {
-            print("PORTRAIT")
+//            print("PORTRAIT")
+            containerViewLeft.constant = 12
+            containerViewTop.constant = 68
+            verticalLineView.alpha = 0
         }
     }
     
