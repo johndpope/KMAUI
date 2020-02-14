@@ -78,7 +78,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         filenameLabel.text = uploadItem.uploadName
         
         // Upload date
-        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
+        dateLabel.text = KMAUIUtilities.shared.dateTime(date: uploadItem.uploadDate) //KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
         
         // Upload image
         fileImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir

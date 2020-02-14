@@ -317,6 +317,18 @@ public class KMAUIUtilities {
         return Date()
     }
     
+    /**
+     Format date
+     */
+    
+    public dateTime(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .medium
+        
+        return dateFormatter.string(from: date)
+    }
+    
     // MARK: - Arrays intersection
     
     public func findIntersection (firstArray : [String], secondArray : [String]) -> [String] {
