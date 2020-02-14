@@ -37,6 +37,8 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        print("\nSetup cell with item:\n\(uploadItem)\n")
+        
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
         profileImageView.tintColor = KMAUIConstants.shared.KMALineGray
@@ -66,7 +68,13 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         fileImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         fileImageView.alpha = 0.25
         
-        if !uploadItem.uploadImage.isEmpty, let url = URL(string: uploadItem.uploadImage) {
+        var imageString = uploadItem.uploadImage
+        
+        if uploadItem.isVideo {
+            imageString = uploadItem.previewImage
+        }
+        
+        if !imageString.isEmpty, let url = URL(string: imageString) {
             fileImageView.kf.setImage(with: url) { result in
                 switch result {
                 case .success(let value):
