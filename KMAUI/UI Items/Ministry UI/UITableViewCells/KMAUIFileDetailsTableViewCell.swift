@@ -21,6 +21,9 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var containerViewTop: NSLayoutConstraint!
     @IBOutlet public weak var containerView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var uploadDescriptionBgView: UIView!
+    @IBOutlet public weak var uploadDescriptionLabel: KMAUITextLabel!
+    @IBOutlet public weak var filesTableView: UITableView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
@@ -48,8 +51,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-//        print("\nSetup cell with item:\n\(uploadItem)\n")
-        
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
         profileImageView.tintColor = KMAUIConstants.shared.KMALineGray
@@ -109,14 +110,25 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             playButton.setImage(UIImage(), for: .normal)
         }
         
+        // Upload description
+        uploadDescriptionLabel.text = uploadItem.uploadDescription
+        
+        // Other files
+        filesTableView.dataSource = self
+        filesTableView.delegate = self
+        
         if UIDevice.current.orientation.isLandscape {
 //            print("LANDSCAPE")
             containerViewLeft.constant = 216
             containerViewTop.constant = 12
+            // Show the upload description
+            uploadDescriptionBgView.alpha = 1
         } else {
 //            print("PORTRAIT")
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
+            // Hide the upload description
+            uploadDescriptionBgView.alpha = 0
         }
     }
     
@@ -151,5 +163,32 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             KMAUIConstants.shared.lightboxVisible = true
             KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
         }
+    }
+}
+
+extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDelegate {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if !uploadItem.uploadFiles.isEmpty {
+            return "Other files from upload"
+        }
+        
+        return ""
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return uploadItem.uploadFiles.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return KMAUIUtilities.shared.getEmptyCell()
+    }
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("File row selected: \(indexPath.row)")
     }
 }
