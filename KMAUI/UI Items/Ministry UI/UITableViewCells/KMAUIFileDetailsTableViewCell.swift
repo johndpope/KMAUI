@@ -32,7 +32,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-    public var fileCallback: ((Int) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -142,12 +141,12 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     
     @IBAction func playButtonPressed(_ sender: Any) {
         // Open preview or image
-        previewImages()
+        previewImages(index: 0)
     }
     
     // MARK: - Image / Video preview
     
-    public func previewImages() {
+    public func previewImages(index: Int) {
         var images = [LightboxImage]()
         
         if uploadItem.isVideo {
@@ -160,9 +159,21 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             }
         }
         
+        for item in uploadItem.uploadFiles {
+            if item.isVideo {
+                if let imageURL = URL(string: item.previewImage), let videoURL = URL(string: item.uploadImage) {
+                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName, videoURL: videoURL))
+                }
+            } else {
+                if let imageURL = URL(string: item.uploadImage) {
+                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName))
+                }
+            }
+        }
+        
         if !images.isEmpty {
             // Add images for the preview and setup UI
-            let lightboxController = LightboxController(images: images, startIndex: 0)
+            let lightboxController = LightboxController(images: images, startIndex: index)
             lightboxController.modalPresentationStyle = .fullScreen
             lightboxController.dynamicBackground = true
             // Present your controller.
@@ -193,7 +204,7 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        fileCallback?(indexPath.row)
+        previewImages(index: indexPath.row + 1)
         
         // Give a small delay before deselect
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
