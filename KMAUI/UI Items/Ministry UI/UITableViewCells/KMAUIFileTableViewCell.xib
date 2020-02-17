@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6s-SN-vvr" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="8" width="252" height="22"/>
+                                <rect key="frame" x="60" y="8" width="232" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="rZr-h9-oVV"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAE-gC-h6R" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="30" width="252" height="22"/>
+                                <rect key="frame" x="60" y="30" width="220" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="BM9-gj-hFz"/>
                                 </constraints>
@@ -46,6 +46,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="8bd-PY-HAj">
+                                <rect key="frame" x="300" y="24" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="JoU-Jm-KHI"/>
+                                    <constraint firstAttribute="width" constant="12" id="QyC-jT-Vio"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
@@ -53,10 +60,12 @@
                             <constraint firstItem="QRM-Pb-jjX" firstAttribute="leading" secondItem="Wi4-1n-D6P" secondAttribute="leading" constant="8" id="4dW-Zd-pPH"/>
                             <constraint firstItem="QRM-Pb-jjX" firstAttribute="centerY" secondItem="Wi4-1n-D6P" secondAttribute="centerY" id="59m-ua-9lp"/>
                             <constraint firstItem="G6s-SN-vvr" firstAttribute="top" secondItem="Wi4-1n-D6P" secondAttribute="top" constant="8" id="5aT-Fp-awY"/>
-                            <constraint firstAttribute="trailing" secondItem="G6s-SN-vvr" secondAttribute="trailing" constant="8" id="Vbx-do-2fI"/>
-                            <constraint firstAttribute="trailing" secondItem="dAE-gC-h6R" secondAttribute="trailing" constant="8" id="ZKV-C4-3lh"/>
+                            <constraint firstAttribute="trailing" secondItem="8bd-PY-HAj" secondAttribute="trailing" constant="8" id="7y1-q6-xhw"/>
+                            <constraint firstItem="8bd-PY-HAj" firstAttribute="leading" secondItem="G6s-SN-vvr" secondAttribute="trailing" constant="8" id="Aop-O5-lpr"/>
+                            <constraint firstItem="8bd-PY-HAj" firstAttribute="centerY" secondItem="Wi4-1n-D6P" secondAttribute="centerY" id="T8P-dz-NBT"/>
                             <constraint firstItem="dAE-gC-h6R" firstAttribute="top" secondItem="G6s-SN-vvr" secondAttribute="bottom" id="bUO-ZQ-zyY"/>
                             <constraint firstItem="G6s-SN-vvr" firstAttribute="leading" secondItem="QRM-Pb-jjX" secondAttribute="trailing" constant="8" id="dfU-bo-Wyb"/>
+                            <constraint firstItem="8bd-PY-HAj" firstAttribute="leading" secondItem="dAE-gC-h6R" secondAttribute="trailing" constant="20" id="inV-QI-6uw"/>
                             <constraint firstAttribute="bottom" secondItem="dAE-gC-h6R" secondAttribute="bottom" constant="8" id="v2Z-LP-Lb9"/>
                         </constraints>
                     </view>
@@ -79,6 +88,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrowIndicator" width="7" height="11"/>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

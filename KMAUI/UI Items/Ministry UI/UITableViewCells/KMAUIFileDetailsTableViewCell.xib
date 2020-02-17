@@ -144,7 +144,7 @@ Label</string>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-YC-qDP">
                         <rect key="frame" x="12" y="146" width="192" height="200"/>
-                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="192" id="8u5-WB-pTa"/>
                         </constraints>
