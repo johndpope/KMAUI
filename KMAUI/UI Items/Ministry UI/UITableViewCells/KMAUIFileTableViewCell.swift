@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUIFileTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var itemImageView: UIImageView!
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemTypeLabel: KMAUIInfoLabel!
@@ -36,8 +37,22 @@ public class KMAUIFileTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        }
     }
     
     public func setupCell() {

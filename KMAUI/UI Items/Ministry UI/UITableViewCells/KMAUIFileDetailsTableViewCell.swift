@@ -183,6 +183,8 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let fileCell = tableView.dequeueReusableCell(withIdentifier: KMAUIFileTableViewCell.id) as? KMAUIFileTableViewCell {
+            fileCell.item = uploadItem.uploadFiles[indexPath.row]
+            
             return fileCell
         }
         

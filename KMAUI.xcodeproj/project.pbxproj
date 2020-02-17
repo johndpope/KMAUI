@@ -424,6 +424,8 @@
 		85CD593A23F2ED1F00CD2B09 /* UICollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				8579FC9923E864900053857B /* KMAUIUploadCollectionViewCell.swift */,
+				8579FC9C23E864910053857B /* KMAUIUploadCollectionViewCell.xib */,
 				857A9C6F23F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.swift */,
 				857A9C7023F2D9390075E0D2 /* KMAUILoadingCollectionViewCell.xib */,
 				85CD593623F2E2E200CD2B09 /* KMAUILoadingHorizontalCollectionViewCell.swift */,
@@ -453,8 +455,6 @@
 				856531B623E32BEB00E4F2F0 /* KMAUIColumnsDataTableViewCell.xib */,
 				856531B923E347A200E4F2F0 /* KMAUISelectedCellsTableViewCell.swift */,
 				856531BA23E347A200E4F2F0 /* KMAUISelectedCellsTableViewCell.xib */,
-				8579FC9923E864900053857B /* KMAUIUploadCollectionViewCell.swift */,
-				8579FC9C23E864910053857B /* KMAUIUploadCollectionViewCell.xib */,
 				8579FC9B23E864910053857B /* KMAUIUploadsHorizontalTableViewCell.swift */,
 				8579FC9A23E864900053857B /* KMAUIUploadsHorizontalTableViewCell.xib */,
 				850169A423F6AC3F001FF329 /* KMAUIFileDetailsTableViewCell.swift */,
