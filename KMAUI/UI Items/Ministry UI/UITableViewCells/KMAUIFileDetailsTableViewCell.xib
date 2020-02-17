@@ -105,13 +105,52 @@
                             <constraint firstAttribute="bottom" secondItem="eFV-7g-Jhm" secondAttribute="bottom" id="wk2-ug-NeJ"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-hV-aeQ">
+                        <rect key="frame" x="12" y="68" width="192" height="66"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wd-J8-N87" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="8" width="176" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="zM0-Tw-Gvi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lyl-4x-J78" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="8" y="36" width="176" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="hy2-WQ-067"/>
+                                </constraints>
+                                <string key="text">Label
+Label
+Label</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Wd-J8-N87" secondAttribute="trailing" constant="8" id="RK4-nU-lym"/>
+                            <constraint firstItem="Lyl-4x-J78" firstAttribute="top" secondItem="4Wd-J8-N87" secondAttribute="bottom" constant="8" id="WlB-Is-7eI"/>
+                            <constraint firstItem="4Wd-J8-N87" firstAttribute="top" secondItem="bTR-hV-aeQ" secondAttribute="top" constant="8" id="bGF-sd-bLr"/>
+                            <constraint firstAttribute="bottom" secondItem="Lyl-4x-J78" secondAttribute="bottom" constant="8" id="dot-ZQ-7FR"/>
+                            <constraint firstItem="4Wd-J8-N87" firstAttribute="leading" secondItem="bTR-hV-aeQ" secondAttribute="leading" constant="8" id="lNi-bq-C6d"/>
+                            <constraint firstAttribute="trailing" secondItem="Lyl-4x-J78" secondAttribute="trailing" constant="8" id="ppQ-oS-DnD"/>
+                            <constraint firstItem="Lyl-4x-J78" firstAttribute="leading" secondItem="bTR-hV-aeQ" secondAttribute="leading" constant="8" id="uzh-wf-zXl"/>
+                            <constraint firstAttribute="width" constant="192" id="xGW-4T-cGa"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                 <constraints>
                     <constraint firstItem="YaI-E9-nvp" firstAttribute="top" secondItem="bSd-Cr-hnk" secondAttribute="bottom" id="3NM-Pa-qxR"/>
                     <constraint firstItem="eo5-YK-chf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Bte-LU-YuQ"/>
                     <constraint firstItem="bSd-Cr-hnk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Fhl-gM-3ZS"/>
+                    <constraint firstItem="bTR-hV-aeQ" firstAttribute="top" secondItem="BT9-ut-DAY" secondAttribute="bottom" constant="12" id="OeR-LX-Y3N"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WQW-T9-rEy"/>
+                    <constraint firstItem="bTR-hV-aeQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="XG1-np-dbQ"/>
                     <constraint firstItem="eo5-YK-chf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="209" id="XWV-o1-EwA"/>
                     <constraint firstItem="YaI-E9-nvp" firstAttribute="leading" secondItem="BT9-ut-DAY" secondAttribute="trailing" constant="8" id="Xpz-tR-Iid"/>
                     <constraint firstItem="BT9-ut-DAY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="d62-tV-lcg"/>

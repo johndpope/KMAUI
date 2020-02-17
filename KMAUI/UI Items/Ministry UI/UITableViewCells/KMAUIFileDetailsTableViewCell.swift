@@ -62,7 +62,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
                 case .success(let value):
                     self.profileImageView.image = value.image
                     self.profileImageView.alpha = 1
-                    self.profileImageView.layer.cornerRadius = 20
+                    self.profileImageView.layer.cornerRadius = 22
                 case .failure(let error):
                     print(error.localizedDescription) // The error happens
                 }
