@@ -32,6 +32,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var fileCallback: ((Int) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -192,6 +193,13 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("File row selected: \(indexPath.row)")
+        fileCallback?(indexPath.row)
+    }
+    
+    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Give a small delay before deselect
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
     }
 }

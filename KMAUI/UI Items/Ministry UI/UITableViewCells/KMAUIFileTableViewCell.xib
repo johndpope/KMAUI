@@ -53,6 +53,11 @@
                                     <constraint firstAttribute="width" constant="12" id="QyC-jT-Vio"/>
                                 </constraints>
                             </imageView>
+                            <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dQD-fc-MlX">
+                                <rect key="frame" x="40" y="-34" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
@@ -84,12 +89,16 @@
                 <outlet property="itemImageView" destination="QRM-Pb-jjX" id="8p6-Dz-AKZ"/>
                 <outlet property="itemNameLabel" destination="G6s-SN-vvr" id="PHw-WU-TWG"/>
                 <outlet property="itemTypeLabel" destination="dAE-gC-h6R" id="J7u-4O-ZCt"/>
+                <outlet property="selectionView" destination="dQD-fc-MlX" id="Pcf-sZ-j90"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="117.85714285714285"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="arrowIndicator" width="7" height="11"/>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

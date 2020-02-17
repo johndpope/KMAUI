@@ -14,6 +14,7 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemImageView: UIImageView!
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemTypeLabel: KMAUIInfoLabel!
+    @IBOutlet public weak var selectionView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileTableViewCell"
@@ -49,9 +50,9 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            selectionView.alpha = 0.25
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            selectionView.alpha = 0.0
         }
     }
     
