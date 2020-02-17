@@ -23,9 +23,11 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var containerView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var filesTableView: UITableView!
+    @IBOutlet public weak var userButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIFileDetailsTableViewCell"
+    public var userCallback: ((Bool) -> Void)?
     public var uploadItem = KMAUIUploadItem() {
         didSet {
             setupCell()
@@ -138,6 +140,10 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBAction public func playButtonPressed(_ sender: Any) {
         // Open preview or image
         previewImages(index: 0)
+    }
+
+    @IBAction func userButtonPressed(_ sender: Any) {
+        userCallback?(true)
     }
     
     // MARK: - Image / Video preview
