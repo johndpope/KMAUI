@@ -45,7 +45,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-YK-chf">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eo5-YK-chf" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="209" y="12" width="334" height="334"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eFV-7g-Jhm">
@@ -131,6 +131,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="eo5-YK-chf" id="ZGd-MI-jqR"/>
+                <outlet property="containerViewBottom" destination="qqA-Xx-SyT" id="Bfp-R4-5ug"/>
                 <outlet property="containerViewLeft" destination="XWV-o1-EwA" id="tGH-bp-hye"/>
                 <outlet property="containerViewTop" destination="Bte-LU-YuQ" id="2Z1-Tm-iHI"/>
                 <outlet property="dateLabel" destination="yh7-Pa-w0e" id="MzV-Gn-ewS"/>

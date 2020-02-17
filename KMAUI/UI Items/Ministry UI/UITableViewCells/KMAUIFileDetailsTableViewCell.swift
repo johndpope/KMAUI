@@ -19,6 +19,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var playButton: UIButton!
     @IBOutlet public weak var containerViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var containerViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var containerViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var containerView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var filesTableView: UITableView!
@@ -120,11 +121,13 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         if UIDevice.current.orientation.isLandscape {
             containerViewLeft.constant = 236
             containerViewTop.constant = 12
+            containerViewBottom.constant = 12
             // Show the files tableView
             filesTableView.alpha = 1
         } else {
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
+            containerViewBottom.constant = 0
             // Hide the files tableView
             filesTableView.alpha = 0
         }
