@@ -121,7 +121,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         filesTableView.register(UINib(nibName: KMAUIFileTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: KMAUIFileTableViewCell.id)
         
         if UIDevice.current.orientation.isLandscape {
-//            print("LANDSCAPE")
             containerViewLeft.constant = 216
             containerViewTop.constant = 12
             // Show the upload description
@@ -129,7 +128,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             // Show the files tableView
             filesTableView.alpha = 1
         } else {
-//            print("PORTRAIT")
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
             // Hide the upload description

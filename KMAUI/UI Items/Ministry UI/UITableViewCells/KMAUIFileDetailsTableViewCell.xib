@@ -53,10 +53,6 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7f-ex-CsH">
                                 <rect key="frame" x="0.0" y="0.0" width="334" height="334"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="334" id="qRO-dm-NhL"/>
-                                    <constraint firstAttribute="height" constant="334" id="yV1-Dw-Fiq"/>
-                                </constraints>
                                 <state key="normal" image="playIcon"/>
                                 <connections>
                                     <action selector="playButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K4P-q8-3ug"/>
@@ -94,14 +90,16 @@
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="eo5-YK-chf" secondAttribute="height" multiplier="1:1" id="1Gw-6L-Lhy"/>
+                            <constraint firstAttribute="trailing" secondItem="D7f-ex-CsH" secondAttribute="trailing" id="7oN-iY-ut2"/>
                             <constraint firstAttribute="trailing" secondItem="FFi-4n-nsv" secondAttribute="trailing" id="BVW-TM-75K"/>
+                            <constraint firstItem="D7f-ex-CsH" firstAttribute="top" secondItem="eo5-YK-chf" secondAttribute="top" id="BdG-fv-faL"/>
                             <constraint firstItem="eFV-7g-Jhm" firstAttribute="top" secondItem="eo5-YK-chf" secondAttribute="top" id="C93-vf-veh"/>
                             <constraint firstAttribute="bottom" secondItem="FFi-4n-nsv" secondAttribute="bottom" id="Jkg-58-cZh"/>
                             <constraint firstItem="FFi-4n-nsv" firstAttribute="leading" secondItem="eo5-YK-chf" secondAttribute="leading" id="K3K-3j-M2v"/>
                             <constraint firstAttribute="trailing" secondItem="eFV-7g-Jhm" secondAttribute="trailing" id="W35-5T-iUe"/>
+                            <constraint firstAttribute="bottom" secondItem="D7f-ex-CsH" secondAttribute="bottom" id="Y2F-ua-67f"/>
                             <constraint firstItem="eFV-7g-Jhm" firstAttribute="leading" secondItem="eo5-YK-chf" secondAttribute="leading" id="d9w-NS-2G3"/>
-                            <constraint firstItem="D7f-ex-CsH" firstAttribute="centerY" secondItem="eo5-YK-chf" secondAttribute="centerY" id="hrY-Ye-d09"/>
-                            <constraint firstItem="D7f-ex-CsH" firstAttribute="centerX" secondItem="eo5-YK-chf" secondAttribute="centerX" id="rxU-wL-24P"/>
+                            <constraint firstItem="D7f-ex-CsH" firstAttribute="leading" secondItem="eo5-YK-chf" secondAttribute="leading" id="gND-k7-vcN"/>
                             <constraint firstAttribute="bottom" secondItem="eFV-7g-Jhm" secondAttribute="bottom" id="wk2-ug-NeJ"/>
                         </constraints>
                     </view>
