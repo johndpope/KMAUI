@@ -106,7 +106,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         }
         
         // Upload date
-        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: true)
+        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: false)
         
         // isNew
         newLabel.isHidden = !uploadItem.isNew
