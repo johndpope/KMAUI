@@ -25,11 +25,12 @@ public struct KMAUIUploadItem {
     public var isVideo = false
     public var uploadId = ""
     public var uploadDescription = ""
+    public var uploadFiles = [KMAUIUploadItem]()
     
     public init() {
     }
     
-    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool, previewImage: String? = nil, citizenId: String? = nil, citizenUsername: String? = nil, uploadId: String? = nil) {
+    public init(citizenName: String, citizenImage: String? = nil, uploadName: String, uploadImage: String? = nil, uploadDate: Date, isNew: Bool, isVideo: Bool, previewImage: String? = nil, citizenId: String? = nil, citizenUsername: String? = nil, uploadId: String? = nil, uploadFiles: [KMAUIUploadItem]? = nil) {
         self.citizenName = citizenName
         
         if let citizenImage = citizenImage {
