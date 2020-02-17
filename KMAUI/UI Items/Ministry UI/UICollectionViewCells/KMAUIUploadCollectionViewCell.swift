@@ -68,7 +68,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     
     public func setupCell() {
         // Citizen name
-        nameLabel.text = uploadItem.citizenName
+        nameLabel.text = uploadItem.citizenUsername.formatUsername()
         
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
