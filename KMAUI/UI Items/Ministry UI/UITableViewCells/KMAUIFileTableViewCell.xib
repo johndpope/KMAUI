@@ -89,6 +89,8 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="Wi4-1n-D6P" id="Ur4-yt-AUx"/>
+                <outlet property="bgViewLeft" destination="Isd-iB-ebv" id="T0g-aL-erZ"/>
+                <outlet property="bgViewRight" destination="glC-0a-3GB" id="ygT-RP-7w8"/>
                 <outlet property="itemImageView" destination="QRM-Pb-jjX" id="8p6-Dz-AKZ"/>
                 <outlet property="itemNameLabel" destination="G6s-SN-vvr" id="PHw-WU-TWG"/>
                 <outlet property="itemTypeLabel" destination="dAE-gC-h6R" id="J7u-4O-ZCt"/>
