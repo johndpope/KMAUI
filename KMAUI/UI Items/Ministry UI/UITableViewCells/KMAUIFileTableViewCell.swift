@@ -20,7 +20,6 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUIFileTableViewCell"
-    public var sideOffsets = false
     public var item = KMAUIUploadItem() {
         didSet {
             setupCell()
@@ -64,15 +63,6 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Show / hide hide offsets
-        if sideOffsets {
-            bgViewLeft.constant = 12
-            bgViewRight.constant = 12
-        } else {
-            bgViewLeft.constant = 0
-            bgViewRight.constant = 0
-        }
-        
         // File name
         itemNameLabel.text = item.uploadName
         
