@@ -116,6 +116,9 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         // Other files
         filesTableView.dataSource = self
         filesTableView.delegate = self
+        filesTableView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        filesTableView.clipsToBounds = true
+        filesTableView.register(UINib(nibName: KMAUIFileTableViewCell.id, bundle: nil), forCellReuseIdentifier: KMAUIFileTableViewCell.id)
         
         if UIDevice.current.orientation.isLandscape {
 //            print("LANDSCAPE")
@@ -123,12 +126,16 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             containerViewTop.constant = 12
             // Show the upload description
             uploadDescriptionBgView.alpha = 1
+            // Show the files tableView
+            filesTableView.alpha = 1
         } else {
 //            print("PORTRAIT")
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
             // Hide the upload description
             uploadDescriptionBgView.alpha = 0
+            // Hide the files tableView
+            filesTableView.alpha = 0
         }
     }
     
@@ -172,19 +179,15 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
         return 1
     }
     
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !uploadItem.uploadFiles.isEmpty {
-            return "Other files from upload"
-        }
-        
-        return ""
-    }
-    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return uploadItem.uploadFiles.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let fileCell = tableView.dequeueReusableCell(withIdentifier: KMAUIFileTableViewCell.id) as? KMAUIFileTableViewCell {
+            return fileCell
+        }
+        
         return KMAUIUtilities.shared.getEmptyCell()
     }
     

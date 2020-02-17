@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIFileTableViewCell" rowHeight="68" id="KGk-i7-Jjw" customClass="KMAUIFileTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wi4-1n-D6P" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QRM-Pb-jjX">
+                                <rect key="frame" x="8" y="8" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="AVw-NS-MPe"/>
+                                    <constraint firstAttribute="width" constant="44" id="u30-Xq-aer"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6s-SN-vvr" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="60" y="8" width="252" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="rZr-h9-oVV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAE-gC-h6R" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="60" y="30" width="252" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="BM9-gj-hFz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                        <constraints>
+                            <constraint firstItem="dAE-gC-h6R" firstAttribute="leading" secondItem="QRM-Pb-jjX" secondAttribute="trailing" constant="8" id="18d-Cg-7tm"/>
+                            <constraint firstItem="QRM-Pb-jjX" firstAttribute="leading" secondItem="Wi4-1n-D6P" secondAttribute="leading" constant="8" id="4dW-Zd-pPH"/>
+                            <constraint firstItem="QRM-Pb-jjX" firstAttribute="centerY" secondItem="Wi4-1n-D6P" secondAttribute="centerY" id="59m-ua-9lp"/>
+                            <constraint firstItem="G6s-SN-vvr" firstAttribute="top" secondItem="Wi4-1n-D6P" secondAttribute="top" constant="8" id="5aT-Fp-awY"/>
+                            <constraint firstAttribute="trailing" secondItem="G6s-SN-vvr" secondAttribute="trailing" constant="8" id="Vbx-do-2fI"/>
+                            <constraint firstAttribute="trailing" secondItem="dAE-gC-h6R" secondAttribute="trailing" constant="8" id="ZKV-C4-3lh"/>
+                            <constraint firstItem="dAE-gC-h6R" firstAttribute="top" secondItem="G6s-SN-vvr" secondAttribute="bottom" id="bUO-ZQ-zyY"/>
+                            <constraint firstItem="G6s-SN-vvr" firstAttribute="leading" secondItem="QRM-Pb-jjX" secondAttribute="trailing" constant="8" id="dfU-bo-Wyb"/>
+                            <constraint firstAttribute="bottom" secondItem="dAE-gC-h6R" secondAttribute="bottom" constant="8" id="v2Z-LP-Lb9"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Wi4-1n-D6P" secondAttribute="bottom" constant="8" id="EiF-HB-hbl"/>
+                    <constraint firstItem="Wi4-1n-D6P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Isd-iB-ebv"/>
+                    <constraint firstAttribute="trailing" secondItem="Wi4-1n-D6P" secondAttribute="trailing" id="glC-0a-3GB"/>
+                    <constraint firstItem="Wi4-1n-D6P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wKV-in-NhY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="itemImageView" destination="QRM-Pb-jjX" id="8p6-Dz-AKZ"/>
+                <outlet property="itemNameLabel" destination="G6s-SN-vvr" id="PHw-WU-TWG"/>
+                <outlet property="itemTypeLabel" destination="dAE-gC-h6R" id="J7u-4O-ZCt"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="117.85714285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -105,7 +105,7 @@
                             <constraint firstAttribute="bottom" secondItem="eFV-7g-Jhm" secondAttribute="bottom" id="wk2-ug-NeJ"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-hV-aeQ">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-hV-aeQ" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
                         <rect key="frame" x="12" y="68" width="192" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wd-J8-N87" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
@@ -142,9 +142,9 @@ Label</string>
                             <constraint firstAttribute="width" constant="192" id="xGW-4T-cGa"/>
                         </constraints>
                     </view>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-YC-qDP">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-YC-qDP">
                         <rect key="frame" x="12" y="146" width="192" height="200"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="192" id="8u5-WB-pTa"/>
                         </constraints>
