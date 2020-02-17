@@ -118,7 +118,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         filesTableView.delegate = self
         filesTableView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         filesTableView.clipsToBounds = true
-        filesTableView.register(UINib(nibName: KMAUIFileTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI"))), forCellReuseIdentifier: KMAUIFileTableViewCell.id)
+        filesTableView.register(UINib(nibName: KMAUIFileTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: KMAUIFileTableViewCell.id)
         
         if UIDevice.current.orientation.isLandscape {
 //            print("LANDSCAPE")
