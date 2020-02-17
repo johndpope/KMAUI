@@ -15,9 +15,8 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var newLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var profileImageView: UIImageView!
-    @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var placeLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var dateLabel: KMAUIInfoLabel!
     @IBOutlet public weak var playButton: UIButton!
     @IBOutlet public weak var selectionView: UIView!
     // MARK: - Variables
@@ -48,8 +47,6 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         // The placeholder data for items
         profileImageView.clipsToBounds = true
         
-        placeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        
         profileImageView.kf.indicatorType = .activity
         previewImageView.kf.indicatorType = .activity
     }
@@ -64,7 +61,6 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
     
     public func demoSetupCell() {
         nameLabel.text = "Russel Stephens"
-        placeLabel.text = "Life in Riyadh, Saudi Arabia"
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImage
         profileImageView.image = KMAUIConstants.shared.placeholderProfileImage
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(), numOnly: true)
@@ -92,10 +88,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
-        
-        // Upload name
-        placeLabel.text = uploadItem.uploadName
-        
+
         // Upload image
         previewImageView.image = KMAUIConstants.shared.placeholderUploadImageNoir
         previewImageView.alpha = 0.25
