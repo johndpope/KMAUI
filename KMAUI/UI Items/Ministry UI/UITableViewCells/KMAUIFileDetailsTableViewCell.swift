@@ -194,9 +194,7 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         fileCallback?(indexPath.row)
-    }
-    
-    public func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        
         // Give a small delay before deselect
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
             tableView.deselectRow(at: indexPath, animated: true)
