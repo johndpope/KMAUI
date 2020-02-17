@@ -32,6 +32,10 @@ public class KMAUIFileTableViewCell: UITableViewCell {
         itemImageView.clipsToBounds = true
         itemImageView.kf.indicatorType = .activity
         
+        // Selection view
+        selectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        selectionView.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
