@@ -118,7 +118,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         filesTableView.register(UINib(nibName: KMAUIFileTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: KMAUIFileTableViewCell.id)
         
         if UIDevice.current.orientation.isLandscape {
-            containerViewLeft.constant = 216
+            containerViewLeft.constant = 236
             containerViewTop.constant = 12
             // Show the files tableView
             filesTableView.alpha = 1

@@ -26,9 +26,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSd-Cr-hnk" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="64" y="12" width="140" height="22"/>
+                        <rect key="frame" x="64" y="12" width="160" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="140" id="Pgv-Y3-oVE"/>
+                            <constraint firstAttribute="width" constant="160" id="Pgv-Y3-oVE"/>
                             <constraint firstAttribute="height" constant="22" id="kxM-5s-uUY"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -36,10 +36,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-E9-nvp" customClass="KMAUIInfoLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="64" y="34" width="140" height="22"/>
+                        <rect key="frame" x="64" y="34" width="160" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="8nc-2S-Cyh"/>
-                            <constraint firstAttribute="width" constant="140" id="PPy-5F-9oG"/>
+                            <constraint firstAttribute="width" constant="160" id="PPy-5F-9oG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -104,10 +104,10 @@
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mIx-YC-qDP">
-                        <rect key="frame" x="12" y="56" width="192" height="290"/>
+                        <rect key="frame" x="12" y="56" width="212" height="290"/>
                         <color key="backgroundColor" name="KMAUIMainBgColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="192" id="8u5-WB-pTa"/>
+                            <constraint firstAttribute="width" constant="212" id="8u5-WB-pTa"/>
                         </constraints>
                     </tableView>
                 </subviews>
