@@ -192,7 +192,7 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
             
             return descriptionCell
         } else if let fileCell = tableView.dequeueReusableCell(withIdentifier: KMAUIFileTableViewCell.id) as? KMAUIFileTableViewCell {
-            fileCell.item = uploadItem.uploadFiles[indexPath.row]
+            fileCell.item = uploadItem.uploadFiles[indexPath.row - 1]
             
             return fileCell
         }
@@ -201,11 +201,13 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     }
     
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        previewImages(index: indexPath.row + 1)
-        
-        // Give a small delay before deselect
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row > 0 {
+            previewImages(index: indexPath.row)
+            
+            // Give a small delay before deselect
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
         }
     }
 }
