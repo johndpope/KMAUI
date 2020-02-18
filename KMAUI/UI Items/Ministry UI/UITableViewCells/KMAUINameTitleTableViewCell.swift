@@ -38,9 +38,9 @@ public class KMAUINameTitleTableViewCell: UITableViewCell {
 
     public func setupCell() {
         if isFirst {
-            bgViewTop.constant = 0
+            bgViewTop.constant = 12
         } else {
-            bgViewTop.constant = 8
+            bgViewTop.constant = 0
         }
         
         descriptionLabel.text = uploadDescription
