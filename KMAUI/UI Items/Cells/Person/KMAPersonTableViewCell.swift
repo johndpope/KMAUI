@@ -64,16 +64,16 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight, status == "person", canHighlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
-            profileImageView.tintColor = UIColor.white
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor //KMAUIConstants.shared.KMABrightBlueColor
+            /*profileImageView.tintColor = UIColor.white
             usernameLabel.textColor = UIColor.white
             fullNameLabel.textColor = UIColor.white
             usernameLabel.text = person.username.formatUsername()
             fullNameLabel.text = person.fullName
-            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.tintColor = UIColor.white*/
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor // KMAUIConstants.shared.KMAUIViewBgColor
+            /*profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
             usernameLabel.textColor = KMAUIConstants.shared.KMATitleColor
             fullNameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
             
@@ -93,7 +93,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
                 fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
             }
             
-            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor*/
         }
     }
     

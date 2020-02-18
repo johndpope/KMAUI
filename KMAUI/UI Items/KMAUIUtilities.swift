@@ -212,7 +212,7 @@ public class KMAUIUtilities {
     
     public func setupArrow(imageView: UIImageView) {
         imageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
-        imageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        imageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysOriginal)
         imageView.contentMode = .center
     }
     
