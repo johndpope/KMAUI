@@ -109,7 +109,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             }
             
             fullNameLabel.text = ""
-            fullNameLabelHeight.constant = 22
+            fullNameLabelHeight.constant = 0
             activityView.startAnimating()
             activityView.alpha = 1
             profileImageView.alpha = 0
@@ -117,7 +117,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
         } else if status == "no results" {
             usernameLabel.text = "No matching people"
             fullNameLabel.text = ""
-            fullNameLabelHeight.constant = 22
+            fullNameLabelHeight.constant = 0
             activityView.alpha = 0
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             profileImageView.alpha = 1
