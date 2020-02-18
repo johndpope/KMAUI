@@ -153,6 +153,7 @@
                 <outlet property="nameLabel" destination="YaI-E9-nvp" id="QSj-kE-k5f"/>
                 <outlet property="playButton" destination="D7f-ex-CsH" id="PEy-zS-5OW"/>
                 <outlet property="profileImageView" destination="BT9-ut-DAY" id="3te-vZ-SSw"/>
+                <outlet property="uploadInfoView" destination="FFi-4n-nsv" id="Qjm-G0-j89"/>
                 <outlet property="userButton" destination="i6t-h4-Ct0" id="UPh-Pz-ceZ"/>
                 <outlet property="usernameLabel" destination="bSd-Cr-hnk" id="gPL-ew-E9h"/>
             </connections>

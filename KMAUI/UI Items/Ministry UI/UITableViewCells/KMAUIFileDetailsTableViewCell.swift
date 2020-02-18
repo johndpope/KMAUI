@@ -21,6 +21,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var containerViewTop: NSLayoutConstraint!
     @IBOutlet public weak var containerViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var containerView: UIView!
+    @IBOutlet public weak var uploadInfoView: UIView!
     @IBOutlet public weak var filenameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var filesTableView: UITableView!
     @IBOutlet public weak var userButton: UIButton!
@@ -37,10 +38,16 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        // Container view
-        containerView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        containerView.clipsToBounds = true
+        // Corner radius for image
+        fileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        fileImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        fileImageView.clipsToBounds = true
         
+        // Corner radius for view
+        uploadInfoView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        uploadInfoView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        uploadInfoView.clipsToBounds = true
+
         // No selection required
         selectionStyle = .none
     }
