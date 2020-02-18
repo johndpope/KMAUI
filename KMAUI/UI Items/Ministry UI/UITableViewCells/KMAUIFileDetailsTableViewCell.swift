@@ -40,7 +40,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         
         // Corner radius for image
         fileImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        fileImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         fileImageView.clipsToBounds = true
         
         // Corner radius for view
