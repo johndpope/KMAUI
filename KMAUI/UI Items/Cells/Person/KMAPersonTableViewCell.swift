@@ -27,6 +27,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     public var status = ""
     public var search = ""
     public var canHighlight = true
+    public static let id = "KMAPersonTableViewCell"
     
     // MARK: - Cell methods
     
