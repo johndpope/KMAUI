@@ -57,7 +57,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
         } else {
             itemHandleLabel.text = dataItem.itemHandle
             
-            if dataItem.lastUpdate <= Date().addingTimeInterval(-60*60) {
+            if dataItem.lastUpdate >= Date().addingTimeInterval(-60*60) {
                 // During the last hour -> show time
                 lastUpdatedLabel.text = "last update \(KMAUIUtilities.shared.dateTime(date: dataItem.lastUpdate, timeOnly: true))"
             } else {
