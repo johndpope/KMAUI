@@ -106,11 +106,13 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         }
         
         // Upload date
-        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: false)
+        dateLabel.text = KMAUIUtilities.shared.dateTime(date: uploadItem.uploadDate)
+//            KMAUIUtilities.shared.formatStringShort(date: uploadItem.uploadDate, numOnly: false)
         
         // isNew
-        newLabel.isHidden = !uploadItem.isNew
-        
+//        newLabel.isHidden = !uploadItem.isNew
+        newLabel.isHidden = uploadItem.uploadDate <= Date().addingTimeInterval(-60*60)
+
         // isVideo
         playButton.isHidden = true //!uploadItem.isVideo
         
