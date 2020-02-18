@@ -35,6 +35,7 @@ public class KMAUIFileTableViewCell: UITableViewCell {
         itemImageView.kf.indicatorType = .activity
         
         // Selection view
+        selectionView.alpha = 0
         selectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         selectionView.clipsToBounds = true
         
@@ -56,9 +57,9 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            selectionView.alpha = 0.25
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
-            selectionView.alpha = 0.0
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     

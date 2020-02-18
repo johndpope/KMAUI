@@ -64,36 +64,9 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight, status == "person", canHighlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor //KMAUIConstants.shared.KMABrightBlueColor
-            /*profileImageView.tintColor = UIColor.white
-            usernameLabel.textColor = UIColor.white
-            fullNameLabel.textColor = UIColor.white
-            usernameLabel.text = person.username.formatUsername()
-            fullNameLabel.text = person.fullName
-            rightArrowImageView.tintColor = UIColor.white*/
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor // KMAUIConstants.shared.KMAUIViewBgColor
-            /*profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
-            usernameLabel.textColor = KMAUIConstants.shared.KMATitleColor
-            fullNameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-            
-            if status == "no results" {
-                usernameLabel.text = "No matching people"
-                fullNameLabel.text = ""
-            } else if status.starts(with: "loading") {
-                usernameLabel.text = "Loading people..."
-
-                if status.contains("profile") {
-                    usernameLabel.text = "Loading profile..."
-                }
-                
-                fullNameLabel.text = ""
-            } else {
-                usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
-                fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
-            }
-            
-            rightArrowImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor*/
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     

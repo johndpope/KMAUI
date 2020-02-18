@@ -53,11 +53,6 @@
                                     <constraint firstAttribute="width" constant="22" id="wZu-Nh-pCe"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dWu-7a-x6a">
-                                <rect key="frame" x="24" y="-34" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wRI-at-JiR">
                                 <rect key="frame" x="16" y="8" width="44" height="44"/>
                                 <constraints>
