@@ -212,7 +212,8 @@ public class KMAUIUtilities {
     
     public func setupArrow(imageView: UIImageView) {
         imageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
-        imageView.image = KMAUIConstants.shared.rightArrow.withRenderingMode(.alwaysTemplate)
+        imageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        imageView.contentMode = .center
     }
     
     public func setupCheckmark(imageView: UIImageView) {
