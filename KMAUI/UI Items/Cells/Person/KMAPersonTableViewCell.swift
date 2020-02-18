@@ -17,6 +17,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var usernameLabel: KMAUITitleLabel!
     @IBOutlet public weak var fullNameLabel: KMAUITextLabel!
+    @IBOutlet public weak var fullNameLabelHeight: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var rightArrowImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
@@ -89,6 +90,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             usernameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.username.formatUsername(), search: search, fontSize: usernameLabel.font.pointSize)
             
             fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
+            fullNameLabelHeight.constant = 22
             
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             
@@ -107,6 +109,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             }
             
             fullNameLabel.text = ""
+            fullNameLabelHeight.constant = 22
             activityView.startAnimating()
             activityView.alpha = 1
             profileImageView.alpha = 0
@@ -114,6 +117,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
         } else if status == "no results" {
             usernameLabel.text = "No matching people"
             fullNameLabel.text = ""
+            fullNameLabelHeight.constant = 22
             activityView.alpha = 0
             profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
             profileImageView.alpha = 1
