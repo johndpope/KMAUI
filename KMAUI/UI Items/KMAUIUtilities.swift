@@ -571,13 +571,13 @@ public class KMAUIUtilities {
     
     public func getClearBarButton() -> UIBarButtonItem {
         // Clear selection
-        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
         clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
-        clearButton.setTitle("Clear selection", for: .normal)
+        clearButton.setTitle(" Clear selection ", for: .normal)
         clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
-        clearButton.layer.cornerRadius = 15
+        clearButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius // 15
         
         return UIBarButtonItem(customView: clearButton)
     }
@@ -607,11 +607,11 @@ public class KMAUIUtilities {
      */
     
     public func getShowOnMapBarButton() -> UIBarButtonItem {
-        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 30))
+        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
         showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
         showOnMapButton.setTitleColor(UIColor.white, for: .normal)
         showOnMapButton.setTitleColor(UIColor.white.withAlphaComponent(0.75), for: .highlighted)
-        showOnMapButton.setTitle("Show on map", for: .normal)
+        showOnMapButton.setTitle(" Show on map ", for: .normal)
         showOnMapButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         showOnMapButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         
