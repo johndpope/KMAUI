@@ -47,20 +47,15 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         // The placeholder data for items
         profileImageView.clipsToBounds = true
         
-        // Hide selection view
-        selectionView.alpha = 0
-        
         profileImageView.kf.indicatorType = .activity
         previewImageView.kf.indicatorType = .activity
     }
     
     public func setHighlight(mode: Bool) {
         if mode {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-//            selectionView.alpha = 0.25
+            selectionView.alpha = 0.25
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-//            selectionView.alpha = 0
+            selectionView.alpha = 0
         }
     }
     

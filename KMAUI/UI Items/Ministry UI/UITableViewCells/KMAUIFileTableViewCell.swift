@@ -16,7 +16,6 @@ public class KMAUIFileTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemImageView: UIImageView!
     @IBOutlet public weak var itemNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemTypeLabel: KMAUIInfoLabel!
-    @IBOutlet public weak var selectionView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFileTableViewCell"
@@ -33,12 +32,7 @@ public class KMAUIFileTableViewCell: UITableViewCell {
         itemImageView.layer.cornerRadius = 22
         itemImageView.clipsToBounds = true
         itemImageView.kf.indicatorType = .activity
-        
-        // Selection view
-        selectionView.alpha = 0
-        selectionView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        selectionView.clipsToBounds = true
-        
+
         // No selection required
         selectionStyle = .none
     }

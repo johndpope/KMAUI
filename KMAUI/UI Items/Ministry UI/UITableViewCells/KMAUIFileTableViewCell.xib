@@ -53,10 +53,6 @@
                                     <constraint firstAttribute="width" constant="12" id="QyC-jT-Vio"/>
                                 </constraints>
                             </imageView>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQD-fc-MlX">
-                                <rect key="frame" x="0.0" y="0.0" width="296" height="60"/>
-                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
@@ -67,13 +63,9 @@
                             <constraint firstAttribute="trailing" secondItem="8bd-PY-HAj" secondAttribute="trailing" constant="8" id="7y1-q6-xhw"/>
                             <constraint firstItem="8bd-PY-HAj" firstAttribute="leading" secondItem="G6s-SN-vvr" secondAttribute="trailing" constant="8" id="Aop-O5-lpr"/>
                             <constraint firstItem="8bd-PY-HAj" firstAttribute="centerY" secondItem="Wi4-1n-D6P" secondAttribute="centerY" id="T8P-dz-NBT"/>
-                            <constraint firstItem="dQD-fc-MlX" firstAttribute="leading" secondItem="Wi4-1n-D6P" secondAttribute="leading" id="XPF-us-cN7"/>
-                            <constraint firstAttribute="bottom" secondItem="dQD-fc-MlX" secondAttribute="bottom" id="a11-bm-Fik"/>
                             <constraint firstItem="dAE-gC-h6R" firstAttribute="top" secondItem="G6s-SN-vvr" secondAttribute="bottom" id="bUO-ZQ-zyY"/>
-                            <constraint firstAttribute="trailing" secondItem="dQD-fc-MlX" secondAttribute="trailing" id="d9k-q2-2W4"/>
                             <constraint firstItem="G6s-SN-vvr" firstAttribute="leading" secondItem="QRM-Pb-jjX" secondAttribute="trailing" constant="8" id="dfU-bo-Wyb"/>
                             <constraint firstItem="8bd-PY-HAj" firstAttribute="leading" secondItem="dAE-gC-h6R" secondAttribute="trailing" constant="20" id="inV-QI-6uw"/>
-                            <constraint firstItem="dQD-fc-MlX" firstAttribute="top" secondItem="Wi4-1n-D6P" secondAttribute="top" id="scq-JF-wBF"/>
                             <constraint firstAttribute="bottom" secondItem="dAE-gC-h6R" secondAttribute="bottom" constant="8" id="v2Z-LP-Lb9"/>
                         </constraints>
                     </view>
@@ -94,16 +86,12 @@
                 <outlet property="itemImageView" destination="QRM-Pb-jjX" id="8p6-Dz-AKZ"/>
                 <outlet property="itemNameLabel" destination="G6s-SN-vvr" id="PHw-WU-TWG"/>
                 <outlet property="itemTypeLabel" destination="dAE-gC-h6R" id="J7u-4O-ZCt"/>
-                <outlet property="selectionView" destination="dQD-fc-MlX" id="Pcf-sZ-j90"/>
             </connections>
             <point key="canvasLocation" x="134.78260869565219" y="117.85714285714285"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="arrowIndicator" width="7" height="11"/>
-        <namedColor name="KMAUIGreyLineColor">
-            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
