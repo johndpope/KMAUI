@@ -140,6 +140,7 @@
                     <constraint firstAttribute="bottom" secondItem="eo5-YK-chf" secondAttribute="bottom" constant="12" id="qqA-Xx-SyT"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="eo5-YK-chf" id="ZGd-MI-jqR"/>
