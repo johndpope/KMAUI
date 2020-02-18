@@ -65,8 +65,9 @@ Label</string>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="uploadDescriptionBgView" destination="9Jo-Xj-r1u" id="YhM-W9-b1T"/>
-                <outlet property="uploadDescriptionLabel" destination="QT0-8u-Riw" id="hcn-6y-OUc"/>
+                <outlet property="bgView" destination="9Jo-Xj-r1u" id="cJJ-Hq-R5e"/>
+                <outlet property="bgViewTop" destination="NvV-gV-oiL" id="Jc7-eG-gmX"/>
+                <outlet property="descriptionLabel" destination="QT0-8u-Riw" id="XD2-xZ-gHx"/>
             </connections>
             <point key="canvasLocation" x="84.057971014492765" y="84.709821428571431"/>
         </tableViewCell>

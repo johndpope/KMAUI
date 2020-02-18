@@ -129,13 +129,11 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         if UIDevice.current.orientation.isLandscape {
             containerViewLeft.constant = 236
             containerViewTop.constant = 12
-            containerViewBottom.constant = 12
             // Show the files tableView
             filesTableView.alpha = 1
         } else {
             containerViewLeft.constant = 12
             containerViewTop.constant = 68
-            containerViewBottom.constant = 0
             // Hide the files tableView
             filesTableView.alpha = 0
         }
@@ -203,6 +201,7 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0, let descriptionCell = tableView.dequeueReusableCell(withIdentifier: KMAUINameTitleTableViewCell.id) as? KMAUINameTitleTableViewCell {
+            descriptionCell.isFirst = true
             descriptionCell.uploadDescription = uploadItem.uploadDescription
             
             return descriptionCell

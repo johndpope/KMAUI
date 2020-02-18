@@ -10,11 +10,13 @@ import UIKit
 
 public class KMAUINameTitleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet public weak var uploadDescriptionBgView: UIView!
-    @IBOutlet public weak var uploadDescriptionLabel: KMAUITextLabel!
+    @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var descriptionLabel: KMAUITextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUINameTitleTableViewCell"
+    public var isFirst = false
     public var uploadDescription = "" {
         didSet {
             setupCell()
@@ -35,6 +37,12 @@ public class KMAUINameTitleTableViewCell: UITableViewCell {
     }
 
     public func setupCell() {
-        uploadDescriptionLabel.text = uploadDescription
+        if isFirst {
+            bgViewTop.constant = 0
+        } else {
+            bgViewTop.constant = 8
+        }
+        
+        descriptionLabel.text = uploadDescription
     }
 }
