@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="44" id="DWQ-5c-vcd"/>
                                     <constraint firstAttribute="height" constant="44" id="nZR-6s-H5Z"/>
                                 </constraints>
-                                <color key="color" name="KMABrightBlueColor"/>
+                                <color key="color" name="KMAUIBlueDarkColorBarTint"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" name="KMABackColor"/>
@@ -111,8 +111,8 @@
         <namedColor name="KMABgGray">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="KMABrightBlueColor">
-            <color red="0.15294117647058825" green="0.41568627450980394" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIBlueDarkColorBarTint">
+            <color red="0.093999996781349182" green="0.059000000357627869" blue="0.40000000596046448" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
