@@ -79,6 +79,7 @@
                 <outlet property="activityView" destination="qUc-QT-g1n" id="1b5-DX-Yap"/>
                 <outlet property="activityViewLeft" destination="1g1-Eg-tKG" id="TRk-MA-5GB"/>
                 <outlet property="activityViewWidth" destination="FUm-u0-F76" id="wIE-Fq-lkX"/>
+                <outlet property="bgViewTop" destination="fLZ-61-pXg" id="CXe-KJ-Bje"/>
                 <outlet property="infoLabel" destination="A0U-bT-3xh" id="L34-23-EE3"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="206.58482142857142"/>

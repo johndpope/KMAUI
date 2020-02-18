@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var infoLabel: KMAUITextLabel!
     @IBOutlet public weak var actionButton: KMAUIButtonFilled!
     @IBOutlet public weak var actionButtonHeight: NSLayoutConstraint!
@@ -23,6 +24,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     public var action = ""
     public var actionCallback: ((Bool) -> Void)?
     public var type = ""
+    public var isFirst = false
     public var isLoaded = false {
         didSet {
             setupCell()
@@ -44,6 +46,12 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if isFirst {
+            bgViewTop.constant = 12
+        } else {
+            bgViewTop.constant = 0
+        }
+        
         if type == "venue" {
             if isLoaded {
                 info = "Unfortunately we don't have any cafes & restaurants recommendations for your home area."
