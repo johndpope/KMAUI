@@ -40,7 +40,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxk-me-pd9" customClass="KMAUITextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="68" y="30" width="182" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="NMm-ok-b7X"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="NMm-ok-b7X"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -74,6 +74,7 @@
                             <constraint firstItem="Yt0-Xh-uY1" firstAttribute="top" secondItem="Zxh-ml-1e7" secondAttribute="top" constant="8" id="VQe-6D-h5Z"/>
                             <constraint firstAttribute="trailing" secondItem="cTK-ZF-Aj4" secondAttribute="trailing" constant="8" id="ahJ-0D-qxJ"/>
                             <constraint firstItem="wRI-at-JiR" firstAttribute="leading" secondItem="Zxh-ml-1e7" secondAttribute="leading" constant="16" id="fYZ-qG-0ja"/>
+                            <constraint firstAttribute="bottom" secondItem="Lxk-me-pd9" secondAttribute="bottom" constant="8" id="ghF-xH-dZW"/>
                             <constraint firstItem="Fyg-lo-0cc" firstAttribute="centerY" secondItem="Zxh-ml-1e7" secondAttribute="centerY" id="iXJ-Xk-C0w"/>
                             <constraint firstAttribute="height" constant="60" id="jS0-4S-FHY"/>
                             <constraint firstItem="Lxk-me-pd9" firstAttribute="top" secondItem="Yt0-Xh-uY1" secondAttribute="bottom" id="kUw-hi-cMt"/>
