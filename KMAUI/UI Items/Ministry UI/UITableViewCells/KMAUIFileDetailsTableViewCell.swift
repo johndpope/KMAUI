@@ -183,7 +183,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             lightboxController.modalPresentationStyle = .fullScreen
             lightboxController.dynamicBackground = true
             // Present your controller.
-            KMAUIConstants.shared.lightboxVisible = true
+            KMAUIConstants.shared.popupOpened = true
             KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
         }
     }

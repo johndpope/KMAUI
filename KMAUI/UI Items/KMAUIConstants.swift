@@ -13,7 +13,7 @@ public class KMAUIConstants {
     public static let shared = KMAUIConstants()
     
     // MARK: - Lightbox closed - no need to open main map
-    public var lightboxVisible = false
+    public var popupOpened = false
     
     // MARK: - Fonts
     public let KMAUIRegularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
