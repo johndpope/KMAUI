@@ -93,6 +93,7 @@
             <connections>
                 <outlet property="activityView" destination="wRI-at-JiR" id="m8O-Kw-yEi"/>
                 <outlet property="bgView" destination="Zxh-ml-1e7" id="bJN-sn-HD9"/>
+                <outlet property="bgViewTop" destination="WwP-zP-0iu" id="i3j-rH-FTA"/>
                 <outlet property="fullNameLabel" destination="Lxk-me-pd9" id="Y43-Lh-pZu"/>
                 <outlet property="fullNameLabelHeight" destination="NMm-ok-b7X" id="esL-mX-H3o"/>
                 <outlet property="profileImageView" destination="Fyg-lo-0cc" id="pc6-dO-7VL"/>

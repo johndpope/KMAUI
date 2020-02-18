@@ -14,6 +14,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var usernameLabel: KMAUITitleLabel!
     @IBOutlet public weak var fullNameLabel: KMAUITextLabel!
@@ -28,6 +29,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
     public var status = ""
     public var search = ""
     public var canHighlight = true
+    public var isFirst = false
     public static let id = "KMAPersonTableViewCell"
     
     // MARK: - Cell methods
@@ -76,6 +78,12 @@ public class KMAPersonTableViewCell: UITableViewCell {
      */
     
     public func setupCell() {
+        if isFirst {
+            bgViewTop.constant = 12
+        } else {
+            bgViewTop.constant = 0
+        }
+        
         if canHighlight {
             rightArrowImageView.alpha = 1
             rightArrowImageViewWidth.constant = 22
