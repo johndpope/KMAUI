@@ -56,7 +56,15 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             itemHandleLableHeight.constant = 0
         } else {
             itemHandleLabel.text = dataItem.itemHandle
-            lastUpdatedLabel.text = "last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
+            
+            if dataItem.lastUpdate <= Date().addingTimeInterval(-60*60) {
+                // During the last hour -> show time
+                lastUpdatedLabel.text = "last update \(KMAUIUtilities.shared.dateTime(date: dataItem.lastUpdate, timeOnly: true))"
+            } else {
+                // Older then 1 hours ago -> show date
+                lastUpdatedLabel.text = "last update \(KMAUIUtilities.shared.formatStringShort(date: dataItem.lastUpdate, numOnly: true))"
+            }
+
             itemHandleLabelTop.constant = 8
             itemHandleLableHeight.constant = 22
         }

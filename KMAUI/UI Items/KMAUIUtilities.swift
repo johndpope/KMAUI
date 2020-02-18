@@ -321,9 +321,15 @@ public class KMAUIUtilities {
      Format date
      */
     
-    public func dateTime(date: Date) -> String {
+    public func dateTime(date: Date, timeOnly: Bool? = nil) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        
+        if let timeOnly = timeOnly, timeOnly {
+            dateFormatter.dateStyle = .none
+        } else {
+            dateFormatter.dateStyle = .short
+        }
+            
         dateFormatter.timeStyle = .short
         
         return dateFormatter.string(from: date)
