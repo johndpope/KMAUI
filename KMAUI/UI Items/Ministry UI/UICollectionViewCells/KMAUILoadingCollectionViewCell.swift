@@ -43,7 +43,7 @@ public class KMAUILoadingCollectionViewCell: UICollectionViewCell {
             loadingActivityViewHeight.constant = 0
             loadingActivityViewBottom.constant = 0
         } else {
-            loadingLabel.text = "Loading"
+            loadingLabel.text = "Loading..."
             loadingActivityView.startAnimating()
             loadingActivityView.isHidden = false
             loadingActivityViewHeight.constant = 37
