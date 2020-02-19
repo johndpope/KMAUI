@@ -69,7 +69,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setupCell() {
+    /*public func setupCell() {
         // Update the segment titles
         for (index, item) in segmentItems.enumerated() {
             if segmentControl.numberOfSegments > index {
@@ -77,6 +77,16 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
             }
         }
         
+        // Update the segment selected index
+        segmentControl.selectedSegmentIndex = selectedIndex
+    }*/
+    
+    public func setupCell() {
+        // Update the segment titles
+        segmentControl.removeAllSegments()
+        for item in segmentItems {
+            segmentControl.insertSegment(withTitle: item, at: segmentControl.numberOfSegments, animated: false)
+        }
         // Update the segment selected index
         segmentControl.selectedSegmentIndex = selectedIndex
     }
