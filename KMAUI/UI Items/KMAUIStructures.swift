@@ -27,6 +27,7 @@ public struct KMAUIUploadItem {
     public var uploadDescription = ""
     public var uploadFiles = [KMAUIUploadItem]()
     public var fileId = ""
+    public var location = CLLocationCoordinate2D()
     
     public init() {
     }
