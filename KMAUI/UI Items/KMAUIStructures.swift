@@ -26,6 +26,7 @@ public struct KMAUIUploadItem {
     public var uploadId = ""
     public var uploadDescription = ""
     public var uploadFiles = [KMAUIUploadItem]()
+    public var fileId = ""
     
     public init() {
     }
