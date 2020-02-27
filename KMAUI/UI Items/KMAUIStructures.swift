@@ -2015,40 +2015,40 @@ public struct KMAMapAreaStruct {
     }
 }
 
-struct KMAUILandPlanStruct {
+public struct KMAUILandPlanStruct {
     // Land name
-    var landName = "Land Lottery"
+    public var landName = "Land Lottery"
     // Land center coordinate
-    var centerCoordinate = CLLocationCoordinate2D()
+    public var centerCoordinate = CLLocationCoordinate2D()
     // Area size in meters
-    var areaWidth: Double = 1500 // 1.5 km
-    var areaHeight: Double = 1000 // 1.0 km
-    var sw = CLLocationCoordinate2D()
-    var ne = CLLocationCoordinate2D()
+    public var areaWidth: Double = 1500 // 1.5 km
+    public var areaHeight: Double = 1000 // 1.0 km
+    public var sw = CLLocationCoordinate2D()
+    public var ne = CLLocationCoordinate2D()
     // Area rotation parameters in degrees
-    var degrees: Double = 0 // 0 degress rotation to the right side
+    public var degrees: Double = 0 // 0 degress rotation to the right side
     // Sub Land sizes in meters
-    var minSubLandSide: Double = 25 // 24.5 m
-    var maxSubLandSide: Double = 30 // 30 m
-    var averageSubLandSize: Double = 0
+    public var minSubLandSide: Double = 25 // 24.5 m
+    public var maxSubLandSide: Double = 30 // 30 m
+    public var averageSubLandSize: Double = 0
     // Road width in meters
-    var mainRoadWidth: Double = 20
-    var regularRoadWidth: Double = 6
+    public var mainRoadWidth: Double = 20
+    public var regularRoadWidth: Double = 6
     // Grid parameters for a block, each block has rowsPerBlock lines with Sub Lands inside
-    var itemsInBlockHorizontal: Double = 5
-    var itemsInBlockVertical: Double = 2
-    var rowsPerBlock: Double = 4
+    public var itemsInBlockHorizontal: Double = 5
+    public var itemsInBlockVertical: Double = 2
+    public var rowsPerBlock: Double = 4
     // Objects and results
-    var landFeatures = [[String: Any]]()
-    var separateFeatures = [[String: Any]]()
-    var subLandItems = [PFObject]()
+    public var landFeatures = [[String: Any]]()
+    public var separateFeatures = [[String: Any]]()
+    public var subLandItems = [PFObject]()
     // services, commercial, and residential
-    var servicesPercent: Double = 15
-    var commercialPercent: Double = 20
-    var residentialPercent: Double = 65
-    var servicesCount = 0
-    var commercialCount = 0
-    var residentialCount = 0
+    public var servicesPercent: Double = 15
+    public var commercialPercent: Double = 20
+    public var residentialPercent: Double = 65
+    public var servicesCount = 0
+    public var commercialCount = 0
+    public var residentialCount = 0
     
     public init() {}
     
@@ -2122,7 +2122,7 @@ struct KMAUILandPlanStruct {
         }
     }
     
-    mutating func getLandPlanGeojson() {
+    mutating public func getLandPlanGeojson() {
         // MARK: - Clearing the parameters
         landFeatures = [[String: Any]]()
         separateFeatures = [[String: Any]]()
@@ -2333,7 +2333,7 @@ struct KMAUILandPlanStruct {
         getParseObjects()
     }
     
-    func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
+    public func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
         var minX: Double = 0
         var minY: Double = 0
         var maxX: Double = 0
@@ -2364,7 +2364,7 @@ struct KMAUILandPlanStruct {
      Adding the demo map item
      */
     
-    mutating func addMapItem(topLeft: CLLocationCoordinate2D, width: Double, height: Double, name: String, type: String, angle: Double) {
+    mutating public func addMapItem(topLeft: CLLocationCoordinate2D, width: Double, height: Double, name: String, type: String, angle: Double) {
         let rightTop = topLeft.shift(byDistance: width, azimuth: Double.pi / 2 + angle)
         let rightBottom = rightTop.shift(byDistance: height, azimuth: Double.pi + angle)
         let leftBottom = topLeft.shift(byDistance: height, azimuth: Double.pi + angle)
@@ -2376,7 +2376,7 @@ struct KMAUILandPlanStruct {
      Adding objects
      */
     
-    mutating func addObject(type: String, name: String, coordinatesArray: [CLLocationCoordinate2D], width: Double? = nil, height: Double? = nil) {
+    mutating public func addObject(type: String, name: String, coordinatesArray: [CLLocationCoordinate2D], width: Double? = nil, height: Double? = nil) {
 //        print("\(type): \(name)")
         
         var allowedTypes = [String]()
@@ -2460,7 +2460,7 @@ struct KMAUILandPlanStruct {
         }
     }
     
-    mutating func getParseObjects() {
+    mutating public func getParseObjects() {
 //        print("Total Sub Land items for Parse: \(subLandItems.count)")
 //        print("Requested percents: residential - \(residentialPercent)%, commercial - \(commercialPercent)%, services - \(servicesPercent)%.")
         // Desired counts
