@@ -2014,3 +2014,496 @@ public struct KMAMapAreaStruct {
         }
     }
 }
+
+struct KMAUILandPlanStruct {
+    // Land name
+    var landName = "Land Lottery"
+    // Land center coordinate
+    var centerCoordinate = CLLocationCoordinate2D()
+    // Area size in meters
+    var areaWidth: Double = 1500 // 1.5 km
+    var areaHeight: Double = 1000 // 1.0 km
+    var sw = CLLocationCoordinate2D()
+    var ne = CLLocationCoordinate2D()
+    // Area rotation parameters in degrees
+    var degrees: Double = 0 // 0 degress rotation to the right side
+    // Sub Land sizes in meters
+    var minSubLandSide: Double = 25 // 24.5 m
+    var maxSubLandSide: Double = 30 // 30 m
+    var averageSubLandSize: Double = 0
+    // Road width in meters
+    var mainRoadWidth: Double = 20
+    var regularRoadWidth: Double = 6
+    // Grid parameters for a block, each block has rowsPerBlock lines with Sub Lands inside
+    var itemsInBlockHorizontal: Double = 5
+    var itemsInBlockVertical: Double = 2
+    var rowsPerBlock: Double = 4
+    // Objects and results
+    var landFeatures = [[String: Any]]()
+    var separateFeatures = [[String: Any]]()
+    var subLandItems = [PFObject]()
+    // services, commercial, and residential
+    var servicesPercent: Double = 15
+    var commercialPercent: Double = 20
+    var residentialPercent: Double = 65
+    var servicesCount = 0
+    var commercialCount = 0
+    var residentialCount = 0
+    
+    public init() {}
+    
+    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInBlockHorizontal: Double? = nil, itemsInBlockVertical: Double? = nil, rowsPerBlock: Double? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil) {
+        // Center coordinate
+        self.centerCoordinate = centerCoordinate
+        
+        // Area width
+        if let areaWidth = areaWidth {
+            self.areaWidth = areaWidth
+        }
+        
+        // Area height
+        if let areaHeight = areaHeight {
+            self.areaHeight = areaHeight
+        }
+        
+        // Degrees
+        if let degrees = degrees {
+            self.degrees = degrees
+        }
+        
+        // Min sub land side
+        if let minSubLandSide = minSubLandSide {
+            self.minSubLandSide = minSubLandSide
+        }
+        
+        // Max sub land side
+        if let maxSubLandSide = maxSubLandSide {
+            self.maxSubLandSide = maxSubLandSide
+        }
+
+        // Main road width
+        if let mainRoadWidth = mainRoadWidth {
+            self.mainRoadWidth = mainRoadWidth
+        }
+        
+        // Regular road width
+        if let regularRoadWidth = regularRoadWidth {
+            self.regularRoadWidth = regularRoadWidth
+        }
+        
+        // Items in block horizontal
+        if let itemsInBlockHorizontal = itemsInBlockHorizontal {
+            self.itemsInBlockHorizontal = itemsInBlockHorizontal
+        }
+        
+        // Items in block vertical
+        if let itemsInBlockVertical = itemsInBlockVertical {
+            self.itemsInBlockVertical = itemsInBlockVertical
+        }
+        
+        // Rows per block
+        if let rowsPerBlock = rowsPerBlock {
+            self.rowsPerBlock = rowsPerBlock
+        }
+
+        // Services percent
+        if let servicesPercent = servicesPercent {
+            self.servicesPercent = servicesPercent
+        }
+        
+        // Commercial percent
+        if let commercialPercent = commercialPercent {
+            self.commercialPercent = commercialPercent
+        }
+        
+        // Residential percent
+        if let residentialPercent = residentialPercent {
+            self.residentialPercent = residentialPercent
+        }
+    }
+    
+    mutating func getLandPlanGeojson() {
+        // MARK: - Clearing the parameters
+        landFeatures = [[String: Any]]()
+        separateFeatures = [[String: Any]]()
+        subLandItems = [PFObject]()
+        
+        // MARK: - Basic data for the Land Plan
+        let angle = Double.pi * degrees / 180 // calculating angle from the degrees
+        
+        // Getting the corner locations from the centerCoordinate and areaWidth / areaHeight
+        let middleTop = centerCoordinate.shift(byDistance: areaHeight / 2, azimuth: 0 + angle)
+        let leftTop = middleTop.shift(byDistance: areaWidth / 2, azimuth: -Double.pi / 2 + angle)
+        let rightTop = leftTop.shift(byDistance: areaWidth, azimuth: Double.pi / 2 + angle)
+        let rightBottom = rightTop.shift(byDistance: areaHeight, azimuth: Double.pi + angle)
+        let leftBottom = leftTop.shift(byDistance: areaHeight, azimuth: Double.pi + angle)
+        
+        // Getting the land plan sw and ne coordinates
+        let areaBounds = getBoundsForRect(locations: [leftTop, rightTop, rightBottom, leftBottom])
+        sw = areaBounds[0]
+        ne = areaBounds[1]
+        
+        // Sub Land average size for calculations
+        averageSubLandSize = (minSubLandSide + maxSubLandSide) / 2
+        
+        // MARK: - Blocks grid
+            
+        // Get the block counts - horizontal
+        let averageBlockWidth = itemsInBlockHorizontal * averageSubLandSize
+        let horizontalBlocks = (areaWidth - mainRoadWidth) / (averageBlockWidth + mainRoadWidth)
+        var horizontalBlocksCount = Int(horizontalBlocks)
+        
+        // Get the block counts - vertical
+        let averageBlockHeight = (rowsPerBlock - 1) * regularRoadWidth + rowsPerBlock * itemsInBlockVertical * averageSubLandSize
+        let verticalBlocks = (areaHeight - mainRoadWidth) / (averageBlockHeight + mainRoadWidth)
+        var verticalBlocksCount = Int(verticalBlocks)
+        
+        print("The Land Plan grid: \(horizontalBlocksCount) x \(verticalBlocksCount) blocks.")
+        
+        // MARK: - Preparing the geojson
+                
+        if horizontalBlocksCount == 0 || verticalBlocksCount == 0 {
+            print("Can't build a grid - land is too small.")
+        } else {
+            // MARK: - Adding the Land Plan Border
+            addObject(type: "Border", name: "Land Plan", coordinatesArray: [leftTop, rightTop, rightBottom, leftBottom, leftTop])
+            
+            // MARK: - Getting the bottom and right blocks as they may be not full-sized
+            var horizontalExtraSpace = areaWidth - 2 * mainRoadWidth - (mainRoadWidth + averageBlockWidth) * Double(horizontalBlocksCount)
+            var verticalExtraSpace = areaHeight - 2 * mainRoadWidth - (mainRoadWidth + averageBlockHeight) * Double(verticalBlocksCount)
+                        
+            if horizontalExtraSpace > averageSubLandSize {
+                horizontalBlocksCount += 1
+            } else {
+                horizontalExtraSpace = 0
+            }
+            
+            if verticalExtraSpace > averageSubLandSize {
+                verticalBlocksCount += 1
+            } else {
+                verticalExtraSpace = 0
+            }
+
+            // MARK: - First left and top Main Roads
+            
+            // First vertical road
+            addMapItem(topLeft: leftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical 0", type: "Main Road", angle: angle)
+            addMapItem(topLeft: leftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal 0", type: "Main Road", angle: angle)
+            
+            var subBlockRowsCustom: Double = 0
+            var subBlockColumnsCustom: Double = 0
+            
+            // Getting the extra space calculations
+            if verticalExtraSpace > 0 {
+                subBlockRowsCustom = (verticalExtraSpace + regularRoadWidth) / (averageSubLandSize * itemsInBlockVertical + regularRoadWidth)
+                
+                if subBlockRowsCustom - Double(Int(subBlockRowsCustom)) > 0.25 {
+                    subBlockRowsCustom = Double(Int(subBlockRowsCustom)) + 1
+                }
+            }
+            
+            if horizontalExtraSpace > 0 {
+                subBlockColumnsCustom = (horizontalExtraSpace + regularRoadWidth) / averageSubLandSize
+                
+                if subBlockColumnsCustom - Double(Int(subBlockColumnsCustom)) > 0.25 {
+                    subBlockColumnsCustom = Double(Int(subBlockColumnsCustom)) + 1
+                }
+            }
+            
+            // MARK: - Draw the grid of main roads
+            
+            for column in 0..<horizontalBlocksCount {
+                var blockWidth = averageBlockWidth
+                
+                if column + 1 == horizontalBlocksCount, horizontalExtraSpace > 0 {
+                    blockWidth = horizontalExtraSpace
+                }
+                
+                let columnOffset = (averageBlockWidth + mainRoadWidth) * Double(column) + mainRoadWidth
+                
+                // MARK: - Create the inner grid for a block - calculating the rows / columns count
+                var subBlockRows = rowsPerBlock
+                var subBlockColumns = itemsInBlockHorizontal
+                var customBlock = false
+                
+                // MARK: - Step vertical road
+                let roadLeftTop = leftTop.shift(byDistance: columnOffset + blockWidth, azimuth: Double.pi / 2 + angle)
+                
+                if column + 1 == horizontalBlocksCount {
+                    if horizontalExtraSpace > 0 {
+                        subBlockColumns = subBlockColumnsCustom
+                        customBlock = true
+                    }
+                    
+                    // Filling the whole area left with the road
+                    addMapItem(topLeft: roadLeftTop, width: areaWidth - columnOffset - blockWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
+                } else {
+                    addMapItem(topLeft: roadLeftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
+                }
+
+                for row in 0..<verticalBlocksCount {
+                    var blockHeight = averageBlockHeight
+                    
+                    if row + 1 == verticalBlocksCount, verticalExtraSpace > 0 {
+                        blockHeight = verticalExtraSpace
+                    }
+                    
+                    let rowOffset = (averageBlockHeight + mainRoadWidth) * Double(row) + mainRoadWidth
+                    
+                    // MARK: - Add the block item
+                    let blockLeftTop = leftTop.shift(byDistance: columnOffset, azimuth: Double.pi / 2 + angle).shift(byDistance: rowOffset, azimuth: Double.pi + angle)
+                    let blockRightTop = blockLeftTop.shift(byDistance: blockWidth, azimuth: Double.pi / 2 + angle)
+                    let blockRightBottom = blockRightTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
+                    let blockLeftBottom = blockLeftTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
+                    addObject(type: "Block", name: "\(column)-\(row)", coordinatesArray: [blockLeftTop, blockRightTop, blockRightBottom, blockLeftBottom, blockLeftTop])
+
+                    // MARK: - Step horizontal road
+                    let roadLeftTop = leftTop.shift(byDistance: rowOffset + blockHeight, azimuth: Double.pi + angle)
+                    
+                    if row + 1 == verticalBlocksCount {
+                        if verticalExtraSpace > 0 {
+                            subBlockRows = subBlockRowsCustom
+                            customBlock = true
+                        }
+                        
+                        // Filling the whole area left with the road
+                        addMapItem(topLeft: roadLeftTop, width: areaWidth, height: areaHeight - rowOffset - blockHeight, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
+                    } else {
+                        addMapItem(topLeft: roadLeftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
+                    }
+                    
+                    for subBlockRow in 0..<Int(subBlockRows) {
+                        // MARK: - Getting the random height for row 1 and 2 inside the Sub Block
+                        let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * itemsInBlockVertical * Double(subBlockRow), azimuth: Double.pi + angle)
+                        
+                        var subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                        var subLandHeight2 = averageSubLandSize * itemsInBlockVertical - subLandHeight1
+                        
+                        var subBlockHeight = averageSubLandSize * itemsInBlockVertical
+                        
+                        if subBlockRow + 1 == Int(subBlockRows), customBlock {
+                            subBlockHeight = blockHeight - Double(subBlockRow) * (averageSubLandSize * itemsInBlockVertical + regularRoadWidth)
+                            subLandHeight2 = subBlockHeight - subLandHeight1
+                            
+                            if subLandHeight2 < minSubLandSide {
+                                subLandHeight1 = subBlockHeight
+                                subLandHeight2 = 0
+                            }
+                        }
+                        
+                        // MARK: - Adding Sub Block
+                        addMapItem(topLeft: subBlockLeftTop, width: blockWidth, height: subBlockHeight, name: "\(column)-\(row)-\(subBlockRow)", type: "Sub Block", angle: angle)
+                        
+                        if subBlockRow + 1 < Int(subBlockRows) {
+                            // MARK: - Adding Regular Road
+                            let regularRoadTopLeft = subBlockLeftTop.shift(byDistance: averageSubLandSize * itemsInBlockVertical, azimuth: Double.pi + angle)
+                            addMapItem(topLeft: regularRoadTopLeft, width: blockWidth, height: regularRoadWidth, name: "\(column)-\(row)-\(subBlockRow)", type: "Regular Road", angle: angle)
+                        }
+
+                        var totalWidth: Double = 0
+                        
+                        for subLandColumn in 0..<Int(subBlockColumns) {
+                            var subLandWidth: Double = 0
+                            
+                            if subLandColumn + 1 == Int(subBlockColumns) {
+                                subLandWidth = blockWidth - totalWidth
+                            } else {
+                                subLandWidth = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                            }
+                            
+                            // MARK: - Adding Sub Land
+                            
+                            // Row 1 top left coordinate
+                            let subLand1TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle)
+                            addMapItem(topLeft: subLand1TopLeft, width: subLandWidth, height: subLandHeight1, name: "\(column)-\(row)-\(subBlockRow)-0-\(subLandColumn)", type: "Sub Land", angle: angle)
+                            
+                            if subLandHeight2 > 0 {
+                                // Row 2 top left coordinate
+                                let subLand2TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle).shift(byDistance: subLandHeight1, azimuth: Double.pi + angle)
+                                addMapItem(topLeft: subLand2TopLeft, width: subLandWidth, height: subLandHeight2, name: "\(column)-\(row)-\(subBlockRow)-1-\(subLandColumn)", type: "Sub Land", angle: angle)
+                            }
+                            
+                            totalWidth += subLandWidth
+                        }
+                    }
+                }
+            }
+        }
+        
+        getParseObjects()
+    }
+    
+    func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
+        var minX: Double = 0
+        var minY: Double = 0
+        var maxX: Double = 0
+        var maxY: Double = 0
+        
+        for location in locations {
+            if minX == 0 || location.longitude < minX {
+                minX = location.longitude
+            }
+            
+            if minY == 0 || location.latitude < minY {
+                minY = location.latitude
+            }
+            
+            if maxX == 0 || location.longitude > maxX {
+                maxX = location.longitude
+            }
+            
+            if maxY == 0 || location.latitude > maxY {
+                maxY = location.latitude
+            }
+        }
+        
+        return [CLLocationCoordinate2D(latitude: minY, longitude: minX), CLLocationCoordinate2D(latitude: maxY, longitude: maxX)]
+    }
+    
+    /**
+     Adding the demo map item
+     */
+    
+    mutating func addMapItem(topLeft: CLLocationCoordinate2D, width: Double, height: Double, name: String, type: String, angle: Double) {
+        let rightTop = topLeft.shift(byDistance: width, azimuth: Double.pi / 2 + angle)
+        let rightBottom = rightTop.shift(byDistance: height, azimuth: Double.pi + angle)
+        let leftBottom = topLeft.shift(byDistance: height, azimuth: Double.pi + angle)
+
+        addObject(type: type, name: name, coordinatesArray: [topLeft, rightTop, rightBottom, leftBottom, topLeft], width: width, height: height)
+    }
+    
+    /**
+     Adding objects
+     */
+    
+    mutating func addObject(type: String, name: String, coordinatesArray: [CLLocationCoordinate2D], width: Double? = nil, height: Double? = nil) {
+//        print("\(type): \(name)")
+        
+        var allowedTypes = [String]()
+        allowedTypes.append("Border")
+        allowedTypes.append("Main Road")
+        allowedTypes.append("Block")
+        allowedTypes.append("Sub Block")
+        allowedTypes.append("Regular Road")
+        allowedTypes.append("Sub Land")
+        
+        if allowedTypes.contains(type) {
+            var coordinatesStrings = [Any]()
+            
+            for location in coordinatesArray {
+                var waypoints = [Any]()
+                waypoints.append(location.longitude)
+                waypoints.append(location.latitude)
+                coordinatesStrings.append(waypoints)
+            }
+            
+            // Land features
+            let feature: [String: Any] = [
+                "type": "Feature",
+                "properties": ["name": name, "type": type],
+                "geometry": [
+                    "type": "LineString",
+                    "coordinates": coordinatesStrings
+                ]
+            ]
+            
+            landFeatures.append(feature)
+            
+            let jsonDict: [String: Any] = [
+                "type": "FeatureCollection",
+                "features": [
+                    [
+                        feature
+                    ]
+                ]
+            ]
+            
+            separateFeatures.append(jsonDict)
+            
+            // MARK: - Parse object for the KMASubLand
+            if type == "Sub Land" {
+                // New KMASubLand object
+                let subLandObject = PFObject(className: "KMASubLand")
+                
+                // subLandArea
+                if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
+                    //For JSON String
+                    if let jsonStr = String(bytes: data, encoding: .utf8) {
+                        subLandObject["subLandArea"] = jsonStr
+                    }
+                }
+                
+                // location
+                let areaBounds = getBoundsForRect(locations: coordinatesArray)
+                subLandObject["minX"] = areaBounds[0].longitude
+                subLandObject["minY"] = areaBounds[0].latitude
+                subLandObject["maxX"] = areaBounds[1].longitude
+                subLandObject["maxY"] = areaBounds[1].latitude
+                subLandObject["location"] = PFGeoPoint(latitude: (areaBounds[0].latitude + areaBounds[1].latitude) / 2, longitude: (areaBounds[0].longitude + areaBounds[1].longitude) / 2)
+                
+                // subLandIndex
+                subLandObject["subLandIndex"] = name
+                
+                // subLandSquare
+                if let width = width, let height = height {
+                    subLandObject["subLandWidth"] = width
+                    subLandObject["subLandHeight"] = height
+                    
+                    subLandObject["subLandSquare"] = width * height
+                    
+                    // subLandPercent - square / average square
+                    subLandObject["subLandPercent"] = width * height / (averageSubLandSize * averageSubLandSize)
+                }
+                
+                subLandItems.append(subLandObject)
+            }
+        }
+    }
+    
+    mutating func getParseObjects() {
+//        print("Total Sub Land items for Parse: \(subLandItems.count)")
+//        print("Requested percents: residential - \(residentialPercent)%, commercial - \(commercialPercent)%, services - \(servicesPercent)%.")
+        // Desired counts
+        let desiredServicesCount = Int(servicesPercent / 100 * Double(subLandItems.count))
+        let desiredCommercialCount = Int(commercialPercent / 100 * Double(subLandItems.count))
+        let desiredResidentialCount = subLandItems.count - desiredServicesCount - desiredCommercialCount
+        // Clear the counts
+        residentialCount = 0
+        commercialCount = 0
+        servicesCount = 0
+
+        for item in subLandItems {
+            var types = [String]()
+            
+            if residentialCount < desiredResidentialCount {
+                types.append("Residential")
+            }
+
+            if commercialCount < desiredCommercialCount {
+                types.append("Commercial")
+            }
+            
+            if servicesCount < desiredServicesCount {
+                types.append("Services")
+            }
+            if types.isEmpty {
+                print("No types available...")
+            } else {
+                let index = Int.random(in: 0 ..< types.count)
+                let itemType = types[index]
+                item["subLandType"] = itemType
+                
+                if itemType == "Residential" {
+                    residentialCount += 1
+                } else if itemType == "Commercial" {
+                    commercialCount += 1
+                } else if itemType == "Services" {
+                    servicesCount += 1
+                }
+            }
+        }
+        
+//        print("Results: \(residentialCount), \(commercialCount), \(servicesCount)")
+    }
+}
+
