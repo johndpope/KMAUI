@@ -2041,7 +2041,6 @@ public struct KMAUILandPlanStruct {
     // Objects and results
     public var landFeatures = [[String: Any]]()
     public var separateFeatures = [[String: Any]]()
-    public var subLandItems = [PFObject]()
     // services, commercial, and residential
     public var servicesPercent: Double = 15
     public var commercialPercent: Double = 20
@@ -2049,6 +2048,9 @@ public struct KMAUILandPlanStruct {
     public var servicesCount = 0
     public var commercialCount = 0
     public var residentialCount = 0
+    // Result items
+    public var geojson = ""
+    public var subLandItems = [PFObject]()
     
     public init() {}
     
@@ -2331,6 +2333,20 @@ public struct KMAUILandPlanStruct {
         }
         
         getParseObjects()
+        
+        let jsonDict: [String: Any] = [
+            "type": "FeatureCollection",
+            "features": landPlan.landFeatures
+        ]
+        
+        geojson = ""
+        
+        if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
+            //For JSON String
+            if let jsonStr = String(bytes: data, encoding: .utf8) {
+                geojson = jsonStr
+            }
+        }
     }
     
     public func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
