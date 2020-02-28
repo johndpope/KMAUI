@@ -2045,16 +2045,19 @@ public struct KMAUILandPlanStruct {
     public var servicesPercent: Double = 15
     public var commercialPercent: Double = 20
     public var residentialPercent: Double = 65
+    public var salePercent: Double = 25
     public var servicesCount = 0
     public var commercialCount = 0
     public var residentialCount = 0
+    public var residentialSaleCount = 0
+    public var residentialLotteryCount = 0
     // Result items
     public var geojson = ""
     public var subLandItems = [PFObject]()
     
     public init() {}
     
-    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInBlockHorizontal: Double? = nil, itemsInBlockVertical: Double? = nil, rowsPerBlock: Double? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil) {
+    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInBlockHorizontal: Double? = nil, itemsInBlockVertical: Double? = nil, rowsPerBlock: Double? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
         // Center coordinate
         self.centerCoordinate = centerCoordinate
         
@@ -2121,6 +2124,11 @@ public struct KMAUILandPlanStruct {
         // Residential percent
         if let residentialPercent = residentialPercent {
             self.residentialPercent = residentialPercent
+        }
+        
+        // Sale percent
+        if let salePercent = salePercent {
+            self.salePercent = salePercent
         }
     }
     
@@ -2393,8 +2401,6 @@ public struct KMAUILandPlanStruct {
      */
     
     mutating public func addObject(type: String, name: String, coordinatesArray: [CLLocationCoordinate2D], width: Double? = nil, height: Double? = nil) {
-//        print("\(type): \(name)")
-        
         var allowedTypes = [String]()
         allowedTypes.append("Border")
         allowedTypes.append("Main Road")
@@ -2482,9 +2488,16 @@ public struct KMAUILandPlanStruct {
         // Desired counts
         let desiredServicesCount = Int(servicesPercent / 100 * Double(subLandItems.count))
         let desiredCommercialCount = Int(commercialPercent / 100 * Double(subLandItems.count))
-        let desiredResidentialCount = subLandItems.count - desiredServicesCount - desiredCommercialCount
+        let desiredResidentialCount = (subLandItems.count - desiredServicesCount - desiredCommercialCount)
+        
+        // Residential should be divided into: Sale or Lottery
+        let desiredResidentialSaleCount = Int(salePercent / 100 * Double(desiredResidentialCount))
+        let desiredResidentialLotteryCount = desiredResidentialCount - desiredResidentialSaleCount
+        
         // Clear the counts
         residentialCount = 0
+        residentialSaleCount = 0
+        residentialLotteryCount = 0
         commercialCount = 0
         servicesCount = 0
 
@@ -2502,15 +2515,23 @@ public struct KMAUILandPlanStruct {
             if servicesCount < desiredServicesCount {
                 types.append("Services")
             }
+            
             if types.isEmpty {
                 print("No types available...")
             } else {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
-                item["subLandType"] = itemType
                 
                 if itemType == "Residential" {
                     residentialCount += 1
+                    
+                    if residentialLotteryCount < desiredResidentialLotteryCount {
+                        residentialLotteryCount += 1
+                        item["subLandType"] = "Residential Lottery"
+                    } else {
+                        residentialSaleCount += 1
+                        item["subLandType"] = "Residential Sale"
+                    }
                 } else if itemType == "Commercial" {
                     commercialCount += 1
                 } else if itemType == "Services" {
@@ -2519,7 +2540,7 @@ public struct KMAUILandPlanStruct {
             }
         }
         
-//        print("Results: \(residentialCount), \(commercialCount), \(servicesCount)")
+        print("Results: \(residentialCount) = \(residentialLotteryCount) + \(residentialSaleCount), \(commercialCount), \(servicesCount)")
     }
 }
 
