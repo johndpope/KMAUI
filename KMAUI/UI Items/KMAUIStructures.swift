@@ -2057,9 +2057,14 @@ public struct KMAUILandPlanStruct {
     
     public init() {}
     
-    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
+    public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
         // Center coordinate
         self.centerCoordinate = centerCoordinate
+        
+        // Land name
+        if let landName = landName {
+            self.landName = landName
+        }
         
         // Area width
         if let areaWidth = areaWidth {
