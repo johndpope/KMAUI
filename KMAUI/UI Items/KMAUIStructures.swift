@@ -2336,7 +2336,7 @@ public struct KMAUILandPlanStruct {
         
         let jsonDict: [String: Any] = [
             "type": "FeatureCollection",
-            "features": landPlan.landFeatures
+            "features": landFeatures
         ]
         
         geojson = ""
