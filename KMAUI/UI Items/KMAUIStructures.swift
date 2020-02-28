@@ -2035,8 +2035,8 @@ public struct KMAUILandPlanStruct {
     public var mainRoadWidth: Double = 20
     public var regularRoadWidth: Double = 6
     // Grid parameters for a block, each block has rowsPerBlock lines with Sub Lands inside
-    public var itemsInBlockHorizontal: Double = 5
-    public var itemsInBlockVertical: Double = 2
+    public var itemsInSubBlockHorizontal: Double = 5
+    public var itemsInSubBlockVertical: Double = 2
     public var rowsPerBlock: Double = 4
     // Objects and results
     public var landFeatures = [[String: Any]]()
@@ -2057,7 +2057,7 @@ public struct KMAUILandPlanStruct {
     
     public init() {}
     
-    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInBlockHorizontal: Double? = nil, itemsInBlockVertical: Double? = nil, rowsPerBlock: Double? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
+    public init(centerCoordinate: CLLocationCoordinate2D, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Double? = nil, itemsInSubBlockVertical: Double? = nil, rowsPerBlock: Double? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
         // Center coordinate
         self.centerCoordinate = centerCoordinate
         
@@ -2097,13 +2097,13 @@ public struct KMAUILandPlanStruct {
         }
         
         // Items in block horizontal
-        if let itemsInBlockHorizontal = itemsInBlockHorizontal {
-            self.itemsInBlockHorizontal = itemsInBlockHorizontal
+        if let itemsInSubBlockHorizontal = itemsInSubBlockHorizontal {
+            self.itemsInSubBlockHorizontal = itemsInSubBlockHorizontal
         }
         
         // Items in block vertical
-        if let itemsInBlockVertical = itemsInBlockVertical {
-            self.itemsInBlockVertical = itemsInBlockVertical
+        if let itemsInSubBlockVertical = itemsInSubBlockVertical {
+            self.itemsInSubBlockVertical = itemsInSubBlockVertical
         }
         
         // Rows per block
@@ -2159,12 +2159,12 @@ public struct KMAUILandPlanStruct {
         // MARK: - Blocks grid
             
         // Get the block counts - horizontal
-        let averageBlockWidth = itemsInBlockHorizontal * averageSubLandSize
+        let averageBlockWidth = itemsInSubBlockHorizontal * averageSubLandSize
         let horizontalBlocks = (areaWidth - mainRoadWidth) / (averageBlockWidth + mainRoadWidth)
         var horizontalBlocksCount = Int(horizontalBlocks)
         
         // Get the block counts - vertical
-        let averageBlockHeight = (rowsPerBlock - 1) * regularRoadWidth + rowsPerBlock * itemsInBlockVertical * averageSubLandSize
+        let averageBlockHeight = (rowsPerBlock - 1) * regularRoadWidth + rowsPerBlock * itemsInSubBlockVertical * averageSubLandSize
         let verticalBlocks = (areaHeight - mainRoadWidth) / (averageBlockHeight + mainRoadWidth)
         var verticalBlocksCount = Int(verticalBlocks)
         
@@ -2205,7 +2205,7 @@ public struct KMAUILandPlanStruct {
             
             // Getting the extra space calculations
             if verticalExtraSpace > 0 {
-                subBlockRowsCustom = (verticalExtraSpace + regularRoadWidth) / (averageSubLandSize * itemsInBlockVertical + regularRoadWidth)
+                subBlockRowsCustom = (verticalExtraSpace + regularRoadWidth) / (averageSubLandSize * itemsInSubBlockVertical + regularRoadWidth)
                 
                 if subBlockRowsCustom - Double(Int(subBlockRowsCustom)) > 0.25 {
                     subBlockRowsCustom = Double(Int(subBlockRowsCustom)) + 1
@@ -2233,7 +2233,7 @@ public struct KMAUILandPlanStruct {
                 
                 // MARK: - Create the inner grid for a block - calculating the rows / columns count
                 var subBlockRows = rowsPerBlock
-                var subBlockColumns = itemsInBlockHorizontal
+                var subBlockColumns = itemsInSubBlockHorizontal
                 var customBlock = false
                 
                 // MARK: - Step vertical road
@@ -2284,15 +2284,15 @@ public struct KMAUILandPlanStruct {
                     
                     for subBlockRow in 0..<Int(subBlockRows) {
                         // MARK: - Getting the random height for row 1 and 2 inside the Sub Block
-                        let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * itemsInBlockVertical * Double(subBlockRow), azimuth: Double.pi + angle)
+                        let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * itemsInSubBlockVertical * Double(subBlockRow), azimuth: Double.pi + angle)
                         
                         var subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
-                        var subLandHeight2 = averageSubLandSize * itemsInBlockVertical - subLandHeight1
+                        var subLandHeight2 = averageSubLandSize * itemsInSubBlockVertical - subLandHeight1
                         
-                        var subBlockHeight = averageSubLandSize * itemsInBlockVertical
+                        var subBlockHeight = averageSubLandSize * itemsInSubBlockVertical
                         
                         if subBlockRow + 1 == Int(subBlockRows), customBlock {
-                            subBlockHeight = blockHeight - Double(subBlockRow) * (averageSubLandSize * itemsInBlockVertical + regularRoadWidth)
+                            subBlockHeight = blockHeight - Double(subBlockRow) * (averageSubLandSize * itemsInSubBlockVertical + regularRoadWidth)
                             subLandHeight2 = subBlockHeight - subLandHeight1
                             
                             if subLandHeight2 < minSubLandSide {
@@ -2306,7 +2306,7 @@ public struct KMAUILandPlanStruct {
                         
                         if subBlockRow + 1 < Int(subBlockRows) {
                             // MARK: - Adding Regular Road
-                            let regularRoadTopLeft = subBlockLeftTop.shift(byDistance: averageSubLandSize * itemsInBlockVertical, azimuth: Double.pi + angle)
+                            let regularRoadTopLeft = subBlockLeftTop.shift(byDistance: averageSubLandSize * itemsInSubBlockVertical, azimuth: Double.pi + angle)
                             addMapItem(topLeft: regularRoadTopLeft, width: blockWidth, height: regularRoadWidth, name: "\(column)-\(row)-\(subBlockRow)", type: "Regular Road", angle: angle)
                         }
 
