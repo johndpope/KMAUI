@@ -1930,7 +1930,7 @@ public struct KMAMapAreaStruct {
     public var population = 0
     public var cityId = ""
     // Land plans
-    public var landPlands = [KMAUILandPlanStruct]()
+    public var landPlans = [KMAUILandPlanStruct]()
 
     public init() {}
     
