@@ -2051,13 +2051,15 @@ public struct KMAUILandPlanStruct {
     public var residentialCount = 0
     public var residentialSaleCount = 0
     public var residentialLotteryCount = 0
+    // Square meter price
+    public var squareMeterPrice: Double = 1500
     // Result items
     public var geojson = ""
     public var subLandItems = [PFObject]()
     
     public init() {}
     
-    public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil) {
+    public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil, squareMeterPrice: Double? = nil) {
         // Center coordinate
         self.centerCoordinate = centerCoordinate
         
@@ -2134,6 +2136,11 @@ public struct KMAUILandPlanStruct {
         // Sale percent
         if let salePercent = salePercent {
             self.salePercent = salePercent
+        }
+        
+        // Square meter price
+        if let squareMeterPrice = squareMeterPrice {
+            self.squareMeterPrice = squareMeterPrice
         }
     }
     
@@ -2480,8 +2487,17 @@ public struct KMAUILandPlanStruct {
                     
                     // subLandPercent - square / average square
                     subLandObject["subLandPercent"] = width * height / (averageSubLandSize * averageSubLandSize)
+                    
+                    // extraPrice
+                    let additionalSquare = width * height - averageSubLandSize * averageSubLandSize
+                    
+                    if additionalSquare > 0 {
+                        subLandObject["extraPrice"] = additionalSquare * squareMeterPrice
+                    } else {
+                        subLandObject["extraPrice"] = 0
+                    }
                 }
-                
+
                 subLandItems.append(subLandObject)
             }
         }
@@ -2539,8 +2555,10 @@ public struct KMAUILandPlanStruct {
                     }
                 } else if itemType == "Commercial" {
                     commercialCount += 1
+                    item["subLandType"] = "Commercial"
                 } else if itemType == "Services" {
                     servicesCount += 1
+                    item["subLandType"] = "Services"
                 }
             }
         }
