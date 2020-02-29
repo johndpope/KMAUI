@@ -2056,6 +2056,9 @@ public struct KMAUILandPlanStruct {
     // Result items
     public var geojson = ""
     public var subLandItems = [PFObject]()
+    // Plan dates
+    public var startDate = Date()
+    public var endDate = Date()
     
     public init() {}
     
