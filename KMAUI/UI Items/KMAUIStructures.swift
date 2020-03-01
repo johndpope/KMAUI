@@ -2305,7 +2305,14 @@ public struct KMAUILandPlanStruct {
                         // MARK: - Getting the random height for row 1 and 2 inside the Sub Block
                         let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * Double(itemsInSubBlockVertical) * Double(subBlockRow), azimuth: Double.pi + angle)
                         
-                        var subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                        var subLandHeight1: Double = 0
+                            
+                        if maxSubLandSide > minSubLandSide {
+                            subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                        } else {
+                            subLandHeight1 = maxSubLandSide
+                        }
+                        
                         var subLandHeight2 = averageSubLandSize * Double(itemsInSubBlockVertical) - subLandHeight1
                         
                         var subBlockHeight = averageSubLandSize * Double(itemsInSubBlockVertical)
@@ -2337,7 +2344,11 @@ public struct KMAUILandPlanStruct {
                             if subLandColumn + 1 == Int(subBlockColumns) {
                                 subLandWidth = blockWidth - totalWidth
                             } else {
-                                subLandWidth = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                                if maxSubLandSide > minSubLandSide {
+                                    subLandWidth = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                                } else {
+                                    subLandWidth = maxSubLandSide
+                                }
                             }
                             
                             // MARK: - Adding Sub Land
