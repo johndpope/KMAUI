@@ -74,6 +74,19 @@ public class KMAUIParse {
         }
     }
     
+    /**
+     Get Saudi Arabia regions
+     */
+    
+    public func getSaudiArabiaRegions(completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+        // Saudi Arabia Parse object id
+        let saudiArabiaId = "ocRDUNG9ZR"
+        // Get the items
+        KMAUIParse.shared.getMapArea(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
+            completion(areaItems)
+        }
+    }
+    
     /*
     /**
      Get the map area by the level and parent id
