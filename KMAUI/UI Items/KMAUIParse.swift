@@ -305,7 +305,7 @@ public class KMAUIParse {
                             print(saveError.localizedDescription)
                             completion(false)
                         } else if success {
-                            print("Lottery member status changed to `\(isActive)`.")
+//                            print("Lottery member status changed to `\(isActive)`.")
                             // Update members for region
                             if isActive {
                                 region.incrementKey("lotteryMembersCount")
