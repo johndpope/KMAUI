@@ -232,4 +232,75 @@ public class KMAUIParse {
             completion(items)
         }
     }*/
+    
+    // MARK: - Joined regions for lotteries
+    
+    public func getLandPlanCitizenRegions(citizenId: String, completion: @escaping (_ regionIds: [String])->()) {
+        let query = PFQuery(className: "KMALotteryMember")
+        query.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        query.whereKey("isActive", equalTo: true)
+        
+        query.findObjectsInBackground { (regions, error) in
+            var regionIds = [String]()
+            
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else if let regions = regions {
+                for region in regions {
+                    if let objectId = region.objectId, !regionIds.contains(objectId) {
+                        regionIds.append(objectId)
+                    }
+                }
+            }
+            
+            completion(regionIds)
+        }
+    }
+    
+    // MARK: - Join / leave queue
+    
+    public func setLotteryMember(citizenId: String, regionId: String, isActive: Bool, completion: @escaping (_ done: Bool)->()) {
+        // Check if item exists
+        let query = PFQuery(className: "KMALotteryMember")
+        query.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        query.limit = 1
+        // Get results
+        query.findObjectsInBackground { (items, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(false)
+            } else if let items = items {
+                if items.isEmpty {
+                    let newItem = PFObject(className: "KMALotteryMember")
+                    newItem["citizen"] = PFUser(withoutDataWithObjectId: citizenId)
+                    newItem["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+                    newItem["isActive"] = isActive
+                    // Save new item
+                    newItem.saveInBackground { (success, saveError) in
+                        if let saveError = saveError {
+                            print(saveError.localizedDescription)
+                            completion(false)
+                        } else if success {
+                            print("New lottery member added with status `\(isActive)`.")
+                            completion(true)
+                        }
+                    }
+                } else {
+                    let item = items[0]
+                    item["isActive"] = isActive
+                    // Save result
+                    item.saveInBackground { (success, saveError) in
+                        if let saveError = saveError {
+                            print(saveError.localizedDescription)
+                            completion(false)
+                        } else if success {
+                            print("Lottery member status changed to `\(isActive)`.")
+                            completion(true)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
