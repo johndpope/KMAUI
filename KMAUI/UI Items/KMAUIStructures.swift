@@ -1931,6 +1931,7 @@ public struct KMAMapAreaStruct {
     public var cityId = ""
     // Land plans
     public var landPlans = [KMAUILandPlanStruct]()
+    public var lotteryMembersCount = 0
 
     public init() {}
     
@@ -2013,6 +2014,10 @@ public struct KMAMapAreaStruct {
         
         if let cityId = object["cityId"] as? String {
             self.cityId = cityId
+        }
+        
+        if let lotteryMembersCount = object["lotteryMembersCount"] as? Int {
+            self.lotteryMembersCount = lotteryMembersCount
         }
     }
 }
