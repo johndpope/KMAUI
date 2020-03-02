@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMARegionLotteryTableViewCell" rowHeight="60" id="s71-7n-56i" customClass="KMARegionLotteryTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="s71-7n-56i" id="k5l-Wg-7Rc">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2S8-RM-O8d" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                        <rect key="frame" x="16" y="8" width="246" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0E7-rr-tIf" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                        <rect key="frame" x="16" y="30" width="246" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="ers-0p-SDE"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZe-5C-s9A" customClass="KMAUIButtonFilled" customModule="KMAUI">
+                        <rect key="frame" x="278" y="8" width="120" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="7rb-5Q-F0b"/>
+                            <constraint firstAttribute="height" constant="44" id="xMT-t8-jnL"/>
+                        </constraints>
+                        <state key="normal" title="Join queue"/>
+                        <connections>
+                            <action selector="joinQueueButtonPressed:" destination="s71-7n-56i" eventType="touchUpInside" id="PIX-58-0mz"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="pZe-5C-s9A" secondAttribute="bottom" constant="8" id="0wl-6i-yTC"/>
+                    <constraint firstItem="0E7-rr-tIf" firstAttribute="top" secondItem="2S8-RM-O8d" secondAttribute="bottom" id="4lL-VN-4NU"/>
+                    <constraint firstAttribute="trailing" secondItem="pZe-5C-s9A" secondAttribute="trailing" constant="16" id="AZE-2w-Jkn"/>
+                    <constraint firstItem="pZe-5C-s9A" firstAttribute="leading" secondItem="2S8-RM-O8d" secondAttribute="trailing" constant="16" id="Bfh-Jh-yK5"/>
+                    <constraint firstItem="2S8-RM-O8d" firstAttribute="leading" secondItem="k5l-Wg-7Rc" secondAttribute="leading" constant="16" id="JWc-94-A8I"/>
+                    <constraint firstAttribute="bottom" secondItem="0E7-rr-tIf" secondAttribute="bottom" constant="8" id="WFM-rb-Ivr"/>
+                    <constraint firstItem="pZe-5C-s9A" firstAttribute="top" secondItem="k5l-Wg-7Rc" secondAttribute="top" constant="8" id="cCi-3P-ghG"/>
+                    <constraint firstItem="0E7-rr-tIf" firstAttribute="leading" secondItem="k5l-Wg-7Rc" secondAttribute="leading" constant="16" id="e2u-yP-xPp"/>
+                    <constraint firstItem="2S8-RM-O8d" firstAttribute="top" secondItem="k5l-Wg-7Rc" secondAttribute="top" constant="8" id="f4s-Nf-ZyX"/>
+                    <constraint firstItem="pZe-5C-s9A" firstAttribute="leading" secondItem="0E7-rr-tIf" secondAttribute="trailing" constant="16" id="j6P-Lm-CSQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="queueButton" destination="pZe-5C-s9A" id="fgq-xU-6Wh"/>
+                <outlet property="regionNameLabel" destination="2S8-RM-O8d" id="jyt-P5-RRs"/>
+                <outlet property="subLandsCountLabel" destination="0E7-rr-tIf" id="2S7-qL-pEH"/>
+                <outlet property="subLandsCountLabelHeight" destination="ers-0p-SDE" id="RXs-Fw-dVY"/>
+            </connections>
+            <point key="canvasLocation" x="99" y="93"/>
+        </tableViewCell>
+    </objects>
+</document>
