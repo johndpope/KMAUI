@@ -247,7 +247,7 @@ public class KMAUIParse {
                 print("Error: \(error.localizedDescription)")
             } else if let regions = regions {
                 for region in regions {
-                    if let objectId = region.objectId, !regionIds.contains(objectId) {
+                    if let regionObject = region["region"] as? PFObject, let objectId = regionObject.objectId, !regionIds.contains(objectId) {
                         regionIds.append(objectId)
                     }
                 }
