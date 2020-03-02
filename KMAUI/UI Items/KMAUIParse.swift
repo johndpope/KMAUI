@@ -83,7 +83,9 @@ public class KMAUIParse {
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
         KMAUIParse.shared.getMapArea(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
-            completion(areaItems)
+            KMAUIParse.shared.getLandPlans(items: areaItems) { (items) in
+                completion(items)
+            }
         }
     }
     
