@@ -58,6 +58,8 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="queueButton" destination="pZe-5C-s9A" id="fgq-xU-6Wh"/>
+                <outlet property="queueButtonLeft" destination="Bfh-Jh-yK5" id="n82-w3-ra5"/>
+                <outlet property="queueButtonWidth" destination="7rb-5Q-F0b" id="qaN-tu-SUj"/>
                 <outlet property="regionNameLabel" destination="2S8-RM-O8d" id="jyt-P5-RRs"/>
                 <outlet property="subLandsCountLabel" destination="0E7-rr-tIf" id="2S7-qL-pEH"/>
                 <outlet property="subLandsCountLabelHeight" destination="ers-0p-SDE" id="RXs-Fw-dVY"/>

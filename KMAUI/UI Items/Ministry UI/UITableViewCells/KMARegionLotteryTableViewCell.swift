@@ -14,9 +14,12 @@ public class KMARegionLotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var subLandsCountLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var subLandsCountLabelHeight: NSLayoutConstraint!
     @IBOutlet public weak var queueButton: KMAUIButtonFilled!
+    @IBOutlet public weak var queueButtonWidth: NSLayoutConstraint!
+    @IBOutlet public weak var queueButtonLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMARegionLotteryTableViewCell"
+    public var canJoin = false
     public var region = KMAMapAreaStruct()
     public var joined = false {
            didSet {
@@ -51,6 +54,16 @@ public class KMARegionLotteryTableViewCell: UITableViewCell {
             subLandsCountLabel.text = "Queue: \(region.lotteryMembersCount)"
         } else {
             subLandsCountLabel.text = "Land Plans: \(region.landPlans.count), queue: \(region.lotteryMembersCount)"
+        }
+        
+        if canJoin {
+            queueButton.alpha = 1
+            queueButtonWidth.constant = 120
+            queueButtonLeft.constant = 16
+        } else {
+            queueButton.alpha = 0
+            queueButtonWidth.constant = 0
+            queueButtonLeft.constant = 0
         }
         
         if joined {
