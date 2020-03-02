@@ -291,6 +291,7 @@ public class KMAUIParse {
                             } else {
                                 region.incrementKey("lotteryMembersCount", byAmount: -1)
                             }
+                            region.saveInBackground()
                             // Data saved
                             completion(true)
                         }
@@ -311,6 +312,7 @@ public class KMAUIParse {
                             } else {
                                 region.incrementKey("lotteryMembersCount", byAmount: -1)
                             }
+                            region.saveInBackground()
                             // Data saved
                             completion(true)
                         }
