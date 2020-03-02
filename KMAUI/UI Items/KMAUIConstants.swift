@@ -94,6 +94,7 @@ public class KMAUIConstants {
     public let placeholderUploadImage = UIImage(named: "placeholderUploadImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let placeholderProfileImage = UIImage(named: "placeholderProfileImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let placeholderUploadImageNoir = UIImage(named: "placeholderUploadImageNoir", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let landPlanTabIcon = UIImage(named: "landPlanTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
