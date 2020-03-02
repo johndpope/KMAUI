@@ -87,6 +87,103 @@ public class KMAUIParse {
         }
     }
     
+    /**
+     Get land plans
+     */
+    
+    public func getLandPlans(items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+        var items = items
+        
+        // Get plans for regions
+        var parseItems = [PFObject]()
+        
+        for item in items {
+            parseItems.append(PFObject(withoutDataWithClassName: "KMAMapArea", objectId: item.objectId))
+        }
+        
+        // Clean the land plands
+        for (index, item) in items.enumerated() {
+            var itemObject = item
+            itemObject.landPlans = [KMAUILandPlanStruct]()
+            items[index] = itemObject
+        }
+        
+        if !parseItems.isEmpty {
+            let query = PFQuery(className: "KMALandPlan")
+            query.order(byAscending: "planName")
+            query.whereKey("region", containedIn: parseItems)
+            
+            query.findObjectsInBackground { (plans, error) in
+                if let error = error {
+                    print("Error getting the Land Plans for regions: \(error.localizedDescription).")
+                    completion(items)
+                } else if let plans = plans {
+                    if plans.isEmpty {
+                        print("No Land Plans loaded for regions.")
+                    } else {
+                        print("\nLand Plans loaded for regions: \(plans.count)")
+                        
+                        for plan in plans {
+                            var landPlanObject = KMAUILandPlanStruct()
+                            
+                            // planName
+                            if let planName = plan["planName"] as? String {
+                                landPlanObject.landName = planName
+                            }
+                            // startDate
+                            if let startDate = plan["startDate"] as? Date {
+                                landPlanObject.startDate = startDate
+                            }
+                            // endDate
+                            if let endDate = plan["endDate"] as? Date {
+                                landPlanObject.endDate = endDate
+                            }
+                            // subLandsCount
+                            if let subLandsCount = plan["subLandsCount"] as? Int {
+                                landPlanObject.subLandsCount = subLandsCount
+                            }
+                            // landArea
+                            if let landArea = plan["landArea"] as? String {
+                                landPlanObject.geojson = landArea
+                            }
+                            // centerCoordinate
+                            if let location = plan["location"] as? PFGeoPoint {
+                                landPlanObject.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                            }
+                            // minX, minY
+                            if let minX = plan["minX"] as? Double, let minY = plan["minY"] as? Double {
+                                landPlanObject.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+                            }
+                            // maxX, maxY
+                            if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
+                                landPlanObject.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+                            }
+
+                            if let region = plan["region"] as? PFObject, let regionId = region.objectId {
+                                // Region id
+                                landPlanObject.regionId = regionId
+                                // Arrays of Plan Land for regions
+                                for (index, item) in items.enumerated() {
+                                    if item.objectId == regionId {
+                                        var itemObject = item
+                                        var landPlans = itemObject.landPlans
+                                        landPlans.append(landPlanObject)
+                                        itemObject.landPlans = landPlans
+                                        items[index] = itemObject
+                                        
+                                        break
+                                    }
+                                }
+                            }
+                        }
+                        
+                        completion(items)
+                    }
+                }
+            }
+        }
+    }
+    
     /*
     /**
      Get the map area by the level and parent id
