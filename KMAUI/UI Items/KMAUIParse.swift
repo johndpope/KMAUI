@@ -271,10 +271,12 @@ public class KMAUIParse {
                 print(error.localizedDescription)
                 completion(false)
             } else if let items = items {
+                let region = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+                
                 if items.isEmpty {
                     let newItem = PFObject(className: "KMALotteryMember")
                     newItem["citizen"] = PFUser(withoutDataWithObjectId: citizenId)
-                    newItem["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+                    newItem["region"] = region
                     newItem["isActive"] = isActive
                     // Save new item
                     newItem.saveInBackground { (success, saveError) in
@@ -283,6 +285,13 @@ public class KMAUIParse {
                             completion(false)
                         } else if success {
                             print("New lottery member added with status `\(isActive)`.")
+                            // Update members for region
+                            if isActive {
+                                region.incrementKey("lotteryMembersCount")
+                            } else {
+                                region.incrementKey("lotteryMembersCount", byAmount: -1)
+                            }
+                            // Data saved
                             completion(true)
                         }
                     }
@@ -296,6 +305,13 @@ public class KMAUIParse {
                             completion(false)
                         } else if success {
                             print("Lottery member status changed to `\(isActive)`.")
+                            // Update members for region
+                            if isActive {
+                                region.incrementKey("lotteryMembersCount")
+                            } else {
+                                region.incrementKey("lotteryMembersCount", byAmount: -1)
+                            }
+                            // Data saved
                             completion(true)
                         }
                     }
