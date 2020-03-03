@@ -48,17 +48,18 @@ public class KMAUIParse {
                 print("Error getting countries: \(error.localizedDescription).")
             } else if let countriesArray = countriesArray {
                 print("\nTotal items loaded: \(countriesArray.count)")
-
-                for (index, country) in countriesArray.enumerated() {
-                    if let nameE = country["nameE"] as? String {
-//                        print("\(index + 1). \(nameE)")
-                        var item = KMAMapAreaStruct()
-                        item.fillFrom(object: country)
-                        
-                        if item.isActive {
-                            items.append(item)
-                        }
+                
+                //                for (index, country) in countriesArray.enumerated() {
+                for country in countriesArray {
+                    //                    if let nameE = country["nameE"] as? String {
+                    //                        print("\(index + 1). \(nameE)")
+                    var item = KMAMapAreaStruct()
+                    item.fillFrom(object: country)
+                    
+                    if item.isActive {
+                        items.append(item)
                     }
+                    //                    }
                 }
                 
                 if countriesArray.count == 100 {
