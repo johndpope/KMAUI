@@ -100,6 +100,11 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the items..."
                 action = ""
             }
+        } else if type == "regions" {
+            info = "Please select the region to review the list of Land Plans for it."
+            action = ""
+        } else if type == "" {
+            
         }
         
         infoLabel.text = info
