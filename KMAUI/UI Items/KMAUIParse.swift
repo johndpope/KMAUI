@@ -51,7 +51,7 @@ public class KMAUIParse {
 
                 for (index, country) in countriesArray.enumerated() {
                     if let nameE = country["nameE"] as? String {
-                        print("\(index + 1). \(nameE)")
+//                        print("\(index + 1). \(nameE)")
                         var item = KMAMapAreaStruct()
                         item.fillFrom(object: country)
                         
