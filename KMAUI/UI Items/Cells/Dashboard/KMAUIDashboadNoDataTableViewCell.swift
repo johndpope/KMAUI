@@ -103,8 +103,9 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         } else if type == "regions" {
             info = "Please select the region to review the list of Land Plans for it."
             action = ""
-        } else if type == "" {
-            
+        } else if type == "noLandPlans" {
+            info = "No active Land Plans exist for region."
+            action = ""
         }
         
         infoLabel.text = info
