@@ -171,6 +171,35 @@ public class KMAUIParse {
                                         landPlanObject.areaWidth = width
                                         landPlanObject.areaHeight = height
                                     }
+                                    
+                                    // Sub Lands
+                                    landPlanObject.subLandArray = [KMAUILandPlanStruct]()
+                                    
+                                    for item in features {
+                                        if let itemProperties = item["properties"] as? [String: String], let itemType = itemProperties["type"], itemType == "Sub Land", let itemName = itemProperties["name"] {
+                                            // coordinates
+                                            if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
+                                                let topLeftCoordinate = coordinates[0]
+                                                let topRightCoordinate = coordinates[1]
+                                                let bottomLeftCoordinate = coordinates[3]
+                                                
+                                                let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                                                let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                                                let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+                                                
+                                                let width = Int(topLeft.distance(from: topRight))
+                                                let height = Int(topLeft.distance(from: bottomLeft))
+                                                
+                                                print("Sub Land \(itemName.replacingOccurrences(of: "-", with: "")): \(width) m x \(height) m")
+                                                var subLandItem = KMAUILandPlanStruct()
+                                                subLandItem.areaWidth = Double(width)
+                                                subLandItem.areaHeight = Double(height)
+                                                subLandItem.landName = "Sub Land \(itemName.replacingOccurrences(of: "-", with: ""))"
+                                                
+                                                landPlanObject.subLandArray.append(subLandItem)
+                                            }
+                                        }
+                                    }
                                 }
                             }
                             // centerCoordinate

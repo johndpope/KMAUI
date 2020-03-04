@@ -2085,6 +2085,7 @@ public struct KMAUILandPlanStruct {
     public var subLandsCount = 0
     // Department object
     public var responsibleDivision = KMADepartmentStruct()
+    public var subLandArray = [KMAUILandPlanStruct]()
     
     public init() {}
     
