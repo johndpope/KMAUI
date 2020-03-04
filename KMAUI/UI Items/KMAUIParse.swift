@@ -176,8 +176,6 @@ public class KMAUIParse {
                                     landPlanObject.subLandArray = [KMAUILandPlanStruct]()
                                     
                                     for item in features {
-                                        print(item)
-                                        
                                         if let itemProperties = item["properties"] as? [String: String], let itemType = itemProperties["type"], itemType == "Sub Land", let itemName = itemProperties["name"] {
                                             // coordinates
                                             if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
