@@ -115,6 +115,7 @@ public class KMAUIParse {
             let query = PFQuery(className: "KMALandPlan")
             query.order(byAscending: "planName")
             query.whereKey("region", containedIn: parseItems)
+            query.includeKey("responsibleDivision")
             
             query.findObjectsInBackground { (plans, error) in
                 if let error = error {
@@ -192,53 +193,6 @@ public class KMAUIParse {
             }
         }
     }
-    
-    /*
-    /**
-     Get the map area by the level and parent id
-     */
-    
-    public func getMapArea(level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
-        // Get the countries list
-        let mapAreaQuery = PFQuery(className: "KMAMapArea")
-
-        if parentObjectId.isEmpty {
-            // Get the top level items - Countries
-            mapAreaQuery.whereKey("level", equalTo: 1)
-        } else  {
-            // Get the items for a parent
-            mapAreaQuery.whereKey("parent", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: parentObjectId))
-        }
-        
-        mapAreaQuery.order(byAscending: "nameE")
-        mapAreaQuery.includeKey("country")
-        mapAreaQuery.includeKey("city")
-
-        // Get inf from Parse, prepare an array and return the items with the completion handler
-        mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
-            var items = [KMAMapAreaStruct]()
-            
-            if let error = error {
-                print("Error getting countries: \(error.localizedDescription).")
-            } else if let countriesArray = countriesArray {
-                print("Total countries loaded: \(countriesArray.count)")
-
-                for (index, country) in countriesArray.enumerated() {
-                    if let nameE = country["nameE"] as? String {
-                        print("\(index + 1). \(nameE)")
-                        var item = KMAMapAreaStruct()
-                        item.fillFrom(object: country)
-                        
-                        if item.isActive {
-                            items.append(item)
-                        }
-                    }
-                }
-            }
-            
-            completion(items)
-        }
-    }*/
     
     // MARK: - Joined regions for lotteries
     
