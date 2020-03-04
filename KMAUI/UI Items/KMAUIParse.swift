@@ -150,7 +150,7 @@ public class KMAUIParse {
                             if let landArea = plan["landArea"] as? String {
                                 landPlanObject.geojson = landArea
                                 
-                                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: geojson)
+                                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
 
                                 if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
                                     let border = features[0]
