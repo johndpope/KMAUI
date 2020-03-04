@@ -341,8 +341,8 @@ public class KMAUIParse {
             if let error = error {
                 print(error.localizedDescription)
             } else if let citizens = citizens {
-                for person in citizens {
-                    if let person = person as? PFUser {
+                for lotteryMember in citizens {
+                    if let person = lotteryMember["citizen"] as? PFUser {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: person)
                         citizensArray.append(personObject)
