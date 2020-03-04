@@ -122,7 +122,7 @@ public class KMAUIParse {
                     completion(items)
                 } else if let plans = plans {
                     if plans.isEmpty {
-                        print("No Land Plans loaded for regions.")
+                        print("\nNo Land Plans loaded for regions.")
                     } else {
                         print("\nLand Plans loaded for regions: \(plans.count)")
                         
@@ -320,6 +320,36 @@ public class KMAUIParse {
                     }
                 }
             }
+        }
+    }
+    
+    // MARK: - Get queue for region
+    
+    public func getQueue(regionId: String, completion: @escaping (_ citizens: [KMAPerson])->()) {
+        // Load citizens for region queue
+        let query = PFQuery(className: "KMALotteryMember")
+        query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        query.includeKey("citizen")
+        query.includeKey("citizen.homeAddress")
+        query.includeKey("citizen.homeAddress.building")
+        query.order(byAscending: "citizen.username")
+        // Run the query
+        query.findObjectsInBackground { (citizens, error) in
+            var citizensArray = [KMAPerson]()
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let citizens = citizens {
+                for person in citizens {
+                    if let person = person as? PFUser {
+                        var personObject = KMAPerson()
+                        personObject.fillFrom(person: person)
+                        citizensArray.append(personObject)
+                    }
+                }
+            }
+            
+            completion(citizensArray)
         }
     }
 }
