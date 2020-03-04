@@ -161,6 +161,12 @@ public class KMAUIParse {
                             if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
                                 landPlanObject.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
                             }
+                            // responsibleDivision
+                            if let responsibleDivisionValue = plan["responsibleDivision"] as? PFObject {
+                                var divisionObject = KMADepartmentStruct()
+                                divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
+                                landPlanObject.responsibleDivision = divisionObject
+                            }
 
                             if let region = plan["region"] as? PFObject, let regionId = region.objectId {
                                 // Region id

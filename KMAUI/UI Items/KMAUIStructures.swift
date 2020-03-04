@@ -1800,6 +1800,41 @@ public struct KMACitizenProperty {
     }
 }
 
+// MARK: - KMADepartment
+
+public struct KMADepartmentStruct {
+    public var departmentId = ""
+    public var departmentHandle = ""
+    public var departmentName = ""
+    public var departmentAbout = ""
+    public var departmentLogo = ""
+    
+    public init() {
+    }
+    
+    public mutating func fillFromParse(departmentObject: PFObject) {
+        if let objectIdValue = departmentObject.objectId {
+            self.departmentId = objectIdValue
+            
+            if let handleValue = departmentObject["departmentHandle"] as? String {
+                self.departmentHandle = handleValue
+            }
+            
+            if let nameValue = departmentObject["departmentName"] as? String {
+                self.departmentName = nameValue
+            }
+            
+            if let aboutValue = departmentObject["departmentDescription"] as? String {
+                self.departmentAbout = aboutValue
+            }
+            
+            if let profileImageFile = departmentObject["departmentProfileImage"] as? PFFileObject, let profileImageURL = profileImageFile.url {
+                self.departmentLogo = profileImageURL
+            }
+        }
+    }
+}
+
 // MARK: - Citizen Upload
 
 public struct KMACitizenUpload {
@@ -1810,10 +1845,6 @@ public struct KMACitizenUpload {
     public var uploadDescription = ""
     public var uploadBody = ""
     public var processingStatus = ""
-    //    public var city = ""
-    //    public var state = ""
-    //    public var country = ""
-    //    public var zip = ""
     public var departmentId = ""
     public var departmentHandle = ""
     public var departmentName = ""
@@ -1873,22 +1904,6 @@ public struct KMACitizenUpload {
                     }
                 }
             }
-            
-            /*if let cityValue = uploadLoaded["city"] as? String {
-             self.city = cityValue
-             }
-             
-             if let stateValue = uploadLoaded["state"] as? String {
-             self.state = stateValue
-             }
-             
-             if let countryValue = uploadLoaded["country"] as? String {
-             self.country = countryValue
-             }
-             
-             if let zipValue = uploadLoaded["zip"] as? String {
-             self.zip = zipValue
-             }*/
             
             if let uploadCategoryLoaded = uploadLoaded["category"] as? PFObject {
                 if let objectIdValue = uploadCategoryLoaded.objectId {
@@ -2068,6 +2083,8 @@ public struct KMAUILandPlanStruct {
     public var endDate = Date()
     public var regionId = "" // the object id of a region object from KMAMapArea
     public var subLandsCount = 0
+    // Department object
+    public var responsibleDivision = KMADepartmentStruct()
     
     public init() {}
     
