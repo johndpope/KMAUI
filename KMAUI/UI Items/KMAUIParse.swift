@@ -329,6 +329,7 @@ public class KMAUIParse {
         // Load citizens for region queue
         let query = PFQuery(className: "KMALotteryMember")
         query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        query.whereKey("isActive", equalTo: true)
         query.includeKey("citizen")
         query.includeKey("citizen.homeAddress")
         query.includeKey("citizen.homeAddress.building")
@@ -349,6 +350,7 @@ public class KMAUIParse {
                 }
             }
             
+            citizensArray = KMAUIUtilities.shared.orderPersonArray(array: citizensArray)
             completion(citizensArray)
         }
     }

@@ -401,6 +401,16 @@ public class KMAUIUtilities {
         }
     }
     
+    /**
+     Order KMAPerson array by username
+     */
+    
+    func orderPersonArray(array: [KMAPerson]) -> [KMAPerson] {
+        return array.sorted {
+            return $0.username.localizedCaseInsensitiveCompare($1.username) == ComparisonResult.orderedAscending
+        }
+    }
+    
     // MARK: - Label and button layout
     
     func showItems(label: UILabel, constant1: NSLayoutConstraint, constant2: NSLayoutConstraint, button: UIButton) {
