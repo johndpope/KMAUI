@@ -190,7 +190,7 @@ public class KMAUIParse {
                                                 let width = Int(topLeft.distance(from: topRight))
                                                 let height = Int(topLeft.distance(from: bottomLeft))
                                                 
-                                                print("Sub Land \(itemName.replacingOccurrences(of: "-", with: "")): \(width) m x \(height) m")
+//                                                print("Sub Land \(itemName.replacingOccurrences(of: "-", with: "")): \(width) m x \(height) m")
                                                 var subLandItem = KMAUILandPlanStruct()
                                                 subLandItem.areaWidth = Double(width)
                                                 subLandItem.areaHeight = Double(height)
