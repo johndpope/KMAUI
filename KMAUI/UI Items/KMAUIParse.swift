@@ -196,7 +196,8 @@ public class KMAUIParse {
                                                 
                                                 // land name
                                                 if let objectId = itemProperties["objectId"] as? String {
-                                                    subLandItem.landName = "Sub Land \(objectId)"
+                                                    subLandItem.landName = "Sub Land, id: \(objectId)"
+                                                    subLandItem.subLandObjectId = objectId
                                                 }
                                                 
                                                 // center coordinate

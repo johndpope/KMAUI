@@ -2095,6 +2095,7 @@ public struct KMAUILandPlanStruct {
     public var subLandIndex = ""
     public var subLandType = ""
     public var extraPrice: Double = 0
+    public var subLandObjectId = ""
     
     public init() {}
     
