@@ -2472,10 +2472,48 @@ public struct KMAUILandPlanStruct {
                 coordinatesStrings.append(waypoints)
             }
             
+            let areaBounds = getBoundsForRect(locations: coordinatesArray)
+            
+            let minX = areaBounds[0].longitude
+            let minY = areaBounds[0].latitude
+            let maxX = areaBounds[1].longitude
+            let maxY = areaBounds[1].latitude
+            let location = PFGeoPoint(latitude: (areaBounds[0].latitude + areaBounds[1].latitude) / 2, longitude: (areaBounds[0].longitude + areaBounds[1].longitude) / 2)
+            
+            var widthValue: Double = 0
+            var heightValue: Double = 0
+            
+            if let width = width, let height = height {
+                widthValue = width
+                heightValue = height
+            }
+            
+            let subLandSquare = widthValue * heightValue
+            let subLandPercent = widthValue * heightValue / (averageSubLandSize * averageSubLandSize)
+            
+            var extraPrice: Double = 0
+            
+            let additionalSquare = widthValue * heightValue - averageSubLandSize * averageSubLandSize
+            
+            if additionalSquare > 0 {
+                extraPrice = additionalSquare * squareMeterPrice
+            }
+            
             // Land features
             let feature: [String: Any] = [
                 "type": "Feature",
-                "properties": ["name": name, "type": type],
+                "properties": ["name": name,
+                               "type": type,
+                               "minX": minX,
+                               "minY": minY,
+                               "maxX": maxX,
+                               "maxY": maxY,
+                               "location": location,
+                               "width": widthValue,
+                               "height": heightValue,
+                               "subLandSquare": subLandSquare,
+                               "subLandPercent": subLandPercent,
+                               "extraPrice": extraPrice],
                 "geometry": [
                     "type": "LineString",
                     "coordinates": coordinatesStrings
@@ -2502,43 +2540,31 @@ public struct KMAUILandPlanStruct {
                 
                 // subLandArea
                 if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
-                    //For JSON String
+                    // For JSON String
                     if let jsonStr = String(bytes: data, encoding: .utf8) {
                         subLandObject["subLandArea"] = jsonStr
                     }
                 }
                 
                 // location
-                let areaBounds = getBoundsForRect(locations: coordinatesArray)
-                subLandObject["minX"] = areaBounds[0].longitude
-                subLandObject["minY"] = areaBounds[0].latitude
-                subLandObject["maxX"] = areaBounds[1].longitude
-                subLandObject["maxY"] = areaBounds[1].latitude
-                subLandObject["location"] = PFGeoPoint(latitude: (areaBounds[0].latitude + areaBounds[1].latitude) / 2, longitude: (areaBounds[0].longitude + areaBounds[1].longitude) / 2)
+                subLandObject["minX"] = minX
+                subLandObject["minY"] = minY
+                subLandObject["maxX"] = maxX
+                subLandObject["maxY"] = maxY
+                subLandObject["location"] = location
                 
                 // subLandIndex
                 subLandObject["subLandIndex"] = name
                 
                 // subLandSquare
-                if let width = width, let height = height {
-                    subLandObject["subLandWidth"] = width
-                    subLandObject["subLandHeight"] = height
-                    
-                    subLandObject["subLandSquare"] = width * height
-                    
-                    // subLandPercent - square / average square
-                    subLandObject["subLandPercent"] = width * height / (averageSubLandSize * averageSubLandSize)
-                    
-                    // extraPrice
-                    let additionalSquare = width * height - averageSubLandSize * averageSubLandSize
-                    
-                    if additionalSquare > 0 {
-                        subLandObject["extraPrice"] = additionalSquare * squareMeterPrice
-                    } else {
-                        subLandObject["extraPrice"] = 0
-                    }
-                }
-
+                subLandObject["subLandWidth"] = widthValue
+                subLandObject["subLandHeight"] = heightValue
+                subLandObject["subLandSquare"] = subLandSquare
+                
+                // subLandPercent - square / average square
+                subLandObject["subLandPercent"] = subLandPercent
+                subLandObject["extraPrice"] = extraPrice
+                
                 subLandItems.append(subLandObject)
             }
         }
