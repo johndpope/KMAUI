@@ -2089,6 +2089,7 @@ public struct KMAUILandPlanStruct {
     public var responsibleDivision = KMADepartmentStruct()
     // Sub land details
     public var subLandArray = [KMAUILandPlanStruct]()
+    public var lotterySubLandArray = [KMAUILandPlanStruct]()
     public var coordinatesArray = [CLLocationCoordinate2D]()
     public var geojsonDict = [String: Any]()
     public var subLandPercent: Double = 0
