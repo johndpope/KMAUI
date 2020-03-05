@@ -176,29 +176,83 @@ public class KMAUIParse {
                                     landPlanObject.subLandArray = [KMAUILandPlanStruct]()
                                     
                                     for item in features {
-                                        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let itemName = itemProperties["name"] as? String {
+                                        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land" {
                                             // coordinates
                                             if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
                                                 let topLeftCoordinate = coordinates[0]
                                                 let topRightCoordinate = coordinates[1]
+                                                let bottomRightCoordinate = coordinates[2]
                                                 let bottomLeftCoordinate = coordinates[3]
                                                 
-                                                let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                                                let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                                                let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+                                                let topLeft = CLLocationCoordinate2D(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                                                let topRight = CLLocationCoordinate2D(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                                                let bottomRight = CLLocationCoordinate2D(latitude: bottomRightCoordinate[0], longitude: bottomRightCoordinate[1])
+                                                let bottomLeft = CLLocationCoordinate2D(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
                                                 
-                                                let width = Int(topLeft.distance(from: topRight))
-                                                let height = Int(topLeft.distance(from: bottomLeft))
-                                                
-//                                                print("Sub Land \(itemName.replacingOccurrences(of: "-", with: "")): \(width) m x \(height) m")
                                                 var subLandItem = KMAUILandPlanStruct()
-                                                subLandItem.areaWidth = Double(width)
-                                                subLandItem.areaHeight = Double(height)
-                                                subLandItem.landName = "Sub Land \(itemName.replacingOccurrences(of: "-", with: ""))"
+                                                
+                                                // geojson
+                                                subLandItem.geojsonDict = item
+                                                
+                                                // land name
+                                                if let objectId = itemProperties["objectId"] as? String {
+                                                    subLandItem.landName = "Sub Land \(objectId)"
+                                                }
+                                                
+                                                // center coordinate
+                                                if let latitude = itemProperties["latitude"] as? Double, let longitude = itemProperties["longitude"] as? Double {
+                                                    subLandItem.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                                                }
+                                                
+                                                // subLandPercent
+                                                if let subLandPercent = itemProperties["subLandPercent"] as? Double {
+                                                    subLandItem.subLandPercent = subLandPercent
+                                                }
+                                                
+                                                // subLandSquare
+                                                if let subLandSquare = itemProperties["subLandSquare"] as? Double {
+                                                    subLandItem.subLandSquare = subLandSquare
+                                                }
+                                                
+                                                // coordinates array
+                                                subLandItem.coordinatesArray = [topLeft, topRight, bottomRight, bottomLeft]
+                                                
+                                                // sw
+                                                if let minX = itemProperties["minX"] as? Double, let minY = itemProperties["minY"] as? Double {
+                                                    subLandItem.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+                                                }
+                                                
+                                                // ne
+                                                if let maxX = itemProperties["maxX"] as? Double, let maxY = itemProperties["maxY"] as? Double {
+                                                    subLandItem.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+                                                }
+                                                
+                                                // areaWidth
+                                                if let subLandWidth = itemProperties["subLandWidth"] as? Double {
+                                                    subLandItem.areaWidth = subLandWidth
+                                                }
+                                                
+                                                // areaHeight
+                                                if let subLandHeight = itemProperties["subLandHeight"] as? Double {
+                                                    subLandItem.areaHeight = subLandHeight
+                                                }
+                                                
+                                                // subLandIndex
+                                                if let subLandIndex = itemProperties["name"] as? String {
+                                                    subLandItem.subLandIndex = subLandIndex
+                                                }
+                                                
+                                                // subLandType
+                                                if let subLandType = itemProperties["subLandType"] as? String {
+                                                    subLandItem.subLandType = subLandType
+                                                }
+                                                
+                                                // extraPrice
+                                                if let extraPrice = itemProperties["extraPrice"] as? Double {
+                                                    subLandItem.extraPrice = extraPrice
+                                                }
                                                 
                                                 landPlanObject.subLandArray.append(subLandItem)
-                                                
-                                                print(itemProperties)
                                             }
                                         }
                                     }

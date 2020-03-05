@@ -2059,6 +2059,7 @@ public struct KMAUILandPlanStruct {
     // Grid parameters for a block, each block has rowsPerBlock lines with Sub Lands inside
     public var itemsInSubBlockHorizontal: Int = 5
     public var itemsInSubBlockVertical: Int = 2
+   
     public var rowsPerBlock: Int = 4
     // Objects and results
     public var landFeatures = [[String: Any]]()
@@ -2085,7 +2086,15 @@ public struct KMAUILandPlanStruct {
     public var subLandsCount = 0
     // Department object
     public var responsibleDivision = KMADepartmentStruct()
+    // Sub land details
     public var subLandArray = [KMAUILandPlanStruct]()
+    public var coordinatesArray = [CLLocationCoordinate2D]()
+    public var geojsonDict = [String: Any]()
+    public var subLandPercent: Double = 0
+    public var subLandSquare: Double = 0
+    public var subLandIndex = ""
+    public var subLandType = ""
+    public var extraPrice: Double = 0
     
     public init() {}
     
