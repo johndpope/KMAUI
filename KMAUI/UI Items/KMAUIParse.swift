@@ -197,6 +197,8 @@ public class KMAUIParse {
                                                 subLandItem.landName = "Sub Land \(itemName.replacingOccurrences(of: "-", with: ""))"
                                                 
                                                 landPlanObject.subLandArray.append(subLandItem)
+                                                
+                                                print(itemProperties)
                                             }
                                         }
                                     }
