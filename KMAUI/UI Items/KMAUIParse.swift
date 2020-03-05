@@ -238,9 +238,9 @@ public class KMAUIParse {
                                 }
                             }
                         }
-                        
-                        completion(items)
                     }
+                    
+                    completion(items)
                 }
             }
         }
