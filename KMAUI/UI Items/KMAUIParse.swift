@@ -146,6 +146,10 @@ public class KMAUIParse {
                             if let subLandsCount = plan["subLandsCount"] as? Int {
                                 landPlanObject.subLandsCount = subLandsCount
                             }
+                            // lotteryCompleted
+                            if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
+                                landPlanObject.lotteryCompleted = lotteryCompletedValue
+                            }
                             // landArea
                             if let landArea = plan["landArea"] as? String {
                                 landPlanObject.geojson = landArea

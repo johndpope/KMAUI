@@ -18,7 +18,9 @@ public class KMAUIBlueButtonTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
