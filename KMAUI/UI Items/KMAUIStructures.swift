@@ -2499,23 +2499,7 @@ public struct KMAUILandPlanStruct {
                 extraPrice = additionalSquare * squareMeterPrice
             }
             
-            var properties = ["name": name, "type": type] as [String: Any]
-            
-            if type == "Sub Land" {
-                properties = ["name": name,
-                "type": type,
-                "minX": minX,
-                "minY": minY,
-                "maxX": maxX,
-                "maxY": maxY,
-                "latitude": location.latitude,
-                "longitude": location.longitude,
-                "width": widthValue,
-                "height": heightValue,
-                "subLandSquare": subLandSquare,
-                "subLandPercent": subLandPercent,
-                "extraPrice": extraPrice]
-            }
+            let properties = ["name": name, "type": type] as [String: Any]
             
             // Land features
             let feature: [String: Any] = [
