@@ -146,6 +146,10 @@ public class KMAUIParse {
                             if let subLandsCount = plan["subLandsCount"] as? Int {
                                 landPlanObject.subLandsCount = subLandsCount
                             }
+                            // lotterySubLandsCount
+                            if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
+                                landPlanObject.lotterySubLandsCount = lotterySubLandsCount
+                            }
                             // lotteryCompleted
                             if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
                                 landPlanObject.lotteryCompleted = lotteryCompletedValue
@@ -180,7 +184,7 @@ public class KMAUIParse {
                                     landPlanObject.subLandArray = [KMAUILandPlanStruct]()
                                     
                                     for item in features {
-                                        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land" {
+                                        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String, subLandType == "Residential Lottery" {
                                             // coordinates
                                             if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
                                                 let topLeftCoordinate = coordinates[0]
@@ -195,6 +199,9 @@ public class KMAUIParse {
                                                 
                                                 var subLandItem = KMAUILandPlanStruct()
                                                 
+                                                // subLandType
+                                                subLandItem.subLandType = subLandType
+
                                                 // geojson
                                                 subLandItem.geojsonDict = item
                                                 
@@ -245,11 +252,6 @@ public class KMAUIParse {
                                                 // subLandIndex
                                                 if let subLandIndex = itemProperties["name"] as? String {
                                                     subLandItem.subLandIndex = subLandIndex
-                                                }
-                                                
-                                                // subLandType
-                                                if let subLandType = itemProperties["subLandType"] as? String {
-                                                    subLandItem.subLandType = subLandType
                                                 }
                                                 
                                                 // extraPrice
