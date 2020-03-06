@@ -505,6 +505,7 @@ public class KMAUIParse {
         let subLandsQuery = PFQuery(className: "KMALotteryResult")
         subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
         subLandsQuery.includeKey("subLand")
+        subLandsQuery.includeKey("subLand.landPlan")
         
         subLandsQuery.findObjectsInBackground { (items, error) in
             var subLandArray = [KMAUISubLandStruct]()
