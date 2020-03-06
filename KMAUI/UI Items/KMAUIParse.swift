@@ -504,6 +504,7 @@ public class KMAUIParse {
     public func getReceivedSubLands(citizenId: String, completion: @escaping (_ subLandArray: [KMAUISubLandStruct])->()) {
         let subLandsQuery = PFQuery(className: "KMALotteryResult")
         subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        subLandsQuery.includeKey("subLand")
         
         subLandsQuery.findObjectsInBackground { (items, error) in
             var subLandArray = [KMAUISubLandStruct]()
