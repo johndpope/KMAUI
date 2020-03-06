@@ -1583,6 +1583,7 @@ public struct KMAPerson {
     public var country = ""
     public var uploadsCount = 0
     public var propertyCount = 0
+    public var receivedSubLand = false
     
     public init() {
     }
@@ -1660,6 +1661,11 @@ public struct KMAPerson {
             // Property count
             if let propertyCount = person["propertyCount"] as? Int {
                 self.propertyCount = propertyCount
+            }
+            
+            // Received Sub Land
+            if let receivedSubLand = person["receivedSubLand"] as? Bool {
+                self.receivedSubLand = receivedSubLand
             }
         }
     }

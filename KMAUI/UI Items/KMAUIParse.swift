@@ -413,6 +413,7 @@ public class KMAUIParse {
         query.includeKey("citizen.homeAddress")
         query.includeKey("citizen.homeAddress.building")
         query.order(byAscending: "citizen.username")
+
         // Run the query
         query.findObjectsInBackground { (citizens, error) in
             var citizensArray = [KMAPerson]()
@@ -424,7 +425,11 @@ public class KMAUIParse {
                     if let person = lotteryMember["citizen"] as? PFUser {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: person)
-                        citizensArray.append(personObject)
+                        
+                        // Only add the person to queue if he hasn't received the Sub Land yet
+                        if !personObject.receivedSubLand {
+                            citizensArray.append(personObject)
+                        }
                     }
                 }
             }
