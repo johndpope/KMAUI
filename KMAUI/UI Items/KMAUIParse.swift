@@ -496,4 +496,46 @@ public class KMAUIParse {
             }
         }
     }
+    
+    /**
+     Get received Sub Lands for user
+     */
+    
+    public func getReceivedSubLands(citizenId: String, completion: @escaping (_ subLandArray: [KMAUISubLandStruct])->()) {
+        let subLandsQuery = PFQuery(className: "KMALotteryResult")
+        subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        
+        subLandsQuery.findObjectsInBackground { (items, error) in
+            var subLandArray = [KMAUISubLandStruct]()
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let items = items {
+                for item in items {
+                    var subLandObject = KMAUISubLandStruct()
+                    
+                    // Sub Land
+                    if let subLandValue = item["subLand"] as? PFObject {
+                        subLandObject.fillFromParse(item: subLandValue)
+                    }
+                    // Confirmed
+                    if let confirmed = item["confirmed"] as? Bool {
+                        subLandObject.confirmed = confirmed
+                    }
+                    // Status
+                    if let status = item["status"] as? String {
+                        subLandObject.status = status
+                    }
+                    // Paid
+                    if let paid = item["paid"] as? Bool {
+                        subLandObject.paid = paid
+                    }
+                    
+                    subLandArray.append(subLandObject)
+                }
+            }
+            
+            completion(subLandArray)
+        }
+    }
 }

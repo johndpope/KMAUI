@@ -2043,6 +2043,92 @@ public struct KMAMapAreaStruct {
     }
 }
 
+public struct KMAUISubLandStruct {
+    public var confirmed = false
+    public var status = ""
+    public var paid = false
+    public var landPlanId = ""
+    public var subLandId = ""
+    public var subLandArea = ""
+    public var subLandSquare: Double = 0
+    public var subLandType = ""
+    public var subLandWidth: Double = 0
+    public var subLandHeight: Double = 0
+    public var subLandIndex = ""
+    public var location = CLLocationCoordinate2D()
+    public var sw = CLLocationCoordinate2D()
+    public var ne = CLLocationCoordinate2D()
+    public var subLandPercent: Double = 0
+    public var extraPrice: Double = 0
+    public var subLandDescription = ""
+    public var subLandImages = ""
+    
+    public init() {}
+    
+    mutating public func fillFromParse(item: PFObject) {
+        // landPlanId
+        if let landPlan = item["landPlan"] as? PFObject, let landPlanId = landPlan.objectId {
+            self.landPlanId = landPlanId
+        }
+        // subLandId
+        if let subLandId = item.objectId {
+            self.subLandId = subLandId
+        }
+        // subLandArea
+        if let subLandArea = item["subLandArea"] as? String {
+            self.subLandArea = subLandArea
+        }
+        // subLandSquare
+        if let subLandSquare = item["subLandSquare"] as? Double {
+            self.subLandSquare = subLandSquare
+        }
+        // subLandType
+        if let subLandType = item["subLandType"] as? String {
+            self.subLandType = subLandType
+        }
+        // subLandWidth
+        if let subLandWidth = item["subLandWidth"] as? Double {
+            self.subLandWidth = subLandWidth
+        }
+        // subLandHeight
+        if let subLandHeight = item["subLandHeight"] as? Double {
+            self.subLandHeight = subLandHeight
+        }
+        // subLandIndex
+        if let subLandIndex = item["subLandIndex"] as? String {
+            self.subLandIndex = subLandIndex
+        }
+        // location
+        if let location = item["location"] as? PFGeoPoint {
+            self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        }
+        // sw
+        if let minX = item["minX"] as? Double, let minY = item["minY"] as? Double {
+            self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+        }
+        // ne
+        if let maxX = item["maxX"] as? Double, let maxY = item["maxY"] as? Double {
+            self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+        }
+        // subLandPercent
+        if let subLandPercent = item["subLandPercent"] as? Double {
+            self.subLandPercent = subLandPercent
+        }
+        // extraPrice
+        if let extraPrice = item["extraPrice"] as? Double {
+            self.extraPrice = extraPrice
+        }
+        // subLandDescription
+        if let subLandDescription = item["subLandDescription"] as? String {
+            self.subLandDescription = subLandDescription
+        }
+        // subLandImages
+        if let subLandImages = item["subLandImages"] as? String {
+            self.subLandImages = subLandImages
+        }
+    }
+}
+
 public struct KMAUILandPlanStruct {
     // Land name
     public var landName = "Land Lottery"
