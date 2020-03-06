@@ -443,4 +443,57 @@ public class KMAUIParse {
             completion(citizensArray)
         }
     }
+    
+    // MARK: - Lottery results
+    
+    /**
+     Get lottery results from Parse
+     */
+    
+    public func getLotteryResults(landPlan: KMAUILandPlanStruct, queue: [KMAPerson], completion: @escaping (_ pairsCount: Int, _ subLandIndexes: [Int], _ queueIndexes: [Int])->()) {
+        var pairsCount = 0
+        var subLandIndexes = [Int]()
+        var queueIndexes = [Int]()
+        
+        KMAUIUtilities.shared.startLoading(title: "Loading...")
+        let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
+        lotteryResultQuery.whereKey("landPlan", equalTo: PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId))
+        
+        lotteryResultQuery.findObjectsInBackground { (results, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (done) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading the lottery results.\n\n\(error.localizedDescription)") { (done) in }
+                } else if let results = results, !results.isEmpty {
+                    for result in results {
+                        if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
+                            // Getting Sub Land indexes
+                            for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
+                                if subLandId == subLandItem.subLandObjectId {
+                                    subLandIndexes.append(index)
+                                    break
+                                }
+                            }
+                            
+                            // Getting citizen indexes
+                            for (index, queueItem) in queue.enumerated() {
+                                if citizenId == queueItem.objectId {
+                                    queueIndexes.append(index)
+                                    break
+                                }
+                            }
+                        }
+                    }
+                    
+                    if subLandIndexes.count == queueIndexes.count, subLandIndexes.count > 0 {
+                        pairsCount = subLandIndexes.count
+                        completion(pairsCount, subLandIndexes, queueIndexes)
+                    } else {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading the lottery results.") { (done) in }
+                    }
+                } else {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading the lottery results.") { (done) in }
+                }
+            }
+        }
+    }
 }
