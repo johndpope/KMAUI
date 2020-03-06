@@ -130,6 +130,11 @@ public class KMAUIParse {
                         for plan in plans {
                             var landPlanObject = KMAUILandPlanStruct()
                             
+                            // landPlanId
+                            if let landPlanIdValue = plan.objectId {
+                                landPlanObject.landPlanId = landPlanIdValue
+                            }
+                            
                             // planName
                             if let planName = plan["planName"] as? String {
                                 landPlanObject.landName = planName

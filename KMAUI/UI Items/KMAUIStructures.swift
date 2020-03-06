@@ -2094,6 +2094,7 @@ public struct KMAUILandPlanStruct {
     // Department object
     public var responsibleDivision = KMADepartmentStruct()
     // Sub land details
+    public var landPlanId = ""
     public var subLandArray = [KMAUILandPlanStruct]()
     public var lotterySubLandArray = [KMAUILandPlanStruct]()
     public var coordinatesArray = [CLLocationCoordinate2D]()
