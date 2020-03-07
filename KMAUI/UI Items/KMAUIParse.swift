@@ -185,91 +185,17 @@ public class KMAUIParse {
                                         landPlanObject.areaHeight = height
                                     }
                                     
-                                    // Sub Lands
-                                    landPlanObject.subLandArray = [KMAUILandPlanStruct]()
+                                    // Sub Lands -> update to use the new `KMAUISubLandStruct`
+                                    landPlanObject.subLandArray = [KMAUISubLandStruct]()
                                     
                                     for item in features {
-                                        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
-                                            // coordinates
-                                            if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
-                                                let topLeftCoordinate = coordinates[0]
-                                                let topRightCoordinate = coordinates[1]
-                                                let bottomRightCoordinate = coordinates[2]
-                                                let bottomLeftCoordinate = coordinates[3]
-                                                
-                                                let topLeft = CLLocationCoordinate2D(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                                                let topRight = CLLocationCoordinate2D(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                                                let bottomRight = CLLocationCoordinate2D(latitude: bottomRightCoordinate[0], longitude: bottomRightCoordinate[1])
-                                                let bottomLeft = CLLocationCoordinate2D(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                                                
-                                                var subLandItem = KMAUILandPlanStruct()
-                                                
-                                                // subLandType
-                                                subLandItem.subLandType = subLandType
-
-                                                // geojson
-                                                subLandItem.geojsonDict = item
-                                                
-                                                // land name
-                                                if let objectId = itemProperties["objectId"] as? String {
-                                                    subLandItem.landName = "Sub Land, id: \(objectId)"
-                                                    subLandItem.subLandObjectId = objectId
-                                                }
-                                                
-                                                // center coordinate
-                                                if let latitude = itemProperties["latitude"] as? Double, let longitude = itemProperties["longitude"] as? Double {
-                                                    subLandItem.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                                                }
-                                                
-                                                // subLandPercent
-                                                if let subLandPercent = itemProperties["subLandPercent"] as? Double {
-                                                    subLandItem.subLandPercent = subLandPercent
-                                                }
-                                                
-                                                // subLandSquare
-                                                if let subLandSquare = itemProperties["subLandSquare"] as? Double {
-                                                    subLandItem.subLandSquare = subLandSquare
-                                                }
-                                                
-                                                // coordinates array
-                                                subLandItem.coordinatesArray = [topLeft, topRight, bottomRight, bottomLeft]
-                                                
-                                                // sw
-                                                if let minX = itemProperties["minX"] as? Double, let minY = itemProperties["minY"] as? Double {
-                                                    subLandItem.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
-                                                }
-                                                
-                                                // ne
-                                                if let maxX = itemProperties["maxX"] as? Double, let maxY = itemProperties["maxY"] as? Double {
-                                                    subLandItem.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
-                                                }
-                                                
-                                                // areaWidth
-                                                if let subLandWidth = itemProperties["subLandWidth"] as? Double {
-                                                    subLandItem.areaWidth = subLandWidth
-                                                }
-                                                
-                                                // areaHeight
-                                                if let subLandHeight = itemProperties["subLandHeight"] as? Double {
-                                                    subLandItem.areaHeight = subLandHeight
-                                                }
-                                                
-                                                // subLandIndex
-                                                if let subLandIndex = itemProperties["name"] as? String {
-                                                    subLandItem.subLandIndex = subLandIndex
-                                                }
-                                                
-                                                // extraPrice
-                                                if let extraPrice = itemProperties["extraPrice"] as? Double {
-                                                    subLandItem.extraPrice = extraPrice
-                                                }
-                                                
-                                                landPlanObject.subLandArray.append(subLandItem)
-                                                
-                                                if subLandType == "Residential Lottery" {
-                                                    landPlanObject.lotterySubLandArray.append(subLandItem)
-                                                }
-                                            }
+                                        var subLandItem = KMAUISubLandStruct()
+                                        subLandItem.fillFromDict(item: item)
+                                        
+                                        landPlanObject.subLandArray.append(subLandItem)
+                                        
+                                        if subLandItem.subLandType == "Residential Lottery" {
+                                            landPlanObject.lotterySubLandArray.append(subLandItem)
                                         }
                                     }
                                 }
@@ -468,7 +394,7 @@ public class KMAUIParse {
                         if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
                             // Getting Sub Land indexes
                             for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
-                                if subLandId == subLandItem.subLandObjectId {
+                                if subLandId == subLandItem.subLandId {
                                     subLandIndexes.append(index)
                                     break
                                 }

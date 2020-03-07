@@ -2062,6 +2062,10 @@ public struct KMAUISubLandStruct {
     public var extraPrice: Double = 0
     public var subLandDescription = ""
     public var subLandImages = ""
+    // Additional variables
+    public var geojson = ""
+    public var geojsonDict = [String: Any]()
+    public var coordinates = [CLLocationCoordinate2D]()
     
     public init() {}
     
@@ -2127,6 +2131,83 @@ public struct KMAUISubLandStruct {
             self.subLandImages = subLandImages
         }
     }
+    
+    mutating public func fillFromDict(item: [String : Any]) {
+        if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
+            // coordinates
+            if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
+                let topLeftCoordinate = coordinates[0]
+                let topRightCoordinate = coordinates[1]
+                let bottomRightCoordinate = coordinates[2]
+                let bottomLeftCoordinate = coordinates[3]
+                
+                let topLeft = CLLocationCoordinate2D(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                let topRight = CLLocationCoordinate2D(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                let bottomRight = CLLocationCoordinate2D(latitude: bottomRightCoordinate[0], longitude: bottomRightCoordinate[1])
+                let bottomLeft = CLLocationCoordinate2D(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+
+                // subLandType
+                self.subLandType = subLandType
+                
+                // geojson
+                self.geojsonDict = item
+                
+                // land name
+                if let objectId = itemProperties["objectId"] as? String {
+//                    subLandItem.landName = "Sub Land, id: \(objectId)"
+                    self.subLandId = objectId
+                }
+                
+                // center coordinate
+                if let latitude = itemProperties["latitude"] as? Double, let longitude = itemProperties["longitude"] as? Double {
+                    self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                }
+                
+                // subLandPercent
+                if let subLandPercent = itemProperties["subLandPercent"] as? Double {
+                    self.subLandPercent = subLandPercent
+                }
+                
+                // subLandSquare
+                if let subLandSquare = itemProperties["subLandSquare"] as? Double {
+                    self.subLandSquare = subLandSquare
+                }
+                
+                // coordinates array
+                self.coordinates = [topLeft, topRight, bottomRight, bottomLeft]
+                
+                // sw
+                if let minX = itemProperties["minX"] as? Double, let minY = itemProperties["minY"] as? Double {
+                    self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+                }
+                
+                // ne
+                if let maxX = itemProperties["maxX"] as? Double, let maxY = itemProperties["maxY"] as? Double {
+                    self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+                }
+                
+                // areaWidth
+                if let subLandWidth = itemProperties["subLandWidth"] as? Double {
+                    self.subLandWidth = subLandWidth
+                }
+                
+                // areaHeight
+                if let subLandHeight = itemProperties["subLandHeight"] as? Double {
+                    self.subLandHeight = subLandHeight
+                }
+                
+                // subLandIndex
+                if let subLandIndex = itemProperties["name"] as? String {
+                    self.subLandIndex = subLandIndex
+                }
+                
+                // extraPrice
+                if let extraPrice = itemProperties["extraPrice"] as? Double {
+                    self.extraPrice = extraPrice
+                }
+            }
+        }
+    }
 }
 
 public struct KMAUILandPlanStruct {
@@ -2181,8 +2262,8 @@ public struct KMAUILandPlanStruct {
     public var responsibleDivision = KMADepartmentStruct()
     // Sub land details
     public var landPlanId = ""
-    public var subLandArray = [KMAUILandPlanStruct]()
-    public var lotterySubLandArray = [KMAUILandPlanStruct]()
+    public var subLandArray = [KMAUISubLandStruct]()
+    public var lotterySubLandArray = [KMAUISubLandStruct]()
     public var coordinatesArray = [CLLocationCoordinate2D]()
     public var geojsonDict = [String: Any]()
     public var subLandPercent: Double = 0
