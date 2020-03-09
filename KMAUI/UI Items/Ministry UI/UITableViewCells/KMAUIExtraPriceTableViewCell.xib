@@ -18,9 +18,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYV-Mf-mV4" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="184" y="9" width="120" height="44"/>
+                        <rect key="frame" x="164" y="9" width="140" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="WNm-NU-RCk"/>
+                            <constraint firstAttribute="width" constant="140" id="WNm-NU-RCk"/>
                             <constraint firstAttribute="height" constant="44" id="snd-EH-xCI"/>
                         </constraints>
                         <state key="normal" title="Confirm payment"/>
@@ -29,7 +29,7 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Extra payment required" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pop-wf-HsY" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="8" width="160" height="46"/>
+                        <rect key="frame" x="16" y="8" width="140" height="46"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="q0e-oX-CTI"/>
                         </constraints>
