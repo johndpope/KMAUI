@@ -2741,7 +2741,11 @@ public struct KMAUILandPlanStruct {
                 subLandObject["subLandPercent"] = subLandPercent.formatNumbersAfterDot()
                 subLandObject["extraPrice"] = extraPrice.formatNumbersAfterDot()
                 
-                subLandItems.append(subLandObject)
+                if widthValue < 0 || heightValue < 0 {
+                    // Error - can't be negative
+                } else {
+                    subLandItems.append(subLandObject)
+                }
             }
         }
     }
