@@ -2085,7 +2085,7 @@ public struct KMAUISubLandStruct {
         }
         // subLandSquare
         if let subLandSquare = item["subLandSquare"] as? Double {
-            self.subLandSquare = subLandSquare
+            self.subLandSquare = subLandSquare.formatNumbersAfterDot()
         }
         // subLandType
         if let subLandType = item["subLandType"] as? String {
@@ -2093,11 +2093,11 @@ public struct KMAUISubLandStruct {
         }
         // subLandWidth
         if let subLandWidth = item["subLandWidth"] as? Double {
-            self.subLandWidth = subLandWidth
+            self.subLandWidth = subLandWidth.formatNumbersAfterDot()
         }
         // subLandHeight
         if let subLandHeight = item["subLandHeight"] as? Double {
-            self.subLandHeight = subLandHeight
+            self.subLandHeight = subLandHeight.formatNumbersAfterDot()
         }
         // subLandIndex
         if let subLandIndex = item["subLandIndex"] as? String {
@@ -2117,11 +2117,11 @@ public struct KMAUISubLandStruct {
         }
         // subLandPercent
         if let subLandPercent = item["subLandPercent"] as? Double {
-            self.subLandPercent = subLandPercent
+            self.subLandPercent = subLandPercent.formatNumbersAfterDot()
         }
         // extraPrice
         if let extraPrice = item["extraPrice"] as? Double {
-            self.extraPrice = extraPrice
+            self.extraPrice = extraPrice.formatNumbersAfterDot()
         }
         // subLandDescription
         if let subLandDescription = item["subLandDescription"] as? String {
@@ -2165,12 +2165,12 @@ public struct KMAUISubLandStruct {
                 
                 // subLandPercent
                 if let subLandPercent = itemProperties["subLandPercent"] as? Double {
-                    self.subLandPercent = subLandPercent
+                    self.subLandPercent = subLandPercent.formatNumbersAfterDot()
                 }
                 
                 // subLandSquare
                 if let subLandSquare = itemProperties["subLandSquare"] as? Double {
-                    self.subLandSquare = subLandSquare
+                    self.subLandSquare = subLandSquare.formatNumbersAfterDot()
                 }
                 
                 // coordinates array
@@ -2188,12 +2188,12 @@ public struct KMAUISubLandStruct {
                 
                 // areaWidth
                 if let subLandWidth = itemProperties["subLandWidth"] as? Double {
-                    self.subLandWidth = subLandWidth
+                    self.subLandWidth = subLandWidth.formatNumbersAfterDot()
                 }
                 
                 // areaHeight
                 if let subLandHeight = itemProperties["subLandHeight"] as? Double {
-                    self.subLandHeight = subLandHeight
+                    self.subLandHeight = subLandHeight.formatNumbersAfterDot()
                 }
                 
                 // subLandIndex
@@ -2203,7 +2203,7 @@ public struct KMAUISubLandStruct {
                 
                 // extraPrice
                 if let extraPrice = itemProperties["extraPrice"] as? Double {
-                    self.extraPrice = extraPrice
+                    self.extraPrice = extraPrice.formatNumbersAfterDot()
                 }
             }
         }
