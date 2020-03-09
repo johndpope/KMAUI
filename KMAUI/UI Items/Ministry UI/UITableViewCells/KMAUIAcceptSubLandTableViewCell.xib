@@ -12,20 +12,20 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KMAUIAcceptSubLandTableViewCell" rowHeight="53" id="zVB-1O-844" customClass="KMAUIAcceptSubLandTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zVB-1O-844" id="0ay-9I-0Cn">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zVB-1O-844" id="0ay-9I-0Cn">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to accept the Sub Land?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxv-n3-q1N" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                        <rect key="frame" x="16" y="8" width="226" height="37"/>
+                        <rect key="frame" x="16" y="8" width="226" height="44"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="qiE-a9-e71"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="qiE-a9-e71"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJp-bl-jDE" customClass="KMAUIButtonFilled" customModule="KMAUI">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJp-bl-jDE" customClass="KMAUIButtonFilled" customModule="KMAUI">
                         <rect key="frame" x="250" y="4.5" width="70" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="0xd-f0-zn5"/>
@@ -36,7 +36,7 @@
                             <action selector="declineButtonPressed:" destination="zVB-1O-844" eventType="touchUpInside" id="Cyj-Rg-jee"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-cH-mYP" customClass="KMAUIButtonFilled" customModule="KMAUI">
+                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-cH-mYP" customClass="KMAUIButtonFilled" customModule="KMAUI">
                         <rect key="frame" x="328" y="4.5" width="70" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="CQ9-v5-YEX"/>
