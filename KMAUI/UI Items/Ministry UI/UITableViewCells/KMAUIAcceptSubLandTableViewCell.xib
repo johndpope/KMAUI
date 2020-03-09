@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="KMAUIAcceptSubLandTableViewCell" rowHeight="53" id="zVB-1O-844" customClass="KMAUIAcceptSubLandTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zVB-1O-844" id="0ay-9I-0Cn">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="53"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Would you like to accept the Sub Land?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxv-n3-q1N" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                        <rect key="frame" x="16" y="8" width="226" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="37" id="qiE-a9-e71"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJp-bl-jDE" customClass="KMAUIButtonFilled" customModule="KMAUI">
+                        <rect key="frame" x="250" y="4.5" width="70" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="0xd-f0-zn5"/>
+                            <constraint firstAttribute="height" constant="44" id="83x-mB-vcL"/>
+                        </constraints>
+                        <state key="normal" title="Decline"/>
+                        <connections>
+                            <action selector="declineButtonPressed:" destination="zVB-1O-844" eventType="touchUpInside" id="Cyj-Rg-jee"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GmX-cH-mYP" customClass="KMAUIButtonFilled" customModule="KMAUI">
+                        <rect key="frame" x="328" y="4.5" width="70" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="CQ9-v5-YEX"/>
+                            <constraint firstAttribute="height" constant="44" id="mNW-nC-vFa"/>
+                        </constraints>
+                        <state key="normal" title="Accept"/>
+                        <connections>
+                            <action selector="acceptButtonPressed:" destination="zVB-1O-844" eventType="touchUpInside" id="Y1F-DZ-5HO"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EJp-bl-jDE" firstAttribute="centerY" secondItem="0ay-9I-0Cn" secondAttribute="centerY" id="2mo-2l-S8R"/>
+                    <constraint firstAttribute="trailing" secondItem="GmX-cH-mYP" secondAttribute="trailing" constant="16" id="D1l-lk-0ee"/>
+                    <constraint firstItem="GmX-cH-mYP" firstAttribute="centerY" secondItem="0ay-9I-0Cn" secondAttribute="centerY" id="Ksz-zp-k3U"/>
+                    <constraint firstItem="Hxv-n3-q1N" firstAttribute="leading" secondItem="0ay-9I-0Cn" secondAttribute="leading" constant="16" id="X7w-PT-xsi"/>
+                    <constraint firstItem="GmX-cH-mYP" firstAttribute="leading" secondItem="EJp-bl-jDE" secondAttribute="trailing" constant="8" id="kqf-mC-9pa"/>
+                    <constraint firstAttribute="bottom" secondItem="Hxv-n3-q1N" secondAttribute="bottom" constant="8" id="mGk-IJ-uR9"/>
+                    <constraint firstItem="EJp-bl-jDE" firstAttribute="leading" secondItem="Hxv-n3-q1N" secondAttribute="trailing" constant="8" id="r5A-rY-0ZM"/>
+                    <constraint firstItem="Hxv-n3-q1N" firstAttribute="top" secondItem="0ay-9I-0Cn" secondAttribute="top" constant="8" id="wEN-Rq-8yg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="acceptButtonPressed" destination="GmX-cH-mYP" id="Oaj-62-0lK"/>
+                <outlet property="declineButton" destination="EJp-bl-jDE" id="vr4-E5-Pkc"/>
+                <outlet property="infoLabel" destination="Hxv-n3-q1N" id="QXE-3t-kzE"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="199"/>
+        </tableViewCell>
+    </objects>
+</document>
