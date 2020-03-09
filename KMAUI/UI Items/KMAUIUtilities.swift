@@ -782,6 +782,17 @@ public extension Int {
     }
 }
 
+// MARK: - Double extension
+public extension Double {
+    
+    // Format the currenty with commas
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = NumberFormatter.Style.decimal
+        return numberFormatter.string(from: NSNumber(value:self))!
+    }
+}
+
 // MARK: - UITableView extension
 
 public extension UITableView {
