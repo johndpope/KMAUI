@@ -2155,7 +2155,6 @@ public struct KMAUISubLandStruct {
                 
                 // land name
                 if let objectId = itemProperties["objectId"] as? String {
-//                    subLandItem.landName = "Sub Land, id: \(objectId)"
                     self.subLandId = objectId
                 }
                 
