@@ -2049,6 +2049,7 @@ public struct KMAUISubLandStruct {
     public var paid = false
     public var landPlanId = ""
     public var subLandId = ""
+    public var lotteryResultId = ""
     public var subLandArea = ""
     public var subLandSquare: Double = 0
     public var subLandType = ""

@@ -442,6 +442,10 @@ public class KMAUIParse {
                 for item in items {
                     var subLandObject = KMAUISubLandStruct()
                     
+                    // Lottery result object id
+                    if let lotteryResultId = item.objectId {
+                        subLandObject.lotteryResultId = lotteryResultId
+                    }
                     // Sub Land
                     if let subLandValue = item["subLand"] as? PFObject {
                         subLandObject.fillFromParse(item: subLandValue)
