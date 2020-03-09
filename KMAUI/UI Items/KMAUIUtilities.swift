@@ -787,11 +787,15 @@ public extension Double {
     
     // Format the currenty with commas
     func withCommas() -> String {
-        let formattedValue = Double(Int((self - Double(Int(self))) * 100)) / 100 + Double(Int(self))
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
         
-        return numberFormatter.string(from: NSNumber(value: formattedValue))!
+        return numberFormatter.string(from: NSNumber(value: self.formatNumbersAfterDot()))!
+    }
+    
+    // Format 2 numbers after do
+    func formatNumbersAfterDot() -> Double {
+        return Double(Int((self - Double(Int(self))) * 100)) / 100 + Double(Int(self))
     }
 }
 
