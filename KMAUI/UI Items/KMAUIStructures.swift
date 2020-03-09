@@ -2734,13 +2734,13 @@ public struct KMAUILandPlanStruct {
                 subLandObject["subLandIndex"] = name
                 
                 // subLandSquare
-                subLandObject["subLandWidth"] = widthValue
-                subLandObject["subLandHeight"] = heightValue
-                subLandObject["subLandSquare"] = subLandSquare
+                subLandObject["subLandWidth"] = widthValue.formatNumbersAfterDot()
+                subLandObject["subLandHeight"] = heightValue.formatNumbersAfterDot()
+                subLandObject["subLandSquare"] = subLandSquare.formatNumbersAfterDot()
                 
                 // subLandPercent - square / average square
-                subLandObject["subLandPercent"] = subLandPercent
-                subLandObject["extraPrice"] = extraPrice
+                subLandObject["subLandPercent"] = subLandPercent.formatNumbersAfterDot()
+                subLandObject["extraPrice"] = extraPrice.formatNumbersAfterDot()
                 
                 subLandItems.append(subLandObject)
             }
