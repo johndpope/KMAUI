@@ -356,7 +356,6 @@ public class KMAUIParse {
                     if let person = lotteryMember["citizen"] as? PFUser {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: person)
-                        
                         // Only add the person to queue if he hasn't received the Sub Land yet
                         if !personObject.receivedSubLand {
                             citizensArray.append(personObject)
