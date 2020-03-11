@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUIRegionHeaderView: UIView {
     // MARK: - IBOutlets
@@ -35,6 +34,7 @@ public class KMAUIRegionHeaderView: UIView {
     
     public func setupCell() {
         regionLabel.text = "Ar Riayd"
+        regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         queueLabel.text = "Queue – 3"
         timeframeLabel.text = "From 01.03.20 – To 28.02.21"
     }
