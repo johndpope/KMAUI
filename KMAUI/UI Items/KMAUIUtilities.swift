@@ -613,6 +613,23 @@ public class KMAUIUtilities {
     }
     
     /**
+     Clear bar button
+     */
+    
+    public func getRulesBarButton() -> UIBarButtonItem {
+        // Clear selection
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 30))
+        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
+        clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
+        clearButton.setTitle("  Rules  ", for: .normal)
+        clearButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        clearButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius // 15
+        
+        return UIBarButtonItem(customView: clearButton)
+    }
+    
+    /**
      Filter bar button
      */
     
