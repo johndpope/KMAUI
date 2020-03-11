@@ -33,16 +33,30 @@ public class KMAUIRegionHeaderView: UIView {
     }
     
     public func setupCell() {
-        regionLabel.text = "Ar Riayd"
-        regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        queueLabel.text = "Queue – 3"
-        timeframeLabel.text = "From 01.03.20 – To 28.02.21"
-        
-        if !region.nameE.isEmpty {
-            regionLabel.text = region.nameE
-            queueLabel.text = "Queue – \(region.queueCount)"
-            timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
+        if region.nameE.isEmpty {
+            // Demo data
+            region.nameE = "Ar Riyad"
+            region.queueCount = 83543
+            
+            // Get the current year
+            let year = Calendar.current.component(.year, from: Date())
+            // Get the first day of the current year
+            if let firstOfCurrentYear = Calendar.current.date(from: DateComponents(year: year, month: 1, day: 1)) {
+                region.periodStart = firstOfCurrentYear
+            }
+            // Get the first day of next year
+            if let firstOfNextYear = Calendar.current.date(from: DateComponents(year: year + 1, month: 1, day: 1)) {
+                // Get the last day of the current year
+                if let lastOfYear = Calendar.current.date(byAdding: .day, value: -1, to: firstOfNextYear) {
+                    region.periodEnd = lastOfYear
+                }
+            }
         }
+        
+        regionLabel.text = region.nameE
+        regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        queueLabel.text = "Queue – \(region.queueCount)"
+        timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
     }
     
     private func commonInit() {
