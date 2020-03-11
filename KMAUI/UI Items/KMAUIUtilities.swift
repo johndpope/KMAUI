@@ -601,7 +601,7 @@ public class KMAUIUtilities {
     
     public func getClearBarButton() -> UIBarButtonItem {
         // Clear selection
-        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 34))
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 130, height: 34))
         clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
