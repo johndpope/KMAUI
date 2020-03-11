@@ -106,6 +106,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         } else if type == "noLandPlans" {
             info = "No active Land Plans exist for region."
             action = ""
+        } else if type == "noRegions" {
+            if isLoaded {
+                info = "No Saudi Arabia regions are available."
+                action = ""
+            } else {
+                info = "We're preparing the regions list..."
+                action = ""
+            }
         }
         
         infoLabel.text = info

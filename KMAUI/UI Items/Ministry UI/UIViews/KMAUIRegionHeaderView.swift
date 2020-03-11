@@ -37,19 +37,19 @@ public class KMAUIRegionHeaderView: UIView {
             // Demo data
             region.nameE = "Ar Riyad"
             region.queueCount = 759
-            
-            // Get the current year
-            let year = Calendar.current.component(.year, from: Date())
-            // Get the first day of the current year
-            if let firstOfCurrentYear = Calendar.current.date(from: DateComponents(year: year, month: 1, day: 1)) {
-                region.periodStart = firstOfCurrentYear
-            }
-            // Get the first day of next year
-            if let firstOfNextYear = Calendar.current.date(from: DateComponents(year: year + 1, month: 1, day: 1)) {
-                // Get the last day of the current year
-                if let lastOfYear = Calendar.current.date(byAdding: .day, value: -1, to: firstOfNextYear) {
-                    region.periodEnd = lastOfYear
-                }
+        }
+        
+        // Get the current year
+        let year = Calendar.current.component(.year, from: Date())
+        // Get the first day of the current year
+        if let firstOfCurrentYear = Calendar.current.date(from: DateComponents(year: year, month: 1, day: 1)) {
+            region.periodStart = firstOfCurrentYear
+        }
+        // Get the first day of next year
+        if let firstOfNextYear = Calendar.current.date(from: DateComponents(year: year + 1, month: 1, day: 1)) {
+            // Get the last day of the current year
+            if let lastOfYear = Calendar.current.date(byAdding: .day, value: -1, to: firstOfNextYear) {
+                region.periodEnd = lastOfYear
             }
         }
         
