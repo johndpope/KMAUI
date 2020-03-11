@@ -41,7 +41,7 @@ public class KMAUIRegionHeaderView: UIView {
         if !region.nameE.isEmpty {
             regionLabel.text = region.nameE
             queueLabel.text = "Queue – \(region.queueCount)"
-            timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd))"
+            timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
         }
     }
     
