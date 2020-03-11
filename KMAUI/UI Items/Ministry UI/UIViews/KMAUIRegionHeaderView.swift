@@ -40,7 +40,8 @@ public class KMAUIRegionHeaderView: UIView {
     }
     
     private func commonInit() {
-        Bundle.main.loadNibNamed("KMAUIRegionHeaderView", owner: self, options: nil)
+        let bundle = Bundle(for: KMAUIRegionHeaderView.self)
+        bundle.loadNibNamed("KMAUIRegionHeaderView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
