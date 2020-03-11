@@ -15,7 +15,7 @@ public class KMAUIRegionHeaderView: UIView {
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    var region = KMAMapAreaStruct() {
+    public var region = KMAMapAreaStruct() {
         didSet {
             setupCell()
         }
