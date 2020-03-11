@@ -11,7 +11,7 @@ import UIKit
 public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
-    @IBOutlet public weak var infoLabel: KMAUITextLabel!
+    @IBOutlet public weak var infoLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var actionButton: KMAUIButtonFilled!
     @IBOutlet public weak var actionButtonHeight: NSLayoutConstraint!
     @IBOutlet public weak var actionButtonBottom: NSLayoutConstraint!
@@ -34,6 +34,9 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Font size for infoLabel
+        infoLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // No selection required
         selectionStyle = .none
