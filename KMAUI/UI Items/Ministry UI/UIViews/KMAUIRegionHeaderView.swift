@@ -47,7 +47,7 @@ public class KMAUIRegionHeaderView: UIView {
         // Fill the data to display
         regionLabel.text = region.nameE
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-        queueLabel.text = "Queue – \(region.queueCount)"
+        queueLabel.text = "Queue – \(region.lotteryMembersCount)"
         timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
     }
     

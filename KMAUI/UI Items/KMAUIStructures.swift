@@ -1960,7 +1960,6 @@ public struct KMAMapAreaStruct {
     public var landPlans = [KMAUILandPlanStruct]()
     public var lotteryMembersCount = 0
     // New items
-    public var queueCount = 0
     public var periodStart = Date()
     public var periodEnd = Date()
 
