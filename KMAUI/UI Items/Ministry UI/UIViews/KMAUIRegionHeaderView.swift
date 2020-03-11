@@ -37,6 +37,12 @@ public class KMAUIRegionHeaderView: UIView {
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         queueLabel.text = "Queue – 3"
         timeframeLabel.text = "From 01.03.20 – To 28.02.21"
+        
+        if !region.nameE.isEmpty {
+            regionLabel.text = region.nameE
+            queueLabel.text = "Queue – \(region.queueCount)"
+            timeframeLabel.text = "From \(KMAUIUtilities.shared.formatStringShort(date: region.periodStart)) – To \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd))"
+        }
     }
     
     private func commonInit() {
