@@ -30,6 +30,16 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Fonts
+        lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        subLandsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        subLandsCountLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // isActive imageView
+        isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        isActiveImageView.layer.cornerRadius = 4
+        isActiveImageView.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
@@ -60,12 +70,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsLabel.text = "Sub Lands"
         subLandsCountLabel.text = "\(lottery.lotterySubLandsCount)"
         
-        // isActive imageView
-        isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
-        
-        isActiveImageView.layer.cornerRadius = 4
-        isActiveImageView.clipsToBounds = true
-        
+        // Is active status
         if isActive {
             isActiveImageView.tintColor = UIColor.white
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
