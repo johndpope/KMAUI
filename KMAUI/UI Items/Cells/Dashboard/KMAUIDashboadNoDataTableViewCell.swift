@@ -114,6 +114,9 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the regions list..."
                 action = ""
             }
+        } else if type == "lottery" {
+            info = "No lotteries avaiable for region."
+            action = ""
         }
         
         infoLabel.text = info
