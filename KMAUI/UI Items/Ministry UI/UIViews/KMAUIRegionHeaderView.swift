@@ -40,9 +40,9 @@ public class KMAUIRegionHeaderView: UIView {
         }
         
         // Get the current year
-        let firstLastDay = KMAUIUtilities.shared.getFirstAndLastDayThisYear()
-        region.periodStart = firstLastDay.0
-        region.periodEnd = firstLastDay.1
+//        let firstLastDay = KMAUIUtilities.shared.getFirstAndLastDayThisYear()
+//        region.periodStart = firstLastDay.0
+//        region.periodEnd = firstLastDay.1
         
         // Fill the data to display
         regionLabel.text = region.nameE
