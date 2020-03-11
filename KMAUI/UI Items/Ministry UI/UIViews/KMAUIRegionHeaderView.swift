@@ -36,7 +36,7 @@ public class KMAUIRegionHeaderView: UIView {
         if region.nameE.isEmpty {
             // Demo data
             region.nameE = "Ar Riyad"
-            region.queueCount = 83543
+            region.queueCount = 759
             
             // Get the current year
             let year = Calendar.current.component(.year, from: Date())

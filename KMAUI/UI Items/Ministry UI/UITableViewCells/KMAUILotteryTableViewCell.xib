@@ -4,21 +4,98 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryTableViewCell" id="KGk-i7-Jjw" customClass="KMAUILotteryTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryTableViewCell" rowHeight="84" id="KGk-i7-Jjw" customClass="KMAUILotteryTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-TQ-aTf" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="20" y="0.0" width="280" height="76"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-hD-pT4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="14" width="210" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BKp-HM-wq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owe-ce-Hua">
+                                <rect key="frame" x="242" y="14" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="7ya-wr-grS"/>
+                                    <constraint firstAttribute="height" constant="22" id="bd1-Vy-a8C"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bw7-zD-mu6">
+                                <rect key="frame" x="16" y="43" width="190" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="vzd-zv-Swz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yc5-ld-7EP">
+                                <rect key="frame" x="222" y="43" width="42" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="cRq-0z-ccn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="yc5-ld-7EP" secondAttribute="trailing" constant="16" id="65x-78-PRz"/>
+                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="8Qv-Oc-iVg"/>
+                            <constraint firstAttribute="bottom" secondItem="yc5-ld-7EP" secondAttribute="bottom" constant="14" id="8ZJ-dp-qMh"/>
+                            <constraint firstAttribute="bottom" secondItem="bw7-zD-mu6" secondAttribute="bottom" constant="14" id="Lnh-28-S6g"/>
+                            <constraint firstItem="yc5-ld-7EP" firstAttribute="leading" secondItem="bw7-zD-mu6" secondAttribute="trailing" constant="16" id="PFW-eR-lvQ"/>
+                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="Wdc-49-QP1"/>
+                            <constraint firstItem="yc5-ld-7EP" firstAttribute="top" secondItem="owe-ce-Hua" secondAttribute="bottom" constant="7" id="Xyr-61-SnJ"/>
+                            <constraint firstItem="bw7-zD-mu6" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="8" id="e7s-I5-8ra"/>
+                            <constraint firstAttribute="height" constant="76" id="hdS-ur-6k7"/>
+                            <constraint firstItem="owe-ce-Hua" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="jLb-9l-5lh"/>
+                            <constraint firstItem="owe-ce-Hua" firstAttribute="leading" secondItem="3Fv-hD-pT4" secondAttribute="trailing" constant="16" id="pXo-1F-oW7"/>
+                            <constraint firstItem="bw7-zD-mu6" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="vPw-2C-ffb"/>
+                            <constraint firstAttribute="trailing" secondItem="owe-ce-Hua" secondAttribute="trailing" constant="16" id="x7G-Y0-YBv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="cBQ-TQ-aTf" secondAttribute="bottom" constant="8" id="1b0-dr-lIw"/>
+                    <constraint firstItem="cBQ-TQ-aTf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CVB-PH-eS5"/>
+                    <constraint firstAttribute="trailing" secondItem="cBQ-TQ-aTf" secondAttribute="trailing" constant="20" id="DTd-XF-1F2"/>
+                    <constraint firstItem="cBQ-TQ-aTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OT3-w4-Y86"/>
+                </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="139" y="153"/>
+            <connections>
+                <outlet property="bgView" destination="cBQ-TQ-aTf" id="4e4-4R-cfG"/>
+                <outlet property="isActiveImageView" destination="owe-ce-Hua" id="SxY-Yh-Ict"/>
+                <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>
+                <outlet property="subLandsCountLabel" destination="yc5-ld-7EP" id="Ruu-qw-t4y"/>
+                <outlet property="subLandsLabel" destination="bw7-zD-mu6" id="jvx-Jh-NET"/>
+            </connections>
+            <point key="canvasLocation" x="-4.3478260869565224" y="4.6875"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

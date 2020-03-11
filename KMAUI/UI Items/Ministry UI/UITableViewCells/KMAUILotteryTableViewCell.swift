@@ -9,6 +9,13 @@
 import UIKit
 
 public class KMAUILotteryTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var isActiveImageView: UIImageView!
+    @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var subLandsLabel: UILabel!
+    @IBOutlet public weak var subLandsCountLabel: UILabel!
+
     // MARK: - Variables
     public static let id = "KMAUILotteryTableViewCell"
     
