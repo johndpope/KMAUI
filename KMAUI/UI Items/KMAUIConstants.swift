@@ -95,7 +95,8 @@ public class KMAUIConstants {
     public let placeholderProfileImage = UIImage(named: "placeholderProfileImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let placeholderUploadImageNoir = UIImage(named: "placeholderUploadImageNoir", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let landPlanTabIcon = UIImage(named: "landPlanTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-
+    public let disclosureArrow = UIImage(named: "disclosureArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
     public let KMAScreenWidth = UIScreen.main.bounds.size.width
