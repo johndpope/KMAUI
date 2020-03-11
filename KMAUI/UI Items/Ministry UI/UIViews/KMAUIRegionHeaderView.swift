@@ -24,10 +24,12 @@ public class KMAUIRegionHeaderView: UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        commonInit()
     }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     public func setupCell() {
