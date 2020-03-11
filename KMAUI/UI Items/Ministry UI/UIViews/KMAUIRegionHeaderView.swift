@@ -10,12 +10,13 @@ import UIKit
 
 public class KMAUIRegionHeaderView: UIView {
     // MARK: - IBOutlets
+    @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var regionLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var queueLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    public var region = KMAMapAreaStruct() {
+    var region = KMAMapAreaStruct() {
         didSet {
             setupCell()
         }

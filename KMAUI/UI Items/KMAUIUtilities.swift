@@ -928,3 +928,15 @@ extension CLLocationCoordinate2D {
         return CLLocationCoordinate2D(latitude: lat2 * 180 / Double.pi, longitude: lon2 * 180 / Double.pi)
     }
 }
+
+// MARK: - UIView extension
+
+extension UIView {
+    /** Loads instance from nib with the same name. */
+    func loadNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nibName = type(of: self).description().components(separatedBy: ".").last!
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as! UIView
+    }
+}
