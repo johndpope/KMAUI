@@ -33,17 +33,6 @@ public class KMAUIRegionHeaderView: UIView {
     }
     
     public func setupCell() {
-        if region.nameE.isEmpty {
-            // Demo data
-            region.nameE = "Ar Riyad"
-            region.queueCount = 759
-        }
-        
-        // Get the current year
-//        let firstLastDay = KMAUIUtilities.shared.getFirstAndLastDayThisYear()
-//        region.periodStart = firstLastDay.0
-//        region.periodEnd = firstLastDay.1
-        
         // Fill the data to display
         regionLabel.text = region.nameE
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
