@@ -601,8 +601,8 @@ public class KMAUIUtilities {
     
     public func getClearBarButton() -> UIBarButtonItem {
         // Clear selection
-        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
-        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 34))
+        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
         clearButton.setTitle(" Clear selection ", for: .normal)
@@ -618,8 +618,8 @@ public class KMAUIUtilities {
     
     public func getRulesBarButton() -> UIBarButtonItem {
         // Clear selection
-        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 30))
-        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        let clearButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 34))
+        clearButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor, for: .normal)
         clearButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColor.withAlphaComponent(0.75), for: .highlighted)
         clearButton.setTitle("  Rules  ", for: .normal)
@@ -634,8 +634,8 @@ public class KMAUIUtilities {
      */
     
     public func getFilterBarButton() -> UIBarButtonItem {
-        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 30))
-        filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        let filterButton = UIButton(frame: CGRect(x: 0, y: 0, width: 74, height: 34))
+        filterButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         filterButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor.withAlphaComponent(0.75), for: .highlighted)
         filterButton.setTitle("Filter", for: .normal)
@@ -654,8 +654,8 @@ public class KMAUIUtilities {
      */
     
     public func getShowOnMapBarButton() -> UIBarButtonItem {
-        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 30))
-        showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        let showOnMapButton = UIButton(frame: CGRect(x: 0, y: 0, width: 110, height: 34))
+        showOnMapButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         showOnMapButton.setTitleColor(UIColor.white, for: .normal)
         showOnMapButton.setTitleColor(UIColor.white.withAlphaComponent(0.75), for: .highlighted)
         showOnMapButton.setTitle(" Show on map ", for: .normal)
