@@ -16,13 +16,13 @@ public class KMAUIRegionHeaderView: UIView {
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    var region = KMAMapAreaStruct() {
+    public var region = KMAMapAreaStruct() {
         didSet {
             setupCell()
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
