@@ -35,4 +35,11 @@ public class KMAUIRegionHeaderView: UIView {
         queueLabel.text = "Queue – 3"
         timeframeLabel.text = "From 01.03.20 – To 28.02.21"
     }
+    
+    private func commonInit() {
+        Bundle.main.loadNibNamed("KMAUIRegionHeaderView", owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
 }
