@@ -990,7 +990,7 @@ extension UIView {
 
 // MARK: - UISegmentedControl extension
 
-extension UISegmentedControl {
+public extension UISegmentedControl {
     
     // Getting the correct background color without a shadow
     func fixBackgroundSegmentControl() {
