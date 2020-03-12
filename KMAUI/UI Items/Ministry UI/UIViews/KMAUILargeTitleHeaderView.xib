@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4El-O7-DIN">
-                    <rect key="frame" x="20" y="30" width="350" height="21"/>
+                    <rect key="frame" x="30" y="30" width="330" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="9xH-sS-wkr"/>
                     </constraints>
@@ -32,9 +32,9 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4El-O7-DIN" secondAttribute="bottom" constant="16" id="3Hn-Bv-fDD"/>
-                <constraint firstItem="4El-O7-DIN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="6Ut-4E-SUI"/>
+                <constraint firstItem="4El-O7-DIN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="6Ut-4E-SUI"/>
                 <constraint firstItem="4El-O7-DIN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="6n1-kh-hZR"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="20" id="fnR-fv-ZOa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="30" id="fnR-fv-ZOa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
