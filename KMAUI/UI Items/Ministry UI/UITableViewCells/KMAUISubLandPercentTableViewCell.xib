@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUISubLandPercentTableViewCell" id="KGk-i7-Jjw" customClass="KMAUISubLandPercentTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-J8-pGM">
+                        <rect key="frame" x="30" y="9.5" width="25" height="25"/>
+                        <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="Bgv-Yb-KXI"/>
+                            <constraint firstAttribute="width" constant="25" id="bA0-6k-O3c"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxP-uO-Sa5" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="69" y="11.5" width="163" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="SIc-H4-bLt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG0-Md-Xhq" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="248" y="10" width="42" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="iRW-te-rgt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="T6r-J8-pGM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="6sj-ms-X9X"/>
+                    <constraint firstItem="T6r-J8-pGM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ey-oe-VlJ"/>
+                    <constraint firstItem="SxP-uO-Sa5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Moo-uU-QTj"/>
+                    <constraint firstItem="WG0-Md-Xhq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ODp-Kj-qbu"/>
+                    <constraint firstItem="WG0-Md-Xhq" firstAttribute="leading" secondItem="SxP-uO-Sa5" secondAttribute="trailing" constant="16" id="Rrz-SY-wIa"/>
+                    <constraint firstAttribute="bottom" secondItem="WG0-Md-Xhq" secondAttribute="bottom" constant="10" id="WYY-hU-hK7"/>
+                    <constraint firstAttribute="trailing" secondItem="WG0-Md-Xhq" secondAttribute="trailing" constant="30" id="d2e-NA-es5"/>
+                    <constraint firstItem="SxP-uO-Sa5" firstAttribute="leading" secondItem="T6r-J8-pGM" secondAttribute="trailing" constant="14" id="hgg-L9-cfs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIViewBgColor"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="colorView" destination="T6r-J8-pGM" id="BTd-9c-0zN"/>
+                <outlet property="nameLabel" destination="SxP-uO-Sa5" id="OBC-rs-UmB"/>
+                <outlet property="valueLabel" destination="WG0-Md-Xhq" id="Adf-We-Vr0"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="153"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
