@@ -109,7 +109,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="zMB-8q-kKU" firstAttribute="top" secondItem="atL-Zn-k7B" secondAttribute="bottom" constant="21" id="6Wu-ag-BHS"/>
                             <constraint firstItem="chH-7Y-zSb" firstAttribute="leading" secondItem="60N-CB-7eP" secondAttribute="leading" id="GIO-zD-vqf"/>
@@ -136,6 +136,7 @@
                     <constraint firstItem="60N-CB-7eP" firstAttribute="width" secondItem="bsh-UN-mzR" secondAttribute="width" multiplier="0.854545" id="wmh-wX-f6w"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commercialLabel" destination="atL-Zn-k7B" id="Bww-Zz-qd7"/>
