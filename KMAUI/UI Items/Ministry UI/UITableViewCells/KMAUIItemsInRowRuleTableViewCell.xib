@@ -74,6 +74,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="j1u-aV-5G6" id="sJI-kY-AGy"/>
                 <outlet property="itemsInRowLabel" destination="qI3-zx-2h3" id="uLh-tO-roS"/>
                 <outlet property="subLandLabel" destination="U7k-9W-mqX" id="rXW-s5-bVI"/>
                 <outlet property="subLandSizeLabel" destination="EIs-6y-ZIy" id="sTY-sS-gI4"/>

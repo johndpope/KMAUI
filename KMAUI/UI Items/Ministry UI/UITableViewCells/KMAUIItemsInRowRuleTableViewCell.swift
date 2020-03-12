@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUIItemsInRowRuleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var subLandLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var itemsInRowLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var subLandSizeLabel: KMAUIBoldTextLabel!
@@ -23,6 +24,9 @@ public class KMAUIItemsInRowRuleTableViewCell: UITableViewCell {
         // Fonts for labels
         subLandLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         itemsInRowLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // bgView
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
         // No selection required
         selectionStyle = .none
