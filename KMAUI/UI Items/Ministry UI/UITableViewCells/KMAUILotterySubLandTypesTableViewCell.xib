@@ -23,13 +23,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38f-df-jWT">
                                 <rect key="frame" x="20" y="10" width="15" height="15"/>
-                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="PPQ-jj-qEy"/>
                                     <constraint firstAttribute="width" constant="15" id="yjd-Cj-UNI"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eF-md-AAD" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eF-md-AAD" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="47" y="8" width="117.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="9AF-hV-a8T"/>
@@ -40,13 +40,13 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzh-4z-QLc">
                                 <rect key="frame" x="20" y="50" width="15" height="15"/>
-                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="7JM-yQ-noj"/>
                                     <constraint firstAttribute="width" constant="15" id="7gq-ao-oel"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-rm-fho" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Land for sale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-rm-fho" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="47" y="48" width="117.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="QXZ-5U-hSB"/>
@@ -76,13 +76,13 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chH-7Y-zSb">
                                 <rect key="frame" x="20" y="10" width="15" height="15"/>
-                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="backgroundColor" red="0.99215686274509807" green="0.94901960784313721" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="6Hz-gl-LvX"/>
                                     <constraint firstAttribute="width" constant="15" id="EvO-5i-FJ1"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-Zn-k7B" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for commercial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-Zn-k7B" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="47" y="8" width="92.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="bqi-Pc-pZT"/>
@@ -93,13 +93,13 @@
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9i-ch-aj9">
                                 <rect key="frame" x="20" y="50" width="15" height="15"/>
-                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="backgroundColor" red="0.50588235294117645" green="0.78823529411764703" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="2NM-rL-irb"/>
                                     <constraint firstAttribute="width" constant="15" id="oZq-0f-XUD"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMB-8q-kKU" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for lottery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMB-8q-kKU" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="47" y="48" width="92.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="sq8-Tc-t9m"/>
@@ -137,13 +137,20 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="commercialLabel" destination="atL-Zn-k7B" id="Bww-Zz-qd7"/>
+                <outlet property="commercialView" destination="chH-7Y-zSb" id="t0G-Pp-DZD"/>
+                <outlet property="lotteryLabel" destination="zMB-8q-kKU" id="uGJ-Ny-mEH"/>
+                <outlet property="lotteryView" destination="S9i-ch-aj9" id="rqj-EN-wVx"/>
+                <outlet property="saleLabel" destination="lGr-rm-fho" id="3cK-Wk-eoL"/>
+                <outlet property="saleView" destination="pzh-4z-QLc" id="fM5-2e-2b7"/>
+                <outlet property="servicesLabel" destination="2eF-md-AAD" id="45m-Cy-vXr"/>
+                <outlet property="servicesView" destination="38f-df-jWT" id="yK6-Hf-gfR"/>
+            </connections>
             <point key="canvasLocation" x="11.594202898550726" y="43.191964285714285"/>
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMAUIGreyProgressColor">
-            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

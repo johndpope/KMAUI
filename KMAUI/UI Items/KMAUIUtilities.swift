@@ -976,4 +976,14 @@ extension UIView {
         let nib = UINib(nibName: nibName, bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil).first as! UIView
     }
+    
+    /**
+     Corner views
+     */
+    func setRoundCorners(radius: CGFloat) {
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = KMAUIConstants.shared.KMAUIMainBgColor.cgColor
+        self.clipsToBounds = true
+    }
 }
