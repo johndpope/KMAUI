@@ -35,21 +35,7 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         // Create the new segmentControl
         segmentControl.selectedSegmentIndex = selectedIndex
-        segmentControl.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
-        segmentControl.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        segmentControl.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        
-        if #available(iOS 13.0, *) {
-            segmentControl.selectedSegmentTintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
-        }
-        
-        segmentControl.layer.borderWidth = 0
-        
-        let normalAttritutes = [NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont.withSize(12), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor] as! [NSAttributedString.Key: Any]
-        segmentControl.setTitleTextAttributes(normalAttritutes, for: .normal)
-        
-        let selectedAttributes = [NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont.withSize(12), NSAttributedString.Key.foregroundColor: UIColor.white] as! [NSAttributedString.Key: Any]
-        segmentControl.setTitleTextAttributes(selectedAttributes, for: .selected)
+        segmentControl.updateUI()
         
         // Add target action method
         segmentControl.addTarget(self, action: #selector(segmentControlValueChanged(item:)), for: .valueChanged)

@@ -1005,4 +1005,24 @@ public extension UISegmentedControl {
             }
         }
     }
+    
+    // Prepare the segmentedControl UI
+    func updateUI() {
+        // Create the new segmentControl
+        self.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        self.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        self.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        
+        if #available(iOS 13.0, *) {
+            self.selectedSegmentTintColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        }
+        
+        self.layer.borderWidth = 0
+        
+        let normalAttritutes = [NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIRegularFont.withSize(12), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUITextColor] as! [NSAttributedString.Key: Any]
+        self.setTitleTextAttributes(normalAttritutes, for: .normal)
+        
+        let selectedAttributes = [NSAttributedString.Key.font.rawValue: KMAUIConstants.shared.KMAUIBoldFont.withSize(12), NSAttributedString.Key.foregroundColor: UIColor.white] as! [NSAttributedString.Key: Any]
+        self.setTitleTextAttributes(selectedAttributes, for: .selected)
+    }
 }
