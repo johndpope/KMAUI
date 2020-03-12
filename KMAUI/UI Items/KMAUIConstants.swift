@@ -109,6 +109,7 @@ public class KMAUIConstants {
     public let KMATranslucentBg: CGFloat = 0.9
     
     public let performanceTitles = ["Community", "Service", "Security"]
+    public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Citizens"]
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
