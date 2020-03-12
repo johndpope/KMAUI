@@ -26,7 +26,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKF-15-iBN" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="220" height="31"/>
+                        <rect key="frame" x="30" y="0.0" width="210" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="Ozp-NF-teP"/>
                         </constraints>
@@ -45,7 +45,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="iMa-6H-fVy" secondAttribute="trailing" constant="30" id="AAz-gL-ksd"/>
                     <constraint firstAttribute="bottom" secondItem="iMa-6H-fVy" secondAttribute="bottom" id="Ejn-65-kHk"/>
-                    <constraint firstItem="VKF-15-iBN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="Gal-EO-4L6"/>
+                    <constraint firstItem="VKF-15-iBN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Gal-EO-4L6"/>
                     <constraint firstItem="T4N-xL-8Eg" firstAttribute="leading" secondItem="VKF-15-iBN" secondAttribute="trailing" constant="8" id="M1h-e7-3l7"/>
                     <constraint firstItem="iMa-6H-fVy" firstAttribute="top" secondItem="VKF-15-iBN" secondAttribute="bottom" id="T4h-NK-eah"/>
                     <constraint firstItem="iMa-6H-fVy" firstAttribute="top" secondItem="T4N-xL-8Eg" secondAttribute="bottom" id="YxS-Ih-fJs"/>
