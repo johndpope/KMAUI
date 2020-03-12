@@ -75,7 +75,7 @@
                         <rect key="frame" x="172.5" y="0.0" width="147.5" height="83"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chH-7Y-zSb">
-                                <rect key="frame" x="20" y="10" width="15" height="15"/>
+                                <rect key="frame" x="0.0" y="10" width="15" height="15"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.94901960784313721" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="6Hz-gl-LvX"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for commercial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-Zn-k7B" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="47" y="8" width="92.5" height="19"/>
+                                <rect key="frame" x="27" y="8" width="112.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="bqi-Pc-pZT"/>
                                 </constraints>
@@ -92,7 +92,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9i-ch-aj9">
-                                <rect key="frame" x="20" y="50" width="15" height="15"/>
+                                <rect key="frame" x="0.0" y="50" width="15" height="15"/>
                                 <color key="backgroundColor" red="0.50588235294117645" green="0.78823529411764703" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="2NM-rL-irb"/>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for lottery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMB-8q-kKU" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="47" y="48" width="92.5" height="19"/>
+                                <rect key="frame" x="27" y="48" width="112.5" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="sq8-Tc-t9m"/>
                                 </constraints>
@@ -112,8 +112,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="zMB-8q-kKU" firstAttribute="top" secondItem="atL-Zn-k7B" secondAttribute="bottom" constant="21" id="6Wu-ag-BHS"/>
-                            <constraint firstItem="chH-7Y-zSb" firstAttribute="leading" secondItem="60N-CB-7eP" secondAttribute="leading" constant="20" id="GIO-zD-vqf"/>
-                            <constraint firstItem="S9i-ch-aj9" firstAttribute="leading" secondItem="60N-CB-7eP" secondAttribute="leading" constant="20" id="MIN-sd-1RT"/>
+                            <constraint firstItem="chH-7Y-zSb" firstAttribute="leading" secondItem="60N-CB-7eP" secondAttribute="leading" id="GIO-zD-vqf"/>
+                            <constraint firstItem="S9i-ch-aj9" firstAttribute="leading" secondItem="60N-CB-7eP" secondAttribute="leading" id="MIN-sd-1RT"/>
                             <constraint firstItem="S9i-ch-aj9" firstAttribute="centerY" secondItem="zMB-8q-kKU" secondAttribute="centerY" id="OYJ-sj-E8O"/>
                             <constraint firstAttribute="trailing" secondItem="zMB-8q-kKU" secondAttribute="trailing" constant="8" id="Ox4-nW-1Vb"/>
                             <constraint firstItem="atL-Zn-k7B" firstAttribute="top" secondItem="60N-CB-7eP" secondAttribute="top" constant="8" id="PVO-SQ-tXI"/>
