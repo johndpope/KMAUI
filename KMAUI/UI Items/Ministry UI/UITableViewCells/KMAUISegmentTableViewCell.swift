@@ -57,7 +57,8 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         // Add this custom Segmented Control to our view
         bgView.addSubview(segmentControl)
         KMAUIUtilities.shared.setConstaints(parentView: bgView, childView: segmentControl, left: 0, right: 0, top: 0, bottom: 0)
-        fixBackgroundSegmentControl(segmentControl)
+//        fixBackgroundSegmentControl(segmentControl)
+        segmentControl.fixBackgroundSegmentControl()
         
         // No selection required
         selectionStyle = .none
@@ -68,18 +69,6 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
-    /*public func setupCell() {
-        // Update the segment titles
-        for (index, item) in segmentItems.enumerated() {
-            if segmentControl.numberOfSegments > index {
-                segmentControl.setTitle(item, forSegmentAt: index)
-            }
-        }
-        
-        // Update the segment selected index
-        segmentControl.selectedSegmentIndex = selectedIndex
-    }*/
     
     public func setupCell() {
         // Update the segment titles
@@ -96,17 +85,17 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         selectedIndexCallback?(selectedIndex)
     }
     
-    // Getting the correct background color without a shadow
-    func fixBackgroundSegmentControl( _ segmentControl: UISegmentedControl){
-        if #available(iOS 13.0, *) {
-            //just to be sure it is full loaded
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                for i in 0...(segmentControl.numberOfSegments-1)  {
-                    let backgroundSegmentView = segmentControl.subviews[i]
-                    //it is not enogh changing the background color. It has some kind of shadow layer
-                    backgroundSegmentView.isHidden = true
-                }
-            }
-        }
-    }
+//    // Getting the correct background color without a shadow
+//    func fixBackgroundSegmentControl( _ segmentControl: UISegmentedControl){
+//        if #available(iOS 13.0, *) {
+//            //just to be sure it is full loaded
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//                for i in 0...(segmentControl.numberOfSegments-1)  {
+//                    let backgroundSegmentView = segmentControl.subviews[i]
+//                    //it is not enogh changing the background color. It has some kind of shadow layer
+//                    backgroundSegmentView.isHidden = true
+//                }
+//            }
+//        }
+//    }
 }

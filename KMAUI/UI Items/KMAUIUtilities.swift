@@ -987,3 +987,22 @@ extension UIView {
         self.clipsToBounds = true
     }
 }
+
+// MARK: - UISegmentedControl extension
+
+extension UISegmentedControl {
+    
+    // Getting the correct background color without a shadow
+    func fixBackgroundSegmentControl() {
+        if #available(iOS 13.0, *) {
+            //just to be sure it is full loaded
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                for i in 0...(self.numberOfSegments - 1)  {
+                    let backgroundSegmentView = self.subviews[i]
+                    //it is not enogh changing the background color. It has some kind of shadow layer
+                    backgroundSegmentView.isHidden = true
+                }
+            }
+        }
+    }
+}
