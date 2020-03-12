@@ -2823,3 +2823,19 @@ public struct KMAUILandPlanStruct {
     }
 }
 
+// MARK: - Lottery rule struct
+
+public struct KMAUILotteryRule {
+    // Variables
+    public var name = ""
+    public var value = ""
+    
+    public init() {
+    }
+    
+    public init(name: String, value: String) {
+        self.name = name
+        self.value = value
+    }
+}
+

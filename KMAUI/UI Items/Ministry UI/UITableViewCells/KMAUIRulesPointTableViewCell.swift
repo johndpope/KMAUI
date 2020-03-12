@@ -15,8 +15,7 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
-    public var name = ""
-    public var value = "" {
+    public var rule = KMAUILotteryRule() {
         didSet {
             setupCell()
         }
@@ -34,7 +33,7 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        nameLabel.text = name
-        valueLabel.text = value
+        nameLabel.text = rule.name
+        valueLabel.text = rule.value
     }
 }
