@@ -982,7 +982,7 @@ extension UIView {
      */
     func setRoundCorners(radius: CGFloat) {
         self.layer.cornerRadius = radius
-        self.layer.borderWidth = 0.5
+        self.layer.borderWidth = 1.0
         self.layer.borderColor = KMAUIConstants.shared.KMAUIMainBgColor.cgColor
         self.clipsToBounds = true
     }
