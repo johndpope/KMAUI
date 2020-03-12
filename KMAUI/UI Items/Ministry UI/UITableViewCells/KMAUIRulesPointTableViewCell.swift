@@ -37,5 +37,6 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     public func setupCell() {
         nameLabel.text = rule.name
         valueLabel.text = rule.value
+        valueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
     }
 }
