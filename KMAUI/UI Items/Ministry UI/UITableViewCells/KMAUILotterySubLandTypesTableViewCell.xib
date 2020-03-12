@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-UN-mzR">
-                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="83"/>
+                        <rect key="frame" x="20" y="0.0" width="162" height="83"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38f-df-jWT">
-                                <rect key="frame" x="20" y="10" width="15" height="15"/>
+                                <rect key="frame" x="10" y="10" width="15" height="15"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="PPQ-jj-qEy"/>
@@ -30,7 +30,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eF-md-AAD" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="47" y="8" width="117.5" height="19"/>
+                                <rect key="frame" x="37" y="8" width="117" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="9AF-hV-a8T"/>
                                 </constraints>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzh-4z-QLc">
-                                <rect key="frame" x="20" y="50" width="15" height="15"/>
+                                <rect key="frame" x="10" y="50" width="15" height="15"/>
                                 <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="7JM-yQ-noj"/>
@@ -47,7 +47,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Land for sale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGr-rm-fho" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="47" y="48" width="117.5" height="19"/>
+                                <rect key="frame" x="37" y="48" width="117" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="QXZ-5U-hSB"/>
                                 </constraints>
@@ -62,17 +62,17 @@
                             <constraint firstItem="lGr-rm-fho" firstAttribute="leading" secondItem="pzh-4z-QLc" secondAttribute="trailing" constant="12" id="DEY-gf-fai"/>
                             <constraint firstAttribute="bottom" secondItem="lGr-rm-fho" secondAttribute="bottom" constant="16" id="J7E-4P-jAW"/>
                             <constraint firstItem="38f-df-jWT" firstAttribute="centerY" secondItem="2eF-md-AAD" secondAttribute="centerY" id="Jns-vU-aQm"/>
-                            <constraint firstItem="pzh-4z-QLc" firstAttribute="leading" secondItem="bsh-UN-mzR" secondAttribute="leading" constant="20" id="Lcp-zl-w6m"/>
+                            <constraint firstItem="pzh-4z-QLc" firstAttribute="leading" secondItem="bsh-UN-mzR" secondAttribute="leading" constant="10" id="Lcp-zl-w6m"/>
                             <constraint firstItem="2eF-md-AAD" firstAttribute="leading" secondItem="38f-df-jWT" secondAttribute="trailing" constant="12" id="Nfw-Ug-Pb8"/>
                             <constraint firstAttribute="trailing" secondItem="2eF-md-AAD" secondAttribute="trailing" constant="8" id="NnK-O5-vci"/>
                             <constraint firstItem="pzh-4z-QLc" firstAttribute="centerY" secondItem="lGr-rm-fho" secondAttribute="centerY" id="OXq-Ep-ImB"/>
                             <constraint firstItem="2eF-md-AAD" firstAttribute="top" secondItem="bsh-UN-mzR" secondAttribute="top" constant="8" id="dhk-Nt-Muk"/>
                             <constraint firstItem="lGr-rm-fho" firstAttribute="top" secondItem="2eF-md-AAD" secondAttribute="bottom" constant="21" id="wLw-da-BS6"/>
-                            <constraint firstItem="38f-df-jWT" firstAttribute="leading" secondItem="bsh-UN-mzR" secondAttribute="leading" constant="20" id="ypD-o2-WfW"/>
+                            <constraint firstItem="38f-df-jWT" firstAttribute="leading" secondItem="bsh-UN-mzR" secondAttribute="leading" constant="10" id="ypD-o2-WfW"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="60N-CB-7eP">
-                        <rect key="frame" x="172.5" y="0.0" width="147.5" height="83"/>
+                        <rect key="frame" x="182" y="0.0" width="138" height="83"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chH-7Y-zSb">
                                 <rect key="frame" x="0.0" y="10" width="15" height="15"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for commercial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atL-Zn-k7B" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="27" y="8" width="112.5" height="19"/>
+                                <rect key="frame" x="27" y="8" width="103" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="bqi-Pc-pZT"/>
                                 </constraints>
@@ -100,7 +100,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Lands for lottery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMB-8q-kKU" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="27" y="48" width="112.5" height="19"/>
+                                <rect key="frame" x="27" y="48" width="103" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="sq8-Tc-t9m"/>
                                 </constraints>
@@ -127,7 +127,7 @@
                 <color key="backgroundColor" name="KMAUIViewBgColor"/>
                 <constraints>
                     <constraint firstItem="60N-CB-7eP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="1Jd-2l-Roj"/>
-                    <constraint firstItem="bsh-UN-mzR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Dfv-N5-4nb"/>
+                    <constraint firstItem="bsh-UN-mzR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Dfv-N5-4nb"/>
                     <constraint firstAttribute="trailing" secondItem="60N-CB-7eP" secondAttribute="trailing" id="Dva-ZS-CYv"/>
                     <constraint firstItem="bsh-UN-mzR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="N9M-JR-zAR"/>
                     <constraint firstItem="60N-CB-7eP" firstAttribute="leading" secondItem="bsh-UN-mzR" secondAttribute="trailing" id="XfL-sg-SmD"/>
