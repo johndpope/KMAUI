@@ -27,7 +27,7 @@ public class KMAUILotterySubLandTypesTableViewCell: UITableViewCell {
         
         // Corners for views
         servicesView.setRoundCorners(radius: 4)
-        commercialLabel.setRoundCorners(radius: 4)
+        commercialView.setRoundCorners(radius: 4)
         saleView.setRoundCorners(radius: 4)
         lotteryView.setRoundCorners(radius: 4)
         
