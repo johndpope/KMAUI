@@ -18,7 +18,7 @@ public class KMAUIRegionHeaderView: UIView {
     // MARK: - Variables
     public var region = KMAMapAreaStruct() {
         didSet {
-            setupCell()
+            setupHeader()
         }
     }
     
@@ -32,7 +32,7 @@ public class KMAUIRegionHeaderView: UIView {
         commonInit()
     }
     
-    public func setupCell() {
+    public func setupHeader() {
         // Fill the data to display
         regionLabel.text = region.nameE
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
