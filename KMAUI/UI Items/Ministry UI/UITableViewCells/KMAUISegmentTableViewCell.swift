@@ -18,7 +18,6 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
             self.setupCell()
         }
     }
-    public var isSetup = false
     public var selectedIndex = 0
     public var selectedIndexCallback: ((Int) -> Void)?
     public static let id = "KMAUISegmentTableViewCell"
@@ -61,6 +60,9 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
         
         // No selection required
         selectionStyle = .none
+        
+        // Setup the segment background
+        segmentControl.fixBackgroundSegmentControl()
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -71,18 +73,24 @@ public class KMAUISegmentTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Update the segment titles
-        segmentControl.removeAllSegments()
-        for item in segmentItems {
-            segmentControl.insertSegment(withTitle: item, at: segmentControl.numberOfSegments, animated: false)
+        if segmentControl.numberOfSegments == segmentItems.count {
+            for (index, item) in segmentItems.enumerated() {
+                if segmentControl.numberOfSegments > index {
+                    segmentControl.setTitle(item, forSegmentAt: index)
+                }
+            }
+        } else {
+            // Update the segment titles
+            segmentControl.removeAllSegments()
+            for item in segmentItems {
+                segmentControl.insertSegment(withTitle: item, at: segmentControl.numberOfSegments, animated: false)
+            }
+
+            segmentControl.fixBackgroundSegmentControl()
         }
+        
         // Update the segment selected index
         segmentControl.selectedSegmentIndex = selectedIndex
-        
-        // Fix the background
-        if !isSetup {
-            segmentControl.fixBackgroundSegmentControl()
-            isSetup = true
-        }
     }
     
     @objc public func segmentControlValueChanged(item: UISegmentedControl) {
