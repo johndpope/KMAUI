@@ -9,12 +9,12 @@
 import UIKit
 
 public class KMAUIRulesPointTableViewCell: UITableViewCell {
-    // MARK: - Variables
-    public static let id = "KMAUIRulesPointTableViewCell"
+    // MARK: - IBOutlets
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
+    public static let id = "KMAUIRulesPointTableViewCell"
     public var rule = KMAUILotteryRule() {
         didSet {
             setupCell()
