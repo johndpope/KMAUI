@@ -2662,6 +2662,104 @@ public struct KMAUILandPlanStruct {
         ////
     }
     
+    public mutating func updateGeojson(parseItems: [String: PFObject]) -> String {
+        // Update the geojson to store the subLandType and objectId
+        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
+        var newGeojson = ""
+        
+        if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+            var features = features
+            
+            for (index, feature) in features.enumerated() {
+                var feature = feature
+                var shouldRemove = false
+                
+                if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
+                    if let parseItem = parseItems[itemName] {
+                        // subLandSquare, Double
+                        if let subLandSquare = parseItem["subLandSquare"] as? Double {
+                            itemProperties["subLandSquare"] = subLandSquare.formatNumbersAfterDot() as AnyObject
+                        }
+                        // subLandType, String
+                        if let subLandType = parseItem["subLandType"] as? String {
+                            itemProperties["subLandType"] = subLandType as AnyObject
+                        }
+                        // subLandWidth, Double
+                        if let subLandWidth = parseItem["subLandWidth"] as? Double {
+                            itemProperties["subLandWidth"] = subLandWidth.formatNumbersAfterDot() as AnyObject
+                            
+                            if subLandWidth < 0 {
+                                shouldRemove = true
+                            }
+                        }
+                        // subLandHeight, Double
+                        if let subLandHeight = parseItem["subLandHeight"] as? Double {
+                            itemProperties["subLandHeight"] = subLandHeight.formatNumbersAfterDot() as AnyObject
+                            
+                            if subLandHeight < 0 {
+                                shouldRemove = true
+                            }
+                        }
+                        // location, PFGeoPoint
+                        if let location = parseItem["location"] as? PFGeoPoint {
+                            itemProperties["latitude"] = location.latitude as AnyObject
+                            itemProperties["longitude"] = location.longitude as AnyObject
+                        }
+                        // minX, Double
+                        if let minX = parseItem["minX"] as? Double {
+                            itemProperties["minX"] = minX as AnyObject
+                        }
+                        // minY, Double
+                        if let minY = parseItem["minY"] as? Double {
+                            itemProperties["minY"] = minY as AnyObject
+                        }
+                        // maxX, Double
+                        if let maxX = parseItem["maxX"] as? Double {
+                            itemProperties["maxX"] = maxX as AnyObject
+                        }
+                        // maxY, Double
+                        if let maxY = parseItem["maxY"] as? Double {
+                            itemProperties["maxY"] = maxY as AnyObject
+                        }
+                        // subLandPercent, Double
+                        if let subLandPercent = parseItem["subLandPercent"] as? Double {
+                            itemProperties["subLandPercent"] = subLandPercent.formatNumbersAfterDot() as AnyObject
+                        }
+                        // extraPrice, Double
+                        if let extraPrice = parseItem["extraPrice"] as? Double {
+                            itemProperties["extraPrice"] = extraPrice.formatNumbersAfterDot() as AnyObject
+                        }
+                        // objectId, String
+                        if let objectId = parseItem.objectId {
+                            itemProperties["objectId"] = objectId as AnyObject
+                        }
+                    }
+                    
+                    feature["properties"] = itemProperties
+                    features[index] = feature
+                    
+                    if shouldRemove {
+                        features.remove(at: index)
+                    }
+                }
+            }
+            
+            let jsonDict: [String: Any] = [
+                "type": "FeatureCollection",
+                "features": features
+            ]
+            
+            if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
+                //For JSON String
+                if let jsonStr = String(bytes: data, encoding: .utf8) {
+                    newGeojson = jsonStr
+                }
+            }
+        }
+        
+        return newGeojson
+    }
+    
     public func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
         var minX: Double = 0
         var minY: Double = 0
