@@ -192,7 +192,7 @@ public class KMAUIParse {
                                         var subLandItem = KMAUISubLandStruct()
                                         subLandItem.fillFromDict(item: item)
                                         
-                                        if !subLandItem.subLandType.isEmpty {
+                                        if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
                                             landPlanObject.subLandArray.append(subLandItem)
                                             
                                             if subLandItem.subLandType == "Residential Lottery" {
@@ -220,7 +220,7 @@ public class KMAUIParse {
                                 divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
                                 landPlanObject.responsibleDivision = divisionObject
                             }
-
+                            // region id
                             if let region = plan["region"] as? PFObject, let regionId = region.objectId {
                                 // Region id
                                 landPlanObject.regionId = regionId
@@ -237,6 +237,8 @@ public class KMAUIParse {
                                     }
                                 }
                             }
+                            // Counts / Percents for Sub Lands
+                            landPlanObject.prepareRules()
                         }
                     }
                     
