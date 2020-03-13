@@ -2611,6 +2611,55 @@ public struct KMAUILandPlanStruct {
                 geojson = jsonStr
             }
         }
+        
+        // Add the Sub Land types into geojson
+        addSubLandTypes()
+    }
+    
+    public mutating func addSubLandTypes() {
+        // Update the geojson to store the subLandType and objectId
+        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
+
+        var parseItems = [String: PFObject]()
+        
+        for subLandItem in self.subLandItems {
+            if let subLandName = subLandItem["subLandIndex"] as? String {
+                parseItems[subLandName] = subLandItem
+            }
+        }
+        
+        if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+            var features = features
+            
+            for (index, feature) in features.enumerated() {
+                var feature = feature
+                
+                if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
+                    if let parseItem = parseItems[itemName]{
+                        // subLandType, String
+                        if let subLandType = parseItem["subLandType"] as? String {
+                            itemProperties["subLandType"] = subLandType as AnyObject
+                        }
+                    }
+                    
+                    feature["properties"] = itemProperties
+                    features[index] = feature
+                }
+            }
+            
+            let jsonDict: [String: Any] = [
+                "type": "FeatureCollection",
+                "features": features
+            ]
+            
+            if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
+                //For JSON String
+                if let jsonStr = String(bytes: data, encoding: .utf8) {
+                    self.geojson = jsonStr
+                }
+            }
+        }
+        ////
     }
     
     public func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
