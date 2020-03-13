@@ -2861,8 +2861,8 @@ public struct KMAUILandPlanStruct {
         residentialLotteryPercent = 100 - (servicesPercent + commercialPercent + residentialSalePercent)
         
         if servicesPercent > 0, commercialPercent > 0, residentialSalePercent > 0, residentialLotteryPercent > 0 {
-            print("\nTotal Sub Lands: \(totalCount)\nServices: \(servicesCount)\nCommercial: \(commercialCount)\nSale: \(residentialSalePercent)\nLottery: \(residentialLotteryPercent)")
-            print("\(servicesPercent)%, \(commercialPercent)%, \(residentialSalePercent)%, \(residentialLotteryPercent)%")
+//            print("\nTotal Sub Lands: \(totalCount)\nServices: \(servicesCount)\nCommercial: \(commercialCount)\nSale: \(residentialSalePercent)\nLottery: \(residentialLotteryPercent)")
+//            print("\(servicesPercent)%, \(commercialPercent)%, \(residentialSalePercent)%, \(residentialLotteryPercent)%")
             
             // Section 0
             rulesArray = [KMAUILotteryRule(name: "Area width", value: "\(Int(self.areaWidth)) m"), KMAUILotteryRule(name: "Area height", value: "\(Int(self.areaHeight)) m"), KMAUILotteryRule(name: "Main road", value: "\(Int(self.mainRoadWidth)) m"), KMAUILotteryRule(name: "Regular road", value: "\(Int(self.regularRoadWidth)) m"), KMAUILotteryRule(name: "City block", value: "\(self.rowsPerBlock) rows, \(self.rowsPerBlock - 1) roads")]
