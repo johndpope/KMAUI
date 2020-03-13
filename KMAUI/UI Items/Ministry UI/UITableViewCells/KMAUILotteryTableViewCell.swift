@@ -40,6 +40,10 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         isActiveImageView.layer.cornerRadius = 4
         isActiveImageView.clipsToBounds = true
         
+        // Default state - disabled
+        isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        
         // No selection required
         selectionStyle = .none
     }
