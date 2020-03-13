@@ -2855,7 +2855,7 @@ public struct KMAUILandPlanStruct {
         }
         
         // Total subLand counts
-        self.totalCount = self.servicesCount + self.commercialCount + self.saleCount + self.lotteryCount
+        self.totalCount = self.servicesCount + self.commercialCount + self.residentialSaleCount + self.residentialLotteryCount
         
         if self.totalCount > 0 {
             // Sub Land percents per category
