@@ -2836,6 +2836,7 @@ public struct KMAUILandPlanStruct {
         commercialCount = 0
         residentialSaleCount = 0
         residentialLotteryCount = 0
+        totalCount = 0
         
         for subLandItem in self.subLandArray {
             if !subLandItem.subLandType.isEmpty {
@@ -2854,14 +2855,13 @@ public struct KMAUILandPlanStruct {
         // Total subLand counts
         totalCount = servicesCount + commercialCount + saleCount + lotteryCount
         
-        // Sub Land percents per category
-        servicesPercent = Int(((Double(servicesCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
-        commercialPercent = Int(((Double(commercialCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
-        residentialSalePercent = Int(((Double(residentialSaleCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
-        residentialLotteryPercent = 100 - (servicesPercent + commercialPercent + residentialSalePercent)
-        
-        print("\nTotal Sub Lands: \(totalCount)\nServices: \(servicesCount)\nCommercial: \(commercialCount)\nSale: \(residentialSalePercent)\nLottery: \(residentialLotteryPercent)")
-        print("\(servicesPercent)%, \(commercialPercent)%, \(residentialSalePercent)%, \(residentialLotteryPercent)%")
+        if totalCount > 0 {
+            // Sub Land percents per category
+            servicesPercent = Int(((Double(servicesCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
+            commercialPercent = Int(((Double(commercialCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
+            residentialSalePercent = Int(((Double(residentialSaleCount) / Double(totalCount)) * 100).formatNumbersAfterDot())
+            residentialLotteryPercent = 100 - (servicesPercent + commercialPercent + residentialSalePercent)
+        }
         
         // Section 0
         rulesArray = [KMAUILotteryRule(name: "Area width", value: "\(Int(self.areaWidth)) m"), KMAUILotteryRule(name: "Area height", value: "\(Int(self.areaHeight)) m"), KMAUILotteryRule(name: "Main road", value: "\(Int(self.mainRoadWidth)) m"), KMAUILotteryRule(name: "Regular road", value: "\(Int(self.regularRoadWidth)) m"), KMAUILotteryRule(name: "City block", value: "\(self.rowsPerBlock) rows, \(self.rowsPerBlock - 1) roads")]
