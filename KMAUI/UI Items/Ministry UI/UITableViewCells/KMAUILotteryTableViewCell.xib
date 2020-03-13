@@ -32,7 +32,8 @@
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="owe-ce-Hua">
                                 <rect key="frame" x="242" y="14" width="22" height="22"/>
-                                <color key="backgroundColor" name="KMATurquoiseColor"/>
+                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="tintColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="7ya-wr-grS"/>
                                     <constraint firstAttribute="height" constant="22" id="bd1-Vy-a8C"/>
@@ -96,8 +97,11 @@
     </objects>
     <resources>
         <image name="disclosureArrow" width="7" height="12"/>
-        <namedColor name="KMATurquoiseColor">
-            <color red="0.26666666666666666" green="0.83921568627450982" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
