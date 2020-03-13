@@ -2838,8 +2838,10 @@ public struct KMAUILandPlanStruct {
         self.residentialLotteryCount = 0
         self.totalCount = 0
         
-        for subLandItem in self.subLandArray {
+        for (index, subLandItem) in self.subLandArray.enumerated() {
             if !subLandItem.subLandType.isEmpty {
+                print("\(index + 1): \(subLandItem.subLandType)")
+                
                 if subLandItem.subLandType == "Services" {
                     self.servicesCount += 1
                 } else if subLandItem.subLandType == "Commercial" {
