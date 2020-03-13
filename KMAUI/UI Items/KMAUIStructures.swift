@@ -2283,13 +2283,13 @@ public struct KMAUILandPlanStruct {
     public var subLandObjectId = ""
     public var lotteryCompleted = false
     // Counts and percents
-    var rulesArray = [KMAUILotteryRule]()
-    var percentArray = [KMAUILotteryRule]()
-    var saleCount = 0
-    var lotteryCount = 0
-    var totalCount = 0
-    var residentialSalePercent = 0
-    var residentialLotteryPercent = 0
+    public var rulesArray = [KMAUILotteryRule]()
+    public var percentArray = [KMAUILotteryRule]()
+    public var saleCount = 0
+    public var lotteryCount = 0
+    public var totalCount = 0
+    public var residentialSalePercent = 0
+    public var residentialLotteryPercent = 0
     
     public init() {}
     
