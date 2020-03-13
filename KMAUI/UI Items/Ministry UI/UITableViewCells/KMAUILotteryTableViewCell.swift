@@ -72,7 +72,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         // Basic details
         lotteryNameLabel.text = lottery.landName
         subLandsLabel.text = "Sub Lands"
-        subLandsCountLabel.text = "\(lottery.lotterySubLandsCount)"
+        subLandsCountLabel.text = "\(lottery.totalCount)"
         
         // Is active status
         if isActive {
