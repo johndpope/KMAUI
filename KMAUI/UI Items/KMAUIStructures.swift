@@ -2659,7 +2659,6 @@ public struct KMAUILandPlanStruct {
                 }
             }
         }
-        ////
     }
     
     public mutating func updateGeojson(parseItems: [String: PFObject]) -> String {
@@ -2956,7 +2955,12 @@ public struct KMAUILandPlanStruct {
                 if itemType == "Residential" {
                     residentialCount += 1
                     
-                    if residentialLotteryCount < desiredResidentialLotteryCount {
+                    let residentialArray = ["Residential Lottery", "Residential Sale"]
+                    let randomResidential = Int.random(in: 0 ..< 2)
+                    
+                    let residentialValue = residentialArray[randomResidential]
+                    
+                    if residentialValue == "Residential Lottery", residentialLotteryCount < desiredResidentialLotteryCount {
                         residentialLotteryCount += 1
                         item["subLandType"] = "Residential Lottery"
                     } else {
