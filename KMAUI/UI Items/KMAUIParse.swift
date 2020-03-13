@@ -159,6 +159,10 @@ public class KMAUIParse {
                             if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
                                 landPlanObject.lotteryCompleted = lotteryCompletedValue
                             }
+                            // extraPricePerSqM
+                            if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
+                                landPlanObject.squareMeterPrice = extraPricePerSqM
+                            }
                             // landArea
                             if let landArea = plan["landArea"] as? String {
                                 landPlanObject.geojson = landArea
