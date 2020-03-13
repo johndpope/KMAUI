@@ -202,6 +202,8 @@ public class KMAUIParse {
                                     }
                                 }
                             }
+                            // Counts / Percents for Sub Lands
+                            landPlanObject.prepareRules()
                             // centerCoordinate
                             if let location = plan["location"] as? PFGeoPoint {
                                 landPlanObject.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
@@ -237,8 +239,6 @@ public class KMAUIParse {
                                     }
                                 }
                             }
-                            // Counts / Percents for Sub Lands
-                            landPlanObject.prepareRules()
                         }
                     }
                     
