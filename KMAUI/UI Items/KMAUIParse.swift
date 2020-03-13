@@ -192,10 +192,12 @@ public class KMAUIParse {
                                         var subLandItem = KMAUISubLandStruct()
                                         subLandItem.fillFromDict(item: item)
                                         
-                                        landPlanObject.subLandArray.append(subLandItem)
-                                        
-                                        if subLandItem.subLandType == "Residential Lottery" {
-                                            landPlanObject.lotterySubLandArray.append(subLandItem)
+                                        if !subLandItem.subLandType.isEmpty {
+                                            landPlanObject.subLandArray.append(subLandItem)
+                                            
+                                            if subLandItem.subLandType == "Residential Lottery" {
+                                                landPlanObject.lotterySubLandArray.append(subLandItem)
+                                            }
                                         }
                                     }
                                 }
