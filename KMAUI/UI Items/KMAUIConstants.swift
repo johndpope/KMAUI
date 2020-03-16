@@ -116,7 +116,7 @@ public class KMAUIConstants {
     
     public let performanceTitles = ["Community", "Service", "Security"]
     public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Citizens"]
-    public let lotteryParametersSections = ["Land rules", "Sub land"]
+    public let lotteryParametersSections = ["Land rules", "Sub land", "Citizens"]
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
