@@ -14,6 +14,8 @@ public class KMAUIRegionHeaderView: UIView {
     @IBOutlet public weak var regionLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var queueLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var lineView: UIView!
+    @IBOutlet public weak var lineViewTop: NSLayoutConstraint!
     
     // MARK: - Variables
     public var isFirst = false
@@ -34,6 +36,15 @@ public class KMAUIRegionHeaderView: UIView {
     }
     
     public func setupHeader() {
+        // Top offset
+        if isFirst {
+            lineViewTop.constant = -1
+            lineView.alpha = 0
+        } else {
+            lineViewTop.constant = 16
+            lineView.alpha = 1
+        }
+        
         // Fill the data to display
         regionLabel.text = region.nameE
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
