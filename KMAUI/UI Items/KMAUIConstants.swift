@@ -100,6 +100,7 @@ public class KMAUIConstants {
     public let placeholderUploadImageNoir = UIImage(named: "placeholderUploadImageNoir", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let landPlanTabIcon = UIImage(named: "landPlanTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let disclosureArrow = UIImage(named: "disclosureArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let regionLotteryIcon = UIImage(named: "regionLotteryIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
