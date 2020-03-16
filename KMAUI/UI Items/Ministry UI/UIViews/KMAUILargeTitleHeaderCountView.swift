@@ -48,7 +48,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         if headerTitle == "Land rules" {
             detailsLabel.text = "sub lands available for lottery"
             bgViewBottom.constant = 8
-            bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
+            bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
             bgViewBottom.constant = 0
