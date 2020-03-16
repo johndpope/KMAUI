@@ -47,7 +47,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     
     private func commonInit() {
         let bundle = Bundle(for: KMAUILargeTitleHeaderView.self)
-        bundle.loadNibNamed("KMAUILargeTitleHeaderView", owner: self, options: nil)
+        bundle.loadNibNamed("KMAUILargeTitleHeaderCountView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
