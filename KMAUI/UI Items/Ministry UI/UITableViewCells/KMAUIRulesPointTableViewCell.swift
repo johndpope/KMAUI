@@ -47,12 +47,12 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
         if sideOffsets {
             nameLabelLeft.constant = 40
             valueLabelRight.constant = 40
-            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+                contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             bgView.alpha = 1
         } else {
             nameLabelLeft.constant = 30
             valueLabelRight.constant = 30
-            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.alpha = 0
         }
     }
