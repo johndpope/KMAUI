@@ -15,6 +15,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var subLandsLabel: UILabel!
     @IBOutlet public weak var subLandsCountLabel: UILabel!
+    @IBOutlet public weak var statusView: UIView!
+    @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public var lottery = KMAUILandPlanStruct()
