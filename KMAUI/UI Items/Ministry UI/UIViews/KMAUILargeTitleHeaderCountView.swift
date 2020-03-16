@@ -47,11 +47,11 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Set the views
         if headerTitle == "Land rules" {
             detailsLabel.text = "sub lands available for lottery"
-            bgViewBottom.constant = 8
+            bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
-            bgViewBottom.constant = 0
+            bgViewBottom.constant = 8
             bgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         }
         // Count label
