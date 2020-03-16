@@ -25,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOA-wO-0MD" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="73" y="41" width="274" height="22"/>
+                    <rect key="frame" x="76" y="41" width="271" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="CuV-pa-ISB"/>
                     </constraints>
@@ -34,7 +34,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-Kg-3yr" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="73" y="63" width="224" height="22"/>
+                    <rect key="frame" x="76" y="63" width="221" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="6vZ-ri-gvT"/>
                     </constraints>
@@ -52,10 +52,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="regionLotteryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lek-Rh-IYv">
-                    <rect key="frame" x="20" y="42.5" width="41" height="41"/>
+                    <rect key="frame" x="20" y="41" width="44" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="41" id="22N-1N-brl"/>
-                        <constraint firstAttribute="width" constant="41" id="NL5-jH-Ra6"/>
+                        <constraint firstAttribute="height" constant="44" id="22N-1N-brl"/>
+                        <constraint firstAttribute="width" constant="44" id="NL5-jH-Ra6"/>
                     </constraints>
                 </imageView>
                 <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EyY-Ux-UfW">

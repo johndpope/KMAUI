@@ -11,7 +11,9 @@ import UIKit
 public class KMAUILargeTitleHeaderView: UIView {
     // MARK: - IBoutlets
     @IBOutlet public var contentView: UIView!
+    @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
+    @IBOutlet public weak var textLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public var headerTitle = "" {
