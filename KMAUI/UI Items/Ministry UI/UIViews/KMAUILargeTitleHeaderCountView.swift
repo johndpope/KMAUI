@@ -8,12 +8,16 @@
 
 import UIKit
 
-public class KMAUILargeTitleHeaderView: UIView {
+public class KMAUILargeTitleHeaderCountView: UIView {
     // MARK: - IBoutlets
     @IBOutlet public var contentView: UIView!
+    @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
+    @IBOutlet public weak var textLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var countLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
+    public var count = 0
     public var headerTitle = "" {
         didSet {
             setupHeader()
@@ -34,6 +38,11 @@ public class KMAUILargeTitleHeaderView: UIView {
         // Fill the data to display
         headerLabel.text = headerTitle
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        // Text label
+        textLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        // Count label
+        countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        countLabel.text = "\(count)"
     }
     
     private func commonInit() {
