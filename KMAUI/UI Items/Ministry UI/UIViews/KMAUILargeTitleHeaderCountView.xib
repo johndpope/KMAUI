@@ -39,20 +39,19 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub lands available for lottery" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="86" y="52" width="251.5" height="22"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="sub lands available for lottery" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                    <rect key="frame" x="86" y="52" width="212" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="kGc-T0-wMw"/>
+                        <constraint firstAttribute="height" constant="22" id="kGc-T0-wMw"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="349.5" y="52" width="10.5" height="22"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="12345" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                    <rect key="frame" x="310" y="52" width="50" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="81q-b9-tNt"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="50" id="Zab-3W-Ow7"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -71,6 +70,7 @@
                 <constraint firstItem="4El-O7-DIN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="auU-Qo-MVI"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="30" id="goU-TJ-ETM"/>
                 <constraint firstItem="XD9-qv-JB1" firstAttribute="top" secondItem="4El-O7-DIN" secondAttribute="bottom" id="lBN-bp-eGE"/>
+                <constraint firstItem="Vuc-xi-e8u" firstAttribute="baseline" secondItem="XD9-qv-JB1" secondAttribute="baseline" id="p1W-tg-Kpm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
