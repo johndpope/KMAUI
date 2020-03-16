@@ -50,7 +50,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="regionLotteryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lek-Rh-IYv">
-                    <rect key="frame" x="20" y="10.5" width="41" height="41"/>
+                    <rect key="frame" x="20" y="6.5" width="41" height="41"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="41" id="22N-1N-brl"/>
                         <constraint firstAttribute="width" constant="41" id="NL5-jH-Ra6"/>
@@ -61,7 +61,7 @@
             <constraints>
                 <constraint firstItem="JOA-wO-0MD" firstAttribute="leading" secondItem="lek-Rh-IYv" secondAttribute="trailing" constant="12" id="0fp-sH-pCa"/>
                 <constraint firstItem="7K6-8N-pFx" firstAttribute="trailing" secondItem="bXn-UE-xel" secondAttribute="trailing" constant="20" id="1uP-dB-aeI"/>
-                <constraint firstItem="lek-Rh-IYv" firstAttribute="centerY" secondItem="eE9-gE-nPb" secondAttribute="centerY" constant="-4" id="BHP-Gy-5a6"/>
+                <constraint firstItem="lek-Rh-IYv" firstAttribute="centerY" secondItem="eE9-gE-nPb" secondAttribute="centerY" constant="-8" id="BHP-Gy-5a6"/>
                 <constraint firstItem="zEQ-Kg-3yr" firstAttribute="leading" secondItem="lek-Rh-IYv" secondAttribute="trailing" constant="12" id="FJg-TI-w9V"/>
                 <constraint firstItem="bXn-UE-xel" firstAttribute="top" secondItem="JOA-wO-0MD" secondAttribute="bottom" id="IUD-He-JEx"/>
                 <constraint firstAttribute="trailing" secondItem="JOA-wO-0MD" secondAttribute="trailing" constant="20" id="Ngb-e5-P3R"/>
