@@ -18,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="32"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hl3-dc-cOr">
+                        <rect key="frame" x="20" y="0.0" width="280" height="32"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-6H-fVy">
                         <rect key="frame" x="30" y="31" width="260" height="1"/>
                         <color key="backgroundColor" name="KMAUIGreyLineColor"/>
@@ -43,9 +47,12 @@
                 </subviews>
                 <color key="backgroundColor" name="KMAUIViewBgColor"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hl3-dc-cOr" secondAttribute="trailing" constant="20" id="4aX-Ne-hh6"/>
+                    <constraint firstItem="hl3-dc-cOr" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5Hw-Qx-v1q"/>
                     <constraint firstAttribute="trailing" secondItem="iMa-6H-fVy" secondAttribute="trailing" constant="30" id="AAz-gL-ksd"/>
                     <constraint firstAttribute="bottom" secondItem="iMa-6H-fVy" secondAttribute="bottom" id="Ejn-65-kHk"/>
                     <constraint firstItem="VKF-15-iBN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="Gal-EO-4L6"/>
+                    <constraint firstAttribute="bottom" secondItem="hl3-dc-cOr" secondAttribute="bottom" id="Jfk-pS-OwH"/>
                     <constraint firstItem="T4N-xL-8Eg" firstAttribute="leading" secondItem="VKF-15-iBN" secondAttribute="trailing" constant="8" id="M1h-e7-3l7"/>
                     <constraint firstItem="iMa-6H-fVy" firstAttribute="top" secondItem="VKF-15-iBN" secondAttribute="bottom" id="T4h-NK-eah"/>
                     <constraint firstItem="iMa-6H-fVy" firstAttribute="top" secondItem="T4N-xL-8Eg" secondAttribute="bottom" id="YxS-Ih-fJs"/>
@@ -53,12 +60,16 @@
                     <constraint firstAttribute="trailing" secondItem="T4N-xL-8Eg" secondAttribute="trailing" constant="30" id="bqF-bv-aQ6"/>
                     <constraint firstItem="iMa-6H-fVy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="keG-x5-Xac"/>
                     <constraint firstItem="T4N-xL-8Eg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sgy-Ta-Jig"/>
+                    <constraint firstItem="hl3-dc-cOr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="zip-Bk-RTl"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="hl3-dc-cOr" id="yDO-vO-vvd"/>
                 <outlet property="nameLabel" destination="VKF-15-iBN" id="y1m-Ui-HZd"/>
+                <outlet property="nameLabelLeft" destination="Gal-EO-4L6" id="sXh-IL-SvE"/>
                 <outlet property="valueLabel" destination="T4N-xL-8Eg" id="XyD-ju-d3l"/>
+                <outlet property="valueLabelRight" destination="bqF-bv-aQ6" id="2P5-Yv-11W"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="148.66071428571428"/>
         </tableViewCell>
