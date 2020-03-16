@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KMAUILargeTitleHeaderCountView" customModule="KMAUI" customModuleProvider="target">
             <connections>
+                <outlet property="bgView" destination="9ed-6n-e8p" id="uXP-JW-xUj"/>
+                <outlet property="bgViewBottom" destination="EgS-MP-KCh" id="g4N-VV-FKC"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="S7G-NB-q26"/>
                 <outlet property="countLabel" destination="XD9-qv-JB1" id="LaT-ds-Y4Q"/>
                 <outlet property="detailsLabel" destination="Vuc-xi-e8u" id="NeG-B7-bJB"/>

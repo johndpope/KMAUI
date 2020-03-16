@@ -10,6 +10,8 @@ import UIKit
 
 public class KMAUILargeTitleHeaderCountView: UIView {
     // MARK: - IBoutlets
+    @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
@@ -41,10 +43,16 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Text label
         detailsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         // Check details
+        bgView.layer.cornerRadius = 8
+        // Set the views
         if headerTitle == "Land rules" {
             detailsLabel.text = "sub lands available for lottery"
+            bgViewBottom.constant = 8
+            bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
+            bgViewBottom.constant = 0
+            bgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         }
         // Count label
         countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
