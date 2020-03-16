@@ -11,6 +11,7 @@ import UIKit
 public class KMAUILotteryTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var isActiveImageView: UIImageView!
     @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var subLandsLabel: UILabel!
@@ -20,6 +21,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var lottery = KMAUILandPlanStruct()
+    public var isFirst = false
     public var isActive = false {
         didSet {
             setupCell()
@@ -75,6 +77,13 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        // Top offset
+        if isFirst {
+            bgViewTop.constant = 8
+        } else {
+            bgViewTop.constant = 0
+        }
+        
         // Basic details
         lotteryNameLabel.text = lottery.landName
         subLandsLabel.text = "Sub Lands"
