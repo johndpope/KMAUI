@@ -46,6 +46,10 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         
+        // Status view
+        statusView.layer.cornerRadius = 3.5
+        statusView.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
@@ -75,6 +79,14 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         lotteryNameLabel.text = lottery.landName
         subLandsLabel.text = "Sub Lands"
         subLandsCountLabel.text = "\(lottery.totalCount)"
+        
+        if lottery.lotteryCompleted {
+            statusLabel.text = "Completed"
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+        } else {
+            statusLabel.text = "In progress"
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        }
         
         // Is active status
         if isActive {
