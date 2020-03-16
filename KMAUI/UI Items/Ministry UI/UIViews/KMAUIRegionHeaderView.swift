@@ -42,7 +42,7 @@ public class KMAUIRegionHeaderView: UIView {
             lineView.alpha = 0
         } else {
             lineViewTop.constant = 16
-            lineView.alpha = 1
+            lineView.alpha = 0.3
         }
         
         // Fill the data to display
