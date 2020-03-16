@@ -13,9 +13,9 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="S7G-NB-q26"/>
                 <outlet property="countLabel" destination="XD9-qv-JB1" id="LaT-ds-Y4Q"/>
+                <outlet property="detailsLabel" destination="Vuc-xi-e8u" id="NeG-B7-bJB"/>
                 <outlet property="headerLabel" destination="4El-O7-DIN" id="OYF-sd-0Ft"/>
                 <outlet property="lotteryImageView" destination="WhS-56-weC" id="vlc-d1-dR9"/>
-                <outlet property="textLabel" destination="Vuc-xi-e8u" id="pnt-vW-aTj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -39,16 +39,16 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="sub lands available for lottery" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                     <rect key="frame" x="86" y="52" width="220" height="22"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="ivf-O2-3i6"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="ivf-O2-3i6"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
                     <rect key="frame" x="318" y="52.5" width="42" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="3kJ-0u-J3M"/>

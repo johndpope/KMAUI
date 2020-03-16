@@ -13,7 +13,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
-    @IBOutlet public weak var textLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var detailsLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var countLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
@@ -39,7 +39,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         headerLabel.text = headerTitle
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         // Text label
-        textLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        detailsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         // Count label
         countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         countLabel.text = "\(count)"
