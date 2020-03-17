@@ -11,6 +11,7 @@ import UIKit
 public class KMAUISubLandPercentTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewHeight: NSLayoutConstraint!
     @IBOutlet public weak var colorView: UIView!
     @IBOutlet public weak var colorViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
@@ -63,11 +64,22 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
             valueLabelRight.constant = 40
                 contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             bgView.alpha = 1
+            
+            if isLast {
+                bgViewHeight.constant = 60
+            } else {
+                bgViewHeight.constant = 44
+            }
+            
+            bgView.clipsToBounds = true
         } else {
             colorViewLeft.constant = 30
             valueLabelRight.constant = 30
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.alpha = 0
+            bgViewHeight.constant = 44
+            bgView.layer.cornerRadius = 0
+            bgView.clipsToBounds = true
         }
     }
 }
