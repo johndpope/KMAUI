@@ -477,4 +477,24 @@ public class KMAUIParse {
             completion(subLandArray)
         }
     }
+    
+    // MARK: Get rules for Land plan from Ministry
+    
+    public func getLotteryRules(completion: @escaping (_ rules: KMAUILotteryRules)->()) {
+        // Rules query
+        let rulesQuery = PFQuery(className: "KMALotteryRules")
+        rulesQuery.order(byAscending: "updatedAt")
+        rulesQuery.getFirstObjectInBackground { (rulesObject, error) in
+            var rules = KMAUILotteryRules()
+            
+            if let error = error {
+                print("Error loading rules: `\(error.localizedDescription)`")
+            } else if let rulesObject = rulesObject {
+                print("Rules from Parse: \(rulesObject)")
+                rules.fillFromParse(object: rulesObject)
+            }
+            
+            completion(rules)
+        }
+    }
 }
