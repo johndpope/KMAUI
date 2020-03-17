@@ -918,7 +918,7 @@ public extension Array where Element: Comparable {
 
 // MARK: - UIStackView extension
 
-extension UIStackView {
+public extension UIStackView {
     func addBackground(color: UIColor) {
         let subView = UIView(frame: bounds)
         subView.backgroundColor = color
@@ -929,7 +929,7 @@ extension UIStackView {
 
 // MARK: - UIImage extension
 
-extension UIImage {
+public extension UIImage {
     var noir: UIImage? {
         let context = CIContext(options: nil)
         guard let currentFilter = CIFilter(name: "CIPhotoEffectNoir") else { return nil }
@@ -944,7 +944,7 @@ extension UIImage {
 
 // MARK: - Location extension
 
-extension CLLocationCoordinate2D {
+public extension CLLocationCoordinate2D {
 
     /// Get coordinate moved from current to `distanceMeters` meters with azimuth `azimuth` [0, Double.pi)
     ///
@@ -968,7 +968,7 @@ extension CLLocationCoordinate2D {
 
 // MARK: - UIView extension
 
-extension UIView {
+public extension UIView {
     /** Loads instance from nib with the same name. */
     func loadNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
