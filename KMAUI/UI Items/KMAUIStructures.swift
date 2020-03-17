@@ -3026,6 +3026,7 @@ public struct KMAUILotteryRule {
     // Variables
     public var name = ""
     public var value = ""
+    public var percent = ""
     
     public init() {
     }
