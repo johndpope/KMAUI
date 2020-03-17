@@ -54,6 +54,7 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
         // Setup values
         nameLabel.text = rule.name
         valueLabel.text = rule.value
+        percentLabel.text = rule.percent
         // Setup the colorView
         if rule.name.contains("services") {
             colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandServicesColor
