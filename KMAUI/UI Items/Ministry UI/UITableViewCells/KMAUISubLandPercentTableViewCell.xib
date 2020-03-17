@@ -34,9 +34,18 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxP-uO-Sa5" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="69" y="12" width="163" height="20"/>
+                        <rect key="frame" x="69" y="12" width="113" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="SIc-H4-bLt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WfJ-SP-Vn6" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="190" y="10" width="42" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Zzs-UV-vK9"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -51,6 +60,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCb-h8-RF9">
+                        <rect key="frame" x="238" y="20" width="4" height="4"/>
+                        <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="4" id="ClR-UY-hQO"/>
+                            <constraint firstAttribute="width" constant="4" id="T53-3Y-N2r"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MF6-ls-gRI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1uq-J3-B8I"/>
@@ -61,9 +78,13 @@
                     <constraint firstAttribute="bottom" secondItem="MF6-ls-gRI" secondAttribute="bottom" id="Hnl-Db-eYl"/>
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ODp-Kj-qbu"/>
                     <constraint firstItem="MF6-ls-gRI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QRh-5P-CwP"/>
-                    <constraint firstItem="WG0-Md-Xhq" firstAttribute="leading" secondItem="SxP-uO-Sa5" secondAttribute="trailing" constant="16" id="Rrz-SY-wIa"/>
+                    <constraint firstItem="WfJ-SP-Vn6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="UM0-qJ-381"/>
+                    <constraint firstItem="WG0-Md-Xhq" firstAttribute="leading" secondItem="OCb-h8-RF9" secondAttribute="trailing" constant="6" id="cze-hQ-bw4"/>
                     <constraint firstAttribute="trailing" secondItem="WG0-Md-Xhq" secondAttribute="trailing" constant="30" id="d2e-NA-es5"/>
                     <constraint firstItem="SxP-uO-Sa5" firstAttribute="leading" secondItem="T6r-J8-pGM" secondAttribute="trailing" constant="14" id="hgg-L9-cfs"/>
+                    <constraint firstItem="OCb-h8-RF9" firstAttribute="leading" secondItem="WfJ-SP-Vn6" secondAttribute="trailing" constant="6" id="ibp-Ru-5Jp"/>
+                    <constraint firstItem="WfJ-SP-Vn6" firstAttribute="leading" secondItem="SxP-uO-Sa5" secondAttribute="trailing" constant="8" id="jpM-0z-tSM"/>
+                    <constraint firstItem="OCb-h8-RF9" firstAttribute="centerY" secondItem="WG0-Md-Xhq" secondAttribute="centerY" id="zpE-c5-keQ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
@@ -71,16 +92,21 @@
             <connections>
                 <outlet property="bgView" destination="MF6-ls-gRI" id="1j2-DD-hhs"/>
                 <outlet property="bgViewHeight" destination="3n7-1B-gf4" id="IIr-g8-hfp"/>
+                <outlet property="circleView" destination="OCb-h8-RF9" id="o0T-UF-OjX"/>
                 <outlet property="colorView" destination="T6r-J8-pGM" id="BTd-9c-0zN"/>
                 <outlet property="colorViewLeft" destination="6sj-ms-X9X" id="9xV-8i-qni"/>
                 <outlet property="nameLabel" destination="SxP-uO-Sa5" id="OBC-rs-UmB"/>
-                <outlet property="valueLabel" destination="WG0-Md-Xhq" id="Adf-We-Vr0"/>
-                <outlet property="valueLabelRight" destination="d2e-NA-es5" id="jBy-47-bsF"/>
+                <outlet property="percentLabel" destination="WG0-Md-Xhq" id="MmE-wH-PdZ"/>
+                <outlet property="percentLabelRight" destination="d2e-NA-es5" id="lQW-QQ-dai"/>
+                <outlet property="valueLabel" destination="WfJ-SP-Vn6" id="jc7-A5-McZ"/>
             </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIGreyProgressColor">
             <color red="0.9179999828338623" green="0.9179999828338623" blue="0.92500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

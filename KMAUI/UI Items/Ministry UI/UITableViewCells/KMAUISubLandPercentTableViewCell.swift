@@ -16,7 +16,9 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
     @IBOutlet public weak var colorViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var valueLabelRight: NSLayoutConstraint!
+    @IBOutlet public weak var percentLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var percentLabelRight: NSLayoutConstraint!
+    @IBOutlet public weak var circleView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUISubLandPercentTableViewCell"
@@ -30,6 +32,10 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Setup circelView
+        circleView.layer.cornerRadius = 2
+        circleView.clipsToBounds = true
         
         // Setup colorView
         colorView.setRoundCorners(radius: 4)
@@ -61,7 +67,7 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
         // Setup side offsets
         if sideOffsets {
             colorViewLeft.constant = 40
-            valueLabelRight.constant = 40
+            percentLabelRight.constant = 40
                 contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             bgView.alpha = 1
             
@@ -77,7 +83,7 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
             bgView.clipsToBounds = true
         } else {
             colorViewLeft.constant = 30
-            valueLabelRight.constant = 30
+            percentLabelRight.constant = 30
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.alpha = 0
             bgViewHeight.constant = 44
