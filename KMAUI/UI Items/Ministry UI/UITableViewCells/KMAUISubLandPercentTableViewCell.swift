@@ -66,9 +66,12 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
             bgView.alpha = 1
             
             if isLast {
-                bgViewHeight.constant = 60
+                bgViewHeight.constant = 68
+                bgView.layer.cornerRadius = 8
+                bgView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             } else {
                 bgViewHeight.constant = 44
+                bgView.layer.cornerRadius = 0
             }
             
             bgView.clipsToBounds = true
