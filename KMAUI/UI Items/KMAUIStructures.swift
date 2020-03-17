@@ -3103,7 +3103,7 @@ public struct KMAUILotteryRules {
         if let residentialPercent = object["residentialPercent"] as? Int {
             self.residentialPercent = residentialPercent
             
-            if let salePercentValue = object["salePercentValue"] as? Int {
+            if let salePercentValue = object["salePercent"] as? Int {
                 self.salePercentValue = salePercentValue
             }
             
