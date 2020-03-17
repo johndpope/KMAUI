@@ -10,12 +10,17 @@ import UIKit
 
 public class KMAUISubLandPercentTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var colorView: UIView!
+    @IBOutlet public weak var colorViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var valueLabelRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUISubLandPercentTableViewCell"
+    public var sideOffsets = false // show the bgView if true
+    public var isLast = false // make round corners if last
     public var rule = KMAUILotteryRule() {
         didSet {
             setupCell()
@@ -39,9 +44,10 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        // Setup values
         nameLabel.text = rule.name
         valueLabel.text = rule.value
-        
+        // Setup the colorView
         if rule.name.contains("services") {
             colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandServicesColor
         } else if rule.name.contains("commercial") {
@@ -50,6 +56,18 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
             colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandSaleColor
         } else if rule.name.contains("lottery") {
             colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandLotteryColor
+        }
+        // Setup side offsets
+        if sideOffsets {
+            colorViewLeft.constant = 40
+            valueLabelRight.constant = 40
+                contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            bgView.alpha = 1
+        } else {
+            colorViewLeft.constant = 30
+            valueLabelRight.constant = 30
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.alpha = 0
         }
     }
 }

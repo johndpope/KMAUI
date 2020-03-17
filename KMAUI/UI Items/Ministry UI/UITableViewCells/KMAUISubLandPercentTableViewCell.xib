@@ -18,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MF6-ls-gRI">
+                        <rect key="frame" x="20" y="0.0" width="280" height="44"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6r-J8-pGM">
                         <rect key="frame" x="30" y="9.5" width="25" height="25"/>
                         <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
@@ -46,10 +50,14 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="MF6-ls-gRI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1uq-J3-B8I"/>
+                    <constraint firstAttribute="trailing" secondItem="MF6-ls-gRI" secondAttribute="trailing" constant="20" id="628-8d-ycy"/>
                     <constraint firstItem="T6r-J8-pGM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="6sj-ms-X9X"/>
                     <constraint firstItem="T6r-J8-pGM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ey-oe-VlJ"/>
+                    <constraint firstAttribute="bottom" secondItem="MF6-ls-gRI" secondAttribute="bottom" id="Hnl-Db-eYl"/>
                     <constraint firstItem="SxP-uO-Sa5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Moo-uU-QTj"/>
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ODp-Kj-qbu"/>
+                    <constraint firstItem="MF6-ls-gRI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QRh-5P-CwP"/>
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="leading" secondItem="SxP-uO-Sa5" secondAttribute="trailing" constant="16" id="Rrz-SY-wIa"/>
                     <constraint firstAttribute="bottom" secondItem="WG0-Md-Xhq" secondAttribute="bottom" constant="10" id="WYY-hU-hK7"/>
                     <constraint firstAttribute="trailing" secondItem="WG0-Md-Xhq" secondAttribute="trailing" constant="30" id="d2e-NA-es5"/>
@@ -59,9 +67,12 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="MF6-ls-gRI" id="1j2-DD-hhs"/>
                 <outlet property="colorView" destination="T6r-J8-pGM" id="BTd-9c-0zN"/>
+                <outlet property="colorViewLeft" destination="6sj-ms-X9X" id="9xV-8i-qni"/>
                 <outlet property="nameLabel" destination="SxP-uO-Sa5" id="OBC-rs-UmB"/>
                 <outlet property="valueLabel" destination="WG0-Md-Xhq" id="Adf-We-Vr0"/>
+                <outlet property="valueLabelRight" destination="d2e-NA-es5" id="jBy-47-bsF"/>
             </connections>
             <point key="canvasLocation" x="139" y="153"/>
         </tableViewCell>
