@@ -3042,3 +3042,73 @@ public struct KMAUILotteryRule {
     }
 }
 
+// MARK: - Lottery rules from Ministry struct
+
+public struct KMAUILotteryRules {
+    public var areaWidth = 1500
+    public var areaHeight = 1000
+    public var mainRoadWidth = 20
+    public var regularRoadWidth = 6
+    public var rowsPerBlock = 4
+    public var squareMeterPrice = 1500
+    public var servicesPercent = 15
+    public var commercialPercent = 20
+    public var residentialPercent = 65
+    public var salePercentValue = 25
+    public var salePercent = Int(65 * 0.25)
+    public var lotteryPercent = 65 - Int(65 * 0.25)
+    // Additional parameters
+    public var itemsInSubBlockHorizontal = 5
+    public var itemsInSubBlockVertical = 2
+    public var minSubLandSide = 25
+    public var maxSubLandSide = 30
+    
+    public init() {
+    }
+    
+    public mutating func fillFromParse(object: PFObject) {
+        // areaWidth
+        if let areaWidth = object["areaWidth"] as? Int {
+            self.areaWidth = areaWidth
+        }
+        // areaHeight
+        if let areaHeight = object["areaHeight"] as? Int {
+            self.areaHeight = areaHeight
+        }
+        // mainRoadWidth
+        if let mainRoadWidth = object["mainRoadWidth"] as? Int {
+            self.mainRoadWidth = mainRoadWidth
+        }
+        // regularRoadWidth
+        if let regularRoadWidth = object["regularRoadWidth"] as? Int {
+            self.regularRoadWidth = regularRoadWidth
+        }
+        // rowsPerBlock
+        if let rowsPerBlock = object["rowsPerBlock"] as? Int {
+            self.rowsPerBlock = rowsPerBlock
+        }
+        // squareMeterPrice
+        if let squareMeterPrice = object["squareMeterPrice"] as? Int {
+            self.squareMeterPrice = squareMeterPrice
+        }
+        // servicesPercent
+        if let servicesPercent = object["servicesPercent"] as? Int {
+            self.servicesPercent = servicesPercent
+        }
+        // commercialPercent
+        if let commercialPercent = object["commercialPercent"] as? Int {
+            self.commercialPercent = commercialPercent
+        }
+        // residentialPercent
+        if let residentialPercent = object["residentialPercent"] as? Int {
+            self.residentialPercent = residentialPercent
+            
+            if let salePercentValue = object["salePercentValue"] as? Int {
+                self.salePercentValue = salePercentValue
+            }
+            
+            salePercent = Int(Double(self.residentialPercent) * Double(self.salePercentValue) / 100)
+            lotteryPercent = self.residentialPercent - salePercent
+        }
+    }
+}
