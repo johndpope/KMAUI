@@ -1026,3 +1026,22 @@ public extension UISegmentedControl {
         self.setTitleTextAttributes(selectedAttributes, for: .selected)
     }
 }
+
+// MARK: - UIButton extension methods
+
+public extension UIButton {
+    
+    func setupArrowButton(isDecrease: Bool) {
+        self.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        self.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        self.contentMode = .center
+        self.layer.cornerRadius = 2
+        self.clipsToBounds = true
+        
+        if isDecrease {
+            self.setImage(KMAUIConstants.shared.decreaseArrow.withRenderingMode(.alwaysTemplate), for: .normal)
+        } else {
+            self.setImage(KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+    }
+}

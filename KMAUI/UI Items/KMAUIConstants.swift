@@ -102,6 +102,7 @@ public class KMAUIConstants {
     public let disclosureArrow = UIImage(named: "disclosureArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let regionLotteryIcon = UIImage(named: "regionLotteryIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let lotteryPlaceholder = UIImage(named: "lotteryPlaceholder", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let decreaseArrow = UIImage(named: "decreaseArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
