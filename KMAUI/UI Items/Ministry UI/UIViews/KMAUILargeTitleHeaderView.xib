@@ -11,8 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KMAUILargeTitleHeaderView" customModule="KMAUI" customModuleProvider="target">
             <connections>
+                <outlet property="bgView" destination="Bai-jH-oke" id="5cK-qb-6U0"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="S7G-NB-q26"/>
                 <outlet property="headerLabel" destination="4El-O7-DIN" id="OYF-sd-0Ft"/>
+                <outlet property="headerLabelLeft" destination="6Ut-4E-SUI" id="M3y-m1-ohi"/>
+                <outlet property="headerLabelRight" destination="fnR-fv-ZOa" id="qTr-Jw-Y5h"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,6 +23,10 @@
             <rect key="frame" x="0.0" y="0.0" width="390" height="77"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bai-jH-oke">
+                    <rect key="frame" x="20" y="0.0" width="350" height="77"/>
+                    <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4El-O7-DIN">
                     <rect key="frame" x="30" y="40" width="330" height="21"/>
                     <constraints>
@@ -35,7 +42,11 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4El-O7-DIN" secondAttribute="bottom" constant="16" id="3Hn-Bv-fDD"/>
                 <constraint firstItem="4El-O7-DIN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="30" id="6Ut-4E-SUI"/>
                 <constraint firstItem="4El-O7-DIN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="6n1-kh-hZR"/>
+                <constraint firstItem="Bai-jH-oke" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="CU8-xT-e0M"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="30" id="fnR-fv-ZOa"/>
+                <constraint firstAttribute="bottom" secondItem="Bai-jH-oke" secondAttribute="bottom" id="pj8-2n-Ppz"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Bai-jH-oke" secondAttribute="trailing" constant="20" id="qfj-sC-xIi"/>
+                <constraint firstItem="Bai-jH-oke" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="yVa-XZ-r3S"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

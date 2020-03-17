@@ -11,9 +11,13 @@ import UIKit
 public class KMAUILargeTitleHeaderView: UIView {
     // MARK: - IBoutlets
     @IBOutlet public var contentView: UIView!
+    @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var headerLabel: UILabel!
+    @IBOutlet public weak var headerLabelLeft: NSLayoutConstraint!
+    @IBOutlet public weak var headerLabelRight: NSLayoutConstraint!
     
     // MARK: - Variables
+    public var sideOffsets = true
     public var headerTitle = "" {
         didSet {
             setupHeader()
@@ -34,6 +38,18 @@ public class KMAUILargeTitleHeaderView: UIView {
         // Fill the data to display
         headerLabel.text = headerTitle
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        // Setup side offsets
+        if sideOffsets {
+            headerLabelLeft.constant = 40
+            headerLabelRight.constant = 40
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            bgView.alpha = 1
+        } else {
+            headerLabelLeft.constant = 30
+            headerLabelRight.constant = 30
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.alpha = 0
+        }
     }
     
     private func commonInit() {
