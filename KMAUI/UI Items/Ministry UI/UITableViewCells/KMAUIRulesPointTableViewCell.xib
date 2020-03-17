@@ -20,7 +20,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hl3-dc-cOr">
                         <rect key="frame" x="20" y="0.0" width="280" height="32"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                     </view>
                     <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-6H-fVy">
                         <rect key="frame" x="30" y="31" width="260" height="1"/>
