@@ -2285,8 +2285,8 @@ public struct KMAUILandPlanStruct {
     public var percentArray = [KMAUILotteryRule]()
     public var totalCount = 0
     // Queue
-    var queueCount = 0
-    var queueArray = [KMAPerson]()
+    public var queueCount = 0
+    public var queueArray = [KMAPerson]()
     
     public init() {}
     
