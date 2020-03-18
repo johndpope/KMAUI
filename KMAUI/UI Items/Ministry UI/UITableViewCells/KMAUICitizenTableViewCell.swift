@@ -28,12 +28,14 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Set the profileImageView
-        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
-        profileImageView.layer.borderColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
-        profileImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+//        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreyProgressColor
+//        profileImageView.layer.borderColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+//        profileImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         profileImageView.layer.cornerRadius = 22
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.kf.indicatorType = .activity
+        profileImageView.clipsToBounds = true
         
         // Right arrow image view
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
