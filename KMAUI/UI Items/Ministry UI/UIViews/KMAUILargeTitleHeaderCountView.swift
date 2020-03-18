@@ -10,9 +10,9 @@ import UIKit
 
 public class KMAUILargeTitleHeaderCountView: UIView {
     // MARK: - IBoutlets
+    @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
-    @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
     @IBOutlet public weak var detailsLabel: KMAUIRegularTextLabel!
@@ -64,11 +64,12 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             bgView.layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
             bgView.layer.shadowOpacity = 0.05
             bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
-            bgView.layer.shadowRadius = 4
+            bgView.layer.shadowRadius = 6
             bgView.layer.shouldRasterize = true
             bgView.layer.rasterizationScale = UIScreen.main.scale
             bgView.clipsToBounds = false
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgViewBottom.constant = 32
         } else {
             bgView.clipsToBounds = true
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
