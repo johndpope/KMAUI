@@ -2915,6 +2915,8 @@ public struct KMAUILandPlanStruct {
         let desiredSaleCount = Int(Double(salePercent) / 100 * Double(subLandItems.count))
         let desiredLotteryCount = subLandItems.count - (desiredServicesCount + desiredCommercialCount + desiredSaleCount)
         
+        print("We have the following percents: \(servicesPercent), \(commercialPercent), \(salePercent), \(lotteryPercent)\nCount: \(desiredServicesCount), \(desiredCommercialCount), \(desiredSaleCount), \(desiredLotteryCount)\nTotal counts: \(subLandItems.count) -> \(desiredServicesCount + desiredCommercialCount + desiredSaleCount + desiredLotteryCount)")
+        
         // Clear the counts
         saleCount = 0
         lotteryCount = 0
