@@ -2931,6 +2931,7 @@ public struct KMAUILandPlanStruct {
             }
             
             if lotteryCount < desiredLotteryCount {
+                // So we have more chances for the better sub lands distribution
                 types.append("Residential Lottery")
                 types.append("Residential Lottery")
                 types.append("Residential Lottery")
