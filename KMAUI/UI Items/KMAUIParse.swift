@@ -497,4 +497,7 @@ public class KMAUIParse {
             completion(rules)
         }
     }
+    
+    public func saveLotteryRules(rules: KMAUILotteryRules, completion: @escaping (_ done: Bool)->()) {
+    }
 }
