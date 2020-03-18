@@ -108,7 +108,7 @@ public class KMAUIUtilities {
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
+        loadingIndicator.color = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint // KMABrightBlueColor
         loadingIndicator.startAnimating()
         
         alert.view.addSubview(loadingIndicator)
@@ -126,7 +126,7 @@ public class KMAUIUtilities {
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 20, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        loadingIndicator.color = KMAUIConstants.shared.KMABrightBlueColor
+        loadingIndicator.color = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint // KMABrightBlueColor
         loadingIndicator.startAnimating()
         
         uploadAlert.view.addSubview(loadingIndicator)
