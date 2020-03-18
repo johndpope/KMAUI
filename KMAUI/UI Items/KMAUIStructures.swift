@@ -2912,11 +2912,8 @@ public struct KMAUILandPlanStruct {
         // Desired counts
         let desiredServicesCount = Int(Double(servicesPercent) / 100 * Double(subLandItems.count))
         let desiredCommercialCount = Int(Double(commercialPercent) / 100 * Double(subLandItems.count))
-        let desiredResidentialCount = (subLandItems.count - desiredServicesCount - desiredCommercialCount)
-        
-        // Residential should be divided into: Sale or Lottery
-        let desiredSaleCount = Int(Double(salePercent) / 100 * Double(desiredResidentialCount))
-        let desiredLotteryCount = desiredResidentialCount - desiredSaleCount
+        let desiredSaleCount = Int(Double(salePercent) / 100 * Double(subLandItems.count))
+        let desiredLotteryCount = subLandItems.count - (desiredServicesCount + desiredCommercialCount + desiredSaleCount)
         
         // Clear the counts
         saleCount = 0
@@ -2949,7 +2946,7 @@ public struct KMAUILandPlanStruct {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
                 
-                print("Types: `\(types)`, selected type: `\(itemType)`")
+//                print("Types: `\(types)`, selected type: `\(itemType)`")
                 
                 if itemType == "Residential Sale" {
                     saleCount += 1
