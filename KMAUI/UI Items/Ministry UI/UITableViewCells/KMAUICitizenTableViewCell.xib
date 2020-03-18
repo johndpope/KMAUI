@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -50,6 +51,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                 <constraints>
                     <constraint firstItem="Dlf-nq-EWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="1TE-Os-S5c"/>
                     <constraint firstAttribute="trailing" secondItem="Dlf-nq-EWE" secondAttribute="trailing" constant="12" id="1fu-Iw-3OT"/>
@@ -74,4 +76,9 @@
             <point key="canvasLocation" x="-465.21739130434787" y="78.348214285714278"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
