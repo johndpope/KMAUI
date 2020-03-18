@@ -2915,7 +2915,7 @@ public struct KMAUILandPlanStruct {
         let desiredSaleCount = Int(Double(salePercent) / 100 * Double(subLandItems.count))
         let desiredLotteryCount = subLandItems.count - (desiredServicesCount + desiredCommercialCount + desiredSaleCount)
         
-        print("We have the following percents: \(servicesPercent), \(commercialPercent), \(salePercent), \(lotteryPercent)\nCount: \(desiredServicesCount), \(desiredCommercialCount), \(desiredSaleCount), \(desiredLotteryCount)\nTotal counts: \(subLandItems.count) -> \(desiredServicesCount + desiredCommercialCount + desiredSaleCount + desiredLotteryCount)")
+//        print("We have the following percents: \(servicesPercent), \(commercialPercent), \(salePercent), \(lotteryPercent)\nCount: \(desiredServicesCount), \(desiredCommercialCount), \(desiredSaleCount), \(desiredLotteryCount)\nTotal counts: \(subLandItems.count) -> \(desiredServicesCount + desiredCommercialCount + desiredSaleCount + desiredLotteryCount)")
         
         // Clear the counts
         saleCount = 0
@@ -2931,6 +2931,7 @@ public struct KMAUILandPlanStruct {
             }
             
             if lotteryCount < desiredLotteryCount {
+                types.append("Residential Lottery")
                 types.append("Residential Lottery")
             }
 
@@ -2948,7 +2949,7 @@ public struct KMAUILandPlanStruct {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
                 
-                print("Types: `\(types)`, selected type: `\(itemType)`")
+//                print("Types: `\(types)`, selected type: `\(itemType)`")
                 
                 if itemType == "Residential Sale" {
                     saleCount += 1
