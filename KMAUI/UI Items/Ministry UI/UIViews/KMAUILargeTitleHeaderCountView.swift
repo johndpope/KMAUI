@@ -69,7 +69,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             bgView.layer.rasterizationScale = UIScreen.main.scale
             bgView.clipsToBounds = false
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            bgViewBottom.constant = 32
+            bgViewBottom.constant = 24
         } else {
             bgView.clipsToBounds = true
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor

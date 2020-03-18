@@ -28,7 +28,7 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Set the profileImageView
-        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
         profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         profileImageView.layer.cornerRadius = 22
         profileImageView.contentMode = .scaleAspectFill
