@@ -228,7 +228,7 @@ public class KMAUIParse {
                             if let region = plan["region"] as? PFObject, let regionId = region.objectId {
                                 // Region id
                                 landPlanObject.regionId = regionId
-                                print("REGION ID: \(landPlanObject.regionId)")
+//                                print("REGION ID: \(landPlanObject.regionId)")
                                 // Arrays of Plan Land for regions
                                 for (index, item) in items.enumerated() {
                                     if item.objectId == regionId {

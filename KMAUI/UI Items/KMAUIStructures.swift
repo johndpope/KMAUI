@@ -2288,6 +2288,7 @@ public struct KMAUILandPlanStruct {
     // Queue
     public var queueCount = 0
     public var queueArray = [KMAPerson]()
+    public var queueLoaded = false
     
     public init() {}
     

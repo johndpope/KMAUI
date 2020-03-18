@@ -120,6 +120,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         } else if type == "lottery" {
             info = "No lotteries avaiable for region."
             action = ""
+        } else if type == "noCitizens" {
+            if isLoaded {
+                info = "The Land lottery queue has no citizens."
+                action = ""
+            } else {
+                info = "Loading the citizen queue for the Land lottery..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
