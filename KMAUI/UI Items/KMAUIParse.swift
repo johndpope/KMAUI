@@ -129,12 +129,10 @@ public class KMAUIParse {
                         
                         for plan in plans {
                             var landPlanObject = KMAUILandPlanStruct()
-                            
                             // landPlanId
                             if let landPlanIdValue = plan.objectId {
                                 landPlanObject.landPlanId = landPlanIdValue
                             }
-                            
                             // planName
                             if let planName = plan["planName"] as? String {
                                 landPlanObject.landName = planName
@@ -235,6 +233,7 @@ public class KMAUIParse {
                                     if item.objectId == regionId {
                                         var itemObject = item
                                         var landPlans = itemObject.landPlans
+                                        landPlanObject.queueCount = item.lotteryMembersCount
                                         landPlans.append(landPlanObject)
                                         itemObject.landPlans = landPlans
                                         items[index] = itemObject

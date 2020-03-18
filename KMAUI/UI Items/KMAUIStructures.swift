@@ -2249,7 +2249,6 @@ public struct KMAUILandPlanStruct {
     // services, commercial, and residential
     public var servicesPercent = 15
     public var commercialPercent = 20
-//    public var residentialPercent = 65
     public var salePercent = 25
     public var lotteryPercent = 40
     public var servicesCount = 0
@@ -2285,6 +2284,9 @@ public struct KMAUILandPlanStruct {
     public var rulesArray = [KMAUILotteryRule]()
     public var percentArray = [KMAUILotteryRule]()
     public var totalCount = 0
+    // Queue
+    var queueCount = 0
+    var queueArray = [KMAPerson]()
     
     public init() {}
     
