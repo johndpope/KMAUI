@@ -2949,6 +2949,8 @@ public struct KMAUILandPlanStruct {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
                 
+                print("Types: `\(types)`, selected type: `\(itemType)`")
+                
                 if itemType == "Residential Sale" {
                     saleCount += 1
                     item["subLandType"] = "Residential Sale"
