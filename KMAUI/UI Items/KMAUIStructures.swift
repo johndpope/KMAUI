@@ -2249,13 +2249,13 @@ public struct KMAUILandPlanStruct {
     // services, commercial, and residential
     public var servicesPercent = 15
     public var commercialPercent = 20
-    public var residentialPercent = 65
-    public var salePercent = 25
+//    public var residentialPercent = 65
+    public var salePercent = 15
+    public var lotteryPercent = 50
     public var servicesCount = 0
     public var commercialCount = 0
-    public var residentialCount = 0
-    public var residentialSaleCount = 0
-    public var residentialLotteryCount = 0
+    public var lotteryCount = 0
+    public var saleCount = 0
     // Square meter price
     public var squareMeterPrice: Double = 1500
     // Result items
@@ -2284,15 +2284,11 @@ public struct KMAUILandPlanStruct {
     // Counts and percents
     public var rulesArray = [KMAUILotteryRule]()
     public var percentArray = [KMAUILotteryRule]()
-    public var saleCount = 0
-    public var lotteryCount = 0
     public var totalCount = 0
-    public var residentialSalePercent = 0
-    public var residentialLotteryPercent = 0
     
     public init() {}
     
-    public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, residentialPercent: Double? = nil, salePercent: Double? = nil, squareMeterPrice: Double? = nil) {
+    public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, lotteryPercent: Double? = nil, salePercent: Double? = nil, squareMeterPrice: Double? = nil) {
         // Center coordinate
         self.centerCoordinate = centerCoordinate
         
@@ -2362,8 +2358,8 @@ public struct KMAUILandPlanStruct {
         }
         
         // Residential percent
-        if let residentialPercent = residentialPercent {
-            self.residentialPercent = Int(residentialPercent)
+        if let lotteryPercent = lotteryPercent {
+            self.lotteryPercent = Int(lotteryPercent)
         }
         
         // Sale percent
@@ -2913,29 +2909,30 @@ public struct KMAUILandPlanStruct {
     }
     
     mutating public func getParseObjects() {
-//        print("Total Sub Land items for Parse: \(subLandItems.count)")
-//        print("Requested percents: residential - \(residentialPercent)%, commercial - \(commercialPercent)%, services - \(servicesPercent)%.")
         // Desired counts
         let desiredServicesCount = Int(Double(servicesPercent) / 100 * Double(subLandItems.count))
         let desiredCommercialCount = Int(Double(commercialPercent) / 100 * Double(subLandItems.count))
         let desiredResidentialCount = (subLandItems.count - desiredServicesCount - desiredCommercialCount)
         
         // Residential should be divided into: Sale or Lottery
-        let desiredResidentialSaleCount = Int(Double(salePercent) / 100 * Double(desiredResidentialCount))
-        let desiredResidentialLotteryCount = desiredResidentialCount - desiredResidentialSaleCount
+        let desiredSaleCount = Int(Double(salePercent) / 100 * Double(desiredResidentialCount))
+        let desiredLotteryCount = desiredResidentialCount - desiredSaleCount
         
         // Clear the counts
-        residentialCount = 0
-        residentialSaleCount = 0
-        residentialLotteryCount = 0
+        saleCount = 0
+        lotteryCount = 0
         commercialCount = 0
         servicesCount = 0
 
         for item in subLandItems {
             var types = [String]()
             
-            if residentialCount < desiredResidentialCount {
-                types.append("Residential")
+            if saleCount < desiredSaleCount {
+                types.append("Residential Sale")
+            }
+            
+            if lotteryCount < desiredLotteryCount {
+                types.append("Residential Lottery")
             }
 
             if commercialCount < desiredCommercialCount {
@@ -2952,21 +2949,12 @@ public struct KMAUILandPlanStruct {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
                 
-                if itemType == "Residential" {
-                    residentialCount += 1
-                    
-                    let residentialArray = ["Residential Lottery", "Residential Sale"]
-                    let randomResidential = Int.random(in: 0 ..< 2)
-                    
-                    let residentialValue = residentialArray[randomResidential]
-                    
-                    if residentialValue == "Residential Lottery", residentialLotteryCount < desiredResidentialLotteryCount {
-                        residentialLotteryCount += 1
-                        item["subLandType"] = "Residential Lottery"
-                    } else {
-                        residentialSaleCount += 1
-                        item["subLandType"] = "Residential Sale"
-                    }
+                if itemType == "Residential Sale" {
+                    saleCount += 1
+                    item["subLandType"] = "Residential Sale"
+                } else if itemType == "Residential Lottery" {
+                    lotteryCount += 1
+                    item["subLandType"] = "Residential Lottery"
                 } else if itemType == "Commercial" {
                     commercialCount += 1
                     item["subLandType"] = "Commercial"
@@ -2977,15 +2965,15 @@ public struct KMAUILandPlanStruct {
             }
         }
         
-        print("Results: \(residentialCount) = \(residentialLotteryCount) + \(residentialSaleCount), \(commercialCount), \(servicesCount)")
+        print("Results: \(lotteryCount) + \(saleCount), \(commercialCount), \(servicesCount)")
     }
     
     mutating public func prepareRules() {
         // Sub Land counts by type
         self.servicesCount = 0
         self.commercialCount = 0
-        self.residentialSaleCount = 0
-        self.residentialLotteryCount = 0
+        self.saleCount = 0
+        self.lotteryCount = 0
         self.totalCount = 0
         
         for subLandItem in self.subLandArray {
@@ -2995,29 +2983,29 @@ public struct KMAUILandPlanStruct {
                 } else if subLandItem.subLandType == "Commercial" {
                     self.commercialCount += 1
                 } else if subLandItem.subLandType == "Residential Sale" {
-                    self.residentialSaleCount += 1
+                    self.saleCount += 1
                 } else if subLandItem.subLandType == "Residential Lottery" {
-                    self.residentialLotteryCount += 1
+                    self.lotteryCount += 1
                 }
             }
         }
         
         // Total subLand counts
-        self.totalCount = self.servicesCount + self.commercialCount + self.residentialSaleCount + self.residentialLotteryCount
+        self.totalCount = self.servicesCount + self.commercialCount + self.saleCount + self.lotteryCount
         
         if self.totalCount > 0 {
             // Sub Land percents per category
             self.servicesPercent = Int(((Double(self.servicesCount) / Double(self.totalCount)) * 100).formatNumbersAfterDot())
             self.commercialPercent = Int(((Double(self.commercialCount) / Double(self.totalCount)) * 100).formatNumbersAfterDot())
-            self.residentialSalePercent = Int(((Double(self.residentialSaleCount) / Double(self.totalCount)) * 100).formatNumbersAfterDot())
-            self.residentialLotteryPercent = 100 - (self.servicesPercent + self.commercialPercent + self.residentialSalePercent)
+            self.salePercent = Int(((Double(self.saleCount) / Double(self.totalCount)) * 100).formatNumbersAfterDot())
+            self.lotteryPercent = 100 - (self.servicesPercent + self.commercialPercent + self.salePercent)
         }
         
         // Section 0
         self.rulesArray = [KMAUILotteryRule(name: "Area width", value: "\(Int(self.areaWidth)) m"), KMAUILotteryRule(name: "Area height", value: "\(Int(self.areaHeight)) m"), KMAUILotteryRule(name: "Main road", value: "\(Int(self.mainRoadWidth)) m"), KMAUILotteryRule(name: "Regular road", value: "\(Int(self.regularRoadWidth)) m"), KMAUILotteryRule(name: "City block", value: "\(self.rowsPerBlock) rows, \(self.rowsPerBlock - 1) roads"), KMAUILotteryRule(name: "Extra price", value: "$\(Int(squareMeterPrice).withCommas()) per sq. m.")]
         
         // Section 1
-        self.percentArray = [KMAUILotteryRule(name: "Sub lands for services", value: "\(self.servicesCount)", percent: "\(self.servicesPercent)%"), KMAUILotteryRule(name: "Sub lands for commercial", value: "\(self.commercialCount)", percent: "\(self.commercialPercent)%"), KMAUILotteryRule(name: "Sub lands for sale", value: "\(self.residentialSaleCount)", percent: "\(self.residentialSalePercent)%"), KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.residentialLotteryCount)", percent: "\(self.residentialLotteryPercent)%")]
+        self.percentArray = [KMAUILotteryRule(name: "Sub lands for services", value: "\(self.servicesCount)", percent: "\(self.servicesPercent)%"), KMAUILotteryRule(name: "Sub lands for commercial", value: "\(self.commercialCount)", percent: "\(self.commercialPercent)%"), KMAUILotteryRule(name: "Sub lands for sale", value: "\(self.saleCount)", percent: "\(self.salePercent)%"), KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotteryCount)", percent: "\(self.lotteryPercent)%")]
     }
 }
 
@@ -3053,10 +3041,8 @@ public struct KMAUILotteryRules {
     public var squareMeterPrice = 1500
     public var servicesPercent = 15
     public var commercialPercent = 20
-    public var residentialPercent = 65
-    public var salePercentValue = 25
-    public var salePercent = Int(65 * 0.25)
-    public var lotteryPercent = 65 - Int(65 * 0.25)
+    public var salePercent = 15
+    public var lotteryPercent = 50
     // Additional parameters
     public var itemsInSubBlockHorizontal = 5
     public var itemsInSubBlockVertical = 2
@@ -3104,16 +3090,14 @@ public struct KMAUILotteryRules {
         if let commercialPercent = object["commercialPercent"] as? Int {
             self.commercialPercent = commercialPercent
         }
-        // residentialPercent
-        if let residentialPercent = object["residentialPercent"] as? Int {
-            self.residentialPercent = residentialPercent
-            
-            if let salePercentValue = object["salePercent"] as? Int {
-                self.salePercentValue = salePercentValue
-            }
-            
-            salePercent = Int(Double(self.residentialPercent) * Double(self.salePercentValue) / 100)
-            lotteryPercent = self.residentialPercent - salePercent
+        // salePercent
+        if let salePercent = object["salePercent"] as? Int {
+            self.salePercent = salePercent
+        }
+        
+        // lotteryPercent
+        if let lotteryPercent = object["lotteryPercent"] as? Int {
+            self.lotteryPercent = lotteryPercent
         }
     }
 }

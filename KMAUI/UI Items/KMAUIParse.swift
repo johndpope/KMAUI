@@ -511,8 +511,8 @@ public class KMAUIParse {
         rulesObject["squareMeterPrice"] = rules.squareMeterPrice
         rulesObject["servicesPercent"] = rules.servicesPercent
         rulesObject["commercialPercent"] = rules.commercialPercent
-        rulesObject["residentialPercent"] = 100 - (rules.servicesPercent + rules.commercialPercent)
-        rulesObject["salePercent"] = Int((Double(rules.salePercent) / Double(100 - (rules.servicesPercent + rules.commercialPercent))) * 100)
+        rulesObject["lotteryPercent"] = rules.lotteryPercent
+        rulesObject["salePercent"] = rules.salePercent
         // Saving the lottery rules object
         rulesObject.saveInBackground { (success, error) in
             KMAUIUtilities.shared.stopLoadingWith { (done) in
