@@ -2250,8 +2250,8 @@ public struct KMAUILandPlanStruct {
     public var servicesPercent = 15
     public var commercialPercent = 20
 //    public var residentialPercent = 65
-    public var salePercent = 15
-    public var lotteryPercent = 50
+    public var salePercent = 25
+    public var lotteryPercent = 40
     public var servicesCount = 0
     public var commercialCount = 0
     public var lotteryCount = 0
@@ -2948,7 +2948,7 @@ public struct KMAUILandPlanStruct {
                 let index = Int.random(in: 0 ..< types.count)
                 let itemType = types[index]
                 
-//                print("Types: `\(types)`, selected type: `\(itemType)`")
+                print("Types: `\(types)`, selected type: `\(itemType)`")
                 
                 if itemType == "Residential Sale" {
                     saleCount += 1
