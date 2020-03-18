@@ -2933,6 +2933,7 @@ public struct KMAUILandPlanStruct {
             if lotteryCount < desiredLotteryCount {
                 types.append("Residential Lottery")
                 types.append("Residential Lottery")
+                types.append("Residential Lottery")
             }
 
             if commercialCount < desiredCommercialCount {
