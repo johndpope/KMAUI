@@ -3062,11 +3062,16 @@ public struct KMAUILotteryRules {
     public var itemsInSubBlockVertical = 2
     public var minSubLandSide = 25
     public var maxSubLandSide = 30
+    public var objectId = ""
     
     public init() {
     }
     
     public mutating func fillFromParse(object: PFObject) {
+        // objectId
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
         // areaWidth
         if let areaWidth = object["areaWidth"] as? Int {
             self.areaWidth = areaWidth
