@@ -63,7 +63,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             // Shadow
             bgView.layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
             bgView.layer.shadowOpacity = 0.05
-            bgView.layer.shadowOffset = CGSize(width: 0, height: 6)
+            bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
             bgView.layer.shadowRadius = 8
             bgView.layer.shouldRasterize = true
             bgView.layer.rasterizationScale = UIScreen.main.scale
