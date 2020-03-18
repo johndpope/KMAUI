@@ -51,7 +51,7 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                <color key="backgroundColor" name="KMAUIViewBgColor"/>
                 <constraints>
                     <constraint firstItem="Dlf-nq-EWE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="1TE-Os-S5c"/>
                     <constraint firstAttribute="trailing" secondItem="Dlf-nq-EWE" secondAttribute="trailing" constant="12" id="1fu-Iw-3OT"/>
@@ -77,8 +77,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="KMAUIMainBgColor">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

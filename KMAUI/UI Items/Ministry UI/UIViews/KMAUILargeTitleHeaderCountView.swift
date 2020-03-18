@@ -20,6 +20,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     
     // MARK: - Variables
     public var count = 0
+    public var hasShadow = false
     public var headerTitle = "" {
         didSet {
             setupHeader()
@@ -57,6 +58,21 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Count label
         countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         countLabel.text = "\(count)"
+        // Shadow
+        if hasShadow {
+            // Shadow
+            bgView.layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+            bgView.layer.shadowOpacity = 0.05
+            bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
+            bgView.layer.shadowRadius = 4
+            bgView.layer.shouldRasterize = true
+            bgView.layer.rasterizationScale = UIScreen.main.scale
+            bgView.clipsToBounds = false
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        } else {
+            bgView.clipsToBounds = true
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        }
     }
     
     private func commonInit() {
