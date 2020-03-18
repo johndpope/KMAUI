@@ -28,10 +28,8 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Set the profileImageView
-//        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
-        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreyProgressColor
-//        profileImageView.layer.borderColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
-//        profileImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
+        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
+        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         profileImageView.layer.cornerRadius = 22
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.kf.indicatorType = .activity
@@ -59,9 +57,9 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
-            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     
