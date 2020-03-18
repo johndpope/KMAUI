@@ -1571,6 +1571,7 @@ public struct KMAPoliceman {
 
 public struct KMAPerson {
     public var objectId = ""
+    public var lotteryObjectId = ""
     public var username = ""
     public var fullName = ""
     public var profileImage = ""

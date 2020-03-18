@@ -360,9 +360,10 @@ public class KMAUIParse {
                 print(error.localizedDescription)
             } else if let citizens = citizens {
                 for lotteryMember in citizens {
-                    if let person = lotteryMember["citizen"] as? PFUser {
+                    if let objectId = lotteryMember.objectId, let person = lotteryMember["citizen"] as? PFUser {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: person)
+                        personObject.lotteryObjectId = objectId
                         // Only add the person to queue if he hasn't received the Sub Land yet
                         if !personObject.receivedSubLand {
                             citizensArray.append(personObject)
