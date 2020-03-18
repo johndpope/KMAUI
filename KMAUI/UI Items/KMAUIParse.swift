@@ -499,6 +499,7 @@ public class KMAUIParse {
     }
     
     public func saveLotteryRules(rules: KMAUILotteryRules, completion: @escaping (_ done: Bool)->()) {
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
         // Preparing the lottery rules object
         let rulesObject = PFObject(withoutDataWithClassName: "KMALotteryRules", objectId: rules.objectId)
         // Filling the lottery rules object
@@ -514,12 +515,14 @@ public class KMAUIParse {
         rulesObject["salePercent"] = Int((Double(rules.salePercent) / Double(100 - (rules.servicesPercent + rules.commercialPercent))) * 100)
         // Saving the lottery rules object
         rulesObject.saveInBackground { (success, error) in
-            if let error = error {
-                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the Land rules.\n\n\(error.localizedDescription)") { (done) in }
-                completion(false)
-            } else if success {
-                KMAUIUtilities.shared.globalAlert(title: "Thank you!", message: "The Land rules were succesfully updated.") { (done) in }
-                completion(true)
+            KMAUIUtilities.shared.stopLoadingWith { (done) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the Land rules.\n\n\(error.localizedDescription)") { (done) in }
+                    completion(false)
+                } else if success {
+                    KMAUIUtilities.shared.globalAlert(title: "Thank you!", message: "The Land rules were succesfully updated.") { (done) in }
+                    completion(true)
+                }
             }
         }
     }
