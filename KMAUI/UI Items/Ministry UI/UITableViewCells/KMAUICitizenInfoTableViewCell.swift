@@ -14,6 +14,13 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var citizenView: UIView!
     
     // MARK: - Variables
+    public var citizen = KMAPerson() {
+        didSet {
+            setupCell()
+        }
+    }
+    
+    // MARK: - Variables
     public static let id = "KMAUICitizenInfoTableViewCell"
 
     override public func awakeFromNib() {
@@ -21,7 +28,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         
         // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bgView.layer.shadowRadius = 12
+        bgView.layer.shadowRadius = 24
         
         // No selection required
         selectionStyle = .none
@@ -33,4 +40,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
 }
