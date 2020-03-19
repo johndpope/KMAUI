@@ -49,10 +49,10 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         // Full name labe
-        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(24)
+        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
         
         // Lottery id
-        lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
         // Queue label
         queueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
