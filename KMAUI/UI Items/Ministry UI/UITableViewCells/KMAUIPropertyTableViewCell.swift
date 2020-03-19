@@ -73,6 +73,11 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
             addressLabel.text = "No address"
         } else {
             addressLabel.text = property.formattedAddress
+            let addressArray = property.formattedAddress.components(separatedBy: ",")
+            
+            if !addressArray.isEmpty {
+                addressLabel.text = addressArray[0] + ", " + property.city
+            }
         }
     }
 }

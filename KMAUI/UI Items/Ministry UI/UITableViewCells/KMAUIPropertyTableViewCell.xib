@@ -42,7 +42,7 @@
                                     <color key="titleColor" name="KMABrightBlueColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wad-6k-Jss" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wad-6k-Jss" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="20" y="56.5" width="42" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="bIX-ZJ-jA2"/>
@@ -59,7 +59,7 @@
                                     <constraint firstAttribute="width" constant="5" id="Bct-Hc-FeS"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFq-QV-51I" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFq-QV-51I" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="91" y="56.5" width="42" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="7c2-3U-gpj"/>
