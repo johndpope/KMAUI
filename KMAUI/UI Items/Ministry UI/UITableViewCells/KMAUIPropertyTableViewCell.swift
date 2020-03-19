@@ -80,17 +80,21 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
             let addressArray = property.formattedAddress.components(separatedBy: ",")
             
             if !addressArray.isEmpty {
-                addressLabel.text = property.city + ",\n" + addressArray[0]
+                addressLabel.text = property.city + ", " + addressArray[0]
             }
         }
         
         // Documents
         if property.documents.isEmpty {
-            documentsButton.tintColor = KMAUIConstants.shared.KMABrightBlueColor
-            documentsButton.titleLabel?.textColor = KMAUIConstants.shared.KMABrightBlueColor
+            documentsButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5)
+            documentsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5), for: .normal)
+            documentsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5), for: .highlighted)
+            documentsButton.isEnabled = false
         } else {
-            documentsButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.3)
-            documentsButton.titleLabel?.textColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.3)
+            documentsButton.tintColor = KMAUIConstants.shared.KMABrightBlueColor
+            documentsButton.setTitleColor(KMAUIConstants.shared.KMABrightBlueColor, for: .normal)
+            documentsButton.setTitleColor(KMAUIConstants.shared.KMABrightBlueColor, for: .highlighted)
+            documentsButton.isEnabled = true
         }
         
         
