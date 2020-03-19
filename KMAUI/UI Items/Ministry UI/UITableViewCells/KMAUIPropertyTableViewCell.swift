@@ -8,14 +8,20 @@
 
 import UIKit
 
-class KMAUIPropertyTableViewCell: UITableViewCell {
+public class KMAUIPropertyTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var typeLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var typeLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var ownershipLabel: UILabel!
     
     // MARK: - Variables
     public static let id = "KMAUIPropertyTableViewCell"
+    public var property = KMACitizenProperty() {
+        didSet {
+            setupCell()
+        }
+    }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Type label
@@ -25,10 +31,21 @@ class KMAUIPropertyTableViewCell: UITableViewCell {
         selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        // Property type
+        if property.apartment > 0 {
+            typeLabel.text = "Apartment"
+        } else {
+            typeLabel.text = "Private house"
+        }
+        
+        // Ownership form
+        ownershipLabel.text = property.ownershipForm
+    }
 }
