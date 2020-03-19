@@ -16,6 +16,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var lotteryIdLabel: UILabel!
     @IBOutlet public weak var profileImageView: UIImageView!
+    @IBOutlet public weak var queueLabel: UILabel!
     
     // MARK: - Variables
     public var citizen = KMAPerson() {
@@ -50,6 +51,10 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // Lottery id
         lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
+        // Queue label
+        queueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        queueLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        
         // No selection required
         selectionStyle = .none
     }
@@ -71,5 +76,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         if let url = URL(string: citizen.profileImage) {
             profileImageView.kf.setImage(with: url)
         }
+        // Queue
+        queueLabel.text = "Land queue in Ar Riayd"
     }
 }
