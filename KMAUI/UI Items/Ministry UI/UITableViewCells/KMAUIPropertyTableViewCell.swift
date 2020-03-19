@@ -11,7 +11,9 @@ import UIKit
 public class KMAUIPropertyTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var typeLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var ownershipLabel: UILabel!
+    @IBOutlet public weak var ownershipLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var circleViewOne: UIView!
+    @IBOutlet public weak var residentsLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIPropertyTableViewCell"
@@ -26,6 +28,13 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
         
         // Type label
         typeLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        
+        // Ownership label
+        ownershipLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // Circle view 1
+        circleViewOne.layer.cornerRadius = 2.5
+        circleViewOne.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -47,5 +56,12 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
         
         // Ownership form
         ownershipLabel.text = property.ownershipForm
+        
+        // Residents count
+        if property.residentsCount == 1 {
+            residentsLabel.text = "1 resident"
+        } else {
+            residentsLabel.text = "\(property.residentsCount) residents"
+        }
     }
 }

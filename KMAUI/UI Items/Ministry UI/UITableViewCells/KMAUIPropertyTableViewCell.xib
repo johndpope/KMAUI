@@ -31,14 +31,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrd-gy-GfU">
-                                <rect key="frame" x="267" y="35" width="94" height="20"/>
+                                <rect key="frame" x="257" y="29" width="104" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="104" id="7Me-HU-Yjt"/>
+                                    <constraint firstAttribute="height" constant="32" id="8Oj-tY-fjh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="14" maxY="0.0"/>
                                 <state key="normal" title="Document" image="attachmentIcon">
                                     <color key="titleColor" name="KMABrightBlueColor"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wad-6k-Jss">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wad-6k-Jss" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="20" y="51" width="42" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="bIX-ZJ-jA2"/>
@@ -47,15 +51,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFv-zH-xU3">
+                                <rect key="frame" x="74" y="58" width="5" height="5"/>
+                                <color key="backgroundColor" name="KMAUITextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="1d5-R1-Bh1"/>
+                                    <constraint firstAttribute="width" constant="5" id="Bct-Hc-FeS"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFq-QV-51I" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="91" y="51" width="42" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="7c2-3U-gpj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTp-eA-Fhc">
+                                <rect key="frame" x="147" y="58" width="5" height="5"/>
+                                <color key="backgroundColor" name="KMAUITextColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="5UV-Hz-l6F"/>
+                                    <constraint firstAttribute="width" constant="5" id="deX-9K-FiY"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="wad-6k-Jss" firstAttribute="top" secondItem="8ZI-XU-Npl" secondAttribute="bottom" constant="10" id="7Rl-Vd-NSR"/>
+                            <constraint firstItem="aFv-zH-xU3" firstAttribute="leading" secondItem="wad-6k-Jss" secondAttribute="trailing" constant="12" id="A5l-nP-sng"/>
                             <constraint firstItem="8ZI-XU-Npl" firstAttribute="top" secondItem="8ZC-hb-aYi" secondAttribute="top" constant="20" id="Kce-2d-OuQ"/>
+                            <constraint firstItem="eTp-eA-Fhc" firstAttribute="leading" secondItem="qFq-QV-51I" secondAttribute="trailing" constant="14" id="Nht-1x-0em"/>
+                            <constraint firstItem="qFq-QV-51I" firstAttribute="centerY" secondItem="aFv-zH-xU3" secondAttribute="centerY" id="XwT-gh-x0I"/>
                             <constraint firstItem="wad-6k-Jss" firstAttribute="leading" secondItem="8ZC-hb-aYi" secondAttribute="leading" constant="20" id="bsM-zr-1vt"/>
                             <constraint firstItem="8ZI-XU-Npl" firstAttribute="leading" secondItem="8ZC-hb-aYi" secondAttribute="leading" constant="20" id="cLn-ds-PGc"/>
                             <constraint firstAttribute="height" constant="90" id="iTa-3A-feF"/>
                             <constraint firstItem="xrd-gy-GfU" firstAttribute="centerY" secondItem="8ZC-hb-aYi" secondAttribute="centerY" id="ipF-ax-mYQ"/>
+                            <constraint firstItem="aFv-zH-xU3" firstAttribute="centerY" secondItem="wad-6k-Jss" secondAttribute="centerY" id="oQd-Ic-aVN"/>
+                            <constraint firstItem="eTp-eA-Fhc" firstAttribute="centerY" secondItem="qFq-QV-51I" secondAttribute="centerY" id="wBE-x3-KMv"/>
+                            <constraint firstItem="qFq-QV-51I" firstAttribute="leading" secondItem="aFv-zH-xU3" secondAttribute="trailing" constant="12" id="xRy-0t-Uw4"/>
                             <constraint firstAttribute="trailing" secondItem="xrd-gy-GfU" secondAttribute="trailing" constant="20" id="xnW-Xk-dkf"/>
                         </constraints>
                     </view>
@@ -71,7 +106,9 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="circleViewOne" destination="aFv-zH-xU3" id="JgO-1E-8Cw"/>
                 <outlet property="ownershipLabel" destination="wad-6k-Jss" id="Zcc-yG-vgC"/>
+                <outlet property="residentsLabel" destination="qFq-QV-51I" id="Ajb-E8-4Wc"/>
                 <outlet property="typeLabel" destination="8ZI-XU-Npl" id="dng-HC-62U"/>
             </connections>
             <point key="canvasLocation" x="210.86956521739131" y="170.75892857142856"/>
@@ -81,6 +118,9 @@
         <image name="attachmentIcon" width="15" height="16"/>
         <namedColor name="KMABrightBlueColor">
             <color red="0.15294117647058825" green="0.41568627450980394" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUITextColor">
+            <color red="0.067000001668930054" green="0.082000002264976501" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
