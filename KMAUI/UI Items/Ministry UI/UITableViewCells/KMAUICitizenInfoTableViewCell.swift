@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class KMACitizenInfoTableViewCell: UITableViewCell {
+public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var citizenView: UIView!
