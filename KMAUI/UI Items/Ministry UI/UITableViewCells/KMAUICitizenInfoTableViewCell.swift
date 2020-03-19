@@ -19,7 +19,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var queueLabel: UILabel!
     @IBOutlet weak var genderLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var birthdayLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var addressLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var addressLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
     public var citizen = KMAPerson() {
