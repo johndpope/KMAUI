@@ -1586,7 +1586,6 @@ public struct KMAPerson {
     public var propertyCount = 0
     public var receivedSubLand = false
     public var receivedSubLandCount = 0
-    public var lotteryRegionName = ""
     
     public init() {
     }

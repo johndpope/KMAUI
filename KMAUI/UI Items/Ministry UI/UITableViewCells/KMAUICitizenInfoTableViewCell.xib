@@ -73,16 +73,115 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-zN-ftT" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="279" y="80" width="57" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="KDX-M9-tnM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-nW-Wr5">
+                                <rect key="frame" x="279" y="111" width="224" height="1"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Bez-ol-O8E"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxl-ds-gTb" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="348" y="79" width="155" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="q7U-NB-5Qh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oi-0A-YQB" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="279" y="125" width="97" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="gmS-RF-xzb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp4-uk-X5U" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="388" y="124" width="115" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="MvY-Jo-CAW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-Rv-Yd9">
+                                <rect key="frame" x="279" y="156" width="224" height="1"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="NmL-r9-3Ae"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNK-Ji-zCA" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="279" y="170" width="63" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="FlG-t9-Zm4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KD-2k-uhf" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="354" y="169" width="149" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="KPe-EA-goy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23N-w2-7gN">
+                                <rect key="frame" x="279" y="201" width="224" height="1"/>
+                                <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="B5J-oW-jz6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="hLp-3K-oHX" secondAttribute="bottom" constant="12" id="4uA-da-dSc"/>
+                            <constraint firstItem="0KD-2k-uhf" firstAttribute="centerY" secondItem="rNK-Ji-zCA" secondAttribute="centerY" id="7V5-br-7LH"/>
+                            <constraint firstItem="6rk-zN-ftT" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="AeY-Xu-pne"/>
+                            <constraint firstAttribute="trailing" secondItem="x3H-nW-Wr5" secondAttribute="trailing" constant="36" id="AlL-0p-862"/>
+                            <constraint firstAttribute="trailing" secondItem="eHD-Rv-Yd9" secondAttribute="trailing" constant="36" id="B5M-OV-j1H"/>
+                            <constraint firstAttribute="trailing" secondItem="Qxl-ds-gTb" secondAttribute="trailing" constant="36" id="BKW-Oq-lSg"/>
+                            <constraint firstItem="Qxl-ds-gTb" firstAttribute="centerY" secondItem="6rk-zN-ftT" secondAttribute="centerY" id="E4N-gO-BRO"/>
+                            <constraint firstAttribute="trailing" secondItem="0KD-2k-uhf" secondAttribute="trailing" constant="36" id="EZH-rQ-uwJ"/>
                             <constraint firstItem="3z9-F5-fQj" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="Hq8-TD-poU"/>
+                            <constraint firstItem="0KD-2k-uhf" firstAttribute="leading" secondItem="rNK-Ji-zCA" secondAttribute="trailing" constant="12" id="IC9-Pr-sVl"/>
                             <constraint firstAttribute="trailing" secondItem="3z9-F5-fQj" secondAttribute="trailing" constant="36" id="Ktf-6J-Bum"/>
+                            <constraint firstItem="Qxl-ds-gTb" firstAttribute="leading" secondItem="6rk-zN-ftT" secondAttribute="trailing" constant="12" id="LAi-eV-fb3"/>
+                            <constraint firstItem="rp4-uk-X5U" firstAttribute="leading" secondItem="9oi-0A-YQB" secondAttribute="trailing" constant="12" id="Q4T-Ir-GET"/>
+                            <constraint firstItem="eHD-Rv-Yd9" firstAttribute="top" secondItem="9oi-0A-YQB" secondAttribute="bottom" constant="12" id="WBC-7w-mUT"/>
+                            <constraint firstItem="rp4-uk-X5U" firstAttribute="centerY" secondItem="9oi-0A-YQB" secondAttribute="centerY" id="Z5o-0Q-K6j"/>
+                            <constraint firstAttribute="trailing" secondItem="rp4-uk-X5U" secondAttribute="trailing" constant="36" id="ZQu-Zj-GOq"/>
+                            <constraint firstItem="x3H-nW-Wr5" firstAttribute="top" secondItem="6rk-zN-ftT" secondAttribute="bottom" constant="12" id="ZuB-wl-KPM"/>
+                            <constraint firstItem="rNK-Ji-zCA" firstAttribute="top" secondItem="eHD-Rv-Yd9" secondAttribute="bottom" constant="13" id="bAi-TE-lCV"/>
                             <constraint firstItem="hLp-3K-oHX" firstAttribute="leading" secondItem="JLs-RR-9bq" secondAttribute="leading" constant="12" id="c7U-vU-Yes"/>
                             <constraint firstAttribute="height" constant="215" id="cDa-fX-W9N"/>
+                            <constraint firstItem="23N-w2-7gN" firstAttribute="top" secondItem="rNK-Ji-zCA" secondAttribute="bottom" constant="12" id="e3e-2J-7Dw"/>
+                            <constraint firstAttribute="trailing" secondItem="23N-w2-7gN" secondAttribute="trailing" constant="36" id="gVK-nP-yBA"/>
+                            <constraint firstItem="9oi-0A-YQB" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="it4-yq-uea"/>
                             <constraint firstItem="3z9-F5-fQj" firstAttribute="top" secondItem="JLs-RR-9bq" secondAttribute="top" constant="37" id="keP-OB-2T5"/>
+                            <constraint firstItem="x3H-nW-Wr5" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="p2H-Kv-dFj"/>
+                            <constraint firstItem="9oi-0A-YQB" firstAttribute="top" secondItem="x3H-nW-Wr5" secondAttribute="bottom" constant="13" id="puG-PR-yIr"/>
                             <constraint firstItem="hLp-3K-oHX" firstAttribute="top" secondItem="JLs-RR-9bq" secondAttribute="top" constant="12" id="qZN-qd-qSO"/>
+                            <constraint firstItem="6rk-zN-ftT" firstAttribute="top" secondItem="3z9-F5-fQj" secondAttribute="bottom" constant="22" id="tGd-03-ihL"/>
+                            <constraint firstItem="rNK-Ji-zCA" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="uMd-8U-up2"/>
+                            <constraint firstItem="eHD-Rv-Yd9" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="z9z-v4-zO5"/>
+                            <constraint firstItem="23N-w2-7gN" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="zSO-pQ-bYo"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -97,8 +196,11 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="vsG-zB-khS"/>
             <connections>
+                <outlet property="addressLabel" destination="rNK-Ji-zCA" id="Oii-Zb-WHq"/>
                 <outlet property="bgView" destination="JLs-RR-9bq" id="khc-dk-Xtk"/>
+                <outlet property="birthdayLabel" destination="rp4-uk-X5U" id="U0z-xu-Ufe"/>
                 <outlet property="citizenView" destination="hLp-3K-oHX" id="pmY-u3-dPP"/>
+                <outlet property="genderLabel" destination="Qxl-ds-gTb" id="Lld-h2-K9B"/>
                 <outlet property="lotteryIdLabel" destination="ysp-Ad-YV2" id="9Pq-zv-7Ji"/>
                 <outlet property="nameLabel" destination="Eef-bS-mYC" id="1AK-cD-hAx"/>
                 <outlet property="profileImageView" destination="qa9-Ep-PbQ" id="voZ-33-uzF"/>
@@ -108,6 +210,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

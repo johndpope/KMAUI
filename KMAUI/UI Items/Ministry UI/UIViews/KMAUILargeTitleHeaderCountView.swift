@@ -50,10 +50,12 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             detailsLabel.text = "sub lands available for lottery"
             bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
             bgViewBottom.constant = 16
             bgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+            lotteryImageView.image = KMAUIConstants.shared.citizensIcon
         }
         // Count label
         countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)

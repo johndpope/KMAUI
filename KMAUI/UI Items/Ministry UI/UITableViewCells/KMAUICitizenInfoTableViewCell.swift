@@ -17,6 +17,9 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryIdLabel: UILabel!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var queueLabel: UILabel!
+    @IBOutlet weak var genderLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var birthdayLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var addressLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public var citizen = KMAPerson() {
@@ -77,6 +80,12 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
             profileImageView.kf.setImage(with: url)
         }
         // Queue
-        queueLabel.text = "Land queue in Ar Riayd"
+        queueLabel.text = "Verified user"
+        // Gender
+        genderLabel.text = citizen.gender
+        // Birthday
+        birthdayLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: citizen.birthday))
+        // Address
+        addressLabel.text = citizen.formattedAddress
     }
 }
