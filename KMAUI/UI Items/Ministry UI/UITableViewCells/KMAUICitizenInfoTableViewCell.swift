@@ -17,9 +17,9 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryIdLabel: UILabel!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var queueLabel: UILabel!
-    @IBOutlet weak var genderLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var birthdayLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var addressLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var genderLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var birthdayLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var addressLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
     public var citizen = KMAPerson() {
@@ -50,9 +50,15 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         
         // Full name labe
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
+        nameLabel.numberOfLines = 2
         
         // Lottery id
         lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
+        lotteryIdLabel.minimumScaleFactor = 0.75
+        
+        // Address label
+        addressLabel.numberOfLines = 2
+        addressLabel.minimumScaleFactor = 0.75
         
         // Queue label
         queueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
