@@ -11,28 +11,28 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUICitizenInfoTableViewCell" rowHeight="288" id="HxR-zu-YCY" userLabel="KMAUICitizenInfoTableViewCell" customClass="KMAUICitizenInfoTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="579" height="288"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUICitizenInfoTableViewCell" rowHeight="262" id="HxR-zu-YCY" userLabel="KMAUICitizenInfoTableViewCell" customClass="KMAUICitizenInfoTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="579" height="262"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HxR-zu-YCY" id="xXk-ag-e7V">
-                <rect key="frame" x="0.0" y="0.0" width="579" height="288"/>
+                <rect key="frame" x="0.0" y="0.0" width="579" height="262"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLs-RR-9bq" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="24" width="539" height="240"/>
+                        <rect key="frame" x="20" y="24" width="539" height="215"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLp-3K-oHX">
-                                <rect key="frame" x="12" y="12" width="191" height="216"/>
+                                <rect key="frame" x="12" y="12" width="191" height="191"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-Ep-PbQ">
-                                        <rect key="frame" x="62.5" y="36" width="66" height="66"/>
+                                        <rect key="frame" x="62.5" y="24" width="66" height="66"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="vG4-FH-dNm"/>
                                             <constraint firstAttribute="width" constant="66" id="vJ9-tN-XHE"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-bS-mYC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="126" width="175" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-bS-mYC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="114" width="175" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="EVF-ye-G4H"/>
                                         </constraints>
@@ -41,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-Ad-YV2">
-                                        <rect key="frame" x="8" y="159" width="175" height="19"/>
+                                        <rect key="frame" x="8" y="147" width="175" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="19" id="JQ4-z7-IFR"/>
                                         </constraints>
@@ -55,17 +55,17 @@
                                     <constraint firstAttribute="trailing" secondItem="ysp-Ad-YV2" secondAttribute="trailing" constant="8" id="2U0-yP-9YL"/>
                                     <constraint firstItem="qa9-Ep-PbQ" firstAttribute="centerX" secondItem="hLp-3K-oHX" secondAttribute="centerX" id="6vS-cf-gSw"/>
                                     <constraint firstAttribute="width" constant="191" id="ENl-C1-Tfs"/>
-                                    <constraint firstAttribute="height" constant="216" id="GEg-p6-IRM"/>
                                     <constraint firstItem="Eef-bS-mYC" firstAttribute="top" secondItem="qa9-Ep-PbQ" secondAttribute="bottom" constant="24" id="Gbt-Y5-gGI"/>
                                     <constraint firstItem="Eef-bS-mYC" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="leading" constant="8" id="JPu-Np-lZO"/>
                                     <constraint firstAttribute="trailing" secondItem="Eef-bS-mYC" secondAttribute="trailing" constant="8" id="QaP-fV-M61"/>
-                                    <constraint firstItem="qa9-Ep-PbQ" firstAttribute="top" secondItem="hLp-3K-oHX" secondAttribute="top" constant="36" id="oME-cn-5KW"/>
+                                    <constraint firstItem="qa9-Ep-PbQ" firstAttribute="top" secondItem="hLp-3K-oHX" secondAttribute="top" constant="24" id="oME-cn-5KW"/>
                                     <constraint firstItem="ysp-Ad-YV2" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="leading" constant="8" id="qxV-cp-VAs"/>
                                     <constraint firstItem="ysp-Ad-YV2" firstAttribute="top" secondItem="Eef-bS-mYC" secondAttribute="bottom" constant="12" id="skm-CL-Vl7"/>
+                                    <constraint firstAttribute="bottom" secondItem="ysp-Ad-YV2" secondAttribute="bottom" constant="25" id="xmW-Zu-IDa"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3z9-F5-fQj">
-                                <rect key="frame" x="239" y="12" width="264" height="21"/>
+                                <rect key="frame" x="239" y="24" width="264" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="w8Z-ND-rl2"/>
                                 </constraints>
@@ -74,7 +74,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rk-zN-ftT" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="239" y="55" width="57" height="19"/>
+                                <rect key="frame" x="239" y="67" width="57" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="KDX-M9-tnM"/>
                                 </constraints>
@@ -83,14 +83,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x3H-nW-Wr5">
-                                <rect key="frame" x="239" y="86" width="264" height="1"/>
+                                <rect key="frame" x="239" y="98" width="264" height="1"/>
                                 <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Bez-ol-O8E"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qxl-ds-gTb" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="308" y="54" width="195" height="21"/>
+                                <rect key="frame" x="308" y="66" width="195" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="q7U-NB-5Qh"/>
                                 </constraints>
@@ -99,7 +99,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oi-0A-YQB" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="239" y="99" width="97" height="19"/>
+                                <rect key="frame" x="239" y="111" width="97" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="gmS-RF-xzb"/>
                                 </constraints>
@@ -108,7 +108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rp4-uk-X5U" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="348" y="98" width="155" height="21"/>
+                                <rect key="frame" x="348" y="110" width="155" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="MvY-Jo-CAW"/>
                                 </constraints>
@@ -117,14 +117,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHD-Rv-Yd9">
-                                <rect key="frame" x="239" y="130" width="264" height="1"/>
+                                <rect key="frame" x="239" y="142" width="264" height="1"/>
                                 <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="NmL-r9-3Ae"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNK-Ji-zCA" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="239" y="174.5" width="63" height="19"/>
+                                <rect key="frame" x="239" y="157" width="63" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="FlG-t9-Zm4"/>
                                 </constraints>
@@ -132,21 +132,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KD-2k-uhf" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="314" y="143" width="189" height="81.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0KD-2k-uhf" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="314" y="155" width="189" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="KPe-EA-goy"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="KPe-EA-goy"/>
                                 </constraints>
-                                <string key="text">Label
-Label
-Label
-Label</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23N-w2-7gN">
-                                <rect key="frame" x="239" y="236.5" width="264" height="1"/>
+                                <rect key="frame" x="239" y="190" width="264" height="1"/>
                                 <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="B5J-oW-jz6"/>
@@ -155,33 +151,34 @@ Label</string>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hLp-3K-oHX" secondAttribute="bottom" constant="12" id="4uA-da-dSc"/>
                             <constraint firstItem="0KD-2k-uhf" firstAttribute="top" secondItem="eHD-Rv-Yd9" secondAttribute="bottom" constant="12" id="5Vy-ed-ya3"/>
                             <constraint firstItem="0KD-2k-uhf" firstAttribute="centerY" secondItem="rNK-Ji-zCA" secondAttribute="centerY" id="7V5-br-7LH"/>
+                            <constraint firstItem="hLp-3K-oHX" firstAttribute="centerY" secondItem="JLs-RR-9bq" secondAttribute="centerY" id="AVq-kx-fR9"/>
                             <constraint firstItem="6rk-zN-ftT" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="AeY-Xu-pne"/>
                             <constraint firstAttribute="trailing" secondItem="x3H-nW-Wr5" secondAttribute="trailing" constant="36" id="AlL-0p-862"/>
                             <constraint firstAttribute="trailing" secondItem="eHD-Rv-Yd9" secondAttribute="trailing" constant="36" id="B5M-OV-j1H"/>
                             <constraint firstAttribute="trailing" secondItem="Qxl-ds-gTb" secondAttribute="trailing" constant="36" id="BKW-Oq-lSg"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="hLp-3K-oHX" secondAttribute="bottom" constant="12" id="Clg-as-nNy"/>
                             <constraint firstItem="Qxl-ds-gTb" firstAttribute="centerY" secondItem="6rk-zN-ftT" secondAttribute="centerY" id="E4N-gO-BRO"/>
                             <constraint firstAttribute="trailing" secondItem="0KD-2k-uhf" secondAttribute="trailing" constant="36" id="EZH-rQ-uwJ"/>
                             <constraint firstItem="3z9-F5-fQj" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="Hq8-TD-poU"/>
                             <constraint firstItem="0KD-2k-uhf" firstAttribute="leading" secondItem="rNK-Ji-zCA" secondAttribute="trailing" constant="12" id="IC9-Pr-sVl"/>
                             <constraint firstAttribute="trailing" secondItem="3z9-F5-fQj" secondAttribute="trailing" constant="36" id="Ktf-6J-Bum"/>
                             <constraint firstItem="Qxl-ds-gTb" firstAttribute="leading" secondItem="6rk-zN-ftT" secondAttribute="trailing" constant="12" id="LAi-eV-fb3"/>
+                            <constraint firstAttribute="bottom" secondItem="23N-w2-7gN" secondAttribute="bottom" constant="24" id="LtA-11-FAP"/>
                             <constraint firstItem="rp4-uk-X5U" firstAttribute="leading" secondItem="9oi-0A-YQB" secondAttribute="trailing" constant="12" id="Q4T-Ir-GET"/>
                             <constraint firstItem="eHD-Rv-Yd9" firstAttribute="top" secondItem="9oi-0A-YQB" secondAttribute="bottom" constant="12" id="WBC-7w-mUT"/>
                             <constraint firstItem="rp4-uk-X5U" firstAttribute="centerY" secondItem="9oi-0A-YQB" secondAttribute="centerY" id="Z5o-0Q-K6j"/>
                             <constraint firstAttribute="trailing" secondItem="rp4-uk-X5U" secondAttribute="trailing" constant="36" id="ZQu-Zj-GOq"/>
                             <constraint firstItem="x3H-nW-Wr5" firstAttribute="top" secondItem="6rk-zN-ftT" secondAttribute="bottom" constant="12" id="ZuB-wl-KPM"/>
                             <constraint firstItem="23N-w2-7gN" firstAttribute="top" secondItem="0KD-2k-uhf" secondAttribute="bottom" constant="12" id="aOf-il-Lu8"/>
+                            <constraint firstItem="hLp-3K-oHX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JLs-RR-9bq" secondAttribute="top" constant="12" id="bap-sy-402"/>
                             <constraint firstItem="hLp-3K-oHX" firstAttribute="leading" secondItem="JLs-RR-9bq" secondAttribute="leading" constant="12" id="c7U-vU-Yes"/>
-                            <constraint firstAttribute="height" constant="240" id="cDa-fX-W9N"/>
                             <constraint firstAttribute="trailing" secondItem="23N-w2-7gN" secondAttribute="trailing" constant="36" id="gVK-nP-yBA"/>
                             <constraint firstItem="9oi-0A-YQB" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="it4-yq-uea"/>
-                            <constraint firstItem="3z9-F5-fQj" firstAttribute="top" secondItem="JLs-RR-9bq" secondAttribute="top" constant="12" id="keP-OB-2T5"/>
+                            <constraint firstItem="3z9-F5-fQj" firstAttribute="top" secondItem="JLs-RR-9bq" secondAttribute="top" constant="24" id="keP-OB-2T5"/>
                             <constraint firstItem="x3H-nW-Wr5" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="p2H-Kv-dFj"/>
                             <constraint firstItem="9oi-0A-YQB" firstAttribute="top" secondItem="x3H-nW-Wr5" secondAttribute="bottom" constant="12" id="puG-PR-yIr"/>
-                            <constraint firstItem="hLp-3K-oHX" firstAttribute="top" secondItem="JLs-RR-9bq" secondAttribute="top" constant="12" id="qZN-qd-qSO"/>
                             <constraint firstItem="6rk-zN-ftT" firstAttribute="top" secondItem="3z9-F5-fQj" secondAttribute="bottom" constant="22" id="tGd-03-ihL"/>
                             <constraint firstItem="rNK-Ji-zCA" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="uMd-8U-up2"/>
                             <constraint firstItem="eHD-Rv-Yd9" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="trailing" constant="36" id="z9z-v4-zO5"/>
@@ -210,7 +207,7 @@ Label</string>
                 <outlet property="profileImageView" destination="qa9-Ep-PbQ" id="voZ-33-uzF"/>
                 <outlet property="queueLabel" destination="3z9-F5-fQj" id="dnB-Om-De3"/>
             </connections>
-            <point key="canvasLocation" x="181.8840579710145" y="352.23214285714283"/>
+            <point key="canvasLocation" x="181.8840579710145" y="331.47321428571428"/>
         </tableViewCell>
     </objects>
     <resources>
