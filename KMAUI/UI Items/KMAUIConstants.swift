@@ -105,6 +105,7 @@ public class KMAUIConstants {
     public let decreaseArrow = UIImage(named: "decreaseArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let citizensIcon = UIImage(named: "citizensIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let profilePlaceholder = UIImage(named: "profilePlaceholder", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let attachmentIcon = UIImage(named: "attachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6

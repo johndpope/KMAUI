@@ -31,16 +31,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrd-gy-GfU">
-                                <rect key="frame" x="257" y="35" width="104" height="32"/>
+                                <rect key="frame" x="253" y="35" width="108" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="104" id="7Me-HU-Yjt"/>
+                                    <constraint firstAttribute="width" constant="108" id="7Me-HU-Yjt"/>
                                     <constraint firstAttribute="height" constant="32" id="8Oj-tY-fjh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="14" maxY="0.0"/>
-                                <state key="normal" title="Document" image="attachmentIcon">
+                                <state key="normal" title="Documents" image="attachmentIcon">
                                     <color key="titleColor" name="KMABrightBlueColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="documentsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hy8-aj-TmE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="251" horizontalCompressionResistancePriority="753" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wad-6k-Jss" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="20" y="56.5" width="42" height="19"/>
@@ -77,7 +80,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="755" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwq-jl-3Gp" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="164" y="50" width="81" height="32"/>
+                                <rect key="frame" x="164" y="50" width="77" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="hxJ-7l-yrk"/>
                                 </constraints>
@@ -121,6 +124,7 @@
                 <outlet property="addressLabel" destination="cwq-jl-3Gp" id="f0h-ft-QbS"/>
                 <outlet property="circleViewOne" destination="aFv-zH-xU3" id="JgO-1E-8Cw"/>
                 <outlet property="circleViewTwo" destination="eTp-eA-Fhc" id="Uxu-iR-Qbg"/>
+                <outlet property="documentsButton" destination="xrd-gy-GfU" id="Quv-Nt-glW"/>
                 <outlet property="ownershipLabel" destination="wad-6k-Jss" id="Zcc-yG-vgC"/>
                 <outlet property="residentsLabel" destination="qFq-QV-51I" id="Ajb-E8-4Wc"/>
                 <outlet property="typeLabel" destination="8ZI-XU-Npl" id="dng-HC-62U"/>

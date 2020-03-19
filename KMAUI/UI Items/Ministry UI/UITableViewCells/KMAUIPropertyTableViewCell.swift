@@ -16,6 +16,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
     @IBOutlet public weak var residentsLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var circleViewTwo: UIView!
     @IBOutlet public weak var addressLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var documentsButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIPropertyTableViewCell"
@@ -39,6 +40,9 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
         circleViewOne.clipsToBounds = true
         circleViewTwo.layer.cornerRadius = 2.5
         circleViewTwo.clipsToBounds = true
+        
+        // Documents button
+        documentsButton.setImage(KMAUIConstants.shared.attachmentIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         
         // No selection required
         selectionStyle = .none
@@ -79,5 +83,40 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
                 addressLabel.text = property.city + ",\n" + addressArray[0]
             }
         }
+        
+        // Documents
+        if property.documents.isEmpty {
+            documentsButton.tintColor = KMAUIConstants.shared.KMABrightBlueColor
+            documentsButton.titleLabel?.textColor = KMAUIConstants.shared.KMABrightBlueColor
+        } else {
+            documentsButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.3)
+            documentsButton.titleLabel?.textColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.3)
+        }
+        
+        
+    }
+    
+    @IBAction func documentsButtonPressed(_ sender: Any) {
+        print("Open documents preview: \(property.documents.count)")
+        
+        /*
+        // Document
+        for document in property.documents {
+            if !document.name.isEmpty {
+                documentNameLabel.text = document.name
+                
+                let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
+                
+                for file in files {
+                    if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+                        documentImageView.kf.setImage(with: url)
+                        
+                        break
+                    }
+                }
+                
+                break
+            }
+        }*/
     }
 }
