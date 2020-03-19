@@ -9,11 +9,19 @@
 import UIKit
 
 public class KMAUICitizenInfoTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var citizenView: UIView!
+    
     // MARK: - Variables
     public static let id = "KMAUICitizenInfoTableViewCell"
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Larger shadow for bgView
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 12
         
         // No selection required
         selectionStyle = .none
