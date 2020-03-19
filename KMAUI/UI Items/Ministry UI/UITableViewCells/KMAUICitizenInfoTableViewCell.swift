@@ -14,7 +14,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var citizenView: UIView!
 
     // MARK: - Variables
-    public static let id = "KMACitizenInfoTableViewCell"
+    public static let id = "KMAUICitizenInfoTableViewCell"
 
     override public func awakeFromNib() {
         super.awakeFromNib()
