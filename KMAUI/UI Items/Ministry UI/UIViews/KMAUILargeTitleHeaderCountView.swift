@@ -52,7 +52,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
-            bgViewBottom.constant = 8
+            bgViewBottom.constant = 16
             bgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         }
         // Count label

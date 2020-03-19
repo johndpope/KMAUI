@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.0.2)
+  - Alamofire (5.0.4)
   - Bolts/Tasks (1.9.0)
   - Cache (5.2.0)
   - Charts (3.4.0):
@@ -42,7 +42,7 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 3ba7a4db18b4f62c4a1c0e1cb39d7f3d52e10ada
+  Alamofire: 0fe5fd24b4298dc377a6550da7d5f1b30e286fcb
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
