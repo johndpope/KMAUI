@@ -69,7 +69,7 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
         // Setup lottery id
         lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
         // Setup placeholder image
-        profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         // Load profile image
         if let url = URL(string: citizen.profileImage) {
             profileImageView.kf.setImage(with: url)

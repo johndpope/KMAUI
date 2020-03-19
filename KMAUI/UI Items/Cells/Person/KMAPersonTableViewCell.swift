@@ -100,7 +100,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             fullNameLabel.attributedText = KMAUIUtilities.shared.attributedText(text: person.fullName, search: search, fontSize: fullNameLabel.font.pointSize)
             fullNameLabelHeight.constant = 22
             
-            profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+            profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
             
             if let url = URL(string: person.profileImage) {
                 profileImageView.kf.setImage(with: url)
@@ -127,7 +127,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             fullNameLabel.text = ""
             fullNameLabelHeight.constant = 0
             activityView.alpha = 0
-            profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+            profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
             profileImageView.alpha = 1
             activityView.alpha = 0
         }

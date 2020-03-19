@@ -71,7 +71,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         nameLabel.text = uploadItem.citizenUsername.formatUsername()
         
         // Citizen image
-        profileImageView.image = KMAUIConstants.shared.profileIcon.withRenderingMode(.alwaysTemplate)
+        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         profileImageView.tintColor = KMAUIConstants.shared.KMALineGray
         profileImageView.alpha = 0.25
         profileImageView.layer.cornerRadius = 0
