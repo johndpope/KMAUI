@@ -97,7 +97,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
             let addressArray = citizen.formattedAddress.components(separatedBy: ",")
             
             if !addressArray.isEmpty {
-                addressLabel.text = addressArray[0] + ", " + citizen.city
+                addressLabel.text = citizen.city + ", " + addressArray[0]
             }
         }
     }
