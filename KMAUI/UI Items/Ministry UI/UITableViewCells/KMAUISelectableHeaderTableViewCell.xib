@@ -26,9 +26,9 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="fFA-Ci-cTa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="4ZK-Gq-GRL"/>
+                    <constraint firstItem="fFA-Ci-cTa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4ZK-Gq-GRL"/>
                     <constraint firstItem="fFA-Ci-cTa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Dpm-c1-4cA"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fFA-Ci-cTa" secondAttribute="trailing" constant="16" id="T6r-bh-0cE"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fFA-Ci-cTa" secondAttribute="trailing" constant="20" id="T6r-bh-0cE"/>
                     <constraint firstAttribute="bottom" secondItem="fFA-Ci-cTa" secondAttribute="bottom" constant="16" id="gJf-fR-Fv1"/>
                 </constraints>
             </tableViewCellContentView>
