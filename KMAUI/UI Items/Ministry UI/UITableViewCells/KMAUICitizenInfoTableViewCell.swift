@@ -50,14 +50,12 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         
         // Full name labe
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(24)
-        nameLabel.numberOfLines = 2
         
         // Lottery id
         lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         lotteryIdLabel.minimumScaleFactor = 0.75
         
         // Address label
-        addressLabel.numberOfLines = 2
         addressLabel.minimumScaleFactor = 0.75
         
         // Queue label
