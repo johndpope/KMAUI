@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var citizenView: UIView!
+    @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var lotteryIdLabel: UILabel!
+    @IBOutlet public weak var profileImageView: UIImageView!
     
     // MARK: - Variables
     public var citizen = KMAPerson() {
@@ -30,6 +34,22 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
         bgView.layer.shadowRadius = 24
         
+        // Profile image
+        profileImageView.layer.cornerRadius = 33
+        profileImageView.layer.borderWidth = 2
+        profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
+        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
+        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.kf.indicatorType = .activity
+        profileImageView.clipsToBounds = true
+        
+        // Full name labe
+        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(24)
+        
+        // Lottery id
+        lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
         // No selection required
         selectionStyle = .none
     }
@@ -41,6 +61,15 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        
+        // Setup full name
+        nameLabel.text = citizen.fullName
+        // Setup lottery id
+        lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
+        // Setup placeholder image
+        profileImageView.image = KMAUIConstants.shared.profileTabIcon.withRenderingMode(.alwaysTemplate)
+        // Load profile image
+        if let url = URL(string: citizen.profileImage) {
+            profileImageView.kf.setImage(with: url)
+        }
     }
 }

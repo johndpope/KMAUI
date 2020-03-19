@@ -23,10 +23,45 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLp-3K-oHX">
                                 <rect key="frame" x="12" y="12" width="231" height="191"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qa9-Ep-PbQ">
+                                        <rect key="frame" x="82.5" y="24" width="66" height="66"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="vG4-FH-dNm"/>
+                                            <constraint firstAttribute="width" constant="66" id="vJ9-tN-XHE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eef-bS-mYC" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="114" width="215" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="EVF-ye-G4H"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ysp-Ad-YV2">
+                                        <rect key="frame" x="8" y="147" width="215" height="19"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="19" id="JQ4-z7-IFR"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ysp-Ad-YV2" secondAttribute="trailing" constant="8" id="2U0-yP-9YL"/>
+                                    <constraint firstItem="qa9-Ep-PbQ" firstAttribute="centerX" secondItem="hLp-3K-oHX" secondAttribute="centerX" id="6vS-cf-gSw"/>
                                     <constraint firstAttribute="width" constant="231" id="ENl-C1-Tfs"/>
                                     <constraint firstAttribute="height" constant="191" id="GEg-p6-IRM"/>
+                                    <constraint firstItem="Eef-bS-mYC" firstAttribute="top" secondItem="qa9-Ep-PbQ" secondAttribute="bottom" constant="24" id="Gbt-Y5-gGI"/>
+                                    <constraint firstItem="Eef-bS-mYC" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="leading" constant="8" id="JPu-Np-lZO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eef-bS-mYC" secondAttribute="trailing" constant="8" id="QaP-fV-M61"/>
+                                    <constraint firstItem="qa9-Ep-PbQ" firstAttribute="top" secondItem="hLp-3K-oHX" secondAttribute="top" constant="24" id="oME-cn-5KW"/>
+                                    <constraint firstItem="ysp-Ad-YV2" firstAttribute="leading" secondItem="hLp-3K-oHX" secondAttribute="leading" constant="8" id="qxV-cp-VAs"/>
+                                    <constraint firstItem="ysp-Ad-YV2" firstAttribute="top" secondItem="Eef-bS-mYC" secondAttribute="bottom" constant="12" id="skm-CL-Vl7"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -52,6 +87,9 @@
             <connections>
                 <outlet property="bgView" destination="JLs-RR-9bq" id="khc-dk-Xtk"/>
                 <outlet property="citizenView" destination="hLp-3K-oHX" id="pmY-u3-dPP"/>
+                <outlet property="lotteryIdLabel" destination="ysp-Ad-YV2" id="9Pq-zv-7Ji"/>
+                <outlet property="nameLabel" destination="Eef-bS-mYC" id="1AK-cD-hAx"/>
+                <outlet property="profileImageView" destination="qa9-Ep-PbQ" id="voZ-33-uzF"/>
             </connections>
             <point key="canvasLocation" x="183" y="344"/>
         </tableViewCell>
