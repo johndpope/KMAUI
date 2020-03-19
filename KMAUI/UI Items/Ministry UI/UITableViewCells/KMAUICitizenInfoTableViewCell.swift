@@ -86,6 +86,10 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // Birthday
         birthdayLabel.text = KMAUIUtilities.shared.formatStringShort(date: Date(timeIntervalSince1970: citizen.birthday))
         // Address
-        addressLabel.text = citizen.formattedAddress
+        if citizen.formattedAddress.isEmpty {
+            addressLabel.text = "No address"
+        } else {
+            addressLabel.text = citizen.formattedAddress
+        }
     }
 }
