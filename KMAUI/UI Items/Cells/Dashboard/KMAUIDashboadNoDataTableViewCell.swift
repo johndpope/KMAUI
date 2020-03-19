@@ -118,7 +118,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 action = ""
             }
         } else if type == "lottery" {
-            info = "No lotteries avaiable for region."
+            info = "No lotteries available for region."
             action = ""
         } else if type == "noCitizens" {
             if isLoaded {
@@ -126,6 +126,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 action = ""
             } else {
                 info = "Loading the citizen queue for the Land lottery..."
+                action = ""
+            }
+        } else if type == "noDocuments" {
+            if isLoaded {
+                info = "This citizen has no documents yet."
+                action = ""
+            } else {
+                info = "We're preparing the documents..."
                 action = ""
             }
         }
