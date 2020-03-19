@@ -38,6 +38,9 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
         bgView.layer.shadowRadius = 24
         
+        // Citizen view corner radius
+        citizenView.layer.cornerRadius = 8
+        
         // Profile image
         profileImageView.layer.cornerRadius = 33
         profileImageView.layer.borderWidth = 2
@@ -97,7 +100,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
             let addressArray = citizen.formattedAddress.components(separatedBy: ",")
             
             if !addressArray.isEmpty {
-                addressLabel.text = citizen.city + ", " + addressArray[0]
+                addressLabel.text = citizen.city + ",\n" + addressArray[0]
             }
         }
     }

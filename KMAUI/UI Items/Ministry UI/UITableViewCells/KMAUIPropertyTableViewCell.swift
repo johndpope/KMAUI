@@ -76,7 +76,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
             let addressArray = property.formattedAddress.components(separatedBy: ",")
             
             if !addressArray.isEmpty {
-                addressLabel.text = property.city + ", " + addressArray[0]
+                addressLabel.text = property.city + ",\n" + addressArray[0]
             }
         }
     }
