@@ -103,11 +103,9 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func documentsButtonPressed(_ sender: Any) {
-        print("Open documents preview: \(property.documents.count)")
-                
+    @IBAction func documentsButtonPressed(_ sender: Any) {                
         if !property.documents.isEmpty {
-            let document = propertyItem.documents[0]
+            let document = property.documents[0]
             let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
             
             if !files.isEmpty {
@@ -125,7 +123,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
         
         if item.type == "Document" {
             // Downloading file content from the URL
-            KMALotteryMapHelper.shared.downloadfile(urlString: item.fileURL, fileName: item.name, uploadId: propertyId) { (success, url) in
+            KMAUIUtilities.shared.downloadfile(urlString: item.fileURL, fileName: item.name, uploadId: propertyId) { (success, url) in
                 DispatchQueue.main.async { // Must be performed on the main thread
                     if success {
                         if let fileURL = url as NSURL? {
@@ -168,11 +166,11 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
 //MARK: - QLPreviewController Datasource
 
 extension KMAUIPropertyTableViewCell: QLPreviewControllerDataSource {
-    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
     }
     
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
         return previewItem as QLPreviewItem
     }
 }
