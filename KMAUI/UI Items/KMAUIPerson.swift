@@ -53,6 +53,7 @@ public class KMAUIPerson {
         query.whereKey("KMACitizen", equalTo: PFUser(withoutDataWithObjectId: personId))
         query.order(byDescending: "createdAt")
         query.includeKey("departmentAssigned")
+        query.includeKey("departmentAssigned.mapArea")
         query.includeKey("category")
         query.skip = skip
         
