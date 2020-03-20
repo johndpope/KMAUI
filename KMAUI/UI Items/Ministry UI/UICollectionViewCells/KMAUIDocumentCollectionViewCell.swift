@@ -14,6 +14,7 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var documentNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var optionsButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIDocumentCollectionViewCell"
@@ -22,12 +23,44 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
             setupCell()
         }
     }
+    public var optionsCallback: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Setup image
+        documentImageView.layer.cornerRadius = 8
+        clipsToBounds = true
+        
+        // Name label
+        documentNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        
+        // Date label
+        dateLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // Info label
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
     }
 
     public func setupCell() {
+        documentNameLabel.text = document.name
         
+        if document.documentType == "KMADocument" {
+            dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: document.issueDate)
+            documentImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
+            documentImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            documentImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        } else if document.documentType == "KMAUserUpload" {
+            dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: document.documentExpiryDate)
+            documentImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
+            documentImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
+            documentImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        }
+
+        infoLabel.text = document.descriptionText
+    }
+    
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        optionsCallback?(true)
     }
 }
