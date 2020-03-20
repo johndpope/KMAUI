@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Lightbox
+import QuickLook
 
 public class KMAUIPropertyTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -25,6 +27,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    lazy var previewItem = NSURL()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -102,25 +105,74 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
     
     @IBAction func documentsButtonPressed(_ sender: Any) {
         print("Open documents preview: \(property.documents.count)")
+                
+        if !property.documents.isEmpty {
+            let document = propertyItem.documents[0]
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
+            
+            if !files.isEmpty {
+                let file = files[0]
+                print("Preview file: \(file)")
+                previewItem(item: file, propertyId: property.objectId)
+            }
+        }
+    }
+    
+    // MARK: - Image / Video preview
+    
+    func previewItem(item: KMADocumentData, propertyId: String) {
+        var images = [LightboxImage]()
         
-        /*
-        // Document
-        for document in property.documents {
-            if !document.name.isEmpty {
-                documentNameLabel.text = document.name
-                
-                let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
-                
-                for file in files {
-                    if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
-                        documentImageView.kf.setImage(with: url)
+        if item.type == "Document" {
+            // Downloading file content from the URL
+            KMALotteryMapHelper.shared.downloadfile(urlString: item.fileURL, fileName: item.name, uploadId: propertyId) { (success, url) in
+                DispatchQueue.main.async { // Must be performed on the main thread
+                    if success {
+                        if let fileURL = url as NSURL? {
+                            self.previewItem = fileURL
+                            
+                            // Display file
+                            let previewController = QLPreviewController()
+                            previewController.dataSource = self
+                            KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                        }
                         
-                        break
+                    } else {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(item.name). Please try again.") { (done) in }
+                        print("Error downloading file from: \(item.fileURL)")
                     }
                 }
-                
-                break
             }
-        }*/
+        } else {
+            // Image or Video
+            if let url = URL(string: item.fileURL), let previewURL = URL(string: item.previewURL) {
+                if item.type == "Image" {
+                    images.append(LightboxImage(imageURL: url, text: item.name))
+                } else if item.type == "Video" {
+                    images.append(LightboxImage(imageURL: previewURL, text: item.name, videoURL: url))
+                }
+            }
+            
+            if !images.isEmpty {
+                // Add images for the preview and setup UI
+                let lightboxController = LightboxController(images: images, startIndex: 0)
+                lightboxController.modalPresentationStyle = .fullScreen
+                lightboxController.dynamicBackground = true
+                // Present your controller.
+                KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
+            }
+        }
+    }
+}
+
+//MARK: - QLPreviewController Datasource
+
+extension KMAUIPropertyTableViewCell: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewItem as QLPreviewItem
     }
 }
