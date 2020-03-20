@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s72-gJ-KZI" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="8" y="8" width="261" height="239"/>
+                        <rect key="frame" x="12" y="16" width="253" height="231"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="az6-5M-11F">
                                 <rect key="frame" x="20" y="24" width="50" height="46"/>
@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrf-dF-Igp" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="94" width="221" height="21"/>
+                                <rect key="frame" x="20" y="94" width="213" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="vaG-Rw-Ksg"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHs-lB-MzD" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="123" width="221" height="21"/>
+                                <rect key="frame" x="20" y="123" width="213" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="m5t-60-uec"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-c5-34V" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="202" width="221" height="21"/>
+                                <rect key="frame" x="20" y="194" width="213" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="CSb-HC-X7y"/>
                                 </constraints>
@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nPA-PS-8j6">
-                                <rect key="frame" x="229" y="30" width="20" height="34"/>
+                                <rect key="frame" x="221" y="30" width="20" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="7UP-4T-Cu3"/>
                                     <constraint firstAttribute="height" constant="34" id="Epg-Ec-rU2"/>
@@ -90,10 +90,10 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="s72-gJ-KZI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="3eT-xH-Rh6"/>
-                <constraint firstAttribute="trailing" secondItem="s72-gJ-KZI" secondAttribute="trailing" constant="8" id="Atz-3k-MeW"/>
+                <constraint firstItem="s72-gJ-KZI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="3eT-xH-Rh6"/>
+                <constraint firstAttribute="trailing" secondItem="s72-gJ-KZI" secondAttribute="trailing" constant="12" id="Atz-3k-MeW"/>
                 <constraint firstAttribute="bottom" secondItem="s72-gJ-KZI" secondAttribute="bottom" constant="20" id="Qp0-De-3jh"/>
-                <constraint firstItem="s72-gJ-KZI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="jII-87-Zi2"/>
+                <constraint firstItem="s72-gJ-KZI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="jII-87-Zi2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="261" height="359"/>

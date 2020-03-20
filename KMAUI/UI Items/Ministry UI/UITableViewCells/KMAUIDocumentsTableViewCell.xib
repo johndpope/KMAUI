@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yyE-vz-PBu">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="283"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="291"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="283" id="NNR-kf-iO3"/>
+                            <constraint firstAttribute="height" constant="291" id="NNR-kf-iO3"/>
                         </constraints>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AtU-QL-q9m">
                             <size key="itemSize" width="50" height="50"/>

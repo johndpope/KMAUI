@@ -37,13 +37,13 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
         let bundle = Bundle(for: KMAUIDocumentCollectionViewCell.self)
         collectionView.register(UINib(nibName: KMAUIDocumentCollectionViewCell.id, bundle: bundle), forCellWithReuseIdentifier: KMAUIDocumentCollectionViewCell.id)
         
-        let cellSize = CGSize(width: 281, height: 283)
+        let cellSize = CGSize(width: 289, height: 291)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = cellSize
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        layout.minimumInteritemSpacing = 8
+        layout.minimumInteritemSpacing = 0
         collectionView.setCollectionViewLayout(layout, animated: false)
                             
         // Propery horizontal collection view
