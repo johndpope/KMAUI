@@ -541,8 +541,6 @@ public class KMAUIParse {
             if let error = error {
                 print("Error loading documents from KMAUserUpload: \(error.localizedDescription)")
             } else if let documentsArray = documentsArray {
-                print("\nDocuments loaded: \(documentsArray.count)")
-                
                 for document in documentsArray {
                     var documentItem = KMAPropertyDocument()
                     documentItem.fillFrom(documentLoaded: document)
