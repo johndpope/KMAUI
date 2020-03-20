@@ -1723,22 +1723,22 @@ public struct KMAPropertyDocument {
 // MARK: - Citizen Property
 
 public struct KMACitizenProperty {
-    var objectId = ""
-    var createdAt = Date()
-    var updatedAt = Date()
-    var type = ""
-    var apartment = 0
-    var location = CLLocationCoordinate2D()
-    var ownershipForm = ""
-    var residentsCount = 0
-    var documentIds = [String]()
-    var residents = [[String: AnyObject]]()
-    var formattedAddress = ""
-    var city = ""
-    var subAdminArea = ""
-    var adminArea = ""
-    var country = ""
-    var documents = [KMAPropertyDocument]()
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var type = ""
+    public var apartment = 0
+    public var location = CLLocationCoordinate2D()
+    public var ownershipForm = ""
+    public var residentsCount = 0
+    public var documentIds = [String]()
+    public var residents = [[String: AnyObject]]()
+    public var formattedAddress = ""
+    public var city = ""
+    public var subAdminArea = ""
+    public var adminArea = ""
+    public var country = ""
+    public var documents = [KMAPropertyDocument]()
     
     public init() {
     }
