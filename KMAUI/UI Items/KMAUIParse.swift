@@ -527,4 +527,31 @@ public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Get user documents from KMAUserUpload
+    
+    public func getDocumentsUserUploads(citizenId: String, completion: @escaping (_ documents: [KMAPropertyDocument])->()) {
+        let query = PFQuery(className: "KMAUserUpload")
+        query.whereKey("KMACitizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        query.whereKeyExists("documentName")
+        
+        query.findObjectsInBackground { (documentsArray, error) in
+            var documents = [KMAPropertyDocument]()
+            
+            if let error = error {
+                print("Error loading documents from KMAUserUpload: \(error.localizedDescription)")
+            } else if let documentsArray = documentsArray {
+                print("\nDocuments loaded: \(documentsArray.count)")
+                
+                for document in documentsArray {
+                    var documentItem = KMAPropertyDocument()
+                    documentItem.fillFrom(documentLoaded: document)
+                    documents.append(documentItem)
+                }
+            }
+            
+            completion(documents)
+        }
+    }
 }
+

@@ -1684,10 +1684,12 @@ public struct KMAPropertyDocument {
     public var objectId = ""
     public var createdAt = Date()
     public var updatedAt = Date()
+    public var documentExpiryDate = Date()
     public var name = ""
     public var descriptionText = ""
     public var issueDate = Date()
     public var files = ""
+    public var documentType = ""
     
     public init() {
     }
@@ -1701,20 +1703,42 @@ public struct KMAPropertyDocument {
                 self.createdAt = createdAtValue
             }
             
+            // If from KMADocument
+            
             if let nameLoaded = documentLoaded["name"] as? String {
                 self.name = nameLoaded
+                self.documentType = "KMADocument"
             }
             
             if let descriptionLoaded = documentLoaded["description"] as? String {
                 self.descriptionText = descriptionLoaded
             }
             
+            if let filesLoaded = documentLoaded["files"] as? String {
+                self.files = filesLoaded
+            }
+            
             if let issueDateLoaded = documentLoaded["issueDate"] as? Date {
                 self.issueDate = issueDateLoaded
             }
             
-            if let filesLoaded = documentLoaded["files"] as? String {
-                self.files = filesLoaded
+            // If from KMAUserUpload
+            
+            if let nameLoaded = documentLoaded["documentName"] as? String {
+                self.name = nameLoaded
+                self.documentType = "KMAUserUpload"
+            }
+            
+            if let uploadDescription = documentLoaded["uploadDescription"] as? String {
+                self.descriptionText = uploadDescription
+            }
+            
+            if let documentExpiresAt = documentLoaded["documentExpiresAt"] as? Date {
+                self.documentExpiryDate = documentExpiresAt
+            }
+            
+            if let files = documentLoaded["uploadBody"] as? String {
+                self.files = files
             }
         }
     }
