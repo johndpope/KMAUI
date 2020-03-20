@@ -15,7 +15,7 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var documentNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
-    @IBOutlet publi weak var optionsButton: UIButton!
+    @IBOutlet public weak var optionsButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIDocumentCollectionViewCell"
