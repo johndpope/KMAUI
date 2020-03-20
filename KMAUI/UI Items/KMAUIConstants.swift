@@ -106,6 +106,9 @@ public class KMAUIConstants {
     public let citizensIcon = UIImage(named: "citizensIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let profilePlaceholder = UIImage(named: "profilePlaceholder", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let attachmentIcon = UIImage(named: "attachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let propertyDocument = UIImage(named: "propertyDocument", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let threeDotVertical = UIImage(named: "threeDotVertical", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let uploadedDocument = UIImage(named: "uploadedDocument", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
