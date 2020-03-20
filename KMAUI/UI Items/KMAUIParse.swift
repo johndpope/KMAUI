@@ -79,12 +79,12 @@ public class KMAUIParse {
      Get Saudi Arabia regions
      */
     
-    public func getSaudiArabiaRegions(completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         // Saudi Arabia Parse object id
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
         KMAUIParse.shared.getMapArea(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
-            KMAUIParse.shared.getLandPlans(items: areaItems) { (items) in
+            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, items: areaItems) { (items) in
                 completion(items)
             }
         }
@@ -94,7 +94,7 @@ public class KMAUIParse {
      Get land plans
      */
     
-    public func getLandPlans(items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getLandPlans(responsibleDivisionId: String? = nil, items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get plans for regions
@@ -111,143 +111,149 @@ public class KMAUIParse {
             items[index] = itemObject
         }
         
-        if !parseItems.isEmpty {
-            let query = PFQuery(className: "KMALandPlan")
-            query.order(byAscending: "planName")
-            query.whereKey("region", containedIn: parseItems)
-            query.includeKey("responsibleDivision")
-            
-            query.findObjectsInBackground { (plans, error) in
-                if let error = error {
-                    print("Error getting the Land Plans for regions: \(error.localizedDescription).")
-                    completion(items)
-                } else if let plans = plans {
-                    if plans.isEmpty {
-                        print("\nNo Land Plans loaded for regions.")
-                    } else {
-                        print("\nLand Plans loaded for regions: \(plans.count)")
-                        
-                        for plan in plans {
-                            var landPlanObject = KMAUILandPlanStruct()
-                            // landPlanId
-                            if let landPlanIdValue = plan.objectId {
-                                landPlanObject.landPlanId = landPlanIdValue
-                            }
-                            // planName
-                            if let planName = plan["planName"] as? String {
-                                landPlanObject.landName = planName
-                            }
-                            // startDate
-                            if let startDate = plan["startDate"] as? Date {
-                                landPlanObject.startDate = startDate
-                            }
-                            // endDate
-                            if let endDate = plan["endDate"] as? Date {
-                                landPlanObject.endDate = endDate
-                            }
-                            // subLandsCount
-                            if let subLandsCount = plan["subLandsCount"] as? Int {
-                                landPlanObject.subLandsCount = subLandsCount
-                            }
-                            // lotterySubLandsCount
-                            if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
-                                landPlanObject.lotterySubLandsCount = lotterySubLandsCount
-                            }
-                            // lotteryCompleted
-                            if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
-                                landPlanObject.lotteryCompleted = lotteryCompletedValue
-                            }
-                            // extraPricePerSqM
-                            if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
-                                landPlanObject.squareMeterPrice = extraPricePerSqM
-                            }
-                            // landArea
-                            if let landArea = plan["landArea"] as? String {
-                                landPlanObject.geojson = landArea
-                                
-                                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
+        guard !parseItems.isEmpty else {
+            completion([])
+            return
+        }
+        
+        let query = PFQuery(className: "KMALandPlan")
+        query.order(byAscending: "planName")
+        query.whereKey("region", containedIn: parseItems)
+        if let objectId = responsibleDivisionId {
+            query.whereKey("responsibleDivision", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: objectId))
+        }
+        query.includeKey("responsibleDivision")
+        
+        query.findObjectsInBackground { (plans, error) in
+            if let error = error {
+                print("Error getting the Land Plans for regions: \(error.localizedDescription).")
+                completion(items)
+            } else if let plans = plans {
+                if plans.isEmpty {
+                    print("\nNo Land Plans loaded for regions.")
+                } else {
+                    print("\nLand Plans loaded for regions: \(plans.count)")
+                    
+                    for plan in plans {
+                        var landPlanObject = KMAUILandPlanStruct()
+                        // landPlanId
+                        if let landPlanIdValue = plan.objectId {
+                            landPlanObject.landPlanId = landPlanIdValue
+                        }
+                        // planName
+                        if let planName = plan["planName"] as? String {
+                            landPlanObject.landName = planName
+                        }
+                        // startDate
+                        if let startDate = plan["startDate"] as? Date {
+                            landPlanObject.startDate = startDate
+                        }
+                        // endDate
+                        if let endDate = plan["endDate"] as? Date {
+                            landPlanObject.endDate = endDate
+                        }
+                        // subLandsCount
+                        if let subLandsCount = plan["subLandsCount"] as? Int {
+                            landPlanObject.subLandsCount = subLandsCount
+                        }
+                        // lotterySubLandsCount
+                        if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
+                            landPlanObject.lotterySubLandsCount = lotterySubLandsCount
+                        }
+                        // lotteryCompleted
+                        if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
+                            landPlanObject.lotteryCompleted = lotteryCompletedValue
+                        }
+                        // extraPricePerSqM
+                        if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
+                            landPlanObject.squareMeterPrice = extraPricePerSqM
+                        }
+                        // landArea
+                        if let landArea = plan["landArea"] as? String {
+                            landPlanObject.geojson = landArea
+                            
+                            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
 
-                                if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-                                    let border = features[0]
-                                    // coordinates
-                                    if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
-                                        let topLeftCoordinate = coordinates[0]
-                                        let topRightCoordinate = coordinates[1]
-                                        let bottomLeftCoordinate = coordinates[3]
-                                        
-                                        let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                                        let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                                        let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                                        
-                                        let width = Double(Int(topLeft.distance(from: topRight)))
-                                        let height = Double(Int(topLeft.distance(from: bottomLeft)))
-                                        
+                            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+                                let border = features[0]
+                                // coordinates
+                                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
+                                    let topLeftCoordinate = coordinates[0]
+                                    let topRightCoordinate = coordinates[1]
+                                    let bottomLeftCoordinate = coordinates[3]
+                                    
+                                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+                                    
+                                    let width = Double(Int(topLeft.distance(from: topRight)))
+                                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
+                                    
 //                                        print("Width x height: \(width) m x \(height) m")
-                                        landPlanObject.areaWidth = width
-                                        landPlanObject.areaHeight = height
-                                    }
+                                    landPlanObject.areaWidth = width
+                                    landPlanObject.areaHeight = height
+                                }
+                                
+                                // Sub Lands -> update to use the new `KMAUISubLandStruct`
+                                landPlanObject.subLandArray = [KMAUISubLandStruct]()
+                                
+                                for item in features {
+                                    var subLandItem = KMAUISubLandStruct()
+                                    subLandItem.fillFromDict(item: item)
                                     
-                                    // Sub Lands -> update to use the new `KMAUISubLandStruct`
-                                    landPlanObject.subLandArray = [KMAUISubLandStruct]()
-                                    
-                                    for item in features {
-                                        var subLandItem = KMAUISubLandStruct()
-                                        subLandItem.fillFromDict(item: item)
+                                    if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
+                                        landPlanObject.subLandArray.append(subLandItem)
                                         
-                                        if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
-                                            landPlanObject.subLandArray.append(subLandItem)
-                                            
-                                            if subLandItem.subLandType == "Residential Lottery" {
-                                                landPlanObject.lotterySubLandArray.append(subLandItem)
-                                            }
+                                        if subLandItem.subLandType == "Residential Lottery" {
+                                            landPlanObject.lotterySubLandArray.append(subLandItem)
                                         }
                                     }
                                 }
                             }
-                            // Counts / Percents for Sub Lands
-                            landPlanObject.prepareRules()
-                            // centerCoordinate
-                            if let location = plan["location"] as? PFGeoPoint {
-                                landPlanObject.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                            }
-                            // minX, minY
-                            if let minX = plan["minX"] as? Double, let minY = plan["minY"] as? Double {
-                                landPlanObject.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
-                            }
-                            // maxX, maxY
-                            if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
-                                landPlanObject.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
-                            }
-                            // responsibleDivision
-                            if let responsibleDivisionValue = plan["responsibleDivision"] as? PFObject {
-                                var divisionObject = KMADepartmentStruct()
-                                divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
-                                landPlanObject.responsibleDivision = divisionObject
-                            }
-                            // region id
-                            if let region = plan["region"] as? PFObject, let regionId = region.objectId {
-                                // Region id
-                                landPlanObject.regionId = regionId
+                        }
+                        // Counts / Percents for Sub Lands
+                        landPlanObject.prepareRules()
+                        // centerCoordinate
+                        if let location = plan["location"] as? PFGeoPoint {
+                            landPlanObject.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                        }
+                        // minX, minY
+                        if let minX = plan["minX"] as? Double, let minY = plan["minY"] as? Double {
+                            landPlanObject.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+                        }
+                        // maxX, maxY
+                        if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
+                            landPlanObject.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+                        }
+                        // responsibleDivision
+                        if let responsibleDivisionValue = plan["responsibleDivision"] as? PFObject {
+                            var divisionObject = KMADepartmentStruct()
+                            divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
+                            landPlanObject.responsibleDivision = divisionObject
+                        }
+                        // region id
+                        if let region = plan["region"] as? PFObject, let regionId = region.objectId {
+                            // Region id
+                            landPlanObject.regionId = regionId
 //                                print("REGION ID: \(landPlanObject.regionId)")
-                                // Arrays of Plan Land for regions
-                                for (index, item) in items.enumerated() {
-                                    if item.objectId == regionId {
-                                        var itemObject = item
-                                        var landPlans = itemObject.landPlans
-                                        landPlanObject.queueCount = item.lotteryMembersCount
-                                        landPlans.append(landPlanObject)
-                                        itemObject.landPlans = landPlans
-                                        items[index] = itemObject
-                                        
-                                        break
-                                    }
+                            // Arrays of Plan Land for regions
+                            for (index, item) in items.enumerated() {
+                                if item.objectId == regionId {
+                                    var itemObject = item
+                                    var landPlans = itemObject.landPlans
+                                    landPlanObject.queueCount = item.lotteryMembersCount
+                                    landPlans.append(landPlanObject)
+                                    itemObject.landPlans = landPlans
+                                    items[index] = itemObject
+                                    
+                                    break
                                 }
                             }
                         }
                     }
-                    
-                    completion(items)
                 }
+                
+                completion(items)
             }
         }
     }
