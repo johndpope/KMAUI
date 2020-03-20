@@ -551,5 +551,39 @@ public class KMAUIParse {
             completion(documents)
         }
     }
+    
+    public func updatePropertyAndDocuments(citizenId: String, completion: @escaping (_ property: [KMACitizenProperty], _ documents: [KMAPropertyDocument])->()) {
+        // Get property from Parse
+        KMAUIPerson.shared.getProperty(personId: citizenId) { (propertyArray, error) in
+            // Get documents from KMAUserUpload
+            KMAUIParse.shared.getDocumentsUserUploads(citizenId: citizenId) { (documentsArray) in
+                // Save the property
+                let property = propertyArray
+                // Clear documents and property array
+                var uniqueDocumentIds = [String]()
+                var documents = [KMAPropertyDocument]()
+                // Fill the property items
+                for propertyItem in propertyArray {
+                    let propertyDocuments = propertyItem.documents
+                    // Fill the document from KMADocument
+                    for document in propertyDocuments {
+                        if !uniqueDocumentIds.contains(document.objectId) {
+                            uniqueDocumentIds.append(document.objectId)
+                            documents.append(document)
+                        }
+                    }
+                }
+                // Fill the documents from KMAUserUpload
+                for document in documentsArray {
+                    if !uniqueDocumentIds.contains(document.objectId) {
+                        uniqueDocumentIds.append(document.objectId)
+                        documents.append(document)
+                    }
+                }
+                // Completion handle
+                completion(property, documents)
+            }
+        }
+    }
 }
 
