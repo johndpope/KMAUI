@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rrf-dF-Igp" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="112" width="225" height="21"/>
+                                <rect key="frame" x="20" y="94" width="225" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="vaG-Rw-Ksg"/>
                                 </constraints>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHs-lB-MzD" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="141" width="225" height="21"/>
+                                <rect key="frame" x="20" y="123" width="225" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="m5t-60-uec"/>
                                 </constraints>
@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-c5-34V" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="197" width="225" height="21"/>
+                                <rect key="frame" x="20" y="202" width="225" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="CSb-HC-X7y"/>
                                 </constraints>
@@ -70,14 +70,15 @@
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="az6-5M-11F" firstAttribute="leading" secondItem="s72-gJ-KZI" secondAttribute="leading" constant="20" id="478-VG-Jlv"/>
+                            <constraint firstItem="Ec3-c5-34V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gHs-lB-MzD" secondAttribute="bottom" constant="16" id="6TG-E2-gYC"/>
                             <constraint firstItem="Rrf-dF-Igp" firstAttribute="leading" secondItem="s72-gJ-KZI" secondAttribute="leading" constant="20" id="HdZ-Hw-h6h"/>
-                            <constraint firstItem="Ec3-c5-34V" firstAttribute="top" relation="lessThanOrEqual" secondItem="gHs-lB-MzD" secondAttribute="bottom" constant="51" id="JMz-0t-Hxi"/>
-                            <constraint firstAttribute="bottom" secondItem="Ec3-c5-34V" secondAttribute="bottom" constant="21" id="RhN-dM-aij"/>
+                            <constraint firstAttribute="bottom" secondItem="Ec3-c5-34V" secondAttribute="bottom" constant="16" id="RhN-dM-aij"/>
                             <constraint firstItem="Ec3-c5-34V" firstAttribute="leading" secondItem="s72-gJ-KZI" secondAttribute="leading" constant="20" id="SZk-PI-wao"/>
                             <constraint firstAttribute="trailing" secondItem="Ec3-c5-34V" secondAttribute="trailing" constant="20" id="Uf1-o6-zc9"/>
                             <constraint firstItem="nPA-PS-8j6" firstAttribute="centerY" secondItem="az6-5M-11F" secondAttribute="centerY" id="V2d-Za-djI"/>
                             <constraint firstAttribute="trailing" secondItem="Rrf-dF-Igp" secondAttribute="trailing" constant="20" id="Wb5-7X-qiR"/>
-                            <constraint firstItem="Rrf-dF-Igp" firstAttribute="top" secondItem="az6-5M-11F" secondAttribute="bottom" constant="42" id="Zkk-uC-p8k"/>
+                            <constraint firstItem="Rrf-dF-Igp" firstAttribute="top" secondItem="az6-5M-11F" secondAttribute="bottom" constant="24" id="Zkk-uC-p8k"/>
+                            <constraint firstItem="Ec3-c5-34V" firstAttribute="top" relation="lessThanOrEqual" secondItem="gHs-lB-MzD" secondAttribute="bottom" constant="58" id="gf3-BD-rfP"/>
                             <constraint firstAttribute="trailing" secondItem="nPA-PS-8j6" secondAttribute="trailing" constant="12" id="gnd-xz-0u3"/>
                             <constraint firstItem="az6-5M-11F" firstAttribute="top" secondItem="s72-gJ-KZI" secondAttribute="top" constant="24" id="kN7-mF-x0a"/>
                             <constraint firstAttribute="trailing" secondItem="gHs-lB-MzD" secondAttribute="trailing" constant="20" id="lbU-mV-ATK"/>
