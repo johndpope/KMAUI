@@ -13,6 +13,11 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
     @IBOutlet public weak var collectionView: UICollectionView!
     // MARK: - Variables
     public static let id = "KMAUIDocumentsTableViewCell"
+    public var documents = [KMAPropertyDocument]() {
+        didSet {
+            setupCell()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +31,14 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+ 
+    public func setupCell() {
+        // Register collection view cells
+        let bundle = Bundle(for: KMAUIDocumentCollectionViewCell.self)
+        collectionView.register(UINib(nibName: KMAUIDocumentCollectionViewCell.id, bundle: bundle), forCellWithReuseIdentifier: KMAUIDocumentCollectionViewCell.id)
+        
+        if let documentCell = collectionView.dequeueReusableCell(withReuseIdentifier: KMAUIDocumentCollectionViewCell.id, for: indexPath) as? KMAUIDocumentCollectionViewCell {
+            print("CAN LOAD THE COLLECTION VIEW CELL!")
+        }
+    }
 }

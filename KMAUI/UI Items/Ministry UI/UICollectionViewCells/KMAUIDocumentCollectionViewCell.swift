@@ -32,7 +32,7 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
         // Bg view
         // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bgView.layer.shadowRadius = 16
+        bgView.layer.shadowRadius = 12
         
         // Setup image
         documentImageView.layer.cornerRadius = 8
