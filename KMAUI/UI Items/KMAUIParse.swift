@@ -13,8 +13,8 @@ public class KMAUIParse {
     // Access variable
     public static let shared = KMAUIParse()
     
-    public func getMapArea(level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
-        getMapArea(skip: 0, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
+    public func getMapAreas(level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+        getMapAreas(skip: 0, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
             completion(items)
         }
     }
@@ -23,7 +23,7 @@ public class KMAUIParse {
      Get the map area
      */
     
-    func getMapArea(skip: Int, items: [KMAMapAreaStruct], level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    func getMapAreas(skip: Int, items: [KMAMapAreaStruct], level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get the countries list
@@ -63,7 +63,7 @@ public class KMAUIParse {
                 }
                 
                 if countriesArray.count == 100 {
-                    self.getMapArea(skip: skip + 100, items: items, level: level, parentObjectId: parentObjectId) { (itemsArray) in
+                    self.getMapAreas(skip: skip + 100, items: items, level: level, parentObjectId: parentObjectId) { (itemsArray) in
                         completion(itemsArray)
                     }
                 } else {
@@ -71,6 +71,35 @@ public class KMAUIParse {
                 }
             } else {
                 completion(items)
+            }
+        }
+    }
+    
+    func getMapArea(objectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+        // Get the countries list
+        let mapAreaQuery = PFQuery(className: "KMAMapArea")
+        
+        mapAreaQuery.order(byAscending: "nameE")
+        mapAreaQuery.includeKey("country")
+        mapAreaQuery.includeKey("city")
+
+        // Get inf from Parse, prepare an array and return the items with the completion handler
+        mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
+            if let error = error {
+                print("Error getting countries: \(error.localizedDescription).")
+            } else if let countriesArray = countriesArray {
+                print("\nTotal items loaded: \(countriesArray.count)")
+                
+                var items: [KMAMapAreaStruct] = []
+                for country in countriesArray {
+                    var item = KMAMapAreaStruct()
+                    item.fillFrom(object: country)
+                    items.append(item)
+                    
+                }
+                completion(items)
+            } else {
+                completion([])
             }
         }
     }
@@ -83,7 +112,16 @@ public class KMAUIParse {
         // Saudi Arabia Parse object id
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
-        KMAUIParse.shared.getMapArea(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
+        KMAUIParse.shared.getMapAreas(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
+            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, items: areaItems) { (items) in
+                completion(items)
+            }
+        }
+    }
+    
+    public func getSaudiArabiaRegion(responsibleDivisionId: String? = nil, regionId: String, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+        // Get the items
+        KMAUIParse.shared.getMapArea(objectId: regionId) { (areaItems) in
             KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, items: areaItems) { (items) in
                 completion(items)
             }
@@ -123,6 +161,7 @@ public class KMAUIParse {
             query.whereKey("responsibleDivision", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: objectId))
         }
         query.includeKey("responsibleDivision")
+        query.includeKey("responsibleDivision.mapArea")
         
         query.findObjectsInBackground { (plans, error) in
             if let error = error {

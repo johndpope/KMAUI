@@ -1845,6 +1845,7 @@ public struct KMADepartmentStruct {
     public var departmentName = ""
     public var departmentAbout = ""
     public var departmentLogo = ""
+    public var mapArea: KMAMapAreaStruct?
     
     public init() {
     }
@@ -1867,6 +1868,12 @@ public struct KMADepartmentStruct {
             
             if let profileImageFile = departmentObject["departmentProfileImage"] as? PFFileObject, let profileImageURL = profileImageFile.url {
                 self.departmentLogo = profileImageURL
+            }
+            
+            if let mapArea = departmentObject["mapArea"] as? PFObject {
+                var area = KMAMapAreaStruct()
+                area.fillFrom(object: mapArea)
+                self.mapArea = area
             }
         }
     }
