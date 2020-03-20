@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUIDocumentsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet public weak var collectionView: UICollectionView!
     // MARK: - Variables
     public static let id = "KMAUIDocumentsTableViewCell"
 
