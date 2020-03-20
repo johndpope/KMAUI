@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s72-gJ-KZI" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="6" y="6" width="265" height="241"/>
+                        <rect key="frame" x="6" y="8" width="265" height="239"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="az6-5M-11F">
                                 <rect key="frame" x="20" y="24" width="50" height="46"/>
@@ -47,7 +47,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec3-c5-34V" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="199" width="225" height="21"/>
+                                <rect key="frame" x="20" y="197" width="225" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="CSb-HC-X7y"/>
                                 </constraints>
@@ -89,7 +89,7 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="s72-gJ-KZI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="6" id="3eT-xH-Rh6"/>
+                <constraint firstItem="s72-gJ-KZI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="3eT-xH-Rh6"/>
                 <constraint firstAttribute="trailing" secondItem="s72-gJ-KZI" secondAttribute="trailing" constant="6" id="Atz-3k-MeW"/>
                 <constraint firstAttribute="bottom" secondItem="s72-gJ-KZI" secondAttribute="bottom" constant="20" id="Qp0-De-3jh"/>
                 <constraint firstItem="s72-gJ-KZI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="6" id="jII-87-Zi2"/>
