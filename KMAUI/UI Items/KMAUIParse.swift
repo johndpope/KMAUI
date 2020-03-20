@@ -49,17 +49,13 @@ public class KMAUIParse {
             } else if let countriesArray = countriesArray {
                 print("\nTotal items loaded: \(countriesArray.count)")
                 
-                //                for (index, country) in countriesArray.enumerated() {
                 for country in countriesArray {
-                    //                    if let nameE = country["nameE"] as? String {
-                    //                        print("\(index + 1). \(nameE)")
                     var item = KMAMapAreaStruct()
                     item.fillFrom(object: country)
                     
                     if item.isActive {
                         items.append(item)
                     }
-                    //                    }
                 }
                 
                 if countriesArray.count == 100 {
@@ -75,7 +71,7 @@ public class KMAUIParse {
         }
     }
     
-    public func getMapArea(objectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    func getMapArea(objectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         

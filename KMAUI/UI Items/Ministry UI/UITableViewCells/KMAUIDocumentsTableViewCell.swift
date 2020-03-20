@@ -37,7 +37,7 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
         let bundle = Bundle(for: KMAUIDocumentCollectionViewCell.self)
         collectionView.register(UINib(nibName: KMAUIDocumentCollectionViewCell.id, bundle: bundle), forCellWithReuseIdentifier: KMAUIDocumentCollectionViewCell.id)
         
-        let cellSize = CGSize(width: 277, height: 283)
+        let cellSize = CGSize(width: 281, height: 283)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
