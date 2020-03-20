@@ -79,6 +79,7 @@ public class KMAUIParse {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         
+        mapAreaQuery.whereKey("objectId", equalTo: objectId)
         mapAreaQuery.order(byAscending: "nameE")
         mapAreaQuery.includeKey("country")
         mapAreaQuery.includeKey("city")
