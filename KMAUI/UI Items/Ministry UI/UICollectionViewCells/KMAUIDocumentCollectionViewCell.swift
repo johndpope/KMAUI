@@ -10,11 +10,12 @@ import UIKit
 
 public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var documentImageView: UIImageView!
     @IBOutlet public weak var documentNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
-    @IBOutlet weak var optionsButton: UIButton!
+    @IBOutlet publi weak var optionsButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIDocumentCollectionViewCell"
@@ -27,6 +28,11 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Bg view
+        // Larger shadow for bgView
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 16
         
         // Setup image
         documentImageView.layer.cornerRadius = 8

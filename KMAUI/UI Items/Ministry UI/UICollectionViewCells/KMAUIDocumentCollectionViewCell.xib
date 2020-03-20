@@ -97,6 +97,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="261" height="359"/>
             <connections>
+                <outlet property="bgView" destination="s72-gJ-KZI" id="VmR-MB-qN7"/>
                 <outlet property="dateLabel" destination="gHs-lB-MzD" id="A0P-NN-1s2"/>
                 <outlet property="documentImageView" destination="az6-5M-11F" id="aOE-3L-1NR"/>
                 <outlet property="documentNameLabel" destination="Rrf-dF-Igp" id="YTK-ip-fjr"/>
