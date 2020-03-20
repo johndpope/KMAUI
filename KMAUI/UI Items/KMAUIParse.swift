@@ -29,7 +29,7 @@ public class KMAUIParse {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         mapAreaQuery.skip = skip
-
+        
         if parentObjectId.isEmpty {
             // Get the top level items - Countries
             mapAreaQuery.whereKey("level", equalTo: 1)
@@ -41,7 +41,7 @@ public class KMAUIParse {
         mapAreaQuery.order(byAscending: "nameE")
         mapAreaQuery.includeKey("country")
         mapAreaQuery.includeKey("city")
-
+        
         // Get inf from Parse, prepare an array and return the items with the completion handler
         mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
             if let error = error {
@@ -166,7 +166,7 @@ public class KMAUIParse {
                                 landPlanObject.geojson = landArea
                                 
                                 let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
-
+                                
                                 if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
                                     let border = features[0]
                                     // coordinates
@@ -182,7 +182,7 @@ public class KMAUIParse {
                                         let width = Double(Int(topLeft.distance(from: topRight)))
                                         let height = Double(Int(topLeft.distance(from: bottomLeft)))
                                         
-//                                        print("Width x height: \(width) m x \(height) m")
+                                        //                                        print("Width x height: \(width) m x \(height) m")
                                         landPlanObject.areaWidth = width
                                         landPlanObject.areaHeight = height
                                     }
@@ -228,7 +228,7 @@ public class KMAUIParse {
                             if let region = plan["region"] as? PFObject, let regionId = region.objectId {
                                 // Region id
                                 landPlanObject.regionId = regionId
-//                                print("REGION ID: \(landPlanObject.regionId)")
+                                //                                print("REGION ID: \(landPlanObject.regionId)")
                                 // Arrays of Plan Land for regions
                                 for (index, item) in items.enumerated() {
                                     if item.objectId == regionId {
@@ -324,7 +324,7 @@ public class KMAUIParse {
                             print(saveError.localizedDescription)
                             completion(false)
                         } else if success {
-//                            print("Lottery member status changed to `\(isActive)`.")
+                            //                            print("Lottery member status changed to `\(isActive)`.")
                             // Update members for region
                             if isActive {
                                 region.incrementKey("lotteryMembersCount")
@@ -352,7 +352,7 @@ public class KMAUIParse {
         query.includeKey("citizen.homeAddress")
         query.includeKey("citizen.homeAddress.building")
         query.order(byAscending: "citizen.username")
-
+        
         // Run the query
         query.findObjectsInBackground { (citizens, error) in
             var citizensArray = [KMAPerson]()
