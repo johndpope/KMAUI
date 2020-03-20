@@ -75,7 +75,7 @@ public class KMAUIParse {
         }
     }
     
-    func getMapArea(objectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    public func getMapArea(objectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         
