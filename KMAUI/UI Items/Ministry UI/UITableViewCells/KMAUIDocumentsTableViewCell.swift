@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Lightbox
+import QuickLook
 
 public class KMAUIDocumentsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -18,6 +20,7 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    lazy var previewItem = NSURL()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -73,5 +76,74 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
         }
         
         return UICollectionViewCell()
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let document = documents[indexPath.row]
+        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
+        
+        if !files.isEmpty {
+            let file = files[0]
+            print("Preview file: \(file)")
+            previewItem(item: file, propertyId: document.objectId)
+        }
+    }
+    
+    // MARK: - Image / Video preview
+    
+    func previewItem(item: KMADocumentData, propertyId: String) {
+        var images = [LightboxImage]()
+        
+        if item.type == "Document" {
+            // Downloading file content from the URL
+            KMAUIUtilities.shared.downloadfile(urlString: item.fileURL, fileName: item.name, uploadId: propertyId) { (success, url) in
+                DispatchQueue.main.async { // Must be performed on the main thread
+                    if success {
+                        if let fileURL = url as NSURL? {
+                            self.previewItem = fileURL
+                            
+                            // Display file
+                            let previewController = QLPreviewController()
+                            previewController.dataSource = self
+                            KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                        }
+                        
+                    } else {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(item.name). Please try again.") { (done) in }
+                        print("Error downloading file from: \(item.fileURL)")
+                    }
+                }
+            }
+        } else {
+            // Image or Video
+            if let url = URL(string: item.fileURL), let previewURL = URL(string: item.previewURL) {
+                if item.type == "Image" {
+                    images.append(LightboxImage(imageURL: url, text: item.name))
+                } else if item.type == "Video" {
+                    images.append(LightboxImage(imageURL: previewURL, text: item.name, videoURL: url))
+                }
+            }
+            
+            if !images.isEmpty {
+                // Add images for the preview and setup UI
+                let lightboxController = LightboxController(images: images, startIndex: 0)
+                lightboxController.modalPresentationStyle = .fullScreen
+                lightboxController.dynamicBackground = true
+                // Present your controller.
+                KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
+            }
+        }
+    }
+}
+
+//MARK: - QLPreviewController Datasource
+
+extension KMAUIDocumentsTableViewCell: QLPreviewControllerDataSource {
+    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewItem as QLPreviewItem
     }
 }
