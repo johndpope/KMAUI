@@ -2321,6 +2321,10 @@ public struct KMAUILandPlanStruct {
     public var queueCount = 0
     public var queueArray = [KMAPerson]()
     public var queueLoaded = false
+    public var resultLoaded = false
+    public var pairsCount = 0
+    public var subLandIndexes = [Int]()
+    public var queueIndexes = [Int]()
     
     public init() {}
     
