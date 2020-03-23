@@ -109,6 +109,7 @@ public class KMAUIConstants {
     public let propertyDocument = UIImage(named: "propertyDocument", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let threeDotVertical = UIImage(named: "threeDotVertical", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadedDocument = UIImage(named: "uploadedDocument", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let exchangeIcon = UIImage(named: "exchangeIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
