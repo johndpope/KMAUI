@@ -11,10 +11,16 @@ import UIKit
 public class KMAUILotteryResultTableViewCell: UITableViewCell {
     // MARK: - Variables
     public static let id = "KMAUILotteryResultTableViewCell"
+    
+    // MARK: - Variables
+    var subLand = KMAUISubLandStruct()
+    var citizen = KMAUIPerson()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
