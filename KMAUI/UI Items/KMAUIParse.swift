@@ -442,6 +442,8 @@ public class KMAUIParse {
             } else if let results = results, !results.isEmpty {
                 for result in results {
                     if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
+                        print("Citizen id: \(citizenId), Sub Land id: \(subLandId)")
+                        
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandId == subLandItem.subLandId {
