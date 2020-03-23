@@ -448,6 +448,7 @@ public class KMAUIParse {
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandId == subLandItem.subLandId {
                                 subLandIndexes.append(index)
+                                print("Sub Land match!")
                                 break
                             }
                         }
@@ -456,6 +457,7 @@ public class KMAUIParse {
                         for (index, queueItem) in landPlan.queueArray.enumerated() {
                             if citizenId == queueItem.objectId {
                                 queueIndexes.append(index)
+                                print("Citizen match!")
                                 break
                             }
                         }
