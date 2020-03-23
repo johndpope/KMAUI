@@ -426,7 +426,7 @@ public class KMAUIParse {
      Get lottery results from Parse
      */
     
-    public func getLotteryResults(landPlan: KMAUILandPlanStruct, completion: @escaping (_ loaded: Bool)->()) {
+    public func getLotteryResults(landPlan: KMAUILandPlanStruct, completion: @escaping (_ lottery: KMAUILandPlanStruct)->()) {
         var pairsCount = 0
         var subLandIndexes = [Int]()
         var queueIndexes = [Int]()
@@ -438,7 +438,6 @@ public class KMAUIParse {
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
                 print(error.localizedDescription)
-                completion(false)
             } else if let results = results, !results.isEmpty {
                 for result in results {
                     if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
@@ -470,14 +469,10 @@ public class KMAUIParse {
                     landPlan.subLandIndexes = subLandIndexes
                     landPlan.queueIndexes = queueIndexes
                     landPlan.resultLoaded = true
-                    
-                    completion(true)
-                } else {
-                    completion(false)
                 }
-            } else {
-                completion(false)
             }
+            
+            completion(landPlan)
         }
     }
     
