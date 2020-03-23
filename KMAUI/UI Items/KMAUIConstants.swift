@@ -122,7 +122,7 @@ public class KMAUIConstants {
     public let KMATranslucentBg: CGFloat = 0.9
     
     public let performanceTitles = ["Community", "Service", "Security"]
-    public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Citizens"]
+    public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Citizens", "Result"]
     public let lotteryParametersSections = ["Land rules", "Sub land", "Citizens"]
     
     // MARK: - Login variables
