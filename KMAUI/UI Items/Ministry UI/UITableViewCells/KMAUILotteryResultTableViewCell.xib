@@ -90,7 +90,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="SE0-tJ-OrP" firstAttribute="top" secondItem="Nsi-TV-du4" secondAttribute="bottom" constant="8" id="0gm-Fe-hkR"/>
                             <constraint firstItem="d6F-JJ-REr" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="12" id="0kd-42-nX7"/>
@@ -113,6 +113,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="KMAUIViewBgColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wWI-2s-kZC" secondAttribute="bottom" constant="8" id="MVe-mI-xMy"/>
                     <constraint firstItem="wWI-2s-kZC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dUh-3U-jMf"/>
@@ -120,6 +121,7 @@
                     <constraint firstAttribute="trailing" secondItem="wWI-2s-kZC" secondAttribute="trailing" constant="20" id="rLI-U4-Wrd"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <point key="canvasLocation" x="-428.26086956521743" y="-6.3616071428571423"/>
         </tableViewCell>
@@ -132,6 +134,9 @@
         </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIViewBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
