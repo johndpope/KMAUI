@@ -54,7 +54,7 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Citizen index
-        queueIndexLabel.text = "\(citizenIndex)"
+        queueIndexLabel.text = "\(citizenIndex + 1)"
         // Setup full name
         nameLabel.text = citizen.fullName
         // Setup lottery id
