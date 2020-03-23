@@ -139,7 +139,6 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         } else if type == "lotteryResult" {
             info = "Loading lottery results..."
             action = ""
-            isLoaded = false
         }
         
         infoLabel.text = info
