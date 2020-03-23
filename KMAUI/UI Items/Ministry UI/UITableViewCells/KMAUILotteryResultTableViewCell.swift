@@ -14,6 +14,8 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     @IBOutlet public weak var queueIndexLabel: UILabel!
     @IBOutlet public weak var lotteryIdLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var subLandIdLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var addressLabel: KMAUIRegularTextLabel!
     // MARK: - Variables
     public static let id = "KMAUILotteryResultTableViewCell"
     
@@ -51,6 +53,8 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        // Citizen index
+        queueIndexLabel.text = "\(citizenIndex)"
         // Setup full name
         nameLabel.text = citizen.fullName
         // Setup lottery id
@@ -61,5 +65,9 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
         if let url = URL(string: citizen.profileImage) {
             profileImageView.kf.setImage(with: url)
         }
+        // Sub land id
+        subLandIdLabel.text = "Sub Land \(subLand.subLandId)"
+        // Address
+        addressLabel.text = "Region name"
     }
 }

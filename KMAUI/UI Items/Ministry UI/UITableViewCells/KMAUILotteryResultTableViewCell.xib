@@ -126,11 +126,13 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addressLabel" destination="SE0-tJ-OrP" id="WOH-D9-Dti"/>
                 <outlet property="lotteryIdLabel" destination="g4J-sZ-n3q" id="ApE-q4-hwO"/>
                 <outlet property="nameLabel" destination="dwp-6J-2EI" id="59y-oq-DAn"/>
                 <outlet property="profileImageView" destination="e9d-MR-P3V" id="wpJ-vG-JiH"/>
                 <outlet property="queueIndexLabel" destination="d6F-JJ-REr" id="qQi-fk-X1W"/>
                 <outlet property="rightArrowImageView" destination="0rE-0E-3LA" id="hUE-0r-O0g"/>
+                <outlet property="subLandIdLabel" destination="Nsi-TV-du4" id="HfW-ZS-013"/>
             </connections>
             <point key="canvasLocation" x="-469.56521739130437" y="-6.3616071428571423"/>
         </tableViewCell>
