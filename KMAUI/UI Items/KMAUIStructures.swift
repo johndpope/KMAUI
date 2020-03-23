@@ -3048,7 +3048,7 @@ public struct KMAUILandPlanStruct {
         self.percentArray = [KMAUILotteryRule(name: "Sub lands for services", value: "\(self.servicesCount)", percent: "\(self.servicesPercent)%"), KMAUILotteryRule(name: "Sub lands for commercial", value: "\(self.commercialCount)", percent: "\(self.commercialPercent)%"), KMAUILotteryRule(name: "Sub lands for sale", value: "\(self.saleCount)", percent: "\(self.salePercent)%"), KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotteryCount)", percent: "\(self.lotteryPercent)%")]
         
         // Results
-        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)", KMAUILotteryRule(name: "Citizen number (min)", value: "1"), KMAUILotteryRule(name: "Citizen number (max)", value: "3567")]
+        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizen number (min)", value: "1"), KMAUILotteryRule(name: "Citizen number (max)", value: "3567")]
     }
 }
 
