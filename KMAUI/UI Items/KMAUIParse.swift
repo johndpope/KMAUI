@@ -393,7 +393,7 @@ public class KMAUIParse {
         query.includeKey("citizen")
         query.includeKey("citizen.homeAddress")
         query.includeKey("citizen.homeAddress.building")
-        query.order(byAscending: "citizen.username")
+        query.order(byAscending: "createdAt")
 
         // Run the query
         query.findObjectsInBackground { (citizens, error) in
@@ -441,13 +441,10 @@ public class KMAUIParse {
             } else if let results = results, !results.isEmpty {
                 for result in results {
                     if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
-                        print("Citizen id: \(citizenId), Sub Land id: \(subLandId)")
-                        
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandId == subLandItem.subLandId {
                                 subLandIndexes.append(index)
-                                print("Sub Land match!")
                                 break
                             }
                         }
@@ -456,7 +453,6 @@ public class KMAUIParse {
                         for (index, queueItem) in landPlan.queueArray.enumerated() {
                             if citizenId == queueItem.objectId {
                                 queueIndexes.append(index)
-                                print("Citizen match!")
                                 break
                             }
                         }
