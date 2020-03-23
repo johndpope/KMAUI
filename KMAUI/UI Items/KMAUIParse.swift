@@ -465,6 +465,7 @@ public class KMAUIParse {
                     landPlan.pairsCount = pairsCount
                     landPlan.subLandIndexes = subLandIndexes
                     landPlan.queueIndexes = queueIndexes
+                    landPlan.resultLoaded = true
                     
                     completion(true)
                 } else {
