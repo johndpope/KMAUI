@@ -34,6 +34,10 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // bgView shadow
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 8
+        
         // queueIndexLabel
         queueIndexLabel.layer.cornerRadius = 8
         queueIndexLabel.clipsToBounds = true

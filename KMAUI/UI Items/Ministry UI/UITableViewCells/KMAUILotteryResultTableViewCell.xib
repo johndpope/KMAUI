@@ -19,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-2s-kZC" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="478" height="120"/>
+                        <rect key="frame" x="20" y="4" width="478" height="116"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-JJ-REr">
-                                <rect key="frame" x="12" y="27.5" width="65" height="65"/>
+                                <rect key="frame" x="12" y="25.5" width="65" height="65"/>
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="z5x-WR-H0C"/>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9d-MR-P3V">
-                                <rect key="frame" x="89" y="38" width="44" height="44"/>
+                                <rect key="frame" x="89" y="36" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Dcf-dq-wza"/>
                                     <constraint firstAttribute="height" constant="44" id="foL-FH-vcO"/>
@@ -60,7 +60,7 @@ Testing</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="Lottery ID – 434324 " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-sZ-n3q" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="65" width="116" height="39"/>
+                                <rect key="frame" x="145" y="65" width="116" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="BAP-7p-1xf"/>
                                 </constraints>
@@ -69,14 +69,14 @@ Testing</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchangeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="y6L-8T-S08">
-                                <rect key="frame" x="273" y="50" width="20" height="20"/>
+                                <rect key="frame" x="273" y="48" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="WFx-1R-aGe"/>
                                     <constraint firstAttribute="width" constant="20" id="uoj-pb-ttP"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="0rE-0E-3LA">
-                                <rect key="frame" x="457" y="55" width="5" height="10"/>
+                                <rect key="frame" x="457" y="53" width="5" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="A6e-lx-dV2"/>
                                     <constraint firstAttribute="height" constant="10" id="M6J-1f-a9z"/>
@@ -125,7 +125,7 @@ Testing</string>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="wWI-2s-kZC" secondAttribute="bottom" constant="8" id="MVe-mI-xMy"/>
                     <constraint firstItem="wWI-2s-kZC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="dUh-3U-jMf"/>
-                    <constraint firstItem="wWI-2s-kZC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mlW-Vo-bks"/>
+                    <constraint firstItem="wWI-2s-kZC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="mlW-Vo-bks"/>
                     <constraint firstAttribute="trailing" secondItem="wWI-2s-kZC" secondAttribute="trailing" constant="20" id="rLI-U4-Wrd"/>
                 </constraints>
             </tableViewCellContentView>
