@@ -2296,6 +2296,7 @@ public struct KMAUILandPlanStruct {
     public var startDate = Date()
     public var endDate = Date()
     public var regionId = "" // the object id of a region object from KMAMapArea
+    public var region = KMAMapAreaStruct()
     public var subLandsCount = 0
     public var lotterySubLandsCount = 0
     // Department object
