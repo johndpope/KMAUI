@@ -628,5 +628,92 @@ public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Start the lottery
+    public func startLottery(landPlan: KMAUILandPlanStruct, completion: @escaping (_ landPlan: KMAUILandPlanStruct)->()) {
+        var landPlan = landPlan
+        print("Eligible Sub Lands: \(landPlan.lotterySubLandArray.count), Citizen queue: \(landPlan.queueArray.count)")
+        
+        // Sub Land indexes
+        landPlan.subLandIndexes = [Int]()
+        for index in 0..<landPlan.lotterySubLandArray.count {
+            landPlan.subLandIndexes.append(index)
+        }
+        landPlan.subLandIndexes = landPlan.subLandIndexes.shuffled()
+        
+        // Qeueu indexes
+        landPlan.queueIndexes = [Int]()
+        for index in 0..<landPlan.queueArray.count {
+            landPlan.queueIndexes.append(index)
+        }
+        landPlan.queueIndexes = landPlan.queueIndexes.shuffled()
+        
+        landPlan.pairsCount = landPlan.lotterySubLandArray.count
+        
+        if landPlan.queueArray.count < landPlan.lotterySubLandArray.count {
+            landPlan.pairsCount = landPlan.queueArray.count
+        }
+        
+        if landPlan.pairsCount > 0 {
+            print("Pairs to be created: \(landPlan.pairsCount)")
+            
+            for index in 0..<landPlan.pairsCount {
+                print("\(index + 1). Citizen \(landPlan.queueIndexes[index]) - Sub Land \(landPlan.subLandIndexes[index])")
+            }
+        } else {
+            print("No pairs to create.")
+        }
+        
+        KMAUIUtilities.shared.startLoading(title: "Processing...")
+        
+        // Create the array of PFObjects for KMALotteryResult
+        var lotteryResults = [PFObject]()
+        
+        for index in 0..<landPlan.pairsCount {
+            let citizenIndex = landPlan.queueIndexes[index]
+            let subLandIndex = landPlan.subLandIndexes[index]
+            
+            let citizen = landPlan.queueArray[citizenIndex]
+            let subLand = landPlan.lotterySubLandArray[subLandIndex]
+            
+            let newLotteryResult = PFObject(className: "KMALotteryResult")
+            newLotteryResult["citizen"] = PFUser(withoutDataWithObjectId: citizen.objectId)
+            newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.subLandId)
+            newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
+            newLotteryResult["confirmed"] = false
+            newLotteryResult["status"] = "pending"
+            newLotteryResult["paid"] = false
+            
+            lotteryResults.append(newLotteryResult)
+        }
+        
+        // Saving the lottery results array
+        PFObject.saveAll(inBackground: lotteryResults) { (success, error) in
+            if let error = error {
+                KMAUIUtilities.shared.stopLoadingWith { (done) in
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(error.localizedDescription)") { (done) in }
+                }
+            } else if success {
+                print("Lottery results saved.")
+                
+                let landPlanObject = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
+                landPlanObject["lotteryCompleted"] = true
+                
+                landPlanObject.saveInBackground { (saveSuccess, saveError) in
+                    KMAUIUtilities.shared.stopLoadingWith { (done) in
+                        if let saveError = saveError {
+                            print(saveError.localizedDescription)
+                            KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(saveError.localizedDescription)") { (done) in }
+                        } else {
+                            print("Land Plan status changed to completed.")
+                            landPlan.lotteryCompleted = true
+                        }
+                        
+                        completion(landPlan)
+                    }
+                }
+            }
+        }
+    }
 }
 
