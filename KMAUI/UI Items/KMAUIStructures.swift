@@ -3056,15 +3056,7 @@ public struct KMAUILandPlanStruct {
     }
     
     public mutating func setupResultArray() {
-        var minCitizen = 0
-        var maxCitizen = 0
-        
-        if !self.queueArray.isEmpty {
-            minCitizen = 1
-            maxCitizen = self.queueArray.count
-        }
-        
-        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizen number (min)", value: "\(minCitizen)"), KMAUILotteryRule(name: "Citizen number (max)", value: "\(maxCitizen)")]
+        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizen queue", value: "\(self.queueArray.count)")]
     }
 }
 

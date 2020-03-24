@@ -73,8 +73,12 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            queueIndexLabel.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            queueIndexLabel.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         }
     }
     
