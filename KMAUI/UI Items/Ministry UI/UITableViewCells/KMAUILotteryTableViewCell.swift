@@ -36,7 +36,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         
         // bgView shadow
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bgView.layer.shadowRadius = 8
+        bgView.layer.shadowRadius = 6
         
         // Fonts
         lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
