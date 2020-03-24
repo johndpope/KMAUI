@@ -11,18 +11,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryResultTableViewCell" rowHeight="119" id="KGk-i7-Jjw" customClass="KMAUILotteryResultTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="578" height="119"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryResultTableViewCell" rowHeight="123" id="KGk-i7-Jjw" customClass="KMAUILotteryResultTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="578" height="123"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="578" height="119"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="578" height="123"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-2s-kZC" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="538" height="89"/>
+                        <rect key="frame" x="20" y="0.0" width="538" height="115"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-JJ-REr">
-                                <rect key="frame" x="12" y="12" width="65" height="65"/>
+                                <rect key="frame" x="12" y="25" width="65" height="65"/>
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="z5x-WR-H0C"/>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9d-MR-P3V">
-                                <rect key="frame" x="89" y="22.5" width="44" height="44"/>
+                                <rect key="frame" x="89" y="35.5" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Dcf-dq-wza"/>
                                     <constraint firstAttribute="height" constant="44" id="foL-FH-vcO"/>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Sub Land objectId" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsi-TV-du4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="291" y="22" width="139" height="21"/>
+                                <rect key="frame" x="291" y="22" width="214" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kOy-p4-3vI"/>
                                 </constraints>
@@ -67,21 +67,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchangeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="y6L-8T-S08">
-                                <rect key="frame" x="259" y="34.5" width="20" height="20"/>
+                                <rect key="frame" x="259" y="47.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="WFx-1R-aGe"/>
                                     <constraint firstAttribute="width" constant="20" id="uoj-pb-ttP"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="0rE-0E-3LA">
-                                <rect key="frame" x="517" y="39.5" width="5" height="10"/>
+                                <rect key="frame" x="517" y="52.5" width="5" height="10"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="5" id="A6e-lx-dV2"/>
                                     <constraint firstAttribute="height" constant="10" id="M6J-1f-a9z"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-tJ-OrP" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="291" y="51" width="99.5" height="20.5"/>
+                                <rect key="frame" x="291" y="51" width="214" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="hcC-my-iBb"/>
                                 </constraints>
@@ -99,7 +99,6 @@
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="ED8-0v-2XG"/>
                             <constraint firstItem="dwp-6J-2EI" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="22" id="ERj-26-Oey"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="bottom" constant="22" id="I9y-qE-NEt"/>
-                            <constraint firstAttribute="height" constant="89" id="LAu-bq-gwM"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="dwp-6J-2EI" secondAttribute="trailing" constant="12" id="MjE-M1-MmO"/>
                             <constraint firstItem="e9d-MR-P3V" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="P9W-UN-WRW"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="top" secondItem="dwp-6J-2EI" secondAttribute="bottom" constant="8" id="Q1Z-pH-UqM"/>
@@ -109,9 +108,9 @@
                             <constraint firstAttribute="trailing" secondItem="0rE-0E-3LA" secondAttribute="trailing" constant="16" id="ayX-3C-fAV"/>
                             <constraint firstItem="d6F-JJ-REr" firstAttribute="leading" secondItem="wWI-2s-kZC" secondAttribute="leading" constant="12" id="b52-NH-a9b"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="fiu-fo-ZCe"/>
-                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nsi-TV-du4" secondAttribute="trailing" constant="12" id="fp8-uO-uhl"/>
+                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="Nsi-TV-du4" secondAttribute="trailing" constant="12" id="fp8-uO-uhl"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g4J-sZ-n3q" secondAttribute="bottom" constant="22" id="h4x-OQ-GiL"/>
-                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="trailing" constant="12" id="kLD-BS-KvM"/>
+                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="SE0-tJ-OrP" secondAttribute="trailing" constant="12" id="kLD-BS-KvM"/>
                             <constraint firstItem="dwp-6J-2EI" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="lU9-Dk-icj"/>
                             <constraint firstItem="Nsi-TV-du4" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="22" id="xEd-67-afX"/>
                             <constraint firstItem="Nsi-TV-du4" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="12" id="zk1-Hq-Hg0"/>
@@ -137,7 +136,7 @@
                 <outlet property="rightArrowImageView" destination="0rE-0E-3LA" id="hUE-0r-O0g"/>
                 <outlet property="subLandIdLabel" destination="Nsi-TV-du4" id="HfW-ZS-013"/>
             </connections>
-            <point key="canvasLocation" x="-471.01449275362324" y="-26.450892857142858"/>
+            <point key="canvasLocation" x="-471.01449275362324" y="-25.111607142857142"/>
         </tableViewCell>
     </objects>
     <resources>
