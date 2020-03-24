@@ -555,6 +555,7 @@ public class KMAUIParse {
         rulesObject["commercialPercent"] = rules.commercialPercent
         rulesObject["lotteryPercent"] = rules.lotteryPercent
         rulesObject["salePercent"] = rules.salePercent
+        rulesObject["rangePercent"] = rules.rangePercent
         // Saving the lottery rules object
         rulesObject.saveInBackground { (success, error) in
             KMAUIUtilities.shared.stopLoadingWith { (done) in

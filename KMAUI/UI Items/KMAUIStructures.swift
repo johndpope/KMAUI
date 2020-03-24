@@ -3101,6 +3101,7 @@ public struct KMAUILotteryRules {
     public var minSubLandSide = 25
     public var maxSubLandSide = 30
     public var objectId = ""
+    public var rangePercent = 30
     
     public init() {
     }
@@ -3146,10 +3147,13 @@ public struct KMAUILotteryRules {
         if let salePercent = object["salePercent"] as? Int {
             self.salePercent = salePercent
         }
-        
         // lotteryPercent
         if let lotteryPercent = object["lotteryPercent"] as? Int {
             self.lotteryPercent = lotteryPercent
+        }
+        // rangePercent
+        if let rangePercent = object["rangePercent"] as? Int {
+            self.rangePercent = rangePercent
         }
     }
 }
