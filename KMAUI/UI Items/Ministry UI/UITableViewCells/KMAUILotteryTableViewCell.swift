@@ -34,6 +34,10 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // bgView shadow
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 8
+        
         // Fonts
         lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         subLandsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
