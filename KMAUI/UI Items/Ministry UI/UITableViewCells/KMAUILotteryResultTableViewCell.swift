@@ -16,6 +16,7 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var subLandIdLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var addressLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var separatorCenter: NSLayoutConstraint!
     // MARK: - Variables
     public static let id = "KMAUILotteryResultTableViewCell"
     
