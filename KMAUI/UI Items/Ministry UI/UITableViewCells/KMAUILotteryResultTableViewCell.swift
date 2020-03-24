@@ -24,6 +24,7 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var citizenIndex = 0
+    public var region = KMAMapAreaStruct()
     public var citizen = KMAPerson()
     public var subLand = KMAUISubLandStruct() {
         didSet {
@@ -98,6 +99,6 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
         // Sub land id
         subLandIdLabel.text = "Sub Land \(subLand.subLandId)"
         // Address
-        addressLabel.text = "Region name"
+        addressLabel.text = "\(region.nameE) Region"
     }
 }
