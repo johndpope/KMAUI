@@ -33,14 +33,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e9d-MR-P3V">
-                                <rect key="frame" x="89" y="35.5" width="44" height="44"/>
+                                <rect key="frame" x="92" y="35.5" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Dcf-dq-wza"/>
                                     <constraint firstAttribute="height" constant="44" id="foL-FH-vcO"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Julie Warren" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-6J-2EI" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="22" width="102" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Julie Warren" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-6J-2EI" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="148" y="22" width="95" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="uPP-0i-Lrx"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Sub Land objectId" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsi-TV-du4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="291" y="22" width="214" height="21"/>
+                                <rect key="frame" x="295" y="22" width="139" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kOy-p4-3vI"/>
                                 </constraints>
@@ -57,8 +57,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Lottery ID – 434324 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-sZ-n3q" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="51" width="102" height="41"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Lottery ID – 434324 " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-sZ-n3q" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="148" y="51" width="95" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="BAP-7p-1xf"/>
                                 </constraints>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-tJ-OrP" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="291" y="51" width="214" height="20.5"/>
+                                <rect key="frame" x="295" y="51" width="99.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="hcC-my-iBb"/>
                                 </constraints>
@@ -93,27 +93,27 @@
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="SE0-tJ-OrP" firstAttribute="top" secondItem="Nsi-TV-du4" secondAttribute="bottom" constant="8" id="0gm-Fe-hkR"/>
-                            <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="g4J-sZ-n3q" secondAttribute="trailing" constant="12" id="4en-Qp-dBH"/>
+                            <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="g4J-sZ-n3q" secondAttribute="trailing" constant="16" id="4en-Qp-dBH"/>
                             <constraint firstItem="d6F-JJ-REr" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="8fK-3i-nRa"/>
-                            <constraint firstItem="SE0-tJ-OrP" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="12" id="BMe-0H-zCv"/>
+                            <constraint firstItem="SE0-tJ-OrP" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="16" id="BMe-0H-zCv"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="ED8-0v-2XG"/>
                             <constraint firstItem="dwp-6J-2EI" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="22" id="ERj-26-Oey"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="bottom" constant="22" id="I9y-qE-NEt"/>
-                            <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="dwp-6J-2EI" secondAttribute="trailing" constant="12" id="MjE-M1-MmO"/>
+                            <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="dwp-6J-2EI" secondAttribute="trailing" constant="16" id="MjE-M1-MmO"/>
                             <constraint firstItem="e9d-MR-P3V" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="P9W-UN-WRW"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="top" secondItem="dwp-6J-2EI" secondAttribute="bottom" constant="8" id="Q1Z-pH-UqM"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="centerX" secondItem="wWI-2s-kZC" secondAttribute="centerX" id="Uvg-FH-1Da"/>
                             <constraint firstItem="0rE-0E-3LA" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="XSd-ua-zNX"/>
-                            <constraint firstItem="e9d-MR-P3V" firstAttribute="leading" secondItem="d6F-JJ-REr" secondAttribute="trailing" constant="12" id="Z9y-Fz-7Sd"/>
+                            <constraint firstItem="e9d-MR-P3V" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="d6F-JJ-REr" secondAttribute="trailing" constant="12" id="Z9y-Fz-7Sd"/>
                             <constraint firstAttribute="trailing" secondItem="0rE-0E-3LA" secondAttribute="trailing" constant="16" id="ayX-3C-fAV"/>
                             <constraint firstItem="d6F-JJ-REr" firstAttribute="leading" secondItem="wWI-2s-kZC" secondAttribute="leading" constant="12" id="b52-NH-a9b"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="fiu-fo-ZCe"/>
-                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="Nsi-TV-du4" secondAttribute="trailing" constant="12" id="fp8-uO-uhl"/>
+                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Nsi-TV-du4" secondAttribute="trailing" constant="12" id="fp8-uO-uhl"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g4J-sZ-n3q" secondAttribute="bottom" constant="22" id="h4x-OQ-GiL"/>
-                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="SE0-tJ-OrP" secondAttribute="trailing" constant="12" id="kLD-BS-KvM"/>
+                            <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="trailing" constant="12" id="kLD-BS-KvM"/>
                             <constraint firstItem="dwp-6J-2EI" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="lU9-Dk-icj"/>
                             <constraint firstItem="Nsi-TV-du4" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="22" id="xEd-67-afX"/>
-                            <constraint firstItem="Nsi-TV-du4" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="12" id="zk1-Hq-Hg0"/>
+                            <constraint firstItem="Nsi-TV-du4" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="16" id="zk1-Hq-Hg0"/>
                         </constraints>
                     </view>
                 </subviews>
