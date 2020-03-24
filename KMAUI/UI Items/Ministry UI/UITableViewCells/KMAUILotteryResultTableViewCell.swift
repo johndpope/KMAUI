@@ -70,5 +70,11 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
         subLandIdLabel.text = "Sub Land \(subLand.subLandId)"
         // Address
         addressLabel.text = "Region name"
+        // Adjust the center separator
+        if UIDevice.current.orientation.isLandscape {
+            separatorCenter.constant = 0
+        } else {
+            separatorCenter.constant = 44
+        }
     }
 }
