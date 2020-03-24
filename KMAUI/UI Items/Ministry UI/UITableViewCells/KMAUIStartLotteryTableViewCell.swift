@@ -46,11 +46,22 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     }
     
     func startLottery() {
+        if lottery.lotterySubLandArray.isEmpty {
+            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Sub Land items to assign to Citizens.") { (done) in }
+            return
+        }
+        
+        if lottery.queueArray.isEmpty {
+            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Citizens to assign the Sub Land items to.") { (done) in }
+            return
+        }
+        
         KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
             self.lottery.subLandIndexes = landPlanUpdated.subLandIndexes
             self.lottery.queueIndexes = landPlanUpdated.queueIndexes
             self.lottery.pairsCount = landPlanUpdated.pairsCount
             self.lottery.lotteryCompleted = landPlanUpdated.lotteryCompleted
+            self.lottery.resultLoaded = true
             self.callback?(self.lottery)
         }
     }
