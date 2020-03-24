@@ -33,6 +33,19 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     }
     
     @IBAction public func lotteryButtonPressed(_ sender: Any) {
+        let lotteryAlert = UIAlertController(title: "Start the Lottery", message: "Are you sure you'd like to start the lottery?\n\nThis will run a random algorithm to give the Sub Land items to the Citizens.", preferredStyle: .alert)
+        lotteryAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) in
+            self.startLottery()
+        }))
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in }))
+        
+        KMAUIUtilities.shared.displayAlert(viewController: lotteryAlert)
+    }
+    
+    func startLottery() {
         KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
             self.lottery.subLandIndexes = landPlanUpdated.subLandIndexes
             self.lottery.queueIndexes = landPlanUpdated.queueIndexes
