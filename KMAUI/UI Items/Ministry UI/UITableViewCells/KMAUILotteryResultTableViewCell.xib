@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="578" height="119"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-2s-kZC" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="538" height="112"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wWI-2s-kZC" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="20" y="0.0" width="538" height="89"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="d6F-JJ-REr">
                                 <rect key="frame" x="12" y="12" width="65" height="65"/>
@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Julie Warren" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-6J-2EI" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="22" width="95" height="21"/>
+                                <rect key="frame" x="145" y="22" width="102" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="uPP-0i-Lrx"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Sub Land objectId" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsi-TV-du4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="284" y="22" width="139" height="21"/>
+                                <rect key="frame" x="291" y="22" width="139" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="kOy-p4-3vI"/>
                                 </constraints>
@@ -58,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Lottery ID – 434324 " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-sZ-n3q" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="51" width="95" height="41"/>
+                                <rect key="frame" x="145" y="51" width="102" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="BAP-7p-1xf"/>
                                 </constraints>
@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exchangeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="y6L-8T-S08">
-                                <rect key="frame" x="252" y="34.5" width="20" height="20"/>
+                                <rect key="frame" x="259" y="34.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="WFx-1R-aGe"/>
                                     <constraint firstAttribute="width" constant="20" id="uoj-pb-ttP"/>
@@ -81,7 +81,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-tJ-OrP" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="284" y="51" width="99.5" height="20.5"/>
+                                <rect key="frame" x="291" y="51" width="99.5" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="hcC-my-iBb"/>
                                 </constraints>
@@ -103,6 +103,7 @@
                             <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="dwp-6J-2EI" secondAttribute="trailing" constant="12" id="MjE-M1-MmO"/>
                             <constraint firstItem="e9d-MR-P3V" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="P9W-UN-WRW"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="top" secondItem="dwp-6J-2EI" secondAttribute="bottom" constant="8" id="Q1Z-pH-UqM"/>
+                            <constraint firstItem="y6L-8T-S08" firstAttribute="centerX" secondItem="wWI-2s-kZC" secondAttribute="centerX" id="Uvg-FH-1Da"/>
                             <constraint firstItem="0rE-0E-3LA" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="XSd-ua-zNX"/>
                             <constraint firstItem="e9d-MR-P3V" firstAttribute="leading" secondItem="d6F-JJ-REr" secondAttribute="trailing" constant="12" id="Z9y-Fz-7Sd"/>
                             <constraint firstAttribute="trailing" secondItem="0rE-0E-3LA" secondAttribute="trailing" constant="16" id="ayX-3C-fAV"/>
