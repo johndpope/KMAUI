@@ -10,7 +10,7 @@ import UIKit
 
 public class KMAUILotteryResultTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var queueIndexLabel: UILabel!
@@ -33,6 +33,10 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // queueIndexLabel
+        queueIndexLabel.layer.cornerRadius = 8
+        queueIndexLabel.clipsToBounds = true
         
         // Set the profileImageView
         profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
