@@ -40,7 +40,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="751" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-6J-2EI" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="12" width="112" height="41"/>
+                                <rect key="frame" x="145" y="16" width="112" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="uPP-0i-Lrx"/>
                                 </constraints>
@@ -51,7 +51,7 @@ Testing</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" horizontalCompressionResistancePriority="755" verticalCompressionResistancePriority="751" text="Sub Land objectId" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsi-TV-du4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="309" y="12" width="136" height="41"/>
+                                <rect key="frame" x="309" y="16" width="136" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="kOy-p4-3vI"/>
                                 </constraints>
@@ -60,7 +60,7 @@ Testing</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="Lottery ID – 434324 " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-sZ-n3q" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="145" y="61" width="112" height="41"/>
+                                <rect key="frame" x="145" y="65" width="112" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="BAP-7p-1xf"/>
                                 </constraints>
@@ -83,7 +83,7 @@ Testing</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" horizontalCompressionResistancePriority="755" text="Region name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SE0-tJ-OrP" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="309" y="61" width="136" height="20.5"/>
+                                <rect key="frame" x="309" y="65" width="136" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="42" id="hcC-my-iBb"/>
                                 </constraints>
@@ -100,8 +100,8 @@ Testing</string>
                             <constraint firstItem="SE0-tJ-OrP" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="16" id="BMe-0H-zCv"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="114" id="DcY-pb-eW8"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="ED8-0v-2XG"/>
-                            <constraint firstItem="dwp-6J-2EI" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="12" id="ERj-26-Oey"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="bottom" constant="12" id="I9y-qE-NEt"/>
+                            <constraint firstItem="dwp-6J-2EI" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="16" id="ERj-26-Oey"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SE0-tJ-OrP" secondAttribute="bottom" constant="16" id="I9y-qE-NEt"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="leading" secondItem="dwp-6J-2EI" secondAttribute="trailing" constant="16" id="MjE-M1-MmO"/>
                             <constraint firstItem="e9d-MR-P3V" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="P9W-UN-WRW"/>
                             <constraint firstItem="g4J-sZ-n3q" firstAttribute="top" secondItem="dwp-6J-2EI" secondAttribute="bottom" constant="8" id="Q1Z-pH-UqM"/>
@@ -112,10 +112,10 @@ Testing</string>
                             <constraint firstItem="d6F-JJ-REr" firstAttribute="leading" secondItem="wWI-2s-kZC" secondAttribute="leading" constant="12" id="b52-NH-a9b"/>
                             <constraint firstItem="y6L-8T-S08" firstAttribute="centerY" secondItem="wWI-2s-kZC" secondAttribute="centerY" id="fiu-fo-ZCe"/>
                             <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="Nsi-TV-du4" secondAttribute="trailing" constant="12" id="fp8-uO-uhl"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g4J-sZ-n3q" secondAttribute="bottom" constant="12" id="h4x-OQ-GiL"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="g4J-sZ-n3q" secondAttribute="bottom" constant="16" id="h4x-OQ-GiL"/>
                             <constraint firstItem="0rE-0E-3LA" firstAttribute="leading" secondItem="SE0-tJ-OrP" secondAttribute="trailing" constant="12" id="kLD-BS-KvM"/>
                             <constraint firstItem="dwp-6J-2EI" firstAttribute="leading" secondItem="e9d-MR-P3V" secondAttribute="trailing" constant="12" id="lU9-Dk-icj"/>
-                            <constraint firstItem="Nsi-TV-du4" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="12" id="xEd-67-afX"/>
+                            <constraint firstItem="Nsi-TV-du4" firstAttribute="top" secondItem="wWI-2s-kZC" secondAttribute="top" constant="16" id="xEd-67-afX"/>
                             <constraint firstItem="Nsi-TV-du4" firstAttribute="leading" secondItem="y6L-8T-S08" secondAttribute="trailing" constant="16" id="zk1-Hq-Hg0"/>
                         </constraints>
                     </view>
@@ -132,6 +132,7 @@ Testing</string>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addressLabel" destination="SE0-tJ-OrP" id="WOH-D9-Dti"/>
+                <outlet property="bgView" destination="wWI-2s-kZC" id="vOK-e4-cU3"/>
                 <outlet property="lotteryIdLabel" destination="g4J-sZ-n3q" id="ApE-q4-hwO"/>
                 <outlet property="nameLabel" destination="dwp-6J-2EI" id="59y-oq-DAn"/>
                 <outlet property="profileImageView" destination="e9d-MR-P3V" id="wpJ-vG-JiH"/>

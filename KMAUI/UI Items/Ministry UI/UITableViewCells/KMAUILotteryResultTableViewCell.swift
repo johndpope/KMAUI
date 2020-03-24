@@ -9,6 +9,8 @@
 import UIKit
 
 public class KMAUILotteryResultTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
+    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var queueIndexLabel: UILabel!
