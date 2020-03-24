@@ -12,7 +12,8 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryButton: UIButton!
     // MARK: - Variables
     public static let id = "KMAUIStartLotteryTableViewCell"
-    public var callback: ((Bool) -> Void)?
+    public var callback: ((KMAUILandPlanStruct) -> Void)?
+    public var lottery = KMAUILandPlanStruct()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +33,12 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     }
     
     @IBAction public func lotteryButtonPressed(_ sender: Any) {
-        callback?(true)
+        KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+            self.lottery.subLandIndexes = landPlanUpdated.subLandIndexes
+            self.lottery.queueIndexes = landPlanUpdated.queueIndexes
+            self.lottery.pairsCount = landPlanUpdated.pairsCount
+            self.lottery.lotteryCompleted = landPlanUpdated.lotteryCompleted
+            self.callback?(self.lottery)
+        }
     }
 }
