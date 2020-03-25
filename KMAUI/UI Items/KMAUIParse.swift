@@ -129,7 +129,7 @@ public class KMAUIParse {
      Get land plans
      */
     
-    public func getLandPlans(responsibleDivisionId: String? = nil, items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getLandPlans(responsibleDivisionId: String? = nil, landPlanId: String? = nil, items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get plans for regions
@@ -156,6 +156,10 @@ public class KMAUIParse {
         query.whereKey("region", containedIn: parseItems)
         if let objectId = responsibleDivisionId {
             query.whereKey("responsibleDivision", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: objectId))
+        }
+        // Update the specific land plan
+        if let landPlanId = landPlanId {
+            query.whereKey("objectId", equalTo: landPlanId)
         }
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
