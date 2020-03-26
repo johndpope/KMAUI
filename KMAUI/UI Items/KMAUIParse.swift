@@ -208,6 +208,14 @@ public class KMAUIParse {
                         if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
                             landPlanObject.squareMeterPrice = extraPricePerSqM
                         }
+                        // mainRoadWidth
+                        if let mainRoadWidth = plan["mainRoadWidth"] as? Int {
+                            landPlanObject.mainRoadWidth = Double(mainRoadWidth)
+                        }
+                        // regularRoadWidth
+                        if let regularRoadWidth = plan["regularRoadWidth"] as? Int {
+                            landPlanObject.regularRoadWidth = Double(regularRoadWidth)
+                        }
                         // landArea
                         if let landArea = plan["landArea"] as? String {
                             landPlanObject.geojson = landArea
