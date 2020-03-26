@@ -225,7 +225,7 @@ public class KMAUIParse {
                             if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
                                 let border = features[0]
                                 // coordinates
-                                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
+                                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
                                     let topLeftCoordinate = coordinates[0]
                                     let topRightCoordinate = coordinates[1]
                                     let bottomLeftCoordinate = coordinates[3]

@@ -2177,7 +2177,7 @@ public struct KMAUISubLandStruct {
     mutating public func fillFromDict(item: [String : Any]) {
         if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
             // coordinates
-            if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count == 5 {
+            if let geometry = item["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
                 let topLeftCoordinate = coordinates[0]
                 let topRightCoordinate = coordinates[1]
                 let bottomRightCoordinate = coordinates[2]
