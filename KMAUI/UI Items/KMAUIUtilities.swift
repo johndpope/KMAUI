@@ -803,7 +803,7 @@ public class KMAUIUtilities {
     
     // MARK: - Download file from URL
     
-    func downloadfile(urlString: String, fileName: String, uploadId: String, completion: @escaping (_ success: Bool,_ fileLocation: URL?) -> Void){
+    public func downloadfile(urlString: String, fileName: String, uploadId: String, completion: @escaping (_ success: Bool,_ fileLocation: URL?) -> Void){
         if let itemUrl = URL(string: urlString) {
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -842,6 +842,31 @@ public class KMAUIUtilities {
                 }).resume()
             }
         }
+    }
+    
+    // MARK: Calculate squaree for location array
+    
+    // CLLocationCoordinate2D uses degrees but we need radians
+    public func radians(degrees: Double) -> Double {
+        return degrees * Double.pi / 180
+    }
+
+    public func regionArea(locations: [CLLocation]) -> Double {
+        let kEarthRadius = 6378137.0
+
+        guard locations.count > 2 else { return 0 }
+        var area = 0.0
+
+        for i in 0..<locations.count {
+            let p1 = locations[i > 0 ? i - 1 : locations.count - 1]
+            let p2 = locations[i]
+
+            area += radians(degrees: p2.coordinate.longitude - p1.coordinate.longitude) * (2 + sin(radians(degrees: p1.coordinate.latitude)) + sin(radians(degrees: p2.coordinate.latitude)) )
+        }
+
+        area = -(area * kEarthRadius * kEarthRadius / 2)
+
+        return max(area, -area) // In order not to worry about is polygon clockwise or counterclockwise defined.
     }
 }
 
