@@ -237,7 +237,6 @@ public class KMAUIParse {
                                     let width = Double(Int(topLeft.distance(from: topRight)))
                                     let height = Double(Int(topLeft.distance(from: bottomLeft)))
                                     
-//                                        print("Width x height: \(width) m x \(height) m")
                                     landPlanObject.areaWidth = width
                                     landPlanObject.areaHeight = height
                                 }

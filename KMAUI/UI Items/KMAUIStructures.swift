@@ -3047,7 +3047,8 @@ public struct KMAUILandPlanStruct {
         }
         
         // Section 0
-        self.rulesArray = [KMAUILotteryRule(name: "Area width", value: "\(Int(self.areaWidth)) m"), KMAUILotteryRule(name: "Area height", value: "\(Int(self.areaHeight)) m"), KMAUILotteryRule(name: "Main road", value: "\(Int(self.mainRoadWidth)) m"), KMAUILotteryRule(name: "Regular road", value: "\(Int(self.regularRoadWidth)) m"), KMAUILotteryRule(name: "City block", value: "\(self.rowsPerBlock) rows, \(self.rowsPerBlock - 1) roads"), KMAUILotteryRule(name: "Extra price", value: "$\(Int(squareMeterPrice).withCommas()) per sq. m.")]
+        self.rulesArray = [KMAUILotteryRule(name: "Area width", value: "\(Int(self.areaWidth)) m"), KMAUILotteryRule(name: "Area height", value: "\(Int(self.areaHeight)) m"), KMAUILotteryRule(name: "Main road", value: "\(Int(self.mainRoadWidth)) m"), KMAUILotteryRule(name: "Regular road", value: "\(Int(self.regularRoadWidth)) m"), KMAUILotteryRule(name: "Extra price", value: "$\(Int(squareMeterPrice).withCommas()) per sq. m.")]
+        // KMAUILotteryRule(name: "City block", value: "\(self.rowsPerBlock) rows, \(self.rowsPerBlock - 1) roads"),  // hidden for now
         
         // Section 1
         self.percentArray = [KMAUILotteryRule(name: "Sub lands for services", value: "\(self.servicesCount)", percent: "\(self.servicesPercent)%"), KMAUILotteryRule(name: "Sub lands for commercial", value: "\(self.commercialCount)", percent: "\(self.commercialPercent)%"), KMAUILotteryRule(name: "Sub lands for sale", value: "\(self.saleCount)", percent: "\(self.salePercent)%"), KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotteryCount)", percent: "\(self.lotteryPercent)%")]
