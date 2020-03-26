@@ -2901,9 +2901,7 @@ public struct KMAUILandPlanStruct {
             
             let jsonDict: [String: Any] = [
                 "type": "FeatureCollection",
-                "features": [
-                    [feature]
-                ]
+                "features": [feature]
             ]
             
             separateFeatures.append(jsonDict)
