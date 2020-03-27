@@ -48,7 +48,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         profileImageView.clipsToBounds = true
         
         profileImageView.kf.indicatorType = .activity
-        previewImageView.kf.indicatorType = .activity
+        profileImageView.kf.indicatorType = .activity
     }
     
     public func setHighlight(mode: Bool) {

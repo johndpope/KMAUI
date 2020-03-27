@@ -10,10 +10,10 @@ import UIKit
 import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
-    @IBOutlet weak var nameLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var typeLabel: KMAUIRegularTextLabel!
-    @IBOutlet weak var typeImageView: UIImageView!
-    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var typeImageView: UIImageView!
+    @IBOutlet public weak var previewImageView: UIImageView!
     // MARK: - Variables
     public static let id = "KMAUIDocumentTableViewCell"
     public var documentType = ""
@@ -36,6 +36,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.clipsToBounds = true
         previewImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         previewImageView.layer.borderWidth = 1
+        previewImageView.kf.indicatorType = .activity
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -48,6 +49,13 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         // Labels
         nameLabel.text = file.name
         typeLabel.text = file.type
+        
+        let components = file.name.components(separatedBy: ".")
+        
+        if components.count >= 2, let ext = components.last {
+            nameLabel.text = file.name.replacingOccurrences(of: "." + ext, with: "")
+            typeLabel.text = ext.uppercased()
+        }
         // Type image view
         if documentType == "KMADocument" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
@@ -59,5 +67,18 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         }
         // Preview image view
+        previewImageView.contentMode = .center
+        
+        if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+            self.previewImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.previewImageView.image = value.image
+                    self.previewImageView.contentMode = .scaleAspectFill
+                case .failure(let error):
+                    print(error.localizedDescription) // The error happens
+                }
+            }
+        }
     }
 }
