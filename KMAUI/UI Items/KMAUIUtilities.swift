@@ -884,6 +884,16 @@ public class KMAUIUtilities {
         
         return KMAUIConstants.shared.KMAUISubLandLotteryColor
     }
+    
+    public func getTextColor(subLandType: String) -> UIColor {
+        let subLandType = subLandType.lowercased()
+        
+        if subLandType.contains("lottery") {
+            return UIColor.white
+        }
+        
+        return KMAUIConstants.shared.KMAUITextColor
+    }
 }
 
 // MARK: - Int extension
