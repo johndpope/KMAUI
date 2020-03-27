@@ -84,7 +84,7 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
         
         if !files.isEmpty {
             let file = files[0]
-            print("Preview file: \(file)")
+            print("Preview file: \(file), total files: \(files.count)")
             previewItem(item: file, propertyId: document.objectId)
         }
     }
