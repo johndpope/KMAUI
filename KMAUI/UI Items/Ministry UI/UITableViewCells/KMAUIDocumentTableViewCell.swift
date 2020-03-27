@@ -37,6 +37,8 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         previewImageView.layer.borderWidth = 1
         previewImageView.kf.indicatorType = .activity
+        // No selection required
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
