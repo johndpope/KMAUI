@@ -14,8 +14,10 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
     @IBOutlet public weak var previewImageView: UIImageView!
+    @IBOutlet public weak var lineView: UIView!
     // MARK: - Variables
     public static let id = "KMAUIDocumentTableViewCell"
+    public var isLast = false
     public var documentType = ""
     public var file = KMADocumentData() {
         didSet {
@@ -48,6 +50,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if isLast {
+            lineView.alpha = 0
+        } else {
+            lineView.alpha = 0.2
+        }
         // Labels
         nameLabel.text = file.name
         typeLabel.text = file.type

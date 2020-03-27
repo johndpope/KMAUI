@@ -79,6 +79,7 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="lineView" destination="S3o-d4-f95" id="f2t-h7-1JO"/>
                 <outlet property="nameLabel" destination="uP5-ZN-5sM" id="1sI-bs-OLy"/>
                 <outlet property="previewImageView" destination="6Zh-gv-AY1" id="1td-Lk-Tyb"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>
