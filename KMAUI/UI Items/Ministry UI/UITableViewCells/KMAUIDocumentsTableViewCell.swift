@@ -66,7 +66,7 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return documents.count
+        return documents.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
