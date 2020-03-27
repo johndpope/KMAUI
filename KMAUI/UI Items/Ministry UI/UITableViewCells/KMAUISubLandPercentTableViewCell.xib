@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -68,6 +68,13 @@
                             <constraint firstAttribute="width" constant="4" id="T53-3Y-N2r"/>
                         </constraints>
                     </view>
+                    <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oa2-Mz-kU8">
+                        <rect key="frame" x="30" y="43" width="260" height="1"/>
+                        <color key="backgroundColor" name="KMAUIGreyLineColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="4P9-oZ-qPt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MF6-ls-gRI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1uq-J3-B8I"/>
@@ -79,11 +86,14 @@
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ODp-Kj-qbu"/>
                     <constraint firstItem="MF6-ls-gRI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="QRh-5P-CwP"/>
                     <constraint firstItem="WfJ-SP-Vn6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="UM0-qJ-381"/>
+                    <constraint firstItem="Oa2-Mz-kU8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="b4m-jE-GMO"/>
+                    <constraint firstAttribute="trailing" secondItem="Oa2-Mz-kU8" secondAttribute="trailing" constant="30" id="c5A-Ys-zOe"/>
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="leading" secondItem="OCb-h8-RF9" secondAttribute="trailing" constant="6" id="cze-hQ-bw4"/>
                     <constraint firstAttribute="trailing" secondItem="WG0-Md-Xhq" secondAttribute="trailing" constant="30" id="d2e-NA-es5"/>
                     <constraint firstItem="SxP-uO-Sa5" firstAttribute="leading" secondItem="T6r-J8-pGM" secondAttribute="trailing" constant="14" id="hgg-L9-cfs"/>
                     <constraint firstItem="OCb-h8-RF9" firstAttribute="leading" secondItem="WfJ-SP-Vn6" secondAttribute="trailing" constant="6" id="ibp-Ru-5Jp"/>
                     <constraint firstItem="WfJ-SP-Vn6" firstAttribute="leading" secondItem="SxP-uO-Sa5" secondAttribute="trailing" constant="8" id="jpM-0z-tSM"/>
+                    <constraint firstAttribute="bottom" secondItem="Oa2-Mz-kU8" secondAttribute="bottom" id="mtO-9X-qzG"/>
                     <constraint firstItem="OCb-h8-RF9" firstAttribute="centerY" secondItem="WG0-Md-Xhq" secondAttribute="centerY" id="zpE-c5-keQ"/>
                 </constraints>
             </tableViewCellContentView>
