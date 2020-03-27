@@ -21,6 +21,7 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
         }
     }
     lazy var previewItem = NSURL()
+    public var openFiles: (([KMADocumentData]) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -83,9 +84,12 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: document.files)
         
         if !files.isEmpty {
-            let file = files[0]
-            print("Preview file: \(file), total files: \(files.count)")
-            previewItem(item: file, propertyId: document.objectId)
+            if files.count == 1 {
+                let file = files[0]
+                previewItem(item: file, propertyId: document.objectId)
+            } else if files.count > 0 {
+                openFiles?(files)
+            }
         }
     }
     
