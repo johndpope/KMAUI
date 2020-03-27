@@ -36,7 +36,7 @@ public class KMAUIDocumentCollectionViewCell: UICollectionViewCell {
         
         // Setup image
         documentImageView.layer.cornerRadius = 8
-        clipsToBounds = true
+        documentImageView.clipsToBounds = true
         
         // Name label
         documentNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
