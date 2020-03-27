@@ -73,16 +73,16 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
-//        if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
-//            self.previewImageView.kf.setImage(with: url) { result in
-//                switch result {
-//                case .success(let value):
-//                    self.previewImageView.image = value.image
-//                    self.previewImageView.contentMode = .scaleAspectFill
-//                case .failure(let error):
-//                    print(error.localizedDescription) // The error happens
-//                }
-//            }
-//        }
+        if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+            self.previewImageView.kf.setImage(with: url) { result in
+                switch result {
+                case .success(let value):
+                    self.previewImageView.image = value.image
+                    self.previewImageView.contentMode = .scaleAspectFill
+                case .failure(let error):
+                    print(error.localizedDescription) // The error happens
+                }
+            }
+        }
     }
 }
