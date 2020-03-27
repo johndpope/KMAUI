@@ -872,7 +872,17 @@ public class KMAUIUtilities {
     // MARK: - Get color for Sub Land type
     
     public func getColor(subLandType: String) -> UIColor {
-        return UIColor.clear
+        let subLandType = subLandType.lowercased()
+        
+        if subLandType.contains("commercial") {
+            return KMAUIConstants.shared.KMAUISubLandCommercialColor
+        } else if subLandType.contains("services") {
+            return KMAUIConstants.shared.KMAUISubLandServicesColor
+        } else if subLandType.contains("sale") {
+            return KMAUIConstants.shared.KMAUISubLandSaleColor
+        }
+        
+        return KMAUIConstants.shared.KMAUISubLandLotteryColor
     }
 }
 

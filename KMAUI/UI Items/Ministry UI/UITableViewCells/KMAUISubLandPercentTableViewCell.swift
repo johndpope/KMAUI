@@ -56,15 +56,7 @@ public class KMAUISubLandPercentTableViewCell: UITableViewCell {
         valueLabel.text = rule.value
         percentLabel.text = rule.percent
         // Setup the colorView
-        if rule.name.contains("services") {
-            colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandServicesColor
-        } else if rule.name.contains("commercial") {
-            colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandCommercialColor
-        } else if rule.name.contains("sale") {
-            colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandSaleColor
-        } else if rule.name.contains("lottery") {
-            colorView.backgroundColor = KMAUIConstants.shared.KMAUISubLandLotteryColor
-        }
+        colorView.backgroundColor = KMAUIUtilities.shared.getColor(subLandType: rule.name)
         // Setup side offsets
         if sideOffsets {
             colorViewLeft.constant = 40
