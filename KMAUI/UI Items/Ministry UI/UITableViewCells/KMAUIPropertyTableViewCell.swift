@@ -114,7 +114,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
                     let file = files[0]
                     previewItem(item: file, propertyId: property.objectId)
                 } else if files.count > 0 {
-                    openFiles?(files)
+                    openFiles?(document)
                 }
             }
         }

@@ -88,7 +88,7 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
                 let file = files[0]
                 previewItem(item: file, propertyId: document.objectId)
             } else if files.count > 0 {
-                openFiles?(files)
+                openFiles?(document)
             }
         }
     }
