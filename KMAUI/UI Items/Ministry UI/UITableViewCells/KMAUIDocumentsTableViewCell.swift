@@ -21,7 +21,7 @@ public class KMAUIDocumentsTableViewCell: UITableViewCell {
         }
     }
     lazy var previewItem = NSURL()
-    public var openFiles: (([KMADocumentData]) -> Void)?
+    public var openFiles: ((KMAPropertyDocument) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
