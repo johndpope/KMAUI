@@ -23,11 +23,11 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         // Round corners for image view
-        itemImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        itemImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         itemImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
 
         layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         clipsToBounds = true
     }
@@ -41,7 +41,7 @@ public class KMAUIDashboardCollectionViewCell: UICollectionViewCell {
         } else {
             backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             nameLabel.textColor = KMAUIConstants.shared.KMATextGrayColor
-            layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+            layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
             layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         }
     }

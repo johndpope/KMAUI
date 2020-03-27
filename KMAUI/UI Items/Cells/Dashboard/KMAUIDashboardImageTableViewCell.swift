@@ -43,7 +43,7 @@ public class KMAUIDashboardImageTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Round corners for image view
-        propertyImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        propertyImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         propertyImageView.image = KMAUIConstants.shared.propertyIcon.withRenderingMode(.alwaysTemplate)
         propertyImageView.contentMode = .center
         propertyImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius

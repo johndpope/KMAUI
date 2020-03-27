@@ -43,7 +43,7 @@ public class KMAUIAccuWeatherTableViewCell: UITableViewCell {
         activityView.alpha = 0
         
         if weatherObject.image == "Error" {
-            weatherIcon.tintColor = KMAUIConstants.shared.KMALineGray
+            weatherIcon.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             weatherIcon.image = KMAUIConstants.shared.weatherError.withRenderingMode(.alwaysTemplate)
         } else if let url = URL(string: weatherObject.image) {
             weatherIcon.kf.indicatorType = .activity

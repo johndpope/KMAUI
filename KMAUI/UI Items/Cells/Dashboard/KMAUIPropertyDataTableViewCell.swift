@@ -28,7 +28,7 @@ public class KMAUIPropertyDataTableViewCell: UITableViewCell {
         // Adjust the UI for the text field
         apartmentTextField.delegate = self
         apartmentTextField.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
-        apartmentTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
+        apartmentTextField.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         apartmentTextField.layer.borderWidth = 1
         apartmentTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         

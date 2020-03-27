@@ -868,6 +868,12 @@ public class KMAUIUtilities {
 
         return max(area, -area) // In order not to worry about is polygon clockwise or counterclockwise defined.
     }
+    
+    // MARK: - Get color for Sub Land type
+    
+    public func getColor(subLandType: String) -> UIColor {
+        return UIColor.clear
+    }
 }
 
 // MARK: - Int extension

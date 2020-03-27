@@ -36,7 +36,7 @@ public class KMAUIPoliceTableViewCell: UITableViewCell {
         KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
         
         // Round corners for logo
-        logoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        logoImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         logoImageView.layer.borderWidth = 1
         logoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         

@@ -24,7 +24,7 @@ public class KMAUIPolicemanTableViewCell: UITableViewCell {
         logoImageView.image = KMAUIConstants.shared.policemanIcon.withRenderingMode(.alwaysTemplate)
         logoImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor
         logoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        logoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        logoImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         logoImageView.layer.borderWidth = KMAUIConstants.shared.KMABorderWidthLight
         
         // No selection required

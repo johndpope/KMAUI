@@ -25,7 +25,7 @@ public class KMAUISearchTableViewCell: UITableViewCell {
         searchTextField.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
         
         // Adjust the search text field
-        searchTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
+        searchTextField.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         searchTextField.layer.borderWidth = 1
         searchTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         

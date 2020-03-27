@@ -25,7 +25,7 @@ public class KMAUITextFieldTableViewCell: UITableViewCell {
         // Adjust the UI for the text field
         valueTextField.delegate = self
         valueTextField.addTarget(self, action: #selector(textFieldValueChanged(textField:)), for: .editingChanged)
-        valueTextField.layer.borderColor = KMAUIConstants.shared.KMALineGray.withAlphaComponent(0.2).cgColor
+        valueTextField.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         valueTextField.layer.borderWidth = 1
         valueTextField.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         

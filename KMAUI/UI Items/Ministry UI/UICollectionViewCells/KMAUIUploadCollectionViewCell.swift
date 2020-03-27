@@ -72,7 +72,7 @@ public class KMAUIUploadCollectionViewCell: UICollectionViewCell {
         
         // Citizen image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
-        profileImageView.tintColor = KMAUIConstants.shared.KMALineGray
+        profileImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         profileImageView.alpha = 0.25
         profileImageView.layer.cornerRadius = 0
         

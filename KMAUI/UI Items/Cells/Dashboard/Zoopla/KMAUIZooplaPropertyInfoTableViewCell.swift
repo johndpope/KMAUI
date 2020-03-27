@@ -38,13 +38,13 @@ public class KMAUIZooplaPropertyInfoTableViewCell: UITableViewCell {
         
         // Setting the color for images
         bedIcon.image = KMAUIConstants.shared.bedIcon.withRenderingMode(.alwaysTemplate)
-        bedIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        bedIcon.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         bathIcon.image = KMAUIConstants.shared.bathIcon.withRenderingMode(.alwaysTemplate)
-        bathIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        bathIcon.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         receptIcon.image = KMAUIConstants.shared.receptIcon.withRenderingMode(.alwaysTemplate)
-        receptIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        receptIcon.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         floorIcon.image = KMAUIConstants.shared.floorsCountIcon.withRenderingMode(.alwaysTemplate)
-        floorIcon.tintColor = KMAUIConstants.shared.KMALineGray
+        floorIcon.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // Setting the not label UI
         noteLabel.text = ""

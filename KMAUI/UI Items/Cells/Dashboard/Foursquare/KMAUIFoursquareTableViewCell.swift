@@ -40,8 +40,8 @@ public class KMAUIFoursquareTableViewCell: UITableViewCell {
         // Setup the image view
         photoImageView.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         photoImageView.clipsToBounds = true
-        photoImageView.tintColor = KMAUIConstants.shared.KMALineGray
-        photoImageView.layer.borderColor = KMAUIConstants.shared.KMALineGray.cgColor
+        photoImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        photoImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         photoImageView.layer.borderWidth = 1
         photoImageView.kf.indicatorType = .activity
         
