@@ -77,10 +77,10 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="T6r-J8-pGM" firstAttribute="centerY" secondItem="SxP-uO-Sa5" secondAttribute="centerY" id="0oT-LQ-mc6"/>
                     <constraint firstItem="MF6-ls-gRI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="1uq-J3-B8I"/>
                     <constraint firstAttribute="trailing" secondItem="MF6-ls-gRI" secondAttribute="trailing" constant="20" id="628-8d-ycy"/>
                     <constraint firstItem="T6r-J8-pGM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="6sj-ms-X9X"/>
-                    <constraint firstItem="T6r-J8-pGM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7ey-oe-VlJ"/>
                     <constraint firstItem="SxP-uO-Sa5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="HNT-KR-LVE"/>
                     <constraint firstAttribute="bottom" secondItem="MF6-ls-gRI" secondAttribute="bottom" id="Hnl-Db-eYl"/>
                     <constraint firstItem="WG0-Md-Xhq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="ODp-Kj-qbu"/>
