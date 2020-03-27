@@ -60,25 +60,29 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         if documentType == "KMADocument" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
         } else if documentType == "KMAUserUpload" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+            previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
         }
         // Preview image view
         previewImageView.contentMode = .center
+        previewImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
-        if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
-            self.previewImageView.kf.setImage(with: url) { result in
-                switch result {
-                case .success(let value):
-                    self.previewImageView.image = value.image
-                    self.previewImageView.contentMode = .scaleAspectFill
-                case .failure(let error):
-                    print(error.localizedDescription) // The error happens
-                }
-            }
-        }
+//        if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+//            self.previewImageView.kf.setImage(with: url) { result in
+//                switch result {
+//                case .success(let value):
+//                    self.previewImageView.image = value.image
+//                    self.previewImageView.contentMode = .scaleAspectFill
+//                case .failure(let error):
+//                    print(error.localizedDescription) // The error happens
+//                }
+//            }
+//        }
     }
 }
