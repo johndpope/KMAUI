@@ -178,7 +178,7 @@ public class KMAUIDataBlockTableViewCell: UITableViewCell {
             if index < dataItem.rows.count - 1 {
                 // Line view
                 let lineView = UIView()
-                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.1)
+                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
                 lineView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
                 stackView.addArrangedSubview(lineView)
                 lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true

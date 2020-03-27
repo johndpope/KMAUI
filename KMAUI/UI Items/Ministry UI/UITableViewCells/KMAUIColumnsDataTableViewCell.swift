@@ -75,7 +75,7 @@ public class KMAUIColumnsDataTableViewCell: UITableViewCell {
             
             if index < incomeData.count - 1 {
                 let lineView = UIView()
-                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.1)
+                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
                 lineView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
                 detailsStackView.addArrangedSubview(lineView)
             }
