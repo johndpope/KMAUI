@@ -17,6 +17,11 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUINoDataImageTableViewCell"
+    public var mode = "" {
+        didSet {
+            setupCell()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -34,5 +39,15 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        titleLabel.text = "No documents"
+        
+        if mode == "property" {
+            infoLabel.text = "We have no property ownership documents to display."
+        } else if mode == "documents" {
+            infoLabel.text = "We have no documents to display."
+        }
     }
 }
