@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KMAUINoDataImageTableViewCell: UITableViewCell {
+public class KMAUINoDataImageTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     
     @IBOutlet weak var logoImageView: UIImageView!
@@ -18,7 +18,7 @@ class KMAUINoDataImageTableViewCell: UITableViewCell {
     // MARK: - Variables
     public static let id = "KMAUINoDataImageTableViewCell"
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // No selection required
@@ -30,7 +30,7 @@ class KMAUINoDataImageTableViewCell: UITableViewCell {
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
