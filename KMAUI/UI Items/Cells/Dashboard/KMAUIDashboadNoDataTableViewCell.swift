@@ -125,7 +125,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "The Land lottery queue has no citizens."
                 action = ""
             } else {
-                info = "Loading the citizen queue for the Land lottery..."
+                info = "Loading the citizens in queue for the Land lottery..."
                 action = ""
             }
         } else if type == "noDocuments" {

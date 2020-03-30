@@ -643,7 +643,7 @@ public class KMAUIParse {
     // MARK: - Start the lottery
     public func startLottery(landPlan: KMAUILandPlanStruct, completion: @escaping (_ landPlan: KMAUILandPlanStruct)->()) {
         var landPlan = landPlan
-        print("Eligible Sub Lands: \(landPlan.lotterySubLandArray.count), Citizen queue: \(landPlan.queueArray.count)")
+        print("Eligible Sub Lands: \(landPlan.lotterySubLandArray.count), Citizens in queue: \(landPlan.queueArray.count)")
         
         // Sub Land indexes
         landPlan.subLandIndexes = [Int]()
