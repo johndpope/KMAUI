@@ -103,9 +103,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             self.previewImageView.kf.setImage(with: url) { result in
                 switch result {
                 case .success(let value):
-                    self.previewImageView.image = value.image
-                    
-                    if self.documentType == "KMAUserUpload" { // Stay centered for documents as we don't have an actual preview image to display
+                    if self.documentType == "KMADocument" {
+                        // Stay centered for documents as we don't have an actual preview image to display
+                        self.previewImageView.image = value.image.withRenderingMode(.alwaysTemplate)
+                    } else if self.documentType == "KMAUserUpload" {
+                        self.previewImageView.image = value.image
                         self.previewImageView.contentMode = .scaleAspectFill
                     }
                 case .failure(let error):

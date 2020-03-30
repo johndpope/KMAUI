@@ -140,7 +140,7 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
     }
 }
 
-//MARK: - QLPreviewController Datasource
+// MARK: - QLPreviewController Datasource
 
 extension KMAUIDocumentsTableViewCell: QLPreviewControllerDataSource {
     public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
