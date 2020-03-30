@@ -95,10 +95,10 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         
         if lottery.lotteryCompleted {
             statusLabel.text = "Completed"
-            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else {
             statusLabel.text = "In progress"
-            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         }
         
         // Is active status
