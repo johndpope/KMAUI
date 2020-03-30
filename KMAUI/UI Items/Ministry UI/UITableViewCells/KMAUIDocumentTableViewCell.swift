@@ -59,8 +59,10 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            nameLabel.textColor = UIColor.red
         } else {
             backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            nameLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         }
     }
     
@@ -84,8 +86,9 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         if documentType == "KMADocument" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
-            previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+            previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            previewImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
         } else if documentType == "KMAUserUpload" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
@@ -102,7 +105,10 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
                 switch result {
                 case .success(let value):
                     self.previewImageView.image = value.image
-                    self.previewImageView.contentMode = .scaleAspectFill
+                    
+                    if self.documentType == "KMAUserUpload" { // Stay centered for documents as we don't have an actual preview image to display
+                        self.previewImageView.contentMode = .scaleAspectFill
+                    }
                 case .failure(let error):
                     print(error.localizedDescription) // The error happens
                 }
