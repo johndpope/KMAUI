@@ -11,6 +11,7 @@ import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
@@ -58,11 +59,9 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            nameLabel.textColor = UIColor.red
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
-            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            nameLabel.textColor = KMAUIConstants.shared.KMAUITextColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     
