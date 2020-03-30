@@ -87,17 +87,21 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
-        // Type image view
+        // Document type
         if documentType == "KMADocument" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
-            // Preview image view
-            previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
         } else if documentType == "KMAUserUpload" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        }
+        // File type
+        if file.type == "Document" {
+            // Preview image view
+            previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+        } else {
             // Preview image view
             previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             
