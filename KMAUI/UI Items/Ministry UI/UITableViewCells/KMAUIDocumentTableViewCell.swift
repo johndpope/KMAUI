@@ -81,35 +81,32 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             nameLabel.text = file.name.replacingOccurrences(of: "." + ext, with: "")
             typeLabel.text = ext.uppercased()
         }
+        
+        // Preview image view alignment
+        previewImageView.contentMode = .center
+        previewImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        
         // Type image view
         if documentType == "KMADocument" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+            // Preview image view
             previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
-            previewImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
-            previewImageView.contentMode = .center
         } else if documentType == "KMAUserUpload" {
             typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-            previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             // Preview image view
-            previewImageView.contentMode = .center
-            previewImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            previewImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             
             if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
                 self.previewImageView.kf.setImage(with: url) { result in
                     switch result {
                     case .success(let value):
-                        if self.documentType == "KMADocument" {
-                            // Stay centered for documents as we don't have an actual preview image to display
-                            self.previewImageView.image = value.image.withRenderingMode(.alwaysTemplate)
-                        } else if self.documentType == "KMAUserUpload" {
-                            self.previewImageView.image = value.image
-                            self.previewImageView.contentMode = .scaleAspectFill
-                        }
+                        self.previewImageView.image = value.image
+                        self.previewImageView.contentMode = .scaleAspectFill
                     case .failure(let error):
                         print(error.localizedDescription) // The error happens
                     }
