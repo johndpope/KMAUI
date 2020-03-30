@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
+    // MARK: - IBOutlets
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
@@ -45,8 +46,22 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            view.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else {
+            view.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        }
     }
     
     public func setupCell() {
