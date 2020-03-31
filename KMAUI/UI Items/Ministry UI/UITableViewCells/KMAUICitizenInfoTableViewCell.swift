@@ -79,11 +79,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // Setup full name
         nameLabel.text = citizen.fullName
         // Setup lottery id
-        if citizen.lotteryObjectId.isEmpty {
-            lotteryIdLabel.text = ""
-        } else {
-            lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
-        }
+        lotteryIdLabel.text = "National ID – \(citizen.objectId.uppercased())"
         // Setup placeholder image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         // Load profile image

@@ -67,7 +67,7 @@ public class KMAUICitizenTableViewCell: UITableViewCell {
         // Setup full name
         nameLabel.text = citizen.fullName
         // Setup lottery id
-        lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
+        lotteryIdLabel.text = "National ID – \(citizen.objectId.uppercased())"
         // Setup placeholder image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         // Load profile image
