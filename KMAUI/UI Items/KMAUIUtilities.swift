@@ -881,7 +881,7 @@ public class KMAUIUtilities {
         } else if subLandType.contains("sale") {
             return KMAUIConstants.shared.KMAUISubLandSaleColor
         } else if subLandType.contains("park") {
-            return KMAUIConstants.shared.KMAUIGreenProgressColor
+            return KMAUIConstants.shared.KMAUIParkColor
         }
         
         return KMAUIConstants.shared.KMAUISubLandLotteryColor
@@ -890,7 +890,7 @@ public class KMAUIUtilities {
     public func getTextColor(subLandType: String) -> UIColor {
         let subLandType = subLandType.lowercased()
         
-        if subLandType.contains("lottery") || subLandType.contains("park") {
+        if subLandType.contains("lottery") {
             return UIColor.white
         }
         

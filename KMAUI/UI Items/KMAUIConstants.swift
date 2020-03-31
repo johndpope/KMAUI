@@ -55,6 +55,7 @@ public class KMAUIConstants {
     public let KMAUISubLandLotteryColor = UIColor(named: "KMAUISubLandLotteryColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUISubLandSaleColor = UIColor(named: "KMAUISubLandSaleColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUISubLandServicesColor = UIColor(named: "KMAUISubLandServicesColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIParkColor = UIColor(named: "KMAUIParkColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Images
     public let checkboxFilledIcon = UIImage(named: "checkboxFilledIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
