@@ -726,5 +726,33 @@ public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Citizens
+    
+    /**
+     Get the citizen details by citizen id
+     */
+    
+    public func loadCitizenDetails(citizenId: String, completion: @escaping (_ citizenDetails: KMAPerson)->()) {
+        let peopleQuery = PFQuery(className: "_User")
+        peopleQuery.whereKey("objectId", equalTo: citizenId)
+        peopleQuery.includeKey("homeAddress")
+        peopleQuery.includeKey("homeAddress.building")
+        peopleQuery.limit = 1
+        
+        peopleQuery.findObjectsInBackground { (people, error) in
+            // Fill the user details
+            var personObject = KMAPerson()
+            
+            if let error = error {
+                print("Error loading people: \(error.localizedDescription)")
+            } else if let people = people, !people.isEmpty,
+                let person = people[0] as? PFUser {
+                personObject.fillFrom(person: person)
+            }
+            
+            completion(personObject)
+        }
+    }
 }
 
