@@ -30,7 +30,7 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUICitizenInfoTableViewCell"
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -68,10 +68,10 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -79,7 +79,11 @@ public class KMAUICitizenInfoTableViewCell: UITableViewCell {
         // Setup full name
         nameLabel.text = citizen.fullName
         // Setup lottery id
-        lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
+        if citizen.lotteryObjectId.isEmpty {
+            lotteryIdLabel.text = ""
+        } else {
+            lotteryIdLabel.text = "Lottery ID – \(citizen.lotteryObjectId)"
+        }
         // Setup placeholder image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         // Load profile image
