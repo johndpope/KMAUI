@@ -142,6 +142,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         } else if type == "noCitizensSearch" {
             info = "No citizens mathing the search request found."
             action = ""
+        } else if type == "citizens" {
+            if isLoaded {
+                info = "No citizens available."
+                action = ""
+            } else {
+                info = "Preparing the citizens list..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
