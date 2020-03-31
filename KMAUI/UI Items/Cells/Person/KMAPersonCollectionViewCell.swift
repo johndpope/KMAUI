@@ -27,6 +27,7 @@ public class KMAPersonCollectionViewCell: UICollectionViewCell {
     public var areasArray = [[String: AnyObject]]()
     public var usernameVals = [String]()
     public weak var axisFormatDelegate: IAxisValueFormatter?
+    public static let id = "KMAPersonCollectionViewCell"
     
     override public func awakeFromNib() {
         super.awakeFromNib()
