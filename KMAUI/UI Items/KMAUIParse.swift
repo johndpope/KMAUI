@@ -733,7 +733,7 @@ public class KMAUIParse {
      Get the citizen details by citizen id
      */
     
-    public func loadCitizenDetails(citizenId: String, completion: @escaping (_ citizenDetails: KMAPerson)->()) {
+    public func loadCitizenDetails(citizenId: String, completion: @escaping (_ citizenObject: PFUser)->()) {
         let peopleQuery = PFQuery(className: "_User")
         peopleQuery.whereKey("objectId", equalTo: citizenId)
         peopleQuery.includeKey("homeAddress")
@@ -741,17 +741,64 @@ public class KMAUIParse {
         peopleQuery.limit = 1
         
         peopleQuery.findObjectsInBackground { (people, error) in
-            // Fill the user details
-            var personObject = KMAPerson()
+            if let error = error {
+                print("Error loading people: \(error.localizedDescription)")
+                completion(PFUser())
+            } else if let people = people, !people.isEmpty,
+                let person = people[0] as? PFUser {
+                completion(person)
+            }
+        }
+    }
+    
+    /**
+     Get the citizen propety and uploads
+     */
+    
+    public func loadCitizensPropertyUploads(citizenId: String, completion: @escaping (_ property: [KMACitizenProperty], _ uploads: [KMACitizenUpload])->()) {
+        // Get property from Parse
+        KMAUIPerson.shared.getProperty(personId: citizenId) { (propertyArray, error) in
+            // Get uploads from Parse
+            KMAUIPerson.shared.getUploads(personId: citizenId, skip: 0, uploadArrayCurrent: [PFObject]()) { (uploadArray, error) in
+                completion(propertyArray, uploadArray)
+            }
+        }
+    }
+    
+    /**
+     Get the citizens list from Parse
+     */
+    
+    public func loadCitizens(completion: @escaping (_ citizens: [KMAPerson], _ citizensBackup: [KMAPerson])->()) {
+        let peopleQuery = PFQuery(className: "_User")
+        peopleQuery.order(byDescending: "uploadsCount")
+        peopleQuery.includeKey("homeAddress")
+        peopleQuery.includeKey("homeAddress.building")
+
+        peopleQuery.findObjectsInBackground { (people, error) in
+            var citizens = [KMAPerson]()
+            var citizensBackup = [KMAPerson]()
             
             if let error = error {
                 print("Error loading people: \(error.localizedDescription)")
-            } else if let people = people, !people.isEmpty,
-                let person = people[0] as? PFUser {
-                personObject.fillFrom(person: person)
+            } else if let people = people {
+                print("People loaded: \(people.count)\n")
+                
+                
+                for person in people {
+                    if let person = person as? PFUser {
+                        var personObject = KMAPerson()
+                        personObject.fillFrom(person: person)
+                        citizensBackup.append(personObject)
+                        
+                        if personObject.uploadsCount > 0 {
+                            citizens.append(personObject)
+                        }
+                    }
+                }
             }
             
-            completion(personObject)
+            completion(citizens, citizensBackup)
         }
     }
 }
