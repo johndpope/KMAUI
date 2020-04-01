@@ -460,26 +460,19 @@ public class KMAUIParse {
                 landPlan.queueResultsArray = [KMAPerson]()
                 
                 for result in results {
-                    if let citizen = result["citizen"] as? PFUser, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
+                    if let citizen = result["citizen"] as? PFUser,
+                        let subLand = result["subLand"] as? PFObject,
+                        let subLandId = subLand.objectId {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: citizen)
                         // Only add the person to queue if he hasn't received the Sub Land yet
-                        if !personObject.receivedSubLand {
-                            landPlan.queueResultsArray.append(personObject)
-                        }
+                        landPlan.queueResultsArray.append(personObject)
+                        queueIndexes.append(landPlan.queueResultsArray.count - 1)
                         
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandId == subLandItem.subLandId {
                                 subLandIndexes.append(index)
-                                break
-                            }
-                        }
-                        
-                        // Getting citizen indexes
-                        for (index, queueItem) in landPlan.queueResultsArray.enumerated() {
-                            if citizenId == queueItem.objectId {
-                                queueIndexes.append(index)
                                 break
                             }
                         }
