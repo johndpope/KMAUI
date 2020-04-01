@@ -9,12 +9,12 @@
 import UIKit
 import Parse
 
-public class KMAUIParse {
+final public class KMAUIParse {
     // Access variable
     public static let shared = KMAUIParse()
     
-    public func getMapAreas(level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
-        getMapAreas(skip: 0, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
+    public func getMapAreas(level: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+        getMapAreas(skip: 0, sw: sw, ne: ne, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
             completion(items)
         }
     }
@@ -23,7 +23,7 @@ public class KMAUIParse {
      Get the map area
      */
     
-    func getMapAreas(skip: Int, items: [KMAMapAreaStruct], level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    func getMapAreas(skip: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil,  items: [KMAMapAreaStruct], level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get the countries list
@@ -36,6 +36,15 @@ public class KMAUIParse {
         } else  {
             // Get the items for a parent
             mapAreaQuery.whereKey("parent", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: parentObjectId))
+        }
+        
+        // set search radius
+        if let sw = sw,
+            let ne = ne {
+            mapAreaQuery.whereKey("minX", lessThan: ne.longitude)
+            mapAreaQuery.whereKey("maxX", greaterThan: sw.longitude)
+            mapAreaQuery.whereKey("minY", lessThan: ne.latitude)
+            mapAreaQuery.whereKey("maxY", greaterThan: sw.latitude)
         }
         
         mapAreaQuery.order(byAscending: "nameE")
@@ -105,11 +114,11 @@ public class KMAUIParse {
      Get Saudi Arabia regions
      */
     
-    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         // Saudi Arabia Parse object id
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
-        KMAUIParse.shared.getMapAreas(level: 2, parentObjectId: saudiArabiaId) { (areaItems) in
+        KMAUIParse.shared.getMapAreas(level: 2, sw: sw, ne: ne, parentObjectId: saudiArabiaId) { (areaItems) in
             KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, items: areaItems) { (items) in
                 completion(items)
             }
