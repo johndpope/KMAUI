@@ -425,7 +425,7 @@ public class KMAUIUtilities {
      Order KMAPerson array by username
      */
     
-    func orderPersonArray(array: [KMAPerson]) -> [KMAPerson] {
+    public func orderPersonArray(array: [KMAPerson]) -> [KMAPerson] {
         return array.sorted {
             return $0.username.localizedCaseInsensitiveCompare($1.username) == ComparisonResult.orderedAscending
         }
