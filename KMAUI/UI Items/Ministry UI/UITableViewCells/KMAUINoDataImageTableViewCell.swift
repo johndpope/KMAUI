@@ -44,7 +44,10 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     public func setupCell() {
         titleLabel.text = "No documents"
         
-        if mode == "property" {
+        if mode == "subLands" {
+            titleLabel.text = "No Sub lands"
+            infoLabel.text = "No Sub lands received from the government."
+        } else if mode == "property" {
             infoLabel.text = "We have no property ownership documents to display."
         } else if mode == "documents" {
             infoLabel.text = "We have no documents to display."
