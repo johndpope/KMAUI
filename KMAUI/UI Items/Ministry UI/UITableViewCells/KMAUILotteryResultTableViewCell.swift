@@ -23,10 +23,11 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     public static let id = "KMAUILotteryResultTableViewCell"
     
     // MARK: - Variables
-    public var citizenIndex = 0
     public var region = KMAMapAreaStruct()
     public var citizen = KMAPerson()
-    public var subLand = KMAUISubLandStruct() {
+    public var subLand = KMAUISubLandStruct()
+    public var lottery = KMAUILandPlanStruct()
+    public var citizenIndex = 0 {
         didSet {
             setupCell()
         }
@@ -84,6 +85,20 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        region = lottery.region
+        
+        if lottery.pairsCount > 0 {
+            let citizenObject = lottery.queueResultsDisplay[citizenIndex]
+            citizen = citizenObject
+            
+            for (index, citizen) in lottery.queueResultsArray.enumerated() {
+                if citizen.objectId == citizenObject.objectId {
+                    let subLandIndex = lottery.subLandIndexes[index]
+                    subLand = lottery.lotterySubLandArray[subLandIndex]
+                }
+            }
+        }
+        
         // Citizen index
         queueIndexLabel.text = "\(citizenIndex + 1)"
         // Setup full name

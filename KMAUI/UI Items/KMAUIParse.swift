@@ -426,6 +426,7 @@ public class KMAUIParse {
             }
             
             citizensArray = KMAUIUtilities.shared.orderPersonArray(array: citizensArray)
+            
             completion(citizensArray)
         }
     }
@@ -478,6 +479,8 @@ public class KMAUIParse {
                         }
                     }
                 }
+                
+                landPlan.queueResultsDisplay = landPlan.queueResultsArray
                 
                 if subLandIndexes.count > 0 {
                     pairsCount = subLandIndexes.count

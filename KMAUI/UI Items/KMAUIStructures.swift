@@ -2328,6 +2328,8 @@ public struct KMAUILandPlanStruct {
     public var queueIndexes = [Int]()
     // Results
     public var queueResultsArray = [KMAPerson]()
+    public var queueDisplay = [KMAPerson]()
+    public var queueResultsDisplay = [KMAPerson]()
     
     public init() {}
     
