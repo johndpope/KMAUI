@@ -42,11 +42,14 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        titleLabel.text = "No documents"
-        
-        if mode == "property" {
+        if mode == "subLands" {
+            titleLabel.text = "No Sub lands"
+            infoLabel.text = "We have no Sub lands received in National land lotteries."
+        } else if mode == "property" {
+            titleLabel.text = "No property"
             infoLabel.text = "We have no property ownership documents to display."
         } else if mode == "documents" {
+            titleLabel.text = "No documents"
             infoLabel.text = "We have no documents to display."
         }
     }
