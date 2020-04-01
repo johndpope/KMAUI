@@ -444,13 +444,30 @@ public class KMAUIParse {
         
         let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
         lotteryResultQuery.whereKey("landPlan", equalTo: PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId))
+        lotteryResultQuery.includeKey("citizen")
+        lotteryResultQuery.includeKey("citizen.homeAddress")
+        lotteryResultQuery.includeKey("citizen.homeAddress.building")
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
                 print(error.localizedDescription)
             } else if let results = results, !results.isEmpty {
+                print("Results: \(results.count)")
+                print("Sub Lands: \(landPlan.lotterySubLandArray.count)")
+                print("Qeueu: \(landPlan.queueArray.count)")
+                
+                // queueResultsArray
+                landPlan.queueResultsArray = [KMAPerson]()
+                
                 for result in results {
-                    if let citizen = result["citizen"] as? PFObject, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
+                    if let citizen = result["citizen"] as? PFUser, let citizenId = citizen.objectId, let subLand = result["subLand"] as? PFObject, let subLandId = subLand.objectId {
+                        var personObject = KMAPerson()
+                        personObject.fillFrom(person: citizen)
+                        // Only add the person to queue if he hasn't received the Sub Land yet
+                        if !personObject.receivedSubLand {
+                            landPlan.queueResultsArray.append(personObject)
+                        }
+                        
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandId == subLandItem.subLandId {
@@ -460,7 +477,7 @@ public class KMAUIParse {
                         }
                         
                         // Getting citizen indexes
-                        for (index, queueItem) in landPlan.queueArray.enumerated() {
+                        for (index, queueItem) in landPlan.queueResultsArray.enumerated() {
                             if citizenId == queueItem.objectId {
                                 queueIndexes.append(index)
                                 break
@@ -469,7 +486,7 @@ public class KMAUIParse {
                     }
                 }
                 
-                if subLandIndexes.count == queueIndexes.count, subLandIndexes.count > 0 {
+                if subLandIndexes.count > 0 {
                     pairsCount = subLandIndexes.count
                     landPlan.pairsCount = pairsCount
                     landPlan.subLandIndexes = subLandIndexes
