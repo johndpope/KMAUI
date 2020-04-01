@@ -68,7 +68,7 @@ final public class KMAUIParse {
                 }
                 
                 if countriesArray.count == 100 {
-                    self.getMapAreas(skip: skip + 100, items: items, level: level, parentObjectId: parentObjectId) { (itemsArray) in
+                    self.getMapAreas(skip: skip + 100, sw: sw, ne: ne, items: items, level: level, parentObjectId: parentObjectId) { (itemsArray) in
                         completion(itemsArray)
                     }
                 } else {
@@ -119,7 +119,7 @@ final public class KMAUIParse {
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
         KMAUIParse.shared.getMapAreas(level: 2, sw: sw, ne: ne, parentObjectId: saudiArabiaId) { (areaItems) in
-            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, items: areaItems) { (items) in
+            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
                 completion(items)
             }
         }
@@ -138,7 +138,7 @@ final public class KMAUIParse {
      Get land plans
      */
     
-    public func getLandPlans(responsibleDivisionId: String? = nil, landPlanId: String? = nil, items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getLandPlans(responsibleDivisionId: String? = nil, landPlanId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, items: [KMAMapAreaStruct], completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get plans for regions
@@ -172,6 +172,15 @@ final public class KMAUIParse {
         }
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
+        
+        // set search radius
+        if let sw = sw,
+            let ne = ne {
+            query.whereKey("minX", lessThan: ne.longitude)
+            query.whereKey("maxX", greaterThan: sw.longitude)
+            query.whereKey("minY", lessThan: ne.latitude)
+            query.whereKey("maxY", greaterThan: sw.latitude)
+        }
         
         query.findObjectsInBackground { (plans, error) in
             if let error = error {
