@@ -150,6 +150,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "Preparing the citizens list..."
                 action = ""
             }
+        } else if type == "Sub lands" {
+            if isLoaded {
+                info = "This citizen has no Sub lands to display."
+                action = ""
+            } else {
+                info = "We're preparing the Sub lands data..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
