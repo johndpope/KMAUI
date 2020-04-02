@@ -23,6 +23,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
         bgView.layer.shadowRadius = 8
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         
         // No selection required
         selectionStyle = .none
