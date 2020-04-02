@@ -499,15 +499,13 @@ final public class KMAUIParse {
                 }
                 
                 landPlan.queueResultsDisplay = landPlan.queueResultsArray
-                
-                if subLandIndexes.count > 0 {
-                    pairsCount = subLandIndexes.count
-                    landPlan.pairsCount = pairsCount
-                    landPlan.subLandIndexes = subLandIndexes
-                    landPlan.queueIndexes = queueIndexes
-                    landPlan.resultLoaded = true
-                }
+                pairsCount = subLandIndexes.count
             }
+            
+            landPlan.pairsCount = pairsCount
+            landPlan.subLandIndexes = subLandIndexes
+            landPlan.queueIndexes = queueIndexes
+            landPlan.resultLoaded = true
             
             completion(landPlan)
         }
