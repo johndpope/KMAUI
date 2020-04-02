@@ -28,10 +28,10 @@ public class KMAUIPerson {
         
         query.findObjectsInBackground { (propertyArray, error) in
             if let error = error {
-                print("Error getting user's property: `\(error.localizedDescription)`.")
+                print("Error getting citizen's property: `\(error.localizedDescription)`.")
                 completion(property, error.localizedDescription)
             } else if let propertyArray = propertyArray {
-                print("User property: \(propertyArray.count)")
+//                print("User property: \(propertyArray.count)")
                 
                 for propertyLoaded in propertyArray {
                     // The property item
@@ -59,7 +59,7 @@ public class KMAUIPerson {
         
         query.findObjectsInBackground { (uploadArray, error) in
             if let error = error {
-                print("Error getting user's uploads: `\(error.localizedDescription)`.")
+                print("Error getting citizen's uploads: `\(error.localizedDescription)`.")
                 completion([KMACitizenUpload](), error.localizedDescription)
             } else if let uploadArray = uploadArray {
                 uploadArrayCurrent.append(contentsOf: uploadArray)

@@ -473,7 +473,7 @@ final public class KMAUIParse {
             } else if let results = results, !results.isEmpty {
                 print("Results: \(results.count)")
                 print("Sub Lands: \(landPlan.lotterySubLandArray.count)")
-                print("Qeueu: \(landPlan.queueArray.count)")
+                print("Queue: \(landPlan.queueArray.count)")
                 
                 // queueResultsArray
                 landPlan.queueResultsArray = [KMAPerson]()
@@ -481,7 +481,7 @@ final public class KMAUIParse {
                 for result in results {
                     if let citizen = result["citizen"] as? PFUser,
                         let subLand = result["subLand"] as? PFObject,
-                        let subLandId = subLand.objectId {
+                        let subLandObjectId = subLand.objectId {
                         var personObject = KMAPerson()
                         personObject.fillFrom(person: citizen)
                         // Only add the person to queue if he hasn't received the Sub Land yet
@@ -490,7 +490,7 @@ final public class KMAUIParse {
                         
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
-                            if subLandId == subLandItem.subLandId {
+                            if subLandObjectId == subLandItem.objectId {
                                 subLandIndexes.append(index)
                                 break
                             }
@@ -720,7 +720,7 @@ final public class KMAUIParse {
             
             let newLotteryResult = PFObject(className: "KMALotteryResult")
             newLotteryResult["citizen"] = PFUser(withoutDataWithObjectId: citizen.objectId)
-            newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.subLandId)
+            newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
             newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
             newLotteryResult["confirmed"] = false
             newLotteryResult["status"] = "pending"

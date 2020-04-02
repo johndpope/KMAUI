@@ -2089,7 +2089,8 @@ public struct KMAUISubLandStruct {
     public var status = ""
     public var paid = false
     public var landPlanId = ""
-    public var subLandId = ""
+    public var objectId = ""
+//    public var subLandId = ""
     public var lotteryResultId = ""
     public var subLandArea = ""
     public var subLandSquare: Double = 0
@@ -2118,7 +2119,7 @@ public struct KMAUISubLandStruct {
         }
         // subLandId
         if let subLandId = item.objectId {
-            self.subLandId = subLandId
+            self.objectId = subLandId
         }
         // subLandArea
         if let subLandArea = item["subLandArea"] as? String {
@@ -2196,7 +2197,7 @@ public struct KMAUISubLandStruct {
                 
                 // land name
                 if let objectId = itemProperties["objectId"] as? String {
-                    self.subLandId = objectId
+                    self.objectId = objectId
                 }
                 
                 // center coordinate
@@ -2240,6 +2241,7 @@ public struct KMAUISubLandStruct {
                 // subLandIndex
                 if let subLandIndex = itemProperties["name"] as? String {
                     self.subLandIndex = subLandIndex
+//                    self.subLandId = subLandIndex
                 }
                 
                 // extraPrice
