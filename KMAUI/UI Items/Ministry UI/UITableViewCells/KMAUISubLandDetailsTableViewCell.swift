@@ -8,14 +8,27 @@
 
 import UIKit
 
-class KMAUISubLandDetailsTableViewCell: UITableViewCell {
+public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    
+    // MARK: - Variables
+    public static let id = "KMAUISubLandDetailsTableViewCell"
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // Setup the bgView shadow
+        // Larger shadow for bgView
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 8
+        
+        // No selection required
+        selectionStyle = .none
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
