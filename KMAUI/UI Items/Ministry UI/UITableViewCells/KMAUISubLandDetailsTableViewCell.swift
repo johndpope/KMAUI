@@ -12,21 +12,44 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
-    
+    @IBOutlet weak var viewOnMapButton: UIButton!
+    @IBOutlet weak var viewAttachmentsButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+
     // MARK: - Variables
     public static let id = "KMAUISubLandDetailsTableViewCell"
+    public var subLand = KMAUISubLandStruct() {
+        didSet {
+            setupCell()
+        }
+    }
+    public var viewOnMapCallback: ((Bool) -> Void)?
+    public var viewAttachmentsCallback: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setup the bgView shadow
-        // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
         bgView.layer.shadowRadius = 8
         bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         
+        // viewOnMapButton rounded corners
+        viewOnMapButton.layer.cornerRadius = 6
+        viewOnMapButton.clipsToBounds = true
+        
+        // viewAttachmentsButton rounded corners
+        viewOnMapButton.layer.cornerRadius = 6
+        viewOnMapButton.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
+        
+        // tableView
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: KMAUIRulesPointTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: KMAUIRulesPointTableViewCell.id)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,4 +58,43 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        
+    }
+    
+    // MARK: - IBOutlets
+    
+    @IBAction public func viewOnMapButtonPressed(_ sender: Any) {
+        viewOnMapCallback?(true)
+    }
+    
+    @IBAction public func viewAttachmentsButtonPressed(_ sender: Any) {
+        viewAttachmentsCallback?(true)
+    }
+}
+
+// MARK: - UITableView data source and delegate method
+
+extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDelegate {
+    
+    public func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableViewHeight.constant = 5 * 44
+        
+        return 5
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
+            pointCell.nameLabelHeight.constant = 44
+            pointCell.lineView.isHidden = indexPath.row == 0 || indexPath.row == 4
+            
+            return pointCell
+        }
+        
+        return KMAUIUtilities.shared.getEmptyCell()
+    }
 }

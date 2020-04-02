@@ -12,9 +12,11 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var nameLabelHeight: NSLayoutConstraint!
     @IBOutlet public weak var nameLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var valueLabelRight: NSLayoutConstraint!
+    @IBOutlet public weak var lineView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIRulesPointTableViewCell"

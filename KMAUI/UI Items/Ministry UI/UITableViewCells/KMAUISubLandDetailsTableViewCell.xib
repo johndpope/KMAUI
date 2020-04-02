@@ -31,6 +31,9 @@
                                 <state key="normal" title="View on map">
                                     <color key="titleColor" name="KMAUITextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="viewOnMapButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hA2-xd-ykV"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K7c-do-idt">
                                 <rect key="frame" x="257.5" y="339" width="221.5" height="38"/>
@@ -42,21 +45,26 @@
                                 <state key="normal" title="View attachments">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="viewAttachmentsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YYl-NS-Qau"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZx-tr-a5S">
                                 <rect key="frame" x="12" y="24" width="200" height="291"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3IU-0p-cUO"/>
-                                    <constraint firstAttribute="height" constant="291" id="dKr-oh-RA7"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xf6-tG-dGw">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xf6-tG-dGw">
                                 <rect key="frame" x="228" y="24" width="271" height="291"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="291" id="Lqc-B6-9q5"/>
+                                </constraints>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="KMAUIMainBgColor"/>
+                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
                             <constraint firstItem="b41-br-4IH" firstAttribute="width" secondItem="K7c-do-idt" secondAttribute="width" id="5CZ-Pm-PnB"/>
                             <constraint firstItem="Xf6-tG-dGw" firstAttribute="top" secondItem="zfg-kH-ehS" secondAttribute="top" constant="24" id="Gpx-Ql-VW4"/>
@@ -86,6 +94,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="zfg-kH-ehS" id="rob-dc-R7I"/>
+                <outlet property="tableView" destination="Xf6-tG-dGw" id="LKh-K1-pUi"/>
+                <outlet property="tableViewHeight" destination="Lqc-B6-9q5" id="LSX-yG-dTg"/>
+                <outlet property="viewAttachmentsButton" destination="K7c-do-idt" id="RaP-VW-nQG"/>
+                <outlet property="viewOnMapButton" destination="b41-br-4IH" id="3Uz-oa-9fz"/>
             </connections>
             <point key="canvasLocation" x="150" y="185.82589285714286"/>
         </tableViewCell>

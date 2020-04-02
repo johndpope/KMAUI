@@ -66,7 +66,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="hl3-dc-cOr" id="yDO-vO-vvd"/>
+                <outlet property="lineView" destination="iMa-6H-fVy" id="M40-qF-cbh"/>
                 <outlet property="nameLabel" destination="VKF-15-iBN" id="y1m-Ui-HZd"/>
+                <outlet property="nameLabelHeight" destination="Ozp-NF-teP" id="Ypl-YM-QOD"/>
                 <outlet property="nameLabelLeft" destination="Gal-EO-4L6" id="sXh-IL-SvE"/>
                 <outlet property="valueLabel" destination="T4N-xL-8Eg" id="XyD-ju-d3l"/>
                 <outlet property="valueLabelRight" destination="bqF-bv-aQ6" id="2P5-Yv-11W"/>
