@@ -91,6 +91,34 @@ public class KMAUIPerson {
         
         return uploads
     }
+    
+    public func getCitizenSubLands(citizenId: String, completion: @escaping (_ subLandsArray: [KMAUISubLandStruct])->()) {
+        let query = PFQuery(className: "KMALotteryResult")
+        query.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        query.includeKey("subLand")
+        query.findObjectsInBackground { (resultsArray, error) in
+            var subLandsValues = [KMAUISubLandStruct]()
+            
+            if let error = error {
+                print("Error getting citizen's Sub lands: `\(error.localizedDescription)`.")
+            } else if let resultsArray = resultsArray {
+                print("User has Sub lands: \(resultsArray.count)")
+                
+                
+                for resultObject in resultsArray {
+                    if let subLandObject = resultObject["subLand"] as? PFObject {
+                        var subLandItem = KMAUISubLandStruct()
+                        subLandItem.fillFromParse(item: subLandObject)
+                        subLandsValues.append(subLandItem)
+                    }
+                }
+                
+                print("Sub lands for citizen: \(subLandsValues.count)")
+            }
+            
+            completion(subLandsValues)
+        }
+    }
 }
 
 

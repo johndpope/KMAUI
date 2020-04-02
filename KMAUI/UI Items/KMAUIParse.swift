@@ -784,12 +784,15 @@ final public class KMAUIParse {
      Get the citizen propety and uploads
      */
     
-    public func loadCitizensPropertyUploads(citizenId: String, completion: @escaping (_ property: [KMACitizenProperty], _ uploads: [KMACitizenUpload])->()) {
-        // Get property from Parse
-        KMAUIPerson.shared.getProperty(personId: citizenId) { (propertyArray, error) in
-            // Get uploads from Parse
-            KMAUIPerson.shared.getUploads(personId: citizenId, skip: 0, uploadArrayCurrent: [PFObject]()) { (uploadArray, error) in
-                completion(propertyArray, uploadArray)
+    public func loadCitizensPropertyUploads(citizenId: String, completion: @escaping (_ subLands: [KMAUISubLandStruct], _ property: [KMACitizenProperty], _ uploads: [KMACitizenUpload])->()) {
+        // Get Sub lands from Parse
+        KMAUIPerson.shared.getCitizenSubLands(citizenId: citizenId) { (subLandsArray) in
+            // Get property from Parse
+            KMAUIPerson.shared.getProperty(personId: citizenId) { (propertyArray, error) in
+                // Get uploads from Parse
+                KMAUIPerson.shared.getUploads(personId: citizenId, skip: 0, uploadArrayCurrent: [PFObject]()) { (uploadArray, error) in
+                    completion(subLandsArray, propertyArray, uploadArray)
+                }
             }
         }
     }
