@@ -507,7 +507,6 @@ final public class KMAUIParse {
                                 }
                                 // Update the Sub land info
                                 landPlan.lotterySubLandArray[index] = subLandCopy
-                                print("\(subLandCopy.confirmed), \(subLandCopy.paid), \(subLandCopy.status)")
                                 // Quit the loop
                                 break
                             }
