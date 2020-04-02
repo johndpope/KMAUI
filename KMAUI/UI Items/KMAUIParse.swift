@@ -491,6 +491,24 @@ final public class KMAUIParse {
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandObjectId == subLandItem.objectId {
                                 subLandIndexes.append(index)
+                                // Update the sub land item with the confirmed, status and paid data
+                                var subLandCopy = subLandItem
+                                // Confirmed
+                                if let confirmed = result["confirmed"] as? Bool {
+                                    subLandCopy.confirmed = confirmed
+                                }
+                                // Status
+                                if let status = result["status"] as? String {
+                                    subLandCopy.status = status
+                                }
+                                // Paid
+                                if let paid = result["paid"] as? Bool {
+                                    subLandCopy.paid = paid
+                                }
+                                // Update the Sub land info
+                                landPlan.lotterySubLandArray[index] = subLandCopy
+                                print("\(subLandCopy.confirmed), \(subLandCopy.paid), \(subLandCopy.status)")
+                                // Quit the loop
                                 break
                             }
                         }
