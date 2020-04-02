@@ -2090,7 +2090,7 @@ public struct KMAUISubLandStruct {
     public var paid = false
     public var landPlanId = ""
     public var objectId = ""
-//    public var subLandId = ""
+    public var subLandId = "" // that's a real name in the Ministry plan
     public var lotteryResultId = ""
     public var subLandArea = ""
     public var subLandSquare: Double = 0
@@ -2117,9 +2117,13 @@ public struct KMAUISubLandStruct {
         if let landPlan = item["landPlan"] as? PFObject, let landPlanId = landPlan.objectId {
             self.landPlanId = landPlanId
         }
-        // subLandId
+        // objectId
         if let subLandId = item.objectId {
             self.objectId = subLandId
+        }
+        // subLandId
+        if let subLandId = item["subLandId"] as? String {
+            self.subLandId = subLandId
         }
         // subLandArea
         if let subLandArea = item["subLandArea"] as? String {
@@ -2144,6 +2148,10 @@ public struct KMAUISubLandStruct {
         // subLandIndex
         if let subLandIndex = item["subLandIndex"] as? String {
             self.subLandIndex = subLandIndex
+            
+            if self.subLandId.isEmpty {
+                self.subLandId = subLandIndex
+            }
         }
         // location
         if let location = item["location"] as? PFGeoPoint {
@@ -2241,7 +2249,7 @@ public struct KMAUISubLandStruct {
                 // subLandIndex
                 if let subLandIndex = itemProperties["name"] as? String {
                     self.subLandIndex = subLandIndex
-//                    self.subLandId = subLandIndex
+                    self.subLandId = subLandIndex
                 }
                 
                 // extraPrice
