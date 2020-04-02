@@ -3070,7 +3070,7 @@ public struct KMAUILandPlanStruct {
     }
     
     public mutating func setupResultArray() {
-        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizens in queue", value: "\(self.queueArray.count)")]
+        self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizens in queue", value: "\(self.queueCount.count)")]
     }
 }
 
