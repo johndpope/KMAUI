@@ -487,7 +487,6 @@ final public class KMAUIParse {
                         // Only add the person to queue if he hasn't received the Sub Land yet
                         landPlan.queueResultsArray.append(personObject)
                         queueIndexes.append(landPlan.queueResultsArray.count - 1)
-                        
                         // Getting Sub Land indexes
                         for (index, subLandItem) in landPlan.lotterySubLandArray.enumerated() {
                             if subLandObjectId == subLandItem.objectId {
@@ -508,54 +507,6 @@ final public class KMAUIParse {
             landPlan.resultLoaded = true
             
             completion(landPlan)
-        }
-    }
-    
-    /**
-     Get received Sub Lands for user
-     */
-    
-    public func getReceivedSubLands(citizenId: String, completion: @escaping (_ subLandArray: [KMAUISubLandStruct])->()) {
-        let subLandsQuery = PFQuery(className: "KMALotteryResult")
-        subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
-        subLandsQuery.includeKey("subLand")
-        subLandsQuery.includeKey("subLand.landPlan")
-        
-        subLandsQuery.findObjectsInBackground { (items, error) in
-            var subLandArray = [KMAUISubLandStruct]()
-            
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let items = items {
-                for item in items {
-                    var subLandObject = KMAUISubLandStruct()
-                    
-                    // Lottery result object id
-                    if let lotteryResultId = item.objectId {
-                        subLandObject.lotteryResultId = lotteryResultId
-                    }
-                    // Sub Land
-                    if let subLandValue = item["subLand"] as? PFObject {
-                        subLandObject.fillFromParse(item: subLandValue)
-                    }
-                    // Confirmed
-                    if let confirmed = item["confirmed"] as? Bool {
-                        subLandObject.confirmed = confirmed
-                    }
-                    // Status
-                    if let status = item["status"] as? String {
-                        subLandObject.status = status
-                    }
-                    // Paid
-                    if let paid = item["paid"] as? Bool {
-                        subLandObject.paid = paid
-                    }
-                    
-                    subLandArray.append(subLandObject)
-                }
-            }
-            
-            completion(subLandArray)
         }
     }
     

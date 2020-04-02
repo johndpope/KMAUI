@@ -92,31 +92,47 @@ public class KMAUIPerson {
         return uploads
     }
     
-    public func getCitizenSubLands(citizenId: String, completion: @escaping (_ subLandsArray: [KMAUISubLandStruct])->()) {
-        let query = PFQuery(className: "KMALotteryResult")
-        query.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
-        query.includeKey("subLand")
-        query.findObjectsInBackground { (resultsArray, error) in
-            var subLandsValues = [KMAUISubLandStruct]()
+    public func getCitizenSubLands(citizenId: String, completion: @escaping (_ subLandArray: [KMAUISubLandStruct])->()) {
+        let subLandsQuery = PFQuery(className: "KMALotteryResult")
+        subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        subLandsQuery.includeKey("subLand")
+        subLandsQuery.includeKey("subLand.landPlan")
+        
+        subLandsQuery.findObjectsInBackground { (items, error) in
+            var subLandArray = [KMAUISubLandStruct]()
             
             if let error = error {
-                print("Error getting citizen's Sub lands: `\(error.localizedDescription)`.")
-            } else if let resultsArray = resultsArray {
-//                print("User has Sub lands: \(resultsArray.count)")
-                
-                
-                for resultObject in resultsArray {
-                    if let subLandObject = resultObject["subLand"] as? PFObject {
-                        var subLandItem = KMAUISubLandStruct()
-                        subLandItem.fillFromParse(item: subLandObject)
-                        subLandsValues.append(subLandItem)
+                print(error.localizedDescription)
+            } else if let items = items {
+                for item in items {
+                    var subLandObject = KMAUISubLandStruct()
+                    
+                    // Lottery result object id
+                    if let lotteryResultId = item.objectId {
+                        subLandObject.lotteryResultId = lotteryResultId
                     }
+                    // Sub Land
+                    if let subLandValue = item["subLand"] as? PFObject {
+                        subLandObject.fillFromParse(item: subLandValue)
+                    }
+                    // Confirmed
+                    if let confirmed = item["confirmed"] as? Bool {
+                        subLandObject.confirmed = confirmed
+                    }
+                    // Status
+                    if let status = item["status"] as? String {
+                        subLandObject.status = status
+                    }
+                    // Paid
+                    if let paid = item["paid"] as? Bool {
+                        subLandObject.paid = paid
+                    }
+                    
+                    subLandArray.append(subLandObject)
                 }
-                
-//                print("Sub lands for citizen: \(subLandsValues.count)")
             }
             
-            completion(subLandsValues)
+            completion(subLandArray)
         }
     }
 }
