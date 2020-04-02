@@ -102,7 +102,7 @@ public class KMAUIPerson {
             if let error = error {
                 print("Error getting citizen's Sub lands: `\(error.localizedDescription)`.")
             } else if let resultsArray = resultsArray {
-                print("User has Sub lands: \(resultsArray.count)")
+//                print("User has Sub lands: \(resultsArray.count)")
                 
                 
                 for resultObject in resultsArray {
@@ -113,7 +113,7 @@ public class KMAUIPerson {
                     }
                 }
                 
-                print("Sub lands for citizen: \(subLandsValues.count)")
+//                print("Sub lands for citizen: \(subLandsValues.count)")
             }
             
             completion(subLandsValues)
