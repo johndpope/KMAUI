@@ -784,7 +784,7 @@ final public class KMAUIParse {
             } else if let subLands = subLands {
                 for subLand in subLands {
                     var subLandObject = KMAUISubLandStruct()
-                    subLandObject.fillFromParse(item: subLand)
+                    subLandObject.fillFromParse(item: subLand, noRegion: true)
                     newSubLands.append(subLandObject)
                 }
             }
