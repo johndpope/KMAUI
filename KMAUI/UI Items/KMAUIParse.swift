@@ -710,32 +710,99 @@ final public class KMAUIParse {
     // MARK: - Search methods
     
     public func universalSearch(searchObject: KMAUISearch) {
-        
+        // Backup the Search object
+        var searchObject = searchObject
+        // Update land plans
+        landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
+            // Update sub lands
+            self.subLandSearch(search: searchObject.search, ids: searchObject.subLandsBackupIds) { (newSubLands) in
+                // Update citizens
+                self.citizenSearch(search: searchObject.search, ids: searchObject.citizensBackupIds) { (newCitizens) in
+                    // Update arrays
+                    searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
+                }
+            }
+        }
     }
     
-    public func landPlanSearch(search: String, ids: [String]) {
-        // search by: planName
+    public func landPlanSearch(search: String, ids: [String], completion: @escaping (_ newLandPlans: [KMAUILandPlanStruct])->()) {
+        // S earch by: planName
         let query = PFQuery(className: "KMALandPlan")
         query.whereKey("planName", matchesRegex: String(format: "(?i)%@", search))
         query.whereKey("objectId", notContainedIn: ids)
         query.findObjectsInBackground { (landPlans, error) in
+            var newLandPlans = [KMAUILandPlanStruct]()
+            
             if let error = error {
                 print("Error loading Land plans: `\(error.localizedDescription)`.")
             } else if let landPlans = landPlans {
                 for landPlan in landPlans {
                     var landPlanObject = KMAUILandPlanStruct()
                     landPlanObject.fillFromParse(plan: landPlan)
+                    newLandPlans.append(landPlanObject)
                 }
             }
+            
+            completion(newLandPlans)
         }
     }
     
-    public func subLandSearch(search: String, ids: [String]) {
-        // search by: subLandId, subLandIndex, subLandType
+    public func subLandSearch(search: String, ids: [String], completion: @escaping (_ newSubLands: [KMAUISubLandStruct])->()) {
+        // Search by: subLandId, subLandIndex, subLandType
+        let idQuery = PFQuery(className: "KMASubLand")
+        idQuery.whereKey("subLandId", matchesRegex: String(format: "(?i)%@", search))
+        let indexQuery = PFQuery(className: "KMASubLand")
+        indexQuery.whereKey("subLandIndex", matchesRegex: String(format: "(?i)%@", search))
+        let typeQuery = PFQuery(className: "KMASubLand")
+        typeQuery.whereKey("subLandType", matchesRegex: String(format: "(?i)%@", search))
+        // Combined query
+        let combinedQuery = PFQuery.orQuery(withSubqueries: [idQuery, indexQuery, typeQuery])
+        combinedQuery.includeKey("landPlan")
+        combinedQuery.includeKey("landPlan.region")
+        combinedQuery.findObjectsInBackground { (subLands, error) in
+            var newSubLands = [KMAUISubLandStruct]()
+            
+            if let error = error {
+                print("Error loading Sub lands: `\(error.localizedDescription)`.")
+            } else if let subLands = subLands {
+                for subLand in subLands {
+                    var subLandObject = KMAUISubLandStruct()
+                    subLandObject.fillFromParse(item: subLand)
+                    newSubLands.append(subLandObject)
+                }
+            }
+            
+            completion(newSubLands)
+        }
     }
     
-    public func citizenSearch(search: String, ids: [String]) {
-        // search by: firstName, lastName, objectId
+    public func citizenSearch(search: String, ids: [String], completion: @escaping (_ newCitizens: [KMAPerson])->()) {
+        // search by: fullName, objectId
+        let nameQuery = PFQuery(className: "_User")
+        nameQuery.whereKey("fullName", matchesRegex: String(format: "(?i)%@", search))
+        let idQuery = PFQuery(className: "_User")
+        idQuery.whereKey("objectId", matchesRegex: String(format: "(?i)%@", search))
+        // Combined query
+        let combinedQuery = PFQuery.orQuery(withSubqueries: [nameQuery, idQuery])
+        combinedQuery.includeKey("homeAddress")
+        combinedQuery.includeKey("homeAddress.building")
+        combinedQuery.findObjectsInBackground { (citizens, error) in
+            var newCitizens = [KMAPerson]()
+            
+            if let error = error {
+                print("Error loading Sub lands: `\(error.localizedDescription)`.")
+            } else if let citizens = citizens {
+                for citizen in citizens {
+                    if let citizen = citizen as? PFUser {
+                        var citizenObject = KMAPerson()
+                        citizenObject.fillFrom(person: citizen)
+                        newCitizens.append(citizenObject)
+                    }
+                }
+            }
+        
+            completion(newCitizens)
+        }
     }
 }
 

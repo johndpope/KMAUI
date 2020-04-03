@@ -97,6 +97,7 @@ public class KMAUIPerson {
         subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
         subLandsQuery.includeKey("subLand")
         subLandsQuery.includeKey("subLand.landPlan")
+        subLandsQuery.includeKey("subLand.landPlan.region")
         subLandsQuery.order(byDescending: "createdAt")
         // Getting the region name
         subLandsQuery.includeKey("landPlan")

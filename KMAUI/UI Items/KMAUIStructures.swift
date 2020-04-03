@@ -3296,12 +3296,18 @@ public struct KMAUISearch {
     public var subLandsBackup = [KMAUISubLandStruct]()
     public var citizensBackup = [KMAPerson]()
     // Backup ids
-    public var landPlansBackupIds = [KMAUILandPlanStruct]()
-    public var subLandsBackupIds = [KMAUISubLandStruct]()
-    public var citizensBackupIds = [KMAPerson]()
+    public var landPlansBackupIds = [String]()
+    public var subLandsBackupIds = [String]()
+    public var citizensBackupIds = [String]()
     // Search string
     public var search = ""
     
     public init() {
+    }
+    
+    public mutating func updateArrays(newLandPlans: [KMAUILandPlanStruct], newSubLands: [KMAUISubLandStruct], newCitizens: [KMAPerson]) {
+        print("New Land plans found: \(newLandPlans.count)")
+        print("New Sub lands found: \(newSubLands.count)")
+        print("New Citizens found: \(newCitizens.count)")
     }
 }
