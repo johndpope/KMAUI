@@ -21,6 +21,7 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     // MARK: - Variables
     public static let id = "KMAUIRulesPointTableViewCell"
     public var sideOffsets = true
+    public var subLandDetails = false
     public var rule = KMAUILotteryRule() {
         didSet {
             setupCell()
@@ -45,17 +46,24 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
         nameLabel.text = rule.name
         valueLabel.text = rule.value
         valueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
-        // Setup side offsets
-        if sideOffsets {
-            nameLabelLeft.constant = 40
-            valueLabelRight.constant = 40
-                contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            bgView.alpha = 1
-        } else {
-            nameLabelLeft.constant = 30
-            valueLabelRight.constant = 30
+        if subLandDetails {
+            nameLabelHeight.constant = 44
+            nameLabelLeft.constant = 20
+            valueLabelRight.constant = 20
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            bgView.alpha = 0
+        } else {
+            // Setup side offsets
+            if sideOffsets {
+                nameLabelLeft.constant = 40
+                valueLabelRight.constant = 40
+                contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+                bgView.alpha = 1
+            } else {
+                nameLabelLeft.constant = 30
+                valueLabelRight.constant = 30
+                contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+                bgView.alpha = 0
+            }
         }
     }
 }

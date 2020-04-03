@@ -76,11 +76,22 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         regionLabel.text = "\(subLand.regionName) Region"
         // Setup the rows
         rules = [KMAUILotteryRule]()
+        rules.append(KMAUILotteryRule(name: "Status", value: subLand.status.capitalized))
         rules.append(KMAUILotteryRule(name: "Square", value: "\(subLand.subLandSquare.formatNumbersAfterDot()) m²"))
+        rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLand.subLandPercent * 100)) %"))
+        if subLand.extraPrice > 0 {
+            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(subLand.extraPrice.formatNumbersAfterDot())"))
+            
+            if subLand.paid {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
+            } else {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
+            }
+        }
         // Reload tableView
         tableView.reloadData()
     }
-    
+
     // MARK: - IBOutlets
     
     @IBAction public func viewOnMapButtonPressed(_ sender: Any) {
@@ -108,15 +119,55 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
+            pointCell.subLandDetails = true
             pointCell.rule = rules[indexPath.row]
-            pointCell.nameLabelHeight.constant = 44
             pointCell.lineView.isHidden = indexPath.row == 4
-            pointCell.nameLabelLeft.constant = 20
-            pointCell.valueLabelRight.constant = 20
-            
+           
             return pointCell
         }
         
         return KMAUIUtilities.shared.getEmptyCell()
     }
 }
+
+/*
+/*
+ Square
+ Percent
+ Extra price
+ Status
+ */
+
+for (index, subLand) in self.subLands.enumerated() {
+    print("\n\(index + 1). Sub land details:")
+    // subLandId
+    print("ID: \(subLand.subLandId)")
+    // subLandType
+    print("Type: \(subLand.subLandType)")
+    // planId?
+    print("Plan ID: \(subLand.landPlanId)")
+    // subLandArea
+    print("Area exists: \(!subLand.subLandArea.isEmpty)")
+    // subLandSquare
+    print("Square: \(subLand.subLandSquare.formatNumbersAfterDot()) sq. m.")
+    // subLandWidth
+    print("Width: \(subLand.subLandWidth.formatNumbersAfterDot()) m")
+    // subLandHeight
+    print("Height: \(subLand.subLandHeight.formatNumbersAfterDot()) m")
+    // location
+    print("Location: \(subLand.location.latitude), \(subLand.location.longitude)")
+    // minX, minY, maxX, maxY
+    print("Bounds: \(subLand.sw.latitude), \(subLand.sw.longitude) -> \(subLand.ne.latitude), \(subLand.ne.longitude)")
+    // subLandPercent
+    print("Percent: \(Int(subLand.subLandPercent * 100)) %")
+    // extraPrice
+    print("Extra price: $ \(subLand.extraPrice.formatNumbersAfterDot())")
+    // status
+    print("Status: \(subLand.status)")
+    // comfirmed
+    print("Confirmed: \(subLand.confirmed)")
+    // paid
+    print("Paid: \(subLand.paid)")
+    // description
+    // images
+}*/
