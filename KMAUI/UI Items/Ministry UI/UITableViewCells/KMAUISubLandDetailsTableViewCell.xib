@@ -50,33 +50,57 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZx-tr-a5S">
-                                <rect key="frame" x="12" y="24" width="200" height="291"/>
+                                <rect key="frame" x="20" y="24" width="200" height="291"/>
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="3IU-0p-cUO"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xf6-tG-dGw">
-                                <rect key="frame" x="228" y="24" width="271" height="291"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xf6-tG-dGw">
+                                <rect key="frame" x="236" y="85.5" width="263" height="229.5"/>
                                 <color key="backgroundColor" name="KMAUIViewBgColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="291" id="Lqc-B6-9q5"/>
+                                    <constraint firstAttribute="height" constant="229.5" id="CN7-hc-A8C"/>
                                 </constraints>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whk-Ab-5ZR" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="256" y="24" width="207" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="UPM-5i-02w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8d-ds-yyA" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="256" y="53" width="223" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="bVs-UE-m9N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="KMAUIViewBgColor"/>
                         <constraints>
+                            <constraint firstItem="i8d-ds-yyA" firstAttribute="top" secondItem="whk-Ab-5ZR" secondAttribute="bottom" constant="8" id="201-h4-FqW"/>
                             <constraint firstItem="b41-br-4IH" firstAttribute="width" secondItem="K7c-do-idt" secondAttribute="width" id="5CZ-Pm-PnB"/>
-                            <constraint firstItem="Xf6-tG-dGw" firstAttribute="top" secondItem="zfg-kH-ehS" secondAttribute="top" constant="24" id="Gpx-Ql-VW4"/>
+                            <constraint firstItem="Xf6-tG-dGw" firstAttribute="top" secondItem="i8d-ds-yyA" secondAttribute="bottom" constant="12" id="9Ct-ao-FYp"/>
+                            <constraint firstAttribute="trailing" secondItem="i8d-ds-yyA" secondAttribute="trailing" constant="20" id="A2h-OM-PvA"/>
                             <constraint firstItem="b41-br-4IH" firstAttribute="top" secondItem="VZx-tr-a5S" secondAttribute="bottom" constant="24" id="L4F-c5-9eY"/>
                             <constraint firstAttribute="trailing" secondItem="K7c-do-idt" secondAttribute="trailing" constant="20" id="Lsd-1U-FCy"/>
                             <constraint firstAttribute="trailing" secondItem="Xf6-tG-dGw" secondAttribute="trailing" id="adt-dY-riW"/>
                             <constraint firstItem="Xf6-tG-dGw" firstAttribute="leading" secondItem="VZx-tr-a5S" secondAttribute="trailing" constant="16" id="bPy-Fx-gVz"/>
+                            <constraint firstAttribute="trailing" secondItem="whk-Ab-5ZR" secondAttribute="trailing" constant="36" id="buE-Xc-AW0"/>
                             <constraint firstAttribute="bottom" secondItem="b41-br-4IH" secondAttribute="bottom" constant="20" id="dkU-W7-Wa3"/>
                             <constraint firstAttribute="bottom" secondItem="K7c-do-idt" secondAttribute="bottom" constant="20" id="eew-9H-V79"/>
                             <constraint firstItem="K7c-do-idt" firstAttribute="leading" secondItem="b41-br-4IH" secondAttribute="trailing" constant="16" id="iCU-Lf-ieu"/>
+                            <constraint firstItem="i8d-ds-yyA" firstAttribute="leading" secondItem="VZx-tr-a5S" secondAttribute="trailing" constant="36" id="iqM-Mm-XPP"/>
+                            <constraint firstItem="whk-Ab-5ZR" firstAttribute="leading" secondItem="VZx-tr-a5S" secondAttribute="trailing" constant="36" id="keI-V7-oeK"/>
                             <constraint firstItem="VZx-tr-a5S" firstAttribute="top" secondItem="zfg-kH-ehS" secondAttribute="top" constant="24" id="pdw-Uk-Pue"/>
-                            <constraint firstItem="VZx-tr-a5S" firstAttribute="leading" secondItem="zfg-kH-ehS" secondAttribute="leading" constant="12" id="rDa-Rh-jdT"/>
+                            <constraint firstItem="VZx-tr-a5S" firstAttribute="leading" secondItem="zfg-kH-ehS" secondAttribute="leading" constant="20" id="rDa-Rh-jdT"/>
+                            <constraint firstItem="whk-Ab-5ZR" firstAttribute="top" secondItem="zfg-kH-ehS" secondAttribute="top" constant="24" id="sAH-96-hFn"/>
                             <constraint firstItem="b41-br-4IH" firstAttribute="leading" secondItem="zfg-kH-ehS" secondAttribute="leading" constant="20" id="vu0-yF-SOK"/>
                             <constraint firstItem="K7c-do-idt" firstAttribute="top" secondItem="Xf6-tG-dGw" secondAttribute="bottom" constant="24" id="za5-U4-k7A"/>
                         </constraints>
@@ -94,8 +118,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="zfg-kH-ehS" id="rob-dc-R7I"/>
+                <outlet property="nameLabel" destination="whk-Ab-5ZR" id="Yau-pA-iDp"/>
+                <outlet property="regionLabel" destination="i8d-ds-yyA" id="T4b-m0-yBg"/>
                 <outlet property="tableView" destination="Xf6-tG-dGw" id="LKh-K1-pUi"/>
-                <outlet property="tableViewHeight" destination="Lqc-B6-9q5" id="LSX-yG-dTg"/>
+                <outlet property="tableViewHeight" destination="CN7-hc-A8C" id="KHF-m2-AiC"/>
                 <outlet property="viewAttachmentsButton" destination="K7c-do-idt" id="RaP-VW-nQG"/>
                 <outlet property="viewOnMapButton" destination="b41-br-4IH" id="3Uz-oa-9fz"/>
             </connections>

@@ -16,7 +16,9 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var viewAttachmentsButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-
+    @IBOutlet weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var regionLabel: KMAUIRegularTextLabel!
+    
     // MARK: - Variables
     public static let id = "KMAUISubLandDetailsTableViewCell"
     public var subLand = KMAUISubLandStruct() {
@@ -50,6 +52,9 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: KMAUIRulesPointTableViewCell.id, bundle: Bundle(identifier: "org.cocoapods.KMAUI")), forCellReuseIdentifier: KMAUIRulesPointTableViewCell.id)
+        
+        // nameLabel
+        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,7 +64,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        
+        nameLabel.text = "Land ID \(subLand.subLandId)"
     }
     
     // MARK: - IBOutlets

@@ -112,7 +112,7 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
             profileImageView.kf.setImage(with: url)
         }
         // Sub land id
-        subLandIdLabel.text = "Sub Land \(subLand.subLandId)\nID: \(subLand.objectId)"
+        subLandIdLabel.text = "Land ID \(subLand.subLandId)" // "\nObject ID: \(subLand.objectId)"
         // Address
         addressLabel.text = "\(region.nameE) Region"
     }
