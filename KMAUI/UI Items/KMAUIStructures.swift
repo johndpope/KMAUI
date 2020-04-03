@@ -3371,7 +3371,7 @@ public struct KMAUISearch {
             let diff = count - 3
             if diff > 0 {
                 for _ in 0..<diff {
-                    arrays.append([String]() as AnyObject)
+                    arrays.append("" as AnyObject)
                 }
             }
         }

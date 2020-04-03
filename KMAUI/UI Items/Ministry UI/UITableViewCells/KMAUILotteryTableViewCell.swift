@@ -20,6 +20,9 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
+    public var type = "lottery"
+    public var citizen = KMAPerson()
+    public var subLand = KMAUISubLandStruct()
     public var lottery = KMAUILandPlanStruct()
     public var isFirst = false
     public var isActive = false {
@@ -88,6 +91,25 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
         
+        // Is active status
+        if isActive {
+            isActiveImageView.tintColor = UIColor.white
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        } else {
+            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        }
+        
+        if type == "lottery" {
+            setupLottery()
+        } else if type == "subLand" {
+            setupSubLand()
+        } else if type == "citizen" {
+            setupCitizen()
+        }
+    }
+    
+    public func setupLottery() {
         // Basic details
         lotteryNameLabel.text = lottery.landName
         subLandsLabel.text = "Sub Lands"
@@ -100,14 +122,21 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             statusLabel.text = "In progress"
             statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         }
+    }
+    
+    public func setupSubLand() {
+        statusLabel.text = subLand.subLandType
+        lotteryNameLabel.text = "Land ID \(subLand.subLandId)"
+        subLandsLabel.text = "\(subLand.regionName) Region"
         
-        // Is active status
-        if isActive {
-            isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
-        } else {
-            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        if subLand.regionName.isEmpty {
+            subLandsLabel.text = "Region name"
         }
+    }
+    
+    public func setupCitizen() {
+        statusLabel.text = "Verified user"
+        lotteryNameLabel.text = citizen.fullName
+        subLandsLabel.text = "National ID: \(citizen.objectId.uppercased())"
     }
 }
