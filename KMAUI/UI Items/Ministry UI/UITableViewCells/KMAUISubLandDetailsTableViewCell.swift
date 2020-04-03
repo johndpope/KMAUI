@@ -40,8 +40,8 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         viewOnMapButton.clipsToBounds = true
         
         // viewAttachmentsButton rounded corners
-        viewOnMapButton.layer.cornerRadius = 6
-        viewOnMapButton.clipsToBounds = true
+        viewAttachmentsButton.layer.cornerRadius = 6
+        viewAttachmentsButton.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
