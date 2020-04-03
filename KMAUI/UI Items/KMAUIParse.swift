@@ -714,9 +714,13 @@ final public class KMAUIParse {
         var searchObject = searchObject
         // Check if search is empty
         if searchObject.search.isEmpty {
+            print("The search is empty")
             searchObject.clearSearch()
             completion(searchObject)
         } else {
+            searchObject.updateSearch()
+            completion(searchObject)
+            print("Searching for: \(searchObject.search)")
             // Update land plans
             landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
                 // Update sub lands
@@ -726,6 +730,7 @@ final public class KMAUIParse {
                         // Update arrays
                         searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
                         // Return the updated item
+                        searchObject.updateSearch()
                         completion(searchObject)
                     }
                 }

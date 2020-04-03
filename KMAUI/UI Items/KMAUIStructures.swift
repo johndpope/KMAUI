@@ -3301,14 +3301,55 @@ public struct KMAUISearch {
     public var citizensBackupIds = [String]()
     // Search string
     public var search = ""
+    public var searchActive = false
     
     public init() {
     }
     
     public mutating func updateArrays(newLandPlans: [KMAUILandPlanStruct], newSubLands: [KMAUISubLandStruct], newCitizens: [KMAPerson]) {
         print("New Land plans found: \(newLandPlans.count)")
+        landPlansBackup.append(contentsOf: newLandPlans)
+        for landPlan in newLandPlans {
+            landPlansBackupIds.append(landPlan.subLandObjectId)
+        }
         print("New Sub lands found: \(newSubLands.count)")
+        subLandsBackup.append(contentsOf: newSubLands)
+        for subLand in newSubLands {
+            subLandsBackupIds.append(subLand.objectId)
+        }
         print("New Citizens found: \(newCitizens.count)")
+        citizensBackup.append(contentsOf: newCitizens)
+        for citizen in newCitizens {
+            citizensBackupIds.append(citizen.objectId)
+        }
+    }
+    
+    public mutating func updateSearch() {
+        clearSearch()
+        // Fill arrays
+        if !search.isEmpty {
+            // Land plans
+            for landPlan in landPlansBackup {
+                if landPlan.landName.lowercased().contains(search.lowercased()) {
+                    landPlans.append(landPlan)
+                }
+            }
+            landPlans = KMAUIUtilities.shared.orderLandPlansName(array: landPlans)
+            // Sub lands
+            for subLand in subLandsBackup {
+                if subLand.subLandId.lowercased().contains(search.lowercased()) || subLand.subLandIndex.lowercased().contains(search.lowercased()) || subLand.subLandType.lowercased().contains(search.lowercased()) {
+                    subLands.append(subLand)
+                }
+            }
+            subLands = KMAUIUtilities.shared.orderSubLandsName(array: subLands)
+            // Citizens
+            for citizen in citizensBackup {
+                if citizen.fullName.lowercased().contains(search.lowercased()) || citizen.objectId.lowercased().contains(search.lowercased()) {
+                    citizens.append(citizen)
+                }
+            }
+            citizens = KMAUIUtilities.shared.orderCitizensFullName(array: citizens)
+        }
     }
     
     public mutating func clearSearch() {

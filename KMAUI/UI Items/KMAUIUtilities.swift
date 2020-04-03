@@ -431,6 +431,36 @@ public class KMAUIUtilities {
         }
     }
     
+    /**
+     Order KMAPerson array by fullName
+     */
+    
+    public func orderCitizensFullName(array: [KMAPerson]) -> [KMAPerson] {
+        return array.sorted {
+            return $0.fullName.localizedCaseInsensitiveCompare($1.fullName) == ComparisonResult.orderedAscending
+        }
+    }
+    
+    /**
+     Order Land Plan array by landName
+     */
+    
+    public func orderLandPlansName(array: [KMAUILandPlanStruct]) -> [KMAUILandPlanStruct] {
+        return array.sorted {
+            return $0.landName.localizedCaseInsensitiveCompare($1.landName) == ComparisonResult.orderedAscending
+        }
+    }
+    
+    /**
+     Order KMAPerson array by fullName
+     */
+    
+    public func orderSubLandsName(array: [KMAUISubLandStruct]) -> [KMAUISubLandStruct] {
+        return array.sorted {
+            return $0.subLandId.localizedCaseInsensitiveCompare($1.subLandId) == ComparisonResult.orderedAscending
+        }
+    }
+    
     // MARK: - Label and button layout
     
     func showItems(label: UILabel, constant1: NSLayoutConstraint, constant2: NSLayoutConstraint, button: UIButton) {
