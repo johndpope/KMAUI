@@ -746,6 +746,8 @@ final public class KMAUIParse {
         query.whereKey("objectId", notContainedIn: ids)
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
+        query.order(byDescending: "createdAt")
+        query.limit = 10
         query.findObjectsInBackground { (landPlans, error) in
             var newLandPlans = [KMAUILandPlanStruct]()
             
@@ -774,8 +776,10 @@ final public class KMAUIParse {
         typeQuery.whereKey("subLandType", matchesRegex: String(format: "(?i)%@", search))
         // Combined query
         let combinedQuery = PFQuery.orQuery(withSubqueries: [idQuery, indexQuery, typeQuery])
-//        combinedQuery.includeKey("landPlan")
-//        combinedQuery.includeKey("landPlan.region")
+        combinedQuery.includeKey("landPlan")
+        combinedQuery.includeKey("landPlan.region")
+        combinedQuery.order(byDescending: "createdAt")
+        combinedQuery.limit = 10
         combinedQuery.findObjectsInBackground { (subLands, error) in
             var newSubLands = [KMAUISubLandStruct]()
             
@@ -784,7 +788,7 @@ final public class KMAUIParse {
             } else if let subLands = subLands {
                 for subLand in subLands {
                     var subLandObject = KMAUISubLandStruct()
-                    subLandObject.fillFromParse(item: subLand, noRegion: true)
+                    subLandObject.fillFromParse(item: subLand) //, noRegion: true)
                     newSubLands.append(subLandObject)
                 }
             }
@@ -804,6 +808,8 @@ final public class KMAUIParse {
         let combinedQuery = PFQuery.orQuery(withSubqueries: [nameQuery, idQuery])
         combinedQuery.includeKey("homeAddress")
         combinedQuery.includeKey("homeAddress.building")
+        combinedQuery.order(byDescending: "createdAt")
+        combinedQuery.limit = 10
         combinedQuery.findObjectsInBackground { (citizens, error) in
             var newCitizens = [KMAPerson]()
             
