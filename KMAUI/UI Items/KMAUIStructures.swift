@@ -3307,17 +3307,17 @@ public struct KMAUISearch {
     }
     
     public mutating func updateArrays(newLandPlans: [KMAUILandPlanStruct], newSubLands: [KMAUISubLandStruct], newCitizens: [KMAPerson]) {
-        print("New Land plans found: \(newLandPlans.count)")
+        // Land plans
         landPlansBackup.append(contentsOf: newLandPlans)
         for landPlan in newLandPlans {
             landPlansBackupIds.append(landPlan.subLandObjectId)
         }
-        print("New Sub lands found: \(newSubLands.count)")
+        // Sub lands
         subLandsBackup.append(contentsOf: newSubLands)
         for subLand in newSubLands {
             subLandsBackupIds.append(subLand.objectId)
         }
-        print("New Citizens found: \(newCitizens.count)")
+        // Citizens
         citizensBackup.append(contentsOf: newCitizens)
         for citizen in newCitizens {
             citizensBackupIds.append(citizen.objectId)

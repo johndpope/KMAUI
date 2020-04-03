@@ -759,6 +759,7 @@ final public class KMAUIParse {
                 }
             }
             
+            print("New Land plans found: \(newLandPlans.count)")
             completion(newLandPlans)
         }
     }
@@ -788,6 +789,7 @@ final public class KMAUIParse {
                 }
             }
             
+            print("New Sub lands found: \(newSubLands.count)")
             completion(newSubLands)
         }
     }
@@ -817,6 +819,7 @@ final public class KMAUIParse {
                 }
             }
         
+            print("New Citizens found: \(newCitizens.count)")
             completion(newCitizens)
         }
     }
