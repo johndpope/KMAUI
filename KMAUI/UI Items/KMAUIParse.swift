@@ -774,8 +774,8 @@ final public class KMAUIParse {
         typeQuery.whereKey("subLandType", matchesRegex: String(format: "(?i)%@", search))
         // Combined query
         let combinedQuery = PFQuery.orQuery(withSubqueries: [idQuery, indexQuery, typeQuery])
-        combinedQuery.includeKey("landPlan")
-        combinedQuery.includeKey("landPlan.region")
+//        combinedQuery.includeKey("landPlan")
+//        combinedQuery.includeKey("landPlan.region")
         combinedQuery.findObjectsInBackground { (subLands, error) in
             var newSubLands = [KMAUISubLandStruct]()
             
