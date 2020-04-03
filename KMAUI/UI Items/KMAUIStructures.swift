@@ -2109,6 +2109,9 @@ public struct KMAUISubLandStruct {
     public var geojson = ""
     public var geojsonDict = [String: Any]()
     public var coordinates = [CLLocationCoordinate2D]()
+    // Region details
+    public var regionId = ""
+    public var regionName = ""
     
     public init() {}
     
@@ -2180,6 +2183,11 @@ public struct KMAUISubLandStruct {
         // subLandImages
         if let subLandImages = item["subLandImages"] as? String {
             self.subLandImages = subLandImages
+        }
+        // region id, region name
+        if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
+            self.regionId = regionId
+            self.regionName = regionName
         }
     }
     

@@ -71,6 +71,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     
     public func setupCell() {
         nameLabel.text = "Land ID \(subLand.subLandId)"
+        regionLabel.text = "\(subLand.regionName) Region"
     }
     
     // MARK: - IBOutlets

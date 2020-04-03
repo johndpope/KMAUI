@@ -98,6 +98,9 @@ public class KMAUIPerson {
         subLandsQuery.includeKey("subLand")
         subLandsQuery.includeKey("subLand.landPlan")
         subLandsQuery.order(byDescending: "createdAt")
+        // Getting the region name
+        subLandsQuery.includeKey("landPlan")
+        subLandsQuery.includeKey("landPlan.region")
         
         subLandsQuery.findObjectsInBackground { (items, error) in
             var subLandArray = [KMAUISubLandStruct]()
