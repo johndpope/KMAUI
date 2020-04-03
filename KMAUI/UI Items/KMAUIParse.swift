@@ -731,6 +731,7 @@ final public class KMAUIParse {
                         searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
                         // Return the updated item
                         searchObject.updateSearch()
+                        searchObject.searchActive = false
                         completion(searchObject)
                     }
                 }
