@@ -2115,7 +2115,7 @@ public struct KMAUISubLandStruct {
     
     public init() {}
     
-    mutating public func fillFromParse(item: PFObject) {
+    mutating public func fillFromParse(item: PFObject, noRegion: Bool? = nil) {
         // landPlanId
         if let landPlan = item["landPlan"] as? PFObject, let landPlanId = landPlan.objectId {
             self.landPlanId = landPlanId
@@ -2185,7 +2185,9 @@ public struct KMAUISubLandStruct {
             self.subLandImages = subLandImages
         }
         // region id, region name
-        if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
+        if let noRegion = noRegion, noRegion {
+            // No need to load the region for Sub Lands
+        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
             self.regionId = regionId
             self.regionName = regionName
         }
