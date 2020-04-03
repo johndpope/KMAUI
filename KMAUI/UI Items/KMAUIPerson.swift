@@ -97,6 +97,7 @@ public class KMAUIPerson {
         subLandsQuery.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
         subLandsQuery.includeKey("subLand")
         subLandsQuery.includeKey("subLand.landPlan")
+        subLandsQuery.order(byDescending: "createdAt")
         
         subLandsQuery.findObjectsInBackground { (items, error) in
             var subLandArray = [KMAUISubLandStruct]()

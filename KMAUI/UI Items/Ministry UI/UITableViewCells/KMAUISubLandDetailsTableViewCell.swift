@@ -95,7 +95,9 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
             pointCell.nameLabelHeight.constant = 44
-            pointCell.lineView.isHidden = indexPath.row == 0 || indexPath.row == 4
+            pointCell.lineView.isHidden = indexPath.row == 4
+            pointCell.constant = 20
+            pointCell.constant = 20
             
             return pointCell
         }
