@@ -30,6 +30,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     }
     public var viewOnMapCallback: ((Bool) -> Void)?
     public var viewAttachmentsCallback: ((Bool) -> Void)?
+    var rules = [KMAUILotteryRule]()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -70,8 +71,14 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        // Name and region
         nameLabel.text = "Land ID \(subLand.subLandId)"
         regionLabel.text = "\(subLand.regionName) Region"
+        // Setup the rows
+        rules = [KMAUILotteryRule]()
+        rules.append(KMAUILotteryRule(name: "Square", value: "\(subLand.subLandSquare.formatNumbersAfterDot()) m²"))
+        // Reload tableView
+        tableView.reloadData()
     }
     
     // MARK: - IBOutlets
@@ -94,13 +101,14 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableViewHeight.constant = 5 * 44
+        tableViewHeight.constant = CGFloat(rules.count) * 44
         
-        return 5
+        return rules.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
+            pointCell.rule = rules[indexPath.row]
             pointCell.nameLabelHeight.constant = 44
             pointCell.lineView.isHidden = indexPath.row == 4
             pointCell.nameLabelLeft.constant = 20
