@@ -128,6 +128,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.text = subLand.subLandType
         lotteryNameLabel.text = "Land ID \(subLand.subLandId)"
         subLandsLabel.text = "\(subLand.regionName) Region"
+        subLandsCountLabel.text = ""
         
         if subLand.regionName.isEmpty {
             subLandsLabel.text = "Region name"
@@ -138,5 +139,6 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.text = "Verified user"
         lotteryNameLabel.text = citizen.fullName
         subLandsLabel.text = "National ID: \(citizen.objectId.uppercased())"
+        subLandsCountLabel.text = ""
     }
 }
