@@ -18,6 +18,8 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var regionLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var imagesBgView: UIView!
+    @IBOutlet weak var noImagesLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUISubLandDetailsTableViewCell"
@@ -44,6 +46,10 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         // viewAttachmentsButton rounded corners
         viewAttachmentsButton.layer.cornerRadius = 6
         viewAttachmentsButton.clipsToBounds = true
+        
+        // imagesBgView
+        imagesBgView.layer.cornerRadius = 6
+        imagesBgView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -96,8 +102,8 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
             pointCell.nameLabelHeight.constant = 44
             pointCell.lineView.isHidden = indexPath.row == 4
-            pointCell.constant = 20
-            pointCell.constant = 20
+            pointCell.nameLabelLeft.constant = 20
+            pointCell.valueLabelRight.constant = 20
             
             return pointCell
         }

@@ -51,9 +51,20 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZx-tr-a5S">
                                 <rect key="frame" x="20" y="24" width="200" height="291"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No images uploaded yet..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ht9-Ak-ncg" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="125" width="168" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" name="KMAUIMainBgColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ht9-Ak-ncg" secondAttribute="trailing" constant="16" id="1X0-zx-wPL"/>
                                     <constraint firstAttribute="width" constant="200" id="3IU-0p-cUO"/>
+                                    <constraint firstItem="Ht9-Ak-ncg" firstAttribute="leading" secondItem="VZx-tr-a5S" secondAttribute="leading" constant="16" id="5pO-oq-jrf"/>
+                                    <constraint firstItem="Ht9-Ak-ncg" firstAttribute="centerY" secondItem="VZx-tr-a5S" secondAttribute="centerY" id="lFX-cn-idf"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xf6-tG-dGw">
@@ -118,7 +129,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="zfg-kH-ehS" id="rob-dc-R7I"/>
+                <outlet property="imagesBgView" destination="VZx-tr-a5S" id="xrL-Eu-u6G"/>
                 <outlet property="nameLabel" destination="whk-Ab-5ZR" id="Yau-pA-iDp"/>
+                <outlet property="noImagesLabel" destination="Ht9-Ak-ncg" id="Sh1-G5-EX3"/>
                 <outlet property="regionLabel" destination="i8d-ds-yyA" id="T4b-m0-yBg"/>
                 <outlet property="tableView" destination="Xf6-tG-dGw" id="LKh-K1-pUi"/>
                 <outlet property="tableViewHeight" destination="CN7-hc-A8C" id="KHF-m2-AiC"/>
