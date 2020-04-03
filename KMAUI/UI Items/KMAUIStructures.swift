@@ -3310,4 +3310,10 @@ public struct KMAUISearch {
         print("New Sub lands found: \(newSubLands.count)")
         print("New Citizens found: \(newCitizens.count)")
     }
+    
+    public mutating func clearSearch() {
+        landPlans = [KMAUILandPlanStruct]()
+        subLands = [KMAUISubLandStruct]()
+        citizens = [KMAPerson]()
+    }
 }

@@ -709,27 +709,35 @@ final public class KMAUIParse {
     
     // MARK: - Search methods
     
-    public func universalSearch(searchObject: KMAUISearch) {
+    public func universalSearch(searchObject: KMAUISearch, completion: @escaping (_ searchObject: KMAUISearch)->()) {
         // Backup the Search object
         var searchObject = searchObject
-        // Update land plans
-        landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
-            // Update sub lands
-            self.subLandSearch(search: searchObject.search, ids: searchObject.subLandsBackupIds) { (newSubLands) in
-                // Update citizens
-                self.citizenSearch(search: searchObject.search, ids: searchObject.citizensBackupIds) { (newCitizens) in
-                    // Update arrays
-                    searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
+        // Check if search is empty
+        if searchObject.search.isEmpty {
+            searchObject.clearSearch()
+            completion(searchObject)
+        } else {
+            // Update land plans
+            landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
+                // Update sub lands
+                self.subLandSearch(search: searchObject.search, ids: searchObject.subLandsBackupIds) { (newSubLands) in
+                    // Update citizens
+                    self.citizenSearch(search: searchObject.search, ids: searchObject.citizensBackupIds) { (newCitizens) in
+                        // Update arrays
+                        searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
+                    }
                 }
             }
         }
     }
     
     public func landPlanSearch(search: String, ids: [String], completion: @escaping (_ newLandPlans: [KMAUILandPlanStruct])->()) {
-        // S earch by: planName
+        // Search by: planName
         let query = PFQuery(className: "KMALandPlan")
         query.whereKey("planName", matchesRegex: String(format: "(?i)%@", search))
         query.whereKey("objectId", notContainedIn: ids)
+        query.includeKey("responsibleDivision")
+        query.includeKey("responsibleDivision.mapArea")
         query.findObjectsInBackground { (landPlans, error) in
             var newLandPlans = [KMAUILandPlanStruct]()
             
