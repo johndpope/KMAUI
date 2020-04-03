@@ -3080,6 +3080,111 @@ public struct KMAUILandPlanStruct {
     public mutating func setupResultArray() {
         self.resultArray = [KMAUILotteryRule(name: "Sub lands for lottery", value: "\(self.lotterySubLandArray.count)"), KMAUILotteryRule(name: "Citizens in queue", value: "\(self.queueCount)")]
     }
+    
+    mutating public func fillFromParse(plan: PFObject) {
+        // landPlanId
+        if let landPlanIdValue = plan.objectId {
+            self.landPlanId = landPlanIdValue
+        }
+        // planName
+        if let planName = plan["planName"] as? String {
+            self.landName = planName
+        }
+        // startDate
+        if let startDate = plan["startDate"] as? Date {
+            self.startDate = startDate
+        }
+        // endDate
+        if let endDate = plan["endDate"] as? Date {
+            self.endDate = endDate
+        }
+        // subLandsCount
+        if let subLandsCount = plan["subLandsCount"] as? Int {
+            self.subLandsCount = subLandsCount
+        }
+        // lotterySubLandsCount
+        if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
+            self.lotterySubLandsCount = lotterySubLandsCount
+        }
+        // lotteryCompleted
+        if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
+            self.lotteryCompleted = lotteryCompletedValue
+        }
+        // extraPricePerSqM
+        if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
+            self.squareMeterPrice = extraPricePerSqM
+        }
+        // mainRoadWidth
+        if let mainRoadWidth = plan["mainRoadWidth"] as? Int {
+            self.mainRoadWidth = Double(mainRoadWidth)
+        }
+        // regularRoadWidth
+        if let regularRoadWidth = plan["regularRoadWidth"] as? Int {
+            self.regularRoadWidth = Double(regularRoadWidth)
+        }
+        // landArea
+        if let landArea = plan["landArea"] as? String {
+            self.geojson = landArea
+            
+            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
+
+            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+                let border = features[0]
+                // coordinates
+                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
+                    let topLeftCoordinate = coordinates[0]
+                    let topRightCoordinate = coordinates[1]
+                    let bottomLeftCoordinate = coordinates[3]
+                    
+                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+                    
+                    let width = Double(Int(topLeft.distance(from: topRight)))
+                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
+                    
+                    self.areaWidth = width
+                    self.areaHeight = height
+                }
+                
+                // Sub Lands -> update to use the new `KMAUISubLandStruct`
+                self.subLandArray = [KMAUISubLandStruct]()
+                
+                for item in features {
+                    var subLandItem = KMAUISubLandStruct()
+                    subLandItem.fillFromDict(item: item)
+                    
+                    if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
+                        self.subLandArray.append(subLandItem)
+                        
+                        if subLandItem.subLandType == "Residential Lottery" {
+                            self.lotterySubLandArray.append(subLandItem)
+                        }
+                    }
+                }
+            }
+        }
+        // Counts / Percents for Sub Lands
+        self.prepareRules()
+        // centerCoordinate
+        if let location = plan["location"] as? PFGeoPoint {
+            self.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+        }
+        // minX, minY
+        if let minX = plan["minX"] as? Double, let minY = plan["minY"] as? Double {
+            self.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
+        }
+        // maxX, maxY
+        if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
+            self.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
+        }
+        // responsibleDivision
+        if let responsibleDivisionValue = plan["responsibleDivision"] as? PFObject {
+            var divisionObject = KMADepartmentStruct()
+            divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
+            self.responsibleDivision = divisionObject
+        }
+    }
 }
 
 // MARK: - Lottery rule struct

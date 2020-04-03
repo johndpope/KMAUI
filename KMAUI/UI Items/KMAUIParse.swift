@@ -194,108 +194,7 @@ final public class KMAUIParse {
                     
                     for plan in plans {
                         var landPlanObject = KMAUILandPlanStruct()
-                        // landPlanId
-                        if let landPlanIdValue = plan.objectId {
-                            landPlanObject.landPlanId = landPlanIdValue
-                        }
-                        // planName
-                        if let planName = plan["planName"] as? String {
-                            landPlanObject.landName = planName
-                        }
-                        // startDate
-                        if let startDate = plan["startDate"] as? Date {
-                            landPlanObject.startDate = startDate
-                        }
-                        // endDate
-                        if let endDate = plan["endDate"] as? Date {
-                            landPlanObject.endDate = endDate
-                        }
-                        // subLandsCount
-                        if let subLandsCount = plan["subLandsCount"] as? Int {
-                            landPlanObject.subLandsCount = subLandsCount
-                        }
-                        // lotterySubLandsCount
-                        if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
-                            landPlanObject.lotterySubLandsCount = lotterySubLandsCount
-                        }
-                        // lotteryCompleted
-                        if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
-                            landPlanObject.lotteryCompleted = lotteryCompletedValue
-                        }
-                        // extraPricePerSqM
-                        if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {
-                            landPlanObject.squareMeterPrice = extraPricePerSqM
-                        }
-                        // mainRoadWidth
-                        if let mainRoadWidth = plan["mainRoadWidth"] as? Int {
-                            landPlanObject.mainRoadWidth = Double(mainRoadWidth)
-                        }
-                        // regularRoadWidth
-                        if let regularRoadWidth = plan["regularRoadWidth"] as? Int {
-                            landPlanObject.regularRoadWidth = Double(regularRoadWidth)
-                        }
-                        // landArea
-                        if let landArea = plan["landArea"] as? String {
-                            landPlanObject.geojson = landArea
-                            
-                            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
-
-                            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-                                let border = features[0]
-                                // coordinates
-                                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
-                                    let topLeftCoordinate = coordinates[0]
-                                    let topRightCoordinate = coordinates[1]
-                                    let bottomLeftCoordinate = coordinates[3]
-                                    
-                                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                                    
-                                    let width = Double(Int(topLeft.distance(from: topRight)))
-                                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
-                                    
-                                    landPlanObject.areaWidth = width
-                                    landPlanObject.areaHeight = height
-                                }
-                                
-                                // Sub Lands -> update to use the new `KMAUISubLandStruct`
-                                landPlanObject.subLandArray = [KMAUISubLandStruct]()
-                                
-                                for item in features {
-                                    var subLandItem = KMAUISubLandStruct()
-                                    subLandItem.fillFromDict(item: item)
-                                    
-                                    if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
-                                        landPlanObject.subLandArray.append(subLandItem)
-                                        
-                                        if subLandItem.subLandType == "Residential Lottery" {
-                                            landPlanObject.lotterySubLandArray.append(subLandItem)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        // Counts / Percents for Sub Lands
-                        landPlanObject.prepareRules()
-                        // centerCoordinate
-                        if let location = plan["location"] as? PFGeoPoint {
-                            landPlanObject.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                        }
-                        // minX, minY
-                        if let minX = plan["minX"] as? Double, let minY = plan["minY"] as? Double {
-                            landPlanObject.sw = CLLocationCoordinate2D(latitude: minY, longitude: minX)
-                        }
-                        // maxX, maxY
-                        if let maxX = plan["maxX"] as? Double, let maxY = plan["maxY"] as? Double {
-                            landPlanObject.ne = CLLocationCoordinate2D(latitude: maxY, longitude: maxX)
-                        }
-                        // responsibleDivision
-                        if let responsibleDivisionValue = plan["responsibleDivision"] as? PFObject {
-                            var divisionObject = KMADepartmentStruct()
-                            divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
-                            landPlanObject.responsibleDivision = divisionObject
-                        }
+                        landPlanObject.fillFromParse(plan: plan)
                         // region id
                         if let region = plan["region"] as? PFObject, let regionId = region.objectId {
                             // Region id
@@ -806,6 +705,37 @@ final public class KMAUIParse {
             
             completion(citizens, citizensBackup)
         }
+    }
+    
+    // MARK: - Search methods
+    
+    public func universalSearch(search: String, landPlanIds: [String], subLandIds: [String], citizenIds: [String]) {
+        
+    }
+    
+    public func landPlanSearch(search: String, ids: [String]) {
+        // search by: planName
+        let query = PFQuery(className: "KMALandPlan")
+        query.whereKey("planName", matchesRegex: String(format: "(?i)%@", search))
+        query.whereKey("objectId", notContainedIn: ids)
+        query.findObjectsInBackground { (landPlans, error) in
+            if let error = error {
+                print("Error loading Land plans: `\(error.localizedDescription)`.")
+            } else if let landPlans = landPlans {
+                for landPlan in landPlans {
+                    var landPlanObject = KMAUILandPlanStruct()
+                    landPlanObject.fillFromParse(plan: landPlan)
+                }
+            }
+        }
+    }
+    
+    public func subLandSearch(search: String, ids: [String]) {
+        // search by: subLandId, subLandIndex, subLandType
+    }
+    
+    public func citizenSearch(search: String, ids: [String]) {
+        // search by: firstName, lastName, objectId
     }
 }
 
