@@ -725,6 +725,8 @@ final public class KMAUIParse {
                     self.citizenSearch(search: searchObject.search, ids: searchObject.citizensBackupIds) { (newCitizens) in
                         // Update arrays
                         searchObject.updateArrays(newLandPlans: newLandPlans, newSubLands: newSubLands, newCitizens: newCitizens)
+                        // Return the updated item
+                        completion(searchObject)
                     }
                 }
             }
