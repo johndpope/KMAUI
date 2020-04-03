@@ -709,7 +709,7 @@ final public class KMAUIParse {
     
     // MARK: - Search methods
     
-    public func universalSearch(search: String, landPlanIds: [String], subLandIds: [String], citizenIds: [String]) {
+    public func universalSearch(searchObject: KMAUISearch) {
         
     }
     

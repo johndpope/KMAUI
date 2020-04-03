@@ -3283,3 +3283,25 @@ public struct KMAUILotteryRules {
         }
     }
 }
+
+// MARK: - Search struct
+
+public struct KMAUISearch {
+    // Search results
+    public var landPlans = [KMAUILandPlanStruct]()
+    public var subLands = [KMAUISubLandStruct]()
+    public var citizens = [KMAPerson]()
+    // Backup arrays
+    public var landPlansBackup = [KMAUILandPlanStruct]()
+    public var subLandsBackup = [KMAUISubLandStruct]()
+    public var citizensBackup = [KMAPerson]()
+    // Backup ids
+    public var landPlansBackupIds = [KMAUILandPlanStruct]()
+    public var subLandsBackupIds = [KMAUISubLandStruct]()
+    public var citizensBackupIds = [KMAPerson]()
+    // Search string
+    public var search = ""
+    
+    public init() {
+    }
+}
