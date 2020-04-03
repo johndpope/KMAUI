@@ -3305,6 +3305,7 @@ public struct KMAUISearch {
     public var search = ""
     public var searchActive = false
     public var count = 0 // count of the result types: 3 if land plan, sub land and citizen all found for search
+    public var arrays = [AnyObject]()
     
     public init() {
     }
@@ -3352,15 +3353,25 @@ public struct KMAUISearch {
                 }
             }
             citizens = KMAUIUtilities.shared.orderCitizensFullName(array: citizens)
-            // Count
+            // Fill count and arrays
             if !landPlans.isEmpty {
                 count += 1
+                arrays.append(landPlans as AnyObject)
             }
             if !subLands.isEmpty {
                 count += 1
+                arrays.append(subLands as AnyObject)
             }
             if !citizens.isEmpty {
                 count += 1
+                arrays.append(citizens as AnyObject)
+            }
+            //
+            let diff = count - 3
+            if diff > 0 {
+                for _ in 0..<diff {
+                    arrays.append([String]() as AnyObject)
+                }
             }
         }
     }
@@ -3370,5 +3381,6 @@ public struct KMAUISearch {
         subLands = [KMAUISubLandStruct]()
         citizens = [KMAPerson]()
         count = 0
+        arrays = [AnyObject]()
     }
 }
