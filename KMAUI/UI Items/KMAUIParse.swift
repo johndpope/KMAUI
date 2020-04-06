@@ -226,6 +226,7 @@ final public class KMAUIParse {
         query.whereKey("objectId", equalTo: landPlanId)
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
+        query.includeKey("region")
 
         query.findObjectsInBackground { (plans, error) in
             if let error = error {
