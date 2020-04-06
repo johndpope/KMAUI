@@ -866,5 +866,28 @@ final public class KMAUIParse {
             completion(newCitizens)
         }
     }
+    
+    // MARK: - Push notifications
+    
+    /**
+     Send a push notification to user
+     */
+    
+    func sendPushNotification(userId: String, message: String) {
+        let cloudParams = [
+            "recipientId" : userId,
+            "message" : message
+        ]
+        
+        PFCloud.callFunction(inBackground: "pushToUser", withParameters: cloudParams) { (result, error) in
+            if let error = error {
+                print("Error sending push notification: `\(error.localizedDescription)`")
+            } else if let result = result {
+                if let resultString = result as? String, resultString == "Message sent!" {
+                    print("Push notifications sent to `\(userId)`")
+                }
+            }
+        }
+    }
 }
 
