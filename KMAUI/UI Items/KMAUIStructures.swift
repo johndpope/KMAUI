@@ -2089,6 +2089,7 @@ public struct KMAUISubLandStruct {
     public var status = ""
     public var paid = false
     public var landPlanId = ""
+    public var landPlanName = ""
     public var objectId = ""
     public var subLandId = "" // that's a real name in the Ministry plan
     public var lotteryResultId = ""
@@ -2119,6 +2120,10 @@ public struct KMAUISubLandStruct {
         // landPlanId
         if let landPlan = item["landPlan"] as? PFObject, let landPlanId = landPlan.objectId {
             self.landPlanId = landPlanId
+            
+            if let landPlanName = landPlan["planName"] as? String {
+                self.landPlanName = landPlanName
+            }
         }
         // objectId
         if let subLandId = item.objectId {

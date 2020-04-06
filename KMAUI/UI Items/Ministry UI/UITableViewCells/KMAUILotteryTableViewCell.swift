@@ -166,11 +166,11 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     public func setupSubLand() {
         statusLabel.text = "     " + subLand.subLandType + "     "
         lotteryNameLabel.text = "Land ID \(subLand.subLandId)"
-        subLandsLabel.text = "\(subLand.regionName) Region"
+        subLandsLabel.text = "Land Plan \(subLand.landPlanName), \(subLand.regionName) Region"
         subLandsCountLabel.text = ""
         
         if subLand.regionName.isEmpty {
-            subLandsLabel.text = "Region name"
+            subLandsLabel.text = "Land Plan \(subLand.landPlanName)"
         }
         
         statusView.alpha = 0
