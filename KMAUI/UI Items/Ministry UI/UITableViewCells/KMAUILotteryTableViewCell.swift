@@ -156,8 +156,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         statusLabel.backgroundColor = UIColor.clear
         
-        lotteryNameLabelLeft.constant = 0
-        subLandsLabelLeft.constant = 0
+        lotteryNameLabelLeft.constant = 16
+        subLandsLabelLeft.constant = 16
         
         profileImageView.alpha = 0
     }
@@ -173,8 +173,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         }
         
         statusView.alpha = 0
-        statusViewWidth.constant = 16
-        statusViewRight.constant = 16
+        statusViewWidth.constant = 0
+        statusViewRight.constant = 0
         
         statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         statusLabel.textColor = KMAUIUtilities.shared.getTextColor(subLandType: subLand.subLandType)
