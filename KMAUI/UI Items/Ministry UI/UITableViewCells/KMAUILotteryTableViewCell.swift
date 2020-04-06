@@ -27,6 +27,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     public var subLand = KMAUISubLandStruct()
     public var lottery = KMAUILandPlanStruct()
     public var isFirst = false
+    public var highlightActive = false
     public var isActive = false {
         didSet {
             setupCell()
@@ -80,8 +81,18 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            
+            if highlightActive {
+                isActiveImageView.tintColor = UIColor.white
+                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            }
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            
+            if highlightActive {
+                isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            }
         }
     }
     
