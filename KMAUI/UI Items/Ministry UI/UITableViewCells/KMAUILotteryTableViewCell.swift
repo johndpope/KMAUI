@@ -135,7 +135,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     }
     
     public func setupSubLand() {
-        statusLabel.text = "   " + subLand.subLandType + "   "
+        statusLabel.text = "     " + subLand.subLandType + "     "
         lotteryNameLabel.text = "Land ID \(subLand.subLandId)"
         subLandsLabel.text = "\(subLand.regionName) Region"
         subLandsCountLabel.text = ""
@@ -151,6 +151,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         statusLabel.textColor = KMAUIUtilities.shared.getTextColor(subLandType: subLand.subLandType)
         statusLabel.backgroundColor = KMAUIUtilities.shared.getColor(subLandType: subLand.subLandType)
+        statusLabel.layer.cornerRadius = 23 / 2
+        statusLabel.clipsToBounds = true
     }
     
     public func setupCitizen() {
