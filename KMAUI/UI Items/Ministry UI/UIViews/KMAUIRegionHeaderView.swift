@@ -16,7 +16,7 @@ public class KMAUIRegionHeaderView: UIView {
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewTop: NSLayoutConstraint!
-    @IBOutlet weak var headerLogoImageView: UIImageView!
+    @IBOutlet public weak var headerLogoImageView: UIImageView!
     
     // MARK: - Variables
     public var isFirst = false
@@ -25,7 +25,7 @@ public class KMAUIRegionHeaderView: UIView {
             setupHeader()
         }
     }
-    public var headerTitle = "" {
+    public var array = [AnyObject]() {
         didSet {
             setupHeaderTitle()
         }
@@ -56,16 +56,52 @@ public class KMAUIRegionHeaderView: UIView {
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         queueLabel.text = "Queue – \(region.lotteryMembersCount)"
         timeframeLabel.text = "\(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
+
+        headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
         
-        headerLogoImageView.layer.cornerRadius = 8
-        headerLogoImageView.clipsToBounds = true
-        
-        headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon
     }
     
     public func setupHeaderTitle() {
         lineViewTop.constant = -1
         lineView.alpha = 0
+        timeframeLabel.text = ""
+        
+        // Land plan
+        if let landPlans = array as? [KMAUILandPlanStruct] {
+            regionLabel.text = "Lotteries"
+            
+            if landPlans.count == 1 {
+                queueLabel.text = "1 lottery was found"
+            } else {
+                queueLabel.text = "\(landPlans.count) lotteries were found"
+            }
+            
+            headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
+        }
+        // Sub land
+        if let subLands = array as? [KMAUISubLandStruct] {
+            regionLabel.text = "Sub lands"
+            
+            if subLands.count == 1 {
+                queueLabel.text = "1 sub land was found"
+            } else {
+                queueLabel.text = "\(subLands.count) sub lands were found"
+            }
+            
+            headerLogoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
+        }
+        // Citizen
+        if let citizens = array as? [KMAPerson] {
+            regionLabel.text = "Citizens"
+            
+            if citizens.count == 1 {
+                queueLabel.text = "1 citizen was found"
+            } else {
+                queueLabel.text = "\(citizens.count) citizens were found"
+            }
+            
+            headerLogoImageView.image = KMAUIConstants.shared.headerCitizenIcon.withRenderingMode(.alwaysTemplate)
+        }
     }
     
     private func commonInit() {
@@ -74,5 +110,10 @@ public class KMAUIRegionHeaderView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        // Corner radius for headerLogo
+        headerLogoImageView.layer.cornerRadius = 8
+        headerLogoImageView.clipsToBounds = true
+        headerLogoImageView.tintColor = UIColor.white
+        headerLogoImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
     }
 }
