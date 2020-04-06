@@ -158,6 +158,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the Sub lands data..."
                 action = ""
             }
+        } else if type == "issues" {
+            if isLoaded {
+                info = "No issues to display for selected region."
+                action = ""
+            } else {
+                info = "We're preparing the issues for the region..."
+                action = ""
+            }
         }
         
         infoLabel.text = info

@@ -42,6 +42,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        logoImageView.image = KMAUIConstants.shared.lotteryPlaceholder
+        
         if mode == "subLands" {
             titleLabel.text = "No Sub lands"
             infoLabel.text = "We have no Sub lands received in National land lotteries."
@@ -51,6 +53,19 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "documents" {
             titleLabel.text = "No documents"
             infoLabel.text = "We have no documents to display."
+        } else if mode == "citizens" {
+            titleLabel.text = "No citizens"
+            infoLabel.text = "There are no country residents found for the area."
+            logoImageView.image = KMAUIConstants.shared.citizensIcon
+        } else if mode == "issues" {
+            titleLabel.text = "No issues"
+            infoLabel.text = "There are no issues found for the area."
+        } else if mode == "video" {
+            titleLabel.text = "No videos"
+            infoLabel.text = "There are no videoes found for the area."
+        } else if mode == "photo" {
+            titleLabel.text = "No photos"
+            infoLabel.text = "There are no photos found for the area."
         }
     }
 }
