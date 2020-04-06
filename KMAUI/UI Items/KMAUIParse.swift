@@ -747,7 +747,7 @@ final public class KMAUIParse {
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
         query.order(byAscending: "planName")
-        query.order(byDescending: "createdAt")
+//        query.order(byDescending: "createdAt")
         query.limit = 25
         query.findObjectsInBackground { (landPlans, error) in
             var newLandPlans = [KMAUILandPlanStruct]()
@@ -780,7 +780,7 @@ final public class KMAUIParse {
         combinedQuery.includeKey("landPlan")
         combinedQuery.includeKey("landPlan.region")
         combinedQuery.order(byAscending: "subLandIndex")
-        combinedQuery.order(byDescending: "createdAt")
+//        combinedQuery.order(byDescending: "createdAt")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 25
         combinedQuery.findObjectsInBackground { (subLands, error) in
@@ -812,7 +812,7 @@ final public class KMAUIParse {
         combinedQuery.includeKey("homeAddress")
         combinedQuery.includeKey("homeAddress.building")
         combinedQuery.order(byAscending: "fullName")
-        combinedQuery.order(byDescending: "createdAt")
+//        combinedQuery.order(byDescending: "createdAt")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 25
         combinedQuery.findObjectsInBackground { (citizens, error) in
