@@ -64,7 +64,8 @@ public class KMAUIRegionHeaderView: UIView {
     }
     
     public func setupHeaderTitle() {
-        print("Setup header view.")
+        lineViewTop.constant = -1
+        lineView.alpha = 0
     }
     
     private func commonInit() {
