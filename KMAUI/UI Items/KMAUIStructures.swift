@@ -3314,7 +3314,7 @@ public struct KMAUISearch {
         // Land plans
         landPlansBackup.append(contentsOf: newLandPlans)
         for landPlan in newLandPlans {
-            landPlansBackupIds.append(landPlan.subLandObjectId)
+            landPlansBackupIds.append(landPlan.landPlanId)
         }
         // Sub lands
         subLandsBackup.append(contentsOf: newSubLands)
