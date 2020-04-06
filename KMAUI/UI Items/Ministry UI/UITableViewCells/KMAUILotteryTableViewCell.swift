@@ -17,6 +17,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var subLandsLabel: UILabel!
     @IBOutlet public weak var subLandsCountLabel: UILabel!
     @IBOutlet public weak var statusView: UIView!
+    @IBOutlet public weak var statusViewWidth: NSLayoutConstraint! // default: 7
+    @IBOutlet public weak var statusViewRight: NSLayoutConstraint! // default: 6
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
@@ -122,10 +124,18 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             statusLabel.text = "In progress"
             statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         }
+        
+        statusView.alpha = 1
+        statusViewWidth.constant = 7
+        statusViewRight.constant = 6
+        
+        statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+        statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
+        statusLabel.backgroundColor = UIColor.clear
     }
     
     public func setupSubLand() {
-        statusLabel.text = subLand.subLandType
+        statusLabel.text = "   " + subLand.subLandType + "   "
         lotteryNameLabel.text = "Land ID \(subLand.subLandId)"
         subLandsLabel.text = "\(subLand.regionName) Region"
         subLandsCountLabel.text = ""
@@ -133,6 +143,14 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         if subLand.regionName.isEmpty {
             subLandsLabel.text = "Region name"
         }
+        
+        statusView.alpha = 0
+        statusViewWidth.constant = 0
+        statusViewRight.constant = 0
+        
+        statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+        statusLabel.textColor = KMAUIUtilities.shared.getTextColor(subLandType: subLand.subLandType)
+        statusLabel.backgroundColor = KMAUIUtilities.shared.getColor(subLandType: subLand.subLandType)
     }
     
     public func setupCitizen() {
@@ -140,5 +158,13 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         lotteryNameLabel.text = citizen.fullName
         subLandsLabel.text = "National ID: \(citizen.objectId.uppercased())"
         subLandsCountLabel.text = ""
+        
+        statusView.alpha = 0
+        statusViewWidth.constant = 0
+        statusViewRight.constant = 0
+        
+        statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+        statusLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        statusLabel.backgroundColor = UIColor.clear
     }
 }
