@@ -16,12 +16,18 @@ public class KMAUIRegionHeaderView: UIView {
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewTop: NSLayoutConstraint!
+    @IBOutlet weak var headerLogoImageView: UIImageView!
     
     // MARK: - Variables
     public var isFirst = false
     public var region = KMAMapAreaStruct() {
         didSet {
             setupHeader()
+        }
+    }
+    public var headerTitle = "" {
+        didSet {
+            setupHeaderTitle()
         }
     }
     
@@ -50,6 +56,15 @@ public class KMAUIRegionHeaderView: UIView {
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         queueLabel.text = "Queue – \(region.lotteryMembersCount)"
         timeframeLabel.text = "\(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
+        
+        headerLogoImageView.layer.cornerRadius = 8
+        headerLogoImageView.clipsToBounds = true
+        
+        headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon
+    }
+    
+    public func setupHeaderTitle() {
+        print("Setup header view.")
     }
     
     private func commonInit() {

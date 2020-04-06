@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KMAUIRegionHeaderView" customModule="KMAUI" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="eE9-gE-nPb" id="UoZ-mW-4u6"/>
+                <outlet property="headerLogoImageView" destination="lek-Rh-IYv" id="RVv-TO-HY2"/>
                 <outlet property="lineView" destination="EyY-Ux-UfW" id="LKs-tV-Wqz"/>
                 <outlet property="lineViewTop" destination="qkG-gk-7NH" id="1eY-xH-MQs"/>
                 <outlet property="queueLabel" destination="zEQ-Kg-3yr" id="vfc-VU-S2l"/>
@@ -51,8 +52,9 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="regionLotteryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lek-Rh-IYv">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerLotteryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="lek-Rh-IYv">
                     <rect key="frame" x="20" y="41" width="44" height="44"/>
+                    <color key="backgroundColor" name="KMAUIBlueDarkColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="22N-1N-brl"/>
                         <constraint firstAttribute="width" constant="44" id="NL5-jH-Ra6"/>
@@ -88,7 +90,10 @@
         </view>
     </objects>
     <resources>
-        <image name="regionLotteryIcon" width="41" height="41"/>
+        <image name="headerLotteryIcon" width="41" height="41"/>
+        <namedColor name="KMAUIBlueDarkColor">
+            <color red="0.094117647058823528" green="0.058823529411764705" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

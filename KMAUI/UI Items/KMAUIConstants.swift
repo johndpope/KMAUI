@@ -101,7 +101,6 @@ public class KMAUIConstants {
     public let placeholderUploadImageNoir = UIImage(named: "placeholderUploadImageNoir", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let landPlanTabIcon = UIImage(named: "landPlanTabIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let disclosureArrow = UIImage(named: "disclosureArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let regionLotteryIcon = UIImage(named: "regionLotteryIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let lotteryPlaceholder = UIImage(named: "lotteryPlaceholder", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let decreaseArrow = UIImage(named: "decreaseArrow", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let citizensIcon = UIImage(named: "citizensIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -111,6 +110,9 @@ public class KMAUIConstants {
     public let threeDotVertical = UIImage(named: "threeDotVertical", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadedDocument = UIImage(named: "uploadedDocument", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let exchangeIcon = UIImage(named: "exchangeIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let headerLotteryIcon = UIImage(named: "headerLotteryIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let headerSubLandIcon = UIImage(named: "headerSubLandIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let headerCitizenIcon = UIImage(named: "headerCitizenIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
