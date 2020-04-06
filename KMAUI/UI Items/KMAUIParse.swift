@@ -873,7 +873,7 @@ final public class KMAUIParse {
      Send a push notification to user
      */
     
-    func sendPushNotification(userId: String, message: String) {
+    public func sendPushNotification(userId: String, message: String) {
         let cloudParams = [
             "recipientId" : userId,
             "message" : message
