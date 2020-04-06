@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 public class KMAUILotteryTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -14,12 +15,15 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var isActiveImageView: UIImageView!
     @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var lotteryNameLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var subLandsLabel: UILabel!
+    @IBOutlet public weak var subLandsLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var subLandsCountLabel: UILabel!
     @IBOutlet public weak var statusView: UIView!
     @IBOutlet public weak var statusViewWidth: NSLayoutConstraint! // default: 7
     @IBOutlet public weak var statusViewRight: NSLayoutConstraint! // default: 6
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var profileImageView: UIImageView!
     
     // MARK: - Variables
     public var type = "lottery"
@@ -61,6 +65,14 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         // Status view
         statusView.layer.cornerRadius = 3.5
         statusView.clipsToBounds = true
+        
+        // Set the profileImageView
+        profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
+        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        profileImageView.layer.cornerRadius = 22
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageView.kf.indicatorType = .activity
+        profileImageView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -143,6 +155,11 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont
         statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         statusLabel.backgroundColor = UIColor.clear
+        
+        lotteryNameLabelLeft.constant = 0
+        subLandsLabelLeft.constant = 0
+        
+        profileImageView.alpha = 0
     }
     
     public func setupSubLand() {
@@ -156,14 +173,19 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         }
         
         statusView.alpha = 0
-        statusViewWidth.constant = 0
-        statusViewRight.constant = 0
+        statusViewWidth.constant = 16
+        statusViewRight.constant = 16
         
         statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         statusLabel.textColor = KMAUIUtilities.shared.getTextColor(subLandType: subLand.subLandType)
         statusLabel.backgroundColor = KMAUIUtilities.shared.getColor(subLandType: subLand.subLandType)
         statusLabel.layer.cornerRadius = 23 / 2
         statusLabel.clipsToBounds = true
+        
+        lotteryNameLabelLeft.constant = 16
+        subLandsLabelLeft.constant = 16
+        
+        profileImageView.alpha = 0
     }
     
     public func setupCitizen() {
@@ -179,5 +201,17 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         statusLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         statusLabel.backgroundColor = UIColor.clear
+        
+        lotteryNameLabelLeft.constant = 72
+        subLandsLabelLeft.constant = 72
+        
+        profileImageView.alpha = 1
+        // Setup placeholder image
+        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
+        // Load profile image
+        if let url = URL(string: citizen.profileImage) {
+            profileImageView.kf.setImage(with: url)
+        }
     }
 }
+
