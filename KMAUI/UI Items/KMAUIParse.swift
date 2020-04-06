@@ -680,7 +680,7 @@ final public class KMAUIParse {
         
         peopleQuery.findObjectsInBackground { (people, error) in
             if let error = error {
-                print("Error loading people: \(error.localizedDescription)")
+                print("Error loading citizens: \(error.localizedDescription)")
                 completion(PFUser())
             } else if let people = people, !people.isEmpty,
                 let person = people[0] as? PFUser {
@@ -721,10 +721,9 @@ final public class KMAUIParse {
             var citizensBackup = [KMAPerson]()
             
             if let error = error {
-                print("Error loading people: \(error.localizedDescription)")
+                print("Error loading citizens: \(error.localizedDescription)")
             } else if let people = people {
-                print("People loaded: \(people.count)\n")
-                
+                print("Citizens loaded: \(people.count)\n")
                 
                 for person in people {
                     if let person = person as? PFUser {

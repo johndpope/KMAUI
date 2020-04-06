@@ -110,7 +110,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             profileImageView.alpha = 1
             activityView.alpha = 0
         } else if status.starts(with: "loading") {
-            usernameLabel.text = "Loading people..."
+            usernameLabel.text = "Loading citizens..."
             
             if status.contains("profile") {
                 usernameLabel.text = "Loading profile..."
@@ -123,7 +123,7 @@ public class KMAPersonTableViewCell: UITableViewCell {
             profileImageView.alpha = 0
             activityView.alpha = 1
         } else if status == "no results" {
-            usernameLabel.text = "No matching people"
+            usernameLabel.text = "No matching citizens"
             fullNameLabel.text = ""
             fullNameLabelHeight.constant = 0
             activityView.alpha = 0
