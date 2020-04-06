@@ -746,6 +746,7 @@ final public class KMAUIParse {
         query.whereKey("objectId", notContainedIn: ids)
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
+        query.order(byAscending: "planName")
         query.order(byDescending: "createdAt")
         query.limit = 25
         query.findObjectsInBackground { (landPlans, error) in
@@ -778,6 +779,7 @@ final public class KMAUIParse {
         let combinedQuery = PFQuery.orQuery(withSubqueries: [idQuery, indexQuery, typeQuery])
         combinedQuery.includeKey("landPlan")
         combinedQuery.includeKey("landPlan.region")
+        combinedQuery.order(byAscending: "subLandIndex")
         combinedQuery.order(byDescending: "createdAt")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 25
@@ -809,6 +811,7 @@ final public class KMAUIParse {
         let combinedQuery = PFQuery.orQuery(withSubqueries: [nameQuery, idQuery])
         combinedQuery.includeKey("homeAddress")
         combinedQuery.includeKey("homeAddress.building")
+        combinedQuery.order(byAscending: "fullName")
         combinedQuery.order(byDescending: "createdAt")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 25
