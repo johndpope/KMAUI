@@ -221,6 +221,41 @@ final public class KMAUIParse {
         }
     }
     
+    public func getLandPlan(landPlanId: String, completion: @escaping (_ landPlan: KMAUILandPlanStruct?)->()) {
+        let query = PFQuery(className: "KMALandPlan")
+        query.whereKey("objectId", equalTo: landPlanId)
+        query.includeKey("responsibleDivision")
+        query.includeKey("responsibleDivision.mapArea")
+
+        query.findObjectsInBackground { (plans, error) in
+            if let error = error {
+                print("Error getting the Land Plans for regions: \(error.localizedDescription).")
+                completion(nil)
+            } else if let plans = plans {
+                guard let plan = plans.first else {
+                    print("\nNo Land Plans loaded for regions.")
+                    completion(nil)
+                    return
+                }
+
+                print("\nLand Plans loaded for regions: \(plans.count)")
+                
+                var landPlanObject = KMAUILandPlanStruct()
+                landPlanObject.fillFromParse(plan: plan)
+                // region id
+                if let region = plan["region"] as? PFObject, let regionId = region.objectId {
+                    // Region id
+                    var regionStruct = KMAMapAreaStruct()
+                    regionStruct.fillFrom(object: region)
+                    landPlanObject.regionId = regionId
+                    landPlanObject.queueCount = regionStruct.lotteryMembersCount
+                }
+                
+                completion(landPlanObject)
+            }
+        }
+    }
+    
     // MARK: - Joined regions for lotteries
     
     public func getLandPlanCitizenRegions(citizenId: String, completion: @escaping (_ regionIds: [String])->()) {
