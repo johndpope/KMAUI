@@ -636,14 +636,19 @@ final public class KMAUIParse {
             
             lotteryResults.append(newLotteryResult)
             
+            let items = ["objectId": subLand.objectId as AnyObject,
+                         "objectType": "subLand" as AnyObject,
+                         "eventType": "lotteryWin" as AnyObject,
+                         "subLandId": subLand.subLandId as AnyObject,
+                         "landPlanName": subLand.landPlanName as AnyObject,
+                         "landPlanId": subLand.landPlanId as AnyObject] as AnyObject
+            
             // Push parameters
             let newSubLandParams = [
                 "userId" : citizen.objectId as AnyObject,
                 "title": "Land lottery win!" as AnyObject,
                 "message": "You've received the Sub land \(subLand.objectId) as a result of the \"\(landPlan.landName)\" lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
-                "kmaObjectId": subLand.objectId as AnyObject,
-                "kmaObjectType": "subLand" as AnyObject,
-                "kmaEventType": "lotteryWin" as AnyObject
+                "kmaItems": items
             ]
             pushParams.append(newSubLandParams)
         }
