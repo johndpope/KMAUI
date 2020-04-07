@@ -641,8 +641,9 @@ final public class KMAUIParse {
                 "userId" : citizen.objectId as AnyObject,
                 "title": "Land lottery win!" as AnyObject,
                 "message" : "You've received the Sub land \(subLand.objectId) as a result of the \"\(landPlan.landName)\" lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
-                "kmaid": subLand.objectId as AnyObject,
-                "kmatype": "Sub land received" as AnyObject
+                "objectId": subLand.objectId as AnyObject,
+                "objectType": "subLand" as AnyObject,
+                "eventType": "lotteryWin" as AnyObject
             ]
             pushParams.append(newSubLandParams)
         }
