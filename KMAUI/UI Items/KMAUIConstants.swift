@@ -120,6 +120,7 @@ public class KMAUIConstants {
     public let requestsTabIconC = UIImage(named: "requestsTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let notificationsBarIconC = UIImage(named: "notificationsBarIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadDocumentBarIconC = UIImage(named: "uploadDocumentBarIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let winnerImage = UIImage(named: "winnerImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
