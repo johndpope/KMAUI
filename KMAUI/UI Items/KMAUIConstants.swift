@@ -113,6 +113,11 @@ public class KMAUIConstants {
     public let headerLotteryIcon = UIImage(named: "headerLotteryIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let headerSubLandIcon = UIImage(named: "headerSubLandIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let headerCitizenIcon = UIImage(named: "headerCitizenIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let dashboardTabIconC = UIImage(named: "dashboardTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let mapTabIconC = UIImage(named: "mapTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let landPlanTabIconC = UIImage(named: "landPlanTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let profileTabIconC = UIImage(named: "profileTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let requestsTabIconC = UIImage(named: "requestsTabIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
