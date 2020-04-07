@@ -640,8 +640,11 @@ final public class KMAUIParse {
                          "objectType": "subLand" as AnyObject,
                          "eventType": "lotteryWin" as AnyObject,
                          "subLandId": subLand.subLandId as AnyObject,
-                         "landPlanName": subLand.landPlanName as AnyObject,
-                         "landPlanId": subLand.landPlanId as AnyObject] as AnyObject
+                         "landPlanName": landPlan.landName as AnyObject,
+                         "landPlanId": landPlan.landPlanId as AnyObject,
+                         "region": landPlan.region.nameE as AnyObject,
+                         "regionId": landPlan.region.objectId as AnyObject
+                ] as AnyObject
             
             // Push parameters
             let newSubLandParams = [
