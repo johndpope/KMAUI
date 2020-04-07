@@ -650,7 +650,7 @@ final public class KMAUIParse {
             let newSubLandParams = [
                 "userId" : citizen.objectId as AnyObject,
                 "title": "Land lottery win!" as AnyObject,
-                "message": "You've received the Sub land \(subLand.subLandId) as a result of the \(landPlan.landName) lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
+                "message": "You've received the sub land \(subLand.subLandId) as a result of the \(landPlan.landName) lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
                 "kmaItems": items
             ]
             pushParams.append(newSubLandParams)
