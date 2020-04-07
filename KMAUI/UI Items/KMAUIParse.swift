@@ -617,6 +617,7 @@ final public class KMAUIParse {
         
         // Create the array of PFObjects for KMALotteryResult
         var lotteryResults = [PFObject]()
+        var pushParams = [[String: AnyObject]]()
         
         for index in 0..<landPlan.pairsCount {
             let citizenIndex = landPlan.queueIndexes[index]
@@ -634,6 +635,16 @@ final public class KMAUIParse {
             newLotteryResult["paid"] = false
             
             lotteryResults.append(newLotteryResult)
+            
+            // Push parameters
+            let newSubLandParams = [
+                "userId" : citizen.objectId as AnyObject,
+                "title": "Land lottery win!" as AnyObject,
+                "message" : "You've received the Sub land \(subLand.objectId) as a result of the \"\(landPlan.landName)\" lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
+                "kmaid": subLand.objectId as AnyObject,
+                "kmatype": "Sub land received" as AnyObject
+            ]
+            pushParams.append(newSubLandParams)
         }
         
         // Saving the lottery results array
@@ -644,7 +655,12 @@ final public class KMAUIParse {
                 }
             } else if success {
                 print("Lottery results saved.")
+                // Send push notifications to the winners
+                for subLandParams in pushParams {
+                    KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                }
                 
+                // Update the Land plan status
                 let landPlanObject = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
                 landPlanObject["lotteryCompleted"] = true
                 
