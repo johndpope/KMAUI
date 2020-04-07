@@ -873,18 +873,15 @@ final public class KMAUIParse {
      Send a push notification to user
      */
     
-    public func sendPushNotification(userId: String, message: String) {
-        let cloudParams = [
-            "recipientId" : userId,
-            "message" : message
-        ]
-        
+    public func sendPushNotification(cloudParams: [String: AnyObject]) {
         PFCloud.callFunction(inBackground: "pushToUser", withParameters: cloudParams) { (result, error) in
             if let error = error {
                 print("Error sending push notification: `\(error.localizedDescription)`")
             } else if let result = result {
                 if let resultString = result as? String, resultString == "Message sent!" {
-                    print("Push notifications sent to `\(userId)`")
+                    print("Push notifications sent.")
+                } else {
+                    print("Wrong result.")
                 }
             }
         }
