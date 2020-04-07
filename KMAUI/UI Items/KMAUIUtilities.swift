@@ -1112,6 +1112,17 @@ public extension UIView {
         self.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         self.clipsToBounds = true
     }
+    
+    /**
+     Round corners for selected corners only
+     */
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }
 
 // MARK: - UISegmentedControl extension
