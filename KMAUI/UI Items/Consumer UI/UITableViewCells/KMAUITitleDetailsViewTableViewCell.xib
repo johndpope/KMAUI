@@ -63,7 +63,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowIndicatorFull" width="13" height="24"/>
+        <image name="arrowIndicatorFull" width="6" height="11"/>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
