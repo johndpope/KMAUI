@@ -30,6 +30,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     }
     public var viewOnMapCallback: ((Bool) -> Void)?
     public var viewAttachmentsCallback: ((Bool) -> Void)?
+    var rules = [KMAUILotteryRule]()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -74,8 +75,19 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         nameLabel.text = "Land ID \(subLand.subLandId)"
         regionLabel.text = "\(subLand.regionName) Region"
         // Setup the rows
-        subLand.prepareRules()
-        print(subLand.rules)
+        rules = [KMAUILotteryRule]()
+        rules.append(KMAUILotteryRule(name: "Status", value: subLand.status.capitalized))
+        rules.append(KMAUILotteryRule(name: "Square", value: "\(subLand.subLandSquare.formatNumbersAfterDot()) m²"))
+        rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLand.subLandPercent * 100)) %"))
+        if subLand.extraPrice > 0 {
+            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(subLand.extraPrice.formatNumbersAfterDot().withCommas())"))
+            // Setup the paid status
+            if subLand.paid {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
+            } else {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
+            }
+        }
         // Reload tableView
         tableView.reloadData()
     }
@@ -100,15 +112,17 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableViewHeight.constant = CGFloat(subLand.rules.count) * 44
-        return subLand.rules.count
+        tableViewHeight.constant = CGFloat(rules.count) * 44
+        
+        return rules.count
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
             pointCell.subLandDetails = true
-            pointCell.rule = subLand.rules[indexPath.row]
-            pointCell.lineView.isHidden = indexPath.row == subLand.rules.count - 1
+            pointCell.rule = rules[indexPath.row]
+            pointCell.lineView.isHidden = indexPath.row == rules.count - 1
+           
             return pointCell
         }
         
