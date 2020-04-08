@@ -26,8 +26,8 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Setup the right arrow
-        rightArrowImageView.image = KMAUIConstants.shared.rightArrow.withRenderingMode(.alwaysTemplate)
-        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUILightButtonColor
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
@@ -35,10 +35,10 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        infoLabel.textColor = KMAUIConstants.shared.KMAUILightButtonColor
+        infoLabel.textColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // Selection style
-        selectionStyle = .default
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {

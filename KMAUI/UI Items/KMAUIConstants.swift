@@ -122,7 +122,8 @@ public class KMAUIConstants {
     public let notificationsBarIconC = UIImage(named: "notificationsBarIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadDocumentBarIconC = UIImage(named: "uploadDocumentBarIconC", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let winnerImage = UIImage(named: "winnerImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-
+    public let arrowIndicatorFull = UIImage(named: "arrowIndicatorFull", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
     public let KMAScreenWidth = UIScreen.main.bounds.size.width
