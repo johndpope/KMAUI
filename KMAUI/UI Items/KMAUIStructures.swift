@@ -2276,12 +2276,54 @@ public struct KMAUISubLandStruct {
         }
     }
     
+    mutating public func fillFromPush(details: [String : AnyObject]) {
+        // Sub land id
+        if let subLandId = details["subLandId"] as? String {
+            self.subLandId = subLandId
+        }
+        
+        // region
+        if let region = details["region"] as? String {
+            self.regionName = region
+        }
+        
+        // region id
+        if let regionId = details["regionId"] as? String {
+            self.regionId = regionId
+        }
+        
+        // land plan name
+        if let landPlanName = details["landPlanName"] as? String {
+            self.landPlanName = landPlanName
+        }
+        
+        // land plan id
+        if let landPlanId = details["landPlanId"] as? String {
+            self.landPlanId = landPlanId
+        }
+        
+        // object id
+        if let objectId = details["objectId"] as? String {
+            self.objectId = objectId
+        }
+    }
+    
     mutating public func prepareRules() {
         // Setup the rows
         rules = [KMAUILotteryRule]()
-        rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
-        rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
-        rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLandPercent * 100)) %"))
+        
+        if !status.isEmpty {
+            rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
+        }
+        
+        if subLandSquare > 0 {
+            rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
+        }
+        
+        if subLandPercent > 0 {
+            rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLandPercent * 100)) %"))
+        }
+        
         if extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
             // Setup the paid status

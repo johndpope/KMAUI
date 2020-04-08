@@ -10,11 +10,16 @@ import UIKit
 
 public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUISubLandTitleTableViewCell"
+    public var subLand = KMAUISubLandStruct() {
+        didSet {
+            setupCell()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -35,4 +40,8 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupCell() {
+        titleLabel.text = "Land ID \(subLand.subLandId)"
+        infoLabel.text = "\(subLand.regionName) Region"
+    }
 }
