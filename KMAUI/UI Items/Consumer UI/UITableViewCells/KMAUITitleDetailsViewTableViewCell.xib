@@ -58,7 +58,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="infoButton" destination="gUA-M9-sQq" id="F0P-J0-8gN"/>
-                <outlet property="infoLabel" destination="gUA-M9-sQq" id="QUc-Zd-mUr"/>
                 <outlet property="rightArrowImageView" destination="jna-xa-ffA" id="Kgr-cM-pXQ"/>
                 <outlet property="titleLabel" destination="gqi-Bt-naP" id="37D-df-oub"/>
             </connections>
