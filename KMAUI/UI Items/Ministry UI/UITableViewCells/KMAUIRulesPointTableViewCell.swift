@@ -17,10 +17,13 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     @IBOutlet public weak var valueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var valueLabelRight: NSLayoutConstraint!
     @IBOutlet public weak var lineView: UIView!
+    @IBOutlet public weak var lineViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var lineViewRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUIRulesPointTableViewCell"
     public var sideOffsets = true
+    public var extraHeight = false
     public var subLandDetails = false
     public var rule = KMAUILotteryRule() {
         didSet {
@@ -48,19 +51,30 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
         valueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         if subLandDetails {
             nameLabelHeight.constant = 44
+            
+            if extraHeight { // For the Sub land details for the Consumer app
+                nameLabelHeight.constant = 54
+            }
+            
             nameLabelLeft.constant = 20
             valueLabelRight.constant = 20
+            lineViewLeft.constant = 20
+            lineViewRight.constant = 20
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         } else {
             // Setup side offsets
             if sideOffsets {
                 nameLabelLeft.constant = 40
                 valueLabelRight.constant = 40
+                lineViewLeft.constant = 40
+                lineViewRight.constant = 40
                 contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
                 bgView.alpha = 1
             } else {
                 nameLabelLeft.constant = 30
                 valueLabelRight.constant = 30
+                lineViewLeft.constant = 30
+                lineViewRight.constant = 30
                 contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
                 bgView.alpha = 0
             }

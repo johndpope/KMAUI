@@ -2308,7 +2308,7 @@ public struct KMAUISubLandStruct {
         }
     }
     
-    mutating public func prepareRules() {
+    mutating public func prepareRules(fullDetails: Bool? = nil) {
         // Setup the rows
         rules = [KMAUILotteryRule]()
         
@@ -2318,6 +2318,17 @@ public struct KMAUISubLandStruct {
         
         if subLandSquare > 0 {
             rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
+        }
+        
+        // if fullDetails - show width and height, we don't need it for the Citizen screen preview
+        if let fullDetails = fullDetails, fullDetails {
+            if subLandWidth > 0 {
+                rules.append(KMAUILotteryRule(name: "Width", value: "\(subLandWidth.formatNumbersAfterDot()) m"))
+            }
+            
+            if subLandHeight > 0 {
+                rules.append(KMAUILotteryRule(name: "Height", value: "\(subLandHeight.formatNumbersAfterDot()) m"))
+            }
         }
         
         if subLandPercent > 0 {

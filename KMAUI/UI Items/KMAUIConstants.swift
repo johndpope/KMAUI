@@ -33,6 +33,7 @@ public class KMAUIConstants {
     // This is used for the Detail part of the UISplitViewController, where we need the white background and the Dark items are reserved
     public let KMAUIMainBgColorReverse = UIColor(named: "KMAUIMainBgColorReverse", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIViewBgColorReverse = UIColor(named: "KMAUIViewBgColorReverse", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUILightButtonColor = UIColor(named: "KMAUILightButtonColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
