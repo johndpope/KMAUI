@@ -33,6 +33,7 @@ public class KMAUIViewAttachmentsTableViewCell: UITableViewCell {
         paperclipButton.layer.cornerRadius = 6
         paperclipButton.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
         paperclipButton.setImage(KMAUIConstants.shared.paperclipIcon.withRenderingMode(.alwaysOriginal), for: .normal)
+        paperclipButton.imageView?.tintColor = KMAUIConstants.shared.KMAUITextColor
         paperclipButton.clipsToBounds = true
         
         // No selection required
