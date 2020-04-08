@@ -75,6 +75,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         regionLabel.text = "\(subLand.regionName) Region"
         // Setup the rows
         subLand.prepareRules()
+        print(subLand.rules)
         // Reload tableView
         tableView.reloadData()
     }
