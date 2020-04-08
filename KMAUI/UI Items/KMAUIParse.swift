@@ -618,6 +618,7 @@ final public class KMAUIParse {
         // Create the array of PFObjects for KMALotteryResult
         var lotteryResults = [PFObject]()
         var pushParams = [[String: AnyObject]]()
+        var notificationsArray = [PFObject]()
         
         for index in 0..<landPlan.pairsCount {
             let citizenIndex = landPlan.queueIndexes[index]
@@ -636,6 +637,7 @@ final public class KMAUIParse {
             
             lotteryResults.append(newLotteryResult)
             
+            // Fill the items for Notification
             let items = ["objectId": subLand.objectId as AnyObject,
                          "objectType": "subLand" as AnyObject,
                          "eventType": "lotteryWin" as AnyObject,
@@ -644,16 +646,26 @@ final public class KMAUIParse {
                          "landPlanId": landPlan.landPlanId as AnyObject,
                          "region": landPlan.region.nameE as AnyObject,
                          "regionId": landPlan.region.objectId as AnyObject
-                ] as AnyObject
-            
+            ]
             // Push parameters
             let newSubLandParams = [
                 "userId" : citizen.objectId as AnyObject,
                 "title": "Land lottery win!" as AnyObject,
                 "message": "You've received the sub land \(subLand.subLandId) as a result of the \(landPlan.landName) lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
-                "kmaItems": items
+                "kmaItems": items as AnyObject
             ]
             pushParams.append(newSubLandParams)
+            // Prepare the notification Parse object
+            let newNotification = PFObject(className: "KMANotification")
+            newNotification["user"] = PFUser(withoutDataWithObjectId: citizen.objectId)
+            newNotification["title"] = "Land lottery win!"
+            newNotification["message"] = "You've received the sub land \(subLand.subLandId) as a result of the \(landPlan.landName) lottery draw in \(landPlan.region.nameE) Region."
+            // items json string from dictionary
+            if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                newNotification["items"] = jsonStr
+            }
+            newNotification["read"] = false
+            notificationsArray.append(newNotification)
         }
         
         // Saving the lottery results array
@@ -668,7 +680,10 @@ final public class KMAUIParse {
                 for subLandParams in pushParams {
                     KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
                 }
-                
+                // Save notifications
+                if !notificationsArray.isEmpty {
+                    PFObject.saveAll(inBackground: notificationsArray)
+                }
                 // Update the Land plan status
                 let landPlanObject = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
                 landPlanObject["lotteryCompleted"] = true
