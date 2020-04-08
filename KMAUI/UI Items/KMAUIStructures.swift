@@ -2113,6 +2113,7 @@ public struct KMAUISubLandStruct {
     // Region details
     public var regionId = ""
     public var regionName = ""
+    public var rules = [KMAUILotteryRule]()
     
     public init() {}
     
@@ -2271,6 +2272,23 @@ public struct KMAUISubLandStruct {
                 if let extraPrice = itemProperties["extraPrice"] as? Double {
                     self.extraPrice = extraPrice.formatNumbersAfterDot()
                 }
+            }
+        }
+    }
+    
+    mutating public func prepareRules() {
+        // Setup the rows
+        rules = [KMAUILotteryRule]()
+        rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
+        rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
+        rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLandPercent * 100)) %"))
+        if extraPrice > 0 {
+            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
+            // Setup the paid status
+            if paid {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
+            } else {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
             }
         }
     }
