@@ -13,7 +13,8 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var infoButton: UIButton!
+    
     // MARK: - Variables
     public static let id = "KMAUITitleDetailsViewTableViewCell"
     public var rowData = KMAUIRowData() {
@@ -21,21 +22,22 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var callback: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Setup the right arrow
         rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
-        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
         titleLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         
         // Info label
-        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        infoLabel.textColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        infoButton.titleLabel?.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        infoButton.setTitleColor(KMAUIConstants.shared.KMAUIGreyTextColor, for: .normal)
         
         // Selection style
         selectionStyle = .none
@@ -49,6 +51,10 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     
     public func setupCell() {
         titleLabel.text = rowData.rowName
-        infoLabel.text = rowData.rowValue
+        infoButton.setTitle(rowData.rowValue, for: .normal)
+    }
+    
+    @IBAction public func infoButtonPressed(_ sender: Any) {
+        callback?(true)
     }
 }
