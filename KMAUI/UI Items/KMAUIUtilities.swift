@@ -1026,6 +1026,10 @@ public extension String {
         let filtredUnicodeScalars = unicodeScalars.filter { CharacterSet.decimalDigits.contains($0) }
         return String(String.UnicodeScalarView(filtredUnicodeScalars))
     }
+    
+    func withSquareMeters() -> String {
+        return "\(self) m²"
+    }
 }
 
 public extension CLLocationCoordinate2D {
