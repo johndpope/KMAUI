@@ -50,8 +50,11 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         titleLabel.textColor = UIColor.white
         
+        if UIScreen.main.bounds.size.width == 320 {
+            titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        }
+
         // Info label
-        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         
         // No standard selection required
         selectionStyle = .none
