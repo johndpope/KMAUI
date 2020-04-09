@@ -926,5 +926,26 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Get Sub land by objectId
+    
+    public func getSubLand(objectId: String, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
+        // Search by: subLandId, subLandIndex, subLandType
+        let query = PFQuery(className: "KMASubLand")
+        query.includeKey("landPlan")
+        query.includeKey("landPlan.region")
+
+        query.getObjectInBackground(withId: objectId) { (subLandValue, error) in
+            var updatedSubLand = KMAUISubLandStruct()
+            
+            if let error = error {
+                print("Error loading Sub lands: `\(error.localizedDescription)`.")
+            } else if let subLandValue = subLandValue {
+                updatedSubLand.fillFromParse(item: subLandValue)
+            }
+
+            completion(updatedSubLand)
+        }
+    }
 }
 
