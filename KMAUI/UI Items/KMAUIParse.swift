@@ -14,7 +14,7 @@ final public class KMAUIParse {
     public static let shared = KMAUIParse()
     
     public func getMapAreas(level: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, parentObjectId: String, updatedAfter: Date? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
-        getMapAreas(skip: 0, sw: sw, ne: ne, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
+        getMapAreas(skip: 0, sw: sw, ne: ne, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId, updatedAfter: updatedAfter) { (items) in
             completion(items)
         }
     }
