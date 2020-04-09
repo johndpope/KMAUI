@@ -23,7 +23,7 @@ final public class KMAUIParse {
      Get the map area
      */
     
-    func getMapAreas(skip: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil,  items: [KMAMapAreaStruct], level: Int, parentObjectId: String, updatedAfter: Date? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    public func getMapAreas(skip: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil,  items: [KMAMapAreaStruct], level: Int, parentObjectId: String, updatedAfter: Date? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get the countries list
