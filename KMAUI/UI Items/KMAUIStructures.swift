@@ -1994,6 +1994,8 @@ public struct KMAMapAreaStruct {
     // New items
     public var periodStart = Date()
     public var periodEnd = Date()
+    // Queue count
+    public var citizensQueueCount = 0
 
     public init() {}
     
