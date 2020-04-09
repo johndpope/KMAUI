@@ -125,6 +125,13 @@ public class KMAUIConstants {
     public let winnerImage = UIImage(named: "winnerImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let arrowIndicatorFull = UIImage(named: "arrowIndicatorFull", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let paperclipIcon = UIImage(named: "paperclipIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    // Upload a document flow
+    public let uploadBackground = UIImage(named: "uploadBackground", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let uploadDocumentImage = UIImage(named: "uploadDocumentImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let uploadDocumentBadge = UIImage(named: "uploadDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let pendingDocumentImage = UIImage(named: "pendingDocumentImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let pendingDocumentBadge = UIImage(named: "pendingDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let approvedDocumentBadge = UIImage(named: "approvedDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
