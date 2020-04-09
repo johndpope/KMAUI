@@ -13,8 +13,8 @@ final public class KMAUIParse {
     // Access variable
     public static let shared = KMAUIParse()
     
-    public func getMapAreas(level: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
-        getMapAreas(skip: 0, sw: sw, ne: ne, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId) { (items) in
+    public func getMapAreas(level: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, parentObjectId: String, updatedAfter: Date? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+        getMapAreas(skip: 0, sw: sw, ne: ne, items: [KMAMapAreaStruct](), level: level, parentObjectId: parentObjectId, updatedAfter: updatedAfter) { (items) in
             completion(items)
         }
     }
@@ -23,7 +23,7 @@ final public class KMAUIParse {
      Get the map area
      */
     
-    func getMapAreas(skip: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil,  items: [KMAMapAreaStruct], level: Int, parentObjectId: String, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
+    public func getMapAreas(skip: Int, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil,  items: [KMAMapAreaStruct], level: Int, parentObjectId: String, updatedAfter: Date? = nil, completion: @escaping (_ cities: [KMAMapAreaStruct])->()) {
         var items = items
         
         // Get the countries list
@@ -45,6 +45,11 @@ final public class KMAUIParse {
             mapAreaQuery.whereKey("maxX", greaterThan: sw.longitude)
             mapAreaQuery.whereKey("minY", lessThan: ne.latitude)
             mapAreaQuery.whereKey("maxY", greaterThan: sw.latitude)
+        }
+        
+        if let updatedAfter = updatedAfter {
+            print("Verifying updated after \(updatedAfter)")
+            mapAreaQuery.whereKey("updatedAt", greaterThan: updatedAfter)
         }
         
         mapAreaQuery.order(byAscending: "nameE")

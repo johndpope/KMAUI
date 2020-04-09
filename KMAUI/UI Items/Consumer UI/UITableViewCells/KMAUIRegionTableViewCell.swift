@@ -1,0 +1,79 @@
+//
+//  KMAUIRegionTableViewCell.swift
+//  KMA EYES CITIZENS
+//
+//  Created by Stanislav Rastvorov on 09.04.2020.
+//  Copyright © 2020 Stanislav Rastvorov. All rights reserved.
+//
+
+import UIKit
+
+public class KMAUIRegionTableViewCell: UITableViewCell {
+
+    // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var infoLabel: UILabel!
+    @IBOutlet public weak var joinButton: UIButton!
+    
+    // MARK: - Variables
+    public static let id = "KMAUIRegionTableViewCell"
+    public var region = KMAMapAreaStruct() {
+        didSet {
+            setupCell()
+        }
+    }
+    public var callback: ((Bool) -> Void)?
+    
+    override public func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Background
+        contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        // Larger shadow for bgView
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 4
+        
+        // Join button
+        joinButton.layer.cornerRadius = 17
+        joinButton.clipsToBounds = true
+        
+        // Title label
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
+        
+        // Info label
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // Join button
+        joinButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(17)
+        
+        // No standard selection requried
+        selectionStyle = .none
+    }
+
+    override public func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+    
+    public func setupCell() {
+        titleLabel.text = region.nameE
+        infoLabel.text = "Citizens queue – \(region.citizensQueueCount)"
+        
+        if region.joined {
+            joinButton.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            joinButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
+            joinButton.setTitle("Joined", for: .normal)
+        } else {
+            joinButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+            joinButton.setTitleColor(UIColor.white, for: .normal)
+            joinButton.setTitle("Join", for: .normal)
+        }
+    }
+    
+    @IBAction public func joinButtonPressed(_ sender: Any) {
+        callback?(true)
+    }
+}
