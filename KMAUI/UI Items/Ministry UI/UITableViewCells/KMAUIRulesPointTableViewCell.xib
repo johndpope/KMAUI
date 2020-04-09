@@ -67,6 +67,8 @@
             <connections>
                 <outlet property="bgView" destination="hl3-dc-cOr" id="yDO-vO-vvd"/>
                 <outlet property="lineView" destination="iMa-6H-fVy" id="M40-qF-cbh"/>
+                <outlet property="lineViewLeft" destination="keG-x5-Xac" id="aWA-YA-8VG"/>
+                <outlet property="lineViewRight" destination="AAz-gL-ksd" id="WMa-gV-qaf"/>
                 <outlet property="nameLabel" destination="VKF-15-iBN" id="y1m-Ui-HZd"/>
                 <outlet property="nameLabelHeight" destination="Ozp-NF-teP" id="Ypl-YM-QOD"/>
                 <outlet property="nameLabelLeft" destination="Gal-EO-4L6" id="sXh-IL-SvE"/>

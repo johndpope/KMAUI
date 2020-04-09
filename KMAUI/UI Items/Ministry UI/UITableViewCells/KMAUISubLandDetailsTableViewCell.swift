@@ -81,7 +81,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLand.subLandPercent * 100)) %"))
         if subLand.extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(subLand.extraPrice.formatNumbersAfterDot().withCommas())"))
-            
+            // Setup the paid status
             if subLand.paid {
                 rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
             } else {
@@ -121,7 +121,7 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
         if let pointCell = tableView.dequeueReusableCell(withIdentifier: KMAUIRulesPointTableViewCell.id) as? KMAUIRulesPointTableViewCell {
             pointCell.subLandDetails = true
             pointCell.rule = rules[indexPath.row]
-            pointCell.lineView.isHidden = indexPath.row == 4
+            pointCell.lineView.isHidden = indexPath.row == rules.count - 1
            
             return pointCell
         }

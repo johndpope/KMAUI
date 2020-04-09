@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIViewAttachmentsTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="KMAUIViewAttachmentsTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QON-nm-KZR">
+                        <rect key="frame" x="246" y="16" width="58" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="4NR-4B-fYd"/>
+                            <constraint firstAttribute="width" constant="58" id="KtA-wn-U4u"/>
+                        </constraints>
+                        <state key="normal" image="paperclipIcon"/>
+                        <connections>
+                            <action selector="paperclipButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="DL6-Bk-JW5"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUa-91-CWl" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="16" y="0.0" width="214" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="2Fu-nY-5aU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="oUa-91-CWl" secondAttribute="bottom" id="1t5-4o-uxI"/>
+                    <constraint firstItem="oUa-91-CWl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="3nV-S2-whY"/>
+                    <constraint firstItem="QON-nm-KZR" firstAttribute="leading" secondItem="oUa-91-CWl" secondAttribute="trailing" constant="16" id="7Gc-kY-ObD"/>
+                    <constraint firstAttribute="trailing" secondItem="QON-nm-KZR" secondAttribute="trailing" constant="16" id="YxK-fw-AXt"/>
+                    <constraint firstItem="oUa-91-CWl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="edi-K6-t0K"/>
+                    <constraint firstItem="QON-nm-KZR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jIf-8m-aNO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="paperclipButton" destination="QON-nm-KZR" id="stv-Ae-XgU"/>
+                <outlet property="titleLabel" destination="oUa-91-CWl" id="I8h-RV-Pzc"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="164.73214285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paperclipIcon" width="20" height="20"/>
+    </resources>
+</document>

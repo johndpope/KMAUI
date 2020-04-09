@@ -2113,6 +2113,7 @@ public struct KMAUISubLandStruct {
     // Region details
     public var regionId = ""
     public var regionName = ""
+    public var rules = [KMAUILotteryRule]()
     
     public init() {}
     
@@ -2271,6 +2272,76 @@ public struct KMAUISubLandStruct {
                 if let extraPrice = itemProperties["extraPrice"] as? Double {
                     self.extraPrice = extraPrice.formatNumbersAfterDot()
                 }
+            }
+        }
+    }
+    
+    mutating public func fillFromPush(details: [String : AnyObject]) {
+        // Sub land id
+        if let subLandId = details["subLandId"] as? String {
+            self.subLandId = subLandId
+        }
+        
+        // region
+        if let region = details["region"] as? String {
+            self.regionName = region
+        }
+        
+        // region id
+        if let regionId = details["regionId"] as? String {
+            self.regionId = regionId
+        }
+        
+        // land plan name
+        if let landPlanName = details["landPlanName"] as? String {
+            self.landPlanName = landPlanName
+        }
+        
+        // land plan id
+        if let landPlanId = details["landPlanId"] as? String {
+            self.landPlanId = landPlanId
+        }
+        
+        // object id
+        if let objectId = details["objectId"] as? String {
+            self.objectId = objectId
+        }
+    }
+    
+    mutating public func prepareRules(fullDetails: Bool? = nil) {
+        // Setup the rows
+        rules = [KMAUILotteryRule]()
+        
+        if !status.isEmpty {
+            rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
+        }
+        
+        if subLandSquare > 0 {
+            rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
+        }
+        
+        // if fullDetails - show width and height, we don't need it for the Citizen screen preview
+        if let fullDetails = fullDetails, fullDetails {
+            if subLandWidth > 0 {
+                rules.append(KMAUILotteryRule(name: "Width", value: "\(subLandWidth.formatNumbersAfterDot()) m"))
+            }
+            
+            if subLandHeight > 0 {
+                rules.append(KMAUILotteryRule(name: "Height", value: "\(subLandHeight.formatNumbersAfterDot()) m"))
+            }
+        }
+        
+        if subLandPercent > 0 {
+            rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLandPercent * 100)) %"))
+        }
+        
+        if extraPrice > 0 {
+            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
+            // Setup the paid status
+            if paid {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
+            } else {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
             }
         }
     }
