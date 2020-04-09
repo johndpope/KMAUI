@@ -179,6 +179,8 @@
 		85F4929723DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F4929523DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.swift */; };
 		85F4929823DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85F4929623DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.xib */; };
 		85F6B17023B68AD80010CE00 /* KMAUIPolice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F6B16F23B68AD80010CE00 /* KMAUIPolice.swift */; };
+		E9A6DEB2243F9E7600615A49 /* KMAUIDepartmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A6DEB0243F9E7500615A49 /* KMAUIDepartmentTableViewCell.swift */; };
+		E9A6DEB3243F9E7600615A49 /* KMAUIDepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9A6DEB1243F9E7600615A49 /* KMAUIDepartmentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -357,6 +359,8 @@
 		85F4929523DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIAnalysisBlockTableViewCell.swift; sourceTree = "<group>"; };
 		85F4929623DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUIAnalysisBlockTableViewCell.xib; sourceTree = "<group>"; };
 		85F6B16F23B68AD80010CE00 /* KMAUIPolice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIPolice.swift; sourceTree = "<group>"; };
+		E9A6DEB0243F9E7500615A49 /* KMAUIDepartmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAUIDepartmentTableViewCell.swift; sourceTree = "<group>"; };
+		E9A6DEB1243F9E7600615A49 /* KMAUIDepartmentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KMAUIDepartmentTableViewCell.xib; sourceTree = "<group>"; };
 		EECBDD1DE69FE363230BA979 /* Pods-KMAUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KMAUI.debug.xcconfig"; path = "Target Support Files/Pods-KMAUI/Pods-KMAUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -635,6 +639,8 @@
 				8518FDDF241AB61900EED482 /* KMAUISubLandPercentTableViewCell.xib */,
 				859A2496242254510002BB72 /* KMAUICitizenTableViewCell.swift */,
 				859A2497242254510002BB72 /* KMAUICitizenTableViewCell.xib */,
+				E9A6DEB0243F9E7500615A49 /* KMAUIDepartmentTableViewCell.swift */,
+				E9A6DEB1243F9E7600615A49 /* KMAUIDepartmentTableViewCell.xib */,
 				85DA22ED2423908200E83F53 /* KMAUICitizenInfoTableViewCell.swift */,
 				85DA22EE2423908200E83F53 /* KMAUICitizenInfoTableViewCell.xib */,
 				85DA22F12423BF7500E83F53 /* KMAUIPropertyTableViewCell.swift */,
@@ -814,6 +820,7 @@
 				85C4105D23B1347900FEE604 /* KMAUIFoursquareAttributesTableViewCell.xib in Resources */,
 				85E0CEB623C3CBBD0018E34C /* KMAPersonCollectionViewCell.xib in Resources */,
 				85F4929823DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.xib in Resources */,
+				E9A6DEB3243F9E7600615A49 /* KMAUIDepartmentTableViewCell.xib in Resources */,
 				85DD748D23ABFFF900CC38B9 /* KMAUIDashboardImageTableViewCell.xib in Resources */,
 				8518FDE1241AB61900EED482 /* KMAUISubLandPercentTableViewCell.xib in Resources */,
 				85891772243E19F900610F7E /* KMAUIViewAttachmentsTableViewCell.xib in Resources */,
@@ -958,6 +965,7 @@
 				8582A3762428D391001F4BA1 /* KMAUILotteryResultTableViewCell.swift in Sources */,
 				85C72F4923B2392200917B62 /* KMAUIFoursquareTipTableViewCell.swift in Sources */,
 				85F4929723DB8C55008D4AFD /* KMAUIAnalysisBlockTableViewCell.swift in Sources */,
+				E9A6DEB2243F9E7600615A49 /* KMAUIDepartmentTableViewCell.swift in Sources */,
 				8589176D243E024B00610F7E /* KMAUITitleDetailsViewTableViewCell.swift in Sources */,
 				857E934123B124DA00BD271B /* KMAUIDashboardAddressTableViewCell.swift in Sources */,
 				85E0B32323A813A200547786 /* KMAUIDashboardAnalysisTableViewCell.swift in Sources */,
