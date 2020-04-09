@@ -48,6 +48,7 @@ final public class KMAUIParse {
         }
         
         if let updatedAfter = updatedAfter {
+            print("Verifying updated after \(updatedAfter)")
             mapAreaQuery.whereKey("updatedAt", greaterThan: updatedAfter)
         }
         
