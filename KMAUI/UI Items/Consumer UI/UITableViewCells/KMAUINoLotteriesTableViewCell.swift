@@ -56,5 +56,6 @@ public class KMAUINoLotteriesTableViewCell: UITableViewCell {
     public func setupCell() {
         titleLabel.text = rowData.rowName
         infoLabel.text = rowData.rowValue
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
     }
 }
