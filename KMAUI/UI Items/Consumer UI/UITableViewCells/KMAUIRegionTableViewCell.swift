@@ -60,7 +60,7 @@ public class KMAUIRegionTableViewCell: UITableViewCell {
     
     public func setupCell() {
         titleLabel.text = region.nameE
-        infoLabel.text = "Citizens queue – \(region.citizensQueueCount)"
+        infoLabel.text = "Citizens queue – \(region.lotteryMembersCount)"
         
         if region.joined {
             joinButton.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
