@@ -66,9 +66,9 @@ public class KMAUIRegionTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.alpha = KMAUIConstants.shared.KMAUIMainBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
-            bgView.alpha = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
     
