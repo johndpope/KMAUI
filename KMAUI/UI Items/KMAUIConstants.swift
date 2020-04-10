@@ -134,6 +134,7 @@ public class KMAUIConstants {
     public let approvedDocumentBadge = UIImage(named: "approvedDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     // Lotteries
     public let noLotteriesIcon = UIImage(named: "noLotteriesIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let closeImage = UIImage(named: "closeImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
