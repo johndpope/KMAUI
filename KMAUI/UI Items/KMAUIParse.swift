@@ -158,7 +158,7 @@ final public class KMAUIParse {
      Get lotteries for region
      */
     
-    public func getLotteries(regionId: String, updatedAfter: Date? = nil, completion: @escaping (_ updatedLotteries: [KMAUILandPlanStruct])->()) {
+    public func getLotteries(regionId: String, updatedAfter: Date, hasDate: Bool, completion: @escaping (_ updatedLotteries: [KMAUILandPlanStruct])->()) {
         let query = PFQuery(className: "KMALandPlan")
         query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
         query.includeKey("region")
@@ -166,7 +166,7 @@ final public class KMAUIParse {
         query.includeKey("responsibleDivision.mapArea")
         query.order(byAscending: "planName")
         
-        if let updatedAfter = updatedAfter {
+        if hasDate {
             query.whereKey("updatedAt", greaterThan: updatedAfter)
         }
         
