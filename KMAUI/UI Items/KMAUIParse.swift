@@ -115,6 +115,45 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Joined regions for lotteries
+    
+    public func getLandPlanCitizenRegions(citizenId: String, updatedAfter: Date? = nil, completion: @escaping (_ joinedRegionIds: [String], _ leftRegionIds: [String])->()) {
+        let query = PFQuery(className: "KMALotteryMember")
+        query.whereKey("citizen", equalTo: PFUser(withoutDataWithObjectId: citizenId))
+        
+        if let updatedAfter = updatedAfter {
+            query.whereKey("updatedAt", greaterThan: updatedAfter)
+        }
+        
+        query.findObjectsInBackground { (regions, error) in
+            // Get the changes for joined / left regions queues
+            var joinedRegionIds = [String]()
+            var leftRegionIds = [String]()
+            
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            } else if let regions = regions {
+                for region in regions {
+                    if let regionObject = region["region"] as? PFObject, let objectId = regionObject.objectId {
+                        if let isActive = region["isActive"] as? Bool {
+                            if isActive {
+                                if !joinedRegionIds.contains(objectId) {
+                                    joinedRegionIds.append(objectId)
+                                }
+                            } else {
+                                if !leftRegionIds.contains(objectId) {
+                                    leftRegionIds.append(objectId)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            completion(joinedRegionIds, leftRegionIds)
+        }
+    }
+    
     /**
      Get Saudi Arabia regions
      */
