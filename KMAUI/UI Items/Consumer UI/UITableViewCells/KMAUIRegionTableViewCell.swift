@@ -38,16 +38,14 @@ public class KMAUIRegionTableViewCell: UITableViewCell {
         // Join button
         joinButton.layer.cornerRadius = 17
         joinButton.clipsToBounds = true
-        
+        joinButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(17)
+
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        
-        // Join button
-        joinButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(17)
-        
+
         // No standard selection requried
         selectionStyle = .none
     }
