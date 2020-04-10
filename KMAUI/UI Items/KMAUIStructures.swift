@@ -1996,6 +1996,7 @@ public struct KMAMapAreaStruct {
     public var periodEnd = Date()
     // Queue count
     public var joined = false
+    public var lotteries = [KMAUILandPlanStruct]()
 
     public init() {}
     
@@ -2371,7 +2372,6 @@ public struct KMAUILandPlanStruct {
     // Grid parameters for a block, each block has rowsPerBlock lines with Sub Lands inside
     public var itemsInSubBlockHorizontal: Int = 5
     public var itemsInSubBlockVertical: Int = 2
-   
     public var rowsPerBlock: Int = 4
     // Objects and results
     public var landFeatures = [[String: Any]]()
@@ -2428,6 +2428,9 @@ public struct KMAUILandPlanStruct {
     public var queueResultsArray = [KMAPerson]()
     public var queueDisplay = [KMAPerson]()
     public var queueResultsDisplay = [KMAPerson]()
+    // Parse object
+    public var createdAt = Date()
+    public var updatedAt = Date()
     
     public init() {}
     
@@ -3165,6 +3168,14 @@ public struct KMAUILandPlanStruct {
         // landPlanId
         if let landPlanIdValue = plan.objectId {
             self.landPlanId = landPlanIdValue
+        }
+        // createdAt
+        if let createdAt = plan.createdAt {
+            self.createdAt = createdAt
+        }
+        // updatedAt
+        if let updatedAt = plan.updatedAt {
+            self.updatedAt = updatedAt
         }
         // planName
         if let planName = plan["planName"] as? String {
