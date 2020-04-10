@@ -89,6 +89,6 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         titleLabel.text = lottery.landName
         
         // Sub lands count
-        subLandsCountLabel.text = "\(lottery.subLandArray.count)"
+        subLandsCountLabel.text = "\(lottery.subLandsCount)"
     }
 }
