@@ -155,6 +155,51 @@ final public class KMAUIParse {
     }
     
     /**
+     Get lotteries for region
+     */
+    
+    public func getLotteries(regionId: String, updatedAfter: Date? = nil, completion: @escaping (_ updatedLotteries: [KMAUILandPlanStruct])->()) {
+        let query = PFQuery(className: "KMALandPlan")
+        query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        query.includeKey("region")
+        query.includeKey("responsibleDivision")
+        query.includeKey("responsibleDivision.mapArea")
+        query.order(byAscending: "planName")
+        
+        if let updatedAfter = updatedAfter {
+            query.whereKey("updatedAt", greaterThan: updatedAfter)
+        }
+        
+        query.findObjectsInBackground { (lotteriesArray, error) in
+            var updatedLotteries = [KMAUILandPlanStruct]()
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let lotteriesArray = lotteriesArray {
+                print("Lotteries found: \(lotteriesArray.count)")
+                
+                for lottery in lotteriesArray {
+                    // Update in Core Data
+                    var lotteryObject = KMAUILandPlanStruct()
+                    lotteryObject.fillFromParse(plan: lottery)
+                    // region id
+                    if let region = lottery["region"] as? PFObject {
+                        // Region id
+                        var regionStruct = KMAMapAreaStruct()
+                        regionStruct.fillFrom(object: region)
+                        lotteryObject.region = regionStruct
+                        lotteryObject.regionId = regionStruct.objectId
+                    }
+                    // Add lottery into an array
+                    updatedLotteries.append(lotteryObject)
+                }
+            }
+            
+            completion(updatedLotteries)
+        }
+    }
+    
+    /**
      Get Saudi Arabia regions
      */
     
