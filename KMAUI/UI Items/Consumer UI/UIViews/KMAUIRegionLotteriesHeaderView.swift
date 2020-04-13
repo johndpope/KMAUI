@@ -53,6 +53,6 @@ public class KMAUIRegionLotteriesHeaderView: UIView {
     
     public func setupHeader() {
         regionNameLabel.text = headerData.rowName
-        lotteriesCountLabel.text = headerData.rowValue
+        lotteriesCountLabel.isHidden = headerData.rowValue == "0"
     }
 }

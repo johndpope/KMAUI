@@ -131,7 +131,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         }
 
         for statItem in performanceStruct.rows {
-            // Creating hte horizontal stack view
+            // Creating the horizontal stack view
             let stackView = UIStackView()
             stackView.axis = NSLayoutConstraint.Axis.horizontal
             stackView.distribution = UIStackView.Distribution.fill
