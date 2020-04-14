@@ -2117,6 +2117,9 @@ public struct KMAUISubLandStruct {
     public var regionId = ""
     public var regionName = ""
     public var rules = [KMAUILotteryRule]()
+    // Parse values
+    public var createdAt = Date()
+    public var updatedAt = Date()
     
     public init() {}
     
@@ -2132,6 +2135,14 @@ public struct KMAUISubLandStruct {
         // objectId
         if let subLandId = item.objectId {
             self.objectId = subLandId
+        }
+        // createdAt
+        if let createdAt = item.createdAt {
+            self.createdAt = createdAt
+        }
+        // updatedAt
+        if let updatedAt = item.updatedAt {
+            self.updatedAt = updatedAt
         }
         // subLandId
         if let subLandId = item["subLandId"] as? String {
