@@ -85,7 +85,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         titleLabel.text = rowData.rowName
         // Setup data depedning on the title
         if rowData.rowName == "Upload a document" {
-            infoLabel.attributedText = KMAUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you received in the lottery")
+            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you received in the lottery")
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
             largeImageView.layer.borderColor = UIColor.clear.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
