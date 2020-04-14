@@ -1041,31 +1041,18 @@ final public class KMAUIParse {
     
     public func getDepartments(sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, completion: @escaping ([KMADepartmentStruct]) -> Void) {
         
-        var resultQuery: PFQuery<PFObject>?
+        let query = PFQuery(className:"KMADepartment")
         
         if let sw = sw,
             let ne = ne {
-            let boundsQuery = PFQuery(className:"KMADepartment")
-            
-            boundsQuery.whereKey("mapArea.minX", lessThan: ne.longitude)
-            boundsQuery.whereKey("mapArea.maxX", greaterThan: sw.longitude)
-            boundsQuery.whereKey("mapArea.minY", lessThan: ne.latitude)
-            boundsQuery.whereKey("mapArea.maxY", greaterThan: sw.latitude)
-            
-            let locationQuery = PFQuery(className:"KMADepartment")
-            
             let southWest = PFGeoPoint(latitude: sw.latitude, longitude: sw.longitude)
             let northEast = PFGeoPoint(latitude: ne.latitude, longitude: ne.longitude)
-            locationQuery.whereKey("mapArea.location", withinGeoBoxFromSouthwest: southWest, toNortheast: northEast)
-            
-            resultQuery = PFQuery.orQuery(withSubqueries: [boundsQuery, locationQuery])
-        } else {
-            resultQuery = PFQuery(className:"KMADepartment")
+            query.whereKey("location", withinGeoBoxFromSouthwest: southWest, toNortheast: northEast)
         }
         
-        resultQuery?.whereKey("type", equalTo: "department")
-        resultQuery?.includeKey("mapArea")
-        resultQuery?.findObjectsInBackground { (departments, error) in
+        query.whereKey("type", equalTo: "department")
+        query.includeKey("mapArea")
+        query.findObjectsInBackground { (departments, error) in
             var newDepartments = [KMADepartmentStruct]()
             
             if let error = error {
