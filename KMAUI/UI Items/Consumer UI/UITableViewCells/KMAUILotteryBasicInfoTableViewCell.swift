@@ -23,7 +23,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var isExpanded = false
-    public static let id = "KMAUILotteryBasicInfoTableViewCell1"
+    public static let id = "KMAUILotteryBasicInfoTableViewCell"
     public var selectedSegment = 0
     public var lottery = KMAUILandPlanStruct() {
         didSet {
