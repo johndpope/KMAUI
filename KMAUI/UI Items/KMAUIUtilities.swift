@@ -607,6 +607,35 @@ public class KMAUIUtilities {
         return statusColor
     }
     
+    /**
+     Higlight words in string for label
+     */
+    
+    public func highlight(words: [String], in str: String) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: str)
+        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIBoldFont.withSize(12)]
+        
+        let nsstr = str as NSString
+        var searchRange = NSMakeRange(0, nsstr.length)
+        
+        for word in words {
+            while true {
+                let foundRange = nsstr.range(of: word, options: [], range: searchRange)
+                if foundRange.location == NSNotFound {
+                    break
+                }
+                
+                attributedString.setAttributes(highlightAttributes, range: foundRange)
+                
+                let newLocation = foundRange.location + foundRange.length
+                let newLength = nsstr.length - newLocation
+                searchRange = NSMakeRange(newLocation, newLength)
+            }
+        }
+        
+        return attributedString
+    }
+    
     // MARK: - Register cell for tableView / collectionView
     
     public func registerCells(identifiers: [String], tableView: UITableView) {
