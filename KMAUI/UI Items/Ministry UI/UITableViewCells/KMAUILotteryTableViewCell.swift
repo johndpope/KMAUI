@@ -142,7 +142,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         
         // Lottery status
         statusLabel.text = lottery.lotteryStatus
-        statusLabel.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
+        statusView.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         statusView.alpha = 1
         statusViewWidth.constant = 7
