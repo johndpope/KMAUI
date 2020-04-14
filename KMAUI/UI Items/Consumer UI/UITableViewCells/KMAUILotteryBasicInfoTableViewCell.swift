@@ -77,13 +77,8 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Lottery status
-        if lottery.lotteryCompleted {
-            statusLabel.text = "     completed     "
-            statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-        } else {
-            statusLabel.text = "     in progress     "
-            statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-        }
+        statusLabel.text = lottery.lotteryStatus.addGaps()
+        statusLabel.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         // Lottery name
         titleLabel.text = lottery.landName

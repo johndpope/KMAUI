@@ -591,6 +591,22 @@ public class KMAUIUtilities {
         }
     }
     
+    public func lotteryColor(status: String) -> UIColor {
+        var statusColor = KMAUIConstants.shared.KMABrightBlueColor
+        
+        if status == "On approvement" {
+            statusColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+        } else if status == "Approved to start" {
+            statusColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        } else if status == "Finished" {
+            statusColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        } else if status == "Rejected" {
+            statusColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        }
+        
+        return statusColor
+    }
+    
     // MARK: - Register cell for tableView / collectionView
     
     public func registerCells(identifiers: [String], tableView: UITableView) {
@@ -1031,6 +1047,23 @@ public extension String {
     
     func withSquareMeters() -> String {
         return "\(self) m²"
+    }
+    
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
+    
+    func addGaps() -> String {
+        return "\(KMAUIConstants.shared.stringGap)\(self)\(KMAUIConstants.shared.stringGap)"
     }
 }
 

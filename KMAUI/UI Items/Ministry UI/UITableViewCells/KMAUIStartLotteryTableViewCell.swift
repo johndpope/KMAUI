@@ -61,6 +61,7 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
             KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
                 self.lottery = planUpdated
                 self.lottery.lotteryCompleted = landPlanUpdated.lotteryCompleted
+                self.lottery.lotteryStatus = landPlanUpdated.lotteryStatus
                 self.lottery.resultLoaded = true
                 self.callback?(self.lottery)
             }

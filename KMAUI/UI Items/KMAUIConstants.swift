@@ -135,6 +135,8 @@ public class KMAUIConstants {
     // Lotteries
     public let noLotteriesIcon = UIImage(named: "noLotteriesIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let closeImage = UIImage(named: "closeImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    // String gap
+    public let stringGap = "     "
 
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
@@ -179,21 +181,4 @@ public class KMAUIConstants {
     // "3kkfx7unbbewky5vx3qb7yjt"
     // "vb8sbaprpy7a85dygjdpjznf"
     //    "z2jerfddwxkye3w653muzfjy"
-}
-
-// MARK: - String extension
-
-public extension String {
-    var htmlToAttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return NSAttributedString() }
-        do {
-            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
-        } catch {
-            return NSAttributedString()
-        }
-    }
-    
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
 }

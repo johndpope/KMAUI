@@ -776,6 +776,7 @@ final public class KMAUIParse {
                 // Update the Land plan status
                 let landPlanObject = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
                 landPlanObject["lotteryCompleted"] = true
+                landPlanObject["lotteryStatus"] = "Finished"
                 
                 landPlanObject.saveInBackground { (saveSuccess, saveError) in
                     KMAUIUtilities.shared.stopLoadingWith { (done) in
@@ -785,6 +786,7 @@ final public class KMAUIParse {
                         } else {
                             print("Land Plan status changed to completed.")
                             landPlan.lotteryCompleted = true
+                            landPlan.lotteryStatus = "Finished"
                         }
                         
                         completion(landPlan)

@@ -140,13 +140,9 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsLabel.text = "Sub Lands"
         subLandsCountLabel.text = "\(lottery.totalCount)"
         
-        if lottery.lotteryCompleted {
-            statusLabel.text = "Completed"
-            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-        } else {
-            statusLabel.text = "In progress"
-            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-        }
+        // Lottery status
+        statusLabel.text = lottery.lotteryStatus
+        statusLabel.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         statusView.alpha = 1
         statusViewWidth.constant = 7
