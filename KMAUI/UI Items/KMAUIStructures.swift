@@ -2410,7 +2410,6 @@ public struct KMAUILandPlanStruct {
     public var subLandIndex = ""
     public var subLandType = ""
     public var subLandObjectId = ""
-    public var lotteryCompleted = false
     public var lotteryStatus = ""
     // Counts and percents
     public var rulesArray = [KMAUILotteryRule]()
@@ -3197,10 +3196,6 @@ public struct KMAUILandPlanStruct {
         // lotterySubLandsCount
         if let lotterySubLandsCount = plan["lotterySubLandsCount"] as? Int {
             self.lotterySubLandsCount = lotterySubLandsCount
-        }
-        // lotteryCompleted
-        if let lotteryCompletedValue = plan["lotteryCompleted"] as? Bool {
-            self.lotteryCompleted = lotteryCompletedValue
         }
         // lotteryStatus
         if let lotteryStatusValue = plan["lotteryStatus"] as? String {

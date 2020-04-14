@@ -775,7 +775,6 @@ final public class KMAUIParse {
                 }
                 // Update the Land plan status
                 let landPlanObject = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
-                landPlanObject["lotteryCompleted"] = true
                 landPlanObject["lotteryStatus"] = "Finished"
                 
                 landPlanObject.saveInBackground { (saveSuccess, saveError) in
@@ -785,7 +784,6 @@ final public class KMAUIParse {
                             KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(saveError.localizedDescription)") { (done) in }
                         } else {
                             print("Land Plan status changed to completed.")
-                            landPlan.lotteryCompleted = true
                             landPlan.lotteryStatus = "Finished"
                         }
                         
