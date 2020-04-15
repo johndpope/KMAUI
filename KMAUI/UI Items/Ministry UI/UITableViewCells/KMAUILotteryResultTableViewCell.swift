@@ -114,6 +114,10 @@ public class KMAUILotteryResultTableViewCell: UITableViewCell {
         // Sub land id
         subLandIdLabel.text = "Land ID \(subLand.subLandId)" // "\nObject ID: \(subLand.objectId)"
         // Address
-        addressLabel.text = "\(region.nameE) Region"
+        if subLand.regionName.isEmpty {
+            addressLabel.text = ""
+        } else {
+            addressLabel.text = "\(region.nameE) Region"
+        }
     }
 }

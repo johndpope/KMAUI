@@ -42,6 +42,11 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     
     public func setupCell() {
         titleLabel.text = "Land ID \(subLand.subLandId)"
-        infoLabel.text = "\(subLand.regionName) Region"
+        
+        if subLand.regionName.isEmpty {
+            infoLabel.text = ""
+        } else {
+            infoLabel.text = "\(subLand.regionName) Region"
+        }
     }
 }
