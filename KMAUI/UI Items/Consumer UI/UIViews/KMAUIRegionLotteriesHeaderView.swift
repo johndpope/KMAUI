@@ -45,7 +45,7 @@ public class KMAUIRegionLotteriesHeaderView: UIView {
         lotteriesCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         lotteriesCountLabel.textColor = KMAUIConstants.shared.KMAUIViewBgColor
         lotteriesCountLabel.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
-        lotteriesCountLabel.layer.cornerRadius = 10
+        lotteriesCountLabel.layer.cornerRadius = 11
         lotteriesCountLabel.clipsToBounds = true
         lotteriesCountLabel.textAlignment = .center
         
