@@ -48,7 +48,6 @@ final public class KMAUIParse {
         }
         
         if let updatedAfter = updatedAfter {
-            print("Verifying updated after \(updatedAfter)")
             mapAreaQuery.whereKey("updatedAt", greaterThan: updatedAfter)
         }
         
@@ -61,8 +60,6 @@ final public class KMAUIParse {
             if let error = error {
                 print("Error getting countries: \(error.localizedDescription).")
             } else if let countriesArray = countriesArray {
-                print("\nTotal items loaded: \(countriesArray.count)")
-                
                 for country in countriesArray {
                     var item = KMAMapAreaStruct()
                     item.fillFrom(object: country)
@@ -99,8 +96,6 @@ final public class KMAUIParse {
             if let error = error {
                 print("Error getting countries: \(error.localizedDescription).")
             } else if let countriesArray = countriesArray {
-                print("\nTotal items loaded: \(countriesArray.count)")
-                
                 var items: [KMAMapAreaStruct] = []
                 for country in countriesArray {
                     var item = KMAMapAreaStruct()
@@ -176,8 +171,6 @@ final public class KMAUIParse {
             if let error = error {
                 print(error.localizedDescription)
             } else if let lotteriesArray = lotteriesArray {
-                print("Lotteries found: \(lotteriesArray.count)")
-                
                 for lottery in lotteriesArray {
                     // Update in Core Data
                     var lotteryObject = KMAUILandPlanStruct()
