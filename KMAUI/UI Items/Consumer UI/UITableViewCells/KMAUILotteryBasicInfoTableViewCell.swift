@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import KMAUI
 
 public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var statusLabelHeight: NSLayoutConstraint!
+    @IBOutlet public weak var statusLabelBottom: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var stackViewBg: UIView!
     @IBOutlet public weak var stackViewBgTop: NSLayoutConstraint!
@@ -20,6 +23,12 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var viewDetailsButton: UIButton!
     @IBOutlet public weak var viewDetailsButtonTop: NSLayoutConstraint!
     @IBOutlet public weak var viewDetailsButtonHeight: NSLayoutConstraint!
+    @IBOutlet public weak var medalImageView: UIImageView!
+    @IBOutlet public weak var medalImageViewHeight: NSLayoutConstraint!
+    @IBOutlet public weak var medalImageViewBottom: NSLayoutConstraint!
+    // Action buttons
+    @IBOutlet public weak var declineButton: UIButton!
+    @IBOutlet public weak var acceptLandButton: UIButton!
     
     // MARK: - Variables
     public var isExpanded = false
@@ -27,10 +36,16 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     public var selectedSegment = 0
     public var lottery = KMAUILandPlanStruct() {
         didSet {
-            setupCell()
+            setupLottery()
+        }
+    }
+    public var subLand = KMAUISubLandStruct() {
+        didSet {
+            setupSubLand()
         }
     }
     public var canHighlight = false
+    public var buttonPressed: ((String) -> Void)?
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -58,6 +73,28 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         viewDetailsButton.layer.cornerRadius = 17
         viewDetailsButton.clipsToBounds = true
         
+        // declineButton
+        declineButton.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        declineButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(17)
+        declineButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
+        declineButton.layer.cornerRadius = 17
+        declineButton.clipsToBounds = true
+        
+        // acceptLandButton
+        acceptLandButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        acceptLandButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(17)
+        acceptLandButton.setTitleColor(UIColor.white, for: .normal)
+        acceptLandButton.layer.cornerRadius = 17
+        acceptLandButton.clipsToBounds = true
+        
+        // Setup medal image view
+        medalImageView.image = KMAUIConstants.shared.medalIcon.withRenderingMode(.alwaysTemplate)
+        medalImageView.tintColor = KMAUIConstants.shared.KMAUITextColor
+        
+        // Stack view
+        stackView.backgroundColor = UIColor.clear
+        stackViewBg.backgroundColor = UIColor.clear
+        
         // No standard selection requried
         selectionStyle = .none
     }
@@ -82,11 +119,20 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         }
     }
     
-    public func setupCell() {
+    public func setupLottery() {
+        // No need to highlight the data
+        canHighlight = false
+        
+        // Show status, hide medal
+        setupView(mode: "status")
+        viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
+        
         // Hide view details
         hideViewDetails()
+        
         // Setup data rows
         var rows = [KMAUIRowData]()
+        
         // Check the segment
         if selectedSegment == 0 {
             // Sub lands count, citizens count
@@ -95,10 +141,8 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
             // Sub lands count, citizens count, View details button
             rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)"), KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
             if lottery.lotteryStatus == "Approved to start" {
-                showViewDetails()
+                showViewDetails(mode: "details")
             }
-        } else if selectedSegment == 2 {
-            // Medal on top, land size percent, land id, address, decline or accept land / declined
         }
         
         // Lottery status
@@ -109,8 +153,65 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         titleLabel.text = lottery.landName
         
         // Stack view
-        stackViewBg.backgroundColor = UIColor.clear
         setupStackView(rows: rows)
+    }
+    
+    public func setupSubLand() {
+        // Can highlight the sub land to review the details screen
+        canHighlight = true
+        
+        // Hide status, show medal
+        setupView(mode: "medal")
+        
+        // Setup sub land name
+        titleLabel.text = subLand.landPlanName
+        
+        // Stack view
+        let rows = [KMAUIRowData(rowName: "Land ID", rowValue: "\(subLand.subLandId)"), KMAUIRowData(rowName: "Region", rowValue: "\(subLand.regionName)"), KMAUIRowData(rowName: "Land percent", rowValue: "\(Int(subLand.subLandPercent * 100)) %")]
+        setupStackView(rows: rows)
+        
+        // Show buttons
+        showViewDetails(mode: "action")
+        
+        // Setup buttons
+        if subLand.status == "pending" {
+            declineButton.alpha = 1
+            acceptLandButton.alpha = 1
+            viewDetailsButton.alpha = 0
+            declineButton.setTitle("Decline", for: .normal)
+            acceptLandButton.setTitle("Accept land", for: .normal)
+        } else {
+            declineButton.alpha = 0
+            acceptLandButton.alpha = 0
+            viewDetailsButton.alpha = 1
+            viewDetailsButton.isUserInteractionEnabled = false
+            
+            if subLand.status == "declined" {
+                viewDetailsButton.setTitle("Declined", for: .normal)
+                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIRedProgressColor, for: .normal)
+            } else if subLand.status == "accepted" {
+                viewDetailsButton.setTitle("Land accepted", for: .normal)
+                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreenProgressColor, for: .normal)
+            }
+        }
+    }
+    
+    public func setupView(mode: String) {
+        if mode == "status" {
+            statusLabel.alpha = 1
+            statusLabelHeight.constant = 26
+            statusLabelBottom.constant = 12
+            medalImageView.alpha = 0
+            medalImageViewHeight.constant = 0
+            medalImageViewBottom.constant = 0
+        } else if mode == "medal" {
+            statusLabel.alpha = 0
+            statusLabelHeight.constant = 0
+            statusLabelBottom.constant = 0
+            medalImageView.alpha = 1
+            medalImageViewHeight.constant = 68
+            medalImageViewBottom.constant = 12
+        }
     }
     
     /**
@@ -127,10 +228,23 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
      Show view details
      */
     
-    func showViewDetails() {
-        viewDetailsButton.alpha = 1
+    func showViewDetails(mode: String) {
         viewDetailsButtonTop.constant = 24
         viewDetailsButtonHeight.constant = 34
+        
+        declineButton.isUserInteractionEnabled = true
+        acceptLandButton.isUserInteractionEnabled = true
+        viewDetailsButton.isUserInteractionEnabled = true
+        
+        if mode == "details" {
+            viewDetailsButton.alpha = 1
+            declineButton.alpha = 0
+            acceptLandButton.alpha = 0
+        } else if mode == "action" {
+            viewDetailsButton.alpha = 0
+            declineButton.alpha = 1
+            acceptLandButton.alpha = 1
+        }
     }
     
     /**
@@ -183,5 +297,19 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         }
         stackViewBg.alpha = 1
         stackViewBgTop.constant = 16
+    }
+
+    // MARK: - IBActions
+    
+    @IBAction func declineButtonPressed(_ sender: Any) {
+        buttonPressed?("decline")
+    }
+    
+    @IBAction func acceptLandButtonPressed(_ sender: Any) {
+        buttonPressed?("acceptLand")
+    }
+    
+    @IBAction func viewDetailsButtonPressed(_ sender: Any) {
+        buttonPressed?("viewDetails")
     }
 }

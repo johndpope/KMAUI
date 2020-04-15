@@ -83,7 +83,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         rules = [KMAUILotteryRule]()
         rules.append(KMAUILotteryRule(name: "Status", value: subLand.status.capitalized))
         rules.append(KMAUILotteryRule(name: "Square", value: "\(subLand.subLandSquare.formatNumbersAfterDot()) m²"))
-        rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLand.subLandPercent * 100)) %"))
+        rules.append(KMAUILotteryRule(name: "Land percent", value: "\(Int(subLand.subLandPercent * 100)) %"))
         if subLand.extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(subLand.extraPrice.formatNumbersAfterDot().withCommas())"))
             // Setup the paid status

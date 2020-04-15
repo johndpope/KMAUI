@@ -2346,7 +2346,7 @@ public struct KMAUISubLandStruct {
         }
         
         if subLandPercent > 0 {
-            rules.append(KMAUILotteryRule(name: "Square percent", value: "\(Int(subLandPercent * 100)) %"))
+            rules.append(KMAUILotteryRule(name: "Land percent", value: "\(Int(subLandPercent * 100)) %"))
         }
         
         if extraPrice > 0 {
