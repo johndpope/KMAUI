@@ -221,6 +221,9 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         viewDetailsButton.alpha = 0
         viewDetailsButtonTop.constant = 0
         viewDetailsButtonHeight.constant = 0
+        // Hide buttons
+        declineButton.alpha = 0
+        acceptLandButton.alpha = 0
     }
     
     /**
