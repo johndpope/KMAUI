@@ -135,6 +135,8 @@ public class KMAUIConstants {
     // Lotteries
     public let noLotteriesIcon = UIImage(named: "noLotteriesIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let closeImage = UIImage(named: "closeImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let medalIcon = UIImage(named: "medalIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    
     // String gap
     public let stringGap = "     "
 

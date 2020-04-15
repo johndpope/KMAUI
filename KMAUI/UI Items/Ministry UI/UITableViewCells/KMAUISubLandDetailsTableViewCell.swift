@@ -73,7 +73,12 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     public func setupCell() {
         // Name and region
         nameLabel.text = "Land ID \(subLand.subLandId)"
-        regionLabel.text = "\(subLand.regionName) Region"
+        
+        if subLand.regionName.isEmpty {
+            regionLabel.text = ""
+        } else {
+            regionLabel.text = "\(subLand.regionName) Region"
+        }
         // Setup the rows
         rules = [KMAUILotteryRule]()
         rules.append(KMAUILotteryRule(name: "Status", value: subLand.status.capitalized))
