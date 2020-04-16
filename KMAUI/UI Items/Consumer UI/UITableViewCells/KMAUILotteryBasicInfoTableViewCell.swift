@@ -124,6 +124,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         
         // Show status, hide medal
         setupView(mode: "status")
+        viewDetailsButton.setTitle("View details", for: .normal)
         viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         
         // Hide view details
