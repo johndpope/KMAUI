@@ -120,18 +120,10 @@ public class KMAUIPerson {
                     if let subLandValue = item["subLand"] as? PFObject {
                         subLandObject.fillFromParse(item: subLandValue)
                     }
-                    // Confirmed
-//                    if let confirmed = item["confirmed"] as? Bool {
-//                        subLandObject.confirmed = confirmed
-//                    }
                     // Status
                     if let status = item["status"] as? String {
                         subLandObject.status = status
                     }
-                    // Paid
-//                    if let paid = item["paid"] as? Bool {
-//                        subLandObject.paid = paid
-//                    }
                     
                     subLandArray.append(subLandObject)
                 }

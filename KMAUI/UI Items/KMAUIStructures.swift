@@ -2088,9 +2088,7 @@ public struct KMAMapAreaStruct {
 }
 
 public struct KMAUISubLandStruct {
-//    public var confirmed = false
     public var status = ""
-//    public var paid = false
     public var landPlanId = ""
     public var landPlanName = ""
     public var objectId = ""
