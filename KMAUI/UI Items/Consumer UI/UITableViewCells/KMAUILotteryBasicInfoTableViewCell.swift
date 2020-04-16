@@ -189,8 +189,8 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
             if subLand.status == "declined" {
                 viewDetailsButton.setTitle("Declined", for: .normal)
                 viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIRedProgressColor, for: .normal)
-            } else if subLand.status == "accepted" {
-                viewDetailsButton.setTitle("Land accepted", for: .normal)
+            } else {
+                viewDetailsButton.setTitle(subLand.status.capitalized, for: .normal)
                 viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreenProgressColor, for: .normal)
             }
         }
