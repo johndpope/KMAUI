@@ -52,6 +52,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     public func setupCell() {
         titleLabel.text = rowData.rowName
         infoButton.setTitle(rowData.rowValue, for: .normal)
+        infoButton.isHidden = !rowData.visibility
     }
     
     @IBAction public func infoButtonPressed(_ sender: Any) {
