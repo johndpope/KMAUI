@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIUploadFilesTableViewCell" rowHeight="217" id="KGk-i7-Jjw" customClass="KMAUIUploadFilesTableViewCell" customModule="Consumer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZi-ic-2aq">
+                        <rect key="frame" x="16" y="0.0" width="288" height="201"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PK-EB-dry">
+                                <rect key="frame" x="112" y="24" width="64" height="64"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZUf-lb-2i0">
+                                        <rect key="frame" x="17" y="19.5" width="30" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="ccZ-P5-9Tg"/>
+                                            <constraint firstAttribute="width" constant="30" id="nB1-VA-Cav"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="8MC-RD-yOd"/>
+                                    <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerX" secondItem="9PK-EB-dry" secondAttribute="centerX" id="C9P-iP-j2c"/>
+                                    <constraint firstAttribute="width" constant="64" id="Ski-2q-LjQ"/>
+                                    <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerY" secondItem="9PK-EB-dry" secondAttribute="centerY" id="wDd-dn-Ujr"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload files" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-ix-QTE">
+                                <rect key="frame" x="16" y="100" width="256" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="You can upload photo, video pr document for you sub land " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KL-Aa-WuA">
+                                <rect key="frame" x="16" y="136" width="256" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wMS-ix-QTE" secondAttribute="trailing" constant="16" id="0mh-Ln-xiX"/>
+                            <constraint firstAttribute="trailing" secondItem="5KL-Aa-WuA" secondAttribute="trailing" constant="16" id="9Ol-s6-vtu"/>
+                            <constraint firstItem="wMS-ix-QTE" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="IxJ-eB-UVq"/>
+                            <constraint firstItem="5KL-Aa-WuA" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="JMD-Q9-uWh"/>
+                            <constraint firstItem="9PK-EB-dry" firstAttribute="centerX" secondItem="LZi-ic-2aq" secondAttribute="centerX" id="Q91-9n-kJA"/>
+                            <constraint firstItem="wMS-ix-QTE" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="12" id="czf-M8-b5Y"/>
+                            <constraint firstItem="5KL-Aa-WuA" firstAttribute="top" secondItem="wMS-ix-QTE" secondAttribute="bottom" constant="4" id="rty-TI-8ph"/>
+                            <constraint firstAttribute="bottom" secondItem="5KL-Aa-WuA" secondAttribute="bottom" constant="24" id="sxh-eD-0ra"/>
+                            <constraint firstItem="9PK-EB-dry" firstAttribute="top" secondItem="LZi-ic-2aq" secondAttribute="top" constant="24" id="t8u-r6-C0W"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LZi-ic-2aq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9mu-yu-MIN"/>
+                    <constraint firstAttribute="trailing" secondItem="LZi-ic-2aq" secondAttribute="trailing" constant="16" id="BU3-OZ-G5K"/>
+                    <constraint firstItem="LZi-ic-2aq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Xg0-ex-60M"/>
+                    <constraint firstAttribute="bottom" secondItem="LZi-ic-2aq" secondAttribute="bottom" constant="16" id="zIo-GK-cov"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bgView" destination="LZi-ic-2aq" id="u3u-6T-OXj"/>
+                <outlet property="cameraImageView" destination="ZUf-lb-2i0" id="rMz-Zw-aUG"/>
+                <outlet property="circleView" destination="9PK-EB-dry" id="pRA-us-zhG"/>
+                <outlet property="infoLabel" destination="5KL-Aa-WuA" id="sCJ-Ko-RJN"/>
+                <outlet property="titleLabel" destination="wMS-ix-QTE" id="uUC-bb-muR"/>
+            </connections>
+            <point key="canvasLocation" x="-197.10144927536234" y="82.03125"/>
+        </tableViewCell>
+    </objects>
+</document>
