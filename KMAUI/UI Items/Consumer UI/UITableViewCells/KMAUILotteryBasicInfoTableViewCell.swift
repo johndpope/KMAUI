@@ -94,11 +94,6 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         stackView.backgroundColor = UIColor.clear
         stackViewBg.backgroundColor = UIColor.clear
         
-        // Hide all action buttons
-        acceptLandButton.alpha = 0
-        declineButton.alpha = 0
-        viewDetailsButton.alpha = 0
-        
         // No standard selection requried
         selectionStyle = .none
     }
@@ -124,6 +119,11 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     }
     
     public func setupLottery() {
+        // Hide all action buttons
+        acceptLandButton.alpha = 0
+        declineButton.alpha = 0
+        viewDetailsButton.alpha = 0
+        
         // No need to highlight the data
         canHighlight = false
         
@@ -162,6 +162,11 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     }
     
     public func setupSubLand() {
+        // Hide all action buttons
+        acceptLandButton.alpha = 0
+        declineButton.alpha = 0
+        viewDetailsButton.alpha = 0
+        
         // Can highlight the sub land to review the details screen
         canHighlight = true
         
