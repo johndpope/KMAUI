@@ -514,17 +514,17 @@ final public class KMAUIParse {
                                 // Update the sub land item with the confirmed, status and paid data
                                 var subLandCopy = subLandItem
                                 // Confirmed
-                                if let confirmed = result["confirmed"] as? Bool {
-                                    subLandCopy.confirmed = confirmed
-                                }
+//                                if let confirmed = result["confirmed"] as? Bool {
+//                                    subLandCopy.confirmed = confirmed
+//                                }
                                 // Status
                                 if let status = result["status"] as? String {
                                     subLandCopy.status = status
                                 }
                                 // Paid
-                                if let paid = result["paid"] as? Bool {
-                                    subLandCopy.paid = paid
-                                }
+//                                if let paid = result["paid"] as? Bool {
+//                                    subLandCopy.paid = paid
+//                                }
                                 // Update the Sub land info
                                 landPlan.lotterySubLandArray[index] = subLandCopy
                                 // Quit the loop
@@ -713,9 +713,9 @@ final public class KMAUIParse {
             newLotteryResult["citizen"] = PFUser(withoutDataWithObjectId: citizen.objectId)
             newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
             newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
-            newLotteryResult["confirmed"] = false
+//            newLotteryResult["confirmed"] = false
             newLotteryResult["status"] = "pending"
-            newLotteryResult["paid"] = false
+//            newLotteryResult["paid"] = false
             
             lotteryResults.append(newLotteryResult)
             

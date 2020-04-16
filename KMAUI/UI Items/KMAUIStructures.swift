@@ -2088,9 +2088,9 @@ public struct KMAMapAreaStruct {
 }
 
 public struct KMAUISubLandStruct {
-    public var confirmed = false
+//    public var confirmed = false
     public var status = ""
-    public var paid = false
+//    public var paid = false
     public var landPlanId = ""
     public var landPlanName = ""
     public var objectId = ""
@@ -2352,9 +2352,9 @@ public struct KMAUISubLandStruct {
         if extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
             // Setup the paid status
-            if paid {
+            if status == "confirmed" {
                 rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
-            } else {
+            } else if status == "awaiting payment" {
                 rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
             }
         }

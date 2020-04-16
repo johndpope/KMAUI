@@ -87,9 +87,9 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         if subLand.extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(subLand.extraPrice.formatNumbersAfterDot().withCommas())"))
             // Setup the paid status
-            if subLand.paid {
+            if subLand.status == "confirmed" {
                 rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
-            } else {
+            } else if subLand.status == "awaiting payment" {
                 rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
             }
         }
