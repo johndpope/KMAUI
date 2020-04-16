@@ -94,6 +94,11 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         stackView.backgroundColor = UIColor.clear
         stackViewBg.backgroundColor = UIColor.clear
         
+        // Hide all action buttons
+        acceptLandButton.alpha = 0
+        declineButton.alpha = 0
+        viewDetailsButton.alpha = 0
+        
         // No standard selection requried
         selectionStyle = .none
     }
