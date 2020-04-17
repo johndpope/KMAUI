@@ -39,7 +39,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         //
         contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        bgView.backgroundColor = UIColor.clear //KMAUIConstants.shared.KMAUIViewBgColor
         // Name label
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         typeLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
