@@ -548,6 +548,30 @@ public class KMAUIUtilities {
         return items
     }
     
+    /**
+     Get items from subLandImages JSON
+     */
+    
+    public func getItemsFrom(subLandImages: String) -> [KMADocumentData] {
+        var items = [KMADocumentData]()
+        
+        if !subLandImages.isEmpty {
+            let uploadBodyDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLandImages)
+            
+            if let filesArray = uploadBodyDictionary["files"] as? [AnyObject] {
+                for fileObject in filesArray {
+                    if let fileObject = fileObject as? [String: String] {
+                        var fileValue = KMADocumentData()
+                        fileValue.fillFrom(document: fileObject)
+                        items.append(fileValue)
+                    }
+                }
+            }
+        }
+        
+        return items
+    }
+    
     // MARK: - JSON <-> Dictionary convert methods
     
     /**

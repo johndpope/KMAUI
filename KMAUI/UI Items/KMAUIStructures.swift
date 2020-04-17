@@ -78,6 +78,10 @@ public struct KMADocumentData {
     // Get from Parse data
     public var previewURL = ""
     public var fileURL = ""
+    // New values
+    public var objectId = ""
+    public var fileExtension = ""
+    public var fileDescription = ""
     
     public init() {
     }
@@ -97,6 +101,36 @@ public struct KMADocumentData {
         
         if let fileURLValue = dictionary["fileURL"] {
             self.fileURL = fileURLValue
+        }
+    }
+    
+    public mutating func fillFrom(document: [String: String]) {
+        if let nameValue = document["name"] {
+            self.name = nameValue
+        }
+        
+        if let typeValue = document["type"] {
+            self.type = typeValue
+        }
+        
+        if let previewURLValue = document["previewURL"] {
+            self.previewURL = previewURLValue
+        }
+        
+        if let fileURLValue = document["fileURL"] {
+            self.fileURL = fileURLValue
+        }
+        
+        if let objectId = document["objectId"] {
+            self.objectId = objectId
+        }
+        
+        if let fileExtension = document["fileExtension"] {
+            self.fileExtension = fileExtension
+        }
+        
+        if let fileDescription = document["fileDescription"] {
+            self.fileDescription = fileDescription
         }
     }
 }
