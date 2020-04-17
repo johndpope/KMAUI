@@ -2141,6 +2141,9 @@ public struct KMAUISubLandStruct {
     public var extraPrice: Double = 0
     public var subLandDescription = ""
     public var subLandImages = ""
+    public var subLandImagesArray = [KMADocumentData]()
+    public var subLandImagesVideosArray = [KMADocumentData]()
+    public var subLandDocumentsArray = [KMADocumentData]()
     // Additional variables
     public var geojson = ""
     public var geojsonDict = [String: Any]()
