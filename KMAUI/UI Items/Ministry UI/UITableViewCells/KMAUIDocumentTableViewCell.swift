@@ -29,6 +29,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var attachment = KMADocumentData() {
+        didSet {
+            setupAttachment()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -120,5 +125,33 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
                 }
             }
         }
+    }
+    
+    public func setupAttachment() {
+        nameLabel.text = attachment.name
+        typeLabel.text = attachment.type
+        
+        if attachment.type == "Document", !attachment.fileExtension.isEmpty {
+            typeLabel.text = "\(attachment.fileExtension) file"
+        } else if attachment.type == "Image" {
+            typeLabel.text = "Photo"
+        }
+        
+        if attachment.type == "Document" {
+            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
+            typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        } else {
+            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
+            typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
+            typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        }
+        
+        previewImageView.alpha = 0
+        previewImageViewWidth.constant = 0
+        previewImageViewRight.constant = 0
+        
+        lineViewRight.constant = 0
+        accessoryType = .disclosureIndicator
     }
 }
