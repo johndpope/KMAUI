@@ -11,7 +11,7 @@ import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: UIView!
+//    @IBOutlet weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
@@ -39,7 +39,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         //
         contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        bgView.backgroundColor = UIColor.clear //KMAUIConstants.shared.KMAUIViewBgColor
+//        bgView.backgroundColor = UIColor.clear //KMAUIConstants.shared.KMAUIViewBgColor
         // Name label
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         typeLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)

@@ -18,10 +18,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xD-iB-Rkl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
-                        <color key="backgroundColor" name="KMAUIViewBgColor"/>
-                    </view>
                     <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-d4-f95">
                         <rect key="frame" x="30" y="79" width="260" height="1"/>
                         <color key="backgroundColor" name="KMAUIGreyLineColor"/>
@@ -66,12 +62,10 @@
                 <constraints>
                     <constraint firstItem="ToK-MQ-pQp" firstAttribute="top" secondItem="uP5-ZN-5sM" secondAttribute="bottom" constant="8" id="8IW-GN-JTv"/>
                     <constraint firstItem="SM3-KO-Egd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8Yl-Rd-44q"/>
-                    <constraint firstItem="7xD-iB-Rkl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="9BC-Nf-lFH"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HXm-RU-zIn"/>
                     <constraint firstItem="S3o-d4-f95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="79" id="INJ-tn-Or6"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="Jj6-68-pMy"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="M5v-la-byp"/>
-                    <constraint firstItem="S3o-d4-f95" firstAttribute="top" secondItem="7xD-iB-Rkl" secondAttribute="bottom" id="PfY-qu-weK"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="ToK-MQ-pQp" secondAttribute="trailing" constant="12" id="WIg-T8-ccL"/>
                     <constraint firstAttribute="trailing" secondItem="6Zh-gv-AY1" secondAttribute="trailing" constant="30" id="XUE-SW-PTa"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="uP5-ZN-5sM" secondAttribute="trailing" constant="12" id="cUy-XP-jGI"/>
@@ -80,14 +74,11 @@
                     <constraint firstItem="S3o-d4-f95" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lct-yn-ipL"/>
                     <constraint firstAttribute="trailing" secondItem="S3o-d4-f95" secondAttribute="trailing" constant="30" id="mNB-F1-EdA"/>
                     <constraint firstItem="ToK-MQ-pQp" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="o2y-IY-BET"/>
-                    <constraint firstAttribute="trailing" secondItem="7xD-iB-Rkl" secondAttribute="trailing" id="pbB-Pa-vvx"/>
-                    <constraint firstItem="7xD-iB-Rkl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qTj-eU-bms"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="bgView" destination="7xD-iB-Rkl" id="KiU-NV-jpB"/>
                 <outlet property="lineView" destination="S3o-d4-f95" id="f2t-h7-1JO"/>
                 <outlet property="lineViewRight" destination="mNB-F1-EdA" id="XbC-tU-Nq3"/>
                 <outlet property="nameLabel" destination="uP5-ZN-5sM" id="1sI-bs-OLy"/>
