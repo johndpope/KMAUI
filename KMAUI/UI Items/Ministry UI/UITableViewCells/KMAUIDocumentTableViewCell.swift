@@ -56,7 +56,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         // No selection required
-        selectionStyle = .default
+        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -158,6 +158,5 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
 //        previewImageViewRight.constant = 0
         
         lineViewRight.constant = 0
-        accessoryType = .disclosureIndicator
     }
 }
