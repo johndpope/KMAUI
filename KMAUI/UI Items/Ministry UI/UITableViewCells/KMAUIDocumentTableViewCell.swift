@@ -11,7 +11,7 @@ import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
-//    @IBOutlet weak var bgView: UIView!
+    @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
@@ -20,6 +20,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var previewImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewRight: NSLayoutConstraint!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
     // MARK: - Variables
     public static let id = "KMAUIDocumentTableViewCell"
     public var isLast = false
@@ -37,9 +38,8 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
-        //
-        contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-//        bgView.backgroundColor = UIColor.clear //KMAUIConstants.shared.KMAUIViewBgColor
+
+        bgView.backgroundColor = UIColor.clear //KMAUIConstants.shared.KMAUIViewBgColor
         // Name label
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         typeLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
@@ -52,6 +52,9 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         previewImageView.layer.borderWidth = 1
         previewImageView.kf.indicatorType = .activity
+        // Setup the right arrow
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         // No selection required
         selectionStyle = .default
     }
@@ -69,13 +72,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-//        if highlight {
-//            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-//        } else {
-//            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-//        }
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        }
     }
     
     public func setupCell() {
@@ -154,7 +155,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         previewImageView.alpha = 0
         previewImageViewWidth.constant = 0
-        previewImageViewRight.constant = 0
+//        previewImageViewRight.constant = 0
         
         lineViewRight.constant = 0
         accessoryType = .disclosureIndicator

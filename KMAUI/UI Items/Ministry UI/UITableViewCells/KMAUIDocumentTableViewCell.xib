@@ -18,6 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Alb-e6-nOe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3o-d4-f95">
                         <rect key="frame" x="30" y="79" width="260" height="1"/>
                         <color key="backgroundColor" name="KMAUIGreyLineColor"/>
@@ -57,34 +61,49 @@
                             <constraint firstAttribute="height" constant="64" id="sWA-bU-l5C"/>
                         </constraints>
                     </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicatorFull" translatesAutoresizingMaskIntoConstraints="NO" id="r66-Hw-IIu">
+                        <rect key="frame" x="298" y="34.5" width="6" height="11"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="0vq-aw-QtW"/>
+                            <constraint firstAttribute="height" constant="11" id="LIu-Q4-w6f"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" name="KMAUIViewBgColor"/>
                 <constraints>
+                    <constraint firstAttribute="trailing" secondItem="r66-Hw-IIu" secondAttribute="trailing" constant="16" id="0yo-kI-WoY"/>
+                    <constraint firstItem="r66-Hw-IIu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2d3-Dw-kXa"/>
                     <constraint firstItem="ToK-MQ-pQp" firstAttribute="top" secondItem="uP5-ZN-5sM" secondAttribute="bottom" constant="8" id="8IW-GN-JTv"/>
                     <constraint firstItem="SM3-KO-Egd" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8Yl-Rd-44q"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HXm-RU-zIn"/>
                     <constraint firstItem="S3o-d4-f95" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="79" id="INJ-tn-Or6"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="Jj6-68-pMy"/>
+                    <constraint firstItem="Alb-e6-nOe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KBs-ou-fhl"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="M5v-la-byp"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="ToK-MQ-pQp" secondAttribute="trailing" constant="12" id="WIg-T8-ccL"/>
                     <constraint firstAttribute="trailing" secondItem="6Zh-gv-AY1" secondAttribute="trailing" constant="30" id="XUE-SW-PTa"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="uP5-ZN-5sM" secondAttribute="trailing" constant="12" id="cUy-XP-jGI"/>
                     <constraint firstItem="SM3-KO-Egd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="cwO-P1-9Hc"/>
+                    <constraint firstAttribute="trailing" secondItem="Alb-e6-nOe" secondAttribute="trailing" id="efY-T2-hVp"/>
+                    <constraint firstItem="Alb-e6-nOe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eid-9c-zeO"/>
                     <constraint firstAttribute="bottom" secondItem="S3o-d4-f95" secondAttribute="bottom" id="lFg-5P-aZm"/>
                     <constraint firstItem="S3o-d4-f95" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lct-yn-ipL"/>
                     <constraint firstAttribute="trailing" secondItem="S3o-d4-f95" secondAttribute="trailing" constant="30" id="mNB-F1-EdA"/>
+                    <constraint firstAttribute="bottom" secondItem="Alb-e6-nOe" secondAttribute="bottom" id="mcc-JR-oUK"/>
                     <constraint firstItem="ToK-MQ-pQp" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="o2y-IY-BET"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="Alb-e6-nOe" id="6PJ-aO-NHu"/>
                 <outlet property="lineView" destination="S3o-d4-f95" id="f2t-h7-1JO"/>
                 <outlet property="lineViewRight" destination="mNB-F1-EdA" id="XbC-tU-Nq3"/>
                 <outlet property="nameLabel" destination="uP5-ZN-5sM" id="1sI-bs-OLy"/>
                 <outlet property="previewImageView" destination="6Zh-gv-AY1" id="1td-Lk-Tyb"/>
                 <outlet property="previewImageViewRight" destination="XUE-SW-PTa" id="cV2-GO-92R"/>
                 <outlet property="previewImageViewWidth" destination="664-gy-atR" id="UzV-V0-nws"/>
+                <outlet property="rightArrowImageView" destination="r66-Hw-IIu" id="pKi-KN-hzE"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>
                 <outlet property="typeLabel" destination="ToK-MQ-pQp" id="VtF-e3-ZHA"/>
             </connections>
@@ -92,6 +111,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrowIndicatorFull" width="6" height="11"/>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
