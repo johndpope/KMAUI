@@ -123,8 +123,9 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
         if !images.isEmpty {
             // Add images for the preview and setup UI
             let lightboxController = LightboxController(images: imagesArray, startIndex: index)
-            lightboxController.modalPresentationStyle = .overCurrentContext
+            lightboxController.modalPresentationStyle = .fullScreen
             lightboxController.dynamicBackground = true
+            
             // Present your controller.
             KMAUIConstants.shared.popupOpened = true
             KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
