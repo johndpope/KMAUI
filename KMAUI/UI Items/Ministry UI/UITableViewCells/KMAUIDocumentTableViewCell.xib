@@ -92,6 +92,8 @@
                 <outlet property="lineViewRight" destination="mNB-F1-EdA" id="XbC-tU-Nq3"/>
                 <outlet property="nameLabel" destination="uP5-ZN-5sM" id="1sI-bs-OLy"/>
                 <outlet property="previewImageView" destination="6Zh-gv-AY1" id="1td-Lk-Tyb"/>
+                <outlet property="previewImageViewRight" destination="XUE-SW-PTa" id="cV2-GO-92R"/>
+                <outlet property="previewImageViewWidth" destination="664-gy-atR" id="UzV-V0-nws"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>
                 <outlet property="typeLabel" destination="ToK-MQ-pQp" id="VtF-e3-ZHA"/>
             </connections>

@@ -16,6 +16,8 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeImageView: UIImageView!
     @IBOutlet public weak var previewImageView: UIImageView!
+    @IBOutlet public weak var previewImageViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var previewImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewRight: NSLayoutConstraint!
     // MARK: - Variables
