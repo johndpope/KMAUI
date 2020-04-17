@@ -67,8 +67,10 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else {
+            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
