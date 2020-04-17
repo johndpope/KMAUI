@@ -37,6 +37,9 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        //
+        contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         // Name label
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         typeLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
@@ -50,7 +53,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.layer.borderWidth = 1
         previewImageView.kf.indicatorType = .activity
         // No selection required
-        selectionStyle = .none
+        selectionStyle = .default
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -66,13 +69,13 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
-            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-        } else {
-            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        }
+//        if highlight {
+//            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+//        } else {
+//            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+//        }
     }
     
     public func setupCell() {
