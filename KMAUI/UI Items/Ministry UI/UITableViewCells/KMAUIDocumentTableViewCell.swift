@@ -17,6 +17,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var typeImageView: UIImageView!
     @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var lineView: UIView!
+    @IBOutlet public weak var lineViewRight: NSLayoutConstraint!
     // MARK: - Variables
     public static let id = "KMAUIDocumentTableViewCell"
     public var isLast = false
