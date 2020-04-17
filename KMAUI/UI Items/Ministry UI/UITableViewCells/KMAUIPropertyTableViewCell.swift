@@ -167,7 +167,7 @@ public class KMAUIPropertyTableViewCell: UITableViewCell {
     }
 }
 
-//MARK: - QLPreviewController Datasource
+// MARK: - QLPreviewController Datasource
 
 extension KMAUIPropertyTableViewCell: QLPreviewControllerDataSource {
     public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {

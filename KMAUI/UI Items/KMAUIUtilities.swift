@@ -908,7 +908,7 @@ public class KMAUIUtilities {
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 
             // lets create your destination file url
-            let destinationUrl = documentsDirectoryURL.appendingPathComponent("\(uploadId)_\(fileName)")
+            let destinationUrl = documentsDirectoryURL.appendingPathComponent("/(uploadId)/\(fileName)")
             
             // to check if it exists before downloading it
             if FileManager.default.fileExists(atPath: destinationUrl.path) {
