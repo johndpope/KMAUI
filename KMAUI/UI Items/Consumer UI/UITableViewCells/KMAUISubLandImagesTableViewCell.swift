@@ -120,7 +120,7 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
             }
         }
         
-        if !images.isEmpty {
+        if !imagesArray.isEmpty {
             // Add images for the preview and setup UI
             let lightboxController = LightboxController(images: imagesArray, startIndex: index)
             lightboxController.modalPresentationStyle = .fullScreen
