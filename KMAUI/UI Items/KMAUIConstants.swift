@@ -17,7 +17,7 @@ public class KMAUIConstants {
     
     // MARK: - Fonts
     public let KMAUIRegularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-    public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+    public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .bold)
     
     // MARK: - KMAUIColors
     public let KMAUIMainBgColor = UIColor(named: "KMAUIMainBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
