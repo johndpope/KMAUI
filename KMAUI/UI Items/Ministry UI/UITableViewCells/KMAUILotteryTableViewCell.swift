@@ -141,7 +141,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsCountLabel.text = "\(lottery.totalCount)"
         
         // Lottery status
-        statusLabel.text = lottery.lotteryStatus
+        statusLabel.text = lottery.lotteryStatus.rawValue
         statusView.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         statusView.alpha = 1

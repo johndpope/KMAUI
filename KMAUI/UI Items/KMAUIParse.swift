@@ -652,6 +652,16 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Change status the lottery
+    
+    public func changeLotteryStatus(to lotteryStatus: KMAUILandPlanStruct.LotteryStatus, for lotteryId: String, completion: @escaping (_ success: Bool, _ error: Error?)->()) {
+        let object = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: lotteryId)
+        object.setObject(lotteryStatus.rawValue, forKey: "lotteryStatus")
+        PFObject.saveAll(inBackground: [object]) { (success, error) in
+            completion(success, error)
+        }
+    }
+    
     // MARK: - Start the lottery
     public func startLottery(landPlan: KMAUILandPlanStruct, completion: @escaping (_ landPlan: KMAUILandPlanStruct)->()) {
         var landPlan = landPlan
@@ -766,7 +776,7 @@ final public class KMAUIParse {
                             KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(saveError.localizedDescription)") { (done) in }
                         } else {
                             print("Land Plan status changed to completed.")
-                            landPlan.lotteryStatus = "Finished"
+                            landPlan.lotteryStatus = .finished
                         }
                         
                         completion(landPlan)

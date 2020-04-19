@@ -2397,6 +2397,15 @@ public struct KMAUISubLandStruct {
 }
 
 public struct KMAUILandPlanStruct {
+    public enum LotteryStatus: String {
+        case unknowed = ""
+        case created = "Created"
+        case onApprovement = "On approvement"
+        case finished = "Finished"
+        case approvedToStart = "Approved to start"
+        case rejected = "Rejected"
+    }
+    
     // Land name
     public var landName = "Land Lottery"
     // Land center coordinate
@@ -2456,7 +2465,7 @@ public struct KMAUILandPlanStruct {
     public var subLandIndex = ""
     public var subLandType = ""
     public var subLandObjectId = ""
-    public var lotteryStatus = ""
+    public var lotteryStatus: LotteryStatus = .unknowed
     // Counts and percents
     public var rulesArray = [KMAUILotteryRule]()
     public var percentArray = [KMAUILotteryRule]()
@@ -3244,8 +3253,9 @@ public struct KMAUILandPlanStruct {
             self.lotterySubLandsCount = lotterySubLandsCount
         }
         // lotteryStatus
-        if let lotteryStatusValue = plan["lotteryStatus"] as? String {
-            self.lotteryStatus = lotteryStatusValue
+        if let lotteryStatusValue = plan["lotteryStatus"] as? String,
+            let status = LotteryStatus(rawValue: lotteryStatusValue) {
+            self.lotteryStatus = status
         }
         // extraPricePerSqM
         if let extraPricePerSqM = plan["extraPricePerSqM"] as? Double {

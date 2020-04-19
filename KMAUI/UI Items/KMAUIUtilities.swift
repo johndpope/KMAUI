@@ -615,16 +615,16 @@ public class KMAUIUtilities {
         }
     }
     
-    public func lotteryColor(status: String) -> UIColor {
+    public func lotteryColor(status: KMAUILandPlanStruct.LotteryStatus) -> UIColor {
         var statusColor = KMAUIConstants.shared.KMABrightBlueColor
         
-        if status == "On approvement" {
+        if status == .onApprovement {
             statusColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-        } else if status == "Approved to start" {
+        } else if status == .approvedToStart {
             statusColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-        } else if status == "Finished" {
+        } else if status == .finished {
             statusColor = KMAUIConstants.shared.KMAUIGreyLineColor
-        } else if status == "Rejected" {
+        } else if status == .rejected {
             statusColor = KMAUIConstants.shared.KMAUIRedProgressColor
         }
         

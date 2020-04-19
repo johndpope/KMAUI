@@ -145,13 +145,13 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         } else if selectedSegment == 1 {
             // Sub lands count, citizens count, View details button
             rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)"), KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
-            if lottery.lotteryStatus == "Approved to start" {
+            if lottery.lotteryStatus == .approvedToStart {
                 showViewDetails(mode: "details")
             }
         }
         
         // Lottery status
-        statusLabel.text = lottery.lotteryStatus.addGaps()
+        statusLabel.text = lottery.lotteryStatus.rawValue.addGaps()
         statusLabel.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         // Lottery name
