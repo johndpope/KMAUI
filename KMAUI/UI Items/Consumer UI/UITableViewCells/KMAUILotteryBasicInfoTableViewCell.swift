@@ -132,22 +132,16 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         viewDetailsButton.setTitle("View details", for: .normal)
         viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         
-        // Hide view details
-        hideViewDetails()
-        
         // Setup data rows
-        var rows = [KMAUIRowData]()
+        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")] // , KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
         
         // Check the segment
-        if selectedSegment == 0 {
-            // Sub lands count, citizens count
-            rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)"), KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
-        } else if selectedSegment == 1 {
-            // Sub lands count, citizens count, View details button
-            rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)"), KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
-            if lottery.lotteryStatus == .approvedToStart {
-                showViewDetails(mode: "details")
-            }
+        if selectedSegment == 1 && (lottery.lotteryStatus == .approvedToStart || lottery.lotteryStatus == .finished) {
+            // Only show details for approvedToStart and finished lotteries on the segment 1
+            showViewDetails(mode: "details")
+        } else {
+            // Hide view details
+            hideViewDetails()
         }
         
         // Lottery status
