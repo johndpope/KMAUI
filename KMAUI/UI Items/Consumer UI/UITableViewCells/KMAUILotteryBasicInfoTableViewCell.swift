@@ -136,7 +136,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")] // , KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
         
         // Check the segment
-        if selectedSegment == 1 && (lottery.lotteryStatus == .approvedToStart || lottery.lotteryStatus == .finished) {
+        if selectedSegment == 1, lottery.lotteryStatus == .approvedToStart {
             // Only show details for approvedToStart and finished lotteries on the segment 1
             showViewDetails(mode: "details")
         } else {
