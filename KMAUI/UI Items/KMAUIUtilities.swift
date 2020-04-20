@@ -916,7 +916,7 @@ public class KMAUIUtilities {
                 completion(true, destinationUrl)
             } else {
                 // Displaying the loading alert
-                KMAUIUtilities.shared.startLoading(title: "Getting a file...")
+                KMAUIUtilities.shared.startLoading(title: "Loading...")
                 
                 // you can use NSURLSession.sharedSession to download the data asynchronously
                 URLSession.shared.downloadTask(with: itemUrl, completionHandler: { (location, response, error) -> Void in
