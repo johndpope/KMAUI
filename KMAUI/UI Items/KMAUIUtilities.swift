@@ -615,7 +615,7 @@ public class KMAUIUtilities {
         }
     }
     
-    public func lotteryColor(status: KMAUILandPlanStruct.LotteryStatus) -> UIColor {
+    public func lotteryColor(status: LotteryStatus) -> UIColor {
         var statusColor = KMAUIConstants.shared.KMABrightBlueColor
         
         if status == .onApprovement {

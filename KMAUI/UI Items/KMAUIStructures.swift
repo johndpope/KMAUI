@@ -2396,16 +2396,18 @@ public struct KMAUISubLandStruct {
     }
 }
 
+// Lottery status
+public enum LotteryStatus: String {
+    case unknowed = ""
+    case created = "Created"
+    case onApprovement = "On approvement"
+    case finished = "Finished"
+    case approvedToStart = "Approved to start"
+    case rejected = "Rejected"
+}  
+
 public struct KMAUILandPlanStruct {
-    public enum LotteryStatus: String {
-        case unknowed = ""
-        case created = "Created"
-        case onApprovement = "On approvement"
-        case finished = "Finished"
-        case approvedToStart = "Approved to start"
-        case rejected = "Rejected"
-    }
-    
+      
     // Land name
     public var landName = "Land Lottery"
     // Land center coordinate

@@ -654,7 +654,7 @@ final public class KMAUIParse {
     
     // MARK: - Change status the lottery
     
-    public func changeLotteryStatus(to lotteryStatus: KMAUILandPlanStruct.LotteryStatus, for lotteryId: String, completion: @escaping (_ success: Bool, _ error: Error?)->()) {
+    public func changeLotteryStatus(to lotteryStatus: LotteryStatus, for lotteryId: String, completion: @escaping (_ success: Bool, _ error: Error?)->()) {
         let object = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: lotteryId)
         object.setObject(lotteryStatus.rawValue, forKey: "lotteryStatus")
         PFObject.saveAll(inBackground: [object]) { (success, error) in
