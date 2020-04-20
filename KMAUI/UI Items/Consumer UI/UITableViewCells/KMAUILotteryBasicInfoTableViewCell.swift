@@ -124,9 +124,6 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         declineButton.alpha = 0
         viewDetailsButton.alpha = 0
         
-        // No need to highlight the data
-        canHighlight = false
-        
         // Show status, hide medal
         setupView(mode: "status")
         viewDetailsButton.setTitle("View details", for: .normal)
@@ -160,9 +157,6 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         acceptLandButton.alpha = 0
         declineButton.alpha = 0
         viewDetailsButton.alpha = 0
-        
-        // Can highlight the sub land to review the details screen
-        canHighlight = true
         
         // Hide status, show medal
         setupView(mode: "medal")
