@@ -34,6 +34,9 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Value label font
+        valueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+        
         // No selection required
         selectionStyle = .none
     }
@@ -48,7 +51,7 @@ public class KMAUIRulesPointTableViewCell: UITableViewCell {
         // Setup point values
         nameLabel.text = rule.name
         valueLabel.text = rule.value
-        valueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
+        
         if subLandDetails {
             nameLabelHeight.constant = 44
             
