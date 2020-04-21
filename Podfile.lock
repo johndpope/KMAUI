@@ -12,7 +12,7 @@ PODS:
   - Kingfisher/Core (5.13.4)
   - Lightbox (2.3.0):
     - Imaginary (~> 4.0)
-  - MKRingProgressView (2.2.2)
+  - MKRingProgressView (2.2.3)
   - Parse (1.18.0):
     - Parse/Core (= 1.18.0)
   - Parse/Core (1.18.0):
@@ -49,7 +49,7 @@ SPEC CHECKSUMS:
   Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
-  MKRingProgressView: b558eff66a648bd77b11f61cfc5603ae96008077
+  MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
