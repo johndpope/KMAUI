@@ -133,7 +133,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")] // , KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
         
         // Check the segment
-        if selectedSegment == 1, lottery.lotteryStatus == .approvedToStart {
+        if selectedSegment == 1 && (lottery.lotteryStatus == .approvedToStart || lottery.lotteryStatus == .onApprovement) {
             // Only show details for approvedToStart and finished lotteries on the segment 1
             showViewDetails(mode: "details")
         } else {
@@ -142,7 +142,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         }
         
         // Lottery status
-        statusLabel.text = lottery.lotteryStatus.rawValue.addGaps()
+        statusLabel.text = lottery.lotteryStatus.rawValue.lowercased().addGaps()
         statusLabel.backgroundColor = KMAUIUtilities.shared.lotteryColor(status: lottery.lotteryStatus)
         
         // Lottery name
