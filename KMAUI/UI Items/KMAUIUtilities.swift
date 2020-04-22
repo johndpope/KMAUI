@@ -998,6 +998,28 @@ public class KMAUIUtilities {
     
     // MARK: - Prepare sub land corners
     
+    public func getSubLandDictionary(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
+        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+        var subLandDict = [String: AnyObject]()
+                
+        if let features = dict["features"] as? [AnyObject], !features.isEmpty {
+            let feature = features[0]
+            
+            if let feature = feature as? [AnyObject], !feature.isEmpty {
+                // If extra array added
+                let subLandFeature = feature[0]
+                
+                if let subLandFeature = subLandFeature as? [String: AnyObject] {
+                    subLandDict = subLandFeature
+                }
+            } else if let feature = feature as? [String: AnyObject] {
+               subLandDict = feature
+            }
+        }
+        
+        return subLandDict
+    }
+    
     public func getCorners(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
         let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
         var subLandDict = [String: AnyObject]()
