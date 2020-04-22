@@ -91,12 +91,22 @@
                                     <action selector="acceptLandButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SLw-dD-T0m"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="Uem-N2-55p">
+                                <rect key="frame" x="254" y="110" width="22" height="22"/>
+                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="tintColor" name="KMAUIGreyLineColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="6CR-GE-b70"/>
+                                    <constraint firstAttribute="width" constant="22" id="D8G-1q-oNF"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ytp-Lf-gTK" secondAttribute="trailing" id="0HP-PE-xf0"/>
                             <constraint firstAttribute="trailing" secondItem="jhp-Rb-biY" secondAttribute="trailing" constant="12" id="1Xf-RC-Yqh"/>
                             <constraint firstItem="y80-Ip-wnH" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" constant="12" id="32r-yN-79Y"/>
+                            <constraint firstItem="Uem-N2-55p" firstAttribute="centerY" secondItem="y80-Ip-wnH" secondAttribute="centerY" id="3i5-dj-3ZT"/>
                             <constraint firstItem="ytp-Lf-gTK" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" id="BMm-wp-EkU"/>
                             <constraint firstItem="S71-ex-GYY" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" constant="12" id="Cst-I4-eLH"/>
                             <constraint firstAttribute="trailing" secondItem="S71-ex-GYY" secondAttribute="trailing" constant="12" id="Cya-az-gaC"/>
@@ -106,6 +116,7 @@
                             <constraint firstItem="pne-lG-QT9" firstAttribute="top" secondItem="ytp-Lf-gTK" secondAttribute="bottom" constant="16" id="Jgi-3E-Vfq"/>
                             <constraint firstAttribute="trailing" secondItem="pne-lG-QT9" secondAttribute="trailing" constant="12" id="K0K-B3-bX5"/>
                             <constraint firstItem="QiR-ny-NmK" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" constant="14" id="Mzy-ka-RgM"/>
+                            <constraint firstAttribute="trailing" secondItem="Uem-N2-55p" secondAttribute="trailing" constant="12" id="NUd-VP-lbH"/>
                             <constraint firstItem="y80-Ip-wnH" firstAttribute="top" secondItem="QiR-ny-NmK" secondAttribute="bottom" constant="12" id="SfO-KD-XTu"/>
                             <constraint firstItem="syw-xJ-BxC" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" constant="12" id="YHl-zE-reP"/>
                             <constraint firstItem="pne-lG-QT9" firstAttribute="leading" secondItem="8Tb-7E-vA4" secondAttribute="leading" constant="12" id="aCN-Jx-PGB"/>
@@ -130,6 +141,7 @@
                 <outlet property="acceptLandButton" destination="jhp-Rb-biY" id="zJv-gU-Pcp"/>
                 <outlet property="bgView" destination="8Tb-7E-vA4" id="Z5v-gt-baN"/>
                 <outlet property="declineButton" destination="syw-xJ-BxC" id="SVf-pD-hgW"/>
+                <outlet property="isActiveImageView" destination="Uem-N2-55p" id="zR3-Pq-bA8"/>
                 <outlet property="medalImageView" destination="QiR-ny-NmK" id="G5z-tH-4En"/>
                 <outlet property="medalImageViewBottom" destination="SfO-KD-XTu" id="DfK-hA-1kT"/>
                 <outlet property="medalImageViewHeight" destination="tCT-9R-wIQ" id="ayz-43-r4W"/>
@@ -148,6 +160,13 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="disclosureArrow" width="7" height="12"/>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIMainBgColor">
             <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

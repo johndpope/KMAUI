@@ -25,6 +25,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     @IBOutlet public weak var medalImageView: UIImageView!
     @IBOutlet public weak var medalImageViewHeight: NSLayoutConstraint!
     @IBOutlet public weak var medalImageViewBottom: NSLayoutConstraint!
+    @IBOutlet public weak var isActiveImageView: UIImageView!
     // Action buttons
     @IBOutlet public weak var declineButton: UIButton!
     @IBOutlet public weak var acceptLandButton: UIButton!
@@ -94,6 +95,15 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         stackView.backgroundColor = UIColor.clear
         stackViewBg.backgroundColor = UIColor.clear
         
+        // isActive imageView
+        isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        isActiveImageView.layer.cornerRadius = 4
+        isActiveImageView.clipsToBounds = true
+        
+        // Default state - disabled
+        isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        
         // No standard selection requried
         selectionStyle = .none
     }
@@ -113,8 +123,12 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight, canHighlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            isActiveImageView.tintColor = UIColor.white
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
@@ -132,14 +146,16 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         // Setup data rows
         let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")] // , KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
         
-        // Check the segment
+        // Check the segment - always no button for lotteries
+        hideViewDetails()
+        /*
         if selectedSegment == 1 && (lottery.lotteryStatus == .approvedToStart || lottery.lotteryStatus == .onApprovement) {
             // Only show details for approvedToStart and finished lotteries on the segment 1
             showViewDetails(mode: "details")
         } else {
             // Hide view details
             hideViewDetails()
-        }
+        }*/
         
         // Lottery status
         statusLabel.text = lottery.lotteryStatus.rawValue.lowercased().addGaps()
