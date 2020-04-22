@@ -998,7 +998,7 @@ public class KMAUIUtilities {
     
     // MARK: - Prepare sub land corners
     
-    public func showSubLand(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
+    public func getCorners(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
         let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
         var subLandDict = [String: AnyObject]()
         var coordinates = [[Double]]()
