@@ -27,6 +27,9 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Background color
+        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+        
         // Setup the right arrow
         rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
