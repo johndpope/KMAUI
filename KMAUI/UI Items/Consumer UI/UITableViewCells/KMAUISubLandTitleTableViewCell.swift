@@ -41,7 +41,11 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        titleLabel.text = "Land ID \(subLand.subLandId)"
+        if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
+            titleLabel.text = subLand.subLandId
+        } else {
+            titleLabel.text = "Land ID \(subLand.subLandId)"
+        }
         
         if subLand.regionName.isEmpty {
             infoLabel.text = ""
