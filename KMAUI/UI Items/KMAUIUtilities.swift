@@ -996,7 +996,109 @@ public class KMAUIUtilities {
         return UIColor.black
     }
     
-    // Prepare 
+    // MARK: - Prepare sub land corners
+    
+    public func showSubLand(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
+        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+        var subLandDict = [String: AnyObject]()
+        var coordinates = [[Double]]()
+                
+        if let features = dict["features"] as? [AnyObject], !features.isEmpty {
+            let feature = features[0]
+            
+            if let feature = feature as? [AnyObject], !feature.isEmpty {
+                // If extra array added
+                let subLandFeature = feature[0]
+                
+                if let subLandFeature = subLandFeature as? [String: AnyObject] {
+                    subLandDict = subLandFeature
+                }
+            } else if let feature = feature as? [String: AnyObject] {
+               subLandDict = feature
+            }
+        }
+        
+        if let geometry = subLandDict["geometry"] as? [String: AnyObject], let coordinatesArray = geometry["coordinates"] as? [AnyObject] {
+            if let array = coordinatesArray as? [[Double]] {
+                coordinates = array
+            }
+        }
+        
+        // Prepare corners
+        var corners = [AnyObject]()
+        
+        for i in 0..<coordinates.count {
+            if i + 1 < coordinates.count {
+                let coordinate1 = coordinates[i]
+                let coordinate2 = coordinates[i + 1]
+                corners.append(contentsOf: getCorner(location1: coordinate1, location2: coordinate2))
+            }
+        }
+
+        // Prepare coordinates geojson
+        var featureCollection = [String: AnyObject]()
+        featureCollection["type"] = "FeatureCollection" as AnyObject
+        featureCollection["features"] = corners as AnyObject
+        
+        return featureCollection
+    }
+    
+    public func getCorner(location1: [Double], location2: [Double]) -> [AnyObject] {
+        let coordinateValue1 = CLLocation(latitude: location1[1], longitude: location1[0])
+        let coordinateValue2 = CLLocation(latitude: location2[1], longitude: location2[0])
+        
+        let coordinateObject1 = CLLocationCoordinate2D(latitude: location1[1], longitude: location1[0])
+        let coordinateObject2 = CLLocationCoordinate2D(latitude: location2[1], longitude: location2[0])
+
+        let bearingLeft = getBearingBetweenTwoPoints1(point1: coordinateValue1, point2: coordinateValue2)
+        let angleLeft = Double.pi * bearingLeft / 180 // calculating angle from the degrees
+        
+        let bearingRight = getBearingBetweenTwoPoints1(point1: coordinateValue2, point2: coordinateValue1)
+        let angleRight = Double.pi * bearingRight / 180 // calculating angle from the degrees
+        
+        let distance = coordinateValue1.distance(from: coordinateValue2) / 4
+        
+        let pointLeft = coordinateObject1.shift(byDistance: distance, azimuth: angleLeft)
+        let lineLeft = [location1, [pointLeft.longitude, pointLeft.latitude]] as AnyObject
+        
+        let pointRight = coordinateObject2.shift(byDistance: distance, azimuth: angleRight)
+        let lineRight = [location2, [pointRight.longitude, pointRight.latitude]] as AnyObject
+        
+        var dictLeft = [String: AnyObject]()
+        dictLeft["type"] = "Feature" as AnyObject
+        var geomertyLeft = [String: AnyObject]()
+        geomertyLeft["type"] = "LineString" as AnyObject
+        geomertyLeft["coordinates"] = lineLeft
+        dictLeft["geometry"] = geomertyLeft as AnyObject
+        
+        var dictRight = [String: AnyObject]()
+        dictRight["type"] = "Feature" as AnyObject
+        var geomertyRight = [String: AnyObject]()
+        geomertyRight["type"] = "LineString" as AnyObject
+        geomertyRight["coordinates"] = lineRight
+        dictRight["geometry"] = geomertyRight as AnyObject
+
+        return [dictLeft as AnyObject, dictRight as AnyObject]
+    }
+    
+    public func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
+    public func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
+
+    public func getBearingBetweenTwoPoints1(point1 : CLLocation, point2 : CLLocation) -> Double {
+        let lat1 = degreesToRadians(degrees: point1.coordinate.latitude)
+        let lon1 = degreesToRadians(degrees: point1.coordinate.longitude)
+
+        let lat2 = degreesToRadians(degrees: point2.coordinate.latitude)
+        let lon2 = degreesToRadians(degrees: point2.coordinate.longitude)
+
+        let dLon = lon2 - lon1
+
+        let y = sin(dLon) * cos(lat2)
+        let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        let radiansBearing = atan2(y, x)
+
+        return radiansToDegrees(radians: radiansBearing)
+    }
 }
 
 // MARK: - Int extension
