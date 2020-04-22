@@ -61,7 +61,6 @@ public class KMAUIConstants {
     public let KMAUIGreyBackgroundButton = UIColor(named: "KMAUIGreyBackgroundButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIBlackTitleButton = UIColor(named: "KMAUIBlackTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    
 
     // MARK: - Images
     public let checkboxFilledIcon = UIImage(named: "checkboxFilledIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -163,6 +162,7 @@ public class KMAUIConstants {
     public let lotteryParametersSections = ["Land rules", "Sub land", "Citizens"]
     public let lotteryResultSection = ["Lottery parameters", "Lottery results"]
     public let chartsArray = ["age", "gender", "city", "property", "uploads"]
+    public let nonLivingTypes = ["Services", "Parks", "Commercial"]
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
