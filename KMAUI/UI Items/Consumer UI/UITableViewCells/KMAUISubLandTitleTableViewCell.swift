@@ -41,16 +41,21 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
-            titleLabel.text = subLand.subLandId
-        } else {
-            titleLabel.text = "Land ID \(subLand.subLandId)"
-        }
-        
-        if subLand.regionName.isEmpty {
+        if subLand.subLandType.isEmpty {
+            titleLabel.text = ""
             infoLabel.text = ""
         } else {
-            infoLabel.text = "\(subLand.regionName) Region"
+            if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
+                titleLabel.text = subLand.subLandId
+            } else {
+                titleLabel.text = "Land ID \(subLand.subLandId)"
+            }
+            
+            if subLand.regionName.isEmpty {
+                infoLabel.text = ""
+            } else {
+                infoLabel.text = "\(subLand.regionName) Region"
+            }
         }
     }
 }
