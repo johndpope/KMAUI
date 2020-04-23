@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8QR-bE-Hhb">
-                        <rect key="frame" x="44" y="178" width="232" height="20.5"/>
+                        <rect key="frame" x="60" y="178" width="200" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="dIG-Rh-8QP"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F0j-aQ-eOk">
-                        <rect key="frame" x="44" y="206.5" width="232" height="33.5"/>
+                        <rect key="frame" x="60" y="206.5" width="200" height="33.5"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="Oud-43-pfe"/>
                         </constraints>
@@ -48,12 +48,12 @@
                 <constraints>
                     <constraint firstItem="r22-MJ-D91" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="FnC-dr-PbY"/>
                     <constraint firstAttribute="bottom" secondItem="F0j-aQ-eOk" secondAttribute="bottom" constant="44" id="Jnt-6q-VBn"/>
-                    <constraint firstAttribute="trailing" secondItem="8QR-bE-Hhb" secondAttribute="trailing" constant="44" id="PRo-gM-ZL8"/>
+                    <constraint firstAttribute="trailing" secondItem="8QR-bE-Hhb" secondAttribute="trailing" constant="60" id="PRo-gM-ZL8"/>
                     <constraint firstItem="8QR-bE-Hhb" firstAttribute="top" secondItem="r22-MJ-D91" secondAttribute="bottom" constant="24" id="Zbx-uE-Ywx"/>
-                    <constraint firstAttribute="trailing" secondItem="F0j-aQ-eOk" secondAttribute="trailing" constant="44" id="agJ-6B-pea"/>
-                    <constraint firstItem="F0j-aQ-eOk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="44" id="d0n-7I-HRR"/>
+                    <constraint firstAttribute="trailing" secondItem="F0j-aQ-eOk" secondAttribute="trailing" constant="60" id="agJ-6B-pea"/>
+                    <constraint firstItem="F0j-aQ-eOk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="d0n-7I-HRR"/>
                     <constraint firstItem="F0j-aQ-eOk" firstAttribute="top" secondItem="8QR-bE-Hhb" secondAttribute="bottom" constant="8" id="kCK-zT-0D9"/>
-                    <constraint firstItem="8QR-bE-Hhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="44" id="keb-KE-wJh"/>
+                    <constraint firstItem="8QR-bE-Hhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="60" id="keb-KE-wJh"/>
                     <constraint firstItem="r22-MJ-D91" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="44" id="vn6-5U-8jM"/>
                 </constraints>
             </tableViewCellContentView>
