@@ -61,6 +61,7 @@
             <connections>
                 <outlet property="infoLabel" destination="F0j-aQ-eOk" id="DZE-gJ-mPx"/>
                 <outlet property="logoImageView" destination="r22-MJ-D91" id="uuf-RE-6EU"/>
+                <outlet property="logoImageViewTop" destination="vn6-5U-8jM" id="IvB-f1-Hw8"/>
                 <outlet property="titleLabel" destination="8QR-bE-Hhb" id="DBn-UH-hZn"/>
             </connections>
             <point key="canvasLocation" x="-59.420289855072468" y="129.91071428571428"/>
