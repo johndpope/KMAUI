@@ -3602,6 +3602,9 @@ public struct KMANotificationStruct {
     public var items = ""
     public var read = false
     
+    public init() {
+    }
+    
     public mutating func fillFromParse(object: PFObject) {
         // Created at
         if let createdAt = object.createdAt {
