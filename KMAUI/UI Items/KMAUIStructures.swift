@@ -84,10 +84,11 @@ public struct KMADocumentData {
     public var fileDescription = ""
     // Metadata
     public var hasCreatedAt = false
-    public var createdAt = Date()
+    public var captureDate = Date()
     public var hasLocation = false
     public var location = CLLocationCoordinate2D()
     public var address = ""
+    // Document Parse data
     
     public init() {
     }
@@ -140,7 +141,7 @@ public struct KMADocumentData {
         }
         
         if let createdAtValue = document["captureDate"] {
-            createdAt = KMAUIUtilities.shared.dateFromUTCString(string: createdAtValue)
+            captureDate = KMAUIUtilities.shared.dateFromUTCString(string: createdAtValue)
             hasCreatedAt = true
         }
         
