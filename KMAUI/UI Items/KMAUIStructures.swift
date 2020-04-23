@@ -82,6 +82,11 @@ public struct KMADocumentData {
     public var objectId = ""
     public var fileExtension = ""
     public var fileDescription = ""
+    // Metadata
+    public var hasCreatedAt = false
+    public var createdAt = Date()
+    public var hasLocation = false
+    public var location = CLLocationCoordinate2D()
     
     public init() {
     }
