@@ -3592,3 +3592,45 @@ public struct KMAUISearch {
         arrays = ["" as AnyObject, "" as AnyObject, "" as AnyObject]
     }
 }
+
+public struct KMANotificationStruct {
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var objectId = ""
+    public var title = ""
+    public var message = ""
+    public var items = ""
+    public var read = false
+    
+    public mutating func fillFromParse(object: PFObject) {
+        // Created at
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        // Updated at
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        // Object ID
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        // Title
+        if let title = object["title"] as? String {
+            self.title = title
+        }
+        // Message
+        if let message = object["message"] as? String {
+            self.message = message
+        }
+        // Items
+        if let items = object["items"] as? String {
+            self.items = items
+        }
+        // Read
+        if let read = object["read"] as? Bool {
+            self.read = read
+        }
+    }
+}
+

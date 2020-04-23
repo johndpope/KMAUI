@@ -1060,5 +1060,37 @@ final public class KMAUIParse {
             completion(newDepartments)
         }
     }
+    
+    // MARK: - Update Notifications
+    
+    public func updateNotifications(hasUpdatedAt: Bool, updatedAt: Date, completion: @escaping (_ updatedNotifications: [KMANotificationStruct])->()) {
+        let query = PFQuery(className: "KMANotification")
+        query.order(byDescending: "createdAt")
+        
+        if let currentUser = PFUser.current() {
+            query.whereKey("user", equalTo: currentUser)
+        }
+        
+        // Check if updatedAt check required
+        if hasUpdatedAt {
+            query.whereKey("updatedAt", greaterThan: updatedAt)
+        }
+
+        var updatedNotifications = [KMANotificationStruct]()
+        
+        query.findObjectsInBackground { (notifications, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let notifications = notifications {
+                for notification in notifications {
+                    var notificationObject = KMANotificationStruct()
+                    notificationObject.fillFromParse(object: notification)
+                    updatedNotifications.append(notificationObject)
+                }
+            }
+            
+            completion(updatedNotifications)
+        }
+    }
 }
 
