@@ -87,6 +87,7 @@ public struct KMADocumentData {
     public var createdAt = Date()
     public var hasLocation = false
     public var location = CLLocationCoordinate2D()
+    public var address = ""
     
     public init() {
     }
@@ -136,6 +137,20 @@ public struct KMADocumentData {
         
         if let fileDescription = document["fileDescription"] {
             self.fileDescription = fileDescription
+        }
+        
+        if let createdAtValue = document["captureDate"] {
+            createdAt = KMAUIUtilities.shared.dateFromUTCString(string: createdAtValue)
+            hasCreatedAt = true
+        }
+        
+        if let latitude = document["latitude"], let longitude = document["longitude"], let latitudeValue = Double(latitude), let longitudeValue = Double(longitude) {
+            hasLocation = true
+            location = CLLocationCoordinate2D(latitude: latitudeValue, longitude: longitudeValue)
+        }
+        
+        if let addressValue = document["address"] {
+            address = addressValue
         }
     }
 }
