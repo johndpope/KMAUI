@@ -8,6 +8,7 @@
 
 import UIKit
 import Lightbox
+import QuickLook
 import Kingfisher
 
 public class KMAUISubLandImagesTableViewCell: UITableViewCell {
@@ -25,6 +26,7 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public lazy var previewItem = NSURL()
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -100,7 +102,28 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
     // MARK: - Image / Video preview
     
     public func previewImages(index: Int) {
-        var imagesArray = [LightboxImage]()
+        let document = images[index]
+        
+        KMAUIUtilities.shared.downloadfile(urlString: document.fileURL, fileName: document.name, uploadId: document.objectId) { (success, url) in
+            DispatchQueue.main.async { // Must be performed on the main thread
+                if success {
+                    if let fileURL = url as NSURL? {
+                        self.previewItem = fileURL
+                        // Display file
+                        let previewController = QLPreviewController()
+                        previewController.dataSource = self
+                        KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                    }
+                    
+                } else {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(document.name). Please try again.") { (done) in }
+                    print("Error downloading file from: \(document.fileURL)")
+                }
+            }
+        }
+        
+        // Always using the QuickLook as Lighbox won't work for the Modal views..
+        /*var imagesArray = [LightboxImage]()
         
         for item in images {
             var text = item.name
@@ -129,7 +152,7 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
             // Present your controller.
             KMAUIConstants.shared.popupOpened = true
             KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
-        }
+        }*/
     }
 }
 
@@ -157,5 +180,18 @@ extension KMAUISubLandImagesTableViewCell: UICollectionViewDataSource, UICollect
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         previewImages(index: indexPath.row)
+    }
+}
+
+// MARK: - QLPreviewController Datasource
+
+extension KMAUISubLandImagesTableViewCell: QLPreviewControllerDataSource {
+    
+    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewItem as QLPreviewItem
     }
 }

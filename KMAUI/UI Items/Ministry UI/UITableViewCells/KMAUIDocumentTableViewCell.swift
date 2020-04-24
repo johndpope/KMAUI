@@ -137,6 +137,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         nameLabel.text = attachment.name
         typeLabel.text = attachment.type
         
+        // Remove the extension from the displayed file name
+        if !attachment.fileExtension.isEmpty {
+            nameLabel.text = attachment.name.replacingOccurrences(of: ".\(attachment.fileExtension.lowercased())", with: "")
+        }
+
         if attachment.type == "Document", !attachment.fileExtension.isEmpty {
             typeLabel.text = "\(attachment.fileExtension) file"
         } else if attachment.type == "Image" {
@@ -155,7 +160,6 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         previewImageView.alpha = 0
         previewImageViewWidth.constant = 0
-//        previewImageViewRight.constant = 0
         
         lineViewRight.constant = 0
     }
