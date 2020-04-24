@@ -356,6 +356,46 @@ public class KMAUIUtilities {
         return (firstDay, lastDay)
     }
     
+    // MARK: - Format date for notifications
+    
+    public func formatReadableDate(date: Date) -> String {
+        let currentDate = Date().timeIntervalSince1970
+        let notificationDate = date.timeIntervalSince1970
+        let difference = currentDate - notificationDate
+        var value = 0
+        var parameter = ""
+        // Check if just now
+        if difference < 60 {
+            return "Just now"
+        } else if difference < 60 * 60 {
+            // Calculate minutes ago
+            value = Int(difference / 60)
+            parameter = "minute"
+        } else if difference < 24 * 60 * 60 {
+            // Calculate hours ago
+            value = Int(difference / (60 * 60))
+            parameter = "hour"
+        } else if difference < 7 * 24 * 60 * 60 {
+            // Calculate days ago
+            value = Int(difference / (24 * 60 * 60))
+            parameter = "day"
+        } else if difference < 365 * 24 * 60 * 60 {
+            // Calculate month ago
+            value = Int(difference / (30 * 24 * 60 * 60))
+            parameter = "month"
+        } else {
+            // Calculate years ago
+            value = Int(difference / (365 * 24 * 60 * 60))
+            parameter = "year"
+        }
+        
+        if value != 1 {
+            parameter += "s"
+        }
+        
+        return "\(value) \(parameter) ago"
+    }
+    
     // MARK: - Arrays intersection
     
     public func findIntersection (firstArray : [String], secondArray : [String]) -> [String] {

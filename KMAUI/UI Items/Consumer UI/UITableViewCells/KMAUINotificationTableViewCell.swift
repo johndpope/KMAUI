@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUINotificationTableViewCell: UITableViewCell {
     
@@ -73,7 +72,7 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .medium
-        dateLabel.text = dateFormatter.string(from: notification.createdAt)
+        dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {
