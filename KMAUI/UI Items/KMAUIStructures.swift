@@ -2188,6 +2188,8 @@ public struct KMAUISubLandStruct {
     // Parse values
     public var createdAt = Date()
     public var updatedAt = Date()
+    // Notification id from push
+    public var notificationId = ""
     
     public init() {}
     
@@ -2387,6 +2389,11 @@ public struct KMAUISubLandStruct {
         // object id
         if let objectId = details["objectId"] as? String {
             self.objectId = objectId
+        }
+        
+        // notification id
+        if let notificationId = details["notificationId"] as? String {
+            self.notificationId = notificationId
         }
     }
     
