@@ -2405,6 +2405,17 @@ public struct KMAUISubLandStruct {
             rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
         }
         
+        if extraPrice > 0 {
+            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
+            /*
+            // Setup the paid status
+            if status == "confirmed" {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
+            } else if status == "awaiting payment" {
+                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
+            }*/
+        }
+        
         if subLandSquare > 0 {
             rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
         }
@@ -2422,16 +2433,6 @@ public struct KMAUISubLandStruct {
         
         if subLandPercent > 0 {
             rules.append(KMAUILotteryRule(name: "Land percent", value: "\(Int(subLandPercent * 100)) %"))
-        }
-        
-        if extraPrice > 0 {
-            rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
-            // Setup the paid status
-            if status == "confirmed" {
-                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
-            } else if status == "awaiting payment" {
-                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
-            }
         }
     }
 }
