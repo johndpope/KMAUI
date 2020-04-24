@@ -2416,6 +2416,10 @@ public struct KMAUISubLandStruct {
             }*/
         }
         
+        if subLandPercent > 0 {
+            rules.append(KMAUILotteryRule(name: "Land percent", value: "\(Int(subLandPercent * 100)) %"))
+        }
+        
         if subLandSquare > 0 {
             rules.append(KMAUILotteryRule(name: "Square", value: "\(subLandSquare.formatNumbersAfterDot()) m²"))
         }
@@ -2429,10 +2433,6 @@ public struct KMAUISubLandStruct {
             if subLandHeight > 0 {
                 rules.append(KMAUILotteryRule(name: "Height", value: "\(subLandHeight.formatNumbersAfterDot()) m"))
             }
-        }
-        
-        if subLandPercent > 0 {
-            rules.append(KMAUILotteryRule(name: "Land percent", value: "\(Int(subLandPercent * 100)) %"))
         }
     }
 }
