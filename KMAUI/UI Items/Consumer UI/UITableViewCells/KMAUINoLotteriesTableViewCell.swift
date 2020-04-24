@@ -11,6 +11,7 @@ import UIKit
 public class KMAUINoLotteriesTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var infoLabel: UILabel!
