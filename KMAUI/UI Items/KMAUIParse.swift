@@ -654,9 +654,14 @@ final public class KMAUIParse {
     
     // MARK: - Change status the lottery
     
-    public func changeLotteryStatus(to lotteryStatus: LotteryStatus, for lotteryId: String, completion: @escaping (_ success: Bool, _ error: Error?)->()) {
+    public func changeLotteryStatus(to lotteryStatus: LotteryStatus, for lotteryId: String, comment: LotteryComment? = nil, completion: @escaping (_ success: Bool, _ error: Error?)->()) {
         let object = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: lotteryId)
         object.setObject(lotteryStatus.rawValue, forKey: "lotteryStatus")
+        if let comment = comment,
+            let data = try? JSONSerialization.data(withJSONObject: comment.json(), options: .prettyPrinted),
+            let string = String(data: data, encoding: .utf8) {
+            object.setObject(string, forKey: "lotteryComments")
+        }
         PFObject.saveAll(inBackground: [object]) { (success, error) in
             completion(success, error)
         }

@@ -2445,7 +2445,36 @@ public enum LotteryStatus: String {
     case finished = "Finished"
     case approvedToStart = "Approved to start"
     case rejected = "Rejected"
-}  
+}
+
+public struct LotterySubLandComment {
+    public var comment = ""
+    public var subLandId = ""
+    
+    public func json() -> [String: Any] {
+        var jsonObject: [String: Any] = [:]
+        jsonObject["comment"] = comment
+        jsonObject["subLandId"] = subLandId
+        return jsonObject
+    }
+}
+
+public struct LotteryComment {
+    public var comment: String?
+    public var subLandComments: [LotterySubLandComment]
+    
+    public init(comment: String?, subLandComments: [LotterySubLandComment] = []) {
+        self.comment = comment
+        self.subLandComments = subLandComments
+    }
+    
+    public func json() -> [String: Any] {
+        var jsonObject: [String: Any] = [:]
+        jsonObject["comment"] = comment
+        jsonObject["subLandComments"] = subLandComments.map{ $0.json() }
+        return jsonObject
+    }
+}
 
 public struct KMAUILandPlanStruct {
       
