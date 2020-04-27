@@ -309,9 +309,7 @@ public class KMAUIUtilities {
             if let dateOnly = dateOnly, dateOnly {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
             }
-            
-            print("GET THE DATE FROM: \(string)")
-            
+
             if let dateObject = dateFormatter.date(from: string) {
                 return dateObject
             }
