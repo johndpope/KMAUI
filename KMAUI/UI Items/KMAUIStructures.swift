@@ -144,7 +144,7 @@ public struct KMADocumentData {
         
         // New variables
         
-        if let createdAtValue = document["captureDate"] {
+        if let createdAtValue = document["captureDate"], !createdAtValue.isEmpty {
             captureDate = KMAUIUtilities.shared.dateFromUTCString(string: createdAtValue)
             hasCreatedAt = true
         }
@@ -158,11 +158,11 @@ public struct KMADocumentData {
             address = addressValue
         }
         
-        if let createdAtValue = document["createdAt"] {
+        if let createdAtValue = document["createdAt"], !createdAtValue.isEmpty {
             createdAt = KMAUIUtilities.shared.dateFromUTCString(string: createdAtValue)
         }
         
-        if let updatedAtValue = document["updatedAt"] {
+        if let updatedAtValue = document["updatedAt"], !updatedAtValue.isEmpty {
             updatedAt = KMAUIUtilities.shared.dateFromUTCString(string: updatedAtValue)
         }
     }
