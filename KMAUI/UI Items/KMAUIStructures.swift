@@ -2283,6 +2283,8 @@ public struct KMAUISubLandStruct {
             self.regionId = regionId
             self.regionName = regionName
         }
+        // Setup the images / documents
+        self.fillImagesAndDocuments()
     }
     
     mutating public func fillFromDict(item: [String : Any]) {
