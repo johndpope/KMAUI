@@ -2435,6 +2435,28 @@ public struct KMAUISubLandStruct {
             }
         }
     }
+    
+    /**
+     Fill images and documents
+     */
+    
+    public mutating func fillImagesAndDocuments() {
+        subLandImagesArray = [KMADocumentData]()
+        subLandDocumentsArray = [KMADocumentData]()
+        subLandImagesVideosArray = [KMADocumentData]()
+        
+        if !subLandImages.isEmpty {
+            subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
+
+            for document in subLandImagesArray {
+                if document.type == "Document" {
+                    subLandDocumentsArray.append(document)
+                } else {
+                    subLandImagesVideosArray.append(document)
+                }
+            }
+        }
+    }
 }
 
 // Lottery status
