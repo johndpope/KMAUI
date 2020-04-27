@@ -310,6 +310,8 @@ public class KMAUIUtilities {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
             }
             
+            print("GET THE DATE FROM: \(string)")
+            
             if let dateObject = dateFormatter.date(from: string) {
                 return dateObject
             }
