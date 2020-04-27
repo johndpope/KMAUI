@@ -114,6 +114,8 @@ public struct KMADocumentData {
     }
     
     public mutating func fillFrom(document: [String: String]) {
+        print("\nGet document details: \(document)")
+        
         if let nameValue = document["name"] {
             self.name = nameValue
         }
