@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import MapKit
+import Photos
 import Contacts
 import ContactsUI
 import CoreLocation
@@ -1176,6 +1177,80 @@ public class KMAUIUtilities {
                     print("Error downloading file from: \(String(describing: urlString))")
                 }
             }
+        }
+    }
+    
+    // MARK: - Prepare document to upload
+    
+    func prepareDocument(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+        var hasCreatedAt = false
+        var createdAt = Date()
+        var hasLocation = false
+        var location = CLLocationCoordinate2D()
+        
+        // Getting metadata from camera
+        if let _ = info[UIImagePickerController.InfoKey.mediaMetadata] as? NSDictionary {
+            if !userLocation.isEmpty {
+                hasLocation = true
+                location = userLocation
+            }
+            
+            createdAt = Date()
+            hasCreatedAt = true
+        }
+        
+        if let asset = info[UIImagePickerController.InfoKey.phAsset] as? PHAsset {
+            if let itemCreatedAt = asset.creationDate {
+                print("Item created at: \(itemCreatedAt)")
+                hasCreatedAt = true
+                createdAt = itemCreatedAt
+            }
+
+            if let itemLocation = asset.location {
+                print("Item location: \(itemLocation.coordinate.latitude), \(itemLocation.coordinate.longitude)")
+                hasLocation = true
+                location = CLLocationCoordinate2D(latitude: itemLocation.coordinate.latitude, longitude: itemLocation.coordinate.longitude)
+            }
+        }
+        
+        var pickedDocument = KMADocumentData()
+        pickedDocument.hasCreatedAt = hasCreatedAt
+        pickedDocument.captureDate = createdAt
+        pickedDocument.hasLocation = hasLocation
+        pickedDocument.location = location
+
+        // Getting the video or image from Camera and Photo Library picker, saving these items into the local array as a structure
+        if let videoURL = info[.mediaURL] as? URL {
+            pickedDocument.type = "Video"
+            pickedDocument.name = videoURL.lastPathComponent
+            pickedDocument.url = videoURL
+            completion(pickedDocument)
+        } else if let photo = info[.originalImage] as? UIImage {
+            pickedDocument.type = "Image"
+            
+            let uuidString = UUID().uuidString.suffix(8)
+            var imgName = "Captured_image__\(uuidString).JPG"
+            
+            if let imageUrl = info[.imageURL] as? URL {
+                imgName = imageUrl.lastPathComponent
+            }
+            
+            let documentDirectory = NSTemporaryDirectory()
+            let localPath = documentDirectory.appending(imgName)
+            
+            if let data = photo.jpegData(compressionQuality: 0.5) as NSData? {
+                data.write(toFile: localPath, atomically: true)
+                let photoURL = URL.init(fileURLWithPath: localPath)
+                pickedDocument.url = photoURL
+            }
+            
+            // Save the photo name
+            pickedDocument.name = imgName
+            pickedDocument.image = photo
+
+            completion(pickedDocument)
+        } else {
+            KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
         }
     }
 }
