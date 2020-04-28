@@ -1184,30 +1184,110 @@ public class KMAUIUtilities {
     
     // MARK: - Prepare document to upload
     
-    public func prepareDocument(info: [UIImagePickerController.InfoKey : Any]? = nil, userLocation: CLLocationCoordinate2D? = nil, url: URL? = nil, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+    public func prepareDocument(info: [UIImagePickerController.InfoKey : Any]? = nil, userLocation: CLLocationCoordinate2D? = nil, url: URL? = nil, completion: @escaping (_ pickedDocument: KMADocumentData, _ name: String, _ description: String, _ previewImage: UIImage)->()) {
         if let info = info, let userLocation = userLocation {
             prepareDocumentObject(info: info, userLocation: userLocation) { (pickedDocument) in
-                completion(pickedDocument)
+                self.uploadDocument(pickedDocument: pickedDocument) { (documentToUpload, documentName, documentDescription, documentPreview) in
+                    completion(documentToUpload, documentName, documentDescription, documentPreview)
+                }
             }
         } else if let url = url {
             prepareDocumentObject(url: url) { (pickedDocument) in
-                completion(pickedDocument)
+                self.uploadDocument(pickedDocument: pickedDocument) { (documentToUpload, documentName, documentDescription, documentPreview) in
+                    completion(documentToUpload, documentName, documentDescription, documentPreview)
+                }
             }
         }
     }
     
-    func uploadDocument(pickedDocument: KMADocumentData) {
+    func uploadDocument(pickedDocument: KMADocumentData, completion: @escaping (_ pickedDocument: KMADocumentData, _ name: String, _ description: String, _ previewImage: UIImage)->()) {
         let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
         
         if pickedDocument.hasLocation {
             KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict) in
                 var pickedDocumentWithAddress = pickedDocument
                 pickedDocumentWithAddress.address = addressString
-//                self.renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocumentWithAddress)
+                self.renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument) { (pickedDocumentUpdated, nameValue, descriptionValue) in
+                    self.prepareUpload(pickedDocument: pickedDocumentUpdated, name: nameValue, description: descriptionValue) { (documentToUpload, documentName, documentDescription, documentPreview) in
+                        completion(documentToUpload, documentName, documentDescription, documentPreview)
+                    }
+                }
             }
         } else {
-//            renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument)
+            renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument) { (pickedDocumentUpdated, nameValue, descriptionValue) in
+                self.prepareUpload(pickedDocument: pickedDocumentUpdated, name: nameValue, description: descriptionValue) { (documentToUpload, documentName, documentDescription, documentPreview) in
+                    completion(documentToUpload, documentName, documentDescription, documentPreview)
+                }
+            }
         }
+    }
+    
+    /*func upload(pickedDocument: KMADocumentData, name: String, description: String, documentPreview: UIImage) {
+        // The QuickLook image generated
+        KMAUploader.shared.uploadFiles(pickedArray: [pickedDocument], subLandId: self.subLand.objectId, documentPreview: documentPreview, name: name, description: description) { (uploaded) in
+            KMAParse.shared.saveDocument(subLandId: self.subLand.objectId, newDocuments: uploaded) { (updatedSubLand) in
+                KMAUIUtilities.shared.stopLoadingWith { (done) in
+                    if pickedDocument.type == "Image" || pickedDocument.type == "Video" {
+                        self.newItem = true
+                    }
+                    
+                    self.updateUIFromItem(updatedSubLand: updatedSubLand)
+                }
+            }
+        }
+    }*/
+    
+    func prepareUpload(pickedDocument: KMADocumentData, name: String, description: String, completion: @escaping (_ pickedDocument: KMADocumentData, _ name: String, _ description: String, _ previewImage: UIImage)->()) {
+        let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
+        
+        if documentData.2 == "Document", documentData.3.lowercased() != "pdf", let url = pickedDocument.url {
+            KMAUIUtilities.shared.generateQuickLookPreview(url: url) { (previewImage) in
+                completion(pickedDocument, name + "." + documentData.3.lowercased(), description, previewImage)
+            }
+        } else {
+            completion(pickedDocument, name + "." + documentData.3.lowercased(), description, UIImage())
+        }
+    }
+    
+    func renameDocument(name: String, description: String, pickedDocument: KMADocumentData, completion: @escaping (_ pickedDocument: KMADocumentData, _ name: String, _ description: String)->()) {
+        let renameAlert = UIAlertController(title: "Name the file", message: "Please enter the valid name and description for the file:", preferredStyle: .alert)
+        renameAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        
+        renameAlert.addAction(UIAlertAction(title: "Start upload", style: .default, handler: { (action) in
+            if let textFields = renameAlert.textFields, textFields.count >= 2 {
+                if let nameValue = textFields[0].text, let descriptionValue = textFields[1].text {
+                    if nameValue.isEmpty {
+                        KMAUIUtilities.shared.globalAlert(title: "Warning", message: "Please enter a file name") { (done) in
+                            self.renameDocument(name: nameValue, description: descriptionValue, pickedDocument: pickedDocument) { (updatedPickedDocument, updatedName, updatedDescription) in
+                                completion(updatedPickedDocument, updatedName, updatedDescription)
+                            }
+                        }
+                    } else {
+                        completion(pickedDocument, nameValue, descriptionValue)
+                    }
+                }
+            }
+        }))
+        
+        renameAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in }))
+        
+        renameAlert.addTextField { (textField) in
+            textField.placeholder = "Enter file name..."
+            textField.text = name
+            textField.autocapitalizationType = .sentences
+            textField.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+            textField.clearButtonMode = .whileEditing
+        }
+        
+        renameAlert.addTextField { (textField) in
+            textField.placeholder = "Enter file description..."
+            textField.text = description
+            textField.autocapitalizationType = .sentences
+            textField.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+            textField.clearButtonMode = .whileEditing
+        }
+        
+        KMAUIUtilities.shared.displayAlert(viewController: renameAlert)
     }
     
     func prepareDocumentObject(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
