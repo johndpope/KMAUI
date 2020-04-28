@@ -1253,6 +1253,23 @@ public class KMAUIUtilities {
             KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
         }
     }
+    
+    public func prepareDocument(url: URL) {
+        // Creating the pickedDocument structure to store the data for a document
+        var pickedDocument = KMADocumentData()
+        pickedDocument.type = "Document"
+        pickedDocument.name = url.lastPathComponent
+        pickedDocument.url = url
+        
+        if let attributes = try? FileManager.default.attributesOfItem(atPath: url.path) as [FileAttributeKey: Any],
+            let creationDate = attributes[FileAttributeKey.creationDate] as? Date {
+            pickedDocument.captureDate = creationDate
+            pickedDocument.hasCreatedAt = true
+        }
+
+        // Adding the data into the local array
+        completion(pickedDocument)
+    }
 }
 
 // MARK: - Int extension
