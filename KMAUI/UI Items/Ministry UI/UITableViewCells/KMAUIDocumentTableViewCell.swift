@@ -117,9 +117,13 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             // Preview image view
             previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
         } else {
+            if file.type == "Document" {
+                previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            } else {
+                previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
+            }
             // Preview image view - get the image for all types of files as we have the QuickLook previews implemented
-            previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
-            
+
             if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
                 self.previewImageView.kf.setImage(with: url) { result in
                     switch result {
