@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 public class KMAUIDocumentTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
@@ -112,11 +113,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         }
         // File type
-        if file.type == "Document" {
+        if !file.hasCreatedAt { // This is an old document, just show a standard previews
             // Preview image view
             previewImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
         } else {
-            // Preview image view
+            // Preview image view - get the image for all types of files as we have the QuickLook previews implemented
             previewImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
             
             if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
