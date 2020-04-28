@@ -1424,7 +1424,7 @@ public class KMAUIUtilities {
         return pdfDocumentPage?.thumbnail(of: thumbnailSize, for: PDFDisplayBox.trimBox)
     }
     
-    func generateQuickLookPreview(url: URL, completion: @escaping (_ image: UIImage)->()) {
+    public func generateQuickLookPreview(url: URL, completion: @escaping (_ image: UIImage)->()) {
         if #available(iOS 13.0, *) {
             let size: CGSize = CGSize(width: 600, height: 600)
             let scale = UIScreen.main.scale
