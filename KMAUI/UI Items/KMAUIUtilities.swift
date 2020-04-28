@@ -1303,7 +1303,7 @@ public class KMAUIUtilities {
      Get the item name, selectio
     */
     
-    func getItemData(documentObject: KMADocumentData) -> (UIImage, String, String, String, UIImage) {
+    public func getItemData(documentObject: KMADocumentData) -> (UIImage, String, String, String, UIImage) {
         var imageValue = UIImage()
         var nameValue = ""
         var typeValue = documentObject.type
@@ -1455,7 +1455,7 @@ public class KMAUIUtilities {
     
     // MARK: - Resize image for profile
     
-    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+    public func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         let size = image.size
         let widthRatio  = targetSize.width  / size.width
         let heightRatio = targetSize.height / size.height
