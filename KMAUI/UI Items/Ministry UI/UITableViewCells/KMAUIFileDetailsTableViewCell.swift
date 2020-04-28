@@ -172,7 +172,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
         if index < fileURLs.count {
             let url = fileURLs[index]
             let name = fileTitles[index]
-            
+                        
             KMAUIUtilities.shared.quicklookPreview(urlString: url, fileName: name, uniqueId: uploadItem.uploadId) { (previewItemValue) in
                 self.previewItem = previewItemValue
                 // Display file
@@ -181,7 +181,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
                 // Present your controller.
                 KMAUIConstants.shared.popupOpened = true
                 KMAUIUtilities.shared.displayAlert(viewController: previewController)
-                print("HERE WE GO!")
             }
         }
     }

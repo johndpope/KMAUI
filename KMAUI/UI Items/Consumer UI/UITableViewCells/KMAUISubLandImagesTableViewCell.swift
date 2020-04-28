@@ -103,22 +103,12 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
     public func previewImages(index: Int) {
         let document = images[index]
         
-        KMAUIUtilities.shared.downloadfile(urlString: document.fileURL, fileName: document.name, uploadId: document.objectId) { (success, url) in
-            DispatchQueue.main.async { // Must be performed on the main thread
-                if success {
-                    if let fileURL = url as NSURL? {
-                        self.previewItem = fileURL
-                        // Display file
-                        let previewController = QLPreviewController()
-                        previewController.dataSource = self
-                        KMAUIUtilities.shared.displayAlert(viewController: previewController)
-                    }
-                    
-                } else {
-                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(document.name). Please try again.") { (done) in }
-                    print("Error downloading file from: \(document.fileURL)")
-                }
-            }
+        KMAUIUtilities.shared.quicklookPreview(urlString: document.fileURL, fileName: document.name, uniqueId: document.objectId) { (previewItemValue) in
+            self.previewItem = previewItemValue
+            // Display file
+            let previewController = QLPreviewController()
+            previewController.dataSource = self
+            KMAUIUtilities.shared.displayAlert(viewController: previewController)
         }
     }
 }

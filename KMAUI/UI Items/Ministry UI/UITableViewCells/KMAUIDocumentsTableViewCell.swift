@@ -95,24 +95,12 @@ extension KMAUIDocumentsTableViewCell: UICollectionViewDataSource, UICollectionV
     // MARK: - Image / Video preview
     
     func previewItem(item: KMADocumentData, propertyId: String) {
-        // Downloading file content from the URL
-        KMAUIUtilities.shared.downloadfile(urlString: item.fileURL, fileName: item.name, uploadId: propertyId) { (success, url) in
-            DispatchQueue.main.async { // Must be performed on the main thread
-                if success {
-                    if let fileURL = url as NSURL? {
-                        self.previewItem = fileURL
-                        
-                        // Display file
-                        let previewController = QLPreviewController()
-                        previewController.dataSource = self
-                        KMAUIUtilities.shared.displayAlert(viewController: previewController)
-                    }
-                    
-                } else {
-                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(item.name). Please try again.") { (done) in }
-                    print("Error downloading file from: \(item.fileURL)")
-                }
-            }
+        KMAUIUtilities.shared.quicklookPreview(urlString: item.fileURL, fileName: item.name, uniqueId: propertyId) { (previewItemValue) in
+            self.previewItem = previewItemValue
+            // Display file
+            let previewController = QLPreviewController()
+            previewController.dataSource = self
+            KMAUIUtilities.shared.displayAlert(viewController: previewController)
         }
     }
 }
