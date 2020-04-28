@@ -169,30 +169,19 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             }
         }
         
-        
-        
         if index < fileURLs.count {
             let url = fileURLs[index]
             let name = fileTitles[index]
             
-            KMAUIUtilities.shared.downloadfile(urlString: url, fileName: name, uploadId: uploadItem.uploadId) { (success, url) in
-                DispatchQueue.main.async { // Must be performed on the main thread
-                    if success {
-                        if let fileURL = url as NSURL? {
-                            self.previewItem = fileURL
-                            // Display file
-                            let previewController = QLPreviewController()
-                            previewController.dataSource = self
-                            // Present your controller.
-                            KMAUIConstants.shared.popupOpened = true
-                            KMAUIUtilities.shared.displayAlert(viewController: previewController)
-                        }
-                        
-                    } else {
-                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(name). Please try again.") { (done) in }
-                        print("Error downloading file from: \(String(describing: url))")
-                    }
-                }
+            KMAUIUtilities.shared.quicklookPreview(urlString: url, fileName: name, uniqueId: uploadItem.uploadId) { (previewItemValue) in
+                self.previewItem = previewItemValue
+                // Display file
+                let previewController = QLPreviewController()
+                previewController.dataSource = self
+                // Present your controller.
+                KMAUIConstants.shared.popupOpened = true
+                KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                print("HERE WE GO!")
             }
         }
     }

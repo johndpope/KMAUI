@@ -1161,6 +1161,23 @@ public class KMAUIUtilities {
 
         return radiansToDegrees(radians: radiansBearing)
     }
+    
+    // MARK: - Download image to display it with the QuickLook
+    
+    func quicklookPreview(urlString: String, fileName: String, uniqueId: String, completion: @escaping (_ previewItem: NSURL)->()) {
+        KMAUIUtilities.shared.downloadfile(urlString: urlString, fileName: fileName, uploadId: uniqueId) { (success, url) in
+            DispatchQueue.main.async { // Must be performed on the main thread
+                if success {
+                    if let fileURL = url as NSURL? {
+                        completion(fileURL)
+                    }
+                } else {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(fileName). Please try again.") { (done) in }
+                    print("Error downloading file from: \(String(describing: urlString))")
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Int extension
