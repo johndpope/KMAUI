@@ -1182,7 +1182,19 @@ public class KMAUIUtilities {
     
     // MARK: - Prepare document to upload
     
-    public func prepareDocument(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+    public func prepareDocument(info: [UIImagePickerController.InfoKey : Any]? = nil, userLocation: CLLocationCoordinate2D? = nil, url: URL? = nil, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+        if let info = info, let userLocation = userLocation {
+            prepareDocumentObject(info: info, userLocation: userLocation) { (pickedDocument) in
+                completion(pickedDocument)
+            }
+        } else if let url = url {
+            prepareDocumentObject(url: url) { (pickedDocument) in
+                completion(pickedDocument)
+            }
+        }
+    }
+    
+    func prepareDocumentObject(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
         var hasCreatedAt = false
         var createdAt = Date()
         var hasLocation = false
@@ -1254,7 +1266,7 @@ public class KMAUIUtilities {
         }
     }
     
-    public func prepareDocument(url: URL, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+    func prepareDocumentObject(url: URL, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
         // Creating the pickedDocument structure to store the data for a document
         var pickedDocument = KMADocumentData()
         pickedDocument.type = "Document"
