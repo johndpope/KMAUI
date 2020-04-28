@@ -8,9 +8,11 @@
 
 import UIKit
 import Parse
+import PDFKit
 import MapKit
 import Photos
 import Contacts
+import QuickLook
 import ContactsUI
 import CoreLocation
 import MKRingProgressView
@@ -1194,6 +1196,20 @@ public class KMAUIUtilities {
         }
     }
     
+    func uploadDocument(pickedDocument: KMADocumentData) {
+        let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
+        
+        if pickedDocument.hasLocation {
+            KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict) in
+                var pickedDocumentWithAddress = pickedDocument
+                pickedDocumentWithAddress.address = addressString
+//                self.renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocumentWithAddress)
+            }
+        } else {
+//            renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument)
+        }
+    }
+    
     func prepareDocumentObject(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
         var hasCreatedAt = false
         var createdAt = Date()
@@ -1281,6 +1297,241 @@ public class KMAUIUtilities {
 
         // Adding the data into the local array
         completion(pickedDocument)
+    }
+    
+    /**
+     Get the item name, selectio
+    */
+    
+    func getItemData(documentObject: KMADocumentData) -> (UIImage, String, String, String, UIImage) {
+        var imageValue = UIImage()
+        var nameValue = ""
+        var typeValue = documentObject.type
+        var fileExtensionValue = ""
+        
+        if let defaultImage = UIImage(named: "\(typeValue)Icon")?.withRenderingMode(.alwaysTemplate) {
+            imageValue = defaultImage
+        }
+        
+        // Get an image name
+        let uuidString = UUID().uuidString.suffix(8)
+        
+        let filename: NSString = NSString(string: documentObject.name)
+            
+        // Get file extension for images and video
+        if !filename.pathExtension.isEmpty {
+            fileExtensionValue = filename.pathExtension.uppercased()
+        }
+        
+        // Set the preview image and file name
+        if typeValue == "Image" {
+            // Get a preview image
+            if let urlValue = documentObject.url, let imageObject = UIImage(contentsOfFile: urlValue.path) {
+                imageValue = imageObject
+            } else if documentObject.image.size.width > 0 {
+                imageValue = documentObject.image
+            }
+            
+            if documentObject.name.isEmpty {
+                nameValue = "Captured_image_\(uuidString)"
+            } else {
+                nameValue = documentObject.name
+            }
+        } else if typeValue == "Video" {
+            // Get a video file name
+            if documentObject.name.isEmpty {
+                nameValue = "Captured_video_\(uuidString)"
+            } else {
+                nameValue = documentObject.name
+            }
+            
+            // Get a preview image from video
+            if let videoURL = documentObject.url, let thumbnailImage = KMAUIUtilities.shared.getThumbnailImage(forUrl: videoURL) {
+                imageValue = thumbnailImage
+            }
+        } else if typeValue == "Document" {
+            // Get a document name
+            if documentObject.name.isEmpty {
+                nameValue = "Files_document_\(uuidString)"
+            } else {
+                nameValue = documentObject.name
+            }
+            
+            // Get a preview image
+            if let documentURL = documentObject.url {
+                if let thumbnailImage = KMAUIUtilities.shared.getThumbnailImage(forUrl: documentURL) {
+                    // If video
+                    imageValue = thumbnailImage
+                    typeValue = "Video"
+                } else if let imageObject = UIImage(contentsOfFile: documentURL.path) {
+                    // If image
+                    imageValue = imageObject
+                    typeValue = "Image"
+                } else {
+                    let filename: NSString = NSString(string: documentObject.name)
+
+                    if !filename.pathExtension.isEmpty, let emptyDocumentIcon = UIImage(named: "documentEmptyIcon")?.withRenderingMode(.alwaysTemplate) {
+                        imageValue = emptyDocumentIcon
+                        fileExtensionValue = filename.pathExtension.uppercased()
+                        
+                        // Get the preview for a pdf file
+                        if fileExtensionValue.lowercased() == "pdf",
+                            let pdfPreview = generatePdfThumbnail(of: CGSize(width: 600, height: 600), for: documentURL, atPage: 0) {
+                                imageValue = pdfPreview
+                        }
+                    }
+                }
+            }
+        }
+        
+        let originalImage = imageValue
+        
+        if imageValue.size.width > 0 {
+            if typeValue == "Document" {
+                imageValue = resizeImage(image: imageValue, targetSize: CGSize(width: 600, height: 600)).withRenderingMode(.alwaysTemplate)
+            } else {
+                imageValue = resizeImage(image: imageValue, targetSize: CGSize(width: 600, height: 600))
+            }
+        }
+        
+        if !nameValue.isEmpty, !fileExtensionValue.isEmpty, nameValue.lowercased().contains(".\(fileExtensionValue.lowercased())") {
+            nameValue = String(nameValue.prefix(nameValue.count - 1 - fileExtensionValue.count))
+        }
+        
+        return (imageValue, nameValue, typeValue, fileExtensionValue, originalImage)
+    }
+    
+    // MARK: - Get thumbnail image from video
+    
+    func getThumbnailImage(forUrl url: URL) -> UIImage? {
+        let asset: AVAsset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true // to avoid vertical videos are being rotated
+        
+        do {
+            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60) , actualTime: nil)
+            return UIImage(cgImage: thumbnailImage)
+        } catch let error {
+            print(error)
+        }
+        
+        return nil
+    }
+    
+    func generatePdfThumbnail(of thumbnailSize: CGSize , for documentUrl: URL, atPage pageIndex: Int) -> UIImage? {
+        let pdfDocument = PDFDocument(url: documentUrl)
+        let pdfDocumentPage = pdfDocument?.page(at: pageIndex)
+        return pdfDocumentPage?.thumbnail(of: thumbnailSize, for: PDFDisplayBox.trimBox)
+    }
+    
+    func generateQuickLookPreview(url: URL, completion: @escaping (_ image: UIImage)->()) {
+        if #available(iOS 13.0, *) {
+            let size: CGSize = CGSize(width: 600, height: 600)
+            let scale = UIScreen.main.scale
+            
+            // Create the thumbnail request.
+            let request = QLThumbnailGenerator.Request(fileAt: url,
+                                                       size: size,
+                                                       scale: scale,
+                                                       representationTypes: .thumbnail)
+            
+            // Retrieve the singleton instance of the thumbnail generator and generate the thumbnails.
+            let generator = QLThumbnailGenerator.shared
+            generator.generateRepresentations(for: request) { (thumbnail, type, error) in
+                DispatchQueue.main.async {
+                    if thumbnail == nil || error != nil {
+                        // Handle the error case gracefully.
+                        completion(UIImage())
+                    } else if let thumbnail = thumbnail {
+                        // Display the thumbnail that you created.
+                        completion(thumbnail.uiImage)
+                    }
+                }
+            }
+        } else {
+            completion(UIImage())
+        }
+    }
+    
+    // MARK: - Resize image for profile
+    
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
+        let size = image.size
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        // Figure out what our orientation is, and use that to form the rectangle
+        var newSize: CGSize
+        
+        if (widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+        }
+        
+        // This is the rect that we've calculated out and this is what is actually used below
+        let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+        // Actually do the resizing to the rect using the ImageContext stuff
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+    
+    /**
+     Geocode address from Apple
+     */
+    
+    public func getAddressFromApple(location: CLLocationCoordinate2D, completion: @escaping (_ address: String, _ dict: [String: String]) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude), preferredLocale: Locale(identifier: "en")) { (placemarks, error) in
+            if let error = error {
+                print("Error getting the address from location: \(error.localizedDescription).")
+                completion("Address not available", [String: String]())
+            } else if let placemark = placemarks?.first {
+                var addressString = ""
+                var city = ""
+                
+                if let locality = placemark.locality {
+                    city = locality
+                }
+                
+                var adminArea = ""
+                
+                if let admin = placemark.administrativeArea {
+                    adminArea = admin
+                }
+                
+                var subAdminArea = ""
+                
+                if let subAdmin = placemark.subAdministrativeArea {
+                    subAdminArea = subAdmin
+                }
+                
+                var country = ""
+                
+                if let countryValue = placemark.country {
+                    country = countryValue
+                }
+                
+                print("City: \(city), adminArea: \(adminArea), subAdminArea: \(subAdminArea), country: \(country)")
+                
+                if let mailingAddress = placemark.mailingAddress, !mailingAddress.isEmpty {
+                    addressString = mailingAddress.replacingOccurrences(of: "\n", with: ", ")
+                } else {
+                    addressString = "Address not available"
+                }
+                
+                let dict = ["city": city, "subAdmin": subAdminArea, "admin": adminArea, "country": country]
+                
+                print("Apple Maps address: `\(addressString)`, dict: \(dict)")
+                
+                completion(addressString, dict)
+            } else {
+                completion("Address not available", [String: String]())
+            }
+        }
     }
 }
 
