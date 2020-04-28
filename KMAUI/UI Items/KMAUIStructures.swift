@@ -2175,8 +2175,6 @@ public struct KMAUISubLandStruct {
     public var subLandDescription = ""
     public var subLandImages = ""
     public var subLandImagesArray = [KMADocumentData]()
-    public var subLandImagesVideosArray = [KMADocumentData]()
-    public var subLandDocumentsArray = [KMADocumentData]()
     // Additional variables
     public var geojson = ""
     public var geojsonDict = [String: Any]()
@@ -2282,7 +2280,7 @@ public struct KMAUISubLandStruct {
             self.regionName = regionName
         }
         // Setup the images / documents
-        self.fillImagesAndDocuments()
+        self.subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
     }
     
     mutating public func fillFromDict(item: [String : Any]) {
@@ -2434,28 +2432,6 @@ public struct KMAUISubLandStruct {
             
             if subLandHeight > 0 {
                 rules.append(KMAUILotteryRule(name: "Height", value: "\(subLandHeight.formatNumbersAfterDot()) m"))
-            }
-        }
-    }
-    
-    /**
-     Fill images and documents
-     */
-    
-    public mutating func fillImagesAndDocuments() {
-        subLandImagesArray = [KMADocumentData]()
-        subLandDocumentsArray = [KMADocumentData]()
-        subLandImagesVideosArray = [KMADocumentData]()
-        
-        if !subLandImages.isEmpty {
-            subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
-
-            for document in subLandImagesArray {
-                if document.type == "Document" {
-                    subLandDocumentsArray.append(document)
-                } else {
-                    subLandImagesVideosArray.append(document)
-                }
             }
         }
     }
