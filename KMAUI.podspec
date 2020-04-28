@@ -8,7 +8,7 @@ s.summary = "KMAUI allows you using the same design items across all of the KMA 
 s.requires_arc = true
 
 # 2
-s.version = "0.8.54"
+s.version = "0.8.55"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -41,6 +41,5 @@ s.dependency 'Kingfisher', '~> 5.0'
 s.dependency 'Charts'
 s.dependency 'Parse'
 s.dependency 'MKRingProgressView'
-s.dependency 'Lightbox'
 
 end

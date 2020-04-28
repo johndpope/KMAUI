@@ -175,8 +175,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             let url = fileURLs[index]
             let name = fileTitles[index]
             
-            print("Open file `\(url)` with name `\(name)`.")
-            
             KMAUIUtilities.shared.downloadfile(urlString: url, fileName: name, uploadId: uploadItem.uploadId) { (success, url) in
                 DispatchQueue.main.async { // Must be performed on the main thread
                     if success {
