@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Lightbox
 import QuickLook
 import Kingfisher
 
@@ -121,38 +120,6 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
                 }
             }
         }
-        
-        // Always using the QuickLook as Lighbox won't work for the Modal views..
-        /*var imagesArray = [LightboxImage]()
-        
-        for item in images {
-            var text = item.name
-            
-            if !item.fileDescription.isEmpty {
-                text += "\n" + item.fileDescription
-            }
-            
-            if item.type == "Video" {
-                if let imageURL = URL(string: item.previewURL), let videoURL = URL(string: item.fileURL) {
-                    imagesArray.append(LightboxImage(imageURL: imageURL, text: text, videoURL: videoURL))
-                }
-            } else {
-                if let imageURL = URL(string: item.fileURL) {
-                    imagesArray.append(LightboxImage(imageURL: imageURL, text: text))
-                }
-            }
-        }
-        
-        if !imagesArray.isEmpty {
-            // Add images for the preview and setup UI
-            let lightboxController = LightboxController(images: imagesArray, startIndex: index)
-            lightboxController.modalPresentationStyle = .fullScreen
-            lightboxController.dynamicBackground = true
-            
-            // Present your controller.
-            KMAUIConstants.shared.popupOpened = true
-            KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
-        }*/
     }
 }
 

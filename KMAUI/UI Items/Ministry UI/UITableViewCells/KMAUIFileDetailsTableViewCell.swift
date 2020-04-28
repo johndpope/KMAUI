@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Lightbox
+import QuickLook
 
 public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
@@ -34,6 +34,7 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public lazy var previewItem = NSURL()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -153,39 +154,81 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
     // MARK: - Image / Video preview
     
     public func previewImages(index: Int) {
-        var images = [LightboxImage]()
+        var fileURLs = [String]()
+        var fileTitles = [String]()
         
-        if uploadItem.isVideo {
-            if let imageURL = URL(string: uploadItem.previewImage), let videoURL = URL(string: uploadItem.uploadImage) {
-                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName, videoURL: videoURL))
-            }
-        } else {
-            if let imageURL = URL(string: uploadItem.uploadImage) {
-                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName))
-            }
+        if let _ = URL(string: uploadItem.uploadImage) {
+            fileURLs.append(uploadItem.uploadImage)
+            fileTitles.append(uploadItem.uploadName)
         }
         
         for item in uploadItem.uploadFiles {
-            if item.isVideo {
-                if let imageURL = URL(string: item.previewImage), let videoURL = URL(string: item.uploadImage) {
-                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName, videoURL: videoURL))
-                }
-            } else {
-                if let imageURL = URL(string: item.uploadImage) {
-                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName))
-                }
+            if let _ = URL(string: item.uploadImage) {
+                fileURLs.append(item.uploadImage)
+                fileTitles.append(item.uploadName)
             }
         }
         
-        if !images.isEmpty {
-            // Add images for the preview and setup UI
-            let lightboxController = LightboxController(images: images, startIndex: index)
-            lightboxController.modalPresentationStyle = .fullScreen
-            lightboxController.dynamicBackground = true
-            // Present your controller.
-            KMAUIConstants.shared.popupOpened = true
-            KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
+        
+        
+        if index < fileURLs.count {
+            let url = fileURLs[index]
+            let name = fileTitles[index]
+            
+            print("Open file `\(url)` with name `\(name)`.")
+            
+            KMAUIUtilities.shared.downloadfile(urlString: url, fileName: name, uploadId: uploadItem.uploadId) { (success, url) in
+                DispatchQueue.main.async { // Must be performed on the main thread
+                    if success {
+                        if let fileURL = url as NSURL? {
+                            self.previewItem = fileURL
+                            // Display file
+                            let previewController = QLPreviewController()
+                            previewController.dataSource = self
+                            KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                        }
+                        
+                    } else {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error loading file \(name). Please try again.") { (done) in }
+                        print("Error downloading file from: \(String(describing: url))")
+                    }
+                }
+            }
         }
+
+        //        var images = [LightboxImage]()
+//
+//        if uploadItem.isVideo {
+//            if let imageURL = URL(string: uploadItem.previewImage), let videoURL = URL(string: uploadItem.uploadImage) {
+//                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName, videoURL: videoURL))
+//            }
+//        } else {
+//            if let imageURL = URL(string: uploadItem.uploadImage) {
+//                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName))
+//            }
+//        }
+//
+//        for item in uploadItem.uploadFiles {
+//            if item.isVideo {
+//                if let imageURL = URL(string: item.previewImage), let videoURL = URL(string: item.uploadImage) {
+//                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName, videoURL: videoURL))
+//                }
+//            } else {
+//                if let imageURL = URL(string: item.uploadImage) {
+//                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName))
+//                }
+//            }
+//        }
+//
+//        if !images.isEmpty {
+//            // Add images for the preview and setup UI
+//            let lightboxController = LightboxController(images: images, startIndex: index)
+//            lightboxController.modalPresentationStyle = .fullScreen
+//            lightboxController.dynamicBackground = true
+//            // Present your controller.
+//            KMAUIConstants.shared.popupOpened = true
+//            KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
+//        }
     }
 }
 
@@ -223,5 +266,18 @@ extension KMAUIFileDetailsTableViewCell: UITableViewDataSource, UITableViewDeleg
                 tableView.deselectRow(at: indexPath, animated: true)
             }
         }
+    }
+}
+
+// MARK: - QLPreviewController Datasource
+
+extension KMAUIFileDetailsTableViewCell: QLPreviewControllerDataSource {
+    
+    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewItem as QLPreviewItem
     }
 }
