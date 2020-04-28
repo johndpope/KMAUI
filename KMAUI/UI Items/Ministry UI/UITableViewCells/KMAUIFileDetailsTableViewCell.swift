@@ -183,6 +183,8 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
                             // Display file
                             let previewController = QLPreviewController()
                             previewController.dataSource = self
+                            // Present your controller.
+                            KMAUIConstants.shared.popupOpened = true
                             KMAUIUtilities.shared.displayAlert(viewController: previewController)
                         }
                         
@@ -193,40 +195,6 @@ public class KMAUIFileDetailsTableViewCell: UITableViewCell {
                 }
             }
         }
-
-        //        var images = [LightboxImage]()
-//
-//        if uploadItem.isVideo {
-//            if let imageURL = URL(string: uploadItem.previewImage), let videoURL = URL(string: uploadItem.uploadImage) {
-//                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName, videoURL: videoURL))
-//            }
-//        } else {
-//            if let imageURL = URL(string: uploadItem.uploadImage) {
-//                images.append(LightboxImage(imageURL: imageURL, text: uploadItem.uploadName))
-//            }
-//        }
-//
-//        for item in uploadItem.uploadFiles {
-//            if item.isVideo {
-//                if let imageURL = URL(string: item.previewImage), let videoURL = URL(string: item.uploadImage) {
-//                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName, videoURL: videoURL))
-//                }
-//            } else {
-//                if let imageURL = URL(string: item.uploadImage) {
-//                    images.append(LightboxImage(imageURL: imageURL, text: item.uploadName))
-//                }
-//            }
-//        }
-//
-//        if !images.isEmpty {
-//            // Add images for the preview and setup UI
-//            let lightboxController = LightboxController(images: images, startIndex: index)
-//            lightboxController.modalPresentationStyle = .fullScreen
-//            lightboxController.dynamicBackground = true
-//            // Present your controller.
-//            KMAUIConstants.shared.popupOpened = true
-//            KMAUIUtilities.shared.displayAlert(viewController: lightboxController)
-//        }
     }
 }
 
