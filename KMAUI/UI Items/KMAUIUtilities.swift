@@ -1182,7 +1182,7 @@ public class KMAUIUtilities {
     
     // MARK: - Prepare document to upload
     
-    func prepareDocument(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
+    public func prepareDocument(info: [UIImagePickerController.InfoKey : Any], userLocation: CLLocationCoordinate2D, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
         var hasCreatedAt = false
         var createdAt = Date()
         var hasLocation = false
