@@ -1164,7 +1164,7 @@ public class KMAUIUtilities {
     
     // MARK: - Download image to display it with the QuickLook
     
-    func quicklookPreview(urlString: String, fileName: String, uniqueId: String, completion: @escaping (_ previewItem: NSURL)->()) {
+    public func quicklookPreview(urlString: String, fileName: String, uniqueId: String, completion: @escaping (_ previewItem: NSURL)->()) {
         KMAUIUtilities.shared.downloadfile(urlString: urlString, fileName: fileName, uploadId: uniqueId) { (success, url) in
             DispatchQueue.main.async { // Must be performed on the main thread
                 if success {
