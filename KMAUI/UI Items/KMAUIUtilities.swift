@@ -1254,7 +1254,7 @@ public class KMAUIUtilities {
         }
     }
     
-    public func prepareDocument(url: URL) {
+    public func prepareDocument(url: URL, completion: @escaping (_ pickedDocument: KMADocumentData)->()) {
         // Creating the pickedDocument structure to store the data for a document
         var pickedDocument = KMADocumentData()
         pickedDocument.type = "Document"
