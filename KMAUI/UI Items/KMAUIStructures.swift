@@ -2419,13 +2419,6 @@ public struct KMAUISubLandStruct {
         
         if extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
-            /*
-            // Setup the paid status
-            if status == "confirmed" {
-                rules.append(KMAUILotteryRule(name: "Payment", value: "Completed"))
-            } else if status == "awaiting payment" {
-                rules.append(KMAUILotteryRule(name: "Payment", value: "Pending"))
-            }*/
         }
         
         if subLandPercent > 0 {

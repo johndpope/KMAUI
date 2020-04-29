@@ -800,7 +800,8 @@ final public class KMAUIParse {
                                 "userId" : citizen.objectId as AnyObject,
                                 "title": "Land lottery win!" as AnyObject,
                                 "message": "You've received the sub land \(subLand.subLandId) as a result of the \(landPlan.landName) lottery draw in \(landPlan.region.nameE) Region." as AnyObject,
-                                "kmaItems": items as AnyObject
+                                "kmaItems": items as AnyObject,
+                                "appType": "Consumer" as AnyObject
                             ]
                             
                             pushParams.append(newSubLandParams)
