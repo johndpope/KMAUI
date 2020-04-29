@@ -2292,8 +2292,6 @@ public struct KMAUISubLandStruct {
                     }
                 }
             }
-            
-            subLandsQuery.includeKey("landPlan.responsibleDivision")
         }
     }
     
