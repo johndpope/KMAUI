@@ -1188,17 +1188,24 @@ final public class KMAUIParse {
                     var subLandObject = KMAUISubLandStruct()
                     subLandObject.fillFromParse(item: randomSubLands[0])
                     
-                    self.checkSubLandLottery(subLandId: subLandObject.objectId) { (verified, error) in
-                        if verified {
-                            completion(true, subLandObject)
-                        } else {
-                            if error.isEmpty {
-                                // Try again
-                                self.getSubLand(subLandCount: subLandCount) { (loadedValue, loadedSubLand) in
-                                    completion(loadedValue, loadedSubLand)
-                                }
+                    if subLandObject.landPlanId.isEmpty {
+                        // Try again
+                        self.getSubLand(subLandCount: subLandCount) { (loadedValue, loadedSubLand) in
+                            completion(loadedValue, loadedSubLand)
+                        }
+                    } else {
+                        self.checkSubLandLottery(subLandId: subLandObject.objectId) { (verified, error) in
+                            if verified {
+                                completion(true, subLandObject)
                             } else {
-                                completion(false, KMAUISubLandStruct())
+                                if error.isEmpty {
+                                    // Try again
+                                    self.getSubLand(subLandCount: subLandCount) { (loadedValue, loadedSubLand) in
+                                        completion(loadedValue, loadedSubLand)
+                                    }
+                                } else {
+                                    completion(false, KMAUISubLandStruct())
+                                }
                             }
                         }
                     }
