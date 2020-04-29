@@ -57,7 +57,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageView.layer.borderWidth = 1
         previewImageView.kf.indicatorType = .activity
         // Setup the right arrow
-        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicatorFull.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         // No selection required
         selectionStyle = .none

@@ -61,7 +61,7 @@
                             <constraint firstAttribute="height" constant="64" id="sWA-bU-l5C"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicatorFull" translatesAutoresizingMaskIntoConstraints="NO" id="r66-Hw-IIu">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="r66-Hw-IIu">
                         <rect key="frame" x="284" y="34.5" width="6" height="11"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="0vq-aw-QtW"/>
@@ -113,7 +113,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowIndicatorFull" width="6" height="11"/>
+        <image name="disclosureArrow" width="7" height="12"/>
         <namedColor name="KMAUIGreyLineColor">
             <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
