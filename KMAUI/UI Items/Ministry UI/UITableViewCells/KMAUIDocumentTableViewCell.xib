@@ -104,8 +104,10 @@
                 <outlet property="previewImageViewRight" destination="Qgn-cy-GWK" id="zKc-bo-Igw"/>
                 <outlet property="previewImageViewWidth" destination="664-gy-atR" id="UzV-V0-nws"/>
                 <outlet property="rightArrowImageView" destination="r66-Hw-IIu" id="pKi-KN-hzE"/>
+                <outlet property="rightArrowImageViewRight" destination="0yo-kI-WoY" id="2Ub-lp-hCU"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>
                 <outlet property="typeLabel" destination="ToK-MQ-pQp" id="VtF-e3-ZHA"/>
+                <outlet property="typeLabelLeft" destination="cwO-P1-9Hc" id="Qqy-by-xid"/>
             </connections>
             <point key="canvasLocation" x="-66.666666666666671" y="18.080357142857142"/>
         </tableViewCell>

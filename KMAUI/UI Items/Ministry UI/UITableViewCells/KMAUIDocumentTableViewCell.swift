@@ -15,6 +15,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var typeLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var typeImageView: UIImageView!
     @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var previewImageViewWidth: NSLayoutConstraint!
@@ -22,6 +23,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewRight: NSLayoutConstraint!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     // MARK: - Variables
     public static let id = "KMAUIDocumentTableViewCell"
     public var isLast = false
@@ -31,6 +33,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var offset: CGFloat = 30
     public var attachment = KMADocumentData() {
         didSet {
             setupAttachment()
@@ -168,6 +171,14 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         previewImageViewRight.constant = 0
         
         lineViewRight.constant = 30
-        lineView.alpha = 0.2
+        
+        if offset == 20 {
+            documentCell.lineView.alpha = 0
+        } else {
+            lineView.alpha = 0.2
+        }
+        
+        typeLabelLeft.constant = offset
+        rightArrowImageViewRight.constant = offset
     }
 }
