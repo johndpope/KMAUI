@@ -37,7 +37,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-ZN-5sM" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="92" y="14" width="90" height="22"/>
+                        <rect key="frame" x="92" y="14" width="84" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="nU7-GW-rSV"/>
                         </constraints>
@@ -46,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToK-MQ-pQp" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="92" y="44" width="90" height="22"/>
+                        <rect key="frame" x="92" y="44" width="84" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="QCV-7D-pWY"/>
                         </constraints>
@@ -55,7 +55,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Zh-gv-AY1">
-                        <rect key="frame" x="194" y="8" width="96" height="64"/>
+                        <rect key="frame" x="188" y="8" width="96" height="64"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="96" id="664-gy-atR"/>
                             <constraint firstAttribute="height" constant="64" id="sWA-bU-l5C"/>
@@ -81,7 +81,7 @@
                     <constraint firstItem="Alb-e6-nOe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KBs-ou-fhl"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="M5v-la-byp"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="ToK-MQ-pQp" secondAttribute="trailing" constant="12" id="WIg-T8-ccL"/>
-                    <constraint firstAttribute="trailing" secondItem="6Zh-gv-AY1" secondAttribute="trailing" constant="30" id="XUE-SW-PTa"/>
+                    <constraint firstAttribute="trailing" secondItem="6Zh-gv-AY1" secondAttribute="trailing" constant="36" id="XUE-SW-PTa"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="uP5-ZN-5sM" secondAttribute="trailing" constant="12" id="cUy-XP-jGI"/>
                     <constraint firstItem="SM3-KO-Egd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="cwO-P1-9Hc"/>
                     <constraint firstAttribute="trailing" secondItem="Alb-e6-nOe" secondAttribute="trailing" id="efY-T2-hVp"/>

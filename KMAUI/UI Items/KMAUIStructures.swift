@@ -2271,6 +2271,8 @@ public struct KMAUISubLandStruct {
         // subLandImages
         if let subLandImages = item["subLandImages"] as? String {
             self.subLandImages = subLandImages
+            // Setup the images / documents
+            self.subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
         }
         // region id, region name
         if let noRegion = noRegion, noRegion {
@@ -2279,8 +2281,6 @@ public struct KMAUISubLandStruct {
             self.regionId = regionId
             self.regionName = regionName
         }
-        // Setup the images / documents
-        self.subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
     }
     
     mutating public func fillFromDict(item: [String : Any]) {
