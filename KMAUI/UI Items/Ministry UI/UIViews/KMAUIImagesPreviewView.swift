@@ -9,19 +9,19 @@
 import UIKit
 import QuickLook
 
-class KMAUIImagesPreviewView: UIView {
+public class KMAUIImagesPreviewView: UIView {
 
     // MARK: - IBOutlets
-    @IBOutlet var contentView: UIView!
+    @IBOutlet public var contentView: UIView!
     // Buttons
-    @IBOutlet weak var singleImageButton: UIButton!
-    @IBOutlet weak var twoOneImageButton: UIButton!
-    @IBOutlet weak var twoTwoImageButton: UIButton!
-    @IBOutlet weak var threeOneImageButton: UIButton!
-    @IBOutlet weak var threeTwoImageButton: UIButton!
-    @IBOutlet weak var threeThreeImageButton: UIButton!
-    @IBOutlet weak var threeThreeBgView: UIView!
-    @IBOutlet weak var threeThreeBgImageButton: UIButton!
+    @IBOutlet public weak var singleImageButton: UIButton!
+    @IBOutlet public weak var twoOneImageButton: UIButton!
+    @IBOutlet public weak var twoTwoImageButton: UIButton!
+    @IBOutlet public weak var threeOneImageButton: UIButton!
+    @IBOutlet public weak var threeTwoImageButton: UIButton!
+    @IBOutlet public weak var threeThreeImageButton: UIButton!
+    @IBOutlet public weak var threeThreeBgView: UIView!
+    @IBOutlet public weak var threeThreeBgImageButton: UIButton!
     
     // MARK: - Variables
     public var subLand = KMAUISubLandStruct() {
@@ -56,7 +56,7 @@ class KMAUIImagesPreviewView: UIView {
      Setup images
      */
     
-    func setupImages() {
+    public func setupImages() {
         // Hide all buttons
         singleImageButton.alpha = 0
         twoOneImageButton.alpha = 0
@@ -104,7 +104,7 @@ class KMAUIImagesPreviewView: UIView {
      Download and show image
      */
     
-    func showImage(button: UIButton, index: Int) {
+    public func showImage(button: UIButton, index: Int) {
         let document = subLand.subLandImagesArray[index]
         button.alpha = 1
         button.layer.cornerRadius = 8
@@ -130,27 +130,27 @@ class KMAUIImagesPreviewView: UIView {
     // MARK: - IBActions
         
     @IBAction func singleImageButtonPressed(_ sender: Any) {
-//        buttonAction?(0)
+        previewImages(index: 0)
     }
     
     @IBAction func twoOneImageButtonPressed(_ sender: Any) {
-//        buttonAction?(0)
+        previewImages(index: 0)
     }
     
     @IBAction func twoTwoImageButtonPressed(_ sender: Any) {
-//        buttonAction?(1)
+        previewImages(index: 1)
     }
     
     @IBAction func threeOneImageButtonPressed(_ sender: Any) {
-//        buttonAction?(0)
+        previewImages(index: 0)
     }
     
     @IBAction func threeTwoImageButtonPressed(_ sender: Any) {
-//        buttonAction?(1)
+        previewImages(index: 1)
     }
     
     @IBAction func threeThreeImageButtonPressed(_ sender: Any) {
-//        buttonAction?(2)
+        previewImages(index: 2)
     }
     
     @IBAction public func viewAttachmentsButtonPressed(_ sender: Any) {
