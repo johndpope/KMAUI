@@ -95,7 +95,16 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if noBg {
+            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            isActiveImageView.backgroundColor = UIColor.clear
+            
+            if highlight {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            } else {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            }
+        } else if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             
             if highlightActive {
