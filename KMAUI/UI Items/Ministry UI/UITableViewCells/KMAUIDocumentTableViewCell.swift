@@ -173,7 +173,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         lineViewRight.constant = 30
         
         if offset == 20 {
-            documentCell.lineView.alpha = 0
+            lineView.alpha = 0
         } else {
             lineView.alpha = 0.2
         }
