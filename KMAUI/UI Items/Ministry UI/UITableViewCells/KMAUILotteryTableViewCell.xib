@@ -116,6 +116,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="cBQ-TQ-aTf" id="4e4-4R-cfG"/>
+                <outlet property="bgViewBottom" destination="1b0-dr-lIw" id="qLn-LX-T3A"/>
+                <outlet property="bgViewLeft" destination="OT3-w4-Y86" id="Zxz-MV-BRL"/>
+                <outlet property="bgViewRight" destination="DTd-XF-1F2" id="XYM-jT-X7K"/>
                 <outlet property="bgViewTop" destination="CVB-PH-eS5" id="IiO-C4-FgO"/>
                 <outlet property="isActiveImageView" destination="owe-ce-Hua" id="SxY-Yh-Ict"/>
                 <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>

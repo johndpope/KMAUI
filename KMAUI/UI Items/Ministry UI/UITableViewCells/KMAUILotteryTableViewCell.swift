@@ -12,7 +12,10 @@ import Kingfisher
 public class KMAUILotteryTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var bgViewRight: NSLayoutConstraint!
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var isActiveImageView: UIImageView!
     @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var lotteryNameLabelLeft: NSLayoutConstraint!
@@ -32,6 +35,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     public var lottery = KMAUILandPlanStruct()
     public var isFirst = false
     public var highlightActive = false
+    public var noBg = false
     public var isActive = false {
         didSet {
             setupCell()
@@ -181,6 +185,16 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsLabelLeft.constant = 16
         
         profileImageView.alpha = 0
+        
+        if noBg {
+            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.layer.shadowRadius = 0
+            bgViewLeft.constant = 0
+            bgViewRight.constant = 0
+            bgViewTop.constant = 0
+            bgViewBottom.constant = 0
+            bgView.layer.cornerRadius = 0
+        }
     }
     
     public func setupCitizen() {
