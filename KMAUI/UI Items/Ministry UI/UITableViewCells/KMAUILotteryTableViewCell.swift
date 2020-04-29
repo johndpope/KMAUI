@@ -26,6 +26,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var statusViewWidth: NSLayoutConstraint! // default: 7
     @IBOutlet public weak var statusViewRight: NSLayoutConstraint! // default: 6
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var statusLabelHeight: NSLayoutConstraint!
+    @IBOutlet public weak var statusLabelBottom: NSLayoutConstraint!
     @IBOutlet public weak var profileImageView: UIImageView!
     
     // MARK: - Variables
@@ -203,6 +205,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
             bgViewBottom.constant = 0
             bgView.layer.cornerRadius = 0
+            statusLabelHeight.constant = 0
+            statusLabelBottom.constant = 0
         }
     }
     
