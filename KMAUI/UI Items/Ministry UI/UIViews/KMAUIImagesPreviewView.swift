@@ -64,6 +64,7 @@ public class KMAUIImagesPreviewView: UIView {
         threeOneImageButton.alpha = 0
         threeTwoImageButton.alpha = 0
         threeThreeImageButton.alpha = 0
+        threeThreeBgView.alpha = 0
         threeThreeBgImageButton.alpha = 0
         // Review attachments
         threeThreeBgImageButton.layer.cornerRadius = 8
@@ -74,8 +75,6 @@ public class KMAUIImagesPreviewView: UIView {
         threeThreeBgView.clipsToBounds = true
         threeThreeBgView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         // Bottom action buttons
-        
-        
         if !subLand.subLandImagesArray.isEmpty {
             // Show the correct image for each view
             if subLand.subLandImagesArray.count == 1 {
