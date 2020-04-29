@@ -2188,6 +2188,8 @@ public struct KMAUISubLandStruct {
     public var updatedAt = Date()
     // Notification id from push
     public var notificationId = ""
+    public var departmentId = ""
+    public var departmentName = ""
     
     public init() {}
     
@@ -2280,6 +2282,18 @@ public struct KMAUISubLandStruct {
         } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
             self.regionId = regionId
             self.regionName = regionName
+            
+            if let responsibleDivision = landPlan["responsibleDivision"] as? PFObject {
+                if let departmentIdValue = responsibleDivision.objectId {
+                    self.departmentId = departmentIdValue
+                    
+                    if let departmentNameValue = responsibleDivision["departmentName"] as? String {
+                        self.departmentName = departmentNameValue
+                    }
+                }
+            }
+            
+            subLandsQuery.includeKey("landPlan.responsibleDivision")
         }
     }
     

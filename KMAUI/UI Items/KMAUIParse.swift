@@ -486,6 +486,7 @@ final public class KMAUIParse {
         // Getting the region name
         lotteryResultQuery.includeKey("landPlan")
         lotteryResultQuery.includeKey("landPlan.region")
+        lotteryResultQuery.includeKey("landPlan.responsibleDivision")
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
@@ -982,6 +983,7 @@ final public class KMAUIParse {
         let combinedQuery = PFQuery.orQuery(withSubqueries: [idQuery, indexQuery, typeQuery])
         combinedQuery.includeKey("landPlan")
         combinedQuery.includeKey("landPlan.region")
+        combinedQuery.includeKey("landPlan.responsibleDivision")
         combinedQuery.order(byAscending: "subLandIndex")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 10
@@ -1063,7 +1065,7 @@ final public class KMAUIParse {
         let query = PFQuery(className: "KMASubLand")
         query.includeKey("landPlan")
         query.includeKey("landPlan.region")
-
+        query.includeKey("landPlan.responsibleDivision")
         query.getObjectInBackground(withId: objectId) { (subLandValue, error) in
             var updatedSubLand = KMAUISubLandStruct()
             
@@ -1138,6 +1140,86 @@ final public class KMAUIParse {
             }
             
             completion(updatedNotifications)
+        }
+    }
+    
+    // MARK: - Random sub land for document
+    
+    /**
+     Get the random Sub land
+     */
+    
+    public func getRandomSubLand(completion: @escaping (_ loaded: Bool, _ subLand: KMAUISubLandStruct)->()) {
+        // Get the sub lands count in the KMASubLand Parse class
+        let query = PFQuery(className: "KMASubLand")
+        query.whereKey("subLandType", equalTo: "Residential Lottery")
+        query.countObjectsInBackground { (subLandCount, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                completion(false, KMAUISubLandStruct())
+            } else {
+                self.getSubLand(subLandCount: Int(subLandCount)) { (loaded, subLand) in
+                    completion(loaded, subLand)
+                }
+            }
+        }
+    }
+    
+    public func getSubLand(subLandCount: Int, completion: @escaping (_ loaded: Bool, _ subLand: KMAUISubLandStruct)->()) {
+        let skip = Int.random(in: 0 ..< subLandCount)
+        let randomQuery = PFQuery(className: "KMASubLand")
+        randomQuery.whereKey("subLandType", equalTo: "Residential Lottery")
+        randomQuery.includeKey("landPlan")
+        randomQuery.includeKey("landPlan.region")
+        randomQuery.includeKey("landPlan.responsibleDivision")
+        randomQuery.order(byAscending: "createdAt")
+        randomQuery.skip = skip
+        randomQuery.limit = 1
+        // Get the random Sub land
+        randomQuery.findObjectsInBackground { (randomSubLands, randomError) in
+            if let randomError = randomError {
+                print(randomError.localizedDescription)
+                completion(false, KMAUISubLandStruct())
+            } else if let randomSubLands = randomSubLands {
+                if randomSubLands.isEmpty {
+                    completion(false, KMAUISubLandStruct())
+                } else {
+                    var subLandObject = KMAUISubLandStruct()
+                    subLandObject.fillFromParse(item: randomSubLands[0])
+                    
+                    self.checkSubLandLottery(subLandId: subLandObject.objectId) { (verified, error) in
+                        if verified {
+                            completion(true, subLandObject)
+                        } else {
+                            if error.isEmpty {
+                                // Try again
+                                self.getSubLand(subLandCount: subLandCount) { (loadedValue, loadedSubLand) in
+                                    completion(loadedValue, loadedSubLand)
+                                }
+                            } else {
+                                completion(false, KMAUISubLandStruct())
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public func checkSubLandLottery(subLandId: String, completion: @escaping (_ loaded: Bool, _ error: String)->()) {
+        let resultQuery = PFQuery(className: "KMALotteryResult")
+        resultQuery.whereKey("subLand", equalTo: PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId))
+        resultQuery.whereKey("status", notEqualTo: "declined")
+        resultQuery.findObjectsInBackground { (results, error) in
+            if let error = error {
+                completion(false, error.localizedDescription)
+            } else if let results = results {
+                if results.isEmpty {
+                    completion(true, "")
+                } else {
+                    completion(false, "")
+                }
+            }
         }
     }
 }
