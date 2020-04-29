@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import QuickLook
 import Kingfisher
 import CoreLocation
 
@@ -22,19 +21,9 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var regionLabel: KMAUIRegularTextLabel!
-    @IBOutlet weak var imagesBgView: UIView!
+    @IBOutlet weak var imagesBgView: KMAUIImagesPreviewView!
     @IBOutlet weak var imagesBgViewWidth: NSLayoutConstraint!
     @IBOutlet weak var imagesBgViewLeft: NSLayoutConstraint!
-    // Buttons
-    @IBOutlet weak var singleImageButton: UIButton!
-    @IBOutlet weak var twoOneImageButton: UIButton!
-    @IBOutlet weak var twoTwoImageButton: UIButton!
-    
-    @IBOutlet weak var threeOneImageButton: UIButton!
-    @IBOutlet weak var threeTwoImageButton: UIButton!
-    @IBOutlet weak var threeThreeImageButton: UIButton!
-    @IBOutlet weak var threeThreeBgView: UIView!
-    @IBOutlet weak var threeThreeBgImageButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUISubLandDetailsTableViewCell"
@@ -46,7 +35,6 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     public var viewOnMapCallback: ((Bool) -> Void)?
     public var viewAttachmentsCallback: ((Bool) -> Void)?
     var rules = [KMAUILotteryRule]()
-    public lazy var previewItem = NSURL()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -128,35 +116,24 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         // Reload tableView
         tableView.reloadData()
         // Setup images
-        setupImages()
+        imagesBgView.subLand = subLand
+        // Callback for actions
+        imagesBgView.viewAttachmentsAction = { action in
+            self.viewAttachmentsCallback?(true)
+        }
+        // Setup buttons
+        setupButtons()
     }
     
     /**
-     Setup images
+     Setup bottom action buttons
      */
     
-    func setupImages() {
-        // Hide all buttons
-        singleImageButton.alpha = 0
-        twoOneImageButton.alpha = 0
-        twoTwoImageButton.alpha = 0
-        threeOneImageButton.alpha = 0
-        threeTwoImageButton.alpha = 0
-        threeThreeImageButton.alpha = 0
-        threeThreeBgImageButton.alpha = 0
-        // Review attachments
-        threeThreeBgImageButton.layer.cornerRadius = 8
-        threeThreeBgImageButton.clipsToBounds = true
-        threeThreeBgImageButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
-        threeThreeBgImageButton.setTitleColor(KMAUIConstants.shared.KMAUIViewBgColorReverse, for: .normal)
-        threeThreeBgView.layer.cornerRadius = 8
-        threeThreeBgView.clipsToBounds = true
-        threeThreeBgView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
-        // Bottom action buttons
+    func setupButtons() {
         viewOnMapButton.alpha = 0
         viewOnMapSingleButton.alpha = 0
         viewAttachmentsButton.alpha = 0
-        
+        // Setup buttons visibility
         if subLand.subLandImagesArray.isEmpty {
             imagesBgView.alpha = 0
             imagesBgViewWidth.constant = 0
@@ -168,56 +145,9 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
             imagesBgViewLeft.constant = 20
             viewOnMapButton.alpha = 1
             viewAttachmentsButton.alpha = 1
-            
-            if subLand.subLandImagesArray.count == 1 {
-                // One large image
-                showImage(button: singleImageButton, index: 0)
-            } else if subLand.subLandImagesArray.count == 2 {
-                // Two same size images
-                showImage(button: twoOneImageButton, index: 0)
-                showImage(button: twoTwoImageButton, index: 1)
-            } else {
-                // Three images or more
-                showImage(button: threeOneImageButton, index: 0)
-                showImage(button: threeTwoImageButton, index: 1)
-                showImage(button: threeThreeImageButton, index: 2)
-                
-                if subLand.subLandImagesArray.count > 3 {
-                    threeThreeBgImageButton.alpha = 1.0
-                    threeThreeBgView.alpha = 0.5
-                    threeThreeBgImageButton.setTitle("+\(subLand.subLandImagesArray.count - 3)", for: .normal)
-                }
-            }
         }
     }
     
-    /**
-     Download and show image
-     */
-    
-    func showImage(button: UIButton, index: Int) {
-        let document = subLand.subLandImagesArray[index]
-        button.alpha = 1
-        button.layer.cornerRadius = 8
-        button.clipsToBounds = true
-        
-        if let previewURL = URL(string: document.previewURL) {
-            button.imageView?.kf.indicatorType = .activity
-            button.kf.setImage(with: previewURL, for: .normal)
-            button.imageView?.kf.indicatorType = .activity
-            button.imageView?.contentMode = .scaleAspectFill
-            
-            button.kf.setImage(with: previewURL, for: .normal) { (result) in
-                switch result {
-                case .success(let value):
-                    button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
-                case .failure(let error):
-                    print(error.localizedDescription) // The error happens
-                }
-            }
-        }
-    }
-
     // MARK: - IBOutlets
     
     @IBAction public func viewOnMapButtonPressed(_ sender: Any) {
@@ -226,46 +156,6 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
     
     @IBAction public func viewAttachmentsButtonPressed(_ sender: Any) {
         viewAttachmentsCallback?(true)
-    }
-    
-    // Images
-    
-    @IBAction func singleImageButtonPressed(_ sender: Any) {
-        previewImages(index: 0)
-    }
-    
-    @IBAction func twoOneImageButtonPressed(_ sender: Any) {
-        previewImages(index: 0)
-    }
-    
-    @IBAction func twoTwoImageButtonPressed(_ sender: Any) {
-        previewImages(index: 1)
-    }
-    
-    @IBAction func threeOneImageButtonPressed(_ sender: Any) {
-        previewImages(index: 0)
-    }
-    
-    @IBAction func threeTwoImageButtonPressed(_ sender: Any) {
-        previewImages(index: 1)
-    }
-    
-    @IBAction func threeThreeImageButtonPressed(_ sender: Any) {
-        previewImages(index: 2)
-    }
-    
-    // MARK: - Documents preview
-    
-    public func previewImages(index: Int) {
-        let document = subLand.subLandImagesArray[index]
-        
-        KMAUIUtilities.shared.quicklookPreview(urlString: document.fileURL, fileName: document.name, uniqueId: document.objectId) { (previewItemValue) in
-            self.previewItem = previewItemValue
-            // Display file
-            let previewController = QLPreviewController()
-            previewController.dataSource = self
-            KMAUIUtilities.shared.displayAlert(viewController: previewController)
-        }
     }
 }
 
@@ -295,20 +185,6 @@ extension KMAUISubLandDetailsTableViewCell: UITableViewDataSource, UITableViewDe
         return KMAUIUtilities.shared.getEmptyCell()
     }
 }
-
-// MARK: - QLPreviewController Datasource
-
-extension KMAUISubLandDetailsTableViewCell: QLPreviewControllerDataSource {
-    
-    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
-    }
-    
-    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return previewItem as QLPreviewItem
-    }
-}
-
 
 /*
 /*

@@ -1222,21 +1222,6 @@ public class KMAUIUtilities {
         }
     }
     
-    /*func upload(pickedDocument: KMADocumentData, name: String, description: String, documentPreview: UIImage) {
-        // The QuickLook image generated
-        KMAUploader.shared.uploadFiles(pickedArray: [pickedDocument], subLandId: self.subLand.objectId, documentPreview: documentPreview, name: name, description: description) { (uploaded) in
-            KMAParse.shared.saveDocument(subLandId: self.subLand.objectId, newDocuments: uploaded) { (updatedSubLand) in
-                KMAUIUtilities.shared.stopLoadingWith { (done) in
-                    if pickedDocument.type == "Image" || pickedDocument.type == "Video" {
-                        self.newItem = true
-                    }
-                    
-                    self.updateUIFromItem(updatedSubLand: updatedSubLand)
-                }
-            }
-        }
-    }*/
-    
     func prepareUpload(pickedDocument: KMADocumentData, name: String, description: String, completion: @escaping (_ pickedDocument: KMADocumentData, _ name: String, _ description: String, _ previewImage: UIImage)->()) {
         let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
         
@@ -1355,10 +1340,12 @@ public class KMAUIUtilities {
             // Save the photo name
             pickedDocument.name = imgName
             pickedDocument.image = photo
-
+            
             completion(pickedDocument)
         } else {
-            KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
+            KMAUIUtilities.shared.stopLoadingWith { (done) in
+                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
+            }
         }
     }
     

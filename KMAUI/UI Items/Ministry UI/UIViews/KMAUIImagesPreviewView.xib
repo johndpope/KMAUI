@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KMAUIImagesPreviewView" customModule="KMAUI" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="6T1-xg-Q8J" id="jeK-0E-XCa"/>
+                <outlet property="singleImageButton" destination="hve-Tl-GKQ" id="hoy-N9-bEz"/>
+                <outlet property="threeOneImageButton" destination="0kH-z2-ys6" id="OC8-qJ-MCN"/>
+                <outlet property="threeThreeBgImageButton" destination="q6A-hs-GZv" id="m0o-KR-pmy"/>
+                <outlet property="threeThreeBgView" destination="WZV-OK-ztH" id="iMD-bH-n5Y"/>
+                <outlet property="threeThreeImageButton" destination="UDG-wi-5uZ" id="T7T-X2-g94"/>
+                <outlet property="threeTwoImageButton" destination="EIP-T4-w5U" id="YSg-Ya-x9s"/>
+                <outlet property="twoOneImageButton" destination="eLR-pv-LcL" id="OHT-48-Dwi"/>
+                <outlet property="twoTwoImageButton" destination="ob3-fe-fey" id="PLY-Ua-jiZ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="6T1-xg-Q8J">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="435"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hve-Tl-GKQ">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="435"/>
+                    <connections>
+                        <action selector="singleImageButtonPressed:" destination="-1" eventType="touchUpInside" id="jWp-Nd-Cok"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eLR-pv-LcL">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="213.5"/>
+                    <connections>
+                        <action selector="twoOneImageButtonPressed:" destination="-1" eventType="touchUpInside" id="vJu-GR-gdq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ob3-fe-fey">
+                    <rect key="frame" x="0.0" y="221.5" width="390" height="213.5"/>
+                    <connections>
+                        <action selector="twoTwoImageButtonPressed:" destination="-1" eventType="touchUpInside" id="Uxa-ao-CIX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kH-z2-ys6">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="305"/>
+                    <connections>
+                        <action selector="threeOneImageButtonPressed:" destination="-1" eventType="touchUpInside" id="KOQ-ah-p3k"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIP-T4-w5U">
+                    <rect key="frame" x="0.0" y="313" width="191" height="122"/>
+                    <connections>
+                        <action selector="threeTwoImageButtonPressed:" destination="-1" eventType="touchUpInside" id="RkD-vP-pS0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDG-wi-5uZ">
+                    <rect key="frame" x="199" y="313" width="191" height="122"/>
+                    <connections>
+                        <action selector="threeThreeImageButtonPressed:" destination="-1" eventType="touchUpInside" id="t0d-FX-z9W"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZV-OK-ztH">
+                    <rect key="frame" x="199" y="313" width="191" height="122"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6A-hs-GZv">
+                    <rect key="frame" x="199" y="313" width="191" height="122"/>
+                    <connections>
+                        <action selector="viewAttachmentsButtonPressed:" destination="-1" eventType="touchUpInside" id="4iP-Tg-sxd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
+            <constraints>
+                <constraint firstItem="EIP-T4-w5U" firstAttribute="width" secondItem="UDG-wi-5uZ" secondAttribute="width" id="16s-8q-lE1"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="trailing" secondItem="UDG-wi-5uZ" secondAttribute="trailing" id="19U-tV-7tl"/>
+                <constraint firstAttribute="trailing" secondItem="eLR-pv-LcL" secondAttribute="trailing" id="1R6-Gu-A3I"/>
+                <constraint firstItem="eLR-pv-LcL" firstAttribute="leading" secondItem="6T1-xg-Q8J" secondAttribute="leading" id="4AB-Tm-LcR"/>
+                <constraint firstItem="UDG-wi-5uZ" firstAttribute="leading" secondItem="EIP-T4-w5U" secondAttribute="trailing" constant="8" id="4En-bt-HHN"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="bottom" secondItem="hve-Tl-GKQ" secondAttribute="bottom" id="7So-JA-3DR"/>
+                <constraint firstItem="0kH-z2-ys6" firstAttribute="leading" secondItem="6a6-AC-V6e" secondAttribute="leading" id="8dE-Lz-lb6"/>
+                <constraint firstItem="WZV-OK-ztH" firstAttribute="width" secondItem="UDG-wi-5uZ" secondAttribute="width" id="ByY-Ib-qiX"/>
+                <constraint firstItem="ob3-fe-fey" firstAttribute="top" secondItem="eLR-pv-LcL" secondAttribute="bottom" constant="8" id="FVv-Ug-wIX"/>
+                <constraint firstItem="WZV-OK-ztH" firstAttribute="height" secondItem="UDG-wi-5uZ" secondAttribute="height" id="Fky-S5-DQf"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="bottom" secondItem="ob3-fe-fey" secondAttribute="bottom" id="H3b-Uq-vB6"/>
+                <constraint firstItem="hve-Tl-GKQ" firstAttribute="top" secondItem="6T1-xg-Q8J" secondAttribute="top" id="KWO-0D-WXl"/>
+                <constraint firstItem="0kH-z2-ys6" firstAttribute="height" secondItem="EIP-T4-w5U" secondAttribute="height" multiplier="2.5" id="MAm-S5-gCR"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="bottom" secondItem="EIP-T4-w5U" secondAttribute="bottom" id="PKk-yK-Fec"/>
+                <constraint firstItem="eLR-pv-LcL" firstAttribute="top" secondItem="6T1-xg-Q8J" secondAttribute="top" id="U0S-aW-bdu"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="bottom" secondItem="UDG-wi-5uZ" secondAttribute="bottom" id="Xxu-M9-0Gm"/>
+                <constraint firstItem="EIP-T4-w5U" firstAttribute="top" secondItem="0kH-z2-ys6" secondAttribute="bottom" constant="8" id="aOv-zV-A6p"/>
+                <constraint firstItem="q6A-hs-GZv" firstAttribute="height" secondItem="WZV-OK-ztH" secondAttribute="height" id="bL5-fw-yQL"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="trailing" secondItem="ob3-fe-fey" secondAttribute="trailing" id="cjs-YT-BwV"/>
+                <constraint firstItem="0kH-z2-ys6" firstAttribute="top" secondItem="6T1-xg-Q8J" secondAttribute="top" id="fSO-9W-PCI"/>
+                <constraint firstItem="ob3-fe-fey" firstAttribute="height" secondItem="eLR-pv-LcL" secondAttribute="height" id="jKc-ip-xei"/>
+                <constraint firstItem="q6A-hs-GZv" firstAttribute="centerX" secondItem="WZV-OK-ztH" secondAttribute="centerX" id="k3e-0R-lGf"/>
+                <constraint firstItem="q6A-hs-GZv" firstAttribute="centerY" secondItem="WZV-OK-ztH" secondAttribute="centerY" id="miD-dQ-GqR"/>
+                <constraint firstItem="q6A-hs-GZv" firstAttribute="width" secondItem="WZV-OK-ztH" secondAttribute="width" id="mio-lQ-y4b"/>
+                <constraint firstItem="EIP-T4-w5U" firstAttribute="leading" secondItem="6a6-AC-V6e" secondAttribute="leading" id="pxz-nZ-Fd3"/>
+                <constraint firstItem="ob3-fe-fey" firstAttribute="leading" secondItem="6a6-AC-V6e" secondAttribute="leading" id="rKi-IW-N8n"/>
+                <constraint firstItem="6a6-AC-V6e" firstAttribute="trailing" secondItem="hve-Tl-GKQ" secondAttribute="trailing" id="rjp-x1-0LX"/>
+                <constraint firstItem="EIP-T4-w5U" firstAttribute="height" secondItem="UDG-wi-5uZ" secondAttribute="height" id="svy-bU-k5Q"/>
+                <constraint firstItem="WZV-OK-ztH" firstAttribute="centerX" secondItem="UDG-wi-5uZ" secondAttribute="centerX" id="u25-NK-qfv"/>
+                <constraint firstItem="hve-Tl-GKQ" firstAttribute="leading" secondItem="6a6-AC-V6e" secondAttribute="leading" id="ukD-C9-GLY"/>
+                <constraint firstItem="WZV-OK-ztH" firstAttribute="centerY" secondItem="UDG-wi-5uZ" secondAttribute="centerY" id="xPw-MC-AMd"/>
+                <constraint firstItem="0kH-z2-ys6" firstAttribute="trailing" secondItem="6a6-AC-V6e" secondAttribute="trailing" id="xwK-8z-beB"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="6a6-AC-V6e"/>
+            <point key="canvasLocation" x="140.57971014492756" y="-153.68303571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

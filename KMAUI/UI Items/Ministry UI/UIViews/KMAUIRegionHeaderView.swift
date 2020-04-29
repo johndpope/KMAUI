@@ -9,6 +9,7 @@
 import UIKit
 
 public class KMAUIRegionHeaderView: UIView {
+    
     // MARK: - IBOutlets
     @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var regionLabel: KMAUIBoldTextLabel!
