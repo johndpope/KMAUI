@@ -101,6 +101,7 @@
                 <outlet property="lineViewRight" destination="mNB-F1-EdA" id="XbC-tU-Nq3"/>
                 <outlet property="nameLabel" destination="uP5-ZN-5sM" id="1sI-bs-OLy"/>
                 <outlet property="previewImageView" destination="6Zh-gv-AY1" id="1td-Lk-Tyb"/>
+                <outlet property="previewImageViewRight" destination="Qgn-cy-GWK" id="zKc-bo-Igw"/>
                 <outlet property="previewImageViewWidth" destination="664-gy-atR" id="UzV-V0-nws"/>
                 <outlet property="rightArrowImageView" destination="r66-Hw-IIu" id="pKi-KN-hzE"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>

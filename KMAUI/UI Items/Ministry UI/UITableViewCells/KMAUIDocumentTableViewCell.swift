@@ -165,6 +165,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         previewImageView.alpha = 0
         previewImageViewWidth.constant = 0
+        previewImageViewRight.constant = 0
         
         lineViewRight.constant = 30
         lineView.alpha = 0.2
