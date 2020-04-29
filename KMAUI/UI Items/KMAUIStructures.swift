@@ -2190,6 +2190,7 @@ public struct KMAUISubLandStruct {
     public var notificationId = ""
     public var departmentId = ""
     public var departmentName = ""
+    public var recognizedDetails = ""
     
     public init() {}
     
@@ -2292,6 +2293,10 @@ public struct KMAUISubLandStruct {
                     }
                 }
             }
+        }
+        // Recognized details
+        if let recognizedDetails = item["recognizedDetails"] as? String {
+            self.recognizedDetails = recognizedDetails
         }
     }
     
