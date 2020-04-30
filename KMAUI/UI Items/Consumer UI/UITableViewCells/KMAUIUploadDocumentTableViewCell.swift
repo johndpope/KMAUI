@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KMAUI
 
 public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
@@ -30,6 +31,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         bgView.layer.cornerRadius = 10
         bgView.clipsToBounds = true
         
@@ -38,7 +40,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         bgImageView.contentMode = .scaleAspectFill
         
         // Large image
-        largeImageView.layer.cornerRadius = 41
+        largeImageView.layer.cornerRadius = 40
         largeImageView.layer.borderWidth = 2
         largeImageView.clipsToBounds = true
         
@@ -48,13 +50,16 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-        titleLabel.textColor = UIColor.white
         
         if UIScreen.main.bounds.size.width == 320 {
             titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         }
+        
+        titleLabel.textColor = UIColor.white
 
         // Info label
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+        infoLabel.textColor = UIColor.white
         
         // No standard selection required
         selectionStyle = .none
@@ -104,7 +109,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             largeImageView.image = KMAUIConstants.shared.pendingDocumentImage
             largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.approvedDocumentBadge
-        }
+        }                
         // Increase the spacing
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
