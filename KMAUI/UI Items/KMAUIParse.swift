@@ -1389,7 +1389,7 @@ final public class KMAUIParse {
     
     // MARK: - Save document for Sub Land
     
-    func saveDocument(subLandId: String, newDocuments: [AnyObject], recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
+    public func saveDocument(subLandId: String, newDocuments: [AnyObject], recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
         // Update the Core Data and reload UI
         let updatedSubLand = KMAUISubLandStruct()
         
@@ -1435,7 +1435,7 @@ final public class KMAUIParse {
         }
     }
     
-    func saveSubLandImages(fileBodyDict: [String: AnyObject], subLandValue: PFObject, recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
+    public func saveSubLandImages(fileBodyDict: [String: AnyObject], subLandValue: PFObject, recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
         var updatedSubLand = KMAUISubLandStruct()
         let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
         var fileBody = ""
