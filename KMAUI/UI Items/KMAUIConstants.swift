@@ -40,7 +40,7 @@ public class KMAUIConstants {
     public let KMAUISubLandServicesColor = UIColor(named: "KMAUISubLandServicesColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIParkColor = UIColor(named: "KMAUIParkColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIGreyTextColor = UIColor(named: "KMAUIGreyTextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-
+    
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMABgGray = UIColor(named: "KMABgGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -61,7 +61,7 @@ public class KMAUIConstants {
     public let KMAUIGreyBackgroundButton = UIColor(named: "KMAUIGreyBackgroundButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIBlackTitleButton = UIColor(named: "KMAUIBlackTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-
+    
     // MARK: - Images
     public let checkboxFilledIcon = UIImage(named: "checkboxFilledIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let checkboxIcon = UIImage(named: "checkboxIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -142,10 +142,11 @@ public class KMAUIConstants {
     public let cameraIcon = UIImage(named: "cameraIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let finishedIcon = UIImage(named: "finishedIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let lotteryBackground = UIImage(named: "lotteryBackground", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-
+    public let triangleIcon = UIImage(named: "triangleIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    
     // String gap
     public let stringGap = "     "
-
+    
     // MARK: - Constants
     public let KMACornerRadius: CGFloat = 6
     public let KMAScreenWidth = UIScreen.main.bounds.size.width
@@ -172,7 +173,7 @@ public class KMAUIConstants {
     // sircfc@me.com "ieshnLrs4i3JbLXAuO97CGGS5L1on6Kz"
     // sircfc+john@me.com "AXsdi3EjiJuq2eicR85FyRj9pZ4h0shH"
     // sircfc+lamps@me.com "fqCYgiPCaG5XxqPhTl3047ZCLztXY6Zk"
-
+    
     // MARK: - Foursquare
     public let foursquareClientKey = "JWSG0SW0WKBJB0RXZXEH22YHULI1H0F1HHLBGXN21Z43GM0B"
     public let foursquareClientSecret = "W33Y0YKBGEWUTSZW3X0EIB2E5T3GMZWSJ03ODCUB2IZT0GMI"

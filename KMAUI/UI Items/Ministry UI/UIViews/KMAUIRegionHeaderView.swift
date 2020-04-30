@@ -13,11 +13,15 @@ public class KMAUIRegionHeaderView: UIView {
     // MARK: - IBOutlets
     @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var regionLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var queueLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var timeframeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var lineView: UIView!
     @IBOutlet public weak var lineViewTop: NSLayoutConstraint!
     @IBOutlet public weak var headerLogoImageView: UIImageView!
+    @IBOutlet public weak var queueButton: UIButton!
+    @IBOutlet public weak var triangleImageView: UIImageView!
+    @IBOutlet public weak var triangleImageViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var triangleImageViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var queueButtonLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public var isFirst = false
@@ -31,6 +35,7 @@ public class KMAUIRegionHeaderView: UIView {
             setupHeaderTitle()
         }
     }
+    public var actionCallback: ((Bool) -> Void)?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -55,26 +60,37 @@ public class KMAUIRegionHeaderView: UIView {
         // Fill the data to display
         regionLabel.text = region.nameE
         regionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-        queueLabel.text = "Queue – \(region.lotteryMembersCount)"
         timeframeLabel.text = "\(KMAUIUtilities.shared.formatStringShort(date: region.periodStart, numOnly: true)) – \(KMAUIUtilities.shared.formatStringShort(date: region.periodEnd, numOnly: true))"
 
         headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
-        
+        // Queue button
+        queueButton.setTitle("Queue – \(region.lotteryMembersCount)", for: .normal)
+        queueButton.alpha = 1
+        triangleImageView.alpha = 1
+        triangleImageViewWidth.constant = 7
+        triangleImageViewLeft.constant = 6
+        queueButtonLeft.constant = 8
     }
     
     public func setupHeaderTitle() {
         lineViewTop.constant = -1
         lineView.alpha = 0
-        timeframeLabel.text = ""
+        // Hide queue button
+        queueButton.setTitle("", for: .normal)
+        queueButton.alpha = 0
+        triangleImageView.alpha = 0
+        triangleImageViewWidth.constant = 0
+        triangleImageViewLeft.constant = 0
+        queueButtonLeft.constant = 0
         
         // Land plan
         if let landPlans = array as? [KMAUILandPlanStruct] {
             regionLabel.text = "Lotteries"
             
             if landPlans.count == 1 {
-                queueLabel.text = "1 lottery was found"
+                timeframeLabel.text = "1 lottery was found"
             } else {
-                queueLabel.text = "\(landPlans.count) lotteries were found"
+                timeframeLabel.text = "\(landPlans.count) lotteries were found"
             }
             
             headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
@@ -84,9 +100,9 @@ public class KMAUIRegionHeaderView: UIView {
             regionLabel.text = "Sub lands"
             
             if subLands.count == 1 {
-                queueLabel.text = "1 sub land was found"
+                timeframeLabel.text = "1 sub land was found"
             } else {
-                queueLabel.text = "\(subLands.count) sub lands were found"
+                timeframeLabel.text = "\(subLands.count) sub lands were found"
             }
             
             headerLogoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
@@ -96,9 +112,9 @@ public class KMAUIRegionHeaderView: UIView {
             regionLabel.text = "Citizens"
             
             if citizens.count == 1 {
-                queueLabel.text = "1 citizen was found"
+                timeframeLabel.text = "1 citizen was found"
             } else {
-                queueLabel.text = "\(citizens.count) citizens were found"
+                timeframeLabel.text = "\(citizens.count) citizens were found"
             }
             
             headerLogoImageView.image = KMAUIConstants.shared.headerCitizenIcon.withRenderingMode(.alwaysTemplate)
@@ -116,5 +132,11 @@ public class KMAUIRegionHeaderView: UIView {
         headerLogoImageView.clipsToBounds = true
         headerLogoImageView.tintColor = UIColor.white
         headerLogoImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction public func queueButtonPressed(_ sender: Any) {
+        actionCallback?(true)
     }
 }
