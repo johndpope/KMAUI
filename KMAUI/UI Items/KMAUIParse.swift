@@ -1229,5 +1229,254 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Send a document for confirmation
+    
+    public func sendDocument(subLand: KMAUISubLandStruct, rows: [KMADocumentData], uploadedDocument: [String: String], completion: @escaping (_ updated: Bool)->()) {
+        KMAUIUtilities.shared.startLoading(title: "Submitting...")
+        // Save the document
+        KMAUIParse.shared.saveDocument(subLandId: subLand.objectId, newDocuments: [uploadedDocument as AnyObject], recognizedDetails: rows) { (subLandUpdated) in
+            // Send a notification to the KMADepartment user stating he has to verify the document
+            self.getDepartmentAdmins(subLand: subLand)
+            
+            // Adding the recognizedDetails
+            let newLotteryResult = PFObject(className: "KMALotteryResult")
+            newLotteryResult["citizen"] = PFUser.current()
+            newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
+            newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: subLand.landPlanId)
+            newLotteryResult["status"] = "awaiting verification"
+           
+            newLotteryResult.saveInBackground { (success, error) in
+                KMAUIUtilities.shared.stopLoadingWith { (done) in
+                    if let error = error {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (loaded) in }
+                    } else if success {
+                        completion(true)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func getDepartmentAdmins(subLand: KMAUISubLandStruct) {
+        if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String {
+            let query = PFQuery(className: "KMADepartmentEmployee")
+            query.whereKey("department", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: subLand.departmentId))
+            query.whereKey("isActive", equalTo: true)
+            query.includeKey("employee")
+            query.findObjectsInBackground { (employees, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let employees = employees {
+                    // KMANotification objects
+                    var notificationsArray = [PFObject]()
+                    // Push params array
+                    var pushParams = [[String: AnyObject]]()
+                     var itemsArray = [[String: AnyObject]]()
+                    
+                    print("Employees for department \(subLand.departmentId): \(employees.count)")
+                    for employee in employees {
+                        if let citizen = employee["employee"] as? PFUser, let citizenId = citizen.objectId {
+                            print("Send a KMANotification to citizen \(citizenId)")
+                            // Prepare the notification Parse object
+                            let newNotification = PFObject(className: "KMANotification")
+                            newNotification["user"] = PFUser(withoutDataWithObjectId: citizenId)
+                            newNotification["title"] = "New document received"
+                            newNotification["message"] = "The new Land document was uploaded by \(fullName) and waits for verification."
+                            // Fill the items for Notification
+                            let items = ["objectId": subLand.objectId as AnyObject,
+                                         "objectType": "subLand" as AnyObject,
+                                         "eventType": "documentUploaded" as AnyObject,
+                                         "subLandId": subLand.subLandId as AnyObject,
+                                         "landPlanName": subLand.landPlanName as AnyObject,
+                                         "landPlanId": subLand.landPlanId as AnyObject,
+                                         "region": subLand.regionName as AnyObject,
+                                         "regionId": subLand.regionId as AnyObject,
+                                         "departmentId": subLand.departmentId as AnyObject,
+                                         "departmentName": subLand.departmentName as AnyObject
+                            ]
+                            // Save item into array for push notifications
+                            itemsArray.append(items)
+                            // items json string from dictionary
+                            if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                                newNotification["items"] = jsonStr
+                            }
+                            newNotification["read"] = false
+                            notificationsArray.append(newNotification)
+                        }
+                    }
+                    
+                    if !notificationsArray.isEmpty {
+                        PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            } else if success {
+                                for (index, notification) in notificationsArray.enumerated() {
+                                    if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                                        var items = itemsArray[index]
+                                       items["notificationId"] = notificationId as AnyObject
+                                        // Push parameters
+                                        let newSubLandParams = [
+                                            "userId" : citizenId as AnyObject,
+                                            "title": "New document received" as AnyObject,
+                                            "message": "The new Land document was uploaded by \(fullName) and waits for verification." as AnyObject,
+                                            "kmaItems": items as AnyObject,
+                                            "appType": "Business" as AnyObject
+                                        ]
+                                        
+                                        pushParams.append(newSubLandParams)
+                                    }
+                                }
+                                
+                                // Send push notifications to the winners
+                                for subLandParams in pushParams {
+                                    print("\nSend a push notification: \(subLandParams)")
+                                    KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                                }
+                                // Also send a push to the user, stating the document received by the Department
+                                self.notifyUser(subLand: subLand)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    public func notifyUser(subLand: KMAUISubLandStruct) {
+        if let currentUser = PFUser.current(), let currentUserId = currentUser.objectId {
+            let newNotification = PFObject(className: "KMANotification")
+            newNotification["user"] = currentUser
+            newNotification["title"] = "Document submitted"
+            newNotification["message"] = "Your Land document was received by the \(subLand.departmentName). You'll receive a notification when it's processed."
+            // Fill the items for Notification
+            var items = ["objectId": subLand.objectId as AnyObject,
+                         "objectType": "subLand" as AnyObject,
+                         "eventType": "documentUploaded" as AnyObject,
+                         "subLandId": subLand.subLandId as AnyObject,
+                         "landPlanName": subLand.landPlanName as AnyObject,
+                         "landPlanId": subLand.landPlanId as AnyObject,
+                         "region": subLand.regionName as AnyObject,
+                         "regionId": subLand.regionId as AnyObject,
+                         "departmentId": subLand.departmentId as AnyObject,
+                         "departmentName": subLand.departmentName as AnyObject
+            ]
+            // items json string from dictionary
+            if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                newNotification["items"] = jsonStr
+            }
+            newNotification["read"] = false
+            // Save notification
+            newNotification.saveInBackground { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if success, let notificationId = newNotification.objectId {
+                    items["notificationId"] = notificationId as AnyObject
+                    // Push parameters
+                    let subLandParams = [
+                        "userId" : currentUserId as AnyObject,
+                        "title": "Document submitted" as AnyObject,
+                        "message": "Your Land document was received by the \(subLand.departmentName). You'll receive a notification when it's processed." as AnyObject,
+                        "kmaItems": items as AnyObject,
+                        "appType": "Consumer" as AnyObject
+                    ]
+                    // Send push notification
+                    KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Save document for Sub Land
+    
+    func saveDocument(subLandId: String, newDocuments: [AnyObject], recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
+        // Update the Core Data and reload UI
+        let updatedSubLand = KMAUISubLandStruct()
+        
+        if !newDocuments.isEmpty {
+            if let newDocument = newDocuments[0] as? [String: String] {
+                print("Add this new document into the `subLandImages` for the subLand \(subLandId):\n\(newDocument)")
+                
+                // Search by: subLandId, subLandIndex, subLandType
+                let query = PFQuery(className: "KMASubLand")
+                query.includeKey("landPlan")
+                query.includeKey("landPlan.region")
+                query.includeKey("landPlan.responsibleDivision")
+                
+                query.getObjectInBackground(withId: subLandId) { (subLandValue, error) in
+                    if let error = error {
+                        print("Error loading Sub lands: `\(error.localizedDescription)`.")
+                        completion(updatedSubLand)
+                    } else if let subLandValue = subLandValue {
+                        if let subLandImages = subLandValue["subLandImages"] as? String, !subLandImages.isEmpty {
+                            let uploadBodyDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLandImages)
+                            
+                            if var filesArray = uploadBodyDictionary["files"] as? [AnyObject] {
+                                filesArray.insert(newDocument as AnyObject, at: 0)
+                                let fileBodyDict = ["files": filesArray as AnyObject]
+                                self.saveSubLandImages(fileBodyDict: fileBodyDict, subLandValue: subLandValue, recognizedDetails: recognizedDetails) { (subLandUpdated) in
+                                    completion(subLandUpdated)
+                                }
+                            } else {
+                                completion(updatedSubLand)
+                            }
+                        } else {
+                            print("No documents uploaded yet")
+                            let fileBodyDict = ["files": [newDocument] as AnyObject]
+                            self.saveSubLandImages(fileBodyDict: fileBodyDict, subLandValue: subLandValue, recognizedDetails: recognizedDetails) { (subLandUpdated) in
+                                completion(subLandUpdated)
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            completion(updatedSubLand)
+        }
+    }
+    
+    func saveSubLandImages(fileBodyDict: [String: AnyObject], subLandValue: PFObject, recognizedDetails: [KMADocumentData]? = nil, completion: @escaping (_ updatedSubLand: KMAUISubLandStruct)->()) {
+        var updatedSubLand = KMAUISubLandStruct()
+        let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
+        var fileBody = ""
+        
+        // JSON String for Parse
+        if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+            fileBody = jsonFileBodyString
+        }
+        
+        subLandValue["subLandImages"] = fileBody
+        
+        // Check for recognizedDetails
+        if let recognizedDetails = recognizedDetails {
+            var recognizedDetailsDictionary = [String: AnyObject]()
+            
+            for value in recognizedDetails {
+                recognizedDetailsDictionary[value.type] = value.name as AnyObject
+            }
+            
+            let recognizedItem = ["recognizedDetails": recognizedDetailsDictionary as AnyObject]
+            
+            let jsonRecognizedBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: recognizedItem)
+            var recognizedBody = ""
+            
+            // JSON String for Parse
+            if let jsonRecognizedBodyString = String(data: jsonRecognizedBodyData, encoding: .utf8) {
+                recognizedBody = jsonRecognizedBodyString
+            }
+            
+            subLandValue["recognizedDetails"] = recognizedBody
+        }
+        
+        subLandValue.saveInBackground { (success, saveError) in
+            if let saveError = saveError {
+                print("Error saving the document: \(saveError.localizedDescription)")
+            } else if success {
+                updatedSubLand.fillFromParse(item: subLandValue)
+            }
+            
+            completion(updatedSubLand)
+        }
+    }
 }
 
