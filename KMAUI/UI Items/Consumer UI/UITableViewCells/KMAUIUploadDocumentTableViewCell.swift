@@ -81,6 +81,11 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        var departmentName = "Department"
+        // Get the real department name
+        if !rowData.rowValue.isEmpty {
+            departmentName = rowData.rowValue
+        }
         // Setup title
         titleLabel.text = rowData.rowName
         // Setup data depedning on the title
@@ -90,12 +95,12 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             largeImageView.layer.borderColor = UIColor.clear.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
         } else if rowData.rowName == "Pending" {
-            infoLabel.text = "Your document was received by the Department and it will be processed soon"
+            infoLabel.text = "Your document was received by the \(departmentName) and it will be processed soon"
             largeImageView.image = KMAUIConstants.shared.pendingDocumentImage
             largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIYellowProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.pendingDocumentBadge
         } else if rowData.rowName == "Document approved" {
-            infoLabel.text = "Your document was approved by the Department and you've received the Sub land"
+            infoLabel.text = "Your document was approved by the \(departmentName) and you've received the Sub land"
             largeImageView.image = KMAUIConstants.shared.pendingDocumentImage
             largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.approvedDocumentBadge

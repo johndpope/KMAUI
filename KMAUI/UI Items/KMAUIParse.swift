@@ -810,7 +810,6 @@ final public class KMAUIParse {
                         // Send push notifications to the winners
                         for subLandParams in pushParams {
                             print("\nSend a push notification: \(subLandParams)")
-                            
                             KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
                         }
                     }
