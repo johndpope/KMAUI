@@ -64,11 +64,19 @@ public class KMAUIRegionHeaderView: UIView {
 
         headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
         // Queue button
-        queueButton.setTitle("Queue – \(region.lotteryMembersCount)", for: .normal)
+        if region.lotteryMembersCount == 0 {
+            queueButton.setTitle("No queue", for: .normal)
+            queueButton.isUserInteractionEnabled = false
+            triangleImageViewWidth.constant = 0
+            triangleImageViewLeft.constant = 0
+        } else {
+            queueButton.setTitle("Queue – \(region.lotteryMembersCount)", for: .normal)
+            queueButton.isUserInteractionEnabled = true
+            triangleImageViewWidth.constant = 7
+            triangleImageViewLeft.constant = 6
+        }
         queueButton.alpha = 1
         triangleImageView.alpha = 1
-        triangleImageViewWidth.constant = 7
-        triangleImageViewLeft.constant = 6
         queueButtonLeft.constant = 8
     }
     
@@ -77,6 +85,7 @@ public class KMAUIRegionHeaderView: UIView {
         lineView.alpha = 0
         // Hide queue button
         queueButton.setTitle("", for: .normal)
+        queueButton.isUserInteractionEnabled = false
         queueButton.alpha = 0
         triangleImageView.alpha = 0
         triangleImageViewWidth.constant = 0
