@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
@@ -31,7 +30,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         bgView.layer.cornerRadius = 10
         bgView.clipsToBounds = true
         
