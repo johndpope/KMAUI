@@ -148,14 +148,6 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         
         // Check the segment - always no button for lotteries
         hideViewDetails()
-        /*
-        if selectedSegment == 1 && (lottery.lotteryStatus == .approvedToStart || lottery.lotteryStatus == .onApprovement) {
-            // Only show details for approvedToStart and finished lotteries on the segment 1
-            showViewDetails(mode: "details")
-        } else {
-            // Hide view details
-            hideViewDetails()
-        }*/
         
         // Lottery status
         statusLabel.text = lottery.lotteryStatus.rawValue.lowercased().addGaps()
@@ -200,6 +192,8 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
                 viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMABrightBlueColor, for: .normal)
             } else if subLand.status == "confirmed" {
                 viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreenProgressColor, for: .normal)
+            } else if subLand.status == "awaiting verification" {
+                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIYellowProgressColor, for: .normal)
             }
         }
     }
