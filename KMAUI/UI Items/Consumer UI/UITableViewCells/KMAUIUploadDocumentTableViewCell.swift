@@ -106,6 +106,6 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             smallImageView.image = KMAUIConstants.shared.approvedDocumentBadge
         }
         // Increase the spacing
-        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
 }

@@ -1883,14 +1883,18 @@ public extension UIButton {
 public extension UILabel {
 
     // Pass value for any one of both parameters and see result
-    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
-
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0, alignment: NSTextAlignment? = nil) {
         guard let labelText = self.text else { return }
 
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
+        
+        if let alignment = alignment {
+            paragraphStyle.alignment = alignment
+        } else {
         paragraphStyle.alignment = .center
+        }
 
         let attributedString: NSMutableAttributedString
         if let labelattributedText = self.attributedText {
