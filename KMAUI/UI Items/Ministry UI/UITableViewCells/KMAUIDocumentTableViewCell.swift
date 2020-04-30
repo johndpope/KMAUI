@@ -77,9 +77,17 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            if offset == 20 {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
+            } else {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            }
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            if offset == 20 {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            } else {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            }
         }
     }
     
@@ -174,6 +182,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         if offset == 20 {
             lineView.alpha = 0
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         } else {
             lineView.alpha = 0.2
         }

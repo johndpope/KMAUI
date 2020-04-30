@@ -102,9 +102,9 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             isActiveImageView.backgroundColor = UIColor.clear
             
             if highlight {
-                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
             } else {
-                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
             }
         } else if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
@@ -198,7 +198,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         profileImageView.alpha = 0
         
         if noBg {
-            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
             bgView.layer.shadowRadius = 0
             bgViewLeft.constant = 0
             bgViewRight.constant = 0
