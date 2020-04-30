@@ -75,7 +75,7 @@ public class KMAUIRegionHeaderView: UIView {
             triangleImageView.alpha = 1
             queueButtonLeft.constant = 8
         }
-        
+    }
     
     public func hideQueueButton() {
         queueButton.setTitle("", for: .normal)
