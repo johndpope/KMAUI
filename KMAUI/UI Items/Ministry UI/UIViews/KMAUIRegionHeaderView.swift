@@ -65,25 +65,19 @@ public class KMAUIRegionHeaderView: UIView {
         headerLogoImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
         // Queue button
         if region.lotteryMembersCount == 0 {
-            queueButton.setTitle("No queue", for: .normal)
-            queueButton.isUserInteractionEnabled = false
-            triangleImageViewWidth.constant = 0
-            triangleImageViewLeft.constant = 0
+            hideQueueButton()
         } else {
             queueButton.setTitle("Queue – \(region.lotteryMembersCount)", for: .normal)
             queueButton.isUserInteractionEnabled = true
             triangleImageViewWidth.constant = 7
             triangleImageViewLeft.constant = 6
+            queueButton.alpha = 1
+            triangleImageView.alpha = 1
+            queueButtonLeft.constant = 8
         }
-        queueButton.alpha = 1
-        triangleImageView.alpha = 1
-        queueButtonLeft.constant = 8
-    }
+        
     
-    public func setupHeaderTitle() {
-        lineViewTop.constant = -1
-        lineView.alpha = 0
-        // Hide queue button
+    public func hideQueueButton() {
         queueButton.setTitle("", for: .normal)
         queueButton.isUserInteractionEnabled = false
         queueButton.alpha = 0
@@ -91,6 +85,13 @@ public class KMAUIRegionHeaderView: UIView {
         triangleImageViewWidth.constant = 0
         triangleImageViewLeft.constant = 0
         queueButtonLeft.constant = 0
+    }
+    
+    public func setupHeaderTitle() {
+        lineViewTop.constant = -1
+        lineView.alpha = 0
+        // Hide queue button
+        hideQueueButton()
         
         // Land plan
         if let landPlans = array as? [KMAUILandPlanStruct] {
