@@ -105,5 +105,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.approvedDocumentBadge
         }
+        // Increase the spacing
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
     }
 }
