@@ -166,9 +166,18 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the issues for the region..."
                 action = ""
             }
+        } else if type == "notifications" {
+            if isLoaded {
+                info = "No notifications available."
+                action = ""
+            } else {
+                info = "We're preparing the notifications for your Department..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
+        infoLabel.setLineSpacing(lineSpacing: 1.1, lineHeightMultiple: 1.1, alignment: .left)
         actionButton.setTitle(action, for: .normal)
         
         if action.isEmpty {

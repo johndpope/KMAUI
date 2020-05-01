@@ -373,7 +373,7 @@ public class KMAUIUtilities {
         } else if difference < 60 * 60 {
             // Calculate minutes ago
             value = Int(difference / 60)
-            parameter = "minute"
+            parameter = "min"
         } else if difference < 24 * 60 * 60 {
             // Calculate hours ago
             value = Int(difference / (60 * 60))
@@ -392,7 +392,7 @@ public class KMAUIUtilities {
             parameter = "year"
         }
         
-        if value != 1 {
+        if value != 1, parameter != "min" {
             parameter += "s"
         }
         
