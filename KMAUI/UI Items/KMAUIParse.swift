@@ -1166,6 +1166,18 @@ final public class KMAUIParse {
         }
     }
     
+    public func setNotificationRead(notificationId: String) {
+        let notificationObject = PFObject(withoutDataWithClassName: "KMANotification", objectId: notificationId)
+        notificationObject["read"] = true
+        notificationObject.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error setting the notification \(notificationId) as read: \(error.localizedDescription)")
+            } else if success {
+                print("Notification \(notificationId) is set to read")
+            }
+        }
+    }
+    
     // MARK: - Random sub land for document
     
     /**
