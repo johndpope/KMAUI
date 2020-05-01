@@ -540,6 +540,29 @@ final public class KMAUIParse {
         }
     }
     
+    public func getCitizenResults(sublandPlan: KMAUISubLandStruct, completion: @escaping (_ person: KMAPerson?)->()) {
+        let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
+        lotteryResultQuery.whereKey("subLand", equalTo: PFObject(withoutDataWithClassName: "KMASubLand", objectId: sublandPlan.objectId))
+        lotteryResultQuery.includeKey("citizen")
+        lotteryResultQuery.includeKey("citizen.homeAddress")
+        lotteryResultQuery.includeKey("citizen.homeAddress.building")
+        
+        lotteryResultQuery.findObjectsInBackground { (results, error) in
+            var personObject: KMAPerson?
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let result = results?.first {
+                
+                if let citizen = result["citizen"] as? PFUser {
+                    personObject = KMAPerson()
+                    personObject?.fillFrom(person: citizen)
+                }
+            }
+            
+            completion(personObject)
+        }
+    }
+    
     // MARK: Get rules for Land plan from Ministry
     
     public func getLotteryRules(completion: @escaping (_ rules: KMAUILotteryRules)->()) {
