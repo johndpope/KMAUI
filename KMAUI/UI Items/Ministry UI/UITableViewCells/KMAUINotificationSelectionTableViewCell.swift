@@ -1,28 +1,30 @@
 //
-//  KMAUINotificationTableViewCell.swift
-//  KMA EYES CITIZENS
+//  KMAUINotificationSelectionTableViewCell.swift
+//  KMA
 //
-//  Created by Stanislav Rastvorov on 23.04.2020.
-//  Copyright © 2020 Stanislav Rastvorov. All rights reserved.
+//  Created by Stanislav Rastvorov on 01.05.2020.
+//  Copyright © 2020 Office Mac. All rights reserved.
 //
 
 import UIKit
 
-public class KMAUINotificationTableViewCell: UITableViewCell {
+public class KMAUINotificationSelectionTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var statusView: UIView!
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var isActiveImageView: UIImageView!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var dateLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    public static let id = "KMAUINotificationTableViewCell"
+    public static let id = "KMAUINotificationSelectionTableViewCell"
     public var isFirst = false
-    public var notification = KMANotificationStruct() {
+    public var notification = KMANotificationStruct()
+    public var isActive = false {
         didSet {
             setupCell()
         }
@@ -31,28 +33,33 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
-        // Background
-        contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        // Larger shadow for bgView
-        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        bgView.layer.shadowRadius = 6
+        // Background color
+        backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
         // Status view
         statusView.layer.cornerRadius = 4
         statusView.clipsToBounds = true
-        statusView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+        
+        // isActive imageView
+        isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        isActiveImageView.layer.cornerRadius = 4
+        isActiveImageView.clipsToBounds = true
+        
+        // Default state - disabled
+        isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        isActiveImageView.contentMode = .center
+        
+        // Title label
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Date label
         dateLabel.textColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
-        // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
-        
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
-        // No standard selection required
+        // No selection required
         selectionStyle = .none
     }
     
@@ -64,8 +71,12 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
         
+        // Setup details
         titleLabel.text = notification.title
+        titleLabel.setLineSpacing(lineSpacing: 1.1, lineHeightMultiple: 1.1, alignment: .left)
         infoLabel.text = notification.message
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
         
         if notification.read {
             // Status view
@@ -78,10 +89,19 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
             // Status label
             statusLabel.text = "Unread"
         }
-        
-        dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
+     
+        // Is active
+        if isActive {
+            isActiveImageView.tintColor = UIColor.white
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        } else {
+            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        }
     }
     
+    // MARK: - Cell selection
+ 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
