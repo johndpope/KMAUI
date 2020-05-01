@@ -68,10 +68,6 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
         infoLabel.text = notification.message
         statusView.isHidden = notification.read
         statusLabel.isHidden = notification.read
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
         dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
     }
     
