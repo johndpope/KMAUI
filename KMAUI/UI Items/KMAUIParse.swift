@@ -1188,18 +1188,22 @@ final public class KMAUIParse {
                     subLandObject.fillFromParse(item: randomSubLands[0])
                     
                     if subLandObject.landPlanId.isEmpty || subLandObject.regionId.isEmpty || subLandObject.regionName != "Makkah" {
-                        print("Sub land not verified, trying again...")
+                        print("\nSub land not verified, trying again...")
                         
                         if subLandObject.landPlanId.isEmpty {
                             print("Land plan id is empty.")
                         }
                         
                         if subLandObject.regionId.isEmpty {
-                            print("Region is is empty")
+                            print("Region is empty")
                         }
                         
                         if subLandObject.regionName != "Makkah" {
-                            print("Region is not Makkah - \(subLandObject.regionName)")
+                            if subLandObject.regionName.isEmpty {
+                                print("Region name is empty")
+                            } else {
+                                print("Region is not Makkah - \(subLandObject.regionName)")
+                            }
                         }
                         
                         // Try again
@@ -1209,7 +1213,7 @@ final public class KMAUIParse {
                     } else {
                         self.checkSubLandLottery(subLandId: subLandObject.objectId) { (verified, error) in
                             if verified {
-                                print("Sub land verified, land plan: \(subLandObject.landPlanName) in \(subLandObject.regionName)")
+                                print("\nSub land verified, land plan: \(subLandObject.landPlanName) in \(subLandObject.regionName)")
                                 completion(true, subLandObject)
                             } else {
                                 if error.isEmpty {
