@@ -177,6 +177,7 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
         }
         
         infoLabel.text = info
+        infoLabel.setLineSpacing(lineSpacing: 1.1, lineHeightMultiple: 1.1, alignment: .left)
         actionButton.setTitle(action, for: .normal)
         
         if action.isEmpty {
