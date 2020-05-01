@@ -66,8 +66,18 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
         
         titleLabel.text = notification.title
         infoLabel.text = notification.message
-        statusView.isHidden = notification.read
-        statusLabel.isHidden = notification.read
+        
+        if notification.read {
+            // Status view
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            // Status label
+            statusLabel.text = "Viewed"
+        } else {
+            // Status view
+            statusView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            // Status label
+            statusLabel.text = "Unread"
+        }
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
