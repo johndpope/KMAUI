@@ -1210,7 +1210,25 @@ final public class KMAUIParse {
                     var subLandObject = KMAUISubLandStruct()
                     subLandObject.fillFromParse(item: randomSubLands[0])
                     
-                    if subLandObject.landPlanId.isEmpty {
+                    if subLandObject.landPlanId.isEmpty || subLandObject.regionId.isEmpty || subLandObject.regionName != "Makkah" {
+                        print("\nSub land not verified, trying again...")
+                        
+                        if subLandObject.landPlanId.isEmpty {
+                            print("Land plan id is empty.")
+                        }
+                        
+                        if subLandObject.regionId.isEmpty {
+                            print("Region is empty")
+                        }
+                        
+                        if subLandObject.regionName != "Makkah" {
+                            if subLandObject.regionName.isEmpty {
+                                print("Region name is empty")
+                            } else {
+                                print("Region is not Makkah - \(subLandObject.regionName)")
+                            }
+                        }
+                        
                         // Try again
                         self.getSubLand(subLandCount: subLandCount) { (loadedValue, loadedSubLand) in
                             completion(loadedValue, loadedSubLand)
@@ -1218,6 +1236,7 @@ final public class KMAUIParse {
                     } else {
                         self.checkSubLandLottery(subLandId: subLandObject.objectId) { (verified, error) in
                             if verified {
+                                print("\nSub land verified, land plan: \(subLandObject.landPlanName) in \(subLandObject.regionName)")
                                 completion(true, subLandObject)
                             } else {
                                 if error.isEmpty {
