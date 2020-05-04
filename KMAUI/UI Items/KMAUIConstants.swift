@@ -164,6 +164,7 @@ public class KMAUIConstants {
     public let lotteryResultSection = ["Lottery parameters", "Lottery results"]
     public let chartsArray = ["age", "gender", "city", "property", "uploads"]
     public let nonLivingTypes = ["Services", "Parks", "Commercial"]
+    public let acceptedStatuses = ["awaiting payment", "awaiting verification", "confirmed"]
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
