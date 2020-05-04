@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
@@ -42,9 +43,12 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     
     public func setupCell() {
         if subLand.subLandType.isEmpty {
+            statusLabel.text = ""
             titleLabel.text = ""
             infoLabel.text = ""
         } else {
+            statusLabel.text = subLand.status
+            
             if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
                 titleLabel.text = subLand.subLandId
             } else {
