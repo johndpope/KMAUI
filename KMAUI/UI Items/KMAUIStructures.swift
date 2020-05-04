@@ -2418,9 +2418,9 @@ public struct KMAUISubLandStruct {
         // Setup the rows
         rules = [KMAUILotteryRule]()
         
-        if !status.isEmpty {
+        /*if !status.isEmpty {
             rules.append(KMAUILotteryRule(name: "Status", value: status.capitalized))
-        }
+        }*/
         
         if extraPrice > 0 {
             rules.append(KMAUILotteryRule(name: "Extra price", value: "$ \(extraPrice.formatNumbersAfterDot().withCommas())"))
