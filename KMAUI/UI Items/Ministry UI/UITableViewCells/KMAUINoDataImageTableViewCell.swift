@@ -67,7 +67,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             titleLabel.text = "No photos"
             infoLabel.text = "There are no photos found for the area."
         } else if mode == "notificationsLoading" {
-            titleLabel.text = "Loading notifications..."
+            titleLabel.text = "Loading notifications"
             infoLabel.text = "We're preparing the notifications list for you."
         } else if mode == "notificationsEmpty" {
             titleLabel.text = "No notifications"
