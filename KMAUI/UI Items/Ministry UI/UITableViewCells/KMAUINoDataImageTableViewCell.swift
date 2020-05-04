@@ -72,6 +72,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "notificationsEmpty" {
             titleLabel.text = "No notifications"
             infoLabel.text = "There are no notifications available for this Department."
+        } else if mode == "notificationsSelect" {
+            titleLabel.text = "Select notification"
+            infoLabel.text = "Select the notification from the list to review the details."
         }
     }
 }
