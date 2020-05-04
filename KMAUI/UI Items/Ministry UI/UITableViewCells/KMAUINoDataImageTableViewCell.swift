@@ -66,6 +66,12 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "photo" {
             titleLabel.text = "No photos"
             infoLabel.text = "There are no photos found for the area."
+        } else if mode == "notificationsLoading" {
+            titleLabel.text = "Loading notifications..."
+            infoLabel.text = "We're preparing the notifications list for you."
+        } else if mode == "notificationsEmpty" {
+            titleLabel.text = "No notifications"
+            infoLabel.text = "There are no notifications available for this Department."
         }
     }
 }
