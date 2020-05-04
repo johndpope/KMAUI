@@ -674,6 +674,20 @@ public class KMAUIUtilities {
         return statusColor
     }
     
+    public func subLandColor(status: String) -> UIColor {
+        var statusColor = KMAUIConstants.shared.KMABrightBlueColor
+        
+        if status == "declined" {
+            statusColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        } else if status == "awaiting payment" || status == "awaiting verification" {
+            statusColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+        } else if status == "confirmed" {
+            statusColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        }
+        
+        return statusColor
+    }
+    
     /**
      Higlight words in string for label
      */

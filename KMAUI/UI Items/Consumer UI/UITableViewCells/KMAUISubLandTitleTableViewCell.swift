@@ -25,6 +25,12 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Status label
+        statusLabel.layer.cornerRadius = 6
+        statusLabel.clipsToBounds = true
+        statusLabel.textColor = UIColor.white
+        statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        
         // Label adjustments
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(28)
         titleLabel.textColor = UIColor.white
@@ -44,10 +50,18 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
     public func setupCell() {
         if subLand.subLandType.isEmpty {
             statusLabel.text = ""
+            statusLabel.alpha = 0
             titleLabel.text = ""
             infoLabel.text = ""
         } else {
-            statusLabel.text = subLand.status
+            statusLabel.alpha = 1
+            statusLabel.text = subLand.status.lowercased().addGaps()
+            statusLabel.backgroundColor = KMAUIUtilities.shared.subLandColor(status: subLand.status)
+            // declined
+            // awaiting payment
+            // pending
+            // awaiting verification
+            // confirmed
             
             if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
                 titleLabel.text = subLand.subLandId

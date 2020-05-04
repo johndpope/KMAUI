@@ -185,16 +185,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
             showViewDetails(mode: "details")
             viewDetailsButton.isUserInteractionEnabled = false
             viewDetailsButton.setTitle(subLand.status.capitalized, for: .normal)
-            
-            if subLand.status == "declined" {
-                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIRedProgressColor, for: .normal)
-            } else if subLand.status == "awaiting payment" {
-                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMABrightBlueColor, for: .normal)
-            } else if subLand.status == "confirmed" {
-                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIGreenProgressColor, for: .normal)
-            } else if subLand.status == "awaiting verification" {
-                viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUIYellowProgressColor, for: .normal)
-            }
+            viewDetailsButton.setTitleColor(KMAUIUtilities.shared.subLandColor(status: subLand.status), for: .normal)
         }
     }
     
