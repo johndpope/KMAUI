@@ -56,14 +56,25 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
             return
         }
         
-        KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
-            // Get the lottery results data
-            KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
-                self.lottery = planUpdated
-                self.lottery.lotteryStatus = landPlanUpdated.lotteryStatus
-                self.lottery.resultLoaded = true
-                self.callback?(self.lottery)
+        // Update the queue list
+        KMAUIParse.shared.getQueue(regionId: lottery.regionId) { (citizenQueue) in
+            self.lottery.queueArray = citizenQueue
+            self.lottery.queueDisplay = citizenQueue
+            self.lottery.queueCount = citizenQueue.count
+            self.lottery.setupResultArray()
+            self.lottery.queueLoaded = true
+            
+            print("Getting the latest queue: \(self.lottery.queueArray.count)")
+            
+            KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+                // Get the lottery results data
+                KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
+                    self.lottery = planUpdated
+                    self.lottery.lotteryStatus = landPlanUpdated.lotteryStatus
+                    self.lottery.resultLoaded = true
+                    self.callback?(self.lottery)
+                }
             }
-        }
+        }        
     }
 }
