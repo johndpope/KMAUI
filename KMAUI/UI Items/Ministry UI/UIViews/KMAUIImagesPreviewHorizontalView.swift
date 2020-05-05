@@ -1,5 +1,5 @@
 //
-//  KMAUIImagesPreviewView.swift
+//  KMAUIImagesPreviewHorizontalView.swift
 //  KMAUI
 //
 //  Created by Stanislav Rastvorov on 29.04.2020.
@@ -9,7 +9,7 @@
 import UIKit
 import QuickLook
 
-public class KMAUIImagesPreviewView: UIView {
+public class KMAUIImagesPreviewHorizontalView: UIView {
 
     // MARK: - IBOutlets
     @IBOutlet public var contentView: UIView!
@@ -43,8 +43,8 @@ public class KMAUIImagesPreviewView: UIView {
     }
     
     private func commonInit() {
-        let bundle = Bundle(for: KMAUIImagesPreviewView.self)
-        bundle.loadNibNamed("KMAUIImagesPreviewView", owner: self, options: nil)
+        let bundle = Bundle(for: KMAUIImagesPreviewHorizontalView.self)
+        bundle.loadNibNamed("KMAUIImagesPreviewHorizontalView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
@@ -173,7 +173,7 @@ public class KMAUIImagesPreviewView: UIView {
 
 // MARK: - QLPreviewController Datasource
 
-extension KMAUIImagesPreviewView: QLPreviewControllerDataSource {
+extension KMAUIImagesPreviewHorizontalView: QLPreviewControllerDataSource {
     
     public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
