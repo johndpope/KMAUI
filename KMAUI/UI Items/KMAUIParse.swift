@@ -159,7 +159,8 @@ final public class KMAUIParse {
         query.includeKey("region")
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
-        query.order(byAscending: "planName")
+//        query.order(byAscending: "planName")
+        query.order(byDescending: "updatedAt")
         
         if hasDate {
             query.whereKey("updatedAt", greaterThan: updatedAfter)
@@ -243,7 +244,8 @@ final public class KMAUIParse {
         }
         
         let query = PFQuery(className: "KMALandPlan")
-        query.order(byAscending: "planName")
+//        query.order(byAscending: "planName")
+        query.order(byDescending: "updatedAt")
         query.whereKey("region", containedIn: parseItems)
         if let objectId = responsibleDivisionId {
             query.whereKey("responsibleDivision", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: objectId))
@@ -976,7 +978,8 @@ final public class KMAUIParse {
         query.whereKey("objectId", notContainedIn: ids)
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
-        query.order(byAscending: "planName")
+//        query.order(byAscending: "planName")
+        query.order(byDescending: "updatedAt")
         query.limit = 10
         query.findObjectsInBackground { (landPlans, error) in
             var newLandPlans = [KMAUILandPlanStruct]()
