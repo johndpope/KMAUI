@@ -64,8 +64,6 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
             self.lottery.setupResultArray()
             self.lottery.queueLoaded = true
             
-            print("Getting the latest queue: \(self.lottery.queueArray.count)")
-            
             KMAUIParse.shared.startLottery(landPlan: self.lottery) { (landPlanUpdated) in
                 // Get the lottery results data
                 KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
