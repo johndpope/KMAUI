@@ -66,7 +66,7 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
             
             print("Getting the latest queue: \(self.lottery.queueArray.count)")
             
-            KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+            KMAUIParse.shared.startLottery(landPlan: self.lottery) { (landPlanUpdated) in
                 // Get the lottery results data
                 KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
                     self.lottery = planUpdated
@@ -75,6 +75,6 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
                     self.callback?(self.lottery)
                 }
             }
-        }        
+        }
     }
 }
