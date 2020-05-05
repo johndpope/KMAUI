@@ -439,7 +439,11 @@ final public class KMAUIParse {
         query.includeKey("citizen.homeAddress")
         query.includeKey("citizen.homeAddress.building")
         query.order(byAscending: "createdAt")
-
+        // Citizen query
+        let citizenQuery = PFQuery(className: "_User")
+        citizenQuery.whereKey("receivedSubLand", equalTo: false)
+        query.whereKey("citizen", matchesQuery: citizenQuery)
+        
         // Run the query
         query.findObjectsInBackground { (citizens, error) in
             var citizensArray = [KMAPerson]()
@@ -453,9 +457,7 @@ final public class KMAUIParse {
                         personObject.fillFrom(person: person)
                         personObject.lotteryObjectId = objectId
                         // Only add the person to queue if he hasn't received the Sub Land yet
-                        if !personObject.receivedSubLand {
-                            citizensArray.append(personObject)
-                        }
+                        citizensArray.append(personObject)
                     }
                 }
             }
