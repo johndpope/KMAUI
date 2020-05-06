@@ -1324,7 +1324,7 @@ final public class KMAUIParse {
             
             if eventType == "lotteryResultUpdate", let status = status {
                 statusValue = status
-                notificationTitle = "The new status for Sub land"
+                notificationTitle = "New status for Sub land"
                 
                 if status == "declined" {
                     notificationMessage = "\(fullName) has declined the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery."
@@ -1337,6 +1337,10 @@ final public class KMAUIParse {
                 } else if status == "awaiting payment" {
                     notificationMessage = "\(fullName) has accepted the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery. The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) is pending."
                 }
+            } else if eventType == "subLandDocumentAdded", let status = status {
+                statusValue = status
+                notificationTitle = "New document for Sub land"
+                notificationMessage = "\(fullName) has uploaded the new document called \"\(status)\" for the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery."
             }
             
             let query = PFQuery(className: "KMADepartmentEmployee")
