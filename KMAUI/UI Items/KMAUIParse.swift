@@ -29,7 +29,7 @@ final public class KMAUIParse {
         // Get the countries list
         let mapAreaQuery = PFQuery(className: "KMAMapArea")
         mapAreaQuery.skip = skip
-
+        
         if parentObjectId.isEmpty {
             // Get the top level items - Countries
             mapAreaQuery.whereKey("level", equalTo: 1)
@@ -54,7 +54,7 @@ final public class KMAUIParse {
         mapAreaQuery.order(byAscending: "nameE")
         mapAreaQuery.includeKey("country")
         mapAreaQuery.includeKey("city")
-
+        
         // Get inf from Parse, prepare an array and return the items with the completion handler
         mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
             if let error = error {
@@ -90,7 +90,7 @@ final public class KMAUIParse {
         mapAreaQuery.order(byAscending: "nameE")
         mapAreaQuery.includeKey("country")
         mapAreaQuery.includeKey("city")
-
+        
         // Get inf from Parse, prepare an array and return the items with the completion handler
         mapAreaQuery.findObjectsInBackground { (countriesArray, error) in
             if let error = error {
@@ -159,7 +159,7 @@ final public class KMAUIParse {
         query.includeKey("region")
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
-//        query.order(byAscending: "planName")
+        //        query.order(byAscending: "planName")
         query.order(byDescending: "updatedAt")
         
         if hasDate {
@@ -244,7 +244,7 @@ final public class KMAUIParse {
         }
         
         let query = PFQuery(className: "KMALandPlan")
-//        query.order(byAscending: "planName")
+        //        query.order(byAscending: "planName")
         query.order(byDescending: "updatedAt")
         query.whereKey("region", containedIn: parseItems)
         if let objectId = responsibleDivisionId {
@@ -311,7 +311,7 @@ final public class KMAUIParse {
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
         query.includeKey("region")
-
+        
         query.findObjectsInBackground { (plans, error) in
             if let error = error {
                 print("Error getting the Land Plans for regions: \(error.localizedDescription).")
@@ -322,7 +322,7 @@ final public class KMAUIParse {
                     completion(nil)
                     return
                 }
-
+                
                 print("\nLand Plans loaded for regions: \(plans.count)")
                 
                 var landPlanObject = KMAUILandPlanStruct()
@@ -413,7 +413,7 @@ final public class KMAUIParse {
                             print(saveError.localizedDescription)
                             completion(false)
                         } else if success {
-//                            print("Lottery member status changed to `\(isActive)`.")
+                            //                            print("Lottery member status changed to `\(isActive)`.")
                             // Update members for region
                             if isActive {
                                 region.incrementKey("lotteryMembersCount")
@@ -912,7 +912,7 @@ final public class KMAUIParse {
         peopleQuery.order(byDescending: "uploadsCount")
         peopleQuery.includeKey("homeAddress")
         peopleQuery.includeKey("homeAddress.building")
-
+        
         peopleQuery.findObjectsInBackground { (people, error) in
             var citizens = [KMAPerson]()
             var citizensBackup = [KMAPerson]()
@@ -978,7 +978,7 @@ final public class KMAUIParse {
         query.whereKey("objectId", notContainedIn: ids)
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
-//        query.order(byAscending: "planName")
+        //        query.order(byAscending: "planName")
         query.order(byDescending: "updatedAt")
         query.limit = 10
         query.findObjectsInBackground { (landPlans, error) in
@@ -1060,7 +1060,7 @@ final public class KMAUIParse {
                     }
                 }
             }
-        
+            
             print("New Citizens found: \(newCitizens.count)")
             completion(newCitizens)
         }
@@ -1102,7 +1102,7 @@ final public class KMAUIParse {
             } else if let subLandValue = subLandValue {
                 updatedSubLand.fillFromParse(item: subLandValue)
             }
-
+            
             completion(updatedSubLand)
         }
     }
@@ -1134,7 +1134,7 @@ final public class KMAUIParse {
                     newDepartments.append(departmentObject)
                 }
             }
-
+            
             completion(newDepartments)
         }
     }
@@ -1153,7 +1153,7 @@ final public class KMAUIParse {
         if hasUpdatedAt {
             query.whereKey("updatedAt", greaterThan: updatedAt)
         }
-
+        
         var updatedNotifications = [KMANotificationStruct]()
         
         query.findObjectsInBackground { (notifications, error) in
@@ -1304,7 +1304,7 @@ final public class KMAUIParse {
             newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
             newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: subLand.landPlanId)
             newLotteryResult["status"] = "awaiting verification"
-           
+            
             newLotteryResult.saveInBackground { (success, error) in
                 KMAUIUtilities.shared.stopLoadingWith { (done) in
                     if let error = error {
@@ -1331,7 +1331,7 @@ final public class KMAUIParse {
                     var notificationsArray = [PFObject]()
                     // Push params array
                     var pushParams = [[String: AnyObject]]()
-                     var itemsArray = [[String: AnyObject]]()
+                    var itemsArray = [[String: AnyObject]]()
                     
                     print("Employees for department \(subLand.departmentId): \(employees.count)")
                     for employee in employees {
@@ -1373,7 +1373,7 @@ final public class KMAUIParse {
                                 for (index, notification) in notificationsArray.enumerated() {
                                     if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
                                         var items = itemsArray[index]
-                                       items["notificationId"] = notificationId as AnyObject
+                                        items["notificationId"] = notificationId as AnyObject
                                         // Push parameters
                                         let newSubLandParams = [
                                             "userId" : citizenId as AnyObject,

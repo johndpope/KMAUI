@@ -392,6 +392,11 @@ public class KMAUIUtilities {
             parameter = "year"
         }
         
+        // So we won't have situations like 0 month ago or 0 years ago, if the value is 0
+        if value == 0 {
+            value += 1
+        }
+        
         if value != 1, parameter != "min" {
             parameter += "s"
         }
