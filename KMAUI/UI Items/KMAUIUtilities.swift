@@ -152,6 +152,20 @@ public class KMAUIUtilities {
     }
     
     /**
+     Hide the loading alert.
+     */
+    
+    public func stopLoadingWithAnimation(completion: @escaping (_ hide: String)->()) {
+        guard let topController = KMAUIUtilities.shared.getTopVisibleController() else {
+            return
+        }
+        
+        topController.dismiss(animated: true) {
+            completion("hide")
+        }
+    }
+    
+    /**
      Display the alert controller over the current context
      */
     
