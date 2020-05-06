@@ -1308,7 +1308,7 @@ final public class KMAUIParse {
                         KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (loaded) in }
                     } else if success, let lotteryResultId = newLotteryResult.objectId {
                         // Send a notification to the KMADepartment user stating he has to verify the document
-                        self.notifyDepartmentAdminsNewDocument(subLand: subLand, lotteryResultId: lotteryResultId, eventType: "documentUploaded")
+                        self.notifyDepartmentAdmins(subLand: subLand, lotteryResultId: lotteryResultId, eventType: "documentUploaded")
                         completion(true)
                     }
                 }
@@ -1316,7 +1316,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyDepartmentAdminsNewDocument(subLand: KMAUISubLandStruct, lotteryResultId: String, eventType: String, status: String? = nil) {
+    public func notifyDepartmentAdmins(subLand: KMAUISubLandStruct, lotteryResultId: String, eventType: String, status: String? = nil) {
         if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String {
             var notificationTitle = "New document received"
             var notificationMessage = "The new Land document was uploaded by \(fullName) and waits for verification."
