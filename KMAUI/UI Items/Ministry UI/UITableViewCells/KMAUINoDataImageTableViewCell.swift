@@ -33,6 +33,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         logoImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        backgroundColor = UIColor.clear
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
