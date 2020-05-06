@@ -1322,7 +1322,7 @@ final public class KMAUIParse {
             var notificationMessage = "The new Land document was uploaded by \(fullName) and waits for verification."
             var statusValue = ""
             
-            if eventType == "lotteryAction", let status = status {
+            if eventType == "lotteryResultUpdate", let status = status {
                 statusValue = status
                 notificationTitle = "The new status for Sub land"
                 
