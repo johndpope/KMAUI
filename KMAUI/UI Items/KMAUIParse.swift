@@ -1295,9 +1295,6 @@ final public class KMAUIParse {
         KMAUIUtilities.shared.startLoading(title: "Submitting...")
         // Save the document
         KMAUIParse.shared.saveDocument(subLandId: subLand.objectId, newDocuments: [uploadedDocument as AnyObject], recognizedDetails: rows) { (subLandUpdated) in
-            // Send a notification to the KMADepartment user stating he has to verify the document
-            self.getDepartmentAdmins(subLand: subLand)
-            
             // Adding the recognizedDetails
             let newLotteryResult = PFObject(className: "KMALotteryResult")
             newLotteryResult["citizen"] = PFUser.current()
@@ -1309,7 +1306,9 @@ final public class KMAUIParse {
                 KMAUIUtilities.shared.stopLoadingWith { (done) in
                     if let error = error {
                         KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (loaded) in }
-                    } else if success {
+                    } else if success, let lotteryResultId = newLotteryResult.objectId {
+                        // Send a notification to the KMADepartment user stating he has to verify the document
+                        self.notifyDepartmentAdminsNewDocument(subLand: subLand, lotteryResultId: lotteryResultId, eventType: "documentUploaded")
                         completion(true)
                     }
                 }
@@ -1317,8 +1316,29 @@ final public class KMAUIParse {
         }
     }
     
-    public func getDepartmentAdmins(subLand: KMAUISubLandStruct) {
+    public func notifyDepartmentAdminsNewDocument(subLand: KMAUISubLandStruct, lotteryResultId: String, eventType: String, status: String? = nil) {
         if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String {
+            var notificationTitle = "New document received"
+            var notificationMessage = "The new Land document was uploaded by \(fullName) and waits for verification."
+            var statusValue = ""
+            
+            if eventType == "lotteryAction", let status = status {
+                statusValue = status
+                notificationTitle = "The new status for Sub land"
+                
+                if status == "declined" {
+                    notificationMessage = "\(fullName) has declined the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery."
+                } else if status == "confirmed" {
+                    notificationMessage = "\(fullName) has accepted the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery."
+                    
+                    if subLand.extraPrice > 0 {
+                        notificationMessage = "\(fullName) has accepted the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery. The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) was received."
+                    }
+                } else if status == "awaiting payment" {
+                    notificationMessage = "\(fullName) has accepted the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery. The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) is pending."
+                }
+            }
+            
             let query = PFQuery(className: "KMADepartmentEmployee")
             query.whereKey("department", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: subLand.departmentId))
             query.whereKey("isActive", equalTo: true)
@@ -1340,19 +1360,21 @@ final public class KMAUIParse {
                             // Prepare the notification Parse object
                             let newNotification = PFObject(className: "KMANotification")
                             newNotification["user"] = PFUser(withoutDataWithObjectId: citizenId)
-                            newNotification["title"] = "New document received"
-                            newNotification["message"] = "The new Land document was uploaded by \(fullName) and waits for verification."
+                            newNotification["title"] = notificationTitle
+                            newNotification["message"] = notificationMessage
                             // Fill the items for Notification
                             let items = ["objectId": subLand.objectId as AnyObject,
                                          "objectType": "subLand" as AnyObject,
-                                         "eventType": "documentUploaded" as AnyObject,
+                                         "eventType": eventType as AnyObject,
                                          "subLandId": subLand.subLandId as AnyObject,
                                          "landPlanName": subLand.landPlanName as AnyObject,
                                          "landPlanId": subLand.landPlanId as AnyObject,
                                          "region": subLand.regionName as AnyObject,
                                          "regionId": subLand.regionId as AnyObject,
                                          "departmentId": subLand.departmentId as AnyObject,
-                                         "departmentName": subLand.departmentName as AnyObject
+                                         "departmentName": subLand.departmentName as AnyObject,
+                                         "lotteryResultId": lotteryResultId as AnyObject,
+                                         "status": statusValue as AnyObject
                             ]
                             // Save item into array for push notifications
                             itemsArray.append(items)
@@ -1377,8 +1399,8 @@ final public class KMAUIParse {
                                         // Push parameters
                                         let newSubLandParams = [
                                             "userId" : citizenId as AnyObject,
-                                            "title": "New document received" as AnyObject,
-                                            "message": "The new Land document was uploaded by \(fullName) and waits for verification." as AnyObject,
+                                            "title": notificationTitle as AnyObject,
+                                            "message": notificationMessage as AnyObject,
                                             "kmaItems": items as AnyObject,
                                             "appType": "Business" as AnyObject
                                         ]
@@ -1392,8 +1414,11 @@ final public class KMAUIParse {
                                     print("\nSend a push notification: \(subLandParams)")
                                     KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
                                 }
+                                
                                 // Also send a push to the user, stating the document received by the Department
-                                self.notifyUser(subLand: subLand)
+                                if eventType == "documentUploaded" {
+                                    self.notifyUser(subLand: subLand)
+                                }
                             }
                         }
                     }
