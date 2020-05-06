@@ -491,6 +491,10 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("landPlan")
         lotteryResultQuery.includeKey("landPlan.region")
         lotteryResultQuery.includeKey("landPlan.responsibleDivision")
+        lotteryResultQuery.includeKey("subLand")
+        lotteryResultQuery.includeKey("subLand.landPlan")
+        lotteryResultQuery.includeKey("subLand.landPlan.region")
+        lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
