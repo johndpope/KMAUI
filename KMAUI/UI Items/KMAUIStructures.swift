@@ -91,6 +91,8 @@ public struct KMADocumentData {
     // Document Parse data
     public var createdAt = Date()
     public var updatedAt = Date()
+    public var status = "" // Approved / Rejected
+    public var comment = ""
     
     public init() {
     }
@@ -110,6 +112,14 @@ public struct KMADocumentData {
         
         if let fileURLValue = dictionary["fileURL"] {
             self.fileURL = fileURLValue
+        }
+        
+        if let statusValue = dictionary["status"] {
+            self.status = statusValue
+        }
+        
+        if let commentValue = dictionary["comment"] {
+            self.comment = commentValue
         }
     }
     
@@ -164,6 +174,14 @@ public struct KMADocumentData {
         
         if let updatedAtValue = document["updatedAt"], !updatedAtValue.isEmpty {
             updatedAt = KMAUIUtilities.shared.dateFromUTCString(string: updatedAtValue)
+        }
+        
+        if let statusValue = document["status"] {
+            self.status = statusValue
+        }
+        
+        if let commentValue = document["comment"] {
+            self.comment = commentValue
         }
     }
 }
