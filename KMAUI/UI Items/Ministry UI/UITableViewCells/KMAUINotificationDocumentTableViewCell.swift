@@ -30,6 +30,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var statusLabel: UILabel!
     
     // MARK: - Variables
+    public var type = ""
     public var subLand = KMAUISubLandStruct()
     public var citizen = KMAPerson()
     public var document = KMADocumentData() {
@@ -136,8 +137,14 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     public func setupCell() {
         // Title label
-        titleLabel.text = "Upload by citizens"
+        if type == "documentUploaded" {
+
+        } else if type == "subLandDocumentAdded" {
+
+        }
         
+        titleLabel.text = "Upload by citizen"
+
         // Info label
         infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
         

@@ -571,7 +571,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func getLotteryResult(lotteryResultId: String, fileName: String, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
+    public func getLotteryResult(lotteryResultId: String, fileName: String, completion: @escaping (_ citizen: KMAPerson, _ error: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
         let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
         lotteryResultQuery.includeKey("citizen")
         lotteryResultQuery.includeKey("citizen.homeAddress")
@@ -582,11 +582,11 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
         
         lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
-            var type = ""
+            var errorValue = ""
             
             if let error = error {
                 print(error.localizedDescription)
-                type = error.localizedDescription
+                errorValue = error.localizedDescription
             } else if let lotteryResult = lotteryResult {
                 if let citizen = lotteryResult["citizen"] as? PFUser, let subLand = lotteryResult["subLand"] as? PFObject {
                     // Citizen details
@@ -599,7 +599,7 @@ final public class KMAUIParse {
                     for document in subLandObject.subLandImagesAllArray {
                         if document.name == fileName {
                             print("Document `\(fileName)` found:\n\(document)")
-                            completion(citizenObject, "newUpload", document, subLandObject, true)
+                            completion(citizenObject, "", document, subLandObject, true)
                             
                             return
                         }
@@ -609,7 +609,7 @@ final public class KMAUIParse {
                 }
             }
             
-            completion(KMAPerson(), type, KMADocumentData(), KMAUISubLandStruct(), false)
+            completion(KMAPerson(), errorValue, KMADocumentData(), KMAUISubLandStruct(), false)
         }
     }
     
