@@ -31,6 +31,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var type = ""
+    public var lotteryResultStatus = ""
     public var subLand = KMAUISubLandStruct()
     public var citizen = KMAPerson()
     public var document = KMADocumentData() {
@@ -183,7 +184,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             start += 12
         }
         
-        let openRange = NSRange(location: 18, length: "Sub land \(subLand.subLandId)".count + 2)
+        let openRange = NSRange(location: start, length: "Sub land \(subLand.subLandId)".count + 2)
         let tapLocation = gesture.location(in: infoLabel)
         let index = infoLabel.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
 
@@ -197,7 +198,29 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
      */
     
     public func setupStatus() {
-        if document.status.isEmpty {
+        var statusDetermined = false
+        
+        if type == "documentUploaded" {
+            statusDetermined = lotteryResultStatus != "awaiting verification"
+            
+            if !statusDetermined {
+                statusLabel.text = lotteryResultStatus.capitalized
+            }
+        } else if type == "subLandDocumentAdded" {
+            statusDetermined = !document.status.isEmpty
+            
+            if !statusDetermined {
+                statusLabel.text = "Attachment \(document.status)"
+                
+                if document.status == "approved" {
+                    statusLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                } else if document.status == "rejected" {
+                    statusLabel.textColor = KMAUIConstants.shared.KMAUIRedProgressColor
+                }
+            }
+        }
+        
+        if !statusDetermined {
             // No action performed
             rejectButton.alpha = 1
             approveButton.alpha = 1
@@ -207,13 +230,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             rejectButton.alpha = 0
             approveButton.alpha = 0
             statusLabel.alpha = 1
-            statusLabel.text = "Attachment \(document.status)"
-            
-            if document.status == "approved" {
-                statusLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-            } else if document.status == "rejected" {
-                statusLabel.textColor = KMAUIConstants.shared.KMAUIRedProgressColor
-            }
         }
     }
     
