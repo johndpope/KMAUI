@@ -635,7 +635,12 @@ public class KMAUIUtilities {
                     if let fileObject = fileObject as? [String: String] {
                         var fileValue = KMADocumentData()
                         fileValue.fillFrom(dictionary: fileObject)
-                        items.append(fileValue)
+                        // Check if status is rejected, then dont't show this file
+                        if fileValue.status == "rejected" {
+                            print("File `\(fileValue.name)` was rejected by Department.")
+                        } else {
+                            items.append(fileValue)
+                        }
                     }
                 }
             }
@@ -648,7 +653,7 @@ public class KMAUIUtilities {
      Get items from subLandImages JSON
      */
     
-    public func getItemsFrom(subLandImages: String) -> [KMADocumentData] {
+    public func getItemsFrom(subLandImages: String, all: Bool? = nil) -> [KMADocumentData] {
         var items = [KMADocumentData]()
         
         if !subLandImages.isEmpty {
@@ -659,7 +664,17 @@ public class KMAUIUtilities {
                     if let fileObject = fileObject as? [String: String] {
                         var fileValue = KMADocumentData()
                         fileValue.fillFrom(document: fileObject)
-                        items.append(fileValue)
+                        // If all
+                        if let all = all, all {
+                            items.append(fileValue)
+                        } else {
+                            // Check if status is rejected, then dont't show this file
+                            if fileValue.status == "rejected" {
+                                print("File `\(fileValue.name)` was rejected by Department.")
+                            } else {
+                                items.append(fileValue)
+                            }
+                        }
                     }
                 }
             }

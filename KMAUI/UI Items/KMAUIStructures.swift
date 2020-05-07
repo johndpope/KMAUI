@@ -2193,6 +2193,7 @@ public struct KMAUISubLandStruct {
     public var subLandDescription = ""
     public var subLandImages = ""
     public var subLandImagesArray = [KMADocumentData]()
+    public var subLandImagesAllArray = [KMADocumentData]()
     // Additional variables
     public var geojson = ""
     public var geojsonDict = [String: Any]()
@@ -2294,6 +2295,7 @@ public struct KMAUISubLandStruct {
             self.subLandImages = subLandImages
             // Setup the images / documents
             self.subLandImagesArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages)
+            self.subLandImagesAllArray = KMAUIUtilities.shared.getItemsFrom(subLandImages: subLandImages, all: true)
         }
         // region id, region name
         if let noRegion = noRegion, noRegion {
