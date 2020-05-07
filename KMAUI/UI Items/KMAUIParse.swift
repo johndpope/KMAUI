@@ -571,6 +571,45 @@ final public class KMAUIParse {
         }
     }
     
+    public func getLotteryResult(lotteryResultId: String, fileName: String, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
+        let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
+        lotteryResultQuery.includeKey("citizen")
+        lotteryResultQuery.includeKey("citizen.homeAddress")
+        lotteryResultQuery.includeKey("citizen.homeAddress.building")
+        lotteryResultQuery.includeKey("subLand")
+        lotteryResultQuery.includeKey("subLand.landPlan")
+        lotteryResultQuery.includeKey("subLand.landPlan.region")
+        lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
+        
+        lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let lotteryResult = lotteryResult {
+                if let citizen = lotteryResult["citizen"] as? PFUser, let subLand = lotteryResult["subLand"] as? PFObject {
+                    // Citizen details
+                    var citizenObject = KMAPerson()
+                    citizenObject.fillFrom(person: citizen)
+                    // Sub land details
+                    var subLandObject = KMAUISubLandStruct()
+                    subLandObject.fillFromParse(item: subLand)
+                    // Sub land images
+                    for document in subLandObject.subLandImagesAllArray {
+                        if document.name == fileName {
+                            print("Document `\(fileName)` found:\n\(document)")
+                            completion(citizenObject, "newUpload", document, subLandObject, true)
+                            
+                            return
+                        }
+                    }
+                    
+                    print("Document `\(fileName)` not found.")
+                }
+            }
+            
+            completion(KMAPerson(), "", KMADocumentData(), KMAUISubLandStruct(), false)
+        }
+    }
+    
     // MARK: Get rules for Land plan from Ministry
     
     public func getLotteryRules(completion: @escaping (_ rules: KMAUILotteryRules)->()) {
