@@ -1501,44 +1501,46 @@ final public class KMAUIParse {
             }
         }
         
-        if let currentUser = PFUser.current(), let currentUserId = currentUser.objectId {
-            let newNotification = PFObject(className: "KMANotification")
-            newNotification["user"] = currentUser
-            newNotification["title"] = title
-            newNotification["message"] = message
-            // Fill the items for Notification
-            var items = ["objectId": subLand.objectId as AnyObject,
-                         "objectType": "subLand" as AnyObject,
-                         "eventType": "documentUploaded" as AnyObject,
-                         "subLandId": subLand.subLandId as AnyObject,
-                         "landPlanName": subLand.landPlanName as AnyObject,
-                         "landPlanId": subLand.landPlanId as AnyObject,
-                         "region": subLand.regionName as AnyObject,
-                         "regionId": subLand.regionId as AnyObject,
-                         "departmentId": subLand.departmentId as AnyObject,
-                         "departmentName": subLand.departmentName as AnyObject
-            ]
-            // items json string from dictionary
-            if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
-                newNotification["items"] = jsonStr
-            }
-            newNotification["read"] = false
-            // Save notification
-            newNotification.saveInBackground { (success, error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if success, let notificationId = newNotification.objectId {
-                    items["notificationId"] = notificationId as AnyObject
-                    // Push parameters
-                    let subLandParams = [
-                        "userId" : currentUserId as AnyObject,
-                        "title": title as AnyObject,
-                        "message": message as AnyObject,
-                        "kmaItems": items as AnyObject,
-                        "appType": "Consumer" as AnyObject
-                    ]
-                    // Send push notification
-                    KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+        if !title.isEmpty, !message.isEmpty {
+            if let currentUser = PFUser.current(), let currentUserId = currentUser.objectId {
+                let newNotification = PFObject(className: "KMANotification")
+                newNotification["user"] = currentUser
+                newNotification["title"] = title
+                newNotification["message"] = message
+                // Fill the items for Notification
+                var items = ["objectId": subLand.objectId as AnyObject,
+                             "objectType": "subLand" as AnyObject,
+                             "eventType": "documentUploaded" as AnyObject,
+                             "subLandId": subLand.subLandId as AnyObject,
+                             "landPlanName": subLand.landPlanName as AnyObject,
+                             "landPlanId": subLand.landPlanId as AnyObject,
+                             "region": subLand.regionName as AnyObject,
+                             "regionId": subLand.regionId as AnyObject,
+                             "departmentId": subLand.departmentId as AnyObject,
+                             "departmentName": subLand.departmentName as AnyObject
+                ]
+                // items json string from dictionary
+                if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                    newNotification["items"] = jsonStr
+                }
+                newNotification["read"] = false
+                // Save notification
+                newNotification.saveInBackground { (success, error) in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else if success, let notificationId = newNotification.objectId {
+                        items["notificationId"] = notificationId as AnyObject
+                        // Push parameters
+                        let subLandParams = [
+                            "userId" : currentUserId as AnyObject,
+                            "title": title as AnyObject,
+                            "message": message as AnyObject,
+                            "kmaItems": items as AnyObject,
+                            "appType": "Consumer" as AnyObject
+                        ]
+                        // Send push notification
+                        KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                    }
                 }
             }
         }
