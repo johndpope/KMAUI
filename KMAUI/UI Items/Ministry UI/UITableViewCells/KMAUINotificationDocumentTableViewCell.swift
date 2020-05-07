@@ -230,7 +230,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     }
     
     func change(status: String) {
-        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: "approved") { (done) in
+        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
             self.document.status = status
             self.setupStatus()
             // Send a push notification to user with document name and status
