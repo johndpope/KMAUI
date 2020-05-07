@@ -1485,7 +1485,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil) {
+    public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil) {
         var title = ""
         var message = ""
         
@@ -1503,8 +1503,14 @@ final public class KMAUIParse {
         
         if !title.isEmpty, !message.isEmpty {
             if let currentUser = PFUser.current(), let currentUserId = currentUser.objectId {
+                var userId = currentUserId
+                // Send a message to the selected user
+                if let citizenId = citizenId {
+                    userId = citizenId
+                }
+                
                 let newNotification = PFObject(className: "KMANotification")
-                newNotification["user"] = currentUser
+                newNotification["user"] = PFUser(withoutDataWithObjectId: userId)
                 newNotification["title"] = title
                 newNotification["message"] = message
                 // Fill the items for Notification
@@ -1532,7 +1538,7 @@ final public class KMAUIParse {
                         items["notificationId"] = notificationId as AnyObject
                         // Push parameters
                         let subLandParams = [
-                            "userId" : currentUserId as AnyObject,
+                            "userId" : userId as AnyObject,
                             "title": title as AnyObject,
                             "message": message as AnyObject,
                             "kmaItems": items as AnyObject,

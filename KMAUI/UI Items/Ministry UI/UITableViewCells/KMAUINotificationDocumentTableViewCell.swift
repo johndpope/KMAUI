@@ -234,7 +234,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             self.document.status = status
             self.setupStatus()
             // Send a push notification to user with document name and status
-            KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "uploaded", status: status, documentName: self.document.name)
+            KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "uploaded", status: status, documentName: self.document.name, citizenId: self.citizen.objectId)
         }
     }
     
