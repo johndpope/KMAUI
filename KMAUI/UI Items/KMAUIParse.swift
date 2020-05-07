@@ -1037,6 +1037,56 @@ final public class KMAUIParse {
         }
     }
     
+    public func updateDocumentStatus(subLandId: String, documentId: String, status: String, completion: @escaping (_ done: Bool)->()) {
+        let query = PFQuery(className: "KMASubLand")
+        query.getObjectInBackground(withId: subLandId) { (subLandObject, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let subLandObject = subLandObject {
+                if let subLandImages = subLandObject["subLandImages"] as? String {
+                    let currentDict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLandImages)
+                    
+                    if var files = currentDict["files"] as? [[String: AnyObject]] {
+                        for (index, file) in files.enumerated() {
+                            if let fileObjectId = file["objectId"] as? String {
+                                if fileObjectId == documentId {
+                                    var fileUpdated = file
+                                    fileUpdated["status"] = status as AnyObject
+                                    files[index] = fileUpdated
+                                    
+                                    let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["files": files])
+                                    var fileBody = ""
+                                    
+                                    // JSON String for Parse
+                                    if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+                                        fileBody = jsonFileBodyString
+                                    }
+                                    
+                                    subLandObject["subLandImages"] = fileBody
+                                    subLandObject.saveInBackground { (success, error) in
+                                        KMAUIUtilities.shared.stopLoadingWith { (_) in
+                                            if let error = error {
+                                                KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
+                                            } else {
+                                                completion(true)
+                                            }
+                                        }
+                                    }
+                                    
+                                    return
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Can't \(status) the attachment, please try again.") { (done) in }
+                }
+            }
+        }
+    }
+    
     public func citizenSearch(search: String, ids: [String], completion: @escaping (_ newCitizens: [KMAPerson])->()) {
         // search by: fullName, objectId
         let nameQuery = PFQuery(className: "_User")

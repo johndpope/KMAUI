@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import QuickLook
 import Kingfisher
 
@@ -222,12 +221,18 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     @IBAction public func rejectButtonPressed(_ sender: Any) {
         KMAUIUtilities.shared.startLoading(title: "Rejecting...")
-        updateDocumentStatus(status: "rejected")
+        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: "rejected") { (done) in
+            self.document.status = "rejected"
+            self.setupStatus()
+        }
     }
     
     @IBAction public func approveButtonPressed(_ sender: Any) {
         KMAUIUtilities.shared.startLoading(title: "Approving...")
-        updateDocumentStatus(status: "approved")
+        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: "approved") { (done) in
+            self.document.status = "approved"
+            self.setupStatus()
+        }
     }
     
     @IBAction func uploadImageButtonPressed(_ sender: Any) {
@@ -237,57 +242,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             let previewController = QLPreviewController()
             previewController.dataSource = self
             KMAUIUtilities.shared.displayAlert(viewController: previewController)
-        }
-    }
-    
-    public func updateDocumentStatus(status: String) {
-        let query = PFQuery(className: "KMASubLand")
-        query.getObjectInBackground(withId: subLand.objectId) { (subLandObject, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let subLandObject = subLandObject {
-                if let subLandImages = subLandObject["subLandImages"] as? String {
-                    let currentDict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLandImages)
-                    
-                    if var files = currentDict["files"] as? [[String: AnyObject]] {
-                        for (index, file) in files.enumerated() {
-                            if let fileObjectId = file["objectId"] as? String {
-                                if fileObjectId == self.document.objectId {
-                                    var fileUpdated = file
-                                    fileUpdated["status"] = status as AnyObject
-                                    files[index] = fileUpdated
-                                    
-                                    let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["files": files])
-                                    var fileBody = ""
-                                    
-                                    // JSON String for Parse
-                                    if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
-                                        fileBody = jsonFileBodyString
-                                    }
-                                    
-                                    subLandObject["subLandImages"] = fileBody
-                                    subLandObject.saveInBackground { (success, error) in
-                                        KMAUIUtilities.shared.stopLoadingWith { (_) in
-                                            if let error = error {
-                                                KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
-                                            } else {
-                                                self.document.status = status
-                                                self.setupStatus()
-                                            }
-                                        }
-                                    }
-                                    
-                                    return
-                                }
-                            }
-                        }
-                    }
-                }
-                
-                KMAUIUtilities.shared.stopLoadingWith { (_) in
-                    KMAUIUtilities.shared.globalAlert(title: "Error", message: "Can't \(status) the attachment, please try again.") { (done) in }
-                }
-            }
         }
     }
 }
