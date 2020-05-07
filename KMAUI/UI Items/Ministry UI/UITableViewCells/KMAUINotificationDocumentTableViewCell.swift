@@ -259,11 +259,15 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     }
     
     func change(status: String) {
-        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
-            self.document.status = status
-            self.setupStatus()
-            // Send a push notification to user with document name and status
-            KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "uploaded", status: status, documentName: self.document.name, citizenId: self.citizen.objectId)
+        if type == "documentUploaded" {
+            print("We need to set the \(status) for the KMALotteryResult")
+        } else if type == "subLandDocumentAdded" {
+            KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
+                self.document.status = status
+                self.setupStatus()
+                // Send a push notification to user with document name and status
+                KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "uploaded", status: status, documentName: self.document.name, citizenId: self.citizen.objectId)
+            }
         }
     }
     
