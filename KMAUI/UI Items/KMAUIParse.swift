@@ -1475,7 +1475,7 @@ final public class KMAUIParse {
                                 
                                 // Also send a push to the user, stating the document received by the Department
                                 if eventType == "documentUploaded" {
-                                    self.notifyUser(subLand: subLand)
+                                    self.notifyUser(subLand: subLand, type: "created")
                                 }
                             }
                         }
@@ -1485,12 +1485,27 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyUser(subLand: KMAUISubLandStruct) {
+    public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil) {
+        var title = ""
+        var message = ""
+        
+        if type == "created" {
+            // The new Document uploaded to create the KMALotteryResult
+            title = "Document submitted"
+            message = "Your Land document was received by the \(subLand.departmentName). You'll receive a notification when it's processed."
+        } else if type == "uploaded" {
+            // The new Document uploaded to the accepted KMASubLand
+            if let status = status, let documentName = documentName {
+                title = "Document \(status)"
+                message = "The \"\(documentName)\" document for the Sub land \(subLand.subLandId) was \(status) by the \(subLand.departmentName)."
+            }
+        }
+        
         if let currentUser = PFUser.current(), let currentUserId = currentUser.objectId {
             let newNotification = PFObject(className: "KMANotification")
             newNotification["user"] = currentUser
-            newNotification["title"] = "Document submitted"
-            newNotification["message"] = "Your Land document was received by the \(subLand.departmentName). You'll receive a notification when it's processed."
+            newNotification["title"] = title
+            newNotification["message"] = message
             // Fill the items for Notification
             var items = ["objectId": subLand.objectId as AnyObject,
                          "objectType": "subLand" as AnyObject,
@@ -1517,8 +1532,8 @@ final public class KMAUIParse {
                     // Push parameters
                     let subLandParams = [
                         "userId" : currentUserId as AnyObject,
-                        "title": "Document submitted" as AnyObject,
-                        "message": "Your Land document was received by the \(subLand.departmentName). You'll receive a notification when it's processed." as AnyObject,
+                        "title": title as AnyObject,
+                        "message": message as AnyObject,
                         "kmaItems": items as AnyObject,
                         "appType": "Consumer" as AnyObject
                     ]

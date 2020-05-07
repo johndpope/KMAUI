@@ -221,17 +221,20 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     @IBAction public func rejectButtonPressed(_ sender: Any) {
         KMAUIUtilities.shared.startLoading(title: "Rejecting...")
-        KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: "rejected") { (done) in
-            self.document.status = "rejected"
-            self.setupStatus()
-        }
+        change(status: "rejected")
     }
     
     @IBAction public func approveButtonPressed(_ sender: Any) {
         KMAUIUtilities.shared.startLoading(title: "Approving...")
+        change(status: "approved")
+    }
+    
+    func change(status: String) {
         KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: "approved") { (done) in
-            self.document.status = "approved"
+            self.document.status = status
             self.setupStatus()
+            // Send a push notification to user with document name and status
+            KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "uploaded", status: status, documentName: self.document.name)
         }
     }
     
