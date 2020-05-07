@@ -131,22 +131,26 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     public func setupCell() {
         // Title label
-        if type == "documentUploaded" {
-
-        } else if type == "subLandDocumentAdded" {
-
-        }
-        
         titleLabel.text = "Upload by citizen"
-
+        
         // Info label
-        infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
+        if type == "documentUploaded" {
+            infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "The ownership document for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
+            // Action button
+            rejectButton.setTitle("Reject document", for: .normal)
+            approveButton.setTitle("Approve document", for: .normal)
+        } else if type == "subLandDocumentAdded" {
+            infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
+            // Action button
+            rejectButton.setTitle("Reject attachment", for: .normal)
+            approveButton.setTitle("Approve attachment", for: .normal)
+        }
         
         // Upload image view
         if let documentURL = URL(string: document.previewURL) {
@@ -168,15 +172,17 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             profileImageView.kf.setImage(with: url)
         }
         
-        // Action button
-        rejectButton.setTitle("Reject attachment", for: .normal)
-        approveButton.setTitle("Approve attachment", for: .normal)
-        
         // Status
         setupStatus()
     }
     
     @objc public func tapLabel(gesture: UITapGestureRecognizer) {
+        var start = 18
+        
+        if type == "documentUploaded" {
+            start += 12
+        }
+        
         let openRange = NSRange(location: 18, length: "Sub land \(subLand.subLandId)".count + 2)
         let tapLocation = gesture.location(in: infoLabel)
         let index = infoLabel.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
