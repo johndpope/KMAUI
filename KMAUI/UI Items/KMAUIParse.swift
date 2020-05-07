@@ -582,8 +582,11 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
         
         lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
+            var type = ""
+            
             if let error = error {
                 print(error.localizedDescription)
+                type = error.localizedDescription
             } else if let lotteryResult = lotteryResult {
                 if let citizen = lotteryResult["citizen"] as? PFUser, let subLand = lotteryResult["subLand"] as? PFObject {
                     // Citizen details
@@ -606,7 +609,7 @@ final public class KMAUIParse {
                 }
             }
             
-            completion(KMAPerson(), "", KMADocumentData(), KMAUISubLandStruct(), false)
+            completion(KMAPerson(), type, KMADocumentData(), KMAUISubLandStruct(), false)
         }
     }
     
