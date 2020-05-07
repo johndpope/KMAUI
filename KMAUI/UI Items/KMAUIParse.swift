@@ -571,7 +571,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func getLotteryResult(lotteryResultId: String, fileName: String, lotteryResultCreated: Bool, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
+    public func getLotteryResult(lotteryResultId: String, fileName: String, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
         let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
         lotteryResultQuery.includeKey("citizen")
         lotteryResultQuery.includeKey("citizen.homeAddress")
