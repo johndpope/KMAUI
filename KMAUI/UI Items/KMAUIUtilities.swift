@@ -545,7 +545,7 @@ public class KMAUIUtilities {
      Highlight the part of the string.
      */
     
-    func attributedText(text: String, search: String, fontSize: CGFloat, noColor: Bool? = nil) -> NSAttributedString {
+    public func attributedText(text: String, search: String, fontSize: CGFloat, noColor: Bool? = nil) -> NSAttributedString {
         let attributedString = NSMutableAttributedString()
         let boldFont = UIFont.systemFont(ofSize: fontSize, weight: .semibold)
         let normalString = NSMutableAttributedString(string: text)
@@ -564,6 +564,40 @@ public class KMAUIUtilities {
         attributedString.append(normalString)
         
         return attributedString
+    }
+    
+    public func highlightUnderline(words: [String], in str: String, fontSize: CGFloat) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: str)
+        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMABrightBlueColor, NSAttributedString.Key.underlineColor: KMAUIConstants.shared.KMABrightBlueColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+        
+        let nsstr = str as NSString
+        var searchRange = NSMakeRange(0, nsstr.length)
+        
+        for word in words {
+            while true {
+                let foundRange = nsstr.range(of: word, options: [], range: searchRange)
+
+                if foundRange.location == NSNotFound {
+                    break
+                }
+                
+                attributedString.setAttributes(highlightAttributes, range: foundRange)
+                
+                let newLocation = foundRange.location + foundRange.length
+                let newLength = nsstr.length - newLocation
+                searchRange = NSMakeRange(newLocation, newLength)
+            }
+        }
+        
+        return attributedString
+    }
+    
+    /**
+     Check if range contains an index
+     */
+    
+    func checkRange(_ range: NSRange, contain index: Int) -> Bool {
+        return index > range.location && index < range.location + range.length
     }
     
     // MARK: - Processing status colors
@@ -2017,5 +2051,20 @@ public extension UILabel {
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
 
         self.attributedText = attributedString
+    }
+    
+    func indexOfAttributedTextCharacterAtPoint(point: CGPoint) -> Int {
+        assert(self.attributedText != nil, "This method is developed for attributed string")
+        let textStorage = NSTextStorage(attributedString: self.attributedText!)
+        let layoutManager = NSLayoutManager()
+        textStorage.addLayoutManager(layoutManager)
+        let textContainer = NSTextContainer(size: self.frame.size)
+        textContainer.lineFragmentPadding = 0
+        textContainer.maximumNumberOfLines = self.numberOfLines
+        textContainer.lineBreakMode = self.lineBreakMode
+        layoutManager.addTextContainer(textContainer)
+
+        let index = layoutManager.characterIndex(for: point, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
+        return index
     }
 }
