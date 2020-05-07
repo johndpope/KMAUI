@@ -144,8 +144,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         if type == "documentUploaded" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "The ownership document for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
             // Action button
-            rejectButton.setTitle("Reject document", for: .normal)
-            approveButton.setTitle("Approve document", for: .normal)
+            rejectButton.setTitle("Reject ownership", for: .normal)
+            approveButton.setTitle("Approve ownership", for: .normal)
         } else if type == "subLandDocumentAdded" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
             // Action button
@@ -203,13 +203,13 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         if type == "documentUploaded" {
             statusDetermined = lotteryResultStatus != "awaiting verification"
             
-            if !statusDetermined {
+            if statusDetermined {
                 statusLabel.text = lotteryResultStatus.capitalized
             }
         } else if type == "subLandDocumentAdded" {
             statusDetermined = !document.status.isEmpty
             
-            if !statusDetermined {
+            if statusDetermined {
                 statusLabel.text = "Attachment \(document.status)"
                 
                 if document.status == "approved" {
