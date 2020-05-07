@@ -571,7 +571,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func getLotteryResult(lotteryResultId: String, fileName: String, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
+    public func getLotteryResult(lotteryResultId: String, fileName: String, lotteryResultCreated: Bool, completion: @escaping (_ citizen: KMAPerson, _ type: String, _ document: KMADocumentData, _ subLand: KMAUISubLandStruct, _ loaded: Bool)->()) {
         let lotteryResultQuery = PFQuery(className: "KMALotteryResult")
         lotteryResultQuery.includeKey("citizen")
         lotteryResultQuery.includeKey("citizen.homeAddress")
@@ -1388,6 +1388,12 @@ final public class KMAUIParse {
     // MARK: - Send a document for confirmation
     
     public func sendDocument(subLand: KMAUISubLandStruct, rows: [KMADocumentData], uploadedDocument: [String: String], completion: @escaping (_ updated: Bool)->()) {
+        var documentName = ""
+        
+        if let documentNameValue = uploadedDocument["name"] {
+            documentName = documentNameValue
+        }
+        
         KMAUIUtilities.shared.startLoading(title: "Submitting...")
         // Save the document
         KMAUIParse.shared.saveDocument(subLandId: subLand.objectId, newDocuments: [uploadedDocument as AnyObject], recognizedDetails: rows) { (subLandUpdated) in
@@ -1404,7 +1410,7 @@ final public class KMAUIParse {
                         KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (loaded) in }
                     } else if success, let lotteryResultId = newLotteryResult.objectId {
                         // Send a notification to the KMADepartment user stating he has to verify the document
-                        self.notifyDepartmentAdmins(subLand: subLand, lotteryResultId: lotteryResultId, eventType: "documentUploaded")
+                        self.notifyDepartmentAdmins(subLand: subLand, lotteryResultId: lotteryResultId, eventType: "documentUploaded", status: documentName)
                         completion(true)
                     }
                 }
@@ -1412,14 +1418,12 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyDepartmentAdmins(subLand: KMAUISubLandStruct, lotteryResultId: String, eventType: String, status: String? = nil) {
+    public func notifyDepartmentAdmins(subLand: KMAUISubLandStruct, lotteryResultId: String, eventType: String, status: String) {
         if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String {
             var notificationTitle = "New document received"
             var notificationMessage = "The new Land document was uploaded by \(fullName) and waits for verification."
-            var statusValue = ""
             
-            if eventType == "lotteryResultUpdate", let status = status {
-                statusValue = status
+            if eventType == "lotteryResultUpdate" {
                 notificationTitle = "New status for Sub land"
                 
                 if status == "declined" {
@@ -1433,8 +1437,7 @@ final public class KMAUIParse {
                 } else if status == "awaiting payment" {
                     notificationMessage = "\(fullName) has accepted the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery. The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) is pending."
                 }
-            } else if eventType == "subLandDocumentAdded", let status = status {
-                statusValue = status
+            } else if eventType == "subLandDocumentAdded" {
                 notificationTitle = "New document for Sub land"
                 notificationMessage = "\(fullName) has uploaded the new document called \"\(status)\" for the Sub land \(subLand.subLandId) from the \"\(subLand.landPlanName)\" lottery."
             }
@@ -1474,7 +1477,7 @@ final public class KMAUIParse {
                                          "departmentId": subLand.departmentId as AnyObject,
                                          "departmentName": subLand.departmentName as AnyObject,
                                          "lotteryResultId": lotteryResultId as AnyObject,
-                                         "status": statusValue as AnyObject
+                                         "status": status as AnyObject
                             ]
                             // Save item into array for push notifications
                             itemsArray.append(items)

@@ -4,11 +4,11 @@ Pod::Spec.new do |s|
 s.platform = :ios
 s.ios.deployment_target = '11.0'
 s.name = "KMAUI"
-s.summary = "KMAUI allows you using the same design items across all of the KMA Apps."
+s.summary = "Document name included for the KMANotification when user creates the KMALotteryResult from the Upload a document flow"
 s.requires_arc = true
 
 # 2
-s.version = "0.9.52"
+s.version = "0.9.53"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
