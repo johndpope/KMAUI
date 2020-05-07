@@ -76,6 +76,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "notificationsSelect" {
             titleLabel.text = "Select notification"
             infoLabel.text = "Select the notification from the list to review the details."
+        } else if mode == "notificationPreparing" {
+            titleLabel.text = "Preparing notification"
+            infoLabel.text = "We're loading the notification details."
         }
     }
 }
