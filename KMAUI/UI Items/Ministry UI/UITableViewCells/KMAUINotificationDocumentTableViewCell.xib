@@ -167,6 +167,7 @@
                     <constraint firstAttribute="trailing" secondItem="OBg-3t-Tdx" secondAttribute="trailing" constant="16" id="fIr-bx-1pS"/>
                     <constraint firstItem="5eY-OI-wpp" firstAttribute="centerY" secondItem="Ovc-JX-TPf" secondAttribute="centerY" id="gnf-uB-iC4"/>
                     <constraint firstItem="kQA-Gq-dhp" firstAttribute="leading" secondItem="9zn-FS-gxn" secondAttribute="trailing" constant="16" id="hMM-5H-Mek"/>
+                    <constraint firstItem="OBg-3t-Tdx" firstAttribute="top" secondItem="9zn-FS-gxn" secondAttribute="bottom" constant="200" id="hfi-J8-e67"/>
                     <constraint firstItem="9zn-FS-gxn" firstAttribute="top" secondItem="a9S-iz-D1R" secondAttribute="bottom" constant="8" id="jMW-Cx-Bb2"/>
                     <constraint firstItem="NTE-TL-BjV" firstAttribute="top" secondItem="OBg-3t-Tdx" secondAttribute="bottom" constant="16" id="nMk-Qr-W1B"/>
                     <constraint firstItem="jYd-Y6-AOE" firstAttribute="centerX" secondItem="JPz-Xy-p9I" secondAttribute="centerX" id="o2B-cE-DIk"/>
@@ -187,8 +188,11 @@
                 <outlet property="citizenIdLabel" destination="kgs-1Z-IpZ" id="gNw-yY-NJJ"/>
                 <outlet property="citizenNameLabel" destination="xI3-hJ-vNk" id="SiE-KW-az8"/>
                 <outlet property="citizenView" destination="OBg-3t-Tdx" id="0uQ-zW-LIe"/>
+                <outlet property="citizenViewTopImages" destination="GLP-I1-4vQ" id="Pt4-H8-wyc"/>
+                <outlet property="citizenViewTopInfo" destination="hfi-J8-e67" id="oYA-gw-MdI"/>
                 <outlet property="divideLineView" destination="NTE-TL-BjV" id="n6v-Ig-ymx"/>
                 <outlet property="imagesPreviewView" destination="jYd-Y6-AOE" id="tbG-jN-9sW"/>
+                <outlet property="imagesPreviewViewRatio" destination="2pR-Sl-81E" id="6zu-jg-7tL"/>
                 <outlet property="infoLabel" destination="9zn-FS-gxn" id="Rvi-KU-lvQ"/>
                 <outlet property="profileImageView" destination="r0r-Oh-9JG" id="uGF-YG-wH0"/>
                 <outlet property="rejectButton" destination="Ovc-JX-TPf" id="zTS-3h-4FB"/>
