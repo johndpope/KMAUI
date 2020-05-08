@@ -1544,6 +1544,12 @@ final public class KMAUIParse {
                 title = "Document \(status)"
                 message = "The \"\(documentName)\" document for the Sub land \(subLand.subLandId) was \(status) by the \(subLand.departmentName)."
             }
+        } else if type == "ownership" {
+            // The new Document uploaded to the accepted KMASubLand
+            if let status = status, let documentName = documentName {
+                title = "Ownership \(status)"
+                message = "The land ownership for Sub land \(subLand.subLandId) was \(status) by the \(subLand.departmentName) after checking the \"\(documentName)\" document."
+            }
         }
         
         if !title.isEmpty, !message.isEmpty {
@@ -1592,6 +1598,24 @@ final public class KMAUIParse {
                         // Send push notification
                         KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
                     }
+                }
+            }
+        }
+    }
+    
+    /**
+     Approve / Reject the Land ownership for Upload a document flow
+     */
+    
+    func landOwnership(lotteryResultId: String, status: String, completion: @escaping (_ success: Bool)->()) {
+        let lotteryResult = PFObject(withoutDataWithClassName: "KMALotteryResult", objectId: lotteryResultId)
+        lotteryResult["status"] = status
+        lotteryResult.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
+                } else if success {
+                    completion(true)
                 }
             }
         }

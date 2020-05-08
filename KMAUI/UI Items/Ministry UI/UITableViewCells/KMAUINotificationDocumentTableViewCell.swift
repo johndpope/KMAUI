@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import QuickLook
 import Kingfisher
 
@@ -33,6 +32,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     // MARK: - Variables
     public var type = ""
     public var lotteryResultStatus = ""
+    public var lotteryResultId = ""
     public var subLand = KMAUISubLandStruct()
     public var citizen = KMAPerson()
     public var document = KMADocumentData() {
@@ -282,19 +282,11 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                 }
             }
             
-            let lotteryResult = PFObject(className: "KMALotteryResult")
-            lotteryResult["status"] = newStatus
-            lotteryResult.saveInBackground { (success, error) in
-                KMAUIUtilities.shared.stopLoadingWith { (_) in
-                    if let error = error {
-                        KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
-                    } else if success {
-                        self.lotteryResultStatus = newStatus
-                        self.setupStatus()
-                        // Notify user about the changes
-                        print("Now we need to notify user about the changes with the KMANotification and Push Notification.")
-                    }
-                }
+            KMAUIParse.shared.landOwnership(lotteryResultId: lotteryResultId, status: newStatus) { (success) in
+                self.lotteryResultStatus = newStatus
+                self.setupStatus()
+                // Notify user about the changes
+                KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "ownership", status: status, documentName: self.document.name, citizenId: self.citizen.objectId)
             }
         } else if type == "subLandDocumentAdded" {
             KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
