@@ -148,6 +148,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         titleLabel.text = "Upload by citizen"
         uploadImageView.alpha = 0
         imagesPreviewView.alpha = 0
+        uploadImageButton.alpha = 0
+        uploadImageViewHeight.constant = 240
         
         // Info label
         if type == "documentUploaded" {
@@ -156,6 +158,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             rejectButton.setTitle("Reject ownership", for: .normal)
             approveButton.setTitle("Approve ownership", for: .normal)
             uploadImageView.alpha = 1
+            uploadImageButton.alpha = 1
             
             // Upload image view
             if let documentURL = URL(string: document.previewURL) {
@@ -167,6 +170,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             rejectButton.setTitle("Reject attachment", for: .normal)
             approveButton.setTitle("Approve attachment", for: .normal)
             uploadImageView.alpha = 1
+            uploadImageButton.alpha = 1
             
             // Upload image view
             if let documentURL = URL(string: document.previewURL) {
@@ -179,16 +183,13 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             // Images preview view
             imagesPreviewView.alpha = 1
             imagesPreviewView.subLand = subLand
-        }
-        
-        if subLand.subLandImagesArray.isEmpty {
-            uploadImageView.alpha = 0
-            imagesPreviewView.alpha = 0
-            uploadImageViewHeight.constant = 0
-        } else {
-            uploadImageView.alpha = 1
-            imagesPreviewView.alpha = 1
-            uploadImageViewHeight.constant = 240
+            
+            if subLand.subLandImagesArray.isEmpty {
+                uploadImageView.alpha = 0
+                uploadImageButton.alpha = 0
+                imagesPreviewView.alpha = 0
+                uploadImageViewHeight.constant = 0
+            }
         }
 
         // Citizen name label
