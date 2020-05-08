@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUISubLandIdTableViewCell" rowHeight="52" id="KGk-i7-Jjw" customClass="KMAUISubLandIdTableViewCell" customModule="Business" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Keg-A4-5I7" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="4kK-Xj-XYs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMp-QA-nMy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                        <rect key="frame" x="0.0" y="32" width="320" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="imm-Du-V8L"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="ZMp-QA-nMy" secondAttribute="bottom" id="C4G-tI-9e7"/>
+                    <constraint firstAttribute="trailing" secondItem="Keg-A4-5I7" secondAttribute="trailing" id="FkJ-OV-Y6K"/>
+                    <constraint firstItem="Keg-A4-5I7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="R1n-0I-JSP"/>
+                    <constraint firstAttribute="trailing" secondItem="ZMp-QA-nMy" secondAttribute="trailing" id="XKt-3l-3Pp"/>
+                    <constraint firstItem="Keg-A4-5I7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="g2l-kw-tQM"/>
+                    <constraint firstItem="ZMp-QA-nMy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="hwJ-ej-8bS"/>
+                    <constraint firstItem="ZMp-QA-nMy" firstAttribute="top" secondItem="Keg-A4-5I7" secondAttribute="bottom" constant="8" id="sxc-im-ytG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="infoLabel" destination="ZMp-QA-nMy" id="Cjt-a7-xPH"/>
+                <outlet property="titleLabel" destination="Keg-A4-5I7" id="cR6-ZC-vtp"/>
+            </connections>
+            <point key="canvasLocation" x="-157.97101449275362" y="119.86607142857142"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1689,6 +1689,7 @@ public class KMAUIUtilities {
     
     public func recognizedRows(dataDict: [String: AnyObject]) -> [KMADocumentData] {
         var rows = [KMADocumentData]()
+        
         let orderedKeys = ["area_id", "area_name", "citizen_id", "citizen_name"]
         
         for key in orderedKeys {
