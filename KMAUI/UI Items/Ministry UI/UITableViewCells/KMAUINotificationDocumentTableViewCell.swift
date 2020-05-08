@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 import QuickLook
 import Kingfisher
 
@@ -266,20 +267,35 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     func change(status: String) {
         if type == "documentUploaded" {
-            print("We need to set the \(status) for the KMALotteryResult")
+            var newStatus = ""
             
             if status == "rejected" {
                 print("New status is `declined`")
-                lotteryResultStatus = "declined"
+                newStatus = "declined"
             } else {
                 if subLand.extraPrice > 0 {
                     print("New status is `awaiting payment`")
-                    lotteryResultStatus = "awaiting payment"
+                    newStatus = "awaiting payment"
                 } else {
                     print("New status is `confirmed`")
-                    lotteryResultStatus = "confirmed"
+                    newStatus = "confirmed"
                 }
-            }            
+            }
+            
+            let lotteryResult = PFObject(className: "KMALotteryResult")
+            lotteryResult["status"] = newStatus
+            lotteryResult.saveInBackground { (success, error) in
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
+                    if let error = error {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
+                    } else if success {
+                        self.lotteryResultStatus = newStatus
+                        self.setupStatus()
+                        // Notify user about the changes
+                        print("Now we need to notify user about the changes with the KMANotification and Push Notification.")
+                    }
+                }
+            }
         } else if type == "subLandDocumentAdded" {
             KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
                 self.document.status = status
