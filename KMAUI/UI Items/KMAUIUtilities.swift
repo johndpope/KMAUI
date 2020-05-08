@@ -1682,6 +1682,46 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    /**
+     Recognized rows
+     */
+    
+    public func recognizedRows(dataDict: [String: AnyObject]) -> [KMADocumentData] {
+        var rows = [KMADocumentData]()
+        let orderedKeys = ["area_id", "area_name", "citizen_id", "citizen_name"]
+        
+        for key in orderedKeys {
+            var documentItem = KMADocumentData()
+            documentItem.type = key.replacingOccurrences(of: "_", with: " ").capitalized.replacingOccurrences(of: " Id", with: " ID")
+            
+            if let value = dataDict[key] as? String {
+                documentItem.name = value
+            } else {
+                documentItem.name = "Null"
+            }
+            
+            rows.append(documentItem)
+        }
+        
+        // Extra values
+        for item in dataDict {
+            if !item.key.isEmpty, !orderedKeys.contains(item.key) {
+                var documentItem = KMADocumentData()
+                documentItem.type = item.key.replacingOccurrences(of: "_", with: " ").capitalized.replacingOccurrences(of: " Id", with: " ID")
+                
+                if let value = item.value as? String {
+                    documentItem.name = value
+                } else {
+                    documentItem.name = "Null"
+                }
+                
+                rows.append(documentItem)
+            }
+        }
+        
+        return rows
+    }
 }
 
 // MARK: - Int extension
