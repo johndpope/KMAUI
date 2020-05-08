@@ -23,6 +23,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var arrowImageView: UIImageView!
     @IBOutlet public weak var citizenView: UIView!
+    @IBOutlet public weak var citizenViewTop: NSLayoutConstraint!
     @IBOutlet public weak var citizenNameLabel: UILabel!
     @IBOutlet public weak var citizenIdLabel: UILabel!
     @IBOutlet public weak var citizenButton: UIButton!
@@ -149,7 +150,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         uploadImageView.alpha = 0
         imagesPreviewView.alpha = 0
         uploadImageButton.alpha = 0
-        uploadImageViewHeight.constant = 240
+        uploadImageViewHeight.constant = 280
+        citizenViewTop.constant = 16
         
         // Info label
         if type == "documentUploaded" {
@@ -189,6 +191,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                 uploadImageButton.alpha = 0
                 imagesPreviewView.alpha = 0
                 uploadImageViewHeight.constant = 0
+                citizenViewTop.constant = 0
             }
         }
 
