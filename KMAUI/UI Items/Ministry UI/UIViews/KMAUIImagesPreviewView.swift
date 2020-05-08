@@ -22,6 +22,13 @@ public class KMAUIImagesPreviewView: UIView {
     @IBOutlet public weak var threeThreeImageButton: UIButton!
     @IBOutlet public weak var threeThreeBgView: UIView!
     @IBOutlet public weak var threeThreeBgImageButton: UIButton!
+    // Images
+    @IBOutlet weak var singleImageView: UIImageView!
+    @IBOutlet weak var twoOneImageView: UIImageView!
+    @IBOutlet weak var twoTwoImageView: UIImageView!
+    @IBOutlet weak var threeOneImageView: UIImageView!
+    @IBOutlet weak var threeTwoImageView: UIImageView!
+    @IBOutlet weak var threeThreeImageView: UIImageView!
     
     // MARK: - Variables
     public var subLand = KMAUISubLandStruct() {
@@ -66,6 +73,13 @@ public class KMAUIImagesPreviewView: UIView {
         threeThreeImageButton.alpha = 0
         threeThreeBgView.alpha = 0
         threeThreeBgImageButton.alpha = 0
+        // Hide all images
+        singleImageView.alpha = 0
+        twoOneImageView.alpha = 0
+        twoTwoImageView.alpha = 0
+        threeOneImageView.alpha = 0
+        threeTwoImageView.alpha = 0
+        threeThreeImageView.alpha = 0
         // Review attachments
         threeThreeBgImageButton.layer.cornerRadius = 8
         threeThreeBgImageButton.clipsToBounds = true
@@ -79,16 +93,16 @@ public class KMAUIImagesPreviewView: UIView {
             // Show the correct image for each view
             if subLand.subLandImagesArray.count == 1 {
                 // One large image
-                showImage(button: singleImageButton, index: 0)
+                showImage(button: singleImageButton, imageView: singleImageView, index: 0)
             } else if subLand.subLandImagesArray.count == 2 {
                 // Two same size images
-                showImage(button: twoOneImageButton, index: 0)
-                showImage(button: twoTwoImageButton, index: 1)
+                showImage(button: twoOneImageButton, imageView: twoOneImageView, index: 0)
+                showImage(button: twoTwoImageButton, imageView: twoTwoImageView, index: 1)
             } else {
                 // Three images or more
-                showImage(button: threeOneImageButton, index: 0)
-                showImage(button: threeTwoImageButton, index: 1)
-                showImage(button: threeThreeImageButton, index: 2)
+                showImage(button: threeOneImageButton, imageView: threeOneImageView, index: 0)
+                showImage(button: threeTwoImageButton, imageView: threeTwoImageView, index: 1)
+                showImage(button: threeThreeImageButton, imageView: threeThreeImageView, index: 2)
                 
                 if subLand.subLandImagesArray.count > 3 {
                     threeThreeBgImageButton.alpha = 1.0
@@ -103,26 +117,19 @@ public class KMAUIImagesPreviewView: UIView {
      Download and show image
      */
     
-    public func showImage(button: UIButton, index: Int) {
+    public func showImage(button: UIButton, imageView: UIImageView, index: Int) {
         let document = subLand.subLandImagesArray[index]
         button.alpha = 1
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
+        imageView.alpha = 1
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.kf.indicatorType = .activity
         
+        // Show the image
         if let previewURL = URL(string: document.previewURL) {
-            button.imageView?.kf.indicatorType = .activity
-            button.kf.setImage(with: previewURL, for: .normal)
-            button.imageView?.kf.indicatorType = .activity
-            button.imageView?.contentMode = .scaleAspectFill
-            
-            button.kf.setImage(with: previewURL, for: .normal) { (result) in
-                switch result {
-                case .success(let value):
-                    button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
-                case .failure(let error):
-                    print(error.localizedDescription) // The error happens
-                }
-            }
+            imageView.kf.setImage(with: previewURL)
         }
     }
     
