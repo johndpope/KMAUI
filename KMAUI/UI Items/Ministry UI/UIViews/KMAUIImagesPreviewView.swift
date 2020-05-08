@@ -126,6 +126,7 @@ public class KMAUIImagesPreviewView: UIView {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.kf.indicatorType = .activity
+        imageView.contentMode = .scaleAspectFill
         
         // Show the image
         if let previewURL = URL(string: document.previewURL) {
