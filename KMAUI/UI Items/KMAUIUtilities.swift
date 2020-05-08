@@ -596,7 +596,7 @@ public class KMAUIUtilities {
      Check if range contains an index
      */
     
-    func checkRange(_ range: NSRange, contain index: Int) -> Bool {
+    public func checkRange(_ range: NSRange, contain index: Int) -> Bool {
         return index > range.location && index < range.location + range.length
     }
     

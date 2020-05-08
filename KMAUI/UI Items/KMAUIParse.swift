@@ -1619,7 +1619,7 @@ final public class KMAUIParse {
      Approve / Reject the Land ownership for Upload a document flow
      */
     
-    func landOwnership(lotteryResultId: String, status: String, completion: @escaping (_ success: Bool)->()) {
+    public func landOwnership(lotteryResultId: String, status: String, completion: @escaping (_ success: Bool)->()) {
         let lotteryResult = PFObject(withoutDataWithClassName: "KMALotteryResult", objectId: lotteryResultId)
         lotteryResult["status"] = status
         lotteryResult.saveInBackground { (success, error) in
