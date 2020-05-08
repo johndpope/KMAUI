@@ -30,8 +30,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var rejectButton: UIButton!
     @IBOutlet public weak var approveButton: UIButton!
     @IBOutlet public weak var statusLabel: UILabel!
-    @IBOutlet public weak var citizenViewTopImages: NSLayoutConstraint!
-    @IBOutlet public weak var citizenViewTopInfo: NSLayoutConstraint!
+    @IBOutlet public var citizenViewTopImages: NSLayoutConstraint!
+    @IBOutlet public var citizenViewTopInfo: NSLayoutConstraint!
     
     // MARK: - Variables
     public var type = ""
