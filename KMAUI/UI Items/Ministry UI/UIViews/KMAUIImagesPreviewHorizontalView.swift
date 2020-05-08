@@ -119,7 +119,9 @@ public class KMAUIImagesPreviewHorizontalView: UIView {
                 switch result {
                 case .success(let value):
                     button.setBackgroundImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
-                    button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
+//                    button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
+                    button.layoutIfNeeded()
+                    button.subviews.first?.contentMode = .scaleAspectFill
                 case .failure(let error):
                     print(error.localizedDescription) // The error happens
                 }
