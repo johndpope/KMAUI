@@ -150,7 +150,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         uploadImageView.alpha = 0
         imagesPreviewView.alpha = 0
         uploadImageButton.alpha = 0
-        uploadImageViewHeight.constant = 320
+        uploadImageViewHeight.constant = 400
         citizenViewTop.constant = 16
         
         // Info label
