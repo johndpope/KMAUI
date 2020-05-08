@@ -204,7 +204,13 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             statusDetermined = lotteryResultStatus != "awaiting verification"
             
             if statusDetermined {
-                statusLabel.text = lotteryResultStatus.capitalized
+                if lotteryResultStatus == "declined" {
+                    statusLabel.text = "Ownership rejected"
+                    statusLabel.textColor = KMAUIConstants.shared.KMAUIRedProgressColor
+                } else {
+                    statusLabel.text = "Ownership approved"
+                    statusLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                }
             }
         } else if type == "subLandDocumentAdded" {
             statusDetermined = !document.status.isEmpty
@@ -261,6 +267,19 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     func change(status: String) {
         if type == "documentUploaded" {
             print("We need to set the \(status) for the KMALotteryResult")
+            
+            if status == "rejected" {
+                print("New status is `declined`")
+                lotteryResultStatus = "declined"
+            } else {
+                if subLand.extraPrice > 0 {
+                    print("New status is `awaiting payment`")
+                    lotteryResultStatus = "awaiting payment"
+                } else {
+                    print("New status is `confirmed`")
+                    lotteryResultStatus = "confirmed"
+                }
+            }            
         } else if type == "subLandDocumentAdded" {
             KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
                 self.document.status = status

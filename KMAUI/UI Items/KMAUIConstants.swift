@@ -152,11 +152,9 @@ public class KMAUIConstants {
     public let KMACornerRadius: CGFloat = 6
     public let KMAScreenWidth = UIScreen.main.bounds.size.width
     public let KMSScreenHeight = UIScreen.main.bounds.size.height
-    
     public let KMABorderWidthLight: CGFloat = 0.5
     public let KMABorderWidthRegular: CGFloat = 1.0
-    public let KMABorderWidthBold: CGFloat = 2.0
-    
+    public let KMABorderWidthBold: CGFloat = 2.0    
     public let KMATranslucentBg: CGFloat = 0.9
     
     public let performanceTitles = ["Community", "Service", "Security"]
