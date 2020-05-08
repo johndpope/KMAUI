@@ -152,8 +152,11 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             // Action button
             rejectButton.setTitle("Reject attachment", for: .normal)
             approveButton.setTitle("Approve attachment", for: .normal)
+        } else if type == "lotteryResultUpdate" {
+            titleLabel.text = "New Sub land status"
+            infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "The Sub land \(subLand.subLandId) status was changed to \(lotteryResultStatus) by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
         }
-        
+                
         // Upload image view
         if let documentURL = URL(string: document.previewURL) {
             uploadImageView.kf.setImage(with: documentURL)
@@ -183,6 +186,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         
         if type == "documentUploaded" {
             start += 12
+        } else if type == "lotteryResultUpdate" {
+            start = 4
         }
         
         let openRange = NSRange(location: start, length: "Sub land \(subLand.subLandId)".count + 2)
@@ -237,6 +242,13 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             rejectButton.alpha = 0
             approveButton.alpha = 0
             statusLabel.alpha = 1
+        }
+        
+        if type == "lotteryResultUpdate" {
+            rejectButton.alpha = 0
+            approveButton.alpha = 0
+            statusLabel.alpha = 0
+            divideLineView.alpha = 0
         }
     }
     
