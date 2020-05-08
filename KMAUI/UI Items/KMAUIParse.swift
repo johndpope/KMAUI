@@ -1549,6 +1549,10 @@ final public class KMAUIParse {
             if let status = status, let documentName = documentName {
                 title = "Ownership \(status)"
                 message = "The land ownership for Sub land \(subLand.subLandId) was \(status) by the \(subLand.departmentName) after checking the \"\(documentName)\" document."
+                
+                if status == "approved", subLand.extraPrice > 0 {
+                    message += " The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) is required."
+                }
             }
         }
         
