@@ -17,6 +17,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var shareButton: UIButton!
     @IBOutlet public weak var uploadImageView: UIImageView!
+    @IBOutlet public weak var imagesPreviewView: KMAUIImagesPreviewView!
     @IBOutlet public weak var uploadImageButton: UIButton!
     @IBOutlet public weak var citizenView: UIView!
     @IBOutlet public weak var profileImageView: UIImageView!
@@ -72,6 +73,10 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         uploadImageView.clipsToBounds = true
         uploadImageView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
         uploadImageView.kf.indicatorType = .activity
+        
+        // Images preview view
+        imagesPreviewView.layer.cornerRadius = 6
+        imagesPreviewView.clipsToBounds = true
         
         // Profile image view
         profileImageView.layer.cornerRadius = 22
@@ -140,6 +145,8 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     public func setupCell() {
         // Title label
         titleLabel.text = "Upload by citizen"
+        uploadImageView.alpha = 0
+        imagesPreviewView.alpha = 0
         
         // Info label
         if type == "documentUploaded" {
@@ -147,21 +154,32 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             // Action button
             rejectButton.setTitle("Reject ownership", for: .normal)
             approveButton.setTitle("Approve ownership", for: .normal)
+            uploadImageView.alpha = 1
+            
+            // Upload image view
+            if let documentURL = URL(string: document.previewURL) {
+                uploadImageView.kf.setImage(with: documentURL)
+            }
         } else if type == "subLandDocumentAdded" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
             // Action button
             rejectButton.setTitle("Reject attachment", for: .normal)
             approveButton.setTitle("Approve attachment", for: .normal)
+            uploadImageView.alpha = 1
+            
+            // Upload image view
+            if let documentURL = URL(string: document.previewURL) {
+                uploadImageView.kf.setImage(with: documentURL)
+            }
         } else if type == "lotteryResultUpdate" {
             titleLabel.text = "New Sub land status"
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "The Sub land \(subLand.subLandId) status was changed to \(lotteryResultStatus) by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
+            
+            // Images preview view
+            imagesPreviewView.alpha = 1
+            imagesPreviewView.subLand = subLand
         }
-                
-        // Upload image view
-        if let documentURL = URL(string: document.previewURL) {
-            uploadImageView.kf.setImage(with: documentURL)
-        }
-        
+
         // Citizen name label
         citizenNameLabel.text = citizen.fullName
         
@@ -185,7 +203,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         var start = 18
         
         if type == "documentUploaded" {
-            start += 12
+            start = 30
         } else if type == "lotteryResultUpdate" {
             start = 4
         }

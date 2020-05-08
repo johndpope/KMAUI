@@ -45,6 +45,10 @@
                             <constraint firstAttribute="width" secondItem="JPz-Xy-p9I" secondAttribute="height" multiplier="2:1" id="2pR-Sl-81E"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jYd-Y6-AOE" customClass="KMAUIImagesPreviewView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="20" y="130" width="280" height="140"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pt-TB-XqQ">
                         <rect key="frame" x="20" y="130" width="280" height="140"/>
                         <connections>
@@ -150,10 +154,12 @@
                     <constraint firstItem="9zn-FS-gxn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="HlK-Rg-onq"/>
                     <constraint firstItem="5eY-OI-wpp" firstAttribute="width" secondItem="Ovc-JX-TPf" secondAttribute="width" id="IC5-aV-Nl9"/>
                     <constraint firstItem="7pt-TB-XqQ" firstAttribute="centerX" secondItem="JPz-Xy-p9I" secondAttribute="centerX" id="LFK-SW-zOo"/>
+                    <constraint firstItem="jYd-Y6-AOE" firstAttribute="centerY" secondItem="JPz-Xy-p9I" secondAttribute="centerY" id="PZe-pW-VBH"/>
                     <constraint firstAttribute="trailing" secondItem="5eY-OI-wpp" secondAttribute="trailing" constant="20" id="Pte-6M-OLb"/>
                     <constraint firstAttribute="trailing" secondItem="kQA-Gq-dhp" secondAttribute="trailing" constant="20" id="SZU-f4-vty"/>
                     <constraint firstItem="OBg-3t-Tdx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="TS4-50-che"/>
                     <constraint firstItem="Ovc-JX-TPf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UKI-4s-bll"/>
+                    <constraint firstItem="jYd-Y6-AOE" firstAttribute="height" secondItem="JPz-Xy-p9I" secondAttribute="height" id="XTb-Ue-RHu"/>
                     <constraint firstItem="JPz-Xy-p9I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="XlW-EA-12q"/>
                     <constraint firstAttribute="trailing" secondItem="JPz-Xy-p9I" secondAttribute="trailing" constant="20" id="YRa-BS-pag"/>
                     <constraint firstItem="2ee-NB-FdI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ZY2-Zj-vme"/>
@@ -163,6 +169,8 @@
                     <constraint firstItem="kQA-Gq-dhp" firstAttribute="leading" secondItem="9zn-FS-gxn" secondAttribute="trailing" constant="16" id="hMM-5H-Mek"/>
                     <constraint firstItem="9zn-FS-gxn" firstAttribute="top" secondItem="a9S-iz-D1R" secondAttribute="bottom" constant="8" id="jMW-Cx-Bb2"/>
                     <constraint firstItem="NTE-TL-BjV" firstAttribute="top" secondItem="OBg-3t-Tdx" secondAttribute="bottom" constant="16" id="nMk-Qr-W1B"/>
+                    <constraint firstItem="jYd-Y6-AOE" firstAttribute="centerX" secondItem="JPz-Xy-p9I" secondAttribute="centerX" id="o2B-cE-DIk"/>
+                    <constraint firstItem="jYd-Y6-AOE" firstAttribute="width" secondItem="JPz-Xy-p9I" secondAttribute="width" id="pne-WX-Udl"/>
                     <constraint firstItem="kQA-Gq-dhp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="42" id="qaa-dw-JyB"/>
                     <constraint firstItem="kQA-Gq-dhp" firstAttribute="leading" secondItem="a9S-iz-D1R" secondAttribute="trailing" constant="16" id="rcH-0u-VaU"/>
                     <constraint firstAttribute="trailing" secondItem="2ee-NB-FdI" secondAttribute="trailing" constant="20" id="uWk-is-j5O"/>
@@ -180,6 +188,7 @@
                 <outlet property="citizenNameLabel" destination="xI3-hJ-vNk" id="SiE-KW-az8"/>
                 <outlet property="citizenView" destination="OBg-3t-Tdx" id="0uQ-zW-LIe"/>
                 <outlet property="divideLineView" destination="NTE-TL-BjV" id="n6v-Ig-ymx"/>
+                <outlet property="imagesPreviewView" destination="jYd-Y6-AOE" id="tbG-jN-9sW"/>
                 <outlet property="infoLabel" destination="9zn-FS-gxn" id="Rvi-KU-lvQ"/>
                 <outlet property="profileImageView" destination="r0r-Oh-9JG" id="uGF-YG-wH0"/>
                 <outlet property="rejectButton" destination="Ovc-JX-TPf" id="zTS-3h-4FB"/>
