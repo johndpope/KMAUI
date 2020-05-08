@@ -595,13 +595,21 @@ final public class KMAUIParse {
                     // Sub land details
                     var subLandObject = KMAUISubLandStruct()
                     subLandObject.fillFromParse(item: subLand)
-                    // Sub land images
-                    for document in subLandObject.subLandImagesAllArray {
-                        if document.name == fileName {
-                            print("Document `\(fileName)` found:\n\(document)")
-                            completion(citizenObject, "", document, subLandObject, true, lotteryResultStatus)
-                            
-                            return
+                    
+                    if fileName.isEmpty {
+                        // This is the lotteryResultUpdate, no need to get any specific document
+                        completion(citizenObject, "", KMADocumentData(), subLandObject, true, lotteryResultStatus)
+                        
+                        return
+                    } else {
+                        // Sub land images
+                        for document in subLandObject.subLandImagesAllArray {
+                            if document.name == fileName {
+                                print("Document `\(fileName)` found:\n\(document)")
+                                completion(citizenObject, "", document, subLandObject, true, lotteryResultStatus)
+                                
+                                return
+                            }
                         }
                     }
                     
