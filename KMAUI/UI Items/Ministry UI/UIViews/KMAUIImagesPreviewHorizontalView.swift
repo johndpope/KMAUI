@@ -108,10 +108,21 @@ public class KMAUIImagesPreviewHorizontalView: UIView {
         button.alpha = 1
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
-        button.imageView?.kf.indicatorType = .activity
-
+        
         if let previewURL = URL(string: document.previewURL) {
+            button.imageView?.kf.indicatorType = .activity
             button.kf.setImage(with: previewURL, for: .normal)
+            button.imageView?.kf.indicatorType = .activity
+            button.imageView?.contentMode = .scaleAspectFill
+            
+            button.kf.setImage(with: previewURL, for: .normal) { (result) in
+                switch result {
+                case .success(let value):
+                    button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
+                case .failure(let error):
+                    print(error.localizedDescription) // The error happens
+                }
+            }
         }
     }
     
