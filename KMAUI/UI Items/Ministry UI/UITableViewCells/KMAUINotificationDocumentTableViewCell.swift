@@ -47,6 +47,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     public var citizenCallback: ((Bool) -> Void)?
     public var subLandCallback: ((Bool) -> Void)?
     public lazy var previewItem = NSURL()
+    public var viewAttachmentsAction: ((Bool) -> Void)?
     
     // MARK: - Variables
     public static let id = "KMAUINotificationDocumentTableViewCell"
@@ -133,6 +134,11 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         rejectButton.alpha = 0
         approveButton.alpha = 0
         statusLabel.alpha = 0
+        
+        // Open attachments callback
+        imagesPreviewView.viewAttachmentsAction = { action in
+            self.viewAttachmentsAction?(true)
+        }
         
         // No selection required
         selectionStyle = .none
