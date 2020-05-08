@@ -118,6 +118,7 @@ public class KMAUIImagesPreviewView: UIView {
             button.kf.setImage(with: previewURL, for: .normal) { (result) in
                 switch result {
                 case .success(let value):
+                    button.setBackgroundImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
                     button.setImage(value.image.withRenderingMode(.alwaysOriginal), for: .normal)
                 case .failure(let error):
                     print(error.localizedDescription) // The error happens
