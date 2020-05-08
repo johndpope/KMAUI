@@ -17,12 +17,12 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var shareButton: UIButton!
     @IBOutlet public weak var uploadImageView: UIImageView!
+    @IBOutlet public weak var uploadImageViewHeight: NSLayoutConstraint!
     @IBOutlet public weak var imagesPreviewView: KMAUIImagesPreviewView!
-    @IBOutlet public weak var imagesPreviewViewRatio: NSLayoutConstraint!
     @IBOutlet public weak var uploadImageButton: UIButton!
-    @IBOutlet public weak var citizenView: UIView!
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var arrowImageView: UIImageView!
+    @IBOutlet public weak var citizenView: UIView!
     @IBOutlet public weak var citizenNameLabel: UILabel!
     @IBOutlet public weak var citizenIdLabel: UILabel!
     @IBOutlet public weak var citizenButton: UIButton!
@@ -30,8 +30,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var rejectButton: UIButton!
     @IBOutlet public weak var approveButton: UIButton!
     @IBOutlet public weak var statusLabel: UILabel!
-    @IBOutlet public var citizenViewTopImages: NSLayoutConstraint!
-    @IBOutlet public var citizenViewTopInfo: NSLayoutConstraint!
     
     // MARK: - Variables
     public var type = ""
@@ -163,9 +161,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             if let documentURL = URL(string: document.previewURL) {
                 uploadImageView.kf.setImage(with: documentURL)
             }
-            
-            citizenViewTopImages.isActive = true
-            citizenViewTopInfo.isActive = false
         } else if type == "subLandDocumentAdded" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "Attachment for Sub land \(subLand.subLandId) was uploaded by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
             // Action button
@@ -177,9 +172,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             if let documentURL = URL(string: document.previewURL) {
                 uploadImageView.kf.setImage(with: documentURL)
             }
-            
-            citizenViewTopImages.isActive = true
-            citizenViewTopInfo.isActive = false
         } else if type == "lotteryResultUpdate" {
             titleLabel.text = "New Sub land status"
             infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Sub land \(subLand.subLandId)"], in: "The Sub land \(subLand.subLandId) status was changed to \(lotteryResultStatus) by \(citizen.fullName)", fontSize: infoLabel.font.pointSize)
@@ -187,15 +179,16 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             // Images preview view
             imagesPreviewView.alpha = 1
             imagesPreviewView.subLand = subLand
-            
-            if subLand.subLandImagesArray.isEmpty {
-                citizenViewTopImages.isActive = false
-                citizenViewTopInfo.isActive = true
-                citizenViewTopInfo.constant = 36
-            } else {
-                citizenViewTopImages.isActive = true
-                citizenViewTopInfo.isActive = false
-            }
+        }
+        
+        if subLand.subLandImagesArray.isEmpty {
+            uploadImageView.alpha = 0
+            imagesPreviewView.alpha = 0
+            uploadImageViewHeight.constant = 0
+        } else {
+            uploadImageView.alpha = 1
+            imagesPreviewView.alpha = 1
+            uploadImageViewHeight.constant = 240
         }
 
         // Citizen name label
