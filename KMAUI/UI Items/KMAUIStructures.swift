@@ -2487,15 +2487,47 @@ public struct LotterySubLandComment {
         jsonObject["subLandId"] = subLandId
         return jsonObject
     }
+    
+    public init(subLandId: String, comment: String) {
+        self.comment = comment
+        self.subLandId = subLandId
+    }
+    
+    public init(jsonObject: [String: Any]) {
+        if let comment = jsonObject["comment"] as? String {
+            self.comment = comment
+        }
+        
+        if let subLandId = jsonObject["subLandId"] as? String {
+            self.subLandId = subLandId
+        }
+    }
 }
 
 public struct LotteryComment {
     public var comment: String?
-    public var subLandComments: [LotterySubLandComment]
+    public var subLandComments: [LotterySubLandComment] = []
     
     public init(comment: String?, subLandComments: [LotterySubLandComment] = []) {
         self.comment = comment
         self.subLandComments = subLandComments
+    }
+    
+    public init() {
+        self.comment = nil
+        self.subLandComments = []
+    }
+    
+    public init(jsonObject: [String: Any]) {
+        if let comment = jsonObject["comment"] as? String {
+            self.comment = comment
+        }
+        
+        if let subLandComments = (jsonObject["subLandComments"] as? [[String: Any]]) {
+            self.subLandComments = subLandComments.map { LotterySubLandComment(jsonObject: $0) }
+        } else {
+            self.subLandComments = []
+        }
     }
     
     public func json() -> [String: Any] {
@@ -2585,6 +2617,8 @@ public struct KMAUILandPlanStruct {
     public var queueResultsArray = [KMAPerson]()
     public var queueDisplay = [KMAPerson]()
     public var queueResultsDisplay = [KMAPerson]()
+    //Comment
+    public var comment: LotteryComment = LotteryComment()
     // Parse object
     public var createdAt = Date()
     public var updatedAt = Date()
@@ -3433,6 +3467,13 @@ public struct KMAUILandPlanStruct {
             divisionObject.fillFromParse(departmentObject: responsibleDivisionValue)
             self.responsibleDivision = divisionObject
         }
+        // lotteryComments
+        if let lotteryComments = plan["lotteryComments"] as? String,
+            let data = lotteryComments.data(using: .utf8),
+            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed) as? [String: Any] {
+            
+            self.comment = LotteryComment(jsonObject: jsonObject)
+        }
     }
     
     mutating public func setDimensions() {
@@ -3459,6 +3500,28 @@ public struct KMAUILandPlanStruct {
                     self.areaHeight = height
                 }
             }
+        }
+    }
+    
+    public func mainComment() -> String? {
+        return self.comment.comment
+    }
+    
+    public func comment(for subLandId: String) -> String? {
+        if let comment = self.comment.subLandComments.first(where: { $0.subLandId == subLandId }) {
+            return comment.comment
+        }
+        
+        return nil
+    }
+    
+    public mutating func setComment(_ comment: String?, for subLandId: String) {
+        if let index = self.comment.subLandComments.firstIndex(where: { $0.subLandId == subLandId }) {
+            var commentObject = self.comment.subLandComments[index]
+            commentObject.comment = comment ?? ""
+            self.comment.subLandComments[index] = commentObject
+        } else {
+            self.comment.subLandComments.append(LotterySubLandComment(subLandId: subLandId, comment: comment ?? ""))
         }
     }
 }

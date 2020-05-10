@@ -18,10 +18,18 @@ public class KMAUIConstants {
     // MARK: - Fonts
     public let KMAUIRegularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
     public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+    public struct Fonts {
+        public static let regularSize18 = UIFont.systemFont(ofSize: 18, weight: .regular)
+        public static let weight600Size18 = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        public static let weight600Size16 = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        public static let weight600Size14 = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        public static let regular = UIFont.systemFont(ofSize: 14, weight: .regular)
+    }
     
     // MARK: - KMAUIColors
     public let KMAUIMainBgColor = UIColor(named: "KMAUIMainBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIViewBgColor = UIColor(named: "KMAUIViewBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIMemberBgColor = UIColor(named: "KMAUIMemberBgColorF2F2F5", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#F2F2F5
     public let KMAUITextColor = UIColor(named: "KMAUITextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIBlueDarkColor = UIColor(named: "KMAUIBlueDarkColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIGreyLineColor = UIColor(named: "KMAUIGreyLineColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -36,16 +44,17 @@ public class KMAUIConstants {
     public let KMAUILightButtonColor = UIColor(named: "KMAUILightButtonColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUISubLandCommercialColor = UIColor(named: "KMAUISubLandCommercialColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUISubLandLotteryColor = UIColor(named: "KMAUISubLandLotteryColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let KMAUISubLandSaleColor = UIColor(named: "KMAUISubLandSaleColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUISubLandSaleColor = UIColor(named: "KMAUISubLandSaleColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #FDFDFD
     public let KMAUISubLandServicesColor = UIColor(named: "KMAUISubLandServicesColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIParkColor = UIColor(named: "KMAUIParkColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIGreyTextColor = UIColor(named: "KMAUIGreyTextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIDarkTextColor = UIColor(named: "KMAUIDarkTextColor111538", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #111538
     public let KMABgGray = UIColor(named: "KMABgGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMABackColor = UIColor(named: "KMABackColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let KMATurquoiseColor = UIColor(named: "KMATurquoiseColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMATurquoiseColor = UIColor(named: "KMATurquoiseColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#00DBDC
     public let KMATitleColor = UIColor(named: "KMATitleColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMATextColor = UIColor(named: "KMATextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMABlueColor = UIColor(named: "KMABlueColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -60,7 +69,7 @@ public class KMAUIConstants {
     public let KMAProgressGray = UIColor(named: "KMAProgressGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIGreyBackgroundButton = UIColor(named: "KMAUIGreyBackgroundButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIBlackTitleButton = UIColor(named: "KMAUIBlackTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #F7F7F7
     
     // MARK: - Images
     public let checkboxFilledIcon = UIImage(named: "checkboxFilledIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!

@@ -749,6 +749,20 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Store comments
+    
+    public func storeComments(_ comment: LotteryComment, for lotteryId: String, completion: @escaping (_ error: Error?) -> Void) {
+        let object = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: lotteryId)
+        if let data = try? JSONSerialization.data(withJSONObject: comment.json(), options: .prettyPrinted),
+            let string = String(data: data, encoding: .utf8) {
+            object.setObject(string, forKey: "lotteryComments")
+        }
+        
+        PFObject.saveAll(inBackground: [object]) { (success, error) in
+            completion(error)
+        }
+    }
+    
     // MARK: - Start the lottery
     public func startLottery(landPlan: KMAUILandPlanStruct, completion: @escaping (_ landPlan: KMAUILandPlanStruct)->()) {
         var landPlan = landPlan
