@@ -67,7 +67,7 @@ public class KMAUIConstants {
     public let KMABrightBlueColor = UIColor(named: "KMABrightBlueColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMABuildingGray = UIColor(named: "KMABuildingGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAProgressGray = UIColor(named: "KMAProgressGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let KMAUIGreyBackgroundButton = UIColor(named: "KMAUIGreyBackgroundButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIGreyBackgroundButton = UIColor(named: "KMAUIGreyBackgroundButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #F5F5F5
     public let KMAUIBlackTitleButton = UIColor(named: "KMAUIBlackTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #F7F7F7
     
@@ -167,7 +167,7 @@ public class KMAUIConstants {
     public let KMATranslucentBg: CGFloat = 0.9
     
     public let performanceTitles = ["Community", "Service", "Security"]
-    public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Citizens", "Result"]
+    public let lotteryDetailsSegments = ["Parameters", "Sub Lands", "Result"]
     public let lotteryParametersSections = ["Land rules", "Sub land", "Citizens"]
     public let lotteryResultSection = ["Lottery parameters", "Lottery results"]
     public let chartsArray = ["age", "gender", "city", "property", "uploads"]
