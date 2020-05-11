@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 import QuickLook
 import Kingfisher
 
@@ -46,11 +45,13 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public lazy var previewItem = NSURL()
+    // Callbacks
     public var shareCallback: ((Bool) -> Void)?
     public var citizenCallback: ((Bool) -> Void)?
     public var subLandCallback: ((Bool) -> Void)?
-    public lazy var previewItem = NSURL()
     public var viewAttachmentsAction: ((Bool) -> Void)?
+    public var actionCallback: ((String) -> Void)?
     
     // MARK: - Variables
     public static let id = "KMAUINotificationDocumentTableViewCell"
@@ -369,13 +370,17 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     }
     
     @IBAction public func rejectButtonPressed(_ sender: Any) {
-        KMAUIUtilities.shared.startLoading(title: "Rejecting...")
-        change(status: "rejected")
+        actionCallback?("rejected")
+        
+//        KMAUIUtilities.shared.startLoading(title: "Rejecting...")
+//        change(status: "rejected")
     }
     
     @IBAction public func approveButtonPressed(_ sender: Any) {
-        KMAUIUtilities.shared.startLoading(title: "Approving...")
-        change(status: "approved")
+        actionCallback?("approved")
+        
+//        KMAUIUtilities.shared.startLoading(title: "Approving...")
+//        change(status: "approved")
     }
     
     func change(status: String) {
