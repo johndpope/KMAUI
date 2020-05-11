@@ -1101,7 +1101,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func updateDocumentStatus(subLandId: String, documentId: String, status: String, completion: @escaping (_ done: Bool)->()) {
+    public func updateDocumentStatus(subLandId: String, documentId: String, status: String, comment: String? = nil, subLand: KMAUISubLandStruct, completion: @escaping (_ done: Bool)->()) {
         let query = PFQuery(className: "KMASubLand")
         query.getObjectInBackground(withId: subLandId) { (subLandObject, error) in
             if let error = error {
@@ -1116,6 +1116,28 @@ final public class KMAUIParse {
                                 if fileObjectId == documentId {
                                     var fileUpdated = file
                                     fileUpdated["status"] = status as AnyObject
+                                    
+                                    // Add the comment if included
+                                    if let comment = comment, !comment.isEmpty {
+                                        var commentDictionary = [String: AnyObject]()
+                                        commentDictionary["text"] = comment as AnyObject
+                                        commentDictionary["action"] = status as AnyObject
+                                        commentDictionary["createdAt"] = KMAUIUtilities.shared.UTCStringFrom(date: Date()) as AnyObject
+                                        commentDictionary["departmentId"] = subLand.departmentId as AnyObject
+                                        commentDictionary["departmentName"] = subLand.departmentName as AnyObject
+                                        
+                                        let commentsDictionary = ["comments": [commentDictionary]]
+                                        let jsonCommentsDictionary = KMAUIUtilities.shared.dictionaryToJSONData(dict: commentsDictionary)
+                                        var commentsString = ""
+                                        
+                                        // JSON String for Parse
+                                        if let commentsStringValue = String(data: jsonCommentsDictionary, encoding: .utf8) {
+                                            commentsString = commentsStringValue
+                                        }
+                                        
+                                        fileUpdated["comments"] = commentsString as AnyObject
+                                    }
+                                    
                                     files[index] = fileUpdated
                                     
                                     let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["files": files])
@@ -1633,7 +1655,7 @@ final public class KMAUIParse {
      Approve / Reject the Land ownership for Upload a document flow
      */
     
-    public func landOwnership(lotteryResultId: String, status: String, completion: @escaping (_ success: Bool)->()) {
+    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil, completion: @escaping (_ success: Bool)->()) {
         let lotteryResult = PFObject(withoutDataWithClassName: "KMALotteryResult", objectId: lotteryResultId)
         lotteryResult["status"] = status
         lotteryResult.saveInBackground { (success, error) in

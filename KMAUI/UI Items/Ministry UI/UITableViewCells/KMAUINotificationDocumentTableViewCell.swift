@@ -404,14 +404,14 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                 }
             }
             
-            KMAUIParse.shared.landOwnership(lotteryResultId: lotteryResultId, status: newStatus) { (success) in
+            KMAUIParse.shared.landOwnership(lotteryResultId: lotteryResultId, status: newStatus, comment: comment) { (success) in
                 self.lotteryResultStatus = newStatus
                 self.setupStatus()
                 // Notify user about the changes
                 KMAUIParse.shared.notifyUser(subLand: self.subLand, type: "ownership", status: status, documentName: self.document.name, citizenId: self.citizen.objectId)
             }
         } else if type == "subLandDocumentAdded" {
-            KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status) { (done) in
+            KMAUIParse.shared.updateDocumentStatus(subLandId: subLand.objectId, documentId: document.objectId, status: status, comment: comment, subLand: subLand) { (done) in
                 self.document.status = status
                 self.setupStatus()
                 // Send a push notification to user with document name and status
