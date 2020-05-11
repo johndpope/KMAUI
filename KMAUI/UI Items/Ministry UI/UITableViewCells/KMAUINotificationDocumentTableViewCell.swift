@@ -371,19 +371,23 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     
     @IBAction public func rejectButtonPressed(_ sender: Any) {
         actionCallback?("rejected")
-        
-//        KMAUIUtilities.shared.startLoading(title: "Rejecting...")
-//        change(status: "rejected")
     }
     
     @IBAction public func approveButtonPressed(_ sender: Any) {
         actionCallback?("approved")
-        
-//        KMAUIUtilities.shared.startLoading(title: "Approving...")
-//        change(status: "approved")
     }
     
-    func change(status: String) {
+    public func rejectAction(comment: String? = nil) {
+        KMAUIUtilities.shared.startLoading(title: "Rejecting...")
+        change(status: "rejected", comment: comment)
+    }
+    
+    public func approveAction(comment: String? = nil) {
+        KMAUIUtilities.shared.startLoading(title: "Approving...")
+        change(status: "approved", comment: comment)
+    }
+    
+    func change(status: String, comment: String? = nil) {
         if type == "documentUploaded" {
             var newStatus = ""
             
