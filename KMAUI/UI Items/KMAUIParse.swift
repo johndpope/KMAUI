@@ -1673,7 +1673,7 @@ final public class KMAUIParse {
      Approve / Reject the Land ownership for Upload a document flow
      */
     
-    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil, subLand: KMAUISubLandStruct, completion: @escaping (_ success: Bool)->()) {
+    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil, subLand: KMAUISubLandStruct, document: KMADocumentData, completion: @escaping (_ success: Bool)->()) {
         let lotteryResult = PFQuery(className: "KMALotteryResult")
         lotteryResult.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
             if let error = error {
@@ -1688,6 +1688,7 @@ final public class KMAUIParse {
                     var commentDictionary = [String: AnyObject]()
                     commentDictionary["text"] = comment as AnyObject
                     commentDictionary["action"] = status as AnyObject
+                    commentDictionary["documentId"] = document.objectId as AnyObject
                     commentDictionary["createdAt"] = KMAUIUtilities.shared.UTCStringFrom(date: Date()) as AnyObject
                     commentDictionary["departmentId"] = subLand.departmentId as AnyObject
                     commentDictionary["departmentName"] = subLand.departmentName as AnyObject

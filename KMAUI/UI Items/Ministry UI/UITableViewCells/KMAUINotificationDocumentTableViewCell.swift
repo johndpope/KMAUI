@@ -206,8 +206,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                         rows.append(documentItem)
                     }
                     
-                    print("Rows: \(rows.count)")
-                    
                     rowsFound = true
                     
                     uploadImageView.alpha = 1
@@ -404,7 +402,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                 }
             }
             
-            KMAUIParse.shared.landOwnership(lotteryResultId: lotteryResultId, status: newStatus, comment: comment, subLand: subLand) { (success) in
+            KMAUIParse.shared.landOwnership(lotteryResultId: lotteryResultId, status: newStatus, comment: comment, subLand: subLand, document: document) { (success) in
                 self.lotteryResultStatus = newStatus
                 self.setupStatus()
                 // Notify user about the changes
