@@ -1126,7 +1126,22 @@ final public class KMAUIParse {
                                         commentDictionary["departmentId"] = subLand.departmentId as AnyObject
                                         commentDictionary["departmentName"] = subLand.departmentName as AnyObject
                                         
-                                        let commentsDictionary = ["comments": [commentDictionary]]
+                                        var commentsArray = [[String: AnyObject]]()
+                                        
+                                        // Check if previous comments exist
+                                        if let commentsDictionaryString = fileUpdated["comments"] as? String {
+                                            let commentsDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: commentsDictionaryString)
+                                            
+                                            if let commentsArrayLoaded = commentsDictionary["comments"] as? [[String: AnyObject]], !commentsArrayLoaded.isEmpty {
+                                                commentsArray = commentsArrayLoaded
+                                            }
+                                        }
+                                        
+                                        print("Current comments: \(commentsArray.count)")
+                                        // Add the new comment to be the first in the row
+                                        commentsArray.insert(commentDictionary, at: 0)
+                                        
+                                        let commentsDictionary = ["comments": [commentsArray]]
                                         let jsonCommentsDictionary = KMAUIUtilities.shared.dictionaryToJSONData(dict: commentsDictionary)
                                         var commentsString = ""
                                         
@@ -1136,6 +1151,7 @@ final public class KMAUIParse {
                                         }
                                         
                                         fileUpdated["comments"] = commentsString as AnyObject
+                                        print("Updated comments string: \(commentsString)")
                                     }
                                     
                                     files[index] = fileUpdated
@@ -1659,7 +1675,7 @@ final public class KMAUIParse {
      Approve / Reject the Land ownership for Upload a document flow
      */
     
-    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil, completion: @escaping (_ success: Bool)->()) {
+    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil   , completion: @escaping (_ success: Bool)->()) {
         let lotteryResult = PFObject(withoutDataWithClassName: "KMALotteryResult", objectId: lotteryResultId)
         lotteryResult["status"] = status
         lotteryResult.saveInBackground { (success, error) in
