@@ -1574,7 +1574,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil) {
+    public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil, comment: String? = nil) {
         var title = ""
         var message = ""
         
@@ -1598,6 +1598,10 @@ final public class KMAUIParse {
                     message += " The extra payment of $ \(subLand.extraPrice.formatNumbersAfterDot().withCommas()) is required."
                 }
             }
+        }
+        
+        if let comment = comment, !comment.isEmpty {
+            message += "\nComment: \(comment)"
         }
         
         if !title.isEmpty, !message.isEmpty {
