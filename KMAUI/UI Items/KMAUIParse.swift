@@ -1703,8 +1703,10 @@ final public class KMAUIParse {
                         }
                     }
                     
+                    print("Comments found: \(commentsArray.count)")
                     // Add the new comment to be the first in the row
                     commentsArray.insert(commentDictionary, at: 0)
+                    print("Comments after update: \(commentsArray)")
                     
                     let commentsDictionary = ["comments": [commentsArray]]
                     let jsonCommentsDictionary = KMAUIUtilities.shared.dictionaryToJSONData(dict: commentsDictionary)
