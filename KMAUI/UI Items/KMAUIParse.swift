@@ -1137,7 +1137,6 @@ final public class KMAUIParse {
                                             }
                                         }
                                         
-                                        print("Current comments: \(commentsArray.count)")
                                         // Add the new comment to be the first in the row
                                         commentsArray.insert(commentDictionary, at: 0)
                                         
@@ -1151,7 +1150,6 @@ final public class KMAUIParse {
                                         }
                                         
                                         fileUpdated["comments"] = commentsString as AnyObject
-                                        print("Updated comments string: \(commentsString)")
                                     }
                                     
                                     files[index] = fileUpdated
@@ -1675,15 +1673,59 @@ final public class KMAUIParse {
      Approve / Reject the Land ownership for Upload a document flow
      */
     
-    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil   , completion: @escaping (_ success: Bool)->()) {
-        let lotteryResult = PFObject(withoutDataWithClassName: "KMALotteryResult", objectId: lotteryResultId)
-        lotteryResult["status"] = status
-        lotteryResult.saveInBackground { (success, error) in
-            KMAUIUtilities.shared.stopLoadingWith { (_) in
-                if let error = error {
+    public func landOwnership(lotteryResultId: String, status: String, comment: String? = nil, subLand: KMAUISubLandStruct, completion: @escaping (_ success: Bool)->()) {
+        let lotteryResult = PFQuery(className: "KMALotteryResult")
+        lotteryResult.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
+            if let error = error {
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
                     KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
-                } else if success {
-                    completion(true)
+                }
+            } else if let lotteryResult = lotteryResult {
+                // Update status
+                lotteryResult["status"] = status
+                // Add comment
+                if let comment = comment, !comment.isEmpty {
+                    var commentDictionary = [String: AnyObject]()
+                    commentDictionary["text"] = comment as AnyObject
+                    commentDictionary["action"] = status as AnyObject
+                    commentDictionary["createdAt"] = KMAUIUtilities.shared.UTCStringFrom(date: Date()) as AnyObject
+                    commentDictionary["departmentId"] = subLand.departmentId as AnyObject
+                    commentDictionary["departmentName"] = subLand.departmentName as AnyObject
+                    
+                    var commentsArray = [[String: AnyObject]]()
+                    
+                    // Check if previous comments exist
+                    if let commentsDictionaryString = lotteryResult["comments"] as? String {
+                        let commentsDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: commentsDictionaryString)
+                        
+                        if let commentsArrayLoaded = commentsDictionary["comments"] as? [[String: AnyObject]], !commentsArrayLoaded.isEmpty {
+                            commentsArray = commentsArrayLoaded
+                        }
+                    }
+                    
+                    // Add the new comment to be the first in the row
+                    commentsArray.insert(commentDictionary, at: 0)
+                    
+                    let commentsDictionary = ["comments": [commentsArray]]
+                    let jsonCommentsDictionary = KMAUIUtilities.shared.dictionaryToJSONData(dict: commentsDictionary)
+                    var commentsString = ""
+                    
+                    // JSON String for Parse
+                    if let commentsStringValue = String(data: jsonCommentsDictionary, encoding: .utf8) {
+                        commentsString = commentsStringValue
+                    }
+                    
+                    lotteryResult["comments"] = commentsString as AnyObject
+                }
+                // Save result
+                lotteryResult.saveInBackground { (success, error) in
+                    KMAUIUtilities.shared.stopLoadingWith { (_) in
+                        if let error = error {
+                            KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
+                        } else if success {
+                            completion(true)
+                        }
+                    }
                 }
             }
         }
