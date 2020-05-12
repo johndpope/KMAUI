@@ -305,7 +305,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func getLandPlan(landPlanId: String, completion: @escaping (_ landPlan: KMAUILandPlanStruct?)->()) {
+    public func getLandPlan(landPlanId: String, completion: @escaping (_ landPlan: KMAUILandPlanStruct?, _ error: String?)->()) {
         let query = PFQuery(className: "KMALandPlan")
         query.whereKey("objectId", equalTo: landPlanId)
         query.includeKey("responsibleDivision")
@@ -315,11 +315,11 @@ final public class KMAUIParse {
         query.findObjectsInBackground { (plans, error) in
             if let error = error {
                 print("Error getting the Land Plans for regions: \(error.localizedDescription).")
-                completion(nil)
+                completion(nil, error.localizedDescription)
             } else if let plans = plans {
                 guard let plan = plans.first else {
                     print("\nNo Land Plans loaded for regions.")
-                    completion(nil)
+                    completion(nil, "Land plan not loaded")
                     return
                 }
                 
@@ -336,7 +336,7 @@ final public class KMAUIParse {
                     landPlanObject.queueCount = regionStruct.lotteryMembersCount
                 }
                 
-                completion(landPlanObject)
+                completion(landPlanObject, "")
             }
         }
     }
