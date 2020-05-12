@@ -1825,5 +1825,166 @@ final public class KMAUIParse {
             completion(updatedSubLand)
         }
     }
+    
+    /**
+     Notify region queue
+     */
+    
+    public func notifyRegionQueue(landPlanId: String, landPlanName: String, regionId: String, regionName: String, lotteryStatus: String? = nil) {
+        var notificationTitle = "The new lottery in your region"
+        var notificationMessage = "The \"\(landPlanName)\" lottery created in the \(regionName) region."
+        var eventType = "lotteryCreated"
+        
+        if lotteryStatus == "Approved to start" {
+            notificationTitle = "The lottery approved"
+            notificationMessage = "The \"\(landPlanName)\" lottery is approved to start in the \(regionName) region."
+            eventType = "lotteryUpdated"
+        }
+        
+        KMAUIParse.shared.getQueue(regionId: regionId) { (queueArray) in
+            var notificationsArray = [PFObject]()
+            var pushParams = [[String: AnyObject]]()
+            var itemsArray = [[String: AnyObject]]()
+            
+            for citizen in queueArray {
+                let newNotification = PFObject(className: "KMANotification")
+                newNotification["user"] = PFUser(withoutDataWithObjectId: citizen.objectId)
+                newNotification["title"] = notificationTitle
+                newNotification["message"] = notificationMessage
+                // Fill the items for Notification
+                let items = ["objectId": landPlanId as AnyObject,
+                             "objectType": "landPlan" as AnyObject,
+                             "eventType": eventType as AnyObject,
+                             "landPlanName": landPlanName as AnyObject,
+                             "region": regionName as AnyObject,
+                             "regionId": regionId as AnyObject
+                ]
+                // Save item into array for push notifications
+                itemsArray.append(items)
+                // items json string from dictionary
+                if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                    newNotification["items"] = jsonStr
+                }
+                newNotification["read"] = false
+                notificationsArray.append(newNotification)
+            }
+            
+            PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if success {
+                    for (index, notification) in notificationsArray.enumerated() {
+                        if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                            var items = itemsArray[index]
+                            items["notificationId"] = notificationId as AnyObject
+                            // Push parameters
+                            let newSubLandParams = [
+                                "userId" : citizenId as AnyObject,
+                                "title": notificationTitle as AnyObject,
+                                "message": notificationMessage as AnyObject,
+                                "kmaItems": items as AnyObject,
+                                "appType": "Consumer" as AnyObject
+                            ]
+                            
+                            pushParams.append(newSubLandParams)
+                        }
+                    }
+                    
+                    // Send push notifications to the winners
+                    for subLandParams in pushParams {
+                        print("\nSend a push notification: \(subLandParams)")
+                        KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     Notify ministry admin about the lottery status changes
+     */
+    
+    public func notifyMinistry(citizenDepartment: KMADepartmentStruct, landPlanId: String, landPlanName: String, regionId: String, regionName: String, lotteryStatus: String) {
+        let departmentQuery = PFQuery(className: "KMADepartment")
+        departmentQuery.getObjectInBackground(withId: citizenDepartment.departmentId) { (departmentObject, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let departmentObject = departmentObject {
+                if let ministryObject = departmentObject["parent"] as? PFObject, let ministryId = ministryObject.objectId {
+                    print("Ministry found, id: \(ministryId)")
+                    // Get ministry admin
+                    let adminsQuery = PFQuery(className: "KMADepartmentEmployee")
+                    adminsQuery.whereKey("department", equalTo: ministryObject)
+                    adminsQuery.findObjectsInBackground { (adminArray, adminError) in
+                        if let adminError = adminError {
+                            print(adminError.localizedDescription)
+                        } else if let adminArray = adminArray {
+                            if adminArray.isEmpty {
+                                print("No ministry admins")
+                            } else {
+                                print("Ministry admins: \(adminArray.count)")
+                                
+                                for adminObject in adminArray {
+                                    if let admin = adminObject["employee"] as? PFUser, let adminId = admin.objectId {
+                                        print("Admin: \(adminId)")
+                                        // Title and message
+                                        var notificationTitle = "Title"
+                                        var notificationMessage = "Message"
+                                        // Setup the lottery status and get title and message for notification
+                                        if lotteryStatus == "On approvement" {
+                                            notificationTitle = "New lottery to verify"
+                                            notificationMessage = "The \"\(landPlanName)\" lottery for \(regionName) region has the status changed to \"On approvement\" and needs to be verified."
+                                        }
+                                        // Prepare the notification Parse object
+                                        let newNotification = PFObject(className: "KMANotification")
+                                        newNotification["user"] = PFUser(withoutDataWithObjectId: adminId)
+                                        newNotification["title"] = notificationTitle
+                                        newNotification["message"] = notificationMessage
+                                        // Fill the items for Notification
+                                        var items = ["objectId": landPlanId as AnyObject,
+                                                     "objectType": "landPlan" as AnyObject,
+                                                     "eventType": "landPlanStatusChanged" as AnyObject,
+                                                     "landPlanName": landPlanName as AnyObject,
+                                                     "region": regionName as AnyObject,
+                                                     "regionId": regionId as AnyObject,
+                                                     "departmentId": citizenDepartment.departmentId as AnyObject,
+                                                     "departmentName": citizenDepartment.departmentName as AnyObject,
+                                                     "status": lotteryStatus as AnyObject
+                                        ]
+                                        // items json string from dictionary
+                                        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                                            newNotification["items"] = jsonStr
+                                        }
+                                        newNotification["read"] = false
+                                        // Save notification
+                                        newNotification.saveInBackground { (success, error) in
+                                            if let error = error {
+                                                print(error.localizedDescription)
+                                            } else if success, let notificationId = newNotification.objectId {
+                                                items["notificationId"] = notificationId as AnyObject
+                                                // Push parameters
+                                                let newPushParams = [
+                                                    "userId" : adminId as AnyObject,
+                                                    "title": notificationTitle as AnyObject,
+                                                    "message": notificationMessage as AnyObject,
+                                                    "kmaItems": items as AnyObject,
+                                                    "appType": "Business" as AnyObject
+                                                ]
+                                                // Send push notification
+                                                KMAUIParse.shared.sendPushNotification(cloudParams: newPushParams)
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print("Ministry not found")
+                }
+            }
+        }
+    }
 }
 
