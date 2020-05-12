@@ -333,6 +333,8 @@ final public class KMAUIParse {
                     var regionStruct = KMAMapAreaStruct()
                     regionStruct.fillFrom(object: region)
                     landPlanObject.regionId = regionId
+                    landPlanObject.regionName = regionStruct.nameE
+                    landPlanObject.region = regionStruct
                     landPlanObject.queueCount = regionStruct.lotteryMembersCount
                 }
                 
