@@ -2125,10 +2125,12 @@ final public class KMAUIParse {
                 KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
                     // Get the lottery results data
                     KMAUIParse.shared.getLotteryResults(landPlan: lottery) { (planUpdated) in
+                        KMAUIUtilities.shared.stopLoadingWith { (_) in
                         lottery = planUpdated
                         lottery.lotteryStatus = landPlanUpdated.lotteryStatus
                         lottery.resultLoaded = true
                         completion(lottery)
+                        }
                     }
                 }
             }

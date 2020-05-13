@@ -33,7 +33,7 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     }
     
     @IBAction public func lotteryButtonPressed(_ sender: Any) {
-        KMAUIParse.shared.startLotteryFlow(lottery: lottery) { (updatedLottery) in
+        KMAUIParse.shared.startLottery(lottery: lottery) { (updatedLottery) in
             self.lottery = updatedLottery
             self.callback?(self.lottery)
         }
