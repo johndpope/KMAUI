@@ -2099,7 +2099,7 @@ final public class KMAUIParse {
         KMAUIUtilities.shared.displayAlert(viewController: lotteryAlert)
     }
     
-    func startLotteryFlow(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
+    public func startLotteryFlow(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
         var lottery = lottery
         
         if lottery.lotterySubLandArray.isEmpty {
