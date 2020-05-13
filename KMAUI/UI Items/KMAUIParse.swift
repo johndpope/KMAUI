@@ -2089,7 +2089,7 @@ final public class KMAUIParse {
         lotteryAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
         
         lotteryAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) in
-            self.startLottery(lottery: lottery) { (updatedLottery) in
+            self.startLotteryFlow(lottery: lottery) { (updatedLottery) in
                 completion(updatedLottery)
             }
         }))
