@@ -1590,6 +1590,94 @@ final public class KMAUIParse {
         }
     }
     
+    // Notify Department Admin
+    
+    public func notifyDepartmentAdmins(landPlan: KMAUILandPlanStruct, status: String) {
+        let notificationTitle = "Lottery \(status)"
+        let notificationMessage = "\"\(landPlan.landName)\" lottery was \(status) by the Ministry of Housing."
+        let responsibleDivision = landPlan.responsibleDivision
+        let departmentId = responsibleDivision.departmentId
+        let departmentName = responsibleDivision.departmentName
+        
+        let query = PFQuery(className: "KMADepartmentEmployee")
+        query.whereKey("department", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: departmentId))
+        query.whereKey("isActive", equalTo: true)
+        query.includeKey("employee")
+        query.findObjectsInBackground { (employees, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let employees = employees {
+                // KMANotification objects
+                var notificationsArray = [PFObject]()
+                // Push params array
+                var pushParams = [[String: AnyObject]]()
+                var itemsArray = [[String: AnyObject]]()
+
+                print("Employees for department \(departmentId): \(employees.count)")
+                for employee in employees {
+                    if let citizen = employee["employee"] as? PFUser, let citizenId = citizen.objectId {
+                        print("Send a KMANotification to citizen \(citizenId)")
+                        // Prepare the notification Parse object
+                        let newNotification = PFObject(className: "KMANotification")
+                        newNotification["user"] = PFUser(withoutDataWithObjectId: citizenId)
+                        newNotification["title"] = notificationTitle
+                        newNotification["message"] = notificationMessage
+                        // Fill the items for Notification
+                        let items = ["objectId": landPlan.landPlanId as AnyObject,
+                                     "objectType": "landPlan" as AnyObject,
+                                     "eventType": "landPlanStatusChanged" as AnyObject,
+                                     "landPlanName": landPlan.landName as AnyObject,
+                                     "region": landPlan.regionName as AnyObject,
+                                     "regionId": landPlan.regionId as AnyObject,
+                                     "departmentId": departmentId as AnyObject,
+                                     "departmentName": departmentName as AnyObject,
+                                     "status": status as AnyObject
+                        ]
+                        // Save item into array for push notifications
+                        itemsArray.append(items)
+                        // items json string from dictionary
+                        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                            newNotification["items"] = jsonStr
+                        }
+                        newNotification["read"] = false
+                        notificationsArray.append(newNotification)
+                    }
+                }
+
+                if !notificationsArray.isEmpty {
+                    PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else if success {
+                            for (index, notification) in notificationsArray.enumerated() {
+                                if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                                    var items = itemsArray[index]
+                                    items["notificationId"] = notificationId as AnyObject
+                                    // Push parameters
+                                    let newSubLandParams = [
+                                        "userId" : citizenId as AnyObject,
+                                        "title": notificationTitle as AnyObject,
+                                        "message": notificationMessage as AnyObject,
+                                        "kmaItems": items as AnyObject,
+                                        "appType": "Business" as AnyObject
+                                    ]
+
+                                    pushParams.append(newSubLandParams)
+                                }
+                            }
+
+                            // Send push notifications to the winners
+                            for subLandParams in pushParams {
+                                print("\nSend a push notification: \(subLandParams)")
+                                KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil, comment: String? = nil) {
         var title = ""
         var message = ""
