@@ -1592,9 +1592,14 @@ final public class KMAUIParse {
     
     // Notify Department Admin
     
-    public func notifyDepartmentAdmins(landPlan: KMAUILandPlanStruct, status: String) {
+    public func notifyDepartmentAdmins(landPlan: KMAUILandPlanStruct, status: String, comment: String? = nil) {
         let notificationTitle = "Lottery \(status)"
-        let notificationMessage = "\"\(landPlan.landName)\" lottery was \(status) by the Ministry of Housing."
+        var notificationMessage = "\"\(landPlan.landName)\" lottery was \(status) by the Ministry of Housing."
+        
+        if let comment = comment {
+            notificationMessage += "\nComment: \(comment)"
+        }
+        
         let responsibleDivision = landPlan.responsibleDivision
         let departmentId = responsibleDivision.departmentId
         let departmentName = responsibleDivision.departmentName
