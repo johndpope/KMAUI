@@ -2081,5 +2081,55 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Start the Lottery flow
+    
+    public func startLottery(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
+        let lotteryAlert = UIAlertController(title: "Start the Lottery", message: "Are you sure you'd like to start the lottery?\n\nThis will run a random algorithm to give the Sub Land items to the Citizens.", preferredStyle: .alert)
+        lotteryAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) in
+            self.startLottery(lottery: lottery) { (updatedLottery) in
+                completion(updatedLottery)
+            }
+        }))
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in }))
+        
+        KMAUIUtilities.shared.displayAlert(viewController: lotteryAlert)
+    }
+    
+    func startLotteryFlow(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
+        var lottery = lottery
+        
+        if lottery.lotterySubLandArray.isEmpty {
+            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Sub Land items to assign to Citizens.") { (done) in }
+            return
+        }
+        
+        if lottery.queueArray.isEmpty {
+            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Citizens to assign the Sub Land items to.") { (done) in }
+            return
+        }
+        
+        // Update the queue list
+        KMAUIParse.shared.getQueue(regionId: lottery.regionId) { (citizenQueue) in
+            lottery.queueArray = citizenQueue
+            lottery.queueDisplay = citizenQueue
+            lottery.queueCount = citizenQueue.count
+            lottery.setupResultArray()
+            lottery.queueLoaded = true
+            
+            KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+                // Get the lottery results data
+                KMAUIParse.shared.getLotteryResults(landPlan: lottery) { (planUpdated) in
+                    lottery = planUpdated
+                    lottery.lotteryStatus = landPlanUpdated.lotteryStatus
+                    lottery.resultLoaded = true
+                    completion(lottery)
+                }
+            }
+        }
+    }
 }
 
