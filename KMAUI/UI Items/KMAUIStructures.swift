@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import SwiftyJSON
+import Alamofire
 
 // MARK: - Upload struct
 
@@ -2320,6 +2321,16 @@ public struct KMAUISubLandStruct {
         }
     }
     
+//    public func featureJson() -> [String: Any] {
+//        var json: [String: Any] = [:]
+//        json["type"] = "Feature"
+//        json["geometry"] = [
+//            "type": "LineString",
+//            "coordinates": [
+//            ]
+//        ]
+//
+//    }
     mutating public func fillFromDict(item: [String : Any]) {
         if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
             // coordinates
@@ -2577,7 +2588,7 @@ public struct KMAUILandPlanStruct {
     // Square meter price
     public var squareMeterPrice: Double = 1500
     // Result items
-    public var geojson = ""
+//    public var geojson = ""
     public var subLandItems = [PFObject]()
     // Plan dates
     public var startDate = Date()
@@ -2603,7 +2614,10 @@ public struct KMAUILandPlanStruct {
     // Counts and percents
     public var rulesArray = [KMAUILotteryRule]()
     public var percentArray = [KMAUILotteryRule]()
-    public var totalCount = 0
+    public var totalCount: Int {
+        return self.servicesCount + self.commercialCount + self.saleCount + self.lotteryCount
+    }
+    
     public var resultArray = [KMAUILotteryRule]()
     // Queue
     public var queueCount = 0
@@ -2622,10 +2636,14 @@ public struct KMAUILandPlanStruct {
     // Parse object
     public var createdAt = Date()
     public var updatedAt = Date()
+    public var landAreaFile: PFFileObject?
+    
+    public var isEmpty: Bool = true
     
     public init() {}
     
     public init(centerCoordinate: CLLocationCoordinate2D, landName: String? = nil, areaWidth: Double? = nil, areaHeight: Double? = nil, degrees: Double? = nil, minSubLandSide: Double? = nil, maxSubLandSide: Double? = nil, mainRoadWidth: Double? = nil, regularRoadWidth: Double? = nil, itemsInSubBlockHorizontal: Int? = nil, itemsInSubBlockVertical: Int? = nil, rowsPerBlock: Int? = nil, servicesPercent: Double? = nil, commercialPercent: Double? = nil, lotteryPercent: Double? = nil, salePercent: Double? = nil, squareMeterPrice: Double? = nil) {
+        self.isEmpty = false
         // Center coordinate
         self.centerCoordinate = centerCoordinate
         
@@ -2930,29 +2948,26 @@ public struct KMAUILandPlanStruct {
         }
         
         getParseObjects()
-        
+        addSubLandTypes()
+    }
+    
+    public func json() -> String {
         let jsonDict: [String: Any] = [
             "type": "FeatureCollection",
             "features": landFeatures
         ]
         
-        geojson = ""
-        
         if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
             //For JSON String
             if let jsonStr = String(bytes: data, encoding: .utf8) {
-                geojson = jsonStr
+                return jsonStr
             }
         }
         
-        // Add the Sub Land types into geojson
-        addSubLandTypes()
+        return ""
     }
     
     public mutating func addSubLandTypes() {
-        // Update the geojson to store the subLandType and objectId
-        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
-
         var parseItems = [String: PFObject]()
         
         for subLandItem in self.subLandItems {
@@ -2961,135 +2976,101 @@ public struct KMAUILandPlanStruct {
             }
         }
         
-        if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-            var features = features
+        
+        for (index, feature) in landFeatures.enumerated() {
+            var feature = feature
             
-            for (index, feature) in features.enumerated() {
-                var feature = feature
-                
-                if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
-                    if let parseItem = parseItems[itemName]{
-                        // subLandType, String
-                        if let subLandType = parseItem["subLandType"] as? String {
-                            itemProperties["subLandType"] = subLandType as AnyObject
-                        }
+            if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
+                if let parseItem = parseItems[itemName]{
+                    // subLandType, String
+                    if let subLandType = parseItem["subLandType"] as? String {
+                        itemProperties["subLandType"] = subLandType as AnyObject
                     }
-                    
-                    feature["properties"] = itemProperties
-                    features[index] = feature
                 }
-            }
-            
-            let jsonDict: [String: Any] = [
-                "type": "FeatureCollection",
-                "features": features
-            ]
-            
-            if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
-                //For JSON String
-                if let jsonStr = String(bytes: data, encoding: .utf8) {
-                    self.geojson = jsonStr
-                }
+                
+                feature["properties"] = itemProperties
+                landFeatures[index] = feature
             }
         }
     }
     
     public mutating func updateGeojson(parseItems: [String: PFObject]) -> String {
         // Update the geojson to store the subLandType and objectId
-        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
-        var newGeojson = ""
-        
-        if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-            var features = features
+        for (index, feature) in landFeatures.enumerated() {
+            var feature = feature
+            var shouldRemove = false
             
-            for (index, feature) in features.enumerated() {
-                var feature = feature
-                var shouldRemove = false
-                
-                if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
-                    if let parseItem = parseItems[itemName] {
-                        // subLandSquare, Double
-                        if let subLandSquare = parseItem["subLandSquare"] as? Double {
-                            itemProperties["subLandSquare"] = subLandSquare.formatNumbersAfterDot() as AnyObject
-                        }
-                        // subLandType, String
-                        if let subLandType = parseItem["subLandType"] as? String {
-                            itemProperties["subLandType"] = subLandType as AnyObject
-                        }
-                        // subLandWidth, Double
-                        if let subLandWidth = parseItem["subLandWidth"] as? Double {
-                            itemProperties["subLandWidth"] = subLandWidth.formatNumbersAfterDot() as AnyObject
-                            
-                            if subLandWidth < 0 {
-                                shouldRemove = true
-                            }
-                        }
-                        // subLandHeight, Double
-                        if let subLandHeight = parseItem["subLandHeight"] as? Double {
-                            itemProperties["subLandHeight"] = subLandHeight.formatNumbersAfterDot() as AnyObject
-                            
-                            if subLandHeight < 0 {
-                                shouldRemove = true
-                            }
-                        }
-                        // location, PFGeoPoint
-                        if let location = parseItem["location"] as? PFGeoPoint {
-                            itemProperties["latitude"] = location.latitude as AnyObject
-                            itemProperties["longitude"] = location.longitude as AnyObject
-                        }
-                        // minX, Double
-                        if let minX = parseItem["minX"] as? Double {
-                            itemProperties["minX"] = minX as AnyObject
-                        }
-                        // minY, Double
-                        if let minY = parseItem["minY"] as? Double {
-                            itemProperties["minY"] = minY as AnyObject
-                        }
-                        // maxX, Double
-                        if let maxX = parseItem["maxX"] as? Double {
-                            itemProperties["maxX"] = maxX as AnyObject
-                        }
-                        // maxY, Double
-                        if let maxY = parseItem["maxY"] as? Double {
-                            itemProperties["maxY"] = maxY as AnyObject
-                        }
-                        // subLandPercent, Double
-                        if let subLandPercent = parseItem["subLandPercent"] as? Double {
-                            itemProperties["subLandPercent"] = subLandPercent.formatNumbersAfterDot() as AnyObject
-                        }
-                        // extraPrice, Double
-                        if let extraPrice = parseItem["extraPrice"] as? Double {
-                            itemProperties["extraPrice"] = extraPrice.formatNumbersAfterDot() as AnyObject
-                        }
-                        // objectId, String
-                        if let objectId = parseItem.objectId {
-                            itemProperties["objectId"] = objectId as AnyObject
+            if var itemProperties = feature["properties"] as? [String: AnyObject], let type = itemProperties["type"] as? String, type == "Sub Land", let itemName = itemProperties["name"] as? String {
+                if let parseItem = parseItems[itemName] {
+                    // subLandSquare, Double
+                    if let subLandSquare = parseItem["subLandSquare"] as? Double {
+                        itemProperties["subLandSquare"] = subLandSquare.formatNumbersAfterDot() as AnyObject
+                    }
+                    // subLandType, String
+                    if let subLandType = parseItem["subLandType"] as? String {
+                        itemProperties["subLandType"] = subLandType as AnyObject
+                    }
+                    // subLandWidth, Double
+                    if let subLandWidth = parseItem["subLandWidth"] as? Double {
+                        itemProperties["subLandWidth"] = subLandWidth.formatNumbersAfterDot() as AnyObject
+                        
+                        if subLandWidth < 0 {
+                            shouldRemove = true
                         }
                     }
-                    
-                    feature["properties"] = itemProperties
-                    features[index] = feature
-                    
-                    if shouldRemove {
-                        features.remove(at: index)
+                    // subLandHeight, Double
+                    if let subLandHeight = parseItem["subLandHeight"] as? Double {
+                        itemProperties["subLandHeight"] = subLandHeight.formatNumbersAfterDot() as AnyObject
+                        
+                        if subLandHeight < 0 {
+                            shouldRemove = true
+                        }
+                    }
+                    // location, PFGeoPoint
+                    if let location = parseItem["location"] as? PFGeoPoint {
+                        itemProperties["latitude"] = location.latitude as AnyObject
+                        itemProperties["longitude"] = location.longitude as AnyObject
+                    }
+                    // minX, Double
+                    if let minX = parseItem["minX"] as? Double {
+                        itemProperties["minX"] = minX as AnyObject
+                    }
+                    // minY, Double
+                    if let minY = parseItem["minY"] as? Double {
+                        itemProperties["minY"] = minY as AnyObject
+                    }
+                    // maxX, Double
+                    if let maxX = parseItem["maxX"] as? Double {
+                        itemProperties["maxX"] = maxX as AnyObject
+                    }
+                    // maxY, Double
+                    if let maxY = parseItem["maxY"] as? Double {
+                        itemProperties["maxY"] = maxY as AnyObject
+                    }
+                    // subLandPercent, Double
+                    if let subLandPercent = parseItem["subLandPercent"] as? Double {
+                        itemProperties["subLandPercent"] = subLandPercent.formatNumbersAfterDot() as AnyObject
+                    }
+                    // extraPrice, Double
+                    if let extraPrice = parseItem["extraPrice"] as? Double {
+                        itemProperties["extraPrice"] = extraPrice.formatNumbersAfterDot() as AnyObject
+                    }
+                    // objectId, String
+                    if let objectId = parseItem.objectId {
+                        itemProperties["objectId"] = objectId as AnyObject
                     }
                 }
-            }
-            
-            let jsonDict: [String: Any] = [
-                "type": "FeatureCollection",
-                "features": features
-            ]
-            
-            if let data = try? JSONSerialization.data(withJSONObject: jsonDict, options: .prettyPrinted) {
-                //For JSON String
-                if let jsonStr = String(bytes: data, encoding: .utf8) {
-                    newGeojson = jsonStr
+                
+                feature["properties"] = itemProperties
+                landFeatures[index] = feature
+                
+                if shouldRemove {
+                    landFeatures.remove(at: index)
                 }
             }
         }
         
-        return newGeojson
+        return json()
     }
     
     public func getBoundsForRect(locations: [CLLocationCoordinate2D]) -> [CLLocationCoordinate2D] {
@@ -3313,7 +3294,6 @@ public struct KMAUILandPlanStruct {
         self.commercialCount = 0
         self.saleCount = 0
         self.lotteryCount = 0
-        self.totalCount = 0
         
         for subLandItem in self.subLandArray {
             if !subLandItem.subLandType.isEmpty {
@@ -3328,9 +3308,6 @@ public struct KMAUILandPlanStruct {
                 }
             }
         }
-        
-        // Total subLand counts
-        self.totalCount = self.servicesCount + self.commercialCount + self.saleCount + self.lotteryCount
         
         if self.totalCount > 0 {
             // Sub Land percents per category
@@ -3356,6 +3333,7 @@ public struct KMAUILandPlanStruct {
     }
     
     mutating public func fillFromParse(plan: PFObject) {
+        self.isEmpty = false
         // landPlanId
         if let landPlanIdValue = plan.objectId {
             self.landPlanId = landPlanIdValue
@@ -3405,50 +3383,13 @@ public struct KMAUILandPlanStruct {
         if let regularRoadWidth = plan["regularRoadWidth"] as? Int {
             self.regularRoadWidth = Double(regularRoadWidth)
         }
-        // landArea
-        if let landArea = plan["landArea"] as? String {
-            self.geojson = landArea
-            
-            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
-
-            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-                let border = features[0]
-                // coordinates
-                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
-                    let topLeftCoordinate = coordinates[0]
-                    let topRightCoordinate = coordinates[1]
-                    let bottomLeftCoordinate = coordinates[3]
-                    
-                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                    
-                    let width = Double(Int(topLeft.distance(from: topRight)))
-                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
-                    
-                    self.areaWidth = width
-                    self.areaHeight = height
-                }
-                
-                // Sub Lands -> update to use the new `KMAUISubLandStruct`
-                self.subLandArray = [KMAUISubLandStruct]()
-                
-                for item in features {
-                    var subLandItem = KMAUISubLandStruct()
-                    subLandItem.fillFromDict(item: item)
-                    
-                    if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
-                        self.subLandArray.append(subLandItem)
-                        
-                        if subLandItem.subLandType == "Residential Lottery" {
-                            self.lotterySubLandArray.append(subLandItem)
-                        }
-                    }
-                }
-            }
+        // landAreaFile
+        if let landAreaFile = plan["landAreaFile"] as? PFFileObject {
+            self.landAreaFile = landAreaFile
         }
-        // Counts / Percents for Sub Lands
+        // MARK: - Here was parse landArea JSON
         self.prepareRules()
+        
         // centerCoordinate
         if let location = plan["location"] as? PFGeoPoint {
             self.centerCoordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
@@ -3474,34 +3415,117 @@ public struct KMAUILandPlanStruct {
             
             self.comment = LotteryComment(jsonObject: jsonObject)
         }
-    }
-    
-    mutating public func setDimensions() {
-        // landArea
-        if !geojson.isEmpty {
-            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
-
-            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-                let border = features[0]
-                // coordinates
-                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
-                    let topLeftCoordinate = coordinates[0]
-                    let topRightCoordinate = coordinates[1]
-                    let bottomLeftCoordinate = coordinates[3]
-                    
-                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                    
-                    let width = Double(Int(topLeft.distance(from: topRight)))
-                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
-                    
-                    self.areaWidth = width
-                    self.areaHeight = height
-                }
-            }
+        // serviceCount
+        if let servicesCount = plan["servicesCount"] as? Int {
+            self.servicesCount = servicesCount
+        }
+        // commercialCount
+        if let commercialCount = plan["commercialCount"] as? Int {
+            self.commercialCount = commercialCount
+        }
+        // saleCount
+        if let saleCount = plan["saleCount"] as? Int {
+            self.saleCount = saleCount
+        }
+        // saleCount
+        if let lotteryCount = plan["lotteryCount"] as? Int {
+            self.lotteryCount = lotteryCount
         }
     }
+    
+    public func loadGeoJson(comletion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
+        // landArea
+        guard let url = self.landAreaFile?.url else { return }
+
+        AF.request(url, method: .get).responseData(completionHandler: { result in
+            if let data = result.data,
+                let landArea = String(data: data, encoding: .utf8) {
+                var land = KMAUILandPlanStruct()
+//                self.geojson = landArea
+
+                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
+
+                if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+                    let border = features[0]
+                    // coordinates
+                    if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
+                        let topLeftCoordinate = coordinates[0]
+                        let topRightCoordinate = coordinates[1]
+                        let bottomLeftCoordinate = coordinates[3]
+
+                        let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                        let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                        let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+
+                        let width = Double(Int(topLeft.distance(from: topRight)))
+                        let height = Double(Int(topLeft.distance(from: bottomLeft)))
+
+                        land.areaWidth = width
+                        land.areaHeight = height
+                    }
+
+                    // Sub Lands -> update to use the new `KMAUISubLandStruct`
+                    land.subLandArray = [KMAUISubLandStruct]()
+                    land.landFeatures = []
+
+                    for item in features {
+                        var subLandItem = KMAUISubLandStruct()
+                        subLandItem.fillFromDict(item: item)
+
+                        if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
+                            land.subLandArray.append(subLandItem)
+
+                            if subLandItem.subLandType == "Residential Lottery" {
+                                land.lotterySubLandArray.append(subLandItem)
+                            }
+                        }
+                        
+                        land.landFeatures.append(item)
+                    }
+                }
+                land.prepareRules()
+                comletion(land)
+            } else {
+                comletion(nil)
+            }
+        })
+    }
+    
+    public mutating func merge(with land: KMAUILandPlanStruct) {
+        self.areaWidth = land.areaWidth
+        self.areaHeight = land.areaHeight
+        self.subLandArray = land.subLandArray
+        self.landFeatures = land.landFeatures
+        self.lotterySubLandArray = land.lotterySubLandArray
+        self.prepareRules()
+    }
+    
+//    mutating public func setDimensions() {
+//        // landArea
+//        if !geojson.isEmpty {
+//            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
+//
+//            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+//                let border = features[0]
+//                // coordinates
+//                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
+//                    let topLeftCoordinate = coordinates[0]
+//                    let topRightCoordinate = coordinates[1]
+//                    let bottomLeftCoordinate = coordinates[3]
+//
+//                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+//                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+//                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+//
+//                    let width = Double(Int(topLeft.distance(from: topRight)))
+//                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
+//
+//                    self.areaWidth = width
+//                    self.areaHeight = height
+//                }
+//            }
+//        }
+//    }
     
     public func mainComment() -> String? {
         return self.comment.comment
