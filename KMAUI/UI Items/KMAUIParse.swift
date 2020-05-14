@@ -1594,9 +1594,9 @@ final public class KMAUIParse {
         var notificationMessage = ""
         
         if status == "rejected" {
-            notificationMessage = "\(landPlan.landName) is being transferred  to status \"rejected\""
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"rejected\"."
         } else if status == "approved" {
-            notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\""
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\"."
         }
         
         if let comment = comment {
@@ -2027,7 +2027,7 @@ final public class KMAUIParse {
                                         print("Admin: \(adminId)")
                                         // Title and message
                                         let notificationTitle = lotteryStatus
-                                        let notificationMessage = "\(landPlanName) is being transferred  to status \"\(lotteryStatus.lowercased())\""
+                                        let notificationMessage = "\(landPlanName) is being transferred  to status \"\(lotteryStatus.lowercased())\"."
                                         // Prepare the notification Parse object
                                         let newNotification = PFObject(className: "KMANotification")
                                         newNotification["user"] = PFUser(withoutDataWithObjectId: adminId)
