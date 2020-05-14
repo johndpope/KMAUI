@@ -1590,11 +1590,17 @@ final public class KMAUIParse {
     // Notify Department Admin
     
     public func notifyDepartmentAdmins(landPlan: KMAUILandPlanStruct, status: String, comment: String? = nil) {
-        let notificationTitle = "Lottery \(status)"
-        var notificationMessage = "\"\(landPlan.landName)\" lottery was \(status) by the Ministry of Housing."
+        let notificationTitle = status.capitalized
+        var notificationMessage = ""
+        
+        if status == "rejected" {
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"rejected\""
+        } else if status == "approved" {
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\""
+        }
         
         if let comment = comment {
-            notificationMessage += "\nComment: \(comment)"
+            notificationMessage += "\nMinistrry comment: \(comment)"
         }
         
         let responsibleDivision = landPlan.responsibleDivision
@@ -2020,13 +2026,8 @@ final public class KMAUIParse {
                                     if let admin = adminObject["employee"] as? PFUser, let adminId = admin.objectId {
                                         print("Admin: \(adminId)")
                                         // Title and message
-                                        var notificationTitle = "Title"
-                                        var notificationMessage = "Message"
-                                        // Setup the lottery status and get title and message for notification
-                                        if lotteryStatus == "On approvement" {
-                                            notificationTitle = "New lottery to verify"
-                                            notificationMessage = "The \"\(landPlanName)\" lottery for \(regionName) region has the status changed to \"On approvement\" and needs to be verified."
-                                        }
+                                        let notificationTitle = lotteryStatus
+                                        let notificationMessage = "\(landPlanName) is being transferred  to status \"\(lotteryStatus.lowercased())\""
                                         // Prepare the notification Parse object
                                         let newNotification = PFObject(className: "KMANotification")
                                         newNotification["user"] = PFUser(withoutDataWithObjectId: adminId)
@@ -2129,6 +2130,7 @@ final public class KMAUIParse {
                         lottery = planUpdated
                         lottery.lotteryStatus = landPlanUpdated.lotteryStatus
                         lottery.resultLoaded = true
+                        // Return the completed lottery
                         completion(lottery)
                     }
                 }
