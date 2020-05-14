@@ -33,46 +33,9 @@ public class KMAUIStartLotteryTableViewCell: UITableViewCell {
     }
     
     @IBAction public func lotteryButtonPressed(_ sender: Any) {
-        let lotteryAlert = UIAlertController(title: "Start the Lottery", message: "Are you sure you'd like to start the lottery?\n\nThis will run a random algorithm to give the Sub Land items to the Citizens.", preferredStyle: .alert)
-        lotteryAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
-        
-        lotteryAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) in
-            self.startLottery()
-        }))
-        
-        lotteryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in }))
-        
-        KMAUIUtilities.shared.displayAlert(viewController: lotteryAlert)
-    }
-    
-    func startLottery() {
-        if lottery.lotterySubLandArray.isEmpty {
-            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Sub Land items to assign to Citizens.") { (done) in }
-            return
-        }
-        
-        if lottery.queueArray.isEmpty {
-            KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Citizens to assign the Sub Land items to.") { (done) in }
-            return
-        }
-        
-        // Update the queue list
-        KMAUIParse.shared.getQueue(regionId: lottery.regionId) { (citizenQueue) in
-            self.lottery.queueArray = citizenQueue
-            self.lottery.queueDisplay = citizenQueue
-            self.lottery.queueCount = citizenQueue.count
-            self.lottery.setupResultArray()
-            self.lottery.queueLoaded = true
-            
-            KMAUIParse.shared.startLottery(landPlan: self.lottery) { (landPlanUpdated) in
-                // Get the lottery results data
-                KMAUIParse.shared.getLotteryResults(landPlan: self.lottery) { (planUpdated) in
-                    self.lottery = planUpdated
-                    self.lottery.lotteryStatus = landPlanUpdated.lotteryStatus
-                    self.lottery.resultLoaded = true
-                    self.callback?(self.lottery)
-                }
-            }
+        KMAUIParse.shared.startLottery(lottery: lottery) { (updatedLottery) in
+            self.lottery = updatedLottery
+            self.callback?(self.lottery)
         }
     }
 }

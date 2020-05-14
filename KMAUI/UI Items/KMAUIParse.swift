@@ -305,7 +305,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func getLandPlan(landPlanId: String, completion: @escaping (_ landPlan: KMAUILandPlanStruct?)->()) {
+    public func getLandPlan(landPlanId: String, completion: @escaping (_ landPlan: KMAUILandPlanStruct?, _ error: String?)->()) {
         let query = PFQuery(className: "KMALandPlan")
         query.whereKey("objectId", equalTo: landPlanId)
         query.includeKey("responsibleDivision")
@@ -315,11 +315,11 @@ final public class KMAUIParse {
         query.findObjectsInBackground { (plans, error) in
             if let error = error {
                 print("Error getting the Land Plans for regions: \(error.localizedDescription).")
-                completion(nil)
+                completion(nil, error.localizedDescription)
             } else if let plans = plans {
                 guard let plan = plans.first else {
                     print("\nNo Land Plans loaded for regions.")
-                    completion(nil)
+                    completion(nil, "Land plan not loaded")
                     return
                 }
                 
@@ -333,10 +333,12 @@ final public class KMAUIParse {
                     var regionStruct = KMAMapAreaStruct()
                     regionStruct.fillFrom(object: region)
                     landPlanObject.regionId = regionId
+                    landPlanObject.regionName = regionStruct.nameE
+                    landPlanObject.region = regionStruct
                     landPlanObject.queueCount = regionStruct.lotteryMembersCount
                 }
                 
-                completion(landPlanObject)
+                completion(landPlanObject, "")
             }
         }
     }
@@ -797,9 +799,7 @@ final public class KMAUIParse {
         } else {
             print("No pairs to create.")
         }
-        
-        KMAUIUtilities.shared.startLoading(title: "Processing...")
-        
+                
         // Create the array of PFObjects for KMALotteryResult
         var lotteryResults = [PFObject]()
         
@@ -914,15 +914,14 @@ final public class KMAUIParse {
                 landPlanObject["lotteryStatus"] = "Finished"
                 
                 landPlanObject.saveInBackground { (saveSuccess, saveError) in
-                    KMAUIUtilities.shared.stopLoadingWith { (done) in
-                        if let saveError = saveError {
+                    if let saveError = saveError {
+                        KMAUIUtilities.shared.stopLoadingWith { (done) in
                             print(saveError.localizedDescription)
                             KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(saveError.localizedDescription)") { (done) in }
-                        } else {
-                            print("Land Plan status changed to completed.")
-                            landPlan.lotteryStatus = .finished
                         }
-                        
+                    } else {
+                        print("Land Plan status changed to completed.")
+                        landPlan.lotteryStatus = .finished
                         completion(landPlan)
                     }
                 }
@@ -1588,6 +1587,105 @@ final public class KMAUIParse {
         }
     }
     
+    // Notify Department Admin
+    
+    public func notifyDepartmentAdmins(landPlan: KMAUILandPlanStruct, status: String, comment: String? = nil) {
+        let notificationTitle = status.capitalized
+        var notificationMessage = ""
+        
+        if status == "rejected" {
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"rejected\"."
+        } else if status == "approved" {
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\"."
+        }
+        
+        if let comment = comment {
+            notificationMessage += "\nMinistrry comment: \(comment)"
+        }
+        
+        let responsibleDivision = landPlan.responsibleDivision
+        let departmentId = responsibleDivision.departmentId
+        let departmentName = responsibleDivision.departmentName
+        
+        let query = PFQuery(className: "KMADepartmentEmployee")
+        query.whereKey("department", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: departmentId))
+        query.whereKey("isActive", equalTo: true)
+        query.includeKey("employee")
+        query.findObjectsInBackground { (employees, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let employees = employees {
+                // KMANotification objects
+                var notificationsArray = [PFObject]()
+                // Push params array
+                var pushParams = [[String: AnyObject]]()
+                var itemsArray = [[String: AnyObject]]()
+
+                print("Employees for department \(departmentId): \(employees.count)")
+                for employee in employees {
+                    if let citizen = employee["employee"] as? PFUser, let citizenId = citizen.objectId {
+                        print("Send a KMANotification to citizen \(citizenId)")
+                        // Prepare the notification Parse object
+                        let newNotification = PFObject(className: "KMANotification")
+                        newNotification["user"] = PFUser(withoutDataWithObjectId: citizenId)
+                        newNotification["title"] = notificationTitle
+                        newNotification["message"] = notificationMessage
+                        // Fill the items for Notification
+                        let items = ["objectId": landPlan.landPlanId as AnyObject,
+                                     "objectType": "landPlan" as AnyObject,
+                                     "eventType": "landPlanStatusChanged" as AnyObject,
+                                     "landPlanName": landPlan.landName as AnyObject,
+                                     "region": landPlan.regionName as AnyObject,
+                                     "regionId": landPlan.regionId as AnyObject,
+                                     "departmentId": departmentId as AnyObject,
+                                     "departmentName": departmentName as AnyObject,
+                                     "status": status as AnyObject
+                        ]
+                        // Save item into array for push notifications
+                        itemsArray.append(items)
+                        // items json string from dictionary
+                        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                            newNotification["items"] = jsonStr
+                        }
+                        newNotification["read"] = false
+                        notificationsArray.append(newNotification)
+                    }
+                }
+
+                if !notificationsArray.isEmpty {
+                    PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else if success {
+                            for (index, notification) in notificationsArray.enumerated() {
+                                if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                                    var items = itemsArray[index]
+                                    items["notificationId"] = notificationId as AnyObject
+                                    // Push parameters
+                                    let newSubLandParams = [
+                                        "userId" : citizenId as AnyObject,
+                                        "title": notificationTitle as AnyObject,
+                                        "message": notificationMessage as AnyObject,
+                                        "kmaItems": items as AnyObject,
+                                        "appType": "Business" as AnyObject
+                                    ]
+
+                                    pushParams.append(newSubLandParams)
+                                }
+                            }
+
+                            // Send push notifications to the winners
+                            for subLandParams in pushParams {
+                                print("\nSend a push notification: \(subLandParams)")
+                                KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil, comment: String? = nil) {
         var title = ""
         var message = ""
@@ -1823,6 +1921,220 @@ final public class KMAUIParse {
             }
             
             completion(updatedSubLand)
+        }
+    }
+    
+    /**
+     Notify region queue
+     */
+    
+    public func notifyRegionQueue(landPlanId: String, landPlanName: String, regionId: String, regionName: String, lotteryStatus: String? = nil) {
+        var notificationTitle = "The new lottery in your region"
+        var notificationMessage = "The \"\(landPlanName)\" lottery created in the \(regionName) region."
+        var eventType = "lotteryCreated"
+        
+        if lotteryStatus == "Approved to start" {
+            notificationTitle = "The lottery approved"
+            notificationMessage = "The \"\(landPlanName)\" lottery is approved to start in the \(regionName) region."
+            eventType = "lotteryUpdated"
+        }
+        
+        KMAUIParse.shared.getQueue(regionId: regionId) { (queueArray) in
+            var notificationsArray = [PFObject]()
+            var pushParams = [[String: AnyObject]]()
+            var itemsArray = [[String: AnyObject]]()
+            
+            for citizen in queueArray {
+                let newNotification = PFObject(className: "KMANotification")
+                newNotification["user"] = PFUser(withoutDataWithObjectId: citizen.objectId)
+                newNotification["title"] = notificationTitle
+                newNotification["message"] = notificationMessage
+                // Fill the items for Notification
+                let items = ["objectId": landPlanId as AnyObject,
+                             "objectType": "landPlan" as AnyObject,
+                             "eventType": eventType as AnyObject,
+                             "landPlanName": landPlanName as AnyObject,
+                             "region": regionName as AnyObject,
+                             "regionId": regionId as AnyObject
+                ]
+                // Save item into array for push notifications
+                itemsArray.append(items)
+                // items json string from dictionary
+                if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                    newNotification["items"] = jsonStr
+                }
+                newNotification["read"] = false
+                notificationsArray.append(newNotification)
+            }
+            
+            PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if success {
+                    for (index, notification) in notificationsArray.enumerated() {
+                        if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                            var items = itemsArray[index]
+                            items["notificationId"] = notificationId as AnyObject
+                            // Push parameters
+                            let newSubLandParams = [
+                                "userId" : citizenId as AnyObject,
+                                "title": notificationTitle as AnyObject,
+                                "message": notificationMessage as AnyObject,
+                                "kmaItems": items as AnyObject,
+                                "appType": "Consumer" as AnyObject
+                            ]
+                            
+                            pushParams.append(newSubLandParams)
+                        }
+                    }
+                    
+                    // Send push notifications to the winners
+                    for subLandParams in pushParams {
+                        print("\nSend a push notification: \(subLandParams)")
+                        KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     Notify ministry admin about the lottery status changes
+     */
+    
+    public func notifyMinistry(citizenDepartment: KMADepartmentStruct, landPlanId: String, landPlanName: String, regionId: String, regionName: String, lotteryStatus: String) {
+        let departmentQuery = PFQuery(className: "KMADepartment")
+        departmentQuery.getObjectInBackground(withId: citizenDepartment.departmentId) { (departmentObject, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let departmentObject = departmentObject {
+                if let ministryObject = departmentObject["parent"] as? PFObject, let ministryId = ministryObject.objectId {
+                    print("Ministry found, id: \(ministryId)")
+                    // Get ministry admin
+                    let adminsQuery = PFQuery(className: "KMADepartmentEmployee")
+                    adminsQuery.whereKey("department", equalTo: ministryObject)
+                    adminsQuery.findObjectsInBackground { (adminArray, adminError) in
+                        if let adminError = adminError {
+                            print(adminError.localizedDescription)
+                        } else if let adminArray = adminArray {
+                            if adminArray.isEmpty {
+                                print("No ministry admins")
+                            } else {
+                                print("Ministry admins: \(adminArray.count)")
+                                
+                                for adminObject in adminArray {
+                                    if let admin = adminObject["employee"] as? PFUser, let adminId = admin.objectId {
+                                        print("Admin: \(adminId)")
+                                        // Title and message
+                                        let notificationTitle = lotteryStatus
+                                        let notificationMessage = "\(landPlanName) is being transferred  to status \"\(lotteryStatus.lowercased())\"."
+                                        // Prepare the notification Parse object
+                                        let newNotification = PFObject(className: "KMANotification")
+                                        newNotification["user"] = PFUser(withoutDataWithObjectId: adminId)
+                                        newNotification["title"] = notificationTitle
+                                        newNotification["message"] = notificationMessage
+                                        // Fill the items for Notification
+                                        var items = ["objectId": landPlanId as AnyObject,
+                                                     "objectType": "landPlan" as AnyObject,
+                                                     "eventType": "landPlanStatusChanged" as AnyObject,
+                                                     "landPlanName": landPlanName as AnyObject,
+                                                     "region": regionName as AnyObject,
+                                                     "regionId": regionId as AnyObject,
+                                                     "departmentId": citizenDepartment.departmentId as AnyObject,
+                                                     "departmentName": citizenDepartment.departmentName as AnyObject,
+                                                     "status": lotteryStatus as AnyObject
+                                        ]
+                                        // items json string from dictionary
+                                        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                                            newNotification["items"] = jsonStr
+                                        }
+                                        newNotification["read"] = false
+                                        // Save notification
+                                        newNotification.saveInBackground { (success, error) in
+                                            if let error = error {
+                                                print(error.localizedDescription)
+                                            } else if success, let notificationId = newNotification.objectId {
+                                                items["notificationId"] = notificationId as AnyObject
+                                                // Push parameters
+                                                let newPushParams = [
+                                                    "userId" : adminId as AnyObject,
+                                                    "title": notificationTitle as AnyObject,
+                                                    "message": notificationMessage as AnyObject,
+                                                    "kmaItems": items as AnyObject,
+                                                    "appType": "Business" as AnyObject
+                                                ]
+                                                // Send push notification
+                                                KMAUIParse.shared.sendPushNotification(cloudParams: newPushParams)
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print("Ministry not found")
+                }
+            }
+        }
+    }
+    
+    // MARK: - Start the Lottery flow
+    
+    public func startLottery(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
+        let lotteryAlert = UIAlertController(title: "Start the Lottery", message: "Are you sure you'd like to start the lottery?\n\nThis will run a random algorithm to give the Sub Land items to the Citizens.", preferredStyle: .alert)
+        lotteryAlert.view.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Start", style: .default, handler: { (action) in
+            self.startLotteryFlow(lottery: lottery) { (updatedLottery) in
+                completion(updatedLottery)
+            }
+        }))
+        
+        lotteryAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in }))
+        
+        KMAUIUtilities.shared.displayAlert(viewController: lotteryAlert)
+    }
+    
+    public func startLotteryFlow(lottery: KMAUILandPlanStruct, completion: @escaping (_ updatedLottery: KMAUILandPlanStruct)->()) {
+        var lottery = lottery
+        
+        KMAUIUtilities.shared.startLoading(title: "Processing...")
+        // Update the queue list
+        KMAUIParse.shared.getQueue(regionId: lottery.regionId) { (citizenQueue) in
+            lottery.queueArray = citizenQueue
+            lottery.queueDisplay = citizenQueue
+            lottery.queueCount = citizenQueue.count
+            lottery.setupResultArray()
+            lottery.queueLoaded = true
+            
+            if lottery.lotterySubLandArray.isEmpty {
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
+                    KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Sub Land items to assign to Citizens.") { (done) in }
+                }
+                return
+            }
+            
+            if lottery.queueArray.isEmpty {
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
+                    KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Citizens to assign the Sub Land items to.") { (done) in }
+                }
+                return
+            }
+            
+            KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+                // Get the lottery results data
+                KMAUIParse.shared.getLotteryResults(landPlan: lottery) { (planUpdated) in
+                    KMAUIUtilities.shared.stopLoadingWith { (_) in
+                        lottery = planUpdated
+                        lottery.lotteryStatus = landPlanUpdated.lotteryStatus
+                        lottery.resultLoaded = true
+                        // Return the completed lottery
+                        completion(lottery)
+                    }
+                }
+            }
         }
     }
 }
