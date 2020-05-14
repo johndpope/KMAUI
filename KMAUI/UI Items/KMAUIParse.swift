@@ -799,9 +799,7 @@ final public class KMAUIParse {
         } else {
             print("No pairs to create.")
         }
-        
-        KMAUIUtilities.shared.startLoading(title: "Processing...")
-        
+                
         // Create the array of PFObjects for KMALotteryResult
         var lotteryResults = [PFObject]()
         
@@ -916,15 +914,14 @@ final public class KMAUIParse {
                 landPlanObject["lotteryStatus"] = "Finished"
                 
                 landPlanObject.saveInBackground { (saveSuccess, saveError) in
-                    KMAUIUtilities.shared.stopLoadingWith { (done) in
-                        if let saveError = saveError {
+                    if let saveError = saveError {
+                        KMAUIUtilities.shared.stopLoadingWith { (done) in
                             print(saveError.localizedDescription)
                             KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error saving the lottery results.\n\n\(saveError.localizedDescription)") { (done) in }
-                        } else {
-                            print("Land Plan status changed to completed.")
-                            landPlan.lotteryStatus = .finished
                         }
-                        
+                    } else {
+                        print("Land Plan status changed to completed.")
+                        landPlan.lotteryStatus = .finished
                         completion(landPlan)
                     }
                 }
@@ -2105,32 +2102,34 @@ final public class KMAUIParse {
         KMAUIUtilities.shared.startLoading(title: "Processing...")
         // Update the queue list
         KMAUIParse.shared.getQueue(regionId: lottery.regionId) { (citizenQueue) in
-            KMAUIUtilities.shared.stopLoadingWith { (_) in
-                lottery.queueArray = citizenQueue
-                lottery.queueDisplay = citizenQueue
-                lottery.queueCount = citizenQueue.count
-                lottery.setupResultArray()
-                lottery.queueLoaded = true
-                
-                if lottery.lotterySubLandArray.isEmpty {
+            lottery.queueArray = citizenQueue
+            lottery.queueDisplay = citizenQueue
+            lottery.queueCount = citizenQueue.count
+            lottery.setupResultArray()
+            lottery.queueLoaded = true
+            
+            if lottery.lotterySubLandArray.isEmpty {
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
                     KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Sub Land items to assign to Citizens.") { (done) in }
-                    return
                 }
-                
-                if lottery.queueArray.isEmpty {
+                return
+            }
+            
+            if lottery.queueArray.isEmpty {
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
                     KMAUIUtilities.shared.globalAlert(title: "Warning", message: "This lottery has no Citizens to assign the Sub Land items to.") { (done) in }
-                    return
                 }
-                
-                KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
-                    // Get the lottery results data
-                    KMAUIParse.shared.getLotteryResults(landPlan: lottery) { (planUpdated) in
-                        KMAUIUtilities.shared.stopLoadingWith { (_) in
+                return
+            }
+            
+            KMAUIParse.shared.startLottery(landPlan: lottery) { (landPlanUpdated) in
+                // Get the lottery results data
+                KMAUIParse.shared.getLotteryResults(landPlan: lottery) { (planUpdated) in
+                    KMAUIUtilities.shared.stopLoadingWith { (_) in
                         lottery = planUpdated
                         lottery.lotteryStatus = landPlanUpdated.lotteryStatus
                         lottery.resultLoaded = true
                         completion(lottery)
-                        }
                     }
                 }
             }
