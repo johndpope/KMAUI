@@ -3436,7 +3436,10 @@ public struct KMAUILandPlanStruct {
     
     public func loadGeoJson(comletion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
         // landArea
-        guard let url = self.landAreaFile?.url else { return }
+        guard let url = self.landAreaFile?.url else {
+            comletion(nil)
+            return
+        }
 
         AF.request(url, method: .get).responseData(completionHandler: { result in
             if let data = result.data,
