@@ -144,11 +144,11 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
         
         // Setup data rows
-        if lottery.subLandsCount == 0 {
-            lottery.subLandsCount = lottery.servicesCount + lottery.commercialCount + lottery.saleCount + lottery.lotteryCount
-        }
+//        if lottery.subLandsCount == 0 {
+//            lottery.subLandsCount = lottery.servicesCount + lottery.commercialCount + lottery.saleCount + lottery.lotteryCount
+//        }
         
-        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")] // , KMAUIRowData(rowName: "Citizens", rowValue: "\(lottery.queueCount)")]
+        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")]
         
         // Check the segment - always no button for lotteries
         hideViewDetails()
