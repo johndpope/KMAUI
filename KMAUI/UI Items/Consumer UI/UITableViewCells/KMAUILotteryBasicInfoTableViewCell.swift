@@ -179,7 +179,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         // Stack view
         let rows = [KMAUIRowData(rowName: "Land ID", rowValue: "\(subLand.subLandId)"), KMAUIRowData(rowName: "Region", rowValue: "\(subLand.regionName)"), KMAUIRowData(rowName: "Land percent", rowValue: "\(Int(subLand.subLandPercent * 100)) %")]
         setupStackView(rows: rows)
-
+        
         // Setup buttons
         if subLand.status == "pending" {
             showViewDetails(mode: "action")
@@ -298,7 +298,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         stackViewBg.alpha = 1
         stackViewBgTop.constant = 16
     }
-
+    
     // MARK: - IBActions
     
     @IBAction func declineButtonPressed(_ sender: Any) {
