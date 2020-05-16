@@ -3441,12 +3441,12 @@ public struct KMAUILandPlanStruct {
             return
         }
         
-        loadGeoJson(url: url) { (updatedLandPlan) in
+        loadGeoJson(url: url) { (updatedLandPlan, geojsonString) in
             completion(updatedLandPlan)
         }
     }
     
-    public func loadGeoJson(url: String, completion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
+    public func loadGeoJson(url: String, completion: @escaping (_ land: KMAUILandPlanStruct?, _ geojsonString: String?) -> Void) {
         AF.request(url, method: .get).responseData(completionHandler: { result in
             if let data = result.data,
                 let landArea = String(data: data, encoding: .utf8) {
@@ -3494,9 +3494,9 @@ public struct KMAUILandPlanStruct {
                     }
                 }
                 land.prepareRules()
-                completion(land)
+                completion(land, landArea)
             } else {
-                completion(nil)
+                completion(nil, nil)
             }
         })
     }

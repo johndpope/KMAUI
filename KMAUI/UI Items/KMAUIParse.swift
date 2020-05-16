@@ -159,7 +159,6 @@ final public class KMAUIParse {
         query.includeKey("region")
         query.includeKey("responsibleDivision")
         query.includeKey("responsibleDivision.mapArea")
-        //        query.order(byAscending: "planName")
         query.order(byDescending: "updatedAt")
         
         if hasDate {
