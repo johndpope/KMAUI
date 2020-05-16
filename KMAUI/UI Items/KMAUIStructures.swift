@@ -3450,55 +3450,60 @@ public struct KMAUILandPlanStruct {
         AF.request(url, method: .get).responseData(completionHandler: { result in
             if let data = result.data,
                 let landArea = String(data: data, encoding: .utf8) {
-                var land = KMAUILandPlanStruct()
                 //                self.geojson = landArea
-                
-                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
-                
-                if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-                    let border = features[0]
-                    // coordinates
-                    if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
-                        let topLeftCoordinate = coordinates[0]
-                        let topRightCoordinate = coordinates[1]
-                        let bottomLeftCoordinate = coordinates[3]
-                        
-                        let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-                        let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-                        let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-                        
-                        let width = Double(Int(topLeft.distance(from: topRight)))
-                        let height = Double(Int(topLeft.distance(from: bottomLeft)))
-                        
-                        land.areaWidth = width
-                        land.areaHeight = height
-                    }
-                    
-                    // Sub Lands -> update to use the new `KMAUISubLandStruct`
-                    land.subLandArray = [KMAUISubLandStruct]()
-                    land.landFeatures = []
-                    
-                    for item in features {
-                        var subLandItem = KMAUISubLandStruct()
-                        subLandItem.fillFromDict(item: item)
-                        
-                        if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
-                            land.subLandArray.append(subLandItem)
-                            
-                            if subLandItem.subLandType == "Residential Lottery" {
-                                land.lotterySubLandArray.append(subLandItem)
-                            }
-                        }
-                        
-                        land.landFeatures.append(item)
-                    }
+                self.loadGeoJson(landArea: landArea) { (updatedLandPlan) in
+                    completion(updatedLandPlan, landArea)
                 }
-                land.prepareRules()
-                completion(land, landArea)
             } else {
                 completion(nil, nil)
             }
         })
+    }
+    
+    public func loadGeoJson(landArea: String, completion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
+        var land = KMAUILandPlanStruct()
+        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: landArea)
+        
+        if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
+            let border = features[0]
+            // coordinates
+            if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
+                let topLeftCoordinate = coordinates[0]
+                let topRightCoordinate = coordinates[1]
+                let bottomLeftCoordinate = coordinates[3]
+                
+                let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
+                let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
+                let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
+                
+                let width = Double(Int(topLeft.distance(from: topRight)))
+                let height = Double(Int(topLeft.distance(from: bottomLeft)))
+                
+                land.areaWidth = width
+                land.areaHeight = height
+            }
+            
+            // Sub Lands -> update to use the new `KMAUISubLandStruct`
+            land.subLandArray = [KMAUISubLandStruct]()
+            land.landFeatures = []
+            
+            for item in features {
+                var subLandItem = KMAUISubLandStruct()
+                subLandItem.fillFromDict(item: item)
+                
+                if !subLandItem.subLandType.isEmpty { // no need to save roads and other items here / empty subLand items
+                    land.subLandArray.append(subLandItem)
+                    
+                    if subLandItem.subLandType == "Residential Lottery" {
+                        land.lotterySubLandArray.append(subLandItem)
+                    }
+                }
+                
+                land.landFeatures.append(item)
+            }
+        }
+        land.prepareRules()
+        completion(land)
     }
     
     public mutating func merge(with land: KMAUILandPlanStruct) {
