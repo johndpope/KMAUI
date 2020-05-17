@@ -3554,6 +3554,10 @@ public struct KMAUILandPlanStruct {
         return nil
     }
     
+    public func allSublandComments() -> [LotterySubLandComment] {
+        return self.comment.subLandComments
+    }
+    
     public mutating func setComment(_ comment: String?, for subLandId: String) {
         if let index = self.comment.subLandComments.firstIndex(where: { $0.subLandId == subLandId }) {
             var commentObject = self.comment.subLandComments[index]
