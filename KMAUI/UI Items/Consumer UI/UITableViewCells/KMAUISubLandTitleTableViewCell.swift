@@ -55,13 +55,16 @@ public class KMAUISubLandTitleTableViewCell: UITableViewCell {
             infoLabel.text = ""
         } else {
             statusLabel.alpha = 1
-            statusLabel.text = subLand.status.lowercased().addGaps()
-            statusLabel.backgroundColor = KMAUIUtilities.shared.subLandColor(status: subLand.status)
-            // declined
-            // awaiting payment
-            // pending
-            // awaiting verification
-            // confirmed
+            
+            if subLand.status.isEmpty {
+                statusLabel.text = subLand.subLandType.addGaps()
+                statusLabel.backgroundColor = KMAUIUtilities.shared.getColor(subLandType: subLand.subLandType)
+                statusLabel.textColor = KMAUIUtilities.shared.getTextColor(subLandType: subLand.subLandType)
+            } else {
+                statusLabel.text = subLand.status.lowercased().addGaps()
+                statusLabel.backgroundColor = KMAUIUtilities.shared.subLandColor(status: subLand.status)
+                statusLabel.textColor = UIColor.white
+            }
             
             if KMAUIConstants.shared.nonLivingTypes.contains(subLand.subLandType) {
                 titleLabel.text = subLand.subLandId
