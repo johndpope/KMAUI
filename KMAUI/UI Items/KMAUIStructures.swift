@@ -93,7 +93,7 @@ public struct KMADocumentData {
     public var createdAt = Date()
     public var updatedAt = Date()
     public var status = "" // Approved / Rejected
-    public var comment = ""
+    public var comments = ""
     
     public init() {
     }
@@ -121,8 +121,8 @@ public struct KMADocumentData {
             self.status = statusValue
         }
         
-        if let commentValue = dictionary["comment"] {
-            self.comment = commentValue
+        if let commentValue = dictionary["comments"] {
+            self.comments = commentValue
         }
     }
     
@@ -185,8 +185,8 @@ public struct KMADocumentData {
             self.status = statusValue
         }
         
-        if let commentValue = document["comment"] {
-            self.comment = commentValue
+        if let commentValue = document["comments"] {
+            self.comments = commentValue
         }
     }
 }
