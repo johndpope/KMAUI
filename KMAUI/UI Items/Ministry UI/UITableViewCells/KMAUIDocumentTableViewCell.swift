@@ -17,6 +17,8 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var typeLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var typeLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var typeImageView: UIImageView!
+    @IBOutlet public weak var statusImageView: UIImageView!
+    @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var previewImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var previewImageViewRight: NSLayoutConstraint!
@@ -50,6 +52,12 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         // Type image view
         typeImageView.layer.cornerRadius = 8
         typeImageView.clipsToBounds = true
+        // Status image view
+        statusImageView.layer.cornerRadius = 9
+        statusImageView.clipsToBounds = true
+        // Status label
+        statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        statusLabel.textColor = KMAUIConstants.shared.KMAUIGreyTextColor
         // Preview image view
         previewImageView.layer.cornerRadius = 8
         previewImageView.clipsToBounds = true
@@ -147,6 +155,10 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
                 }
             }
         }
+        // Hide status view
+        statusImageView.alpha = 0
+        statusLabel.alpha = 0
+        statusLabel.text = ""
     }
     
     public func setupAttachment() {
@@ -189,5 +201,19 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         typeLabelLeft.constant = offset
         rightArrowImageViewRight.constant = offset
+        
+        // Setup status
+        statusImageView.alpha = 1
+        statusLabel.alpha = 1
+        statusLabel.text = "(\(attachment.status))"
+        
+        // Setup the correct icon
+        if attachment.status == "approved" {
+            statusImageView.image = KMAUIConstants.shared.approvedAttachmentIcon
+        } else if attachment.status == "rejected" {
+            statusImageView.image = KMAUIConstants.shared.rejectedAttachmentIcon
+        } else if attachment.status == "pending" {
+            statusImageView.image = KMAUIConstants.shared.pendingAttachmentIcon
+        }
     }
 }

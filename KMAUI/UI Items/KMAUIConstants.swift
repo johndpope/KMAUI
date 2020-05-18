@@ -153,6 +153,10 @@ public class KMAUIConstants {
     public let lotteryBackground = UIImage(named: "lotteryBackground", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let triangleIcon = UIImage(named: "triangleIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let shareIcon = UIImage(named: "shareIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    // Attachment statuses
+    public let pendingAttachmentIcon = UIImage(named: "pendingAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let approvedAttachmentIcon = UIImage(named: "approvedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let rejectedAttachmentIcon = UIImage(named: "rejectedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // String gap
     public let stringGap = "     "
