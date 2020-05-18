@@ -1027,11 +1027,11 @@ public class KMAUIUtilities {
     
     // MARK: - Download file from URL
     
-    public func downloadfile(urlString: String, fileName: String, uploadId: String, completion: @escaping (_ success: Bool,_ fileLocation: URL?) -> Void){
+    public func downloadfile(urlString: String, fileName: String, uploadId: String, hideLoading: Bool? = nil, completion: @escaping (_ success: Bool,_ fileLocation: URL?) -> Void){
         if let itemUrl = URL(string: urlString) {
             // then lets create your document folder url
             let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-
+            
             // lets create your destination file url
             let destinationUrl = documentsDirectoryURL.appendingPathComponent("\(uploadId)_\(fileName)")
             
@@ -1041,7 +1041,11 @@ public class KMAUIUtilities {
                 completion(true, destinationUrl)
             } else {
                 // Displaying the loading alert
-                KMAUIUtilities.shared.startLoading(title: "Loading...")
+                if let hideLoading = hideLoading, hideLoading {
+                    // No need to show the loading alert
+                } else {
+                    KMAUIUtilities.shared.startLoading(title: "Loading...")
+                }
                 
                 // you can use NSURLSession.sharedSession to download the data asynchronously
                 URLSession.shared.downloadTask(with: itemUrl, completionHandler: { (location, response, error) -> Void in
@@ -1050,16 +1054,29 @@ public class KMAUIUtilities {
                         // after downloading your file you need to move it to your destination url
                         try FileManager.default.moveItem(at: tempLocation, to: destinationUrl)
                         DispatchQueue.main.async {
-                            KMAUIUtilities.shared.stopLoadingWith { (loaded) in
+                            // Displaying the loading alert
+                            if let hideLoading = hideLoading, hideLoading {
+                                // No need to show the loading alert
                                 print("File moved to documents folder")
                                 completion(true, destinationUrl)
+                            } else {
+                                KMAUIUtilities.shared.stopLoadingWith { (loaded) in
+                                    print("File moved to documents folder")
+                                    completion(true, destinationUrl)
+                                }
                             }
                         }
                     } catch let error as NSError {
                         DispatchQueue.main.async {
-                            KMAUIUtilities.shared.stopLoadingWith { (loaded) in
-                                print(error.localizedDescription)
+                            // Displaying the loading alert
+                            if let hideLoading = hideLoading, hideLoading {
+                                // No need to show the loading alert
                                 completion(false, nil)
+                            } else {
+                                KMAUIUtilities.shared.stopLoadingWith { (loaded) in
+                                    print(error.localizedDescription)
+                                    completion(false, nil)
+                                }
                             }
                         }
                     }
@@ -1249,8 +1266,8 @@ public class KMAUIUtilities {
     
     // MARK: - Download image to display it with the QuickLook
     
-    public func quicklookPreview(urlString: String, fileName: String, uniqueId: String, completion: @escaping (_ previewItem: NSURL)->()) {
-        KMAUIUtilities.shared.downloadfile(urlString: urlString, fileName: fileName, uploadId: uniqueId) { (success, url) in
+    public func quicklookPreview(urlString: String, fileName: String, uniqueId: String, hideLoading: Bool? = nil, completion: @escaping (_ previewItem: NSURL)->()) {
+        KMAUIUtilities.shared.downloadfile(urlString: urlString, fileName: fileName, uploadId: uniqueId, hideLoading: hideLoading) { (success, url) in
             DispatchQueue.main.async { // Must be performed on the main thread
                 if success {
                     if let fileURL = url as NSURL? {
