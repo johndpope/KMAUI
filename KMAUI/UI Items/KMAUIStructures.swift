@@ -94,6 +94,8 @@ public struct KMADocumentData {
     public var updatedAt = Date()
     public var status = "" // Approved / Rejected
     public var comments = ""
+    // Comments array
+    public var commentsArray = [KMAUIComment]()
     
     public init() {
     }
@@ -123,6 +125,7 @@ public struct KMADocumentData {
         
         if let commentValue = dictionary["comments"] {
             self.comments = commentValue
+            self.fillComments()
         }
     }
     
@@ -187,6 +190,59 @@ public struct KMADocumentData {
         
         if let commentValue = document["comments"] {
             self.comments = commentValue
+            self.fillComments()
+        }
+    }
+    
+    public mutating func fillComments() {
+        let commentsDict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.comments)
+
+        if let commentsArray = commentsDict["comments"] as? [[String: String]] {
+            var comments = [KMAUIComment]()
+            
+            for comment in commentsArray {
+                var commentObject = KMAUIComment()
+                commentObject.fillFrom(comment: comment)
+                comments.append(commentObject)
+            }
+            
+            self.commentsArray = comments
+        }
+    }
+}
+
+// MARK: - Comment struct
+
+public struct KMAUIComment {
+    
+    public var text = ""
+    public var action = ""
+    public var createdAt = Date()
+    public var departmentId = ""
+    public var departmentName = ""
+    
+    public init() {
+    }
+    
+    public mutating func fillFrom(comment: [String: String]) {
+        if let text = comment["text"] {
+            self.text = text
+        }
+        
+        if let action = comment["action"] {
+            self.action = action
+        }
+        
+        if let createdAt = comment["createdAt"] {
+            self.createdAt = KMAUIUtilities.shared.dateFromUTCString(string: createdAt)
+        }
+        
+        if let departmentId = comment["departmentId"] {
+            self.departmentId = departmentId
+        }
+        
+        if let departmentName = comment["departmentName"] {
+            self.departmentName = departmentName
         }
     }
 }
