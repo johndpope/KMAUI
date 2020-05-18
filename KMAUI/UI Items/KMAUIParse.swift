@@ -318,7 +318,7 @@ final public class KMAUIParse {
             } else if let plans = plans {
                 guard let plan = plans.first else {
                     print("\nNo Land Plans loaded for regions.")
-                    completion(nil, "Land plan not loaded")
+                    completion(nil, "Land plan not found.")
                     return
                 }
                 
