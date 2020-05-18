@@ -115,7 +115,9 @@ public struct KMADocumentData {
             self.fileURL = fileURLValue
         }
         
-        if let statusValue = dictionary["status"] {
+        self.status = "pending"
+        
+        if let statusValue = dictionary["status"], !statusValue.isEmpty {
             self.status = statusValue
         }
         
@@ -177,7 +179,9 @@ public struct KMADocumentData {
             updatedAt = KMAUIUtilities.shared.dateFromUTCString(string: updatedAtValue)
         }
         
-        if let statusValue = document["status"] {
+        self.status = "pending"
+        
+        if let statusValue = document["status"], !statusValue.isEmpty {
             self.status = statusValue
         }
         
