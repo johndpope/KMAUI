@@ -1037,7 +1037,7 @@ public class KMAUIUtilities {
             
             // to check if it exists before downloading it
             if FileManager.default.fileExists(atPath: destinationUrl.path) {
-                debugPrint("The file already exists at path")
+//                debugPrint("The file already exists at path")
                 completion(true, destinationUrl)
             } else {
                 // Displaying the loading alert
@@ -1057,11 +1057,11 @@ public class KMAUIUtilities {
                             // Displaying the loading alert
                             if let hideLoading = hideLoading, hideLoading {
                                 // No need to show the loading alert
-                                print("File moved to documents folder")
+//                                print("File moved to documents folder")
                                 completion(true, destinationUrl)
                             } else {
                                 KMAUIUtilities.shared.stopLoadingWith { (loaded) in
-                                    print("File moved to documents folder")
+//                                    print("File moved to documents folder")
                                     completion(true, destinationUrl)
                                 }
                             }
