@@ -172,8 +172,7 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         // Setup status
         typeLabelText += " (\(attachment.status))"
-        typeLabel.text = typeLabelText
-        KMAUIUtilities.shared.highlightStatus(words: ["(\(attachment.status))"], in: typeLabelText, fontSize: 16)
+        typeLabel.attributedText = KMAUIUtilities.shared.highlightStatus(words: ["(\(attachment.status))"], in: typeLabelText, fontSize: 16)
         
         if attachment.type == "Document" {
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)            
