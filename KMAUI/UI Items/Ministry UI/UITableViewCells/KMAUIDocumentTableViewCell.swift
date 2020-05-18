@@ -177,14 +177,15 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         }
         
         if attachment.type == "Document" {
-            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
-            typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
-            typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
+            typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)            
         } else {
-            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
+//            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
-            typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+//            typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         }
+        
+        typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
+        typeImageView.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
         
         previewImageView.alpha = 0
         previewImageViewWidth.constant = 0
