@@ -45,19 +45,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToK-MQ-pQp" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="92" y="44" width="42" height="22"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ToK-MQ-pQp" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="92" y="44" width="150" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="QCV-7D-pWY"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="755" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6BN-Yb-6tL" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="142" y="44" width="100" height="22"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="22" id="07N-k8-Ck9"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -96,21 +87,19 @@
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="Jj6-68-pMy"/>
                     <constraint firstItem="Alb-e6-nOe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KBs-ou-fhl"/>
                     <constraint firstItem="uP5-ZN-5sM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="M5v-la-byp"/>
+                    <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="ToK-MQ-pQp" secondAttribute="trailing" constant="12" id="Pzo-Br-a8t"/>
                     <constraint firstItem="r66-Hw-IIu" firstAttribute="leading" secondItem="6Zh-gv-AY1" secondAttribute="trailing" constant="4" id="Qgn-cy-GWK"/>
-                    <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="6BN-Yb-6tL" secondAttribute="trailing" constant="12" id="Qyk-3t-Akm"/>
                     <constraint firstItem="l7B-s7-Hme" firstAttribute="top" secondItem="SM3-KO-Egd" secondAttribute="bottom" constant="-15" id="YtH-Zi-mxo"/>
                     <constraint firstItem="l7B-s7-Hme" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="-15" id="ae6-Ac-rcG"/>
                     <constraint firstItem="6Zh-gv-AY1" firstAttribute="leading" secondItem="uP5-ZN-5sM" secondAttribute="trailing" constant="12" id="cUy-XP-jGI"/>
                     <constraint firstItem="SM3-KO-Egd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="cwO-P1-9Hc"/>
                     <constraint firstAttribute="trailing" secondItem="Alb-e6-nOe" secondAttribute="trailing" id="efY-T2-hVp"/>
                     <constraint firstItem="Alb-e6-nOe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="eid-9c-zeO"/>
-                    <constraint firstItem="6BN-Yb-6tL" firstAttribute="centerY" secondItem="ToK-MQ-pQp" secondAttribute="centerY" id="gPp-CT-Lvl"/>
                     <constraint firstAttribute="bottom" secondItem="S3o-d4-f95" secondAttribute="bottom" id="lFg-5P-aZm"/>
                     <constraint firstItem="S3o-d4-f95" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="lct-yn-ipL"/>
                     <constraint firstAttribute="trailing" secondItem="S3o-d4-f95" secondAttribute="trailing" constant="30" id="mNB-F1-EdA"/>
                     <constraint firstAttribute="bottom" secondItem="Alb-e6-nOe" secondAttribute="bottom" id="mcc-JR-oUK"/>
                     <constraint firstItem="ToK-MQ-pQp" firstAttribute="leading" secondItem="SM3-KO-Egd" secondAttribute="trailing" constant="12" id="o2y-IY-BET"/>
-                    <constraint firstItem="6BN-Yb-6tL" firstAttribute="leading" secondItem="ToK-MQ-pQp" secondAttribute="trailing" constant="8" id="xLp-09-BCk"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
@@ -126,7 +115,6 @@
                 <outlet property="rightArrowImageView" destination="r66-Hw-IIu" id="pKi-KN-hzE"/>
                 <outlet property="rightArrowImageViewRight" destination="0yo-kI-WoY" id="2Ub-lp-hCU"/>
                 <outlet property="statusImageView" destination="l7B-s7-Hme" id="rbo-5r-hZz"/>
-                <outlet property="statusLabel" destination="6BN-Yb-6tL" id="FBV-ck-bD0"/>
                 <outlet property="typeImageView" destination="SM3-KO-Egd" id="uN0-eN-FaN"/>
                 <outlet property="typeLabel" destination="ToK-MQ-pQp" id="VtF-e3-ZHA"/>
                 <outlet property="typeLabelLeft" destination="cwO-P1-9Hc" id="Qqy-by-xid"/>

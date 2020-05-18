@@ -18,7 +18,6 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var typeLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var typeImageView: UIImageView!
     @IBOutlet public weak var statusImageView: UIImageView!
-    @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var previewImageView: UIImageView!
     @IBOutlet public weak var previewImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var previewImageViewRight: NSLayoutConstraint!
@@ -55,9 +54,6 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         // Status image view
         statusImageView.layer.cornerRadius = 9
         statusImageView.clipsToBounds = true
-        // Status label
-        statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        statusLabel.textColor = KMAUIConstants.shared.KMAUIGreyTextColor
         // Preview image view
         previewImageView.layer.cornerRadius = 8
         previewImageView.clipsToBounds = true
@@ -157,13 +153,11 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         }
         // Hide status view
         statusImageView.alpha = 0
-        statusLabel.alpha = 0
-        statusLabel.text = ""
     }
     
     public func setupAttachment() {
         nameLabel.text = attachment.name
-        typeLabel.text = attachment.type
+        var typeLabelText = attachment.type
         
         // Remove the extension from the displayed file name
         if !attachment.fileExtension.isEmpty {
@@ -171,17 +165,20 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         }
 
         if attachment.type == "Document", !attachment.fileExtension.isEmpty {
-            typeLabel.text = "\(attachment.fileExtension) file"
+            typeLabelText = "\(attachment.fileExtension) file"
         } else if attachment.type == "Image" {
-            typeLabel.text = "Photo"
+            typeLabelText = "Photo"
         }
+        
+        // Setup status
+        typeLabelText += " (\(attachment.status))"
+        typeLabel.text = typeLabelText
+        KMAUIUtilities.shared.highlightStatus(words: ["(\(attachment.status))"], in: typeLabelText, fontSize: 16)
         
         if attachment.type == "Document" {
             typeImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)            
         } else {
-//            typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor.withAlphaComponent(0.1)
             typeImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
-//            typeImageView.tintColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         }
         
         typeImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.1)
@@ -202,11 +199,6 @@ public class KMAUIDocumentTableViewCell: UITableViewCell {
         
         typeLabelLeft.constant = offset
         rightArrowImageViewRight.constant = offset
-        
-        // Setup status
-        statusImageView.alpha = 1
-        statusLabel.alpha = 1
-        statusLabel.text = "(\(attachment.status))"
         
         // Setup the correct icon
         if attachment.status == "approved" {

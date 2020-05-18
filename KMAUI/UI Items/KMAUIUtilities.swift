@@ -592,6 +592,32 @@ public class KMAUIUtilities {
         return attributedString
     }
     
+    public func highlightStatus(words: [String], in str: String, fontSize: CGFloat) -> NSAttributedString {
+        let attributedString = NSMutableAttributedString(string: str)
+        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize), NSAttributedString.Key.foregroundColor: KMAUIConstants.shared.KMAUIGreyTextColor] as [NSAttributedString.Key : Any]
+        
+        let nsstr = str as NSString
+        var searchRange = NSMakeRange(0, nsstr.length)
+        
+        for word in words {
+            while true {
+                let foundRange = nsstr.range(of: word, options: [], range: searchRange)
+
+                if foundRange.location == NSNotFound {
+                    break
+                }
+                
+                attributedString.setAttributes(highlightAttributes, range: foundRange)
+                
+                let newLocation = foundRange.location + foundRange.length
+                let newLength = nsstr.length - newLocation
+                searchRange = NSMakeRange(newLocation, newLength)
+            }
+        }
+        
+        return attributedString
+    }
+    
     /**
      Check if range contains an index
      */
