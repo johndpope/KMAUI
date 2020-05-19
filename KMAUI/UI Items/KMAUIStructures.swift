@@ -1992,7 +1992,17 @@ public struct KMADepartmentStruct {
     public var departmentAbout = ""
     public var departmentLogo = ""
     public var mapArea: KMAMapAreaStruct?
-    
+    // New variables
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var departmentDescription = ""
+    public var departmentLevel = 0
+    public var type = ""
+    public var ministryLevel = 0
+    public var ministryType = ""
+    public var location = CLLocationCoordinate2D()
+
     public init() {
     }
     
@@ -2020,6 +2030,44 @@ public struct KMADepartmentStruct {
                 var area = KMAMapAreaStruct()
                 area.fillFrom(object: mapArea)
                 self.mapArea = area
+            }
+            
+            // New variables
+            
+            if let objectId = departmentObject.objectId {
+                self.objectId = objectId
+            }
+            
+            if let createdAt = departmentObject.createdAt {
+                self.createdAt = createdAt
+            }
+            
+            if let updatedAt = departmentObject.updatedAt {
+                self.updatedAt = updatedAt
+            }
+                        
+            if let departmentDescription = departmentObject["departmentDescription"] as? String {
+                self.departmentDescription = departmentDescription
+            }
+            
+            if let departmentLevel = departmentObject["departmentLevel"] as? Int {
+                self.departmentLevel = departmentLevel
+            }
+            
+            if let type = departmentObject["type"] as? String {
+                self.type = type
+            }
+            
+            if let ministryLevel = departmentObject["ministryLevel"] as? Int {
+                self.ministryLevel = ministryLevel
+            }
+            
+            if let ministryType = departmentObject["ministryType"] as? String {
+                self.ministryType = ministryType
+            }
+            
+            if let location = departmentObject["location"] as? PFGeoPoint {
+                self.location = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             }
         }
     }
@@ -3870,3 +3918,70 @@ public struct KMANotificationStruct {
     }
 }
 
+// MARK: - KMALandCaseStruct
+
+public struct KMAUILandCaseStruct {
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var caseNumber = ""
+    public var citizen = KMAPerson()
+    public var judge = KMAPerson()
+    public var date = Date()
+    public var subLand = KMAUISubLandStruct()
+    public var courtStatus = ""
+    public var department = KMADepartmentStruct()
+    
+    public init() {
+    }
+    
+    public mutating func fillFromParse(object: PFObject) {
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        
+        if let caseNumber = object["caseNumber"] as? String {
+            self.caseNumber = caseNumber
+        }
+        
+        if let citizen = object["citizen"] as? PFUser {
+            var citizenObject = KMAPerson()
+            citizenObject.fillFrom(person: citizen)
+            self.citizen = citizenObject
+        }
+        
+        if let judge = object["judge"] as? PFUser {
+            var judgeObject = KMAPerson()
+            judgeObject.fillFrom(person: judge)
+            self.judge = judgeObject
+        }
+        
+        if let date = object["date"] as? Date {
+            self.date = date
+        }
+        
+        if let subLand = object["subLand"] as? PFObject {
+            var subLandObject = KMAUISubLandStruct()
+            subLandObject.fillFromParse(item: subLand)
+            self.subLand = subLandObject
+        }
+        
+        if let courtStatus = object["courtStatus"] as? String {
+            self.courtStatus = courtStatus
+        }
+        
+        if let department = object["department"] as? PFObject {
+            var departmentObject = KMADepartmentStruct()
+            departmentObject.fillFromParse(departmentObject: department)
+            self.department = departmentObject
+        }
+    }
+}
