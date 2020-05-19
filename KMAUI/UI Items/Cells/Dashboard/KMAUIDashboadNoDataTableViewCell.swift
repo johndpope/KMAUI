@@ -174,6 +174,14 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the notifications for your Department..."
                 action = ""
             }
+        } else if type == "landCases" {
+            if isLoaded {
+                info = "No land cases available."
+                action = ""
+            } else {
+                info = "We're preparing the land cases list..."
+                action = ""
+            }
         }
         
         infoLabel.text = info
