@@ -3994,6 +3994,9 @@ public struct KMAUILandCaseStruct {
         if let titleNumber = object["titleNumber"] as? String {
             self.titleNumber = titleNumber
         }
+        
+        // Prepare rows for details
+        prepareRows()
     }
     
     public mutating func prepareRows() {
