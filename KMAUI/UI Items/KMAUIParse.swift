@@ -2136,5 +2136,38 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Get Land Cases
+    
+    public func getLandCases(completion: @escaping (_ landCasesArray: [KMAUILandCaseStruct])->()) {
+        // Land cases array
+        var landCases = [KMAUILandCaseStruct]()
+        // Get details
+        let query = PFQuery(className: "KMALandCase")
+        query.order(byDescending: "updatedAt")
+        query.includeKey("citizen.homeAddress")
+        query.includeKey("citizen.homeAddress.building")
+        query.includeKey("citizen")
+        query.includeKey("judge")
+        query.includeKey("judge.homeAddress")
+        query.includeKey("judge.homeAddress.building")
+        query.includeKey("subLand")
+        query.includeKey("subLand.landPlan")
+        query.includeKey("department")
+        query.includeKey("department.mapArea")
+        query.findObjectsInBackground { (landCasesArray, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let landCasesArray = landCasesArray {
+                for landCaseObject in landCasesArray {
+                    var landCase = KMAUILandCaseStruct()
+                    landCase.fillFromParse(object: landCaseObject)
+                    landCases.append(landCase)
+                }
+            }
+            
+            completion(landCases)
+        }
+    }
 }
 
