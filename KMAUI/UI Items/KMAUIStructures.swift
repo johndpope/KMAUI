@@ -3931,6 +3931,8 @@ public struct KMAUILandCaseStruct {
     public var subLand = KMAUISubLandStruct()
     public var courtStatus = ""
     public var department = KMADepartmentStruct()
+    public var courtName = ""
+    public var titleNumber = ""
     
     public init() {
     }
@@ -3978,10 +3980,18 @@ public struct KMAUILandCaseStruct {
             self.courtStatus = courtStatus
         }
         
+        if let courtName = object["courtName"] as? String {
+            self.courtName = courtName
+        }
+        
         if let department = object["department"] as? PFObject {
             var departmentObject = KMADepartmentStruct()
             departmentObject.fillFromParse(departmentObject: department)
             self.department = departmentObject
+        }
+        
+        if let titleNumber = object["titleNumber"] as? String {
+            self.titleNumber = titleNumber
         }
     }
 }
