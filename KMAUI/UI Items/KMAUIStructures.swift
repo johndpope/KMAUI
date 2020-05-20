@@ -3933,6 +3933,7 @@ public struct KMAUILandCaseStruct {
     public var department = KMADepartmentStruct()
     public var courtName = ""
     public var titleNumber = ""
+    public var rows = [KMAUIRowData]()
     
     public init() {
     }
