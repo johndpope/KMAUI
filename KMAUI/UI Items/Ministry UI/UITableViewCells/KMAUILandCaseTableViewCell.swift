@@ -48,7 +48,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
         // bgView shadow
-        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 8)
         bgView.layer.shadowRadius = 8
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
