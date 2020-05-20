@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILandCaseTableViewCell" rowHeight="131" id="KGk-i7-Jjw" customClass="KMAUILandCaseTableViewCell" customModule="Business" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-TQ-aTf" customClass="KMAUIRoundedCornersView" customModule="Business" customModuleProvider="target">
+                        <rect key="frame" x="20" y="0.0" width="280" height="123"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-hD-pT4" customClass="KMAUIBoldTextLabel" customModule="Business" customModuleProvider="target">
+                                <rect key="frame" x="16" y="57" width="210" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="BKp-HM-wq3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="owe-ce-Hua">
+                                <rect key="frame" x="242" y="14" width="22" height="22"/>
+                                <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
+                                <color key="tintColor" name="KMAUIGreyLineColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="7ya-wr-grS"/>
+                                    <constraint firstAttribute="height" constant="22" id="bd1-Vy-a8C"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pVP-vh-Y2W">
+                                <rect key="frame" x="16" y="22" width="7" height="7"/>
+                                <color key="backgroundColor" name="KMAUIGreenProgressColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="7" id="7tX-cn-2QH"/>
+                                    <constraint firstAttribute="height" constant="7" id="HL7-h8-u4G"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVE-ss-YFn" customClass="KMAUIRegularTextLabel" customModule="Business" customModuleProvider="target">
+                                <rect key="frame" x="29" y="14" width="42" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="dSe-yy-QkT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Dx-Hy-Hf4">
+                                <rect key="frame" x="16" y="94" width="248" height="21"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WVE-ss-YFn" firstAttribute="leading" secondItem="pVP-vh-Y2W" secondAttribute="trailing" constant="6" id="7FF-2D-nlI"/>
+                            <constraint firstItem="pVP-vh-Y2W" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="OMv-Zr-PsE"/>
+                            <constraint firstItem="WVE-ss-YFn" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="SsP-tq-hje"/>
+                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="Wdc-49-QP1"/>
+                            <constraint firstAttribute="bottom" secondItem="0Dx-Hy-Hf4" secondAttribute="bottom" constant="8" id="aQw-BW-FdP"/>
+                            <constraint firstItem="pVP-vh-Y2W" firstAttribute="centerY" secondItem="WVE-ss-YFn" secondAttribute="centerY" id="fjm-M0-Bhn"/>
+                            <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="gdd-bB-CGK"/>
+                            <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="16" id="iXc-zf-Uou"/>
+                            <constraint firstItem="owe-ce-Hua" firstAttribute="leading" secondItem="3Fv-hD-pT4" secondAttribute="trailing" constant="16" id="pXo-1F-oW7"/>
+                            <constraint firstAttribute="trailing" secondItem="0Dx-Hy-Hf4" secondAttribute="trailing" constant="16" id="s1S-FS-SZl"/>
+                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="top" secondItem="WVE-ss-YFn" secondAttribute="bottom" constant="20" id="sPb-P8-Fas"/>
+                            <constraint firstAttribute="trailing" secondItem="owe-ce-Hua" secondAttribute="trailing" constant="16" id="x7G-Y0-YBv"/>
+                            <constraint firstItem="owe-ce-Hua" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="xuX-tg-Tgc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="cBQ-TQ-aTf" secondAttribute="bottom" constant="8" id="1b0-dr-lIw"/>
+                    <constraint firstItem="cBQ-TQ-aTf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="CVB-PH-eS5"/>
+                    <constraint firstAttribute="trailing" secondItem="cBQ-TQ-aTf" secondAttribute="trailing" constant="20" id="DTd-XF-1F2"/>
+                    <constraint firstItem="cBQ-TQ-aTf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="OT3-w4-Y86"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="KMAUIMainBgColor"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bgView" destination="cBQ-TQ-aTf" id="4e4-4R-cfG"/>
+                <outlet property="bgViewBottom" destination="1b0-dr-lIw" id="qLn-LX-T3A"/>
+                <outlet property="bgViewLeft" destination="OT3-w4-Y86" id="Zxz-MV-BRL"/>
+                <outlet property="bgViewRight" destination="DTd-XF-1F2" id="XYM-jT-X7K"/>
+                <outlet property="bgViewTop" destination="CVB-PH-eS5" id="IiO-C4-FgO"/>
+                <outlet property="isActiveImageView" destination="owe-ce-Hua" id="SxY-Yh-Ict"/>
+                <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>
+                <outlet property="lotteryNameLabelLeft" destination="Wdc-49-QP1" id="GIW-l3-s5a"/>
+                <outlet property="rowsStackView" destination="0Dx-Hy-Hf4" id="e7X-Oa-2t0"/>
+                <outlet property="statusLabel" destination="WVE-ss-YFn" id="S08-H8-o0D"/>
+                <outlet property="statusLabelBottom" destination="sPb-P8-Fas" id="VU1-GZ-Bcx"/>
+                <outlet property="statusLabelHeight" destination="dSe-yy-QkT" id="nOL-de-ufu"/>
+                <outlet property="statusView" destination="pVP-vh-Y2W" id="bVe-4V-LSa"/>
+                <outlet property="statusViewRight" destination="7FF-2D-nlI" id="zFt-HE-Doq"/>
+                <outlet property="statusViewWidth" destination="7tX-cn-2QH" id="3lF-OT-jyi"/>
+            </connections>
+            <point key="canvasLocation" x="-4.3478260869565224" y="20.424107142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="disclosureArrow" width="7" height="12"/>
+        <namedColor name="KMAUIGreenProgressColor">
+            <color red="0.0" green="0.74509803921568629" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyLineColor">
+            <color red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIMainBgColor">
+            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
