@@ -3985,3 +3985,45 @@ public struct KMAUILandCaseStruct {
         }
     }
 }
+
+// MARK: - KMAUIMinistryDecisionStruct
+
+public struct KMAUIMinistryDecisionStruct {
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var ministryStatus = ""
+    public var date = Date()
+    public var ministry = KMADepartmentStruct()
+    
+    public init() {
+    }
+    
+    public mutating func fillFromParse(object: PFObject) {
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        
+        if let ministry = object["ministry"] as? PFObject {
+            var ministryObject = KMADepartmentStruct()
+            ministryObject.fillFromParse(departmentObject: ministry)
+            self.ministry = ministryObject
+        }
+        
+        if let ministryStatus = object["ministryStatus"] as? String {
+            self.ministryStatus = ministryStatus
+        }
+        
+        if let date = object["date"] as? Date {
+            self.date = date
+        }
+    }
+}
