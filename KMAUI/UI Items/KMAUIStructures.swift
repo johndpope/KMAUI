@@ -3995,6 +3995,24 @@ public struct KMAUILandCaseStruct {
             self.titleNumber = titleNumber
         }
     }
+    
+    public mutating func prepareRows() {
+        rows = [KMAUIRowData]()
+        
+        rows.append(KMAUIRowData(rowName: "Title number", rowValue: titleNumber))
+        rows.append(KMAUIRowData(rowName: "Case number", rowValue: caseNumber))
+        rows.append(KMAUIRowData(rowName: "Date", rowValue: KMAUIUtilities.shared.formatStringShort(date: date)))
+        
+        rows.append(KMAUIRowData(rowName: "Sub land", rowValue: "Sub land " + subLand.subLandId))
+        rows.append(KMAUIRowData(rowName: "Total area", rowValue: "\(subLand.subLandSquare) sq. m."))
+        rows.append(KMAUIRowData(rowName: "Surpass type", rowValue: subLand.subLandType))
+        rows.append(KMAUIRowData(rowName: "Region", rowValue: subLand.regionName + " region"))
+        
+        rows.append(KMAUIRowData(rowName: "Court", rowValue: courtName))
+        rows.append(KMAUIRowData(rowName: "Judge", rowValue: judge.fullName))
+        
+        rows.append(KMAUIRowData(rowName: "Citizen", rowValue: citizen.fullName))
+    }
 }
 
 // MARK: - KMAUIMinistryDecisionStruct
