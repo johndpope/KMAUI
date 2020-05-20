@@ -177,6 +177,7 @@ public class KMAUIConstants {
     public let chartsArray = ["age", "gender", "city", "property", "uploads"]
     public let nonLivingTypes = ["Services", "Parks", "Commercial"]
     public let acceptedStatuses = ["awaiting payment", "awaiting verification", "confirmed"]
+    public let landCaseTitles = ["The court", "Admin authorities", "Municipality"]
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
