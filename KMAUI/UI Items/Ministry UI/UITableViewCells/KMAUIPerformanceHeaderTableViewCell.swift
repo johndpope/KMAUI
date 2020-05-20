@@ -12,6 +12,7 @@ import MKRingProgressView
 public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var bgViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var bgViewRight: NSLayoutConstraint!
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!

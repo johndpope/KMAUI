@@ -277,6 +277,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="Wke-8G-edw" id="u68-Z1-Kk3"/>
+                <outlet property="bgViewBottom" destination="ct2-HM-qSX" id="iPH-PB-EUv"/>
                 <outlet property="bgViewLeft" destination="PCQ-xX-9je" id="LcK-jR-8Ch"/>
                 <outlet property="bgViewRight" destination="SlA-F0-538" id="tp8-Sk-nFR"/>
                 <outlet property="bgViewTop" destination="pGl-XW-F6X" id="Mlv-4H-Wq1"/>
