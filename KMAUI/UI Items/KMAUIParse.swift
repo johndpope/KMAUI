@@ -2172,7 +2172,7 @@ final public class KMAUIParse {
     
     // MARK: - Get decisions for Land Case
     
-    func getMinistryDecisions(landCaseId: String, completion: @escaping (_ decisionsArray: [KMAUIMinistryDecisionStruct])->()) {
+    public func getMinistryDecisions(landCaseId: String, completion: @escaping (_ decisionsArray: [KMAUIMinistryDecisionStruct])->()) {
         var ministryDecisions = [KMAUIMinistryDecisionStruct]()
         let query = PFQuery(className: "KMALandCaseMinistryDecision")
         query.includeKey("ministry")
