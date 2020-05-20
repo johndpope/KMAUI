@@ -51,7 +51,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         bgView.layer.shadowOffset = CGSize(width: 0, height: 8)
         bgView.layer.shadowRadius = 8
         bgView.layer.cornerRadius = 8
-        bgView.clipsToBounds = true
         
         // Fonts
         lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
