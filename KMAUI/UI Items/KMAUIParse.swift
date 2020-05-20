@@ -2188,7 +2188,6 @@ final public class KMAUIParse {
                     ministryDecision.fillFromParse(object: decision)
                     ministryDecisions.append(ministryDecision)
                 }
-                print("Decisions for land case \(landCaseId): \(ministryDecisions.count)")
             }
             completion(ministryDecisions)
         }
