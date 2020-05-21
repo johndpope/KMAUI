@@ -48,13 +48,13 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
         // bgView shadow
-        bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        bgView.layer.shadowRadius = 4
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        bgView.layer.shadowRadius = 0
         bgView.layer.cornerRadius = 8
         bgViewBottom.constant = 8
         
         // Fonts
-        lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        lotteryNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // isActive imageView
         isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
@@ -182,7 +182,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
-            rowValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+            rowValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)

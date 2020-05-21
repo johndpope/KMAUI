@@ -22,7 +22,7 @@
                         <rect key="frame" x="20" y="0.0" width="280" height="123"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-hD-pT4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="16" y="57" width="210" height="21"/>
+                                <rect key="frame" x="16" y="49" width="210" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="BKp-HM-wq3"/>
                                 </constraints>
@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Dx-Hy-Hf4">
-                                <rect key="frame" x="16" y="94" width="248" height="21"/>
+                                <rect key="frame" x="16" y="90" width="248" height="25"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -69,10 +69,10 @@
                             <constraint firstAttribute="bottom" secondItem="0Dx-Hy-Hf4" secondAttribute="bottom" constant="8" id="aQw-BW-FdP"/>
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="centerY" secondItem="WVE-ss-YFn" secondAttribute="centerY" id="fjm-M0-Bhn"/>
                             <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="gdd-bB-CGK"/>
-                            <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="16" id="iXc-zf-Uou"/>
+                            <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="20" id="iXc-zf-Uou"/>
                             <constraint firstItem="owe-ce-Hua" firstAttribute="leading" secondItem="3Fv-hD-pT4" secondAttribute="trailing" constant="16" id="pXo-1F-oW7"/>
                             <constraint firstAttribute="trailing" secondItem="0Dx-Hy-Hf4" secondAttribute="trailing" constant="16" id="s1S-FS-SZl"/>
-                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="top" secondItem="WVE-ss-YFn" secondAttribute="bottom" constant="20" id="sPb-P8-Fas"/>
+                            <constraint firstItem="3Fv-hD-pT4" firstAttribute="top" secondItem="WVE-ss-YFn" secondAttribute="bottom" constant="12" id="sPb-P8-Fas"/>
                             <constraint firstAttribute="trailing" secondItem="owe-ce-Hua" secondAttribute="trailing" constant="16" id="x7G-Y0-YBv"/>
                             <constraint firstItem="owe-ce-Hua" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="xuX-tg-Tgc"/>
                         </constraints>
