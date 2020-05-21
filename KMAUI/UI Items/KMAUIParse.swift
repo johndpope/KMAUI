@@ -1598,8 +1598,8 @@ final public class KMAUIParse {
             notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\"."
         }
         
-        if let comment = comment {
-            notificationMessage += "\nMinistrry comment: \(comment)"
+        if let comment = comment, !comment.isEmpty {
+            notificationMessage += "\nMinistry comment: \(comment)"
         }
         
         let responsibleDivision = landPlan.responsibleDivision
