@@ -277,21 +277,24 @@ final public class KMAUIParse {
                     for plan in plans {
                         var landPlanObject = KMAUILandPlanStruct()
                         landPlanObject.fillFromParse(plan: plan)
-                        // region id
-                        if let region = plan["region"] as? PFObject, let regionId = region.objectId {
-                            // Region id
-                            landPlanObject.regionId = regionId
-                            // Arrays of Plan Land for regions
-                            for (index, item) in items.enumerated() {
-                                if item.objectId == regionId {
-                                    var itemObject = item
-                                    var landPlans = itemObject.landPlans
-                                    landPlanObject.queueCount = item.lotteryMembersCount
-                                    landPlans.append(landPlanObject)
-                                    itemObject.landPlans = landPlans
-                                    items[index] = itemObject
-                                    
-                                    break
+                        // Check if isDeleted
+                        if !landPlanObject.isDeleted {
+                            // region id
+                            if let region = plan["region"] as? PFObject, let regionId = region.objectId {
+                                // Region id
+                                landPlanObject.regionId = regionId
+                                // Arrays of Plan Land for regions
+                                for (index, item) in items.enumerated() {
+                                    if item.objectId == regionId {
+                                        var itemObject = item
+                                        var landPlans = itemObject.landPlans
+                                        landPlanObject.queueCount = item.lotteryMembersCount
+                                        landPlans.append(landPlanObject)
+                                        itemObject.landPlans = landPlans
+                                        items[index] = itemObject
+                                        
+                                        break
+                                    }
                                 }
                             }
                         }

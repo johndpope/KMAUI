@@ -2748,6 +2748,7 @@ public struct KMAUILandPlanStruct {
     public var landAreaFile: PFFileObject?
     
     public var isEmpty: Bool = true
+    public var isDeleted = false
     
     public init() {}
     
@@ -3540,6 +3541,10 @@ public struct KMAUILandPlanStruct {
         if let lotteryCount = plan["lotteryCount"] as? Int {
             self.lotteryCount = lotteryCount
         }
+        // isDeleted
+        if let isDeleted = plan["isDeleted"] as? Bool {
+            self.isDeleted = isDeleted
+        }
     }
     
     public func loadGeoJson(completion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
@@ -3622,33 +3627,6 @@ public struct KMAUILandPlanStruct {
         self.lotterySubLandArray = land.lotterySubLandArray
         self.prepareRules()
     }
-    
-//    mutating public func setDimensions() {
-//        // landArea
-//        if !geojson.isEmpty {
-//            let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: self.geojson)
-//
-//            if let features = dict["features"] as? [[String: Any]], !features.isEmpty {
-//                let border = features[0]
-//                // coordinates
-//                if let geometry = border["geometry"] as? [String: Any], let coordinates = geometry["coordinates"] as? [[Double]], coordinates.count >= 5 {
-//                    let topLeftCoordinate = coordinates[0]
-//                    let topRightCoordinate = coordinates[1]
-//                    let bottomLeftCoordinate = coordinates[3]
-//
-//                    let topLeft = CLLocation(latitude: topLeftCoordinate[0], longitude: topLeftCoordinate[1])
-//                    let topRight = CLLocation(latitude: topRightCoordinate[0], longitude: topRightCoordinate[1])
-//                    let bottomLeft = CLLocation(latitude: bottomLeftCoordinate[0], longitude: bottomLeftCoordinate[1])
-//
-//                    let width = Double(Int(topLeft.distance(from: topRight)))
-//                    let height = Double(Int(topLeft.distance(from: bottomLeft)))
-//
-//                    self.areaWidth = width
-//                    self.areaHeight = height
-//                }
-//            }
-//        }
-//    }
     
     public func mainComment() -> String? {
         return self.comment.comment
