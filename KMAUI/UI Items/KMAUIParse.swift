@@ -1614,6 +1614,8 @@ final public class KMAUIParse {
             notificationMessage = "\(landPlan.landName) is being transferred  to status \"rejected\"."
         } else if status == "approved" {
             notificationMessage = "\(landPlan.landName) is being transferred  to status \"approved to start\"."
+        } else if status == "deleted" {
+            notificationMessage = "\(landPlan.landName) is being transferred  to status \"deleted\"."
         }
         
         if let comment = comment, !comment.isEmpty {
