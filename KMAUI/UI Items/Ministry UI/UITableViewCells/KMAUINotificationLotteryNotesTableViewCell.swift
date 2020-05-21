@@ -115,7 +115,7 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
         notesLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         
         // Notes text view
-        notesTextView.text = "Notes not included."
+        notesTextView.text = KMAUIConstants.shared.noNotesText
         notesTextView.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         notesTextView.backgroundColor = UIColor.clear
         notesTextView.textColor = KMAUIConstants.shared.KMAUITextColor
@@ -154,7 +154,7 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
         infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: [landPlan.landName], in: "Please, check all the information on this lottery \(landPlan.landName) and review the current status.", fontSize: infoLabel.font.pointSize)
         
         // Notes
-        if let comment = landPlan.comment.comment {
+        if let comment = landPlan.comment.comment, !comment.isEmpty {
             notesTextView.text = comment
             notesTextView.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         }

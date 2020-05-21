@@ -179,6 +179,8 @@ public class KMAUIConstants {
     public let acceptedStatuses = ["awaiting payment", "awaiting verification", "confirmed"]
     public let landCaseTitles = ["The court", "Admin authorities", "Municipality"]
     
+    public let noNotesText = "Notes not included."
+    
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
     
