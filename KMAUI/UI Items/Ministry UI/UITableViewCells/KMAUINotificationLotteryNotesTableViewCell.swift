@@ -137,6 +137,49 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if landPlan.isDeleted {
+            // Deleted mode
+            setupDeletedMode()
+        } else {
+            // Notes mode
+            setupNotesView()
+        }
+    }
+    
+    public func setupDeletedMode() {
+        // Title label
+        titleLabel.text = "Lottery deleted"
+        
+        // Lottery name
+        citizenNameLabel.text = landPlan.landName
+        
+        // Lottery region
+        citizenIdLabel.text = landPlan.regionName + " region"
+        
+        // Diagram image
+        profileImageView.layer.cornerRadius = 8
+        profileImageView.tintColor = UIColor.white
+        profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+        profileImageView.image = KMAUIConstants.shared.headerLotteryIcon.withRenderingMode(.alwaysTemplate)
+        
+        // Info label
+        infoLabel.text = "This lottery \(landPlan.landName) is deleted."
+        
+        actionButton.alpha = 0
+        statusLabel.alpha = 0
+        
+        notesView.alpha = 0
+        notesView.backgroundColor = UIColor.red
+        notesTextView.text = ""
+        
+        notesViewTop.constant = -44
+        notesViewBottom.constant = -32
+        
+        divideLineView.alpha = 0
+        arrowImageView.alpha = 0
+    }
+    
+    public func setupNotesView() {
         // Title label
         titleLabel.text = "Lottery \(landPlan.lotteryStatus.rawValue.lowercased())"
         
@@ -166,6 +209,8 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
         notesTextView.alpha = 1
         notesViewTop.constant = 44
         notesViewBottom.constant = 16
+        divideLineView.alpha = 1
+        arrowImageView.alpha = 1
         
         // No action performed
         if userType == "ministry" {
@@ -199,11 +244,13 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction public func citizenButtonPressed(_ sender: Any) {
-        landPlanCallback?(true)
-        citizenView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
-        // Change the selection color back
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            self.citizenView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+        if !landPlan.isDeleted {
+            landPlanCallback?(true)
+            citizenView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
+            // Change the selection color back
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                self.citizenView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            }
         }
     }
     
