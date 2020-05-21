@@ -243,7 +243,6 @@ final public class KMAUIParse {
         }
         
         let query = PFQuery(className: "KMALandPlan")
-        //        query.order(byAscending: "planName")
         query.order(byDescending: "updatedAt")
         query.whereKey("region", containedIn: parseItems)
         if let objectId = responsibleDivisionId {
@@ -298,6 +297,22 @@ final public class KMAUIParse {
                         }
                     }
                 }
+                                
+                // Order regions to have regions with lotteries displayed on the top
+                var regionsWithLotteries = [KMAMapAreaStruct]()
+                var regionsEmpty = [KMAMapAreaStruct]()
+                
+                for region in items {
+                    if region.landPlans.isEmpty {
+                        regionsEmpty.append(region)
+                    } else {
+                        regionsWithLotteries.append(region)
+                    }
+                }
+                
+                items = [KMAMapAreaStruct]()
+                items.append(contentsOf: regionsWithLotteries)
+                items.append(contentsOf: regionsEmpty)
                 
                 completion(items)
             }
