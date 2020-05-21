@@ -27,6 +27,8 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
     @IBOutlet public weak var notesView: UIView!
     @IBOutlet public weak var notesLabel: UILabel!
     @IBOutlet public weak var notesTextView: UITextView!
+    @IBOutlet public weak var notesViewBottom: NSLayoutConstraint!
+    @IBOutlet public weak var notesViewTop: NSLayoutConstraint!
     
     // MARK: - Variables
     public var userType = ""
@@ -157,7 +159,13 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
         if let comment = landPlan.comment.comment, !comment.isEmpty {
             notesTextView.text = comment
             notesTextView.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        } else {
+            notesTextView.text = KMAUIConstants.shared.noNotesText
         }
+        
+        notesTextView.alpha = 1
+        notesViewTop.constant = 44
+        notesViewBottom.constant = 16
         
         // No action performed
         if userType == "ministry" {
