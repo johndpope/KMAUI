@@ -2201,9 +2201,9 @@ final public class KMAUIParse {
             }
             
             landCases = [KMAUILandCaseStruct]()
-            landCases.append(pendingCases)
-            landCases.append(approvedCases)
-            landCases.append(declinedCases)
+            landCases.append(contentsOf: pendingCases)
+            landCases.append(contentsOf: approvedCases)
+            landCases.append(contentsOf: declinedCases)
             
             completion(landCases)
         }
