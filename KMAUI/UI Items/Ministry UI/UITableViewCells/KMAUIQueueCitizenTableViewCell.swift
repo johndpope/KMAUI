@@ -82,7 +82,7 @@ public class KMAUIQueueCitizenTableViewCell: UITableViewCell {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             // If active - no need to unhighlight
@@ -93,7 +93,7 @@ public class KMAUIQueueCitizenTableViewCell: UITableViewCell {
     public func checkActive() {
         if isActive {
             isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         } else {
             isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray

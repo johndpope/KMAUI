@@ -93,7 +93,7 @@ public class KMAUINotificationSelectionTableViewCell: UITableViewCell {
         // Is active
         if isActive {
             isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         } else {
             isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray

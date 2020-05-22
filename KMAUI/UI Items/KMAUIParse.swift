@@ -2185,6 +2185,25 @@ final public class KMAUIParse {
                     landCases.append(landCase)
                 }
             }
+
+            var pendingCases = [KMAUILandCaseStruct]()
+            var approvedCases = [KMAUILandCaseStruct]()
+            var declinedCases = [KMAUILandCaseStruct]()
+            
+            for landCase in landCases {
+                if landCase.courtStatus == "pending" {
+                    pendingCases.append(landCase)
+                } else if landCase.courtStatus == "approved" {
+                    approvedCases.append(landCase)
+                } else if landCase.courtStatus == "declined" {
+                    declinedCases.append(landCase)
+                }
+            }
+            
+            landCases = [KMAUILandCaseStruct]()
+            landCases.append(pendingCases)
+            landCases.append(approvedCases)
+            landCases.append(declinedCases)
             
             completion(landCases)
         }
