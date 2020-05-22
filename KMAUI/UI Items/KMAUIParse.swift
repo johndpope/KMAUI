@@ -2191,11 +2191,13 @@ final public class KMAUIParse {
             var declinedCases = [KMAUILandCaseStruct]()
             
             for landCase in landCases {
-                if landCase.courtStatus == "in progress" {
+                let status = landCase.courtStatus.lowercased()
+                
+                if status == "in progress" {
                     pendingCases.append(landCase)
-                } else if landCase.courtStatus == "approved" {
+                } else if status == "approved" {
                     approvedCases.append(landCase)
-                } else if landCase.courtStatus == "declined" {
+                } else if status == "declined" {
                     declinedCases.append(landCase)
                 }
             }

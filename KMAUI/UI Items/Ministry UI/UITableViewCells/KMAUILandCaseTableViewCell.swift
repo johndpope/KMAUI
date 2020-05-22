@@ -130,7 +130,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         }
         
         // Lottery status
-        statusLabel.text = landCase.courtStatus.capitalized
+        statusLabel.text = landCase.courtStatus
         statusView.backgroundColor = KMAUIUtilities.shared.getCaseColor(status: landCase.courtStatus.lowercased())
         
         statusView.alpha = 1
