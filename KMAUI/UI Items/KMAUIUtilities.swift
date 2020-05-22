@@ -644,6 +644,20 @@ public class KMAUIUtilities {
         return processingColor
     }
     
+    public func getCaseColor(status: String) -> UIColor {
+        var processingColor = UIColor.systemPurple
+        
+        if status == "in progress"  {
+            processingColor = UIColor.systemBlue
+        } else if status == "approved" {
+            processingColor = UIColor.systemGreen
+        } else if status == "declined" {
+            processingColor = UIColor.systemRed
+        }
+        
+        return processingColor
+    }
+    
     // MARK: - Upload Body data
     
     /**

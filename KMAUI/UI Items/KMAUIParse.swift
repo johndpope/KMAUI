@@ -2191,7 +2191,7 @@ final public class KMAUIParse {
             var declinedCases = [KMAUILandCaseStruct]()
             
             for landCase in landCases {
-                if landCase.courtStatus == "pending" {
+                if landCase.courtStatus == "in progress" {
                     pendingCases.append(landCase)
                 } else if landCase.courtStatus == "approved" {
                     approvedCases.append(landCase)
