@@ -88,7 +88,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
