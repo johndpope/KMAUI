@@ -35,6 +35,9 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Background view
+        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+        
         // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 7)
         bgView.layer.shadowRadius = 8
@@ -45,9 +48,6 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         // Case number
         percentLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
 
-        // Background view
-        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-        
         // Approved count label
         approvedCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         

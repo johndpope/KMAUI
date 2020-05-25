@@ -62,11 +62,10 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
         caseNumberLabel.text = "case #\(landCase.caseNumber) –"
         // Date label
         dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: landCase.date)
-        // Citizen image
+        // Judge image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         profileImageView.tintColor = KMAUIConstants.shared.KMAUILightBorderColor
         profileImageView.layer.cornerRadius = 22
-        profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         profileImageView.clipsToBounds = true
         profileImageView.layer.borderWidth = 2
         profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUILightBorderColor.cgColor
