@@ -93,6 +93,11 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            
+            if isActive {
+                isActiveImageView.tintColor = UIColor.white
+                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
+            }
         }
     }
     
