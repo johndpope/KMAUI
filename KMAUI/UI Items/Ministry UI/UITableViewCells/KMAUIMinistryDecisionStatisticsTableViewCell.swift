@@ -93,6 +93,9 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         approvedWidth.constant = width / 2 - 2
         rejectedWidth.constant = width / 2 - 2
         
+        approvedLineView.layer.cornerRadius = 4
+        rejectedLineView.layer.cornerRadius = 4
+        
         if approvedCount > 0, rejectedCount > 0 {
             approvedPercent = Double(Int((Double(approvedCount) / Double(approvedCount + rejectedCount)) * 100)) / 100
             rejectedPercent = 1 - approvedPercent
@@ -109,6 +112,10 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
                 approvedWidth.constant = (width - 2) * CGFloat(approvedPercent)
                 rejectedWidth.constant = width - 2 - approvedWidth.constant
             }
+            
+            // Corner radius
+            approvedLineView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+            rejectedLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
         } else if approvedPercent > 0 {
             approvedPercent = 1
             rejectedPercent = 0
@@ -116,6 +123,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
             rejectedLineView.alpha = 0
             approvedWidth.constant = width
             rejectedWidth.constant = 0
+            approvedLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         } else if rejectedCount > 0 {
             approvedPercent = 0
             rejectedPercent = 1
@@ -123,6 +131,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
             rejectedLineView.alpha = 1
             approvedWidth.constant = 0
             rejectedWidth.constant = width
+            rejectedLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         }
 
         approvedCountLabel.text = "\(Int(approvedPercent * 100))%"
