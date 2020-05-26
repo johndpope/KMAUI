@@ -61,7 +61,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         var width: CGFloat = 320
         
         if !UIDevice.current.orientation.isLandscape {
-            width: CGFloat = 280
+            width = 280
             
             if UIScreen.main.bounds.size.width == 768 { // smallest iPad vertical
                 width = 200
