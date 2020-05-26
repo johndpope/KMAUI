@@ -41,7 +41,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -54,7 +54,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         
         // Name label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-
+        
         // Approved count label
         approvedCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         
@@ -64,10 +64,10 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         // Share label
         shareLabel.font = KMAUIConstants.shared.KMAUIRegularFont
         
-       // Share button
+        // Share button
         shareButton.layer.cornerRadius = 6
         shareButton.clipsToBounds = true
-
+        
         // Divide line view
         divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
         
@@ -113,7 +113,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
                 rejectedCount += 1
             }
         }
-                
+        
         var approvedPercent: Double = 0
         var rejectedPercent: Double = 0
         
@@ -161,17 +161,17 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
             rejectedWidth.constant = width
             rejectedLineView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
         }
-
+        
         approvedCountLabel.text = "\(Int(approvedPercent * 100))%"
         rejectedCountLabel.text = "\(Int(rejectedPercent * 100))%"
         
         progressView.progress = approvedPercent
         progressLabel.text = "\(Int(approvedPercent * 100))%"
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
