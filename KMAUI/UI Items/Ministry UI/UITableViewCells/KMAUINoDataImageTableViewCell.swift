@@ -79,6 +79,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "notificationPreparing" {
             titleLabel.text = "Preparing notification"
             infoLabel.text = "We're loading the notification details."
+        } else if mode == "courtStatus" {
+            titleLabel.text = "No court decision"
+            infoLabel.text = "Please wait for a judge to prepare the final decision for this case."
         }
     }
 }
