@@ -64,7 +64,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
             print("Landscape")
         } else {
             print("Portrait")
-            width = 220
+            width = 200
         }
         
         // Name label

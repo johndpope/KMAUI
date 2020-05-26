@@ -343,11 +343,12 @@ public struct KMAUIRowData {
     public var visibility = false
     public var progress: Double = 0
     public var count: Int32 = 0
+    public var value: Int32 = 0
     
     public init() {
     }
     
-    public init(rowName: String, rowValue: String? = nil, visibility: Bool? = nil, progress: Double? = nil, count: Int32? = nil) {
+    public init(rowName: String, rowValue: String? = nil, visibility: Bool? = nil, progress: Double? = nil, count: Int32? = nil, value: Int32? = nil) {
         self.rowName = rowName
         
         if let rowValue = rowValue {
@@ -366,6 +367,12 @@ public struct KMAUIRowData {
             self.count = count
         } else {
             self.count = -1
+        }
+        
+        if let value = value {
+            self.value = value
+        } else {
+            self.value = -1
         }
     }
 }

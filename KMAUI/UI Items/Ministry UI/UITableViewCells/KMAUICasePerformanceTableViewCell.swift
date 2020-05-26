@@ -19,11 +19,10 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var regionLabel: UILabel!
     @IBOutlet public weak var divideLineView: UIView!
     @IBOutlet public weak var resolvedLabel: UILabel!
-    @IBOutlet public weak var mapButton: UIButton!
+    @IBOutlet public weak var resolvedValueLabel: UILabel!
     
     // MARK: - Variables
     public static let id = "KMAUICasePerformanceTableViewCell"
-    public var mapCallback: ((Bool) -> Void)?
     public var stats = KMAUIRowData() {
         didSet{
             setupCell()
@@ -58,11 +57,8 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         // Resolved label
         resolvedLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
-        // Map button
-        mapButton.setTitle("Show on map", for: .normal)
-        mapButton.tintColor = KMAUIConstants.shared.KMAUITextColor
-        mapButton.setImage(KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate), for: .normal)
-        mapButton.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        // Resolved value label
+        resolvedValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // No selection required
         selectionStyle = .none
@@ -73,7 +69,8 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         regionLabel.text = stats.rowName
         progressLabel.text = "\(Int(stats.progress * 100))%"
         progressView.progress = stats.progress
-        resolvedLabel.text = "Resolved – \(stats.count)"
+        resolvedLabel.text = "Approved"
+        resolvedValueLabel.text = "\(stats.value)/\(stats.count)"
         // Adjust the font size for 100% situation
         if stats.progress == 1 {
             progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
@@ -92,9 +89,5 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    @IBAction public func mapButtonPressed(_ sender: Any) {
-        mapCallback?(true)
     }
 }
