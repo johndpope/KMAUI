@@ -4019,6 +4019,7 @@ public struct KMAUIMinistryDecisionStruct {
     public var comment = ""
     public var attachments = ""
     public var ministry = KMADepartmentStruct()
+    public var type = ""
     
     public init() {
     }
@@ -4056,6 +4057,10 @@ public struct KMAUIMinistryDecisionStruct {
         
         if let attachments = object["attachments"] as? String {
             self.attachments = attachments
+        }
+        
+        if let type = object["type"] as? String {
+            self.type = type
         }
     }
 }

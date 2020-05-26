@@ -2213,8 +2213,9 @@ final public class KMAUIParse {
     
     // MARK: - Get decisions for Land Case
     
-    public func getMinistryDecisions(landCaseId: String, completion: @escaping (_ decisionsArray: [KMAUIMinistryDecisionStruct])->()) {
+    public func getLandCaseDecisions(landCaseId: String, completion: @escaping (_ decisionsArray: [KMAUIMinistryDecisionStruct], _ departmentDecisions: [KMAUIMinistryDecisionStruct])->()) {
         var ministryDecisions = [KMAUIMinistryDecisionStruct]()
+        var departmentDecisions = [KMAUIMinistryDecisionStruct]()
         let query = PFQuery(className: "KMALandCaseMinistryDecision")
         query.includeKey("ministry")
         query.includeKey("ministry.mapArea")
@@ -2227,10 +2228,16 @@ final public class KMAUIParse {
                 for decision in decisions {
                     var ministryDecision = KMAUIMinistryDecisionStruct()
                     ministryDecision.fillFromParse(object: decision)
-                    ministryDecisions.append(ministryDecision)
+                    
+                    if ministryDecision.type == "ministry" {
+                        ministryDecisions.append(ministryDecision)
+                    } else if ministryDecision.type == "department" {
+                        departmentDecisions.append(ministryDecision)
+                    }
+                    
                 }
             }
-            completion(ministryDecisions)
+            completion(ministryDecisions, departmentDecisions)
         }
     }
 }
