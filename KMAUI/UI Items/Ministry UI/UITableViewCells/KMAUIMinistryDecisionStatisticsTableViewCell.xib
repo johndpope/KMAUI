@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,14 +28,14 @@
                                     <constraint firstAttribute="width" constant="44" id="ccX-Vz-3ay"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-mc-4z9">
-                                <rect key="frame" x="80" y="18" width="42" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYB-iX-gYy" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="31" y="30.5" width="30" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aAO-b5-J7K">
-                                <rect key="frame" x="80" y="46.5" width="42" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-mc-4z9">
+                                <rect key="frame" x="80" y="29" width="42" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -88,20 +89,49 @@
                                     <constraint firstItem="Obp-2O-Gj7" firstAttribute="top" secondItem="RF4-8B-gCp" secondAttribute="top" id="yAI-fW-LBI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-r3-sqd" customClass="MKRingProgressView">
+                                <rect key="frame" x="24" y="17" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="5UT-9h-IfG"/>
+                                    <constraint firstAttribute="width" constant="44" id="Bih-Z2-8Sw"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                        <color key="value" name="KMAUIGreyProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="JYB-iX-gYy" firstAttribute="centerY" secondItem="3qa-r3-sqd" secondAttribute="centerY" id="2o5-JH-CX8"/>
                             <constraint firstItem="yh8-mc-4z9" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="91D-qW-YM3"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="9Tg-5m-xiY"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="leading" secondItem="PZM-iF-tzV" secondAttribute="leading" constant="24" id="FjX-H2-rS2"/>
-                            <constraint firstItem="yh8-mc-4z9" firstAttribute="top" secondItem="PZM-iF-tzV" secondAttribute="top" constant="18" id="Vp4-aV-oEb"/>
+                            <constraint firstItem="JYB-iX-gYy" firstAttribute="centerX" secondItem="3qa-r3-sqd" secondAttribute="centerX" id="Jij-ns-UXh"/>
+                            <constraint firstItem="3qa-r3-sqd" firstAttribute="centerX" secondItem="wcI-74-2lR" secondAttribute="centerX" id="NoE-pY-SM5"/>
                             <constraint firstItem="RF4-8B-gCp" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="YwU-PV-VJS"/>
                             <constraint firstItem="RF4-8B-gCp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yh8-mc-4z9" secondAttribute="trailing" constant="8" id="b8p-b1-mTP"/>
-                            <constraint firstItem="aAO-b5-J7K" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="edO-fT-waj"/>
+                            <constraint firstItem="yh8-mc-4z9" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="cWi-1S-4hO"/>
                             <constraint firstAttribute="trailing" secondItem="RF4-8B-gCp" secondAttribute="trailing" constant="24" id="iM5-Yn-2xq"/>
-                            <constraint firstItem="aAO-b5-J7K" firstAttribute="width" secondItem="yh8-mc-4z9" secondAttribute="width" id="r22-dn-VIV"/>
-                            <constraint firstAttribute="bottom" secondItem="aAO-b5-J7K" secondAttribute="bottom" constant="17" id="vXj-o9-hYX"/>
-                            <constraint firstItem="aAO-b5-J7K" firstAttribute="top" secondItem="yh8-mc-4z9" secondAttribute="bottom" constant="8" id="vYu-Vu-KGq"/>
+                            <constraint firstItem="3qa-r3-sqd" firstAttribute="centerY" secondItem="wcI-74-2lR" secondAttribute="centerY" id="u6x-7J-tvB"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -119,7 +149,8 @@
                 <outlet property="approvedWidth" destination="qAa-MD-sy4" id="ud8-LF-axe"/>
                 <outlet property="bgView" destination="PZM-iF-tzV" id="sOb-7O-2OT"/>
                 <outlet property="logoImageView" destination="wcI-74-2lR" id="jJZ-Am-Z4B"/>
-                <outlet property="percentLabel" destination="aAO-b5-J7K" id="L1e-xZ-t9C"/>
+                <outlet property="progressLabel" destination="JYB-iX-gYy" id="Cnf-Kb-GjP"/>
+                <outlet property="progressView" destination="3qa-r3-sqd" id="xOE-YJ-rBe"/>
                 <outlet property="rejectedCountLabel" destination="l6k-vH-ayi" id="FXC-xR-ZsV"/>
                 <outlet property="rejectedLineView" destination="BKC-3l-XUW" id="kTb-jE-0ff"/>
                 <outlet property="rejectedWidth" destination="fpJ-qa-XxH" id="ddc-n5-YS7"/>
@@ -129,4 +160,12 @@
             <point key="canvasLocation" x="-317.39130434782612" y="68.303571428571431"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="KMAUIGreenProgressColor">
+            <color red="0.0" green="0.74509803921568629" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

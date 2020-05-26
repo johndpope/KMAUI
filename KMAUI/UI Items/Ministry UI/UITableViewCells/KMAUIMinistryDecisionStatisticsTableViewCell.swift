@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MKRingProgressView
 
 public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     
@@ -15,7 +16,6 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var percentLabel: UILabel!
     @IBOutlet public weak var approvedCountLabel: UILabel!
     @IBOutlet public weak var rejectedCountLabel: UILabel!
     @IBOutlet public weak var approvedLineView: UIView!
@@ -23,6 +23,8 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     @IBOutlet public weak var statsViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var approvedWidth: NSLayoutConstraint!
     @IBOutlet public weak var rejectedWidth: NSLayoutConstraint!
+    @IBOutlet public weak var progressView: RingProgressView!
+    @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIMinistryDecisionStatisticsTableViewCell"
@@ -44,9 +46,6 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         
         // Name label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-        
-        // Case number
-        percentLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
 
         // Approved count label
         approvedCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont
@@ -70,10 +69,8 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         
         // Name label
         titleLabel.text = "Statistics"
-        // Title label
-        percentLabel.text = "Valid decisions – 100%"
         // Citizen image
-        logoImageView.image = KMAUIConstants.shared.citizensIcon
+        logoImageView.alpha = 0
         // Approved vs Rejected
         var approvedCount = 0
         var rejectedCount = 0
@@ -137,10 +134,9 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         approvedCountLabel.text = "\(Int(approvedPercent * 100))%"
         rejectedCountLabel.text = "\(Int(rejectedPercent * 100))%"
         
-        print("\(approvedWidth.constant) - \(rejectedWidth.constant)")
+        progressView.progress = approvedPercent
+        progressLabel.text = "\(Int(approvedPercent * 100))%"
     }
-    
-    
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
