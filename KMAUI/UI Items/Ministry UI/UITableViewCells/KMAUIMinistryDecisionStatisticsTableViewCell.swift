@@ -52,7 +52,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         
         // Rejected count label
         rejectedCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont
-                
+        
         // No selection required
         selectionStyle = .none
     }
@@ -60,8 +60,12 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     public func setupCell() {
         var width: CGFloat = 320
         
-        if !UIDevice.current.orientation.isLandscape, UIScreen.main.bounds.size.width == 768 { // smallest iPad vertical
-            width = 200
+        if !UIDevice.current.orientation.isLandscape {
+            width: CGFloat = 280
+            
+            if UIScreen.main.bounds.size.width == 768 { // smallest iPad vertical
+                width = 200
+            }
         }
         
         // Name label
