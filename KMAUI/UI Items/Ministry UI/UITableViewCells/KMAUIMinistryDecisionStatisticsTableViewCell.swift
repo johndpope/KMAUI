@@ -58,7 +58,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        var width: CGFloat = 280
+        var width: CGFloat = 320
         
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
