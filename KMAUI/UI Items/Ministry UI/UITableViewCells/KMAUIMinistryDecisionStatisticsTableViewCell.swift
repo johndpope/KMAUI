@@ -14,6 +14,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var approvedCountLabel: UILabel!
@@ -25,9 +26,16 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     @IBOutlet public weak var rejectedWidth: NSLayoutConstraint!
     @IBOutlet public weak var progressView: RingProgressView!
     @IBOutlet public weak var progressLabel: KMAUIBoldTextLabel!
+    // Department: Share results block
+    @IBOutlet public weak var shareView: UIView!
+    @IBOutlet public weak var divideLineView: UIView!
+    @IBOutlet public weak var shareLabel: UILabel!
+    @IBOutlet public weak var shareButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIMinistryDecisionStatisticsTableViewCell"
+    public var shareCallback: ((Bool) -> Void)?
+    public var type = ""
     public var decisions = [KMAUIMinistryDecisionStruct]() {
         didSet {
             setupCell()
@@ -53,11 +61,33 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         // Rejected count label
         rejectedCountLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         
+        // Share label
+        shareLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+        
+       // Share button
+        shareButton.layer.cornerRadius = 6
+        shareButton.clipsToBounds = true
+
+        // Divide line view
+        divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
+        
         // No selection required
         selectionStyle = .none
     }
     
     public func setupCell() {
+        // Setup type
+        if type == "ministry" {
+            shareView.alpha = 0
+            divideLineView.alpha = 0
+            bgViewBottom.constant = 0
+        } else if type == "department" {
+            shareView.alpha = 1
+            divideLineView.alpha = 1
+            bgViewBottom.constant = 65
+        }
+        
+        // Setup the stats line width
         var width: CGFloat = 320
         
         if !UIDevice.current.orientation.isLandscape {
@@ -145,4 +175,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        shareCallback?(true)
+    }
 }

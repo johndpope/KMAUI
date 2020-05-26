@@ -74,25 +74,26 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
     public func setupCell() {
         let ministry = decision.ministry
         
+        // Ministry / Department name
+        nameLabel.text = ministry.departmentName
+        
         // Ministry logo
         if ministry.type == "department" {
             logoImageViewRight.constant = 0
             logoImageViewWidth.constant = 0
             logoImageView.alpha = 0
+            // Department title
+            descriptionLabel.text = "department"
         } else if ministry.type == "ministry", !ministry.departmentLogo.isEmpty, let logoURL = URL(string: ministry.departmentLogo) {
             logoImageViewRight.constant = 12
             logoImageViewWidth.constant = 44
             logoImageView.alpha = 1
             logoImageView.kf.indicatorType = .activity
             logoImageView.kf.setImage(with: logoURL)
+            // Ministry short description
+            descriptionLabel.text = ministry.shortDescription
         }
-        
-        // Ministry name
-        nameLabel.text = ministry.departmentName
-        
-        // Ministry short description
-        descriptionLabel.text = ministry.shortDescription
-        
+
         // Status view
         if decision.ministryStatus == "approved" {
             statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
@@ -102,8 +103,6 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
         
         // Status label
         statusLabel.text = decision.ministryStatus.capitalized
-        
-        
     }
     
     @IBAction public func attachmentButtonPressed(_ sender: Any) {
