@@ -2004,6 +2004,7 @@ public struct KMADepartmentStruct {
     public var createdAt = Date()
     public var updatedAt = Date()
     public var departmentDescription = ""
+    public var shortDescription = ""
     public var departmentLevel = 0
     public var type = ""
     public var ministryLevel = 0
@@ -2027,6 +2028,10 @@ public struct KMADepartmentStruct {
             
             if let aboutValue = departmentObject["departmentDescription"] as? String {
                 self.departmentAbout = aboutValue
+            }
+            
+            if let shortDescription = departmentObject["shortDescription"] as? String {
+                self.shortDescription = shortDescription
             }
             
             if let profileImageFile = departmentObject["departmentProfileImage"] as? PFFileObject, let profileImageURL = profileImageFile.url {
