@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIMinistryDecisionTableViewCell" rowHeight="81" id="KGk-i7-Jjw" customClass="KMAUIMinistryDecisionTableViewCell" customModule="Business" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIMinistryDecisionTableViewCell" rowHeight="81" id="KGk-i7-Jjw" customClass="KMAUIMinistryDecisionTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="521" height="81"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -24,17 +24,14 @@
                             <constraint firstAttribute="width" constant="44" id="jY3-U9-Vcq"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-8g-Kcd">
-                        <rect key="frame" x="76" y="18" width="42" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="xw3-nK-kmP"/>
-                        </constraints>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8E-8g-Kcd">
+                        <rect key="frame" x="76" y="18" width="301" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxD-Fk-Ul9">
-                        <rect key="frame" x="76" y="47" width="42" height="19"/>
+                        <rect key="frame" x="76" y="47" width="301" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="y9g-Ts-C0w"/>
                         </constraints>
@@ -60,7 +57,7 @@
                             <action selector="attachmentButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Mc6-6L-pDR"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49B-6J-rp5">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49B-6J-rp5">
                         <rect key="frame" x="389" y="30" width="42" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="i2t-q7-bBi"/>
@@ -86,9 +83,11 @@
                     <constraint firstItem="lWm-gN-JnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Erw-yT-Ml8"/>
                     <constraint firstItem="wxD-Fk-Ul9" firstAttribute="leading" secondItem="lWm-gN-JnM" secondAttribute="trailing" constant="12" id="FKg-Tb-9aY"/>
                     <constraint firstItem="f8O-7N-4DO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H3E-lP-n00"/>
+                    <constraint firstItem="wxD-Fk-Ul9" firstAttribute="width" secondItem="A8E-8g-Kcd" secondAttribute="width" id="Mp6-2o-wMZ"/>
                     <constraint firstItem="A8E-8g-Kcd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="NSq-T4-EwU"/>
                     <constraint firstAttribute="bottom" secondItem="KSl-7B-Dtf" secondAttribute="bottom" id="O6x-xA-0bo"/>
                     <constraint firstItem="49B-6J-rp5" firstAttribute="leading" secondItem="sbr-4b-16R" secondAttribute="trailing" constant="6" id="XvN-SC-uJJ"/>
+                    <constraint firstItem="49B-6J-rp5" firstAttribute="leading" secondItem="A8E-8g-Kcd" secondAttribute="trailing" constant="12" id="kmY-mk-iHM"/>
                     <constraint firstItem="sbr-4b-16R" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nog-un-qjM"/>
                     <constraint firstAttribute="trailing" secondItem="KSl-7B-Dtf" secondAttribute="trailing" constant="20" id="sAD-x7-gO8"/>
                     <constraint firstItem="A8E-8g-Kcd" firstAttribute="leading" secondItem="lWm-gN-JnM" secondAttribute="trailing" constant="12" id="uuh-9B-yXg"/>

@@ -60,10 +60,7 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
     public func setupCell() {
         var width: CGFloat = 320
         
-        if UIDevice.current.orientation.isLandscape {
-            print("Landscape")
-        } else {
-            print("Portrait")
+        if !UIDevice.current.orientation.isLandscape, UIScreen.main.bounds.size.width == 768 { // smallest iPad vertical
             width = 200
         }
         

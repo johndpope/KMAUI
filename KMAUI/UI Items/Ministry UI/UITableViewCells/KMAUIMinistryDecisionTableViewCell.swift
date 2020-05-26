@@ -70,8 +70,6 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        print(decision.ministry.departmentName)
-        
         let ministry = decision.ministry
         
         // Ministry logo
