@@ -2599,17 +2599,20 @@ public enum LotteryStatus: String {
 public struct LotterySubLandComment {
     public var comment = ""
     public var subLandId = ""
+    public var date: Date = Date()
     
     public func json() -> [String: Any] {
         var jsonObject: [String: Any] = [:]
         jsonObject["comment"] = comment
         jsonObject["subLandId"] = subLandId
+        jsonObject["date"] = Int(date.timeIntervalSince1970)
         return jsonObject
     }
     
-    public init(subLandId: String, comment: String) {
+    public init(subLandId: String, comment: String, date: Date = Date()) {
         self.comment = comment
         self.subLandId = subLandId
+        self.date = date
     }
     
     public init(jsonObject: [String: Any]) {
@@ -2619,6 +2622,10 @@ public struct LotterySubLandComment {
         
         if let subLandId = jsonObject["subLandId"] as? String {
             self.subLandId = subLandId
+        }
+        
+        if let date = jsonObject["date"] as? Int {
+            self.date = Date(timeIntervalSince1970: TimeInterval(date))
         }
     }
 }
@@ -3632,26 +3639,26 @@ public struct KMAUILandPlanStruct {
         return self.comment.comment
     }
     
-    public func comment(for subLandId: String) -> String? {
-        if let comment = self.comment.subLandComments.first(where: { $0.subLandId == subLandId }) {
-            return comment.comment
+    public func comments(for subLandId: String) -> [LotterySubLandComment]? {
+        let comments = self.comment.subLandComments.filter({$0.subLandId == subLandId}).sorted(by: { $0.date.timeIntervalSince1970 > $1.date.timeIntervalSince1970 })
+        
+        return comments.count > 0 ? comments : nil
+    }
+    
+    public func allSublandComments() -> [String: [LotterySubLandComment]] {
+        var grouppedComments: [String: [LotterySubLandComment]] = [:]
+        
+        for comment in self.comment.subLandComments {
+            var comments = grouppedComments[comment.subLandId] ?? []
+            comments.append(comment)
+            grouppedComments[comment.subLandId] = comments.sorted(by: { $0.date.timeIntervalSince1970 > $1.date.timeIntervalSince1970})
         }
         
-        return nil
+        return grouppedComments
     }
     
-    public func allSublandComments() -> [LotterySubLandComment] {
-        return self.comment.subLandComments
-    }
-    
-    public mutating func setComment(_ comment: String?, for subLandId: String) {
-        if let index = self.comment.subLandComments.firstIndex(where: { $0.subLandId == subLandId }) {
-            var commentObject = self.comment.subLandComments[index]
-            commentObject.comment = comment ?? ""
-            self.comment.subLandComments[index] = commentObject
-        } else {
-            self.comment.subLandComments.append(LotterySubLandComment(subLandId: subLandId, comment: comment ?? ""))
-        }
+    public mutating func addComment(_ comment: String?, for subLandId: String, date: Date = Date()) {
+        self.comment.subLandComments.append(LotterySubLandComment(subLandId: subLandId, comment: comment ?? "", date: date))
     }
 }
 
