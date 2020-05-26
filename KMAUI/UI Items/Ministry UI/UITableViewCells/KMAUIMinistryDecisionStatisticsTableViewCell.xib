@@ -19,31 +19,23 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZM-iF-tzV" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
-                        <rect key="frame" x="20" y="32" width="618" height="84"/>
+                        <rect key="frame" x="20" y="32" width="618" height="88"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88G-jP-Y2C">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="84"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="84" id="ECc-sV-83r"/>
-                                    <constraint firstAttribute="width" id="iKz-Lg-Fk8"/>
-                                </constraints>
-                            </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wcI-74-2lR">
-                                <rect key="frame" x="24" y="20" width="44" height="44"/>
+                                <rect key="frame" x="24" y="22" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="AR1-mq-px4"/>
                                     <constraint firstAttribute="width" constant="44" id="ccX-Vz-3ay"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYB-iX-gYy" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="31" y="33.5" width="30" height="17"/>
+                                <rect key="frame" x="31" y="35.5" width="30" height="17"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="751" text="Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yh8-mc-4z9">
-                                <rect key="frame" x="80" y="30" width="89.5" height="24"/>
+                                <rect key="frame" x="80" y="32" width="89.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="89.5" id="DbV-dF-I1C"/>
                                 </constraints>
@@ -52,7 +44,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RF4-8B-gCp">
-                                <rect key="frame" x="414" y="26.5" width="180" height="31"/>
+                                <rect key="frame" x="414" y="28.5" width="180" height="31"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jRY-ce-3vY">
                                         <rect key="frame" x="0.0" y="23" width="89" height="8"/>
@@ -101,7 +93,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="3qa-r3-sqd" customClass="MKRingProgressView">
-                                <rect key="frame" x="24" y="20" width="44" height="44"/>
+                                <rect key="frame" x="24" y="22" width="44" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="5UT-9h-IfG"/>
@@ -133,19 +125,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JYB-iX-gYy" firstAttribute="centerY" secondItem="3qa-r3-sqd" secondAttribute="centerY" id="2o5-JH-CX8"/>
-                            <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="88G-jP-Y2C" secondAttribute="centerY" id="6PF-Ri-cEx"/>
                             <constraint firstItem="yh8-mc-4z9" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="91D-qW-YM3"/>
-                            <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="9Tg-5m-xiY"/>
-                            <constraint firstAttribute="bottom" secondItem="88G-jP-Y2C" secondAttribute="bottom" id="Ar0-fT-7aa"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="leading" secondItem="PZM-iF-tzV" secondAttribute="leading" constant="24" id="FjX-H2-rS2"/>
-                            <constraint firstItem="RF4-8B-gCp" firstAttribute="centerY" secondItem="88G-jP-Y2C" secondAttribute="centerY" id="G3w-rO-RTi"/>
-                            <constraint firstItem="88G-jP-Y2C" firstAttribute="top" secondItem="PZM-iF-tzV" secondAttribute="top" id="Ihh-YG-9XQ"/>
                             <constraint firstItem="JYB-iX-gYy" firstAttribute="centerX" secondItem="3qa-r3-sqd" secondAttribute="centerX" id="Jij-ns-UXh"/>
                             <constraint firstItem="3qa-r3-sqd" firstAttribute="centerX" secondItem="wcI-74-2lR" secondAttribute="centerX" id="NoE-pY-SM5"/>
+                            <constraint firstItem="RF4-8B-gCp" firstAttribute="centerY" secondItem="wcI-74-2lR" secondAttribute="centerY" id="QWh-gJ-opV"/>
                             <constraint firstItem="RF4-8B-gCp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yh8-mc-4z9" secondAttribute="trailing" constant="8" id="b8p-b1-mTP"/>
-                            <constraint firstItem="yh8-mc-4z9" firstAttribute="centerY" secondItem="88G-jP-Y2C" secondAttribute="centerY" id="e8I-0T-tCG"/>
                             <constraint firstAttribute="trailing" secondItem="RF4-8B-gCp" secondAttribute="trailing" constant="24" id="iM5-Yn-2xq"/>
-                            <constraint firstItem="88G-jP-Y2C" firstAttribute="leading" secondItem="PZM-iF-tzV" secondAttribute="leading" id="rt7-HD-Elh"/>
+                            <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="m3T-Qx-xA2"/>
+                            <constraint firstItem="yh8-mc-4z9" firstAttribute="centerY" secondItem="wcI-74-2lR" secondAttribute="centerY" id="mtk-Sa-C0L"/>
                             <constraint firstItem="3qa-r3-sqd" firstAttribute="centerY" secondItem="wcI-74-2lR" secondAttribute="centerY" id="u6x-7J-tvB"/>
                         </constraints>
                     </view>

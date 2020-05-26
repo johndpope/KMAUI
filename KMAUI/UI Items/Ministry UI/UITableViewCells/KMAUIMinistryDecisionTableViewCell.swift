@@ -13,6 +13,8 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var logoImageView: UIImageView!
+    @IBOutlet public weak var logoImageViewRight: NSLayoutConstraint!
+    @IBOutlet public weak var logoImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var nameLabel: UILabel!
     @IBOutlet public weak var descriptionLabel: UILabel!
     @IBOutlet public weak var statusLabel: UILabel!
@@ -73,7 +75,14 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
         let ministry = decision.ministry
         
         // Ministry logo
-        if !ministry.departmentLogo.isEmpty, let logoURL = URL(string: ministry.departmentLogo) {
+        if ministry.type == "department" {
+            logoImageViewRight.constant = 0
+            logoImageViewWidth.constant = 0
+            logoImageView.alpha = 0
+        } else if ministry.type == "ministry", !ministry.departmentLogo.isEmpty, let logoURL = URL(string: ministry.departmentLogo) {
+            logoImageViewRight.constant = 12
+            logoImageViewWidth.constant = 44
+            logoImageView.alpha = 1
             logoImageView.kf.indicatorType = .activity
             logoImageView.kf.setImage(with: logoURL)
         }

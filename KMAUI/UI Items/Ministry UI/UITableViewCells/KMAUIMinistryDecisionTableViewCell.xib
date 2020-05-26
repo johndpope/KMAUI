@@ -83,8 +83,8 @@
                     <constraint firstAttribute="trailing" secondItem="f8O-7N-4DO" secondAttribute="trailing" constant="20" id="7vY-AB-dFg"/>
                     <constraint firstItem="KSl-7B-Dtf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Cx1-FK-DFk"/>
                     <constraint firstItem="KSl-7B-Dtf" firstAttribute="top" secondItem="wxD-Fk-Ul9" secondAttribute="bottom" constant="14" id="ETy-QY-IsG"/>
+                    <constraint firstItem="wxD-Fk-Ul9" firstAttribute="leading" secondItem="A8E-8g-Kcd" secondAttribute="leading" id="EXq-Kd-RN0"/>
                     <constraint firstItem="lWm-gN-JnM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Erw-yT-Ml8"/>
-                    <constraint firstItem="wxD-Fk-Ul9" firstAttribute="leading" secondItem="lWm-gN-JnM" secondAttribute="trailing" constant="12" id="FKg-Tb-9aY"/>
                     <constraint firstItem="f8O-7N-4DO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="H3E-lP-n00"/>
                     <constraint firstItem="wxD-Fk-Ul9" firstAttribute="width" secondItem="A8E-8g-Kcd" secondAttribute="width" id="Mp6-2o-wMZ"/>
                     <constraint firstItem="A8E-8g-Kcd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="18" id="NSq-T4-EwU"/>
@@ -104,6 +104,8 @@
                 <outlet property="descriptionLabel" destination="wxD-Fk-Ul9" id="JTg-lI-MS0"/>
                 <outlet property="divideLineView" destination="KSl-7B-Dtf" id="wBJ-cs-bTx"/>
                 <outlet property="logoImageView" destination="lWm-gN-JnM" id="YhV-2E-SmP"/>
+                <outlet property="logoImageViewRight" destination="uuh-9B-yXg" id="Qqo-zX-H82"/>
+                <outlet property="logoImageViewWidth" destination="jY3-U9-Vcq" id="Yix-BB-tR7"/>
                 <outlet property="nameLabel" destination="A8E-8g-Kcd" id="amB-zd-wOB"/>
                 <outlet property="statusLabel" destination="49B-6J-rp5" id="ayt-Uh-VEb"/>
                 <outlet property="statusView" destination="sbr-4b-16R" id="n1Y-If-fX9"/>
