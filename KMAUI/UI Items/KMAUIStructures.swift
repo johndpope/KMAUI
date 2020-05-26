@@ -4016,6 +4016,8 @@ public struct KMAUIMinistryDecisionStruct {
     public var updatedAt = Date()
     public var ministryStatus = ""
     public var date = Date()
+    public var comment = ""
+    public var attachments = ""
     public var ministry = KMADepartmentStruct()
     
     public init() {
@@ -4046,6 +4048,14 @@ public struct KMAUIMinistryDecisionStruct {
         
         if let date = object["date"] as? Date {
             self.date = date
+        }
+        
+        if let comment = object["comment"] as? String {
+            self.comment = comment
+        }
+        
+        if let attachments = object["attachments"] as? String {
+            self.attachments = attachments
         }
     }
 }
