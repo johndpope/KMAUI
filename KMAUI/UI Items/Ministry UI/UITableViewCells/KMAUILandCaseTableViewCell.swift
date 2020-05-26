@@ -31,7 +31,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     public var landCase = KMAUILandCaseStruct()
     public var isFirst = false
     public var highlightActive = false
-    public var noBg = false
     public var isActive = false {
         didSet {
             setupCell()
@@ -63,7 +62,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         
         // Default state - disabled
         isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-        isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         
         // Status view
         statusView.layer.cornerRadius = 3.5
@@ -86,28 +85,18 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if noBg {
-            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            isActiveImageView.backgroundColor = UIColor.clear
-            
-            if highlight {
-                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
-            } else {
-                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-            }
-        } else if highlight {
+        if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            
-            if highlightActive {
-                isActiveImageView.tintColor = UIColor.white
-                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
-            }
+            isActiveImageView.tintColor = UIColor.white
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
             
-            if highlightActive {
-                isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            if isActive {
+                isActiveImageView.tintColor = UIColor.white
+                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
             }
         }
     }

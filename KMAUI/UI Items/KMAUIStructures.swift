@@ -343,11 +343,12 @@ public struct KMAUIRowData {
     public var visibility = false
     public var progress: Double = 0
     public var count: Int32 = 0
+    public var value: Int32 = 0
     
     public init() {
     }
     
-    public init(rowName: String, rowValue: String? = nil, visibility: Bool? = nil, progress: Double? = nil, count: Int32? = nil) {
+    public init(rowName: String, rowValue: String? = nil, visibility: Bool? = nil, progress: Double? = nil, count: Int32? = nil, value: Int32? = nil) {
         self.rowName = rowName
         
         if let rowValue = rowValue {
@@ -366,6 +367,12 @@ public struct KMAUIRowData {
             self.count = count
         } else {
             self.count = -1
+        }
+        
+        if let value = value {
+            self.value = value
+        } else {
+            self.value = -1
         }
     }
 }
@@ -1997,6 +2004,7 @@ public struct KMADepartmentStruct {
     public var createdAt = Date()
     public var updatedAt = Date()
     public var departmentDescription = ""
+    public var shortDescription = ""
     public var departmentLevel = 0
     public var type = ""
     public var ministryLevel = 0
@@ -2020,6 +2028,10 @@ public struct KMADepartmentStruct {
             
             if let aboutValue = departmentObject["departmentDescription"] as? String {
                 self.departmentAbout = aboutValue
+            }
+            
+            if let shortDescription = departmentObject["shortDescription"] as? String {
+                self.shortDescription = shortDescription
             }
             
             if let profileImageFile = departmentObject["departmentProfileImage"] as? PFFileObject, let profileImageURL = profileImageFile.url {
@@ -4011,7 +4023,10 @@ public struct KMAUIMinistryDecisionStruct {
     public var updatedAt = Date()
     public var ministryStatus = ""
     public var date = Date()
+    public var comment = ""
+    public var attachments = ""
     public var ministry = KMADepartmentStruct()
+    public var type = ""
     
     public init() {
     }
@@ -4041,6 +4056,18 @@ public struct KMAUIMinistryDecisionStruct {
         
         if let date = object["date"] as? Date {
             self.date = date
+        }
+        
+        if let comment = object["comment"] as? String {
+            self.comment = comment
+        }
+        
+        if let attachments = object["attachments"] as? String {
+            self.attachments = attachments
+        }
+        
+        if let type = object["type"] as? String {
+            self.type = type
         }
     }
 }

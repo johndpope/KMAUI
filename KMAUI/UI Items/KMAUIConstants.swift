@@ -158,6 +158,7 @@ public class KMAUIConstants {
     public let pendingAttachmentIcon = UIImage(named: "pendingAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let approvedAttachmentIcon = UIImage(named: "approvedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let rejectedAttachmentIcon = UIImage(named: "rejectedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let mapButtonImage = UIImage(named: "mapButtonImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
 
     // String gap
     public let stringGap = "     "
