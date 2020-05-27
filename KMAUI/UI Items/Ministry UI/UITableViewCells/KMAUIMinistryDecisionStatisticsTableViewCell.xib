@@ -41,10 +41,10 @@
                                             <constraint firstAttribute="width" constant="137" id="zRm-RU-qBA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="tintColor" name="KMAUITextColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                         <state key="normal" title="Share results" image="shareIcon">
-                                            <color key="titleColor" name="KMAUITextColor"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="shareButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jVF-OJ-1pl"/>
@@ -244,9 +244,6 @@
         </namedColor>
         <namedColor name="KMAUILightBorderColor">
             <color red="0.86299997568130493" green="0.87099999189376831" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="KMAUITextColor">
-            <color red="0.067000001668930054" green="0.082000002264976501" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
