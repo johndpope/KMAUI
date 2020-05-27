@@ -18,6 +18,7 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var caseNumberLabel: UILabel!
     @IBOutlet public weak var dateLabel: UILabel!
+    @IBOutlet public weak var rightArrowImageView: UIImageView!
     
     // MARK: - Variables
     public static let id = "KMAUIJudgeTableViewCell"
@@ -29,6 +30,9 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Background view
+        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
         // Larger shadow for bgView
         bgView.layer.shadowOffset = CGSize(width: 0, height: 7)
@@ -45,9 +49,10 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
         
         // Date
         dateLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        
-        // Background view
-        backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+
+        // Setup the right arrow
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // No selection required
         selectionStyle = .none

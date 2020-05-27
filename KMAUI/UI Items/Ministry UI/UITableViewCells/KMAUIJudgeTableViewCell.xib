@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OU7-Zh-v3E">
-                                <rect key="frame" x="244" y="32" width="42" height="19"/>
+                                <rect key="frame" x="242" y="32" width="42" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="EXw-Gx-PRT"/>
                                 </constraints>
@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKC-7K-P3O">
-                                <rect key="frame" x="291" y="32" width="42" height="19"/>
+                                <rect key="frame" x="289" y="32" width="42" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="KbL-aG-EvW"/>
                                 </constraints>
@@ -64,7 +64,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a39-to-QHh">
-                                <rect key="frame" x="341" y="35.5" width="12" height="12"/>
+                                <rect key="frame" x="339" y="35.5" width="12" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="12" id="JSh-3i-RgH"/>
                                     <constraint firstAttribute="height" constant="12" id="kVD-vu-Y6S"/>
@@ -73,7 +73,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="a39-to-QHh" secondAttribute="trailing" constant="24" id="2ak-9a-f3X"/>
+                            <constraint firstAttribute="trailing" secondItem="a39-to-QHh" secondAttribute="trailing" constant="26" id="2ak-9a-f3X"/>
                             <constraint firstItem="yh8-mc-4z9" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="91D-qW-YM3"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="9Tg-5m-xiY"/>
                             <constraint firstAttribute="height" constant="83" id="A5l-WC-lxj"/>
@@ -110,6 +110,7 @@
                 <outlet property="dateLabel" destination="fKC-7K-P3O" id="x09-Ru-i9M"/>
                 <outlet property="nameLabel" destination="yh8-mc-4z9" id="xUY-26-cdi"/>
                 <outlet property="profileImageView" destination="wcI-74-2lR" id="ZAX-G4-R3a"/>
+                <outlet property="rightArrowImageView" destination="a39-to-QHh" id="OKC-nK-hMb"/>
                 <outlet property="titleLabel" destination="aAO-b5-J7K" id="1uj-cu-9Et"/>
             </connections>
             <point key="canvasLocation" x="-142.75362318840581" y="68.303571428571431"/>
