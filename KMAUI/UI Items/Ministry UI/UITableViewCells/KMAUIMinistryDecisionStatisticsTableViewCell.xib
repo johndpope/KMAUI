@@ -42,9 +42,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="tintColor" name="KMAUITextColor"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="16" maxY="0.0"/>
                                         <state key="normal" title="Share results" image="shareIcon">
-                                            <color key="titleColor" name="KMAUITextColor"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="shareButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jVF-OJ-1pl"/>
