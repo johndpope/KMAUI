@@ -59,9 +59,9 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
         // Title label
         titleLabel.text = "Judge"
         // Case number label
-        caseNumberLabel.text = "case #\(landCase.caseNumber) –"
+        caseNumberLabel.text = "Cases –"
         // Date label
-        dateLabel.text = KMAUIUtilities.shared.formatStringShort(date: landCase.date)
+        dateLabel.text = "\(landCase.judge.casesCount)"
         // Judge image
         profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
         profileImageView.tintColor = KMAUIConstants.shared.KMAUILightBorderColor
@@ -87,8 +87,21 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
     }
     
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        }
+    }
 }

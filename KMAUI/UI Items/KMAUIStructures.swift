@@ -1739,6 +1739,9 @@ public struct KMAPerson {
     public var propertyCount = 0
     public var receivedSubLand = false
     public var receivedSubLandCount = 0
+    // Occupation and cases count for Judge
+    public var occupation = ""
+    public var casesCount = 0
     
     public init() {
     }
@@ -1826,6 +1829,16 @@ public struct KMAPerson {
             // Received Sub Land Count
             if let receivedSubLandCount = person["receivedSubLandCount"] as? Int {
                 self.receivedSubLandCount = receivedSubLandCount
+            }
+            
+            // Occupation
+            if let occupation = person["occupation"] as? String {
+                self.occupation = occupation
+            }
+            
+            // Cases count
+            if let casesCount = person["casesCount"] as? Int {
+                self.casesCount = casesCount
             }
         }
     }
