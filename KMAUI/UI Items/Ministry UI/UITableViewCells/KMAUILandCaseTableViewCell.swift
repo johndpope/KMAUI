@@ -167,9 +167,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
-//            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             rowNameLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
-            rowNameLabel.backgroundColor = UIColor.green
             itemView.addArrangedSubview(rowNameLabel)
             
             // Row value label
@@ -177,7 +175,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
-//            rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
             rowsStackView.addArrangedSubview(itemView)
