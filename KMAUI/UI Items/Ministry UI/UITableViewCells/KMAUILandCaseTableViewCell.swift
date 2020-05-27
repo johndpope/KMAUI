@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 
 public class KMAUILandCaseTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var bgViewLeft: NSLayoutConstraint!
@@ -166,7 +167,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
-            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
             
             // Row value label
@@ -174,7 +175,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
-            rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+            rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
             rowsStackView.addArrangedSubview(itemView)
