@@ -104,9 +104,9 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         }
     }
 }
