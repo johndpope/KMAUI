@@ -2216,6 +2216,8 @@ public struct KMAMapAreaStruct {
     // Queue count
     public var joined = false
     public var lotteries = [KMAUILandPlanStruct]()
+    // Land cases count
+    public var landCasesCount = 0
 
     public init() {}
     
