@@ -67,6 +67,9 @@ public class KMAUIMinistryDecisionStatisticsTableViewCell: UITableViewCell {
         // Share button
         shareButton.layer.cornerRadius = 6
         shareButton.clipsToBounds = true
+        shareButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal) // UIColor.black,
+        shareButton.setImage(KMAUIConstants.shared.shareIcon.withRenderingMode(.alwaysTemplate), for: .normal)
+        shareButton.tintColor = KMAUIConstants.shared.KMAUITextColor
         
         // Divide line view
         divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)

@@ -30,7 +30,7 @@ public class KMAUICaseActionTableViewCell: UITableViewCell {
         
         // Decline button
         declineButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        declineButton.setTitleColor(UIColor.black, for: .normal)
+        declineButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal) // UIColor.black
         declineButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         declineButton.layer.cornerRadius = 8
         declineButton.clipsToBounds = true

@@ -105,14 +105,14 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         attachmentsButton.clipsToBounds = true
         attachmentsButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         attachmentsButton.setImage(KMAUIConstants.shared.attachmentIcon.withRenderingMode(.alwaysTemplate), for: .normal)
-        attachmentsButton.tintColor = UIColor.black
+        attachmentsButton.tintColor = KMAUIConstants.shared.KMAUITextColor //UIColor.black
         
         // Map button
         mapButton.layer.cornerRadius = 6
         mapButton.clipsToBounds = true
         mapButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         mapButton.setImage(KMAUIConstants.shared.mapButtonImage.withRenderingMode(.alwaysTemplate), for: .normal)
-        mapButton.tintColor = UIColor.black
+        mapButton.tintColor = KMAUIConstants.shared.KMAUITextColor //UIColor.black
 
         // No selection required
         selectionStyle = .none

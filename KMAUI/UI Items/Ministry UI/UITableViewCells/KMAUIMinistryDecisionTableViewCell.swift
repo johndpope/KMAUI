@@ -56,7 +56,7 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
         attachmentButton.clipsToBounds = true
         attachmentButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         attachmentButton.setImage(KMAUIConstants.shared.attachmentIcon.withRenderingMode(.alwaysTemplate), for: .normal)
-        attachmentButton.tintColor = UIColor.black
+        attachmentButton.tintColor = KMAUIConstants.shared.KMAUITextColor //UIColor.black
         
         // Divide line
         divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
