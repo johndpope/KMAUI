@@ -60,9 +60,6 @@ public class KMAUIMinistryDecisionTableViewCell: UITableViewCell {
         
         // Divide line
         divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
-        
-        // No selection required
-        selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
