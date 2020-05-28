@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILandCaseRegionTableViewCell" rowHeight="74" id="KGk-i7-Jjw" customClass="KMAUILandCaseRegionTableViewCell" customModule="Business" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rbk-NM-dXi" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
+                        <rect key="frame" x="20" y="0.0" width="280" height="66"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" verticalHuggingPriority="999" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Fyc-hf-gpu" customClass="MKRingProgressView">
+                                <rect key="frame" x="18" y="14" width="38" height="38"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="38" id="0WZ-yI-aIv"/>
+                                    <constraint firstAttribute="width" constant="38" id="ba4-qI-QgA"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                        <color key="value" name="KMAUIGreenProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundRingColor">
+                                        <color key="value" name="KMAUIGreyProgressColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hidesRingForZeroProgress" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="76%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g79-bq-1e3" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="22" y="24.5" width="30" height="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khc-ko-MrI" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="66" y="14" width="164" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Kxo-eT-2Mm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUP-rZ-9ov" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="66" y="36" width="162" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wqp-b9-yJ9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CEH-Lo-tRm">
+                                <rect key="frame" x="240" y="22" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="IRu-XV-xUx"/>
+                                    <constraint firstAttribute="width" constant="22" id="g5x-lE-2jH"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="khc-ko-MrI" firstAttribute="top" secondItem="Rbk-NM-dXi" secondAttribute="top" constant="14" id="7xH-S6-cEj"/>
+                            <constraint firstItem="khc-ko-MrI" firstAttribute="leading" secondItem="Fyc-hf-gpu" secondAttribute="trailing" constant="10" id="9AV-WT-nYT"/>
+                            <constraint firstAttribute="trailing" secondItem="CEH-Lo-tRm" secondAttribute="trailing" constant="18" id="Cr9-oz-TH8"/>
+                            <constraint firstItem="Fyc-hf-gpu" firstAttribute="centerY" secondItem="Rbk-NM-dXi" secondAttribute="centerY" id="I6b-wR-2Yr"/>
+                            <constraint firstItem="CEH-Lo-tRm" firstAttribute="centerY" secondItem="Rbk-NM-dXi" secondAttribute="centerY" id="IGq-f5-HQ9"/>
+                            <constraint firstAttribute="height" constant="66" id="Q7s-qM-bHv"/>
+                            <constraint firstItem="dUP-rZ-9ov" firstAttribute="leading" secondItem="Fyc-hf-gpu" secondAttribute="trailing" constant="10" id="Y2l-Hi-LdI"/>
+                            <constraint firstItem="CEH-Lo-tRm" firstAttribute="leading" secondItem="khc-ko-MrI" secondAttribute="trailing" constant="10" id="Zf7-BP-R02"/>
+                            <constraint firstItem="Fyc-hf-gpu" firstAttribute="leading" secondItem="Rbk-NM-dXi" secondAttribute="leading" constant="18" id="ZwF-bP-4xi"/>
+                            <constraint firstItem="dUP-rZ-9ov" firstAttribute="top" secondItem="khc-ko-MrI" secondAttribute="bottom" constant="1" id="bkV-RL-i40"/>
+                            <constraint firstItem="g79-bq-1e3" firstAttribute="centerY" secondItem="Fyc-hf-gpu" secondAttribute="centerY" id="ik2-NS-I38"/>
+                            <constraint firstItem="CEH-Lo-tRm" firstAttribute="leading" secondItem="dUP-rZ-9ov" secondAttribute="trailing" constant="12" id="m0V-LA-XAD"/>
+                            <constraint firstItem="g79-bq-1e3" firstAttribute="centerX" secondItem="Fyc-hf-gpu" secondAttribute="centerX" id="yit-lx-2Oc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Rbk-NM-dXi" secondAttribute="bottom" constant="8" id="37C-ZA-jzU"/>
+                    <constraint firstAttribute="trailing" secondItem="Rbk-NM-dXi" secondAttribute="trailing" constant="20" id="KJB-wU-toc"/>
+                    <constraint firstItem="Rbk-NM-dXi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="cH1-BA-0WY"/>
+                    <constraint firstItem="Rbk-NM-dXi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="i5W-cG-lIG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="approvedCountLabel" destination="dUP-rZ-9ov" id="Cb2-Ej-ZeN"/>
+                <outlet property="bgView" destination="Rbk-NM-dXi" id="W8E-E8-4zG"/>
+                <outlet property="progressLabel" destination="g79-bq-1e3" id="oRh-jh-FQT"/>
+                <outlet property="progressView" destination="Fyc-hf-gpu" id="HwP-wp-Ahy"/>
+                <outlet property="regionNameLabel" destination="khc-ko-MrI" id="iAc-kT-DVO"/>
+                <outlet property="rightArrowImageView" destination="CEH-Lo-tRm" id="gAy-QX-WBj"/>
+            </connections>
+            <point key="canvasLocation" x="30.434782608695656" y="52.232142857142854"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="KMAUIGreenProgressColor">
+            <color red="0.0" green="0.74509803921568629" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="KMAUIGreyProgressColor">
+            <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -30,7 +30,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public var landCase = KMAUILandCaseStruct()
-    public var isFirst = false
     public var highlightActive = false
     public var isActive = false {
         didSet {
@@ -103,13 +102,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Top offset
-        if isFirst {
-            bgViewTop.constant = 8
-        } else {
-            bgViewTop.constant = 0
-        }
-        
         // Is active status
         if isActive {
             isActiveImageView.tintColor = UIColor.white
