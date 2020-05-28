@@ -2218,6 +2218,7 @@ public struct KMAMapAreaStruct {
     public var lotteries = [KMAUILandPlanStruct]()
     // Land cases count
     public var landCasesCount = 0
+    public var approvedLandCasesCount = 0
 
     public init() {}
     
