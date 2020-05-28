@@ -3948,6 +3948,7 @@ public struct KMAUILandCaseStruct {
     public var courtName = ""
     public var titleNumber = ""
     public var rows = [KMAUIRowData]()
+    public var documents = ""
     
     public init() {
     }
@@ -4011,6 +4012,10 @@ public struct KMAUILandCaseStruct {
         
         if let titleNumber = object["titleNumber"] as? String {
             self.titleNumber = titleNumber
+        }
+        
+        if let documents = object["documents"] as? String {
+            self.documents = documents
         }
         
         // Prepare rows for details
