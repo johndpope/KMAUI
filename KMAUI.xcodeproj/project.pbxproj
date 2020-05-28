@@ -29,6 +29,8 @@
 		852181C323915A3400A6B891 /* KMAUIInfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852181C223915A3400A6B891 /* KMAUIInfoLabel.swift */; };
 		8521AD37247FACF900E53C62 /* KMAUILandCaseRegionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8521AD35247FACF800E53C62 /* KMAUILandCaseRegionTableViewCell.swift */; };
 		8521AD38247FACF900E53C62 /* KMAUILandCaseRegionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8521AD36247FACF900E53C62 /* KMAUILandCaseRegionTableViewCell.xib */; };
+		8521AD3F247FDDD300E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8521AD3D247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.swift */; };
+		8521AD40247FDDD300E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8521AD3E247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.xib */; };
 		8525A8F423BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525A8F223BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.swift */; };
 		8525A8F523BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8525A8F323BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.xib */; };
 		852AA65C23E9C7650071D775 /* KMAUIParse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852AA65B23E9C7650071D775 /* KMAUIParse.swift */; };
@@ -253,6 +255,8 @@
 		852181C223915A3400A6B891 /* KMAUIInfoLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAUIInfoLabel.swift; sourceTree = "<group>"; };
 		8521AD35247FACF800E53C62 /* KMAUILandCaseRegionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAUILandCaseRegionTableViewCell.swift; sourceTree = "<group>"; };
 		8521AD36247FACF900E53C62 /* KMAUILandCaseRegionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KMAUILandCaseRegionTableViewCell.xib; sourceTree = "<group>"; };
+		8521AD3D247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KMAUILandCasesCourtDecisionTableViewCell.swift; sourceTree = "<group>"; };
+		8521AD3E247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KMAUILandCasesCourtDecisionTableViewCell.xib; sourceTree = "<group>"; };
 		8525A8F223BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIPoliceMapTableViewCell.swift; sourceTree = "<group>"; };
 		8525A8F323BA014C00ED8C4A /* KMAUIPoliceMapTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KMAUIPoliceMapTableViewCell.xib; sourceTree = "<group>"; };
 		852AA65B23E9C7650071D775 /* KMAUIParse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KMAUIParse.swift; sourceTree = "<group>"; };
@@ -807,6 +811,8 @@
 				8516BFB4247E5E6600DF9ABE /* KMAUICaseActionTableViewCell.xib */,
 				8521AD35247FACF800E53C62 /* KMAUILandCaseRegionTableViewCell.swift */,
 				8521AD36247FACF900E53C62 /* KMAUILandCaseRegionTableViewCell.xib */,
+				8521AD3D247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.swift */,
+				8521AD3E247FDDD200E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.xib */,
 			);
 			path = UITableViewCells;
 			sourceTree = "<group>";
@@ -1012,6 +1018,7 @@
 				859087FA243F63D10043A980 /* KMAUIRegionTableViewCell.xib in Resources */,
 				859DE6042475386A00B00508 /* KMAUILandCaseTableViewCell.xib in Resources */,
 				85EF0B7B23B7867F0046484B /* KMAUIPoliceTableViewCell.xib in Resources */,
+				8521AD40247FDDD300E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.xib in Resources */,
 				856B1F08241A39E400F9DC93 /* KMAUILotterySubLandTypesTableViewCell.xib in Resources */,
 				8587433D23BE469F00D5085D /* KMAUIPolicemanTableViewCell.xib in Resources */,
 				85C3FD252477DAD100416209 /* KMAUICasePerformanceTableViewCell.xib in Resources */,
@@ -1210,6 +1217,7 @@
 				852181C123915A2D00A6B891 /* KMAUITextLabel.swift in Sources */,
 				85F6B17023B68AD80010CE00 /* KMAUIPolice.swift in Sources */,
 				8579FC9F23E864910053857B /* KMAUIUploadsHorizontalTableViewCell.swift in Sources */,
+				8521AD3F247FDDD300E53C62 /* KMAUILandCasesCourtDecisionTableViewCell.swift in Sources */,
 				85891762243DCBC800610F7E /* KMAUISubLandTitleTableViewCell.swift in Sources */,
 				85AD7FB523E2DE50008A4680 /* KMAUIIncomeChartTableViewCell.swift in Sources */,
 				856B1F0C241A963400F9DC93 /* KMAUILargeTitleHeaderCountView.swift in Sources */,
