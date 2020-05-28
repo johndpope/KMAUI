@@ -4050,7 +4050,7 @@ public struct KMAUIMinistryDecisionStruct {
     public var ministryStatus = ""
     public var date = Date()
     public var comment = ""
-    public var attachments = ""
+    public var attachments = [KMADocumentData]()
     public var ministry = KMADepartmentStruct()
     public var type = ""
     
@@ -4088,8 +4088,18 @@ public struct KMAUIMinistryDecisionStruct {
             self.comment = comment
         }
         
-        if let attachments = object["attachments"] as? String {
-            self.attachments = attachments
+        if let attachmentsItem = object["attachments"] as? String {
+            let documentDict = KMAUIUtilities.shared.jsonToDictionary(jsonText: attachmentsItem )
+            var documentsArray = [KMADocumentData]()
+            // Get the file object
+            if let documents = documentDict["files"] as? [[String: String]] {
+                for document in documents {
+                    var documentItem = KMADocumentData()
+                    documentItem.fillFrom(document: document)
+                    documentsArray.append(documentItem)
+                }
+            }
+            self.attachments = documentsArray
         }
         
         if let type = object["type"] as? String {
