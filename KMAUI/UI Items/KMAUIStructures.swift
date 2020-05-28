@@ -4038,6 +4038,7 @@ public struct KMAUIMinistryDecisionStruct {
     public var createdAt = Date()
     public var updatedAt = Date()
     public var ministryStatus = ""
+    public var judgeComment = ""
     public var date = Date()
     public var comment = ""
     public var attachments = ""
@@ -4068,6 +4069,10 @@ public struct KMAUIMinistryDecisionStruct {
         
         if let ministryStatus = object["ministryStatus"] as? String {
             self.ministryStatus = ministryStatus
+        }
+        
+        if let judgeComment = object["judgeComment"] as? String {
+            self.judgeComment = judgeComment
         }
         
         if let date = object["date"] as? Date {
