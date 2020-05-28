@@ -42,7 +42,7 @@ public class KMAUILandCaseRegionTableViewCell: UITableViewCell {
         regionNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Progress label
-        progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         
         // Setup the right arrow
         rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
@@ -62,9 +62,15 @@ public class KMAUILandCaseRegionTableViewCell: UITableViewCell {
             progressLabel.text = "0%"
         } else {
             let progress = Double(Int(Double(region.approvedLandCasesCount) / Double(region.landCasesCount) * 100)) / 100
-            
             progressView.progress = progress
             progressLabel.text = "\(Int(progress * 100))%"
+        }
+        
+        // Adjust the font size for 100% situation
+        if progressView.progress == 1 {
+            progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        } else {
+            progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         }
     }
     
