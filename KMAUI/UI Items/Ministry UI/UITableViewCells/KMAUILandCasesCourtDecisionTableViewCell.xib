@@ -52,11 +52,21 @@
                                     <constraint firstAttribute="width" constant="60" id="YPP-Vm-Fc1"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuo-EI-ZtZ">
+                                <rect key="frame" x="16" y="29" width="60" height="76"/>
+                                <connections>
+                                    <action selector="documentButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mVL-uN-jsQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="centerY" secondItem="MBp-yP-5og" secondAttribute="centerY" id="0hi-PX-uYv"/>
+                            <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="width" secondItem="MBp-yP-5og" secondAttribute="width" id="1G2-Ms-w21"/>
                             <constraint firstAttribute="trailing" secondItem="bBz-TT-zxp" secondAttribute="trailing" constant="16" id="7Gm-vN-PRp"/>
                             <constraint firstItem="MBp-yP-5og" firstAttribute="leading" secondItem="aHu-Ot-sRR" secondAttribute="leading" constant="16" id="CjH-8W-CBK"/>
+                            <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="height" secondItem="MBp-yP-5og" secondAttribute="height" id="Gyl-8P-26W"/>
+                            <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="centerX" secondItem="MBp-yP-5og" secondAttribute="centerX" id="R6g-xw-NZb"/>
                             <constraint firstItem="MBp-yP-5og" firstAttribute="centerY" secondItem="aHu-Ot-sRR" secondAttribute="centerY" id="THc-q9-fqM"/>
                             <constraint firstAttribute="bottom" secondItem="mND-GZ-tn2" secondAttribute="bottom" constant="32" id="YvZ-Qw-kCb"/>
                             <constraint firstItem="mND-GZ-tn2" firstAttribute="top" secondItem="goJ-l0-MaA" secondAttribute="bottom" constant="22" id="dUt-IP-Xst"/>
@@ -82,6 +92,7 @@
                 <outlet property="caseLabel" destination="goJ-l0-MaA" id="zht-wZ-5aR"/>
                 <outlet property="caseLabelLeft" destination="g3E-t4-MC1" id="ezw-Xi-M0J"/>
                 <outlet property="caseStatusLabel" destination="bBz-TT-zxp" id="idK-Go-3zy"/>
+                <outlet property="documentButton" destination="Wuo-EI-ZtZ" id="NaY-iu-fQy"/>
                 <outlet property="documentImageView" destination="MBp-yP-5og" id="gKg-6h-qBC"/>
                 <outlet property="judgeCommentLabel" destination="mND-GZ-tn2" id="06j-Nc-HjN"/>
             </connections>

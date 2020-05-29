@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import QuickLook
 
 public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var caseLabel: UILabel!
-    @IBOutlet weak var caseLabelLeft: NSLayoutConstraint!
+    @IBOutlet public weak var caseLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var caseStatusLabel: UILabel!
     @IBOutlet public weak var judgeCommentLabel: UILabel!
     @IBOutlet public weak var documentImageView: UIImageView!
+    @IBOutlet public weak var documentButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
@@ -26,6 +28,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public lazy var previewItem = NSURL()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -144,5 +147,35 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             documentImageView.alpha = 0
             caseLabelLeft.constant = 16
         }
+    }
+    
+    @IBAction public func documentButtonPressed(_ sender: Any) {
+        if isDepartment {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
+            if !files.isEmpty {
+                let file = files[0]
+
+                KMAUIUtilities.shared.quicklookPreview(urlString: file.fileURL, fileName: file.name, uniqueId: landCase.objectId) { (previewItemValue) in
+                    self.previewItem = previewItemValue
+                    // Display file
+                    let previewController = QLPreviewController()
+                    previewController.dataSource = self
+                    KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - QLPreviewController Datasource
+
+extension KMAUILandCasesCourtDecisionTableViewCell: QLPreviewControllerDataSource {
+    
+    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return 1
+    }
+    
+    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return previewItem as QLPreviewItem
     }
 }
