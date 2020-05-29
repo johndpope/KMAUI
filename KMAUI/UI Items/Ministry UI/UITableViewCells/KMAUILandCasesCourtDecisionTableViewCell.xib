@@ -45,11 +45,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MBp-yP-5og">
+                                <rect key="frame" x="16" y="29" width="60" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="AKo-mn-Bos"/>
+                                    <constraint firstAttribute="width" constant="60" id="YPP-Vm-Fc1"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="mND-GZ-tn2" firstAttribute="leading" secondItem="aHu-Ot-sRR" secondAttribute="leading" constant="16" id="36B-MO-vtI"/>
                             <constraint firstAttribute="trailing" secondItem="bBz-TT-zxp" secondAttribute="trailing" constant="16" id="7Gm-vN-PRp"/>
+                            <constraint firstItem="MBp-yP-5og" firstAttribute="leading" secondItem="aHu-Ot-sRR" secondAttribute="leading" constant="16" id="CjH-8W-CBK"/>
+                            <constraint firstItem="MBp-yP-5og" firstAttribute="centerY" secondItem="aHu-Ot-sRR" secondAttribute="centerY" id="THc-q9-fqM"/>
                             <constraint firstAttribute="bottom" secondItem="mND-GZ-tn2" secondAttribute="bottom" constant="32" id="YvZ-Qw-kCb"/>
                             <constraint firstItem="mND-GZ-tn2" firstAttribute="top" secondItem="goJ-l0-MaA" secondAttribute="bottom" constant="22" id="dUt-IP-Xst"/>
                             <constraint firstAttribute="trailing" secondItem="mND-GZ-tn2" secondAttribute="trailing" constant="16" id="ell-78-DBP"/>
@@ -57,6 +65,7 @@
                             <constraint firstItem="goJ-l0-MaA" firstAttribute="top" secondItem="aHu-Ot-sRR" secondAttribute="top" constant="31" id="lCe-7L-kdN"/>
                             <constraint firstItem="bBz-TT-zxp" firstAttribute="leading" secondItem="goJ-l0-MaA" secondAttribute="trailing" constant="12" id="qU2-1B-ZrM"/>
                             <constraint firstItem="bBz-TT-zxp" firstAttribute="centerY" secondItem="goJ-l0-MaA" secondAttribute="centerY" id="sVj-Zb-9jS"/>
+                            <constraint firstItem="mND-GZ-tn2" firstAttribute="leading" secondItem="goJ-l0-MaA" secondAttribute="leading" id="vbw-RN-P3G"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -71,7 +80,9 @@
             <connections>
                 <outlet property="bgView" destination="aHu-Ot-sRR" id="gTd-TZ-jW7"/>
                 <outlet property="caseLabel" destination="goJ-l0-MaA" id="zht-wZ-5aR"/>
+                <outlet property="caseLabelLeft" destination="g3E-t4-MC1" id="ezw-Xi-M0J"/>
                 <outlet property="caseStatusLabel" destination="bBz-TT-zxp" id="idK-Go-3zy"/>
+                <outlet property="documentImageView" destination="MBp-yP-5og" id="gKg-6h-qBC"/>
                 <outlet property="judgeCommentLabel" destination="mND-GZ-tn2" id="06j-Nc-HjN"/>
             </connections>
             <point key="canvasLocation" x="-252.17391304347828" y="-67.633928571428569"/>
