@@ -2240,5 +2240,192 @@ final public class KMAUIParse {
             completion(ministryDecisions, departmentDecisions)
         }
     }
+    
+    // MARK: - Uploading attachments
+
+    /**
+     Upload files method.
+    */
+    
+    public func uploadFiles(pickedArray: [KMADocumentData], location: CLLocationCoordinate2D? = nil, subLandId: String? = nil, documentPreview: UIImage? = nil, name: String? = nil, description: String? = nil, completion: @escaping (_ urls: [AnyObject]) -> ()) {
+        var objectArray = [PFObject]()
+        
+        for item in pickedArray {
+            if let itemURL = item.url?.path, let dataObject = NSData(contentsOfFile: itemURL) {
+                let documentData = KMAUIUtilities.shared.getItemData(documentObject: item)
+                let newFileUpload = PFObject(className: "KMAUploadedFile")
+                newFileUpload["fileName"] = documentData.1 //item.name
+                newFileUpload["fileType"] = documentData.2 //item.type
+                newFileUpload["fileExtension"] = documentData.3
+                
+                if let name = name {
+                    newFileUpload["fileName"] = name
+                }
+                
+                if let description = description {
+                    newFileUpload["fileDescription"] = description
+                }
+                
+                // Citizen
+                if let citizen = PFUser.current() {
+                    newFileUpload["citizen"] = citizen
+                }
+                
+                // Sub land
+                if let subLandId = subLandId, !subLandId.isEmpty {
+                    newFileUpload["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
+                }
+                
+                // Location
+                if item.hasLocation {
+                    print("The EXIF location is: \(item.location)")
+                    newFileUpload["location"] = PFGeoPoint(latitude: item.location.latitude, longitude: item.location.longitude)
+                } else if let location = location, !location.isEmpty {
+                    print("The upload location is: \(location)")
+                    newFileUpload["location"] = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
+                }
+                
+                // Capture data
+                if item.hasCreatedAt {
+                    print("Capture date: \(item.captureDate)")
+                    newFileUpload["captureDate"] = item.captureDate
+                }
+                
+                // Address
+                if !item.address.isEmpty {
+                    newFileUpload["address"] = item.address
+                }
+                
+                if let documentPreview = documentPreview, documentPreview.size.width > 0, let previewImage = documentPreview.jpegData(compressionQuality: 0.5) {
+                    newFileUpload["filePreview"] = PFFileObject(name: "previewImage.jpg", data: previewImage)
+                } else if documentData.0.size.width > 0, let previewImage = documentData.0.jpegData(compressionQuality: 0.5) {
+                    newFileUpload["filePreview"] = PFFileObject(name: "previewImage.jpg", data: previewImage)
+                }
+
+                var fileName = "file"
+                
+                let fileArray = item.name.components(separatedBy: ".")
+                
+                if fileArray.count > 1, let last = fileArray.last {
+                    fileName = "file." + last
+                }
+                
+                newFileUpload["fileContent"] = PFFileObject(name: fileName, data: dataObject as Data)
+                objectArray.append(newFileUpload)
+            }
+        }
+        
+        if objectArray.isEmpty {
+            KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error uploading files. Please try again.") { (done) in }
+            completion([AnyObject]())
+        } else {
+            if objectArray.count == 1 {
+                KMAUIUtilities.shared.startLoading(title: "Uploading...")
+            } else {
+                KMAUIUtilities.shared.uploadProgressAlert(title: "Uploading...", message: "Progress: 0/\(objectArray.count)")
+            }
+
+            files(urls: [AnyObject](), objectArray: objectArray, index: 0) { (urlsArray) in
+                if urlsArray.isEmpty || objectArray.count > urlsArray.count {
+                    KMAUIUtilities.shared.stopLoadingWith(completion: { (done) in
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: "Error uploading files. Please try again.") { (done) in }
+                    })
+                }
+                
+                completion(urlsArray)
+            }
+        }
+    }
+    
+    /**
+         Save file and update progress.
+        */
+        
+        public func files(urls: [AnyObject], objectArray: [PFObject], index: Int, completion: @escaping (_ urls: [AnyObject]) -> ()) {
+            var urlsArray = urls
+            
+            // Update the progress message
+            if urls.count > 1 {
+                KMAUIUtilities.shared.uploadAlert.message = "Progress: \(index)/\(objectArray.count)"
+            }
+            
+            if index < objectArray.count {
+                let file = objectArray[index]
+    //            print("File to save: \(file)")
+                file.saveInBackground { (success, error) in
+                    if let error = error {
+                        print("Error saving a file: \(error.localizedDescription)")
+                        completion([AnyObject]())
+                    } else if success {
+                        urlsArray.append(self.getUploadBody(object: file))
+                        
+                        self.files(urls: urlsArray, objectArray: objectArray, index: index + 1, completion: { (urlsArrayUpdated) in
+                            completion((urlsArrayUpdated))
+                        })
+                    }
+                }
+            } else {
+                completion(urlsArray)
+            }
+        }
+    
+    /**
+     Prepare uploadBody.
+    */
+    
+    public func getUploadBody(object: PFObject) -> AnyObject {
+        var itemDictionary = [String: String]()
+        
+        if let fileName = object["fileName"] as? String {
+            itemDictionary["name"] = fileName
+        }
+        
+        if let fileType = object["fileType"] as? String {
+            itemDictionary["type"] = fileType
+        }
+        
+        if let filePreview = object["filePreview"] as? PFFileObject, let previewURL = filePreview.url {
+            itemDictionary["previewURL"] = previewURL
+        }
+        
+        if let fileContent = object["fileContent"] as? PFFileObject, let fileURL = fileContent.url {
+            itemDictionary["fileURL"] = fileURL
+        }
+        
+        if let fileId = object.objectId {
+            itemDictionary["objectId"] = fileId
+        }
+        
+        if let fileExtension = object["fileExtension"] as? String {
+            itemDictionary["fileExtension"] = fileExtension
+        }
+        
+        if let fileDescription = object["fileDescription"] as? String {
+            itemDictionary["fileDescription"] = fileDescription
+        }
+        
+        if let captureDate = object["captureDate"] as? Date {
+            itemDictionary["captureDate"] = KMAUIUtilities.shared.UTCStringFrom(date: captureDate)
+        }
+        
+        if let location = object["location"] as? PFGeoPoint {
+            itemDictionary["latitude"] = "\(location.latitude)"
+            itemDictionary["longitude"] = "\(location.longitude)"
+        }
+        
+        if let address = object["address"] as? String {
+            itemDictionary["address"] = address
+        }
+        
+        if let createdAt = object.createdAt {
+            itemDictionary["createdAt"] = KMAUIUtilities.shared.UTCStringFrom(date: createdAt)
+        }
+        
+        if let updatedAt = object.updatedAt {
+            itemDictionary["updatedAt"] = KMAUIUtilities.shared.UTCStringFrom(date: updatedAt)
+        }
+        
+        return itemDictionary as AnyObject
+    }
 }
 
