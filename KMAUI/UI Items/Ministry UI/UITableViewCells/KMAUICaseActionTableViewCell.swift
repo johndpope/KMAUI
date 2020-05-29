@@ -48,10 +48,22 @@ public class KMAUICaseActionTableViewCell: UITableViewCell {
     }
     
     @IBAction public func approveButtonPressed(_ sender: Any) {
+        approveButton.alpha = 0.75
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.approveButton.alpha = 1.0
+        }
+        
         actionCallback?(true)
     }
     
     @IBAction public func declineButtonPressed(_ sender: Any) {
+        declineButton.alpha = 0.75
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+            self.declineButton.alpha = 1.0
+        }
+        
         actionCallback?(false)
     }
 }
