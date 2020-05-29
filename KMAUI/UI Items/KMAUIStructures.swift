@@ -3949,6 +3949,9 @@ public struct KMAUILandCaseStruct {
     public var titleNumber = ""
     public var rows = [KMAUIRowData]()
     public var documents = ""
+    public var departmentComment = ""
+    public var departmentAttachment = ""
+    public var departmentAttachmentItem = KMADocumentData()
     
     public init() {
     }
@@ -4018,8 +4021,27 @@ public struct KMAUILandCaseStruct {
             self.documents = documents
         }
         
+        if let departmentComment = object["departmentComment"] as? String {
+            self.departmentComment = departmentComment
+        }
+        
+        if let departmentAttachment = object["departmentAttachment"] as? String {
+            self.departmentAttachment = departmentAttachment
+            self.setupAttachment()
+        }
+        
         // Prepare rows for details
         prepareRows()
+    }
+    
+    public mutating func setupAttachment() {
+        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: departmentAttachment)
+        
+        if !files.isEmpty {
+            self.departmentAttachmentItem = files[0]
+        } else {
+            self.departmentAttachmentItem = KMADocumentData()
+        }
     }
     
     public mutating func prepareRows() {
