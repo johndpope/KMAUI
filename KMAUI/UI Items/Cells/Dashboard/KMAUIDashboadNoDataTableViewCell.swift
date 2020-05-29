@@ -10,6 +10,7 @@ import UIKit
 
 public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet public weak var infoLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var actionButton: KMAUIButtonFilled!
@@ -34,6 +35,9 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
 
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Hide shadow for bgView
+        bgView.clipsToBounds = true
         
         // Font size for infoLabel
         infoLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
