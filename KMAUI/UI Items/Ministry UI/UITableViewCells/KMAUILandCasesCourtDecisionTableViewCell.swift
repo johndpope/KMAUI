@@ -18,6 +18,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
+    public var isDepartment = false
     public var landCase = KMAUILandCaseStruct() {
         didSet {
             setupCell()
@@ -57,6 +58,14 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        if isDepartment {
+            setupDepartment()
+        } else {
+            setupCase()
+        }
+    }
+    
+    public func setupCase() {
         // Setup labels
         caseLabel.text = "\(landCase.courtStatus) case"
         caseStatusLabel.text = landCase.courtStatus.lowercased()
@@ -65,6 +74,21 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         
         // Setup background color for status label
         if landCase.courtStatus.lowercased() == "approved" {
+            caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        } else {
+            caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        }
+    }
+    
+    public func setupDepartment() {
+        // Setup labels
+        caseLabel.text = "\(landCase.departmentDecision) by Department"
+        caseStatusLabel.text = landCase.departmentDecision.lowercased()
+        judgeCommentLabel.text = landCase.departmentComment
+        judgeCommentLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        
+        // Setup background color for status label
+        if landCase.departmentDecision.lowercased() == "approved" {
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else {
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor

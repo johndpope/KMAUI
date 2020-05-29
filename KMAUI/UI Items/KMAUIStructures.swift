@@ -3952,6 +3952,7 @@ public struct KMAUILandCaseStruct {
     public var departmentComment = ""
     public var departmentAttachment = ""
     public var departmentAttachmentItem = KMADocumentData()
+    public var departmentDecision = ""
     
     public init() {
     }
@@ -4028,6 +4029,10 @@ public struct KMAUILandCaseStruct {
         if let departmentAttachment = object["departmentAttachment"] as? String {
             self.departmentAttachment = departmentAttachment
             self.setupAttachment()
+        }
+        
+        if let departmentDecision = object["departmentDecision"] as? String {
+            self.departmentDecision = departmentDecision
         }
         
         // Prepare rows for details
