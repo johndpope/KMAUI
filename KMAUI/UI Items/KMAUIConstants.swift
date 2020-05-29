@@ -186,6 +186,9 @@ public class KMAUIConstants {
     
     public let noNotesText = "Notes not included."
     
+    // Temp land case
+    public var landCaseUpdated = KMAUILandCaseStruct()
+    
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
     
