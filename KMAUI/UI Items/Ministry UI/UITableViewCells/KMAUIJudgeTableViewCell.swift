@@ -17,6 +17,7 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: UILabel!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var caseNumberLabel: UILabel!
+    @IBOutlet public weak var caseNumberCenter: NSLayoutConstraint!
     @IBOutlet public weak var dateLabel: UILabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     
@@ -87,6 +88,12 @@ public class KMAUIJudgeTableViewCell: UITableViewCell {
                     print(error.localizedDescription) // The error happens
                 }
             }
+        }
+        
+        if UIDevice.current.orientation.isLandscape {
+            caseNumberCenter.constant = 0
+        } else {
+            caseNumberCenter.constant = 15
         }
     }
 

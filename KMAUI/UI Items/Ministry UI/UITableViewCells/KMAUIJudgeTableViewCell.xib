@@ -99,6 +99,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="PZM-iF-tzV" id="sOb-7O-2OT"/>
+                <outlet property="caseNumberCenter" destination="VRq-g2-y0L" id="NFV-MY-lY2"/>
                 <outlet property="caseNumberLabel" destination="OU7-Zh-v3E" id="8Kh-G9-lq3"/>
                 <outlet property="dateLabel" destination="fKC-7K-P3O" id="x09-Ru-i9M"/>
                 <outlet property="nameLabel" destination="yh8-mc-4z9" id="xUY-26-cdi"/>
