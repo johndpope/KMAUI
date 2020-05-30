@@ -74,11 +74,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a39-to-QHh" secondAttribute="trailing" constant="26" id="2ak-9a-f3X"/>
+                            <constraint firstItem="a39-to-QHh" firstAttribute="centerY" secondItem="OU7-Zh-v3E" secondAttribute="centerY" id="2fZ-tB-qh6"/>
                             <constraint firstItem="yh8-mc-4z9" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="91D-qW-YM3"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="9Tg-5m-xiY"/>
                             <constraint firstAttribute="height" constant="83" id="A5l-WC-lxj"/>
                             <constraint firstItem="wcI-74-2lR" firstAttribute="leading" secondItem="PZM-iF-tzV" secondAttribute="leading" constant="24" id="FjX-H2-rS2"/>
-                            <constraint firstItem="a39-to-QHh" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="L6m-nh-JAr"/>
                             <constraint firstItem="OU7-Zh-v3E" firstAttribute="centerY" secondItem="PZM-iF-tzV" secondAttribute="centerY" id="VRq-g2-y0L"/>
                             <constraint firstItem="yh8-mc-4z9" firstAttribute="top" secondItem="PZM-iF-tzV" secondAttribute="top" constant="18" id="Vp4-aV-oEb"/>
                             <constraint firstItem="aAO-b5-J7K" firstAttribute="leading" secondItem="wcI-74-2lR" secondAttribute="trailing" constant="12" id="edO-fT-waj"/>
