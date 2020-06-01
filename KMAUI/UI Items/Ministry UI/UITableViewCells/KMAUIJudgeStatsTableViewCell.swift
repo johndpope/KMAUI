@@ -118,7 +118,7 @@ public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
         inProgressValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont
         
         // Cases count label
-        casesCountLabel.font = UIFont.systemFont(ofSize: 24, weight: .heavy) //  KMAUIConstants.shared.KMAUIBoldFont.withSize(24)
+        casesCountLabel.font = UIFont.systemFont(ofSize: 26, weight: .heavy) //  KMAUIConstants.shared.KMAUIBoldFont.withSize(24)
         
         // Cases label
         casesLabel.font = UIFont.systemFont(ofSize: 24, weight: .light) // KMAUIConstants.shared.KMAUIRegularFont.withSize(24)
