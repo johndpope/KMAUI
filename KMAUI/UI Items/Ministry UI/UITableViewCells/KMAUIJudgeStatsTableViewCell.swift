@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 import Charts
 
 public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
@@ -134,7 +133,7 @@ public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    publicfunc setupCell() {
+    public func setupCell() {
         // Name label
         nameLabel.text = judge.fullName
         // Title label
