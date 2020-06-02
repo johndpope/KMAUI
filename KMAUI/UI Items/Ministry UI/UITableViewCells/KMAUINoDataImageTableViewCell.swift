@@ -82,6 +82,10 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "courtStatus" {
             titleLabel.text = "No court decision"
             infoLabel.text = "Please wait for a judge to prepare the final decision for this case."
+        } else if mode.contains("landCases") {
+            let type = mode.replacingOccurrences(of: "landCases", with: "")
+            titleLabel.text = "No land cases"
+            infoLabel.text = "We have no \"\(type)\" land cases to display."
         }
     }
 }
