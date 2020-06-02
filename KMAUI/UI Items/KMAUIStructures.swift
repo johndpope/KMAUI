@@ -2219,6 +2219,8 @@ public struct KMAMapAreaStruct {
     // Land cases count
     public var landCasesCount = 0
     public var approvedLandCasesCount = 0
+    // Name as on the map layer
+    public var nameMap = ""
 
     public init() {}
     
@@ -2305,6 +2307,10 @@ public struct KMAMapAreaStruct {
         
         if let lotteryMembersCount = object["lotteryMembersCount"] as? Int {
             self.lotteryMembersCount = lotteryMembersCount
+        }
+        
+        if let nameMap = object["nameMap"] as? String {
+            self.nameMap = nameMap
         }
     }
 }
