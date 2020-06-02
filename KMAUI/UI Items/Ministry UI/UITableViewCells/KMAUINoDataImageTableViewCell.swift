@@ -86,6 +86,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             let type = mode.replacingOccurrences(of: "landCases", with: "")
             titleLabel.text = "No land cases"
             infoLabel.text = "We have no \"\(type)\" land cases to display."
+        } else if mode == "waitingDepartment" {
+            titleLabel.text = "Department decision pending"
+            infoLabel.text = "We're waiting for the Department decision in order to provide the full details for the Judge before the Court decision can be received."
         }
     }
 }
