@@ -8,19 +8,19 @@
 
 import UIKit
 
-class KMAUICaseRowTableViewCell: UITableViewCell {
+public class KMAUICaseRowTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
-    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
-    @IBOutlet weak var bgViewTop: NSLayoutConstraint!
-    @IBOutlet weak var bgViewBottom: NSLayoutConstraint!
-    @IBOutlet weak var caseLabel: UILabel!
-    @IBOutlet weak var attachLabel: UILabel!
-    @IBOutlet weak var landIdLabel: UILabel!
-    @IBOutlet weak var citizenLabel: UILabel!
-    @IBOutlet weak var divideLineView: UIView!
-    @IBOutlet weak var attachmentButton: UIButton!
-    @IBOutlet weak var arrowImageView: UIImageView!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
+    @IBOutlet public weak var caseLabel: UILabel!
+    @IBOutlet public weak var attachLabel: UILabel!
+    @IBOutlet public weak var landIdLabel: UILabel!
+    @IBOutlet public weak var citizenLabel: UILabel!
+    @IBOutlet public weak var divideLineView: UIView!
+    @IBOutlet public weak var attachmentButton: UIButton!
+    @IBOutlet public weak var arrowImageView: UIImageView!
     
     // MARK: - Variables
     public static let id = "KMAUICaseRowTableViewCell"
@@ -31,7 +31,7 @@ class KMAUICaseRowTableViewCell: UITableViewCell {
         }
     }
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
         
         // Background color
@@ -147,7 +147,7 @@ class KMAUICaseRowTableViewCell: UITableViewCell {
         }
     }
     
-    @IBAction func attachmentButtonPressed(_ sender: Any) {
+    @IBAction public func attachmentButtonPressed(_ sender: Any) {
         print("Attachment button pressed.")
     }
 }
