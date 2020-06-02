@@ -3959,6 +3959,8 @@ public struct KMAUILandCaseStruct {
     public var departmentAttachment = ""
     public var departmentAttachmentItem = KMADocumentData()
     public var departmentDecision = ""
+    public var judgeAttachment = ""
+    public var judgeAttachmentItem = KMADocumentData()
     
     public init() {
     }
@@ -4034,24 +4036,41 @@ public struct KMAUILandCaseStruct {
         
         if let departmentAttachment = object["departmentAttachment"] as? String {
             self.departmentAttachment = departmentAttachment
-            self.setupAttachment()
         }
         
         if let departmentDecision = object["departmentDecision"] as? String {
             self.departmentDecision = departmentDecision
         }
         
+        if let judgeAttachment = object["judgeAttachment"] as? String {
+            self.judgeAttachment = judgeAttachment
+        }
+        
+        self.setupAttachments()
+        
         // Prepare rows for details
         prepareRows()
     }
     
-    public mutating func setupAttachment() {
-        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: departmentAttachment)
+    public mutating func setupAttachments() {
+        if !departmentAttachment.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: departmentAttachment)
+            
+            if !files.isEmpty {
+                self.departmentAttachmentItem = files[0]
+            } else {
+                self.departmentAttachmentItem = KMADocumentData()
+            }
+        }
         
-        if !files.isEmpty {
-            self.departmentAttachmentItem = files[0]
-        } else {
-            self.departmentAttachmentItem = KMADocumentData()
+        if !judgeAttachment.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: judgeAttachment)
+            
+            if !files.isEmpty {
+                self.judgeAttachmentItem = files[0]
+            } else {
+                self.judgeAttachmentItem = KMADocumentData()
+            }
         }
     }
     
