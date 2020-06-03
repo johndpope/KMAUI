@@ -71,11 +71,11 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     public func setupLandCase() {
         if landCase.courtStatus.isEmpty {
             // Not submitted yet
-            statusLabel.text = "awaiting submission"
+            statusLabel.text = "awaiting submission".addGaps()
             statusLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             // Provide details
             titleLabel.text = "Land case details"
-            infoLabel.text = "Provide the location details and upload some confirmation photos"
+            infoLabel.text = "Please, provide the land location details and upload some confirmation photos"
         }
     }
 }
