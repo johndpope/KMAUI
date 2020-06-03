@@ -82,7 +82,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         infoLabel.text = rowData.rowValue
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
         
-        if rowData.rowName == "Set location" {
+        if rowData.rowName == "Set a location" {
             cameraImageView.image = KMAUIConstants.shared.pinIcon.withRenderingMode(.alwaysTemplate)
         } else {
             cameraImageView.image = KMAUIConstants.shared.cameraIcon.withRenderingMode(.alwaysTemplate)
