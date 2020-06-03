@@ -21,6 +21,11 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var landCase = KMAUILandCaseStruct() {
+        didSet {
+            setupLandCase()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -61,5 +66,16 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         // Setup period label
         infoLabel.text = "\(dateFormatter.string(from: lottery.startDate)) – \(dateFormatter.string(from: lottery.endDate))"
+    }
+    
+    public func setupLandCase() {
+        if landCase.courtStatus.isEmpty {
+            // Not submitted yet
+            statusLabel.text = "awaiting submission"
+            statusLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            // Provide details
+            titleLabel.text = "Land case details"
+            infoLabel.text = "Provide the location details and upload some confirmation photos"
+        }
     }
 }
