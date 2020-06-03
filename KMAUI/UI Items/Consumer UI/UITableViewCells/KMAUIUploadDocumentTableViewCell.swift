@@ -117,6 +117,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
             
             if rowData.rowValue == "landCase" {
+                titleLabel.text = "Earned land"
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you want to own")
                 bgViewBottom.constant = 34 + 21
                 uploadButton.alpha = 1
