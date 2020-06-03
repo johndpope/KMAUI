@@ -11,12 +11,15 @@ import UIKit
 public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet public weak var displayView: UIView!
     @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var bgImageView: UIImageView!
     @IBOutlet public weak var largeImageView: UIImageView!
     @IBOutlet public weak var smallImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var infoLabel: UILabel!
+    @IBOutlet public weak var uploadButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIUploadDocumentTableViewCell"
@@ -29,8 +32,12 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Display view
+        displayView.layer.cornerRadius = 10
+        displayView.clipsToBounds = true
+        
         // Bg view
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        bgView.backgroundColor = UIColor.clear
         bgView.layer.cornerRadius = 10
         bgView.clipsToBounds = true
         
@@ -54,11 +61,17 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         }
         
+        // Title label
         titleLabel.textColor = UIColor.white
 
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont
         infoLabel.textColor = UIColor.white
+        
+        // Upload button
+        uploadButton.layer.cornerRadius = 17
+        uploadButton.clipsToBounds = true
+        uploadButton.isUserInteractionEnabled = false
         
         // No standard selection required
         selectionStyle = .none
@@ -78,13 +91,17 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.alpha = 0.8
+            displayView.alpha = 0.8
         } else {
-            bgView.alpha = 1.0
+            displayView.alpha = 1.0
         }
     }
     
     public func setupCell() {
+        // Bg view bottom
+        bgViewBottom.constant = 0
+        uploadButton.alpha = 0
+        // Department name
         var departmentName = "Department"
         // Get the real department name
         if !rowData.rowValue.isEmpty {
@@ -98,6 +115,12 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
             largeImageView.layer.borderColor = UIColor.clear.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
+            
+            if rowData.rowValue == "landCase" {
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you want to own")
+                bgViewBottom.constant = 34 + 21
+                uploadButton.alpha = 1
+            }
         } else if rowData.rowName == "Pending" {
             infoLabel.text = "Your document was received by the \(departmentName) and it will be processed soon"
             largeImageView.image = KMAUIConstants.shared.pendingDocumentImage
