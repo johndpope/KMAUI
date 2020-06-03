@@ -143,6 +143,7 @@ public class KMAUIConstants {
     public let uploadBackground = UIImage(named: "uploadBackground", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadDocumentImage = UIImage(named: "uploadDocumentImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let uploadDocumentBadge = UIImage(named: "uploadDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let uploadDocumentBadgeGray = UIImage(named: "uploadDocumentBadgeGray", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let pendingDocumentImage = UIImage(named: "pendingDocumentImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let pendingDocumentBadge = UIImage(named: "pendingDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let approvedDocumentBadge = UIImage(named: "approvedDocumentBadge", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!

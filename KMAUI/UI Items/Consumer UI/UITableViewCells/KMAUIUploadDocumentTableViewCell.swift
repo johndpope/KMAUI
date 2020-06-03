@@ -120,6 +120,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you want to own")
                 bgViewBottom.constant = 34 + 21
                 uploadButton.alpha = 1
+                smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
             }
         } else if rowData.rowName == "Pending" {
             infoLabel.text = "Your document was received by the \(departmentName) and it will be processed soon"
