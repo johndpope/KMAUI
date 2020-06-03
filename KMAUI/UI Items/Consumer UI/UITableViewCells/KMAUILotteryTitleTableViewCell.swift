@@ -74,8 +74,8 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             statusLabel.text = "awaiting submission".addGaps()
             statusLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             // Provide details
-            titleLabel.text = "Provide the details"
-            infoLabel.text = "Please, set the land location and upload some confirmation photos"
+            titleLabel.text = "Prepare your submission"
+            infoLabel.text = "Provide the information about the land location and upload photos to confirm the land ownership"
         }
     }
 }
