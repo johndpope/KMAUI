@@ -47,7 +47,7 @@ public class KMAUIUtilities {
         headerView.addSubview(backgroundView)
         
         // Header title label
-        let headerTitleLabel = KMAUITitleLabel(frame: CGRect(x: 16, y: 8 + offset, width: KMAUIConstants.shared.KMAScreenWidth - 32, height: 36))
+        let headerTitleLabel = KMAUIBoldTextLabel(frame: CGRect(x: 16, y: 8 + offset, width: KMAUIConstants.shared.KMAScreenWidth - 32, height: 36))
         headerTitleLabel.text = title
         headerTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         headerView.addSubview(headerTitleLabel)
