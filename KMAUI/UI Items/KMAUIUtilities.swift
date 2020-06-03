@@ -802,7 +802,7 @@ public class KMAUIUtilities {
     
     public func highlight(words: [String], in str: String) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: str)
-        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIBoldFont.withSize(12)]
+        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIBoldFont.withSize(14)]
         
         let nsstr = str as NSString
         var searchRange = NSMakeRange(0, nsstr.length)
