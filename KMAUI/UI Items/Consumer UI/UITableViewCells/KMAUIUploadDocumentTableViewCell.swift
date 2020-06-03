@@ -117,7 +117,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
             
             if rowData.rowValue == "landCase" {
-                titleLabel.text = "Earned land"
+                titleLabel.text = "New land case"
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
                 bgViewBottom.constant = 34 + 21
                 uploadButton.alpha = 1
