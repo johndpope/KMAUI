@@ -24,7 +24,8 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUIProfileTableViewCell"
-    public var citizenId = "" {
+    public var urlString = ""
+    public var username = "" {
         didSet {
             setupCell()
         }
@@ -96,31 +97,21 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
+        // Setup username
+        usernameLabel.text = username
+        
+        // Info details
+        fullNameLabel.text = "Edit your account details"
+        
         // Setting the placeholder profileImageView
         if let profileIcon = UIImage(named: "profileImagePlaceholder")?.withRenderingMode(.alwaysTemplate) {
             profileImageView.image = profileIcon
         }
         
-        // Get the citizen details
-        if !citizenId.isEmpty {
-            let citizenObject = KMACoreData.shared.getUserBy(objectId: citizenId)
-            
-            // Full name
-            if let fullName = citizenObject.fullName {
-                usernameLabel.text = "@" + fullName
-            } else if let usernameValue = citizenObject.username {
-                usernameLabel.text = usernameValue.formatUsername()
-            }
-            
-            // Info details
-            fullNameLabel.text = "Edit your account details"
-            
-            // Profile image
-            if let profileImageString = citizenObject.profileImage, let url = URL(string: profileImageString) {
-                profileImageView.kf.indicatorType = .activity
-                profileImageView.kf.setImage(with: url)
-            }
+        // Profile image
+        if !urlString.isEmpty, let url = URL(string: urlString) {
+            profileImageView.kf.indicatorType = .activity
+            profileImageView.kf.setImage(with: url)
         }
-        
     }
 }
