@@ -76,6 +76,7 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             // Provide details
             titleLabel.text = "Prepare your submission"
             infoLabel.text = "Provide the information about the land location and upload photos to confirm the land ownership"
+            infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
         }
     }
 }
