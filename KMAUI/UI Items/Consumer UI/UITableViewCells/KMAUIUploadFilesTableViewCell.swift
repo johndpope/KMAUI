@@ -80,7 +80,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
     public func setupCell() {
         titleLabel.text = rowData.rowName
         infoLabel.text = rowData.rowValue
-        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
         
         if rowData.rowName == "Set location" {
             cameraImageView.image = KMAUIConstants.shared.pinIcon.withRenderingMode(.alwaysTemplate)
