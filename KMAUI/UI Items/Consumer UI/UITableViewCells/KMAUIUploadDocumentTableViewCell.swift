@@ -119,6 +119,8 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
             uploadButton.setTitle("Start a land case", for: .normal)
         } else if rowData.rowName == "Land case" {
+            titleLabel.text = rowData.rowName + " " + rowData.rowValue.lowercased()
+            
             if rowData.rowValue == "In progress" {
                 uploadButton.setTitle("View progress", for: .normal)
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["additional information"], in: "The land case application was received by the court, you can still provide an additional information")
