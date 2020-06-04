@@ -110,20 +110,37 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         // Setup title
         titleLabel.text = rowData.rowName
         // Setup data depedning on the title
-        if rowData.rowName == "Upload a document" {
+        if rowData.rowName == "New land case" {
+            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
+            bgViewBottom.constant = 34 + 21
+            uploadButton.alpha = 1
+            largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
+            largeImageView.layer.borderColor = UIColor.clear.cgColor
+            smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
+            uploadButton.setTitle("Start a land case", for: .normal)
+        } else if rowData.rowName == "Land case" {
+            if rowData.rowValue == "In progress" {
+                uploadButton.setTitle("View progress", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["additional information"], in: "The land case application was received by the court, you can still provide an additional information")
+                smallImageView.image = KMAUIConstants.shared.pendingAttachmentIcon
+            } else if rowData.rowValue == "Approved" {
+                uploadButton.setTitle("View details", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["approved"], in: "Your land case was approved by the court, you can review the full details")
+                smallImageView.image = KMAUIConstants.shared.approvedAttachmentIcon
+            } else if rowData.rowValue == "Declined" {
+                uploadButton.setTitle("View details", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
+                smallImageView.image = KMAUIConstants.shared.rejectedAttachmentIcon
+            }
+            bgViewBottom.constant = 34 + 21
+            uploadButton.alpha = 1
+            largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
+            largeImageView.layer.borderColor = UIColor.clear.cgColor
+        } else if rowData.rowName == "Upload a document" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you received in the lottery")
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
             largeImageView.layer.borderColor = UIColor.clear.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadge
-            
-            if rowData.rowValue == "landCase" {
-                titleLabel.text = "New land case"
-                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
-                bgViewBottom.constant = 34 + 21
-                uploadButton.alpha = 1
-                smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
-                uploadButton.setTitle("Start a land case", for: .normal)
-            }
         } else if rowData.rowName == "Pending" {
             infoLabel.text = "Your document was received by the \(departmentName) and it will be processed soon"
             largeImageView.image = KMAUIConstants.shared.pendingDocumentImage
