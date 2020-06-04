@@ -121,7 +121,6 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else if rowData.rowName == "Land case" {
             titleLabel.text = rowData.rowName + " " + rowData.rowValue.lowercased()
-            
             if rowData.rowValue == "In progress" {
                 uploadButton.setTitle("View progress", for: .normal)
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")

@@ -75,8 +75,24 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             statusLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
             // Provide details
             titleLabel.text = "Prepare your submission"
-            infoLabel.text = "Provide the information about the land location and upload photos to confirm the land ownership"
+            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
             infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
+        } else {
+            // Title
+            titleLabel.text = "Case #\(landCase.caseNumber)"
+            // Not submitted yet
+            statusLabel.text = landCase.courtStatus.addGaps()
+            // in progress / approved / declined
+            if landCase.courtStatus.lowercased() == "in progress" {
+                statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")
+            } else if landCase.courtStatus.lowercased() == "approved" {
+                statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["approved"], in: "Your land case was approved by the court, you can review the full details")
+            } else if landCase.courtStatus.lowercased() == "declined" {
+                statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
+            }
         }
     }
 }
