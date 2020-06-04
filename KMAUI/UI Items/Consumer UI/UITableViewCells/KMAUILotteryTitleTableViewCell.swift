@@ -98,8 +98,8 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             // Date formatter for info label: show the court date
             let dateFormatter = DateFormatter()
             dateFormatter.timeStyle = .none
-            dateFormatter.dateStyle = .short
-            infoLabel.text = dateFormatter.string(from: landCase.date)
+            dateFormatter.dateStyle = .medium
+            infoLabel.text = "Court date: " + dateFormatter.string(from: landCase.date)
         }
     }
 }
