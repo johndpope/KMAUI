@@ -2427,5 +2427,56 @@ final public class KMAUIParse {
         
         return itemDictionary as AnyObject
     }
+    
+    public func checkLandCase(completion: @escaping (_ urls: [AnyObject]) -> ()) {
+        if let currentUser = PFUser.current() {
+            let query = PFQuery(className: "KMALandCase")
+            query.whereKey("citizen", equalTo: currentUser)
+            // Citizen includes
+            query.includeKey("citizen")
+            query.includeKey("citizen.homeAddress")
+            query.includeKey("citizen.homeAddress.building")
+            query.includeKey("citizen.homeAddress.building.address")
+            query.includeKey("citizen.homeAddress.building.address.district")
+            query.includeKey("citizen.homeAddress.building.address.district.city")
+            query.includeKey("citizen.homeAddress.building.address.district.city.region")
+            query.includeKey("citizen.homeAddress.building.address.district.city.region.country")
+            query.includeKey("citizen.homeAddress.building.address.region")
+            query.includeKey("citizen.homeAddress.building.address.region.country")
+            query.includeKey("citizen.homeAddress.documentPointers")
+            // Judge includes
+            query.includeKey("judge")
+            query.includeKey("judge.homeAddress")
+            query.includeKey("judge.homeAddress.building")
+            query.includeKey("judge.homeAddress.building.address")
+            query.includeKey("judge.homeAddress.building.address.district")
+            query.includeKey("judge.homeAddress.building.address.district.city")
+            query.includeKey("judge.homeAddress.building.address.district.city.region")
+            query.includeKey("judge.homeAddress.building.address.district.city.region.country")
+            query.includeKey("judge.homeAddress.building.address.region")
+            query.includeKey("judge.homeAddress.building.address.region.country")
+            query.includeKey("judge.homeAddress.documentPointers")
+            // Sub land
+            query.includeKey("subLand")
+            query.includeKey("subLand.landPlan")
+            query.includeKey("subLand.landPlan.region")
+            query.includeKey("subLand.landPlan.responsibleDivision")
+            // Department
+            query.includeKey("department")
+            query.includeKey("department.mapArea")
+            // Get land cases list
+            query.findObjectsInBackground { (landCases, error) in
+                var landCasesArray = [PFObject]()
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let landCases = landCases {
+                    landCasesArray = landCases
+                }
+                
+                completion(landCasesArray)
+            }
+        }
+    }
 }
 

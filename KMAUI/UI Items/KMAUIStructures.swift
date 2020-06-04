@@ -4051,7 +4051,7 @@ public struct KMAUILandCaseStruct {
         self.setupAttachments()
         
         // Prepare rows for details
-        prepareRows()
+        self.prepareRows()
     }
     
     public mutating func setupAttachments() {

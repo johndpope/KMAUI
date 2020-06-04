@@ -37,6 +37,8 @@ public class KMAUISubLandImagesTableViewCell: UITableViewCell {
         singleImageView.layer.cornerRadius = 8
         singleImageView.clipsToBounds = true
         singleImageView.backgroundColor =  KMAUIConstants.shared.KMAUILightButtonColor
+        singleImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
+        singleImageView.layer.borderWidth = 1
         
         // No selection required
         selectionStyle = .none
@@ -128,7 +130,6 @@ extension KMAUISubLandImagesTableViewCell: UICollectionViewDataSource, UICollect
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: KMAUISubLandImageCollectionViewCell.id, for: indexPath) as? KMAUISubLandImageCollectionViewCell {
             imageCell.document = images[indexPath.row]
-            
             return imageCell
         }
         
