@@ -1724,6 +1724,8 @@ public struct KMAPoliceman {
 
 public struct KMAPerson {
     public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
     public var lotteryObjectId = ""
     public var username = ""
     public var fullName = ""

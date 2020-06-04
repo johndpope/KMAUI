@@ -76,7 +76,6 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             // Provide details
             titleLabel.text = "Prepare your submission"
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
-            infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
         } else {
             // Title
             titleLabel.text = "Case #\(landCase.caseNumber)"
@@ -94,5 +93,7 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
             }
         }
+        // Add the spacing for the infoLabel
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
     }
 }
