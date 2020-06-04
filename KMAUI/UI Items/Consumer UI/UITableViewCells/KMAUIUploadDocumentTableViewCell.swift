@@ -123,7 +123,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             
             if rowData.rowValue == "In progress" {
                 uploadButton.setTitle("View progress", for: .normal)
-                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["additional information"], in: "The land case application was received by the court, you can still provide an additional information")
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")
                 smallImageView.image = KMAUIConstants.shared.pendingAttachmentIcon
             } else if rowData.rowValue == "Approved" {
                 uploadButton.setTitle("View details", for: .normal)
