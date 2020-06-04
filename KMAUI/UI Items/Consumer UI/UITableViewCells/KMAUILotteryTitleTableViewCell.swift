@@ -79,6 +79,8 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             // Provide details
             titleLabel.text = "Prepare your submission"
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
+            // Add the spacing for the infoLabel
+            infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         } else {
             // Title
             titleLabel.text = "Case #\(landCase.caseNumber)"
@@ -87,16 +89,17 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             // in progress / approved / declined
             if landCase.courtStatus.lowercased() == "in progress" {
                 statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")
             } else if landCase.courtStatus.lowercased() == "approved" {
                 statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["approved"], in: "Your land case was approved by the court, you can review the full details")
             } else if landCase.courtStatus.lowercased() == "declined" {
                 statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
-                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
             }
+            
+            // Date formatter for info label: show the court date
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = .none
+            dateFormatter.dateStyle = .short
+            infoLabel.text = dateFormatter.string(from: landCase.date)
         }
-        // Add the spacing for the infoLabel
-        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
 }
