@@ -2428,7 +2428,7 @@ final public class KMAUIParse {
         return itemDictionary as AnyObject
     }
     
-    public func checkLandCase(completion: @escaping (_ urls: [AnyObject]) -> ()) {
+    public func checkLandCase(completion: @escaping (_ urls: [PFObject]) -> ()) {
         if let currentUser = PFUser.current() {
             let query = PFQuery(className: "KMALandCase")
             query.whereKey("citizen", equalTo: currentUser)
