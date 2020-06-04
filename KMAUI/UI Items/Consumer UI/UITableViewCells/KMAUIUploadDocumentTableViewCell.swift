@@ -115,7 +115,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             bgViewBottom.constant = 34 + 21
             uploadButton.alpha = 1
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
-            largeImageView.layer.borderColor = UIColor.clear.cgColor
+            largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
             uploadButton.setTitle("Start a land case", for: .normal)
         } else if rowData.rowName == "Land case" {
@@ -125,14 +125,17 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
                 uploadButton.setTitle("View progress", for: .normal)
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")
                 smallImageView.image = KMAUIConstants.shared.pendingAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIYellowProgressColor.cgColor
             } else if rowData.rowValue == "Approved" {
                 uploadButton.setTitle("View details", for: .normal)
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["approved"], in: "Your land case was approved by the court, you can review the full details")
                 smallImageView.image = KMAUIConstants.shared.approvedAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
             } else if rowData.rowValue == "Declined" {
                 uploadButton.setTitle("View details", for: .normal)
                 infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
                 smallImageView.image = KMAUIConstants.shared.rejectedAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIRedProgressColor.cgColor
             }
             bgViewBottom.constant = 34 + 21
             uploadButton.alpha = 1
