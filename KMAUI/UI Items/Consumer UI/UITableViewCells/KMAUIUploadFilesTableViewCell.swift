@@ -71,9 +71,9 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-        } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         }
     }
     
