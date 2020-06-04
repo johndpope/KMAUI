@@ -69,6 +69,9 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     }
     
     public func setupLandCase() {
+        // Update font
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
+        // Setup the land case status
         if landCase.courtStatus.isEmpty {
             // Not submitted yet
             statusLabel.text = "awaiting submission".addGaps()
@@ -94,6 +97,6 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             }
         }
         // Add the spacing for the infoLabel
-        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
 }
