@@ -73,7 +73,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
         }
     }
     
