@@ -37,7 +37,7 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // BgView
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
         bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
         bgView.layer.shadowRadius = 4
         bgView.layer.cornerRadius = 10
@@ -89,7 +89,7 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
             rightArrowImageView.tintColor = UIColor.white
             rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
         } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
