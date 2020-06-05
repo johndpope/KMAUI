@@ -703,8 +703,8 @@
 				855ECABF2487B7B300409CC6 /* KMAUIUploadDocumentTableViewCell.xib */,
 				85AF1CBB248A40C300553629 /* KMAUIDecisionTableViewCell.swift */,
 				85AF1CBA248A40C300553629 /* KMAUIDecisionTableViewCell.xib */,
-				85F693FB248AA3A10055D811 /* KMAUIDecisionCollectionViewCell.swift */,
-				85F693FA248AA3A10055D811 /* KMAUIDecisionCollectionViewCell.xib */,
+				85F693FE248AA3A70055D811 /* KMAUIDecisionsCollectionViewTableViewCell.swift */,
+				85F693FF248AA3A70055D811 /* KMAUIDecisionsCollectionViewTableViewCell.xib */,
 			);
 			path = UITableViewCells;
 			sourceTree = "<group>";
@@ -733,8 +733,8 @@
 			children = (
 				85B112FC2449EAE700742B17 /* KMAUISubLandImageCollectionViewCell.swift */,
 				85B112FD2449EAE700742B17 /* KMAUISubLandImageCollectionViewCell.xib */,
-				85F693FE248AA3A70055D811 /* KMAUIDecisionsCollectionViewTableViewCell.swift */,
-				85F693FF248AA3A70055D811 /* KMAUIDecisionsCollectionViewTableViewCell.xib */,
+				85F693FB248AA3A10055D811 /* KMAUIDecisionCollectionViewCell.swift */,
+				85F693FA248AA3A10055D811 /* KMAUIDecisionCollectionViewCell.xib */,
 			);
 			path = UICollectionViewCells;
 			sourceTree = "<group>";

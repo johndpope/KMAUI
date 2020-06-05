@@ -57,10 +57,6 @@ public class KMAUIDecisionsCollectionViewTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
-        
-        // Scroll to start
-//        collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .right, animated: false)
-        // SAVE OFFSET?
     }
 }
 
@@ -79,7 +75,10 @@ extension KMAUIDecisionsCollectionViewTableViewCell: UICollectionViewDataSource,
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: KMAUIDecisionCollectionViewCell.id, for: indexPath) as? KMAUIDecisionCollectionViewCell {
             imageCell.decision = decisions[indexPath.row]
+            print("Cell loaded")
             return imageCell
+        } else {
+            print("No cell loaded")
         }
         
         return UICollectionViewCell()
