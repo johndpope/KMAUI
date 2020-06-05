@@ -69,15 +69,15 @@ public class KMAUIDecisionTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-//        if highlight {
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
-//            rightArrowImageView.tintColor = UIColor.white
-//            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
-//        } else {
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-//            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-//            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
-//        }
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        }
     }
     
     public func setupCell() {
