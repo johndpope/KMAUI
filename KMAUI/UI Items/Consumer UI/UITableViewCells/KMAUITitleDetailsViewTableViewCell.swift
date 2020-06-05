@@ -57,13 +57,17 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         titleLabel.text = rowData.rowName
         infoButton.setTitle(rowData.rowValue, for: .normal)
         infoButton.isHidden = !rowData.visibility
+        infoButton.isUserInteractionEnabled = true
         rightArrowImageView.isHidden = !rowData.visibility
-        rightArrowImageViewRight.constant = 16
+
+        if rowData.visibility {
+            rightArrowImageViewRight.constant = 16
+        } else {
+            rightArrowImageViewRight.constant = 0
+        }
     }
     
     @IBAction public func infoButtonPressed(_ sender: Any) {
         callback?(true)
     }
 }
-// 8 6 16
-// 
