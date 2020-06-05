@@ -35,7 +35,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
         // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
+        titleLabel.font = UIFont.systemFont(ofSize: 19, weight: .semibold) //KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
         titleLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         
         // Info label

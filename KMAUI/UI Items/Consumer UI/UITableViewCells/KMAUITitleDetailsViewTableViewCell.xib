@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITitleDetailsViewTableViewCell" id="KGk-i7-Jjw" customClass="KMAUITitleDetailsViewTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITitleDetailsViewTableViewCell" rowHeight="52" id="KGk-i7-Jjw" customClass="KMAUITitleDetailsViewTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Bt-naP" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="17" y="0.0" width="219" height="44"/>
+                        <rect key="frame" x="17" y="8" width="219" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="4Rb-sy-OhT"/>
                         </constraints>
@@ -27,14 +27,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicatorFull" translatesAutoresizingMaskIntoConstraints="NO" id="jna-xa-ffA">
-                        <rect key="frame" x="298" y="16.5" width="6" height="11"/>
+                        <rect key="frame" x="298" y="24.5" width="6" height="11"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="4JT-q4-aiN"/>
                             <constraint firstAttribute="width" constant="6" id="pgB-Fk-OBL"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUA-M9-sQq">
-                        <rect key="frame" x="244" y="6" width="46" height="32"/>
+                        <rect key="frame" x="244" y="14" width="46" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="Tks-67-9vI"/>
                         </constraints>
@@ -47,11 +47,11 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="gqi-Bt-naP" secondAttribute="bottom" id="05Y-8y-HUz"/>
                     <constraint firstItem="gqi-Bt-naP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="4xU-LE-lav"/>
-                    <constraint firstItem="jna-xa-ffA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="I2h-MB-mc7"/>
-                    <constraint firstItem="gUA-M9-sQq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="MrR-Lm-hFh"/>
                     <constraint firstItem="jna-xa-ffA" firstAttribute="leading" secondItem="gUA-M9-sQq" secondAttribute="trailing" constant="8" id="Rzv-2d-VEw"/>
                     <constraint firstItem="gUA-M9-sQq" firstAttribute="leading" secondItem="gqi-Bt-naP" secondAttribute="trailing" constant="8" id="ebC-hP-cmk"/>
-                    <constraint firstItem="gqi-Bt-naP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uE5-Qd-oab"/>
+                    <constraint firstItem="gUA-M9-sQq" firstAttribute="centerY" secondItem="gqi-Bt-naP" secondAttribute="centerY" id="omC-47-NaM"/>
+                    <constraint firstItem="jna-xa-ffA" firstAttribute="centerY" secondItem="gqi-Bt-naP" secondAttribute="centerY" id="s3m-du-qfV"/>
+                    <constraint firstItem="gqi-Bt-naP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="uE5-Qd-oab"/>
                     <constraint firstAttribute="trailing" secondItem="jna-xa-ffA" secondAttribute="trailing" constant="16" id="yfn-iq-K8P"/>
                 </constraints>
             </tableViewCellContentView>
@@ -61,7 +61,7 @@
                 <outlet property="rightArrowImageView" destination="jna-xa-ffA" id="Kgr-cM-pXQ"/>
                 <outlet property="titleLabel" destination="gqi-Bt-naP" id="37D-df-oub"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
+            <point key="canvasLocation" x="137.68115942028987" y="155.35714285714286"/>
         </tableViewCell>
     </objects>
     <resources>

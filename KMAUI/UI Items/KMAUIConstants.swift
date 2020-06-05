@@ -17,7 +17,7 @@ public class KMAUIConstants {
     
     // MARK: - Fonts
     public let KMAUIRegularFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-    public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .bold)
+    public let KMAUIBoldFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
     public struct Fonts {
         public static let regularSize18 = UIFont.systemFont(ofSize: 18, weight: .regular)
         public static let weight600Size18 = UIFont.systemFont(ofSize: 18, weight: .semibold)

@@ -52,12 +52,10 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
         // Setup usernameLabel
         usernameLabel.text = ""
         usernameLabel.textColor = KMAUIConstants.shared.KMABrightBlueColor
-//        usernameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
         usernameLabel.minimumScaleFactor = 0.5
         
         // Setup fullNameLabel
         fullNameLabel.text = ""
-//        fullNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         fullNameLabel.minimumScaleFactor = 0.5
         
         // Setup the right arrow
@@ -66,7 +64,7 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
         rightArrowImageView.clipsToBounds = true
         // Default state - disabled
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
+        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         
         // Disable default selection animation
         selectionStyle = .none
