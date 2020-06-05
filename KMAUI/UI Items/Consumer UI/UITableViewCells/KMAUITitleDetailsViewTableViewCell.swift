@@ -14,6 +14,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var titleLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var infoButton: UIButton!
     
     // MARK: - Variables
@@ -55,6 +56,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     
     public func setupCell() {
         titleLabel.text = rowData.rowName
+        titleLabelTop.constant = 16
         infoButton.setTitle(rowData.rowValue, for: .normal)
         infoButton.isHidden = !rowData.visibility
         infoButton.isUserInteractionEnabled = true
