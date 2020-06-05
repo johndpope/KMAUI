@@ -37,7 +37,7 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // BgView
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
         bgView.layer.shadowRadius = 4
         bgView.layer.cornerRadius = 10
@@ -85,13 +85,13 @@ public class KMAUIProfileTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
-//            rightArrowImageView.tintColor = UIColor.white
-//            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
-//        } else {
-//            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
-//            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-//            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
