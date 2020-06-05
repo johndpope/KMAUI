@@ -13,12 +13,12 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITitleDetailsViewTableViewCell" rowHeight="52" id="KGk-i7-Jjw" customClass="KMAUITitleDetailsViewTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqi-Bt-naP" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="17" y="8" width="219" height="44"/>
+                        <rect key="frame" x="17" y="16" width="219" height="44"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="44" id="4Rb-sy-OhT"/>
                         </constraints>
@@ -27,14 +27,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicatorFull" translatesAutoresizingMaskIntoConstraints="NO" id="jna-xa-ffA">
-                        <rect key="frame" x="298" y="24.5" width="6" height="11"/>
+                        <rect key="frame" x="298" y="32.5" width="6" height="11"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="11" id="4JT-q4-aiN"/>
                             <constraint firstAttribute="width" constant="6" id="pgB-Fk-OBL"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUA-M9-sQq">
-                        <rect key="frame" x="244" y="14" width="46" height="32"/>
+                        <rect key="frame" x="244" y="22" width="46" height="32"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="32" id="Tks-67-9vI"/>
                         </constraints>
@@ -51,7 +51,7 @@
                     <constraint firstItem="gUA-M9-sQq" firstAttribute="leading" secondItem="gqi-Bt-naP" secondAttribute="trailing" constant="8" id="ebC-hP-cmk"/>
                     <constraint firstItem="gUA-M9-sQq" firstAttribute="centerY" secondItem="gqi-Bt-naP" secondAttribute="centerY" id="omC-47-NaM"/>
                     <constraint firstItem="jna-xa-ffA" firstAttribute="centerY" secondItem="gqi-Bt-naP" secondAttribute="centerY" id="s3m-du-qfV"/>
-                    <constraint firstItem="gqi-Bt-naP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="uE5-Qd-oab"/>
+                    <constraint firstItem="gqi-Bt-naP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="uE5-Qd-oab"/>
                     <constraint firstAttribute="trailing" secondItem="jna-xa-ffA" secondAttribute="trailing" constant="16" id="yfn-iq-K8P"/>
                 </constraints>
             </tableViewCellContentView>
