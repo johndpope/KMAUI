@@ -59,6 +59,7 @@
             <connections>
                 <outlet property="infoButton" destination="gUA-M9-sQq" id="F0P-J0-8gN"/>
                 <outlet property="rightArrowImageView" destination="jna-xa-ffA" id="Kgr-cM-pXQ"/>
+                <outlet property="rightArrowImageViewRight" destination="yfn-iq-K8P" id="98s-6Q-Wuv"/>
                 <outlet property="titleLabel" destination="gqi-Bt-naP" id="37D-df-oub"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="155.35714285714286"/>

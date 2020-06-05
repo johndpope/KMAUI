@@ -12,6 +12,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var infoButton: UIButton!
     
@@ -23,7 +24,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         }
     }
     public var callback: ((Bool) -> Void)?
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -45,10 +46,10 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         // Selection style
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -57,9 +58,12 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         infoButton.setTitle(rowData.rowValue, for: .normal)
         infoButton.isHidden = !rowData.visibility
         rightArrowImageView.isHidden = !rowData.visibility
+        rightArrowImageViewRight.constant = 16
     }
     
     @IBAction public func infoButtonPressed(_ sender: Any) {
         callback?(true)
     }
 }
+// 8 6 16
+// 
