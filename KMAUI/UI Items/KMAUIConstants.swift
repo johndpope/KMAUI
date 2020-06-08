@@ -164,6 +164,7 @@ public class KMAUIConstants {
     public let approvementIcon = UIImage(named: "approvementIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let rejectionIcon = UIImage(named: "rejectionIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let pinIcon = UIImage(named: "pinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let arrowDown = UIImage(named: "arrowDown", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // String gap
     public let stringGap = "     "

@@ -14,6 +14,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var circleView: UIView!
     @IBOutlet public weak var cameraImageView: UIImageView!
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var infoLabel: UILabel!
     
@@ -52,6 +53,13 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        
+        // Arrow image view
+        arrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIDarkTextColor
+        arrowImageView.layer.cornerRadius = 12
+        arrowImageView.clipsToBounds = true
+        arrowImageView.image = KMAUIConstants.shared.arrowDown.withRenderingMode(.alwaysTemplate)
+        arrowImageView.tintColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
         
         // No standard selection required
         selectionStyle = .none

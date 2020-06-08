@@ -31,7 +31,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="8MC-RD-yOd"/>
                                     <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerX" secondItem="9PK-EB-dry" secondAttribute="centerX" id="C9P-iP-j2c"/>
@@ -39,6 +39,13 @@
                                     <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerY" secondItem="9PK-EB-dry" secondAttribute="centerY" id="wDd-dn-Ujr"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXC-g3-3io">
+                                <rect key="frame" x="155" y="64" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="LUz-rz-KD5"/>
+                                    <constraint firstAttribute="width" constant="24" id="r1A-1d-N16"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload files" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-ix-QTE">
                                 <rect key="frame" x="16" y="100" width="256" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -58,8 +65,10 @@
                             <constraint firstAttribute="trailing" secondItem="5KL-Aa-WuA" secondAttribute="trailing" constant="16" id="9Ol-s6-vtu"/>
                             <constraint firstItem="wMS-ix-QTE" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="IxJ-eB-UVq"/>
                             <constraint firstItem="5KL-Aa-WuA" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="JMD-Q9-uWh"/>
+                            <constraint firstItem="zXC-g3-3io" firstAttribute="leading" secondItem="9PK-EB-dry" secondAttribute="trailing" constant="-21" id="PE7-qv-CYX"/>
                             <constraint firstItem="9PK-EB-dry" firstAttribute="centerX" secondItem="LZi-ic-2aq" secondAttribute="centerX" id="Q91-9n-kJA"/>
                             <constraint firstItem="wMS-ix-QTE" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="12" id="czf-M8-b5Y"/>
+                            <constraint firstItem="zXC-g3-3io" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="-24" id="hmd-ai-XsA"/>
                             <constraint firstItem="5KL-Aa-WuA" firstAttribute="top" secondItem="wMS-ix-QTE" secondAttribute="bottom" constant="12" id="rty-TI-8ph"/>
                             <constraint firstAttribute="bottom" secondItem="5KL-Aa-WuA" secondAttribute="bottom" constant="24" id="sxh-eD-0ra"/>
                             <constraint firstItem="9PK-EB-dry" firstAttribute="top" secondItem="LZi-ic-2aq" secondAttribute="top" constant="24" id="t8u-r6-C0W"/>
@@ -75,6 +84,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowImageView" destination="zXC-g3-3io" id="uWs-bk-fFA"/>
                 <outlet property="bgView" destination="LZi-ic-2aq" id="u3u-6T-OXj"/>
                 <outlet property="cameraImageView" destination="ZUf-lb-2i0" id="rMz-Zw-aUG"/>
                 <outlet property="circleView" destination="9PK-EB-dry" id="pRA-us-zhG"/>
