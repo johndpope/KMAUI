@@ -80,7 +80,7 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             statusLabel.alpha = 0
             // Provide details
             titleLabel.text = "Submission preparing"
-            titleLabelTop.constant = -8
+            titleLabelTop.constant = -12
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Prepare the information about the land location and upload photos to confirm the land ownership ")
             // Add the spacing for the infoLabel
             infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
