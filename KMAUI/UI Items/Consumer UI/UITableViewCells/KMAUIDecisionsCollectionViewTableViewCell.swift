@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUIDecisionsCollectionViewTableViewCell: UITableViewCell {
     
@@ -82,7 +81,6 @@ extension KMAUIDecisionsCollectionViewTableViewCell: UICollectionViewDataSource,
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Selected index: \(indexPath.row)")
         callback?(indexPath.row)
     }
     
