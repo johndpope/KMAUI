@@ -47,7 +47,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload files" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-ix-QTE">
-                                <rect key="frame" x="16" y="100" width="256" height="24"/>
+                                <rect key="frame" x="16" y="100" width="256" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                             <constraint firstItem="9PK-EB-dry" firstAttribute="centerX" secondItem="LZi-ic-2aq" secondAttribute="centerX" id="Q91-9n-kJA"/>
                             <constraint firstItem="wMS-ix-QTE" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="12" id="czf-M8-b5Y"/>
                             <constraint firstItem="zXC-g3-3io" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="-24" id="hmd-ai-XsA"/>
-                            <constraint firstItem="5KL-Aa-WuA" firstAttribute="top" secondItem="wMS-ix-QTE" secondAttribute="bottom" constant="12" id="rty-TI-8ph"/>
+                            <constraint firstItem="5KL-Aa-WuA" firstAttribute="top" secondItem="wMS-ix-QTE" secondAttribute="bottom" constant="4" id="rty-TI-8ph"/>
                             <constraint firstAttribute="bottom" secondItem="5KL-Aa-WuA" secondAttribute="bottom" constant="24" id="sxh-eD-0ra"/>
                             <constraint firstItem="9PK-EB-dry" firstAttribute="top" secondItem="LZi-ic-2aq" secondAttribute="top" constant="24" id="t8u-r6-C0W"/>
                         </constraints>

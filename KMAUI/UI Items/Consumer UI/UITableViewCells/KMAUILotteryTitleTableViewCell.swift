@@ -12,6 +12,7 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var titleLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
@@ -74,18 +75,22 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
         // Setup the land case status
         if landCase.courtStatus.isEmpty {
             // Not submitted yet
-            statusLabel.text = "awaiting submission".addGaps()
+            statusLabel.text = ""
             statusLabel.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+            statusLabel.alpha = 0
             // Provide details
-            titleLabel.text = "Prepare your submission"
-            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
+            titleLabel.text = "Submission preparing"
+            titleLabelTop.constant = -8
+            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Prepare the information about the land location and upload photos to confirm the land ownership ")
             // Add the spacing for the infoLabel
             infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         } else {
             // Title
             titleLabel.text = "Case #\(landCase.caseNumber)"
+            titleLabelTop.constant = 16
             // Not submitted yet
             statusLabel.text = landCase.courtStatus.addGaps()
+            statusLabel.alpha = 1
             // in progress / approved / declined
             if landCase.courtStatus.lowercased() == "in progress" {
                 statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
