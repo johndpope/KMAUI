@@ -4161,3 +4161,16 @@ public struct KMAUIMinistryDecisionStruct {
         }
     }
 }
+
+// MARK: - Attachment Comment struct
+
+public struct KMAUIAttachmentCommentStruct {
+    public var title = ""
+    public var status = ""
+    public var name = ""
+    public var comment = ""
+    public var attachments = [KMADocumentData]()
+    
+    public init() {
+    }
+}
