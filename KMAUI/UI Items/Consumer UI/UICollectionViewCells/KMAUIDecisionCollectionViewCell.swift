@@ -14,6 +14,7 @@ public class KMAUIDecisionCollectionViewCell: UICollectionViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var statusView: UIView!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
@@ -37,10 +38,13 @@ public class KMAUIDecisionCollectionViewCell: UICollectionViewCell {
         bgView.clipsToBounds = true
         
         // Status label
-        statusLabel.layer.cornerRadius = 6
-        statusLabel.clipsToBounds = true
-        statusLabel.textColor = UIColor.white
+        statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         statusLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)
+        
+        // Status view
+        statusView.layer.cornerRadius = 4
+        statusView.clipsToBounds = true
+        
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
@@ -62,11 +66,11 @@ public class KMAUIDecisionCollectionViewCell: UICollectionViewCell {
         statusLabel.text = decision.ministryStatus
         // in progress / approved / declined
         if decision.ministryStatus.lowercased() == "in progress" {
-            statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         } else if decision.ministryStatus.lowercased() == "approved" {
-            statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else if decision.ministryStatus.lowercased() == "rejected" {
-            statusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
             statusLabel.text = "declined"
         }
         

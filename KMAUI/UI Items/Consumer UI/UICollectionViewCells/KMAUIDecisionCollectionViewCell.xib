@@ -21,10 +21,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="240" height="172"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hpA-k3-Rtf" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="12" y="22" width="78" height="26"/>
+                                <rect key="frame" x="26" y="22" width="42" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="G7D-5Z-6Rd"/>
-                                    <constraint firstAttribute="width" constant="78" id="oDc-Kl-5Ko"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -52,6 +51,14 @@
                                     <constraint firstAttribute="height" constant="22" id="noE-fU-uOn"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lF3-4Q-LOj">
+                                <rect key="frame" x="12" y="31" width="8" height="8"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="8" id="gMj-jo-RLS"/>
+                                    <constraint firstAttribute="height" constant="8" id="iYe-AJ-xb6"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -59,11 +66,13 @@
                             <constraint firstItem="UGl-P4-59a" firstAttribute="leading" secondItem="w7h-tw-hjI" secondAttribute="leading" constant="12" id="Cfs-FH-7xi"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UGl-P4-59a" secondAttribute="bottom" constant="6" id="JaB-r8-80a"/>
                             <constraint firstItem="KQF-4a-Asp" firstAttribute="top" secondItem="hpA-k3-Rtf" secondAttribute="bottom" constant="12" id="R7G-qv-jHM"/>
+                            <constraint firstItem="lF3-4Q-LOj" firstAttribute="centerY" secondItem="hpA-k3-Rtf" secondAttribute="centerY" id="Rmp-n8-ee2"/>
                             <constraint firstAttribute="trailing" secondItem="UGl-P4-59a" secondAttribute="trailing" constant="12" id="SfT-nG-SWi"/>
                             <constraint firstAttribute="trailing" secondItem="KQF-4a-Asp" secondAttribute="trailing" constant="12" id="U3V-4O-8Ne"/>
                             <constraint firstItem="xrb-aS-m5i" firstAttribute="top" secondItem="w7h-tw-hjI" secondAttribute="top" constant="24" id="YaV-YL-yGp"/>
+                            <constraint firstItem="hpA-k3-Rtf" firstAttribute="leading" secondItem="lF3-4Q-LOj" secondAttribute="trailing" constant="6" id="Yrg-te-v2b"/>
                             <constraint firstAttribute="trailing" secondItem="xrb-aS-m5i" secondAttribute="trailing" constant="12" id="n64-1x-gUY"/>
-                            <constraint firstItem="hpA-k3-Rtf" firstAttribute="leading" secondItem="w7h-tw-hjI" secondAttribute="leading" constant="12" id="qQI-69-LjC"/>
+                            <constraint firstItem="lF3-4Q-LOj" firstAttribute="leading" secondItem="w7h-tw-hjI" secondAttribute="leading" constant="12" id="qEb-RT-Biy"/>
                             <constraint firstItem="UGl-P4-59a" firstAttribute="top" secondItem="KQF-4a-Asp" secondAttribute="bottom" constant="6" id="qiV-ex-UUh"/>
                             <constraint firstItem="hpA-k3-Rtf" firstAttribute="top" secondItem="w7h-tw-hjI" secondAttribute="top" constant="22" id="zea-he-k7D"/>
                         </constraints>
@@ -83,6 +92,7 @@
                 <outlet property="infoLabel" destination="UGl-P4-59a" id="Qmt-fC-GEZ"/>
                 <outlet property="rightArrowImageView" destination="xrb-aS-m5i" id="NCm-BO-5fC"/>
                 <outlet property="statusLabel" destination="hpA-k3-Rtf" id="oHi-Ks-Ix2"/>
+                <outlet property="statusView" destination="lF3-4Q-LOj" id="asQ-8o-XxS"/>
                 <outlet property="titleLabel" destination="KQF-4a-Asp" id="dB4-qq-C5F"/>
             </connections>
             <point key="canvasLocation" x="182.60869565217394" y="118.52678571428571"/>
