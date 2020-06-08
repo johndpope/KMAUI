@@ -40,7 +40,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         
         // Circle view
         circleView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.7)
-        circleView.layer.cornerRadius = 22
+        circleView.layer.cornerRadius = 32
         circleView.clipsToBounds = true
         
         // Camera icon
