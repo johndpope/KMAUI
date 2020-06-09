@@ -1285,6 +1285,50 @@ public class KMAUIUtilities {
         return [dictLeft as AnyObject, dictRight as AnyObject]
     }
     
+    public func getCorners(dict: [String: AnyObject]) -> [String: AnyObject] {
+        var subLandDict = [String: AnyObject]()
+        var coordinates = [[Double]]()
+        
+        if let features = dict["features"] as? [AnyObject], !features.isEmpty {
+            let feature = features[0]
+            
+            if let feature = feature as? [AnyObject], !feature.isEmpty {
+                // If extra array added
+                let subLandFeature = feature[0]
+                
+                if let subLandFeature = subLandFeature as? [String: AnyObject] {
+                    subLandDict = subLandFeature
+                }
+            } else if let feature = feature as? [String: AnyObject] {
+                subLandDict = feature
+            }
+        }
+        
+        if let geometry = subLandDict["geometry"] as? [String: AnyObject], let coordinatesArray = geometry["coordinates"] as? [AnyObject] {
+            if let array = coordinatesArray as? [[Double]] {
+                coordinates = array
+            }
+        }
+        
+        // Prepare corners
+        var corners = [AnyObject]()
+        
+        for i in 0..<coordinates.count {
+            if i + 1 < coordinates.count {
+                let coordinate1 = coordinates[i]
+                let coordinate2 = coordinates[i + 1]
+                corners.append(contentsOf: KMAUIUtilities.shared.getCorner(location1: coordinate1, location2: coordinate2))
+            }
+        }
+        
+        // Prepare coordinates geojson
+        var featureCollection = [String: AnyObject]()
+        featureCollection["type"] = "FeatureCollection" as AnyObject
+        featureCollection["features"] = corners as AnyObject
+        
+        return featureCollection
+    }
+    
     public func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
     public func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
 
