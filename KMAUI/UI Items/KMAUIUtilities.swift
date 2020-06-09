@@ -1285,7 +1285,47 @@ public class KMAUIUtilities {
         return [dictLeft as AnyObject, dictRight as AnyObject]
     }
     
-    public func getCorners(dict: [String: AnyObject]) -> [String: AnyObject] {
+    public func getDottedLine(location1: [Double], location2: [Double]) -> [AnyObject] {
+        let coordinateValue1 = CLLocation(latitude: location1[1], longitude: location1[0])
+        let coordinateValue2 = CLLocation(latitude: location2[1], longitude: location2[0])
+        
+        let coordinateObject1 = CLLocationCoordinate2D(latitude: location1[1], longitude: location1[0])
+
+        let bearingLeft = KMAUIUtilities.shared.getBearingBetweenTwoPoints1(point1: coordinateValue1, point2: coordinateValue2)
+        let angleLeft = Double.pi * bearingLeft / 180 // calculating angle from the degrees
+                
+        let distance = coordinateValue1.distance(from: coordinateValue2)
+        var distanceSegment: Double = 4 // 4 meters each segment as default
+        var segmentsCount = distance / distanceSegment
+        
+        if Int(segmentsCount) % 2 == 0 {
+            segmentsCount += 1
+        }
+        
+        distanceSegment = distance / segmentsCount
+        var lineArray = [AnyObject]()
+        
+        for i in 0..<Int(segmentsCount) {
+            if i % 2 == 0 {
+                let pointOne = coordinateObject1.shift(byDistance: distanceSegment * Double(i), azimuth: angleLeft)
+                let pointTwo = coordinateObject1.shift(byDistance: distanceSegment * Double(i + 1), azimuth: angleLeft)
+                let lineItem = [[pointOne.longitude, pointOne.latitude], [pointTwo.longitude, pointTwo.latitude]] as AnyObject
+                
+                var dictLeft = [String: AnyObject]()
+                dictLeft["type"] = "Feature" as AnyObject
+                var geomertyLeft = [String: AnyObject]()
+                geomertyLeft["type"] = "LineString" as AnyObject
+                geomertyLeft["coordinates"] = lineItem
+                dictLeft["geometry"] = geomertyLeft as AnyObject
+                
+                lineArray.append(dictLeft as AnyObject)
+            }
+        }
+        
+        return lineArray
+    }
+    
+    public func getDottedLines(dict: [String: AnyObject]) -> [String: AnyObject] {
         var subLandDict = [String: AnyObject]()
         var coordinates = [[Double]]()
         
@@ -1317,7 +1357,7 @@ public class KMAUIUtilities {
             if i + 1 < coordinates.count {
                 let coordinate1 = coordinates[i]
                 let coordinate2 = coordinates[i + 1]
-                corners.append(contentsOf: KMAUIUtilities.shared.getCorner(location1: coordinate1, location2: coordinate2))
+                corners.append(contentsOf: getDottedLine(location1: coordinate1, location2: coordinate2))
             }
         }
         
