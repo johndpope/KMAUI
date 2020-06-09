@@ -4166,7 +4166,6 @@ public struct KMAUIMinistryDecisionStruct {
 
 public struct KMAUIAttachmentCommentStruct {
     public var title = ""
-    public var subtitle = ""
     public var status = ""
     public var name = ""
     public var comment = ""
