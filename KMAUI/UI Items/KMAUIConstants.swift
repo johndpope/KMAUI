@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 public class KMAUIConstants {
     // Access variable
@@ -188,6 +189,10 @@ public class KMAUIConstants {
     public let landCaseTitles = ["Court status", "Ministry decisions", "Municipality"]
     
     public let noNotesText = "Notes not included."
+    
+    // Variables for New Land Case Location
+    public var KMANewLandCasePointCoordinate = CLLocationCoordinate2D()
+    public var KMANewLandCasePointIndex = 0
     
     // Temp land case
     public var landCaseUpdated = KMAUILandCaseStruct()
