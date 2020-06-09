@@ -192,7 +192,7 @@ public class KMAUIConstants {
     
     // Variables for New Land Case Location
     public var KMANewLandCasePointCoordinate = CLLocationCoordinate2D()
-    public var KMANewLandCasePointIndex = 0
+    public var KMANewLandCasePointIndex = -1
     
     // Temp land case
     public var landCaseUpdated = KMAUILandCaseStruct()
