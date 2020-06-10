@@ -1202,8 +1202,19 @@ public class KMAUIUtilities {
         return subLandDict
     }
     
-    public func getCorners(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
-        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+    public func getCorners(subLand: KMAUISubLandStruct? = nil, dictionary: [String: AnyObject]? = nil) -> [String: AnyObject] {
+        var dict = [String: AnyObject]()
+        
+        // Sub land received
+        if let subLand = subLand {
+            dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+        }
+        
+        // Dict received
+        if let dictionary = dictionary {
+            dict = dictionary
+        }
+        
         var subLandDict = [String: AnyObject]()
         var coordinates = [[Double]]()
                 
