@@ -225,4 +225,45 @@ public class KMAUIConstants {
     // "3kkfx7unbbewky5vx3qb7yjt"
     // "vb8sbaprpy7a85dygjdpjznf"
     //    "z2jerfddwxkye3w653muzfjy"
+    
+    // MARK: - Placeholder data
+    public let placeholderFilesArray = [["fileURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/c5cea4988678abce0b859252ca4f708d_file.jpeg",
+    "fileExtension" : "JPEG",
+    "createdAt" : "2020-05-28 12:28:27",
+    "captureDate" : "2020-05-28 12:26:47",
+    "objectId" : "XIDyL7JFS2",
+    "previewURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/68b719df0a2d386c5d5106cb14dcf9d9_previewImage.jpg",
+    "type" : "Image",
+    "fileDescription" : "The land rules for the Makkah region",
+    "name" : "Land rules.jpeg",
+    "updatedAt" : "2020-05-28 12:28:27"], ["name" : "Laws and regulations.jpeg",
+                                           "fileExtension" : "JPEG",
+                                           "updatedAt" : "2020-05-28 12:28:52",
+                                           "captureDate" : "2020-05-28 12:26:19",
+                                           "objectId" : "oOP68KOxw5",
+                                           "previewURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/759e094833d7a107241989b54b9ebefc_previewImage.jpg",
+                                           "fileURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/12325b7905dd4ef7597656287291c748_file.jpeg",
+                                           "fileDescription" : "The additional information for the Makkah region",
+                                           "type" : "Image",
+                                           "createdAt" : "2020-05-28 12:28:52"], ["fileDescription" : "The Royal order by the King of Saudi Arabia",
+                                                                                  "fileExtension" : "JPEG",
+                                                                                  "createdAt" : "2020-05-28 12:29:21",
+                                                                                  "captureDate" : "2020-05-28 12:27:04",
+                                                                                  "objectId" : "zPnAzHzwPR",
+                                                                                  "previewURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/26565e4acca91b60f16b63864072378f_previewImage.jpg",
+                                                                                  "updatedAt" : "2020-05-28 12:29:21",
+                                                                                  "type" : "Image",
+                                                                                  "name" : "Royal order.jpeg",
+                                                                                  "fileURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/96faaa689bd5568029c5b60f2678f131_file.jpeg"], ["captureDate" : "2020-05-28 12:26:37",
+                                                                                                                                                                                                                       "previewURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/1c4313dd90d82096e3d4831d250d44c0_previewImage.jpg",
+                                                                                                                                                                                                                       "fileURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/0da3cc2e9e55de536f2f510aa4e65f9d_file.jpeg",
+                                                                                                                                                                                                                       "createdAt" : "2020-05-28 12:31:30",
+                                                                                                                                                                                                                       "updatedAt" : "2020-05-28 12:31:30",
+                                                                                                                                                                                                                       "type" : "Image",
+                                                                                                                                                                                                                       "fileExtension" : "JPEG",
+                                                                                                                                                                                                                       "fileDescription" : "The Land cases documents for the ownership appointment procedure",
+                                                                                                                                                                                                                       "name" : "Land cases instructions.jpeg",
+                                                                                                                                                                                                                       "objectId" : "4yXAqADyCf"]]
+    let placeholderApprovedDecisions = ["This Land Case matches all the rules required by the *departmentName*. It's verified to be resolved as \"Approved\".", "The *departmentName* confirms the Land Case has no violations and sets the status to be \"Approved\".", "After checking all of the documents provided by the Land Case appointment the *departmentName* can guarantee it doesn't violate any rules and can be recommended for the successfull Department and Court decision."]
+    let placeholderRejectedDecisions = ["The Land Case can not be approved as we see it violates several rules from the list used by the *departmentName*. We recommend the documents to be revised before proceeding with the repeated appointment.", "The *departmentName* has checked the documents provided with the Land Case appointment and cannot guarantee these are the authentic data.", "The Land Case details doesn't include the full list of documents required by the *departmentName*. Please revise the provided documentation."]
 }

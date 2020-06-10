@@ -1875,6 +1875,32 @@ public class KMAUIUtilities {
         
         return rows
     }
+    
+    // MARK: - Placeholder random data
+    
+    public func prepareMinistryComment(name: String, isApproved: Bool) -> String {
+        let randomDecision = Int.random(in: 0..<3)
+        if isApproved {
+            return KMAUIConstants.shared.placeholderApprovedDecisions[randomDecision].replacingOccurrences(of: "*departmentName*", with: name)
+        } else {
+            return KMAUIConstants.shared.placeholderRejectedDecisions[randomDecision].replacingOccurrences(of: "*departmentName*", with: name)
+        }
+    }
+    
+    public func prepareMinistryFile() -> String {
+        let randomDecision = Int.random(in: 0..<4)
+        
+        let fileBodyDict = ["files": [KMAUIConstants.shared.placeholderFilesArray[randomDecision]]]
+        let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
+        var fileBody = ""
+        
+        // JSON String for Parse
+        if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+            fileBody = jsonFileBodyString
+        }
+        
+        return fileBody
+    }
 }
 
 // MARK: - Int extension
