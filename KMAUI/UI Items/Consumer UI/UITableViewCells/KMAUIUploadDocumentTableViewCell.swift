@@ -110,7 +110,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         // Setup title
         titleLabel.text = rowData.rowName
         // Setup data depedning on the title
-        if rowData.rowName == "New land case" {
+        if rowData.rowName == "New Land case" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
             bgViewBottom.constant = 34 + 21
             uploadButton.alpha = 1
