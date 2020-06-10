@@ -2583,7 +2583,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func createLandCaseObject(subLandId: String, completion: @escaping (_ landCaseId: String, _ error: String) -> ()) {
+    public func createLandCaseObject(subLandId: String, completion: @escaping (_ landCaseId: String, _ landCaseNumber: String, _ error: String) -> ()) {
         if let currentUser = PFUser.current() {
             let newLandCase = PFObject(className: "KMALandCase")
             newLandCase["citizen"] = currentUser
@@ -2605,20 +2605,21 @@ final public class KMAUIParse {
             newLandCase["documents"] = fileBody
             newLandCase["department"] = PFObject(withoutDataWithClassName: "KMADepartment", objectId: "poqIHPw4NS")
             
-            newLandCase["caseNumber"] = "\(Int.random(in: 10000 ..< 100000))"
+            let caseNumber = "\(Int.random(in: 10000 ..< 100000))"
+            newLandCase["caseNumber"] = caseNumber
             newLandCase["titleNumber"] = "\(Int.random(in: 100000 ..< 1000000))"
             
             newLandCase.saveInBackground { (success, error) in
                 if let error = error {
-                    completion("", error.localizedDescription)
+                    completion("", "", error.localizedDescription)
                 } else if success, let landCaseId = newLandCase.objectId, !landCaseId.isEmpty {
-                    completion(landCaseId, "")
+                    completion(landCaseId, caseNumber, "")
                 } else {
-                    completion("", "Can't prepare the new Land case data.")
+                    completion("", "", "Can't prepare the new Land case data.")
                 }
             }
         } else {
-            completion("", "Can't prepare the new Land case data.")
+            completion("", "", "Can't prepare the new Land case data.")
         }
     }
     
@@ -2661,6 +2662,95 @@ final public class KMAUIParse {
                             completion(false, saveError.localizedDescription)
                         } else if success {
                             completion(true, "")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // Notify Department Admin
+    
+    public func notifyDepartmentNewLandCase(landCaseId: String, caseNumber: String) {
+        let notificationTitle = "New Land case created"
+        var notificationMessage = "The new Land case #\(caseNumber) added for Department of Urban Planning."
+        
+        if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String, !fullName.isEmpty {
+            notificationMessage = "\(fullName) has created the new Land case #\(caseNumber) for Department of Urban Planning."
+        }
+        
+        let departmentId = "poqIHPw4NS"
+        let departmentName = "Makkah Department of Housing"
+        
+        let query = PFQuery(className: "KMADepartmentEmployee")
+        query.whereKey("department", equalTo: PFObject(withoutDataWithClassName: "KMADepartment", objectId: departmentId))
+        query.whereKey("isActive", equalTo: true)
+        query.includeKey("employee")
+        query.findObjectsInBackground { (employees, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let employees = employees {
+                // KMANotification objects
+                var notificationsArray = [PFObject]()
+                // Push params array
+                var pushParams = [[String: AnyObject]]()
+                var itemsArray = [[String: AnyObject]]()
+
+                print("Employees for department \(departmentId): \(employees.count)")
+                for employee in employees {
+                    if let citizen = employee["employee"] as? PFUser, let citizenId = citizen.objectId {
+                        print("Send a KMANotification to citizen \(citizenId)")
+                        // Prepare the notification Parse object
+                        let newNotification = PFObject(className: "KMANotification")
+                        newNotification["user"] = PFUser(withoutDataWithObjectId: citizenId)
+                        newNotification["title"] = notificationTitle
+                        newNotification["message"] = notificationMessage
+                        // Fill the items for Notification
+                        let items = ["objectId": landCaseId as AnyObject,
+                                     "objectType": "landCase" as AnyObject,
+                                     "eventType": "landCaseCreated" as AnyObject,
+                                     "landCaseNumber": caseNumber as AnyObject,
+                                     "departmentId": departmentId as AnyObject,
+                                     "departmentName": departmentName as AnyObject
+                        ]
+                        // Save item into array for push notifications
+                        itemsArray.append(items)
+                        // items json string from dictionary
+                        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                            newNotification["items"] = jsonStr
+                        }
+                        newNotification["read"] = false
+                        notificationsArray.append(newNotification)
+                    }
+                }
+
+                if !notificationsArray.isEmpty {
+                    PFObject.saveAll(inBackground: notificationsArray) { (success, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        } else if success {
+                            for (index, notification) in notificationsArray.enumerated() {
+                                if let notificationId = notification.objectId, let citizen = notification["user"] as? PFUser, let citizenId = citizen.objectId {
+                                    var items = itemsArray[index]
+                                    items["notificationId"] = notificationId as AnyObject
+                                    // Push parameters
+                                    let newSubLandParams = [
+                                        "userId" : citizenId as AnyObject,
+                                        "title": notificationTitle as AnyObject,
+                                        "message": notificationMessage as AnyObject,
+                                        "kmaItems": items as AnyObject,
+                                        "appType": "Business" as AnyObject
+                                    ]
+
+                                    pushParams.append(newSubLandParams)
+                                }
+                            }
+
+                            // Send push notifications to the winners
+                            for subLandParams in pushParams {
+                                print("\nSend a push notification: \(subLandParams)")
+                                KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                            }
                         }
                     }
                 }
