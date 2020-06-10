@@ -2478,5 +2478,194 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - New Land Case by Consumer app
+    
+    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
+        // Create the new Sub land
+        let newSubLand = PFObject(className: "KMASubLand")
+        let uniqueId = String(UUID().uuidString.suffix(4))
+        newSubLand["subLandId"] = uniqueId
+        newSubLand["subLandIndex"] = uniqueId
+        newSubLand["subLandType"] = "Earned Land"
+        
+        var coordinates = [[Double]]()
+        
+        for coordinate in coordinatesArray {
+            let array = [coordinate.longitude, coordinate.latitude]
+            coordinates.append(array)
+        }
+        
+        if !coordinates.isEmpty {
+            coordinates.append(coordinates[0])
+        }
+        
+        var geometry = [String: AnyObject]()
+        geometry["type"] = "LineString" as AnyObject
+        geometry["coordinates"] = coordinates as AnyObject
+        
+        let square = KMAUIUtilities.shared.regionAreaLocation(locations: coordinatesArray)
+        let subLandPercent = square / (24 * 24)
+        
+        let widthValue = CLLocation(latitude: coordinatesArray[0].latitude, longitude: coordinatesArray[0].longitude).distance(from: CLLocation(latitude: coordinatesArray[1].latitude, longitude: coordinatesArray[1].longitude))
+        let heightValue = square / widthValue
+        
+        // x - longitude, y - latitude
+        var minX: Double = 0
+        var minY: Double = 0
+        var maxX: Double = 0
+        var maxY: Double = 0
+        
+        for coordinate in coordinatesArray {
+            if coordinate.longitude < minX || minX == 0 {
+                minX = coordinate.longitude
+            }
+            
+            if coordinate.longitude > maxX || maxX == 0 {
+                maxX = coordinate.longitude
+            }
+            
+            if coordinate.latitude < minY || minY == 0 {
+                minY = coordinate.latitude
+            }
+            
+            if coordinate.latitude > maxY || maxY == 0 {
+                maxY = coordinate.latitude
+            }
+        }
+        
+        let latitude = (minY + maxY) / 2
+        let longitude = (minX + maxX) / 2
+        
+        newSubLand["subLandSquare"] = square
+        newSubLand["subLandWidth"] = widthValue
+        newSubLand["subLandHeight"] = heightValue
+        newSubLand["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
+        newSubLand["minX"] = minX
+        newSubLand["minY"] = minY
+        newSubLand["maxX"] = maxX
+        newSubLand["maxY"] = maxY
+        newSubLand["subLandPercent"] = subLandPercent
+        newSubLand["extraPrice"] = 0
+        newSubLand["subLandImages"] = tempAttachments
+        
+        newSubLand.saveInBackground { (success, error) in
+            if let error = error {
+                completion("", error.localizedDescription)
+            } else if success, let objectId = newSubLand.objectId {
+                print("Initial value saved.")
+                
+                let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": "Earned Land" as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
+                let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
+                
+                let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
+                
+                let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: dictionary)
+                var fileBody = ""
+                
+                // JSON String for Parse
+                if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+                    fileBody = jsonFileBodyString
+                }
+                
+                newSubLand["subLandArea"] = fileBody
+                
+                newSubLand.saveInBackground { (updateSuccess, updateError) in
+                    if let updateError = updateError {
+                        completion("", updateError.localizedDescription)
+                    } else if updateSuccess, let subLandId = newSubLand.objectId, !subLandId.isEmpty {
+                        completion(subLandId, "")
+                    } else {
+                        completion("", "Can't prepare the new sub alnd for Land case.")
+                    }
+                }
+            }
+        }
+    }
+    
+    public func createLandCaseObject(subLandId: String, completion: @escaping (_ landCaseId: String, _ error: String) -> ()) {
+        if let currentUser = PFUser.current() {
+            let newLandCase = PFObject(className: "KMALandCase")
+            newLandCase["citizen"] = currentUser
+            newLandCase["judge"] = PFUser(withoutDataWithObjectId: "XdwTy8armc")
+            newLandCase["date"] = Date().addingTimeInterval(30*24*60*60)
+            newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
+            newLandCase["courtName"] = "Jeddah General Court"
+            newLandCase["courtStatus"] = "In progress"
+                        
+            let fileBodyDict = ["files": KMAUIConstants.shared.placeholderFilesArray]
+            let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
+            var fileBody = ""
+            
+            // JSON String for Parse
+            if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+                fileBody = jsonFileBodyString
+            }
+            
+            newLandCase["documents"] = fileBody
+            newLandCase["department"] = PFObject(withoutDataWithClassName: "KMADepartment", objectId: "poqIHPw4NS")
+            
+            newLandCase["caseNumber"] = "\(Int.random(in: 10000 ..< 100000))"
+            newLandCase["titleNumber"] = "\(Int.random(in: 100000 ..< 1000000))"
+            
+            newLandCase.saveInBackground { (success, error) in
+                if let error = error {
+                    completion("", error.localizedDescription)
+                } else if success, let landCaseId = newLandCase.objectId, !landCaseId.isEmpty {
+                    completion(landCaseId, "")
+                } else {
+                    completion("", "Can't prepare the new Land case data.")
+                }
+            }
+        } else {
+            completion("", "Can't prepare the new Land case data.")
+        }
+    }
+    
+    public func createLandCaseDecisions(landCaseId: String, completion: @escaping (_ success: Bool, _ error: String) -> ()) {
+        let query = PFQuery(className: "KMADepartment")
+        query.whereKey("landCases", equalTo: true)
+        query.findObjectsInBackground { (departments, error) in
+            if let error = error {
+                completion(false, error.localizedDescription)
+            } else if let departments = departments {
+                var decisions = [PFObject]()
+                
+                for department in departments {
+                    if let type = department["type"] as? String, let departmentId = department.objectId, let departmentName = department["departmentName"] as? String {
+                        let newDecision = PFObject(className: "KMALandCaseMinistryDecision")
+                        newDecision["landCase"] = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCaseId)
+                        newDecision["ministry"] = PFObject(withoutDataWithClassName: "KMADepartment", objectId: departmentId)
+                        newDecision["date"] = Date()
+                        newDecision["type"] = type
+                        
+                        let randomDecision = Int.random(in: 0..<2)
+                        
+                        if randomDecision == 1 {
+                            newDecision["ministryStatus"] = "approved"
+                        } else if randomDecision == 0 {
+                            newDecision["ministryStatus"] = "rejected"
+                        }
+                        
+                        newDecision["comment"] = KMAUIUtilities.shared.prepareMinistryComment(name: departmentName, isApproved: randomDecision == 1)
+                        newDecision["attachments"] = KMAUIUtilities.shared.prepareMinistryFile()
+                        decisions.append(newDecision)
+                    }
+                }
+                
+                if decisions.isEmpty {
+                    completion(false, "Can't retrieve the Ministry and Department decisions for the Land case.")
+                } else {
+                    PFObject.saveAll(inBackground: decisions) { (success, saveError) in
+                        if let saveError = saveError {
+                            completion(false, saveError.localizedDescription)
+                        } else if success {
+                            completion(true, "")
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 

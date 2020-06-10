@@ -1150,6 +1150,22 @@ public class KMAUIUtilities {
         return max(area, -area) // In order not to worry about is polygon clockwise or counterclockwise defined.
     }
     
+    public func regionAreaLocation(locations: [CLLocationCoordinate2D]) -> Double {
+        let kEarthRadius = 6378137.0
+        
+        guard locations.count > 2 else { return 0.0 }
+        var area = 0.0
+        
+        for i in 0..<locations.count {
+            let p1 = locations[i > 0 ? i - 1 : locations.count - 1]
+            let p2 = locations[i]
+            
+            area += radians(degrees: p2.longitude - p1.longitude) * (2 + sin(radians(degrees: p1.latitude)) + sin(radians(degrees: p2.latitude)) )
+        }
+        area = -(area * kEarthRadius * kEarthRadius / 2)
+        return Double(Int(max(area, -area) * 100)) / 100 // In order not to worry about is polygon clockwise or counterclockwise defined.
+    }
+    
     // MARK: - Get color for Sub Land type
     
     public func getColor(subLandType: String) -> UIColor {
