@@ -2159,7 +2159,7 @@ final public class KMAUIParse {
     
     // MARK: - Get Land Cases
     
-    public func getLandCases(completion: @escaping (_ landCasesArray: [KMAUILandCaseStruct])->()) {
+    public func getLandCases(objectId: String? = nil, completion: @escaping (_ landCasesArray: [KMAUILandCaseStruct])->()) {
         // Land cases array
         var landCases = [KMAUILandCaseStruct]()
         // Get details
@@ -2175,6 +2175,10 @@ final public class KMAUIParse {
         query.includeKey("subLand.landPlan")
         query.includeKey("department")
         query.includeKey("department.mapArea")
+        // Get specific land case for notifications
+        if let objectId = objectId, !objectId.isEmpty {
+            query.whereKey("objectId", equalTo: objectId)
+        }
         query.findObjectsInBackground { (landCasesArray, error) in
             if let error = error {
                 print(error.localizedDescription)
