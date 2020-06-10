@@ -3964,8 +3964,8 @@ public struct KMAUILandCaseStruct {
     public var judgeAttachment = ""
     public var judgeAttachmentItem = KMADocumentData()
     // MARK: - Decisions
-    var ministryDecisions = [KMAUIMinistryDecisionStruct]()
-    var departmentDecisions = [KMAUIMinistryDecisionStruct]()
+    public var ministryDecisions = [KMAUIMinistryDecisionStruct]()
+    public var departmentDecisions = [KMAUIMinistryDecisionStruct]()
     
     public init() {
     }
