@@ -90,5 +90,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             titleLabel.text = "Department decision pending"
             infoLabel.text = "We're waiting for the Department decision in order to provide the full details for the Judge before the Court decision can be received."
         }
+        // Add the spacing for the infoLabel
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
     }
 }
