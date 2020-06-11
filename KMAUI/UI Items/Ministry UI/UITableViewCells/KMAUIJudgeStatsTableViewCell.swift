@@ -220,15 +220,15 @@ public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
         totalQuantityValueLabel.text = "\(landCases.count)"
         
         // Land cases count
-        
-        
         if loaded {
             casesCountLabel.text = "\(landCases.count)"
             activityView.alpha = 0
+            chartView.alpha = 1
         } else {
             casesCountLabel.text = ""
             activityView.alpha = 1
             activityView.startAnimating()
+            chartView.alpha = 0
         }
         
         // Setup chart
