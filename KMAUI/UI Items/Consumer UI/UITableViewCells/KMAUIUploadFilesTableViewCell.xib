@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIUploadFilesTableViewCell" rowHeight="217" id="KGk-i7-Jjw" customClass="KMAUIUploadFilesTableViewCell" customModule="Consumer" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIUploadFilesTableViewCell" rowHeight="217" id="KGk-i7-Jjw" customClass="KMAUIUploadFilesTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="217"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -31,7 +31,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="8MC-RD-yOd"/>
                                     <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerX" secondItem="9PK-EB-dry" secondAttribute="centerX" id="C9P-iP-j2c"/>
@@ -39,13 +39,20 @@
                                     <constraint firstItem="ZUf-lb-2i0" firstAttribute="centerY" secondItem="9PK-EB-dry" secondAttribute="centerY" id="wDd-dn-Ujr"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXC-g3-3io">
+                                <rect key="frame" x="155" y="64" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="LUz-rz-KD5"/>
+                                    <constraint firstAttribute="width" constant="24" id="r1A-1d-N16"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload files" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMS-ix-QTE">
                                 <rect key="frame" x="16" y="100" width="256" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="You can upload photo, video pr document for you sub land " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KL-Aa-WuA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="You can upload photo, video or document for you land " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KL-Aa-WuA">
                                 <rect key="frame" x="16" y="136" width="256" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -58,8 +65,10 @@
                             <constraint firstAttribute="trailing" secondItem="5KL-Aa-WuA" secondAttribute="trailing" constant="16" id="9Ol-s6-vtu"/>
                             <constraint firstItem="wMS-ix-QTE" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="IxJ-eB-UVq"/>
                             <constraint firstItem="5KL-Aa-WuA" firstAttribute="leading" secondItem="LZi-ic-2aq" secondAttribute="leading" constant="16" id="JMD-Q9-uWh"/>
+                            <constraint firstItem="zXC-g3-3io" firstAttribute="leading" secondItem="9PK-EB-dry" secondAttribute="trailing" constant="-21" id="PE7-qv-CYX"/>
                             <constraint firstItem="9PK-EB-dry" firstAttribute="centerX" secondItem="LZi-ic-2aq" secondAttribute="centerX" id="Q91-9n-kJA"/>
                             <constraint firstItem="wMS-ix-QTE" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="12" id="czf-M8-b5Y"/>
+                            <constraint firstItem="zXC-g3-3io" firstAttribute="top" secondItem="9PK-EB-dry" secondAttribute="bottom" constant="-24" id="hmd-ai-XsA"/>
                             <constraint firstItem="5KL-Aa-WuA" firstAttribute="top" secondItem="wMS-ix-QTE" secondAttribute="bottom" constant="4" id="rty-TI-8ph"/>
                             <constraint firstAttribute="bottom" secondItem="5KL-Aa-WuA" secondAttribute="bottom" constant="24" id="sxh-eD-0ra"/>
                             <constraint firstItem="9PK-EB-dry" firstAttribute="top" secondItem="LZi-ic-2aq" secondAttribute="top" constant="24" id="t8u-r6-C0W"/>
@@ -75,6 +84,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="arrowImageView" destination="zXC-g3-3io" id="uWs-bk-fFA"/>
                 <outlet property="bgView" destination="LZi-ic-2aq" id="u3u-6T-OXj"/>
                 <outlet property="cameraImageView" destination="ZUf-lb-2i0" id="rMz-Zw-aUG"/>
                 <outlet property="circleView" destination="9PK-EB-dry" id="pRA-us-zhG"/>

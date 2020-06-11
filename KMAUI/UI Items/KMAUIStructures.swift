@@ -1724,6 +1724,8 @@ public struct KMAPoliceman {
 
 public struct KMAPerson {
     public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
     public var lotteryObjectId = ""
     public var username = ""
     public var fullName = ""
@@ -2219,6 +2221,8 @@ public struct KMAMapAreaStruct {
     // Land cases count
     public var landCasesCount = 0
     public var approvedLandCasesCount = 0
+    // Name as on the map layer
+    public var nameMap = ""
 
     public init() {}
     
@@ -2305,6 +2309,10 @@ public struct KMAMapAreaStruct {
         
         if let lotteryMembersCount = object["lotteryMembersCount"] as? Int {
             self.lotteryMembersCount = lotteryMembersCount
+        }
+        
+        if let nameMap = object["nameMap"] as? String {
+            self.nameMap = nameMap
         }
     }
 }
@@ -3953,6 +3961,11 @@ public struct KMAUILandCaseStruct {
     public var departmentAttachment = ""
     public var departmentAttachmentItem = KMADocumentData()
     public var departmentDecision = ""
+    public var judgeAttachment = ""
+    public var judgeAttachmentItem = KMADocumentData()
+    // MARK: - Decisions
+    public var ministryDecisions = [KMAUIMinistryDecisionStruct]()
+    public var departmentDecisions = [KMAUIMinistryDecisionStruct]()
     
     public init() {
     }
@@ -4028,24 +4041,41 @@ public struct KMAUILandCaseStruct {
         
         if let departmentAttachment = object["departmentAttachment"] as? String {
             self.departmentAttachment = departmentAttachment
-            self.setupAttachment()
         }
         
         if let departmentDecision = object["departmentDecision"] as? String {
             self.departmentDecision = departmentDecision
         }
         
+        if let judgeAttachment = object["judgeAttachment"] as? String {
+            self.judgeAttachment = judgeAttachment
+        }
+        
+        self.setupAttachments()
+        
         // Prepare rows for details
-        prepareRows()
+        self.prepareRows()
     }
     
-    public mutating func setupAttachment() {
-        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: departmentAttachment)
+    public mutating func setupAttachments() {
+        if !departmentAttachment.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: departmentAttachment)
+            
+            if !files.isEmpty {
+                self.departmentAttachmentItem = files[0]
+            } else {
+                self.departmentAttachmentItem = KMADocumentData()
+            }
+        }
         
-        if !files.isEmpty {
-            self.departmentAttachmentItem = files[0]
-        } else {
-            self.departmentAttachmentItem = KMADocumentData()
+        if !judgeAttachment.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: judgeAttachment)
+            
+            if !files.isEmpty {
+                self.judgeAttachmentItem = files[0]
+            } else {
+                self.judgeAttachmentItem = KMADocumentData()
+            }
         }
     }
     
@@ -4132,5 +4162,18 @@ public struct KMAUIMinistryDecisionStruct {
         if let type = object["type"] as? String {
             self.type = type
         }
+    }
+}
+
+// MARK: - Attachment Comment struct
+
+public struct KMAUIAttachmentCommentStruct {
+    public var title = ""
+    public var status = ""
+    public var name = ""
+    public var comment = ""
+    public var attachments = [KMADocumentData]()
+    
+    public init() {
     }
 }

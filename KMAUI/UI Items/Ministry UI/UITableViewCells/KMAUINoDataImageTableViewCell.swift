@@ -82,6 +82,15 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "courtStatus" {
             titleLabel.text = "No court decision"
             infoLabel.text = "Please wait for a judge to prepare the final decision for this case."
+        } else if mode.contains("landCases") {
+            let type = mode.replacingOccurrences(of: "landCases", with: "")
+            titleLabel.text = "No land cases"
+            infoLabel.text = "We have no \"\(type)\" land cases to display."
+        } else if mode == "waitingDepartment" {
+            titleLabel.text = "Department decision pending"
+            infoLabel.text = "We're waiting for the Department decision in order to provide the full details for the Judge before the Court decision can be received."
         }
+        // Add the spacing for the infoLabel
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
     }
 }

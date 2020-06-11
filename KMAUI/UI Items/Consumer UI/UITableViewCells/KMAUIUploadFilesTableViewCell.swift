@@ -14,6 +14,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var circleView: UIView!
     @IBOutlet public weak var cameraImageView: UIImageView!
+    @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var infoLabel: UILabel!
     
@@ -40,7 +41,7 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         
         // Circle view
         circleView.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint.withAlphaComponent(0.7)
-        circleView.layer.cornerRadius = 22
+        circleView.layer.cornerRadius = 32
         circleView.clipsToBounds = true
         
         // Camera icon
@@ -52,6 +53,13 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        
+        // Arrow image view
+        arrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIDarkTextColor
+        arrowImageView.layer.cornerRadius = 12
+        arrowImageView.clipsToBounds = true
+        arrowImageView.image = KMAUIConstants.shared.arrowDown.withRenderingMode(.alwaysTemplate)
+        arrowImageView.tintColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
         
         // No standard selection required
         selectionStyle = .none
@@ -71,14 +79,21 @@ public class KMAUIUploadFilesTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-        } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
         }
     }
     
     public func setupCell() {
         titleLabel.text = rowData.rowName
         infoLabel.text = rowData.rowValue
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2)
+        
+        if rowData.rowName == "Set a location" {
+            cameraImageView.image = KMAUIConstants.shared.pinIcon.withRenderingMode(.alwaysTemplate)
+        } else {
+            cameraImageView.image = KMAUIConstants.shared.cameraIcon.withRenderingMode(.alwaysTemplate)
+        }
     }
 }

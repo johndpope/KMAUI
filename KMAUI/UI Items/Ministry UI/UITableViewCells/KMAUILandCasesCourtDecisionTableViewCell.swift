@@ -92,8 +92,39 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         }
         
         // Hide the document preview
-        documentImageView.alpha = 0
-        caseLabelLeft.constant = 16
+        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.judgeAttachment)
+        if !files.isEmpty {
+            documentImageView.alpha = 1
+            caseLabelLeft.constant = 16 + 60 + 12
+            let file = files[0]
+            
+            // Preview image view alignment
+            documentImageView.contentMode = .center
+            documentImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            documentImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            
+            if file.type == "Document" {
+                documentImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            } else {
+                documentImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
+            }
+            // Preview image view - get the image for all types of files as we have the QuickLook previews implemented
+
+            if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+                self.documentImageView.kf.setImage(with: url) { result in
+                    switch result {
+                    case .success(let value):
+                        self.documentImageView.image = value.image
+                        self.documentImageView.contentMode = .scaleAspectFill
+                    case .failure(let error):
+                        print(error.localizedDescription) // The error happens
+                    }
+                }
+            }
+        } else {
+            documentImageView.alpha = 0
+            caseLabelLeft.constant = 16
+        }
     }
     
     public func setupDepartment() {
@@ -152,6 +183,19 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     @IBAction public func documentButtonPressed(_ sender: Any) {
         if isDepartment {
             let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
+            if !files.isEmpty {
+                let file = files[0]
+
+                KMAUIUtilities.shared.quicklookPreview(urlString: file.fileURL, fileName: file.name, uniqueId: landCase.objectId) { (previewItemValue) in
+                    self.previewItem = previewItemValue
+                    // Display file
+                    let previewController = QLPreviewController()
+                    previewController.dataSource = self
+                    KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                }
+            }
+        } else {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.judgeAttachment)
             if !files.isEmpty {
                 let file = files[0]
 

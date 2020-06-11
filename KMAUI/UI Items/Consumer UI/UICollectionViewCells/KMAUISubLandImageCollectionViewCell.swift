@@ -35,6 +35,8 @@ public class KMAUISubLandImageCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
         imageView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        imageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
+        imageView.layer.borderWidth = 1
     }
 
     public func setupCell() {

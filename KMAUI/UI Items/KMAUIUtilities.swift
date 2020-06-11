@@ -47,7 +47,7 @@ public class KMAUIUtilities {
         headerView.addSubview(backgroundView)
         
         // Header title label
-        let headerTitleLabel = KMAUITitleLabel(frame: CGRect(x: 16, y: 8 + offset, width: KMAUIConstants.shared.KMAScreenWidth - 32, height: 36))
+        let headerTitleLabel = KMAUIBoldTextLabel(frame: CGRect(x: 16, y: 8 + offset, width: KMAUIConstants.shared.KMAScreenWidth - 32, height: 36))
         headerTitleLabel.text = title
         headerTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         headerView.addSubview(headerTitleLabel)
@@ -802,7 +802,7 @@ public class KMAUIUtilities {
     
     public func highlight(words: [String], in str: String) -> NSAttributedString {
         let attributedString = NSMutableAttributedString(string: str)
-        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIBoldFont.withSize(12)]
+        let highlightAttributes = [NSAttributedString.Key.font: KMAUIConstants.shared.KMAUIBoldFont.withSize(14)]
         
         let nsstr = str as NSString
         var searchRange = NSMakeRange(0, nsstr.length)
@@ -1150,6 +1150,22 @@ public class KMAUIUtilities {
         return max(area, -area) // In order not to worry about is polygon clockwise or counterclockwise defined.
     }
     
+    public func regionAreaLocation(locations: [CLLocationCoordinate2D]) -> Double {
+        let kEarthRadius = 6378137.0
+        
+        guard locations.count > 2 else { return 0.0 }
+        var area = 0.0
+        
+        for i in 0..<locations.count {
+            let p1 = locations[i > 0 ? i - 1 : locations.count - 1]
+            let p2 = locations[i]
+            
+            area += radians(degrees: p2.longitude - p1.longitude) * (2 + sin(radians(degrees: p1.latitude)) + sin(radians(degrees: p2.latitude)) )
+        }
+        area = -(area * kEarthRadius * kEarthRadius / 2)
+        return Double(Int(max(area, -area) * 100)) / 100 // In order not to worry about is polygon clockwise or counterclockwise defined.
+    }
+    
     // MARK: - Get color for Sub Land type
     
     public func getColor(subLandType: String) -> UIColor {
@@ -1202,8 +1218,19 @@ public class KMAUIUtilities {
         return subLandDict
     }
     
-    public func getCorners(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
-        let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+    public func getCorners(subLand: KMAUISubLandStruct? = nil, dictionary: [String: AnyObject]? = nil) -> [String: AnyObject] {
+        var dict = [String: AnyObject]()
+        
+        // Sub land received
+        if let subLand = subLand {
+            dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
+        }
+        
+        // Dict received
+        if let dictionary = dictionary {
+            dict = dictionary
+        }
+        
         var subLandDict = [String: AnyObject]()
         var coordinates = [[Double]]()
                 
@@ -1283,6 +1310,90 @@ public class KMAUIUtilities {
         dictRight["geometry"] = geomertyRight as AnyObject
 
         return [dictLeft as AnyObject, dictRight as AnyObject]
+    }
+    
+    public func getDottedLine(location1: [Double], location2: [Double]) -> [AnyObject] {
+        let coordinateValue1 = CLLocation(latitude: location1[1], longitude: location1[0])
+        let coordinateValue2 = CLLocation(latitude: location2[1], longitude: location2[0])
+        
+        let coordinateObject1 = CLLocationCoordinate2D(latitude: location1[1], longitude: location1[0])
+
+        let bearingLeft = KMAUIUtilities.shared.getBearingBetweenTwoPoints1(point1: coordinateValue1, point2: coordinateValue2)
+        let angleLeft = Double.pi * bearingLeft / 180 // calculating angle from the degrees
+                
+        let distance = coordinateValue1.distance(from: coordinateValue2)
+        var distanceSegment: Double = 4 // 4 meters each segment as default
+        var segmentsCount = distance / distanceSegment
+        
+        if Int(segmentsCount) % 2 == 0 {
+            segmentsCount += 1
+        }
+        
+        distanceSegment = distance / segmentsCount
+        var lineArray = [AnyObject]()
+        
+        for i in 0..<Int(segmentsCount) {
+            if i % 2 == 0 {
+                let pointOne = coordinateObject1.shift(byDistance: distanceSegment * Double(i), azimuth: angleLeft)
+                let pointTwo = coordinateObject1.shift(byDistance: distanceSegment * Double(i + 1), azimuth: angleLeft)
+                let lineItem = [[pointOne.longitude, pointOne.latitude], [pointTwo.longitude, pointTwo.latitude]] as AnyObject
+                
+                var dictLeft = [String: AnyObject]()
+                dictLeft["type"] = "Feature" as AnyObject
+                var geomertyLeft = [String: AnyObject]()
+                geomertyLeft["type"] = "LineString" as AnyObject
+                geomertyLeft["coordinates"] = lineItem
+                dictLeft["geometry"] = geomertyLeft as AnyObject
+                
+                lineArray.append(dictLeft as AnyObject)
+            }
+        }
+        
+        return lineArray
+    }
+    
+    public func getDottedLines(dict: [String: AnyObject]) -> [String: AnyObject] {
+        var subLandDict = [String: AnyObject]()
+        var coordinates = [[Double]]()
+        
+        if let features = dict["features"] as? [AnyObject], !features.isEmpty {
+            let feature = features[0]
+            
+            if let feature = feature as? [AnyObject], !feature.isEmpty {
+                // If extra array added
+                let subLandFeature = feature[0]
+                
+                if let subLandFeature = subLandFeature as? [String: AnyObject] {
+                    subLandDict = subLandFeature
+                }
+            } else if let feature = feature as? [String: AnyObject] {
+                subLandDict = feature
+            }
+        }
+        
+        if let geometry = subLandDict["geometry"] as? [String: AnyObject], let coordinatesArray = geometry["coordinates"] as? [AnyObject] {
+            if let array = coordinatesArray as? [[Double]] {
+                coordinates = array
+            }
+        }
+        
+        // Prepare corners
+        var corners = [AnyObject]()
+        
+        for i in 0..<coordinates.count {
+            if i + 1 < coordinates.count {
+                let coordinate1 = coordinates[i]
+                let coordinate2 = coordinates[i + 1]
+                corners.append(contentsOf: getDottedLine(location1: coordinate1, location2: coordinate2))
+            }
+        }
+        
+        // Prepare coordinates geojson
+        var featureCollection = [String: AnyObject]()
+        featureCollection["type"] = "FeatureCollection" as AnyObject
+        featureCollection["features"] = corners as AnyObject
+        
+        return featureCollection
     }
     
     public func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
@@ -1779,6 +1890,32 @@ public class KMAUIUtilities {
         }
         
         return rows
+    }
+    
+    // MARK: - Placeholder random data
+    
+    public func prepareMinistryComment(name: String, isApproved: Bool) -> String {
+        let randomDecision = Int.random(in: 0..<3)
+        if isApproved {
+            return KMAUIConstants.shared.placeholderApprovedDecisions[randomDecision].replacingOccurrences(of: "*departmentName*", with: name)
+        } else {
+            return KMAUIConstants.shared.placeholderRejectedDecisions[randomDecision].replacingOccurrences(of: "*departmentName*", with: name)
+        }
+    }
+    
+    public func prepareMinistryFile() -> String {
+        let randomDecision = Int.random(in: 0..<4)
+        
+        let fileBodyDict = ["files": [KMAUIConstants.shared.placeholderFilesArray[randomDecision]]]
+        let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
+        var fileBody = ""
+        
+        // JSON String for Parse
+        if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+            fileBody = jsonFileBodyString
+        }
+        
+        return fileBody
     }
 }
 

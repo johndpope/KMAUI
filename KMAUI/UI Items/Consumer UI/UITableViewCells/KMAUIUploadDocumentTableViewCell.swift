@@ -11,12 +11,15 @@ import UIKit
 public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet public weak var displayView: UIView!
     @IBOutlet public weak var bgView: UIView!
+    @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var bgImageView: UIImageView!
     @IBOutlet public weak var largeImageView: UIImageView!
     @IBOutlet public weak var smallImageView: UIImageView!
     @IBOutlet public weak var titleLabel: UILabel!
     @IBOutlet public weak var infoLabel: UILabel!
+    @IBOutlet public weak var uploadButton: UIButton!
     
     // MARK: - Variables
     public static let id = "KMAUIUploadDocumentTableViewCell"
@@ -29,8 +32,12 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Display view
+        displayView.layer.cornerRadius = 10
+        displayView.clipsToBounds = true
+        
         // Bg view
-        bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        bgView.backgroundColor = UIColor.clear
         bgView.layer.cornerRadius = 10
         bgView.clipsToBounds = true
         
@@ -54,11 +61,17 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         }
         
+        // Title label
         titleLabel.textColor = UIColor.white
 
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont
         infoLabel.textColor = UIColor.white
+        
+        // Upload button
+        uploadButton.layer.cornerRadius = 17
+        uploadButton.clipsToBounds = true
+        uploadButton.isUserInteractionEnabled = false
         
         // No standard selection required
         selectionStyle = .none
@@ -78,13 +91,17 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            bgView.alpha = 0.8
+            displayView.alpha = 0.8
         } else {
-            bgView.alpha = 1.0
+            displayView.alpha = 1.0
         }
     }
     
     public func setupCell() {
+        // Bg view bottom
+        bgViewBottom.constant = 0
+        uploadButton.alpha = 0
+        // Department name
         var departmentName = "Department"
         // Get the real department name
         if !rowData.rowValue.isEmpty {
@@ -93,7 +110,38 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         // Setup title
         titleLabel.text = rowData.rowName
         // Setup data depedning on the title
-        if rowData.rowName == "Upload a document" {
+        if rowData.rowName == "New Land case" {
+            infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["land location", "upload photos"], in: "Provide the information about the land location and upload photos to confirm the land ownership")
+            bgViewBottom.constant = 34 + 21
+            uploadButton.alpha = 1
+            largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
+            largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
+            smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
+            uploadButton.setTitle("Start a land case", for: .normal)
+            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else if rowData.rowName == "Land case" {
+            titleLabel.text = rowData.rowName + " " + rowData.rowValue.lowercased()
+            if rowData.rowValue == "In progress" {
+                uploadButton.setTitle("View progress", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["received", "additional information"], in: "The land case application was received by the court, you can still provide an additional information")
+                smallImageView.image = KMAUIConstants.shared.pendingAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIYellowProgressColor.cgColor
+            } else if rowData.rowValue == "Approved" {
+                uploadButton.setTitle("View details", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["approved"], in: "Your land case was approved by the court, you can review the full details")
+                smallImageView.image = KMAUIConstants.shared.approvedAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreenProgressColor.cgColor
+            } else if rowData.rowValue == "Declined" {
+                uploadButton.setTitle("View details", for: .normal)
+                infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["declined"], in: "Your land case was declined by the court, you can review the full details")
+                smallImageView.image = KMAUIConstants.shared.rejectedAttachmentIcon
+                largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIRedProgressColor.cgColor
+            }
+            bgViewBottom.constant = 34 + 21
+            uploadButton.alpha = 1
+            largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
+            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        } else if rowData.rowName == "Upload a document" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you received in the lottery")
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
             largeImageView.layer.borderColor = UIColor.clear.cgColor

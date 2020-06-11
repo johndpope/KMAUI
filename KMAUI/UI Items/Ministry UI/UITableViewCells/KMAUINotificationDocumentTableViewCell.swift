@@ -319,7 +319,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
                 }
             }
         } else if type == "subLandDocumentAdded" {
-            statusDetermined = !document.status.isEmpty
+            statusDetermined = !document.status.isEmpty && document.status != "pending"
             
             if statusDetermined {
                 statusLabel.text = "Attachment \(document.status)"

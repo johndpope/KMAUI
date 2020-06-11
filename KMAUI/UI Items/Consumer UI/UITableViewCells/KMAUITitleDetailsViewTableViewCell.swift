@@ -12,7 +12,9 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var rightArrowImageViewRight: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var titleLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var infoButton: UIButton!
     
     // MARK: - Variables
@@ -23,7 +25,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         }
     }
     public var callback: ((Bool) -> Void)?
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -35,7 +37,7 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
         // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
+        titleLabel.font = UIFont.systemFont(ofSize: 19, weight: .semibold) //KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
         titleLabel.textColor = KMAUIConstants.shared.KMAUITextColor
         
         // Info label
@@ -45,18 +47,26 @@ public class KMAUITitleDetailsViewTableViewCell: UITableViewCell {
         // Selection style
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     public func setupCell() {
         titleLabel.text = rowData.rowName
+        titleLabelTop.constant = 16
         infoButton.setTitle(rowData.rowValue, for: .normal)
         infoButton.isHidden = !rowData.visibility
+        infoButton.isUserInteractionEnabled = true
         rightArrowImageView.isHidden = !rowData.visibility
+
+        if rowData.visibility {
+            rightArrowImageViewRight.constant = 16
+        } else {
+            rightArrowImageViewRight.constant = 0
+        }
     }
     
     @IBAction public func infoButtonPressed(_ sender: Any) {
