@@ -2768,10 +2768,6 @@ final public class KMAUIParse {
     
     // MARK: - Save the decision with comment and attachment
     
-    // Decision type: self.decisionType
-    // commentItem: commentItem
-    // attachmentItem: attachmentItem
-    
     public func saveDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, landCase: KMAUILandCaseStruct, completion: @escaping (_ landCase: KMAUILandCaseStruct) -> ()) {
         var landCase = landCase
         let landCaseObject = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCase.objectId)
@@ -2831,10 +2827,3 @@ final public class KMAUIParse {
         }
     }
 }
-
-
-/*
- KMAUIConstants.shared.landCaseUpdated = self.landCase
- KMAUIConstants.shared.landCaseDetailsUpdated = self.landCase
- NotificationCenter.default.post(name: .KMALandCaseUpdated, object: nil)
- */

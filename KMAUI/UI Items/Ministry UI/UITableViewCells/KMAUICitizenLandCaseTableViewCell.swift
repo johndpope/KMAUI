@@ -148,13 +148,18 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         subLandIdLabel.text = "Land ID \(landCase.subLand.subLandId)"
         // Region label
         regionLabel.text = "\(landCase.subLand.regionName) region"
+        
+        if landCase.subLand.regionName.isEmpty {
+            regionLabel.text = "Makkah region"
+        }
+        
         // Area
         areaValueLabel.text = "\(Int(landCase.subLand.subLandSquare)) m²"
         // Area type
-        areaTypeValueLabel.text = landCase.subLand.subLandType
+        areaTypeValueLabel.text = landCase.subLand.subLandType.capitalized
         // Check if residential
         if landCase.subLand.subLandType.lowercased().contains("residential") {
-            areaTypeValueLabel.text = "residential"
+            areaTypeValueLabel.text = "Residential"
         }
         // Images
         if landCase.subLand.subLandImagesArray.isEmpty {
