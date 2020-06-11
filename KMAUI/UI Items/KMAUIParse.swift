@@ -2772,7 +2772,7 @@ final public class KMAUIParse {
     // commentItem: commentItem
     // attachmentItem: attachmentItem
     
-    func saveDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, landCase: KMAUILandCaseStruct, completion: @escaping (_ landCase: KMAUILandCaseStruct) -> ()) {
+    public func saveDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, landCase: KMAUILandCaseStruct, completion: @escaping (_ landCase: KMAUILandCaseStruct) -> ()) {
         var landCase = landCase
         let landCaseObject = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCase.objectId)
         
