@@ -37,9 +37,11 @@ public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
     @IBOutlet public weak var chartView: PieChartView!
     @IBOutlet public weak var casesCountLabel: UILabel!
     @IBOutlet public weak var casesLabel: UILabel!
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     
     // MARK: - Variables
     public static let id = "KMAUIJudgeStatsTableViewCell"
+    public var loaded = false
     public var landCases = [KMAUILandCaseStruct]()
     public var judge = KMAPerson() {
         didSet {
@@ -218,7 +220,16 @@ public class KMAUIJudgeStatsTableViewCell: UITableViewCell {
         totalQuantityValueLabel.text = "\(landCases.count)"
         
         // Land cases count
-        casesCountLabel.text = "\(landCases.count)"
+        
+        
+        if loaded {
+            casesCountLabel.text = "\(landCases.count)"
+            activityView.alpha = 0
+        } else {
+            casesCountLabel.text = ""
+            activityView.alpha = 1
+            activityView.startAnimating()
+        }
         
         // Setup chart
         let dataSet = [PieChartDataEntry(value: Double(approvedPercents) / 100), PieChartDataEntry(value: Double(declinedPercents) / 100), PieChartDataEntry(value: Double(inProgressPercents) / 100)]

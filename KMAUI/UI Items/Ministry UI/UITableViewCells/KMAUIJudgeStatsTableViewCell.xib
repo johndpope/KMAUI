@@ -212,6 +212,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZMe-a8-Zg1">
+                                        <rect key="frame" x="130" y="53" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -223,6 +226,8 @@
                                     <constraint firstItem="1s8-3M-bbD" firstAttribute="leading" secondItem="Kfk-0i-Jpu" secondAttribute="leading" id="K8z-gf-gRz"/>
                                     <constraint firstItem="Wck-we-KLT" firstAttribute="leading" secondItem="Kfk-0i-Jpu" secondAttribute="leading" id="Lav-yX-bkL"/>
                                     <constraint firstItem="1s8-3M-bbD" firstAttribute="top" secondItem="Kfk-0i-Jpu" secondAttribute="top" constant="50" id="MfA-Yu-TO7"/>
+                                    <constraint firstItem="ZMe-a8-Zg1" firstAttribute="centerX" secondItem="1s8-3M-bbD" secondAttribute="centerX" id="YTm-tp-Ks7"/>
+                                    <constraint firstItem="ZMe-a8-Zg1" firstAttribute="centerY" secondItem="1s8-3M-bbD" secondAttribute="centerY" id="aFp-7j-OMH"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KZc-jl-in0" secondAttribute="trailing" constant="16" id="iPf-uf-pCg"/>
                                     <constraint firstItem="KZc-jl-in0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Kfk-0i-Jpu" secondAttribute="leading" constant="16" id="kK1-sQ-cgE"/>
                                     <constraint firstAttribute="trailing" secondItem="1s8-3M-bbD" secondAttribute="trailing" id="lFr-qb-uaA"/>
@@ -297,6 +302,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityView" destination="ZMe-a8-Zg1" id="bEp-dB-p3G"/>
                 <outlet property="approvedDivideView" destination="DZM-yg-ped" id="KGs-LR-gUu"/>
                 <outlet property="approvedLabel" destination="gH5-eL-ICf" id="uVX-o3-RVg"/>
                 <outlet property="approvedValueLabel" destination="RQK-9C-G5O" id="cnq-Mr-znO"/>
