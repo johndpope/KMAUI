@@ -2765,5 +2765,76 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Save the decision with comment and attachment
+    
+    // Decision type: self.decisionType
+    // commentItem: commentItem
+    // attachmentItem: attachmentItem
+    
+    func saveDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, landCase: KMAUILandCaseStruct, completion: @escaping (_ landCase: KMAUILandCaseStruct) -> ()) {
+        var landCase = landCase
+        let landCaseObject = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCase.objectId)
+        
+        if decisionType == "judge" {
+            landCaseObject["judgeComment"] = commentItem
+            landCaseObject["judgeAttachment"] = attachmentItem
+            // Setup status
+            if selectedAction {
+                landCaseObject["courtStatus"] = "Approved"
+            } else {
+                landCaseObject["courtStatus"] = "Declined"
+            }
+        } else if decisionType == "department" {
+            landCaseObject["departmentComment"] = commentItem
+            landCaseObject["departmentAttachment"] = attachmentItem
+            // Setup status
+            if selectedAction {
+                landCaseObject["departmentDecision"] = "Approved"
+            } else {
+                landCaseObject["departmentDecision"] = "Declined"
+            }
+        }
+
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
+        
+        landCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    if decisionType == "department" {
+                        landCase.departmentComment = commentItem
+                        landCase.departmentAttachment = attachmentItem
+                        // Setup status
+                        if selectedAction {
+                            landCase.departmentDecision = "Approved"
+                        } else {
+                            landCase.departmentDecision = "Declined"
+                        }
+                    } else if decisionType == "judge" {
+                        landCase.judgeComment = commentItem
+                        landCase.judgeAttachment = attachmentItem
+                        // Setup status
+                        if selectedAction {
+                            landCase.courtStatus = "Approved"
+                        } else {
+                            landCase.courtStatus = "Declined"
+                        }
+                    }
+                    landCase.setupAttachments()
+                    // Completion
+                    completion(landCase)
+                }
+            }
+        }
+    }
 }
 
+
+/*
+ KMAUIConstants.shared.landCaseUpdated = self.landCase
+ KMAUIConstants.shared.landCaseDetailsUpdated = self.landCase
+ NotificationCenter.default.post(name: .KMALandCaseUpdated, object: nil)
+ */
