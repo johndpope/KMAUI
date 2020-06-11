@@ -89,12 +89,12 @@ public class KMAUIImagesPreviewView: UIView {
         threeThreeBgView.clipsToBounds = true
         threeThreeBgView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         // Bottom action buttons
-        if !subLand.subLandImagesArray.isEmpty {
+        if !subLand.subLandImagesAllArray.isEmpty {
             // Show the correct image for each view
-            if subLand.subLandImagesArray.count == 1 {
+            if subLand.subLandImagesAllArray.count == 1 {
                 // One large image
                 showImage(button: singleImageButton, imageView: singleImageView, index: 0)
-            } else if subLand.subLandImagesArray.count == 2 {
+            } else if subLand.subLandImagesAllArray.count == 2 {
                 // Two same size images
                 showImage(button: twoOneImageButton, imageView: twoOneImageView, index: 0)
                 showImage(button: twoTwoImageButton, imageView: twoTwoImageView, index: 1)
@@ -104,10 +104,10 @@ public class KMAUIImagesPreviewView: UIView {
                 showImage(button: threeTwoImageButton, imageView: threeTwoImageView, index: 1)
                 showImage(button: threeThreeImageButton, imageView: threeThreeImageView, index: 2)
                 
-                if subLand.subLandImagesArray.count > 3 {
+                if subLand.subLandImagesAllArray.count > 3 {
                     threeThreeBgImageButton.alpha = 1.0
                     threeThreeBgView.alpha = 0.5
-                    threeThreeBgImageButton.setTitle("+\(subLand.subLandImagesArray.count - 3)", for: .normal)
+                    threeThreeBgImageButton.setTitle("+\(subLand.subLandImagesAllArray.count - 3)", for: .normal)
                 }
             }
         }
@@ -118,7 +118,7 @@ public class KMAUIImagesPreviewView: UIView {
      */
     
     public func showImage(button: UIButton, imageView: UIImageView, index: Int) {
-        let document = subLand.subLandImagesArray[index]
+        let document = subLand.subLandImagesAllArray[index]
         button.alpha = 1
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
@@ -167,7 +167,7 @@ public class KMAUIImagesPreviewView: UIView {
     // MARK: - Documents preview
     
     public func previewImages(index: Int) {
-        let document = subLand.subLandImagesArray[index]
+        let document = subLand.subLandImagesAllArray[index]
         
         KMAUIUtilities.shared.quicklookPreview(urlString: document.fileURL, fileName: document.name, uniqueId: document.objectId) { (previewItemValue) in
             self.previewItem = previewItemValue
