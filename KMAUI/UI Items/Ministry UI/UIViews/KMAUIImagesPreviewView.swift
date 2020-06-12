@@ -55,6 +55,18 @@ public class KMAUIImagesPreviewView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        // Borders for images
+        borderFor(imageView: singleImageView)
+        borderFor(imageView: twoOneImageView)
+        borderFor(imageView: twoTwoImageView)
+        borderFor(imageView: threeOneImageView)
+        borderFor(imageView: threeTwoImageView)
+        borderFor(imageView: threeThreeImageView)
+    }
+    
+    func borderFor(imageView: UIImageView) {
+        imageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
+        imageView.layer.borderWidth = 1
     }
     
     // MARK: - Setup view
