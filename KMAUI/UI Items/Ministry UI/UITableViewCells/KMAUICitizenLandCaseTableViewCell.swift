@@ -21,10 +21,6 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var rightArrowImageView: UIImageView!
     @IBOutlet public weak var divideLineView: UIView!
     @IBOutlet public weak var citizenHighlightButton: UIButton!
-    @IBOutlet public weak var attachmentImageView: UIImageView!
-    @IBOutlet public weak var attachmentImageViewWidth: NSLayoutConstraint!
-    @IBOutlet public weak var attachmentImageViewLeft: NSLayoutConstraint!
-    @IBOutlet public weak var attachmentButton: UIButton!
     @IBOutlet public weak var attachmentButtonWidth: NSLayoutConstraint!
     @IBOutlet public weak var attachmentButtonRight: NSLayoutConstraint!
     @IBOutlet public weak var subLandIdLabel: UILabel!
@@ -37,6 +33,9 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var divideLineView3: UIView!
     @IBOutlet public weak var attachmentsButton: UIButton!
     @IBOutlet public weak var mapButton: UIButton!
+    @IBOutlet public weak var imagesView: KMAUIImagesPreviewView!
+    @IBOutlet weak var imagesViewLeft: NSLayoutConstraint!
+    @IBOutlet weak var imagesViewWidth: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUICitizenLandCaseTableViewCell"
@@ -71,9 +70,8 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         titleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // Attachment view
-        attachmentImageView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
-        attachmentImageView.layer.cornerRadius = 8
-        attachmentImageView.clipsToBounds = true
+        imagesView.layer.cornerRadius = 8
+        imagesView.clipsToBounds = true
         
         // Setup the right arrow
         rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
@@ -161,27 +159,24 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         if landCase.subLand.subLandType.lowercased().contains("residential") {
             areaTypeValueLabel.text = "Residential"
         }
-        // Images
-        if landCase.subLand.subLandImagesArray.isEmpty {
+        // Setup images
+        if landCase.subLand.subLandImagesAllArray.isEmpty {
             // No images, hide the view
-            attachmentImageViewWidth.constant = 0
-            attachmentImageView.alpha = 0
-            attachmentButton.alpha = 0
-            attachmentImageViewLeft.constant = 3
+            imagesView.alpha = 0
+            imagesViewWidth.constant = 0
+            imagesViewLeft.constant = 3
             attachmentButtonWidth.constant = 0
             attachmentButtonRight.constant = 0
         } else {
-            attachmentImageViewWidth.constant = 200
-            attachmentImageView.alpha = 1
-            attachmentButton.alpha = 1
-            attachmentImageViewLeft.constant = 27
+            imagesView.alpha = 1
+            imagesViewWidth.constant = 200
+            imagesViewLeft.constant = 27
             attachmentButtonWidth.constant = 32
             attachmentButtonRight.constant = 8
-            let attachment = landCase.subLand.subLandImagesArray[0]
-            // Show the image
-            if let attachmentURL = URL(string: attachment.previewURL) {
-                attachmentImageView.kf.indicatorType = .activity
-                attachmentImageView.kf.setImage(with: attachmentURL)
+            imagesView.subLand = landCase.subLand
+            // Callback for actions
+            imagesView.viewAttachmentsAction = { action in
+                self.attachmentCallback?(true)
             }
         }
     }
@@ -207,44 +202,5 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     
     @IBAction func mapButtonPressed(_ sender: Any) {
         mapCallback?(true)
-    }
-    
-    @IBAction func attachmentsButtonPressed(_ sender: Any) {
-        // Attachments clicked
-        if landCase.subLand.subLandImagesArray.isEmpty {
-            KMAUIUtilities.shared.globalAlert(title: "No attachments", message: "We have no sub land documents to be reviewied.") { (_) in }
-        } else {
-            attachmentCallback?(true)
-        }
-    }
-    
-    @IBAction func attachmentButtonPressed(_ sender: Any) {
-        // Attachments clicked
-        if !landCase.subLand.subLandImagesArray.isEmpty {
-            let item = landCase.subLand.subLandImagesArray[0]
-            // If these are attachments
-            let uniqueId = String(UUID().uuidString.suffix(6))
-            
-            KMAUIUtilities.shared.quicklookPreview(urlString: item.fileURL, fileName: item.name, uniqueId: uniqueId) { (previewItemValue) in
-                self.previewItem = previewItemValue
-                // Display file
-                let previewController = QLPreviewController()
-                previewController.dataSource = self
-                KMAUIUtilities.shared.displayAlert(viewController: previewController)
-            }
-        }
-    }
-}
-
-// MARK: - QLPreviewController Datasource
-
-extension KMAUICitizenLandCaseTableViewCell: QLPreviewControllerDataSource {
-    
-    public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return 1
-    }
-    
-    public func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return previewItem as QLPreviewItem
     }
 }
