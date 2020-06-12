@@ -65,7 +65,7 @@ public class KMAUIImagesPreviewView: UIView {
     }
     
     func borderFor(imageView: UIImageView) {
-        imageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
+        imageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         imageView.layer.borderWidth = 1
     }
     
