@@ -67,6 +67,7 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         titleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // Attachment view
+        imagesView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         imagesView.layer.cornerRadius = 8
         imagesView.clipsToBounds = true
         
