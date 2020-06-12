@@ -2820,7 +2820,7 @@ final public class KMAUIParse {
                         }
                     }
                     landCase.setupAttachments()
-                    KMAUIParse.shared.notifyUser(landCase: landCase, selectedAction: selectedAction, decisionType: decisionType)
+                    KMAUIParse.shared.notifyUser(landCase: landCase, selectedAction: selectedAction, decisionType: decisionType, comment: commentItem)
                     // Completion
                     completion(landCase)
                 }
@@ -2828,7 +2828,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func notifyUser(landCase: KMAUILandCaseStruct, selectedAction: Bool, decisionType: String) {
+    public func notifyUser(landCase: KMAUILandCaseStruct, selectedAction: Bool, decisionType: String, comment: String) {
         let title = "Land case \(decisionType) decision"
         var message = ""
         
@@ -2843,6 +2843,8 @@ final public class KMAUIParse {
         } else if decisionType == "department" {
             message = "Your Land case #\(landCase.caseNumber) was \(status) by the Department of Urban Planning. Please wait for it to be proceeded by the judge \(landCase.judge.fullName)."
         }
+
+        message += "\nComment: \(comment)"
         
         if !title.isEmpty, !message.isEmpty {
             let userId = landCase.citizen.objectId
