@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import QuickLook
-import Kingfisher
 
 public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     
@@ -34,12 +32,11 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var attachmentsButton: UIButton!
     @IBOutlet public weak var mapButton: UIButton!
     @IBOutlet public weak var imagesView: KMAUIImagesPreviewView!
-    @IBOutlet weak var imagesViewLeft: NSLayoutConstraint!
-    @IBOutlet weak var imagesViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var imagesViewLeft: NSLayoutConstraint!
+    @IBOutlet public weak var imagesViewWidth: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUICitizenLandCaseTableViewCell"
-    public lazy var previewItem = NSURL()
     public var citizenCallback: ((Bool) -> Void)?
     public var mapCallback: ((Bool) -> Void)?
     public var attachmentCallback: ((Bool) -> Void)?
@@ -202,5 +199,9 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     
     @IBAction func mapButtonPressed(_ sender: Any) {
         mapCallback?(true)
+    }
+    
+    @IBAction func attachmentButtonPressed(_ sender: Any) {
+        attachmentCallback?(true)
     }
 }

@@ -167,7 +167,7 @@
                                     <constraint firstAttribute="height" constant="32" id="NLN-kJ-CAR"/>
                                 </constraints>
                                 <connections>
-                                    <action selector="attachmentsButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1Nm-0X-TEN"/>
+                                    <action selector="attachmentButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="keh-fP-SFb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFV-id-Gva">
