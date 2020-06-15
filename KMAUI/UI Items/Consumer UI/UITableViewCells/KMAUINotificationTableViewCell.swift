@@ -47,7 +47,7 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
         dateLabel.textColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
         // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
@@ -80,6 +80,9 @@ public class KMAUINotificationTableViewCell: UITableViewCell {
         }
         
         dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
+        
+        titleLabel.setLineSpacing(lineSpacing: 1.1, lineHeightMultiple: 1.1, alignment: .left)
+        infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
     
     override public func setSelected(_ selected: Bool, animated: Bool) {

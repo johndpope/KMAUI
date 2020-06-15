@@ -51,13 +51,13 @@ public class KMAUINotificationSelectionTableViewCell: UITableViewCell {
         isActiveImageView.contentMode = .center
         
         // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Date label
         dateLabel.textColor = KMAUIConstants.shared.KMAUIGreyTextColor
         
         // Info label
-        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // No selection required
         selectionStyle = .none
@@ -73,7 +73,7 @@ public class KMAUINotificationSelectionTableViewCell: UITableViewCell {
         
         // Setup details
         titleLabel.text = notification.title
-        titleLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        titleLabel.setLineSpacing(lineSpacing: 1.1, lineHeightMultiple: 1.1, alignment: .left)
         infoLabel.text = notification.message
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         dateLabel.text = KMAUIUtilities.shared.formatReadableDate(date: notification.createdAt)
