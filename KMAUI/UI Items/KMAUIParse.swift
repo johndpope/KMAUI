@@ -1341,7 +1341,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func setNotificationRead(notificationId: String) {
+    public func setNotificationRead(notificationId: String, completion: @escaping (_ read: Bool)->()) {
         let notificationObject = PFObject(withoutDataWithClassName: "KMANotification", objectId: notificationId)
         notificationObject["read"] = true
         notificationObject.saveInBackground { (success, error) in
@@ -1349,6 +1349,7 @@ final public class KMAUIParse {
                 print("Error setting the notification \(notificationId) as read: \(error.localizedDescription)")
             } else if success {
                 print("Notification \(notificationId) is set to read")
+                completion(true)
             }
         }
     }
