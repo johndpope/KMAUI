@@ -2465,16 +2465,6 @@ public struct KMAUISubLandStruct {
         }
     }
     
-//    public func featureJson() -> [String: Any] {
-//        var json: [String: Any] = [:]
-//        json["type"] = "Feature"
-//        json["geometry"] = [
-//            "type": "LineString",
-//            "coordinates": [
-//            ]
-//        ]
-//
-//    }
     mutating public func fillFromDict(item: [String : Any]) {
         if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
             // coordinates

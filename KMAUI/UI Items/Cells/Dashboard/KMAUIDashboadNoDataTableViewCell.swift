@@ -178,12 +178,12 @@ public class KMAUIDashboadNoDataTableViewCell: UITableViewCell {
                 info = "We're preparing the notifications for your Department..."
                 action = ""
             }
-        } else if type == "landCases" {
+        } else if type == "Land cases" || type == "Trespass cases" {
             if isLoaded {
-                info = "No land cases available."
+                info = "No \(type.lowercased()) available."
                 action = ""
             } else {
-                info = "We're preparing the land cases list..."
+                info = "We're preparing the \(type.lowercased()) list..."
                 action = ""
             }
         }
