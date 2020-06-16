@@ -198,6 +198,7 @@ public class KMAUIConstants {
     // Temp land case
     public var landCaseUpdated = KMAUILandCaseStruct()
     public var landCaseDetailsUpdated = KMAUILandCaseStruct()
+    public var landCaseMasterAction = ""
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
