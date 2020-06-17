@@ -94,6 +94,7 @@
                 <outlet property="bgViewRight" destination="DTd-XF-1F2" id="XYM-jT-X7K"/>
                 <outlet property="bgViewTop" destination="CVB-PH-eS5" id="IiO-C4-FgO"/>
                 <outlet property="isActiveImageView" destination="owe-ce-Hua" id="SxY-Yh-Ict"/>
+                <outlet property="lotteryNameBottom" destination="iXc-zf-Uou" id="gda-B5-H8y"/>
                 <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>
                 <outlet property="lotteryNameLabelLeft" destination="Wdc-49-QP1" id="GIW-l3-s5a"/>
                 <outlet property="rowsStackView" destination="0Dx-Hy-Hf4" id="e7X-Oa-2t0"/>

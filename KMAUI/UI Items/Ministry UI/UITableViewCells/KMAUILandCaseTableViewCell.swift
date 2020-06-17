@@ -22,14 +22,24 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryNameLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var rowsStackView: UIStackView!
     @IBOutlet public weak var statusView: UIView!
-    @IBOutlet public weak var statusViewWidth: NSLayoutConstraint! // default: 7
+    @IBOutlet public weak var statusViewWidth: NSLayoutConstraint! // default: 8
     @IBOutlet public weak var statusViewRight: NSLayoutConstraint! // default: 6
     @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var statusLabelHeight: NSLayoutConstraint!
     @IBOutlet public weak var statusLabelBottom: NSLayoutConstraint!
+    @IBOutlet public weak var lotteryNameBottom: NSLayoutConstraint!
     
     // MARK: - Variables
-    public var landCase = KMAUILandCaseStruct()
+    public var landCase = KMAUILandCaseStruct() {
+        didSet {
+            trespassCase = KMAUITrespassCaseStruct()
+        }
+    }
+    public var trespassCase = KMAUITrespassCaseStruct() {
+        didSet {
+            landCase = KMAUILandCaseStruct()
+        }
+    }
     public var highlightActive = false
     public var isActive = false {
         didSet {
@@ -65,8 +75,17 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         
         // Status view
-        statusView.layer.cornerRadius = 3.5
+        statusView.layer.cornerRadius = 4
         statusView.clipsToBounds = true
+        statusView.alpha = 1
+        statusViewWidth.constant = 8
+        statusViewRight.constant = 6
+        
+        // Status label
+        statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont
+        statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
+        statusLabel.backgroundColor = UIColor.clear
+        statusLabel.layer.borderWidth = 0
         
         // No selection required
         selectionStyle = .none
@@ -111,24 +130,26 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
         
-        // Lottery status
-        statusLabel.text = landCase.courtStatus
-        statusView.backgroundColor = KMAUIUtilities.shared.getCaseColor(status: landCase.courtStatus.lowercased())
-        
-        statusView.alpha = 1
-        statusViewWidth.constant = 7
-        statusViewRight.constant = 6
-        
-        statusLabel.font = KMAUIConstants.shared.KMAUIRegularFont
-        statusLabel.textColor = KMAUIConstants.shared.KMAUITextColor
-        statusLabel.backgroundColor = UIColor.clear
-        statusLabel.layer.borderWidth = 0
-        
-        // Land case number
-        lotteryNameLabel.text = "Case #\(landCase.caseNumber)"
-        
-        // Setup stack view
-        setupStackView()
+        if !landCase.objectId.isEmpty {
+            // Lottery status
+            statusLabel.text = landCase.courtStatus
+            statusView.backgroundColor = KMAUIUtilities.shared.getCaseColor(status: landCase.courtStatus.lowercased())
+            
+            // Land case number
+            lotteryNameLabel.text = "Case #\(landCase.caseNumber)"
+            
+            // Setup stack view
+            setupStackView()
+        } else if !trespassCase.objectId.isEmpty {
+            // Case status
+            statusLabel.text = trespassCase.caseStatus
+            
+            // Trespass case number
+            lotteryNameLabel.text = "Case #\(trespassCase.caseNumber)"
+            
+            // Case bottom
+            lotteryNameBottom.constant = 0
+        }
     }
     
     /**
@@ -183,5 +204,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             }
         }
         rowsStackView.alpha = 1
+        lotteryNameBottom.constant = 24
     }
 }
