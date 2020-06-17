@@ -19,9 +19,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwm-wy-ccs" customClass="KMAUIButtonFilled" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="16" y="8" width="288" height="44"/>
+                        <rect key="frame" x="16" y="8" width="288" height="52"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="fgS-Mr-NhG"/>
+                            <constraint firstAttribute="height" constant="52" id="fgS-Mr-NhG"/>
                         </constraints>
                         <state key="normal" title="Start Lottery"/>
                         <connections>
