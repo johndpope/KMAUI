@@ -2592,6 +2592,24 @@ final public class KMAUIParse {
         }
     }
     
+    public func createTrespassCaseObject(subLandId: String, completion: @escaping (_ trespassCaseId: String, _ error: String) -> ()) {
+        let newTrespassCase = PFObject(className: "KMATrespassCase")
+        newTrespassCase["caseNumber"] = "\(Int.random(in: 10000 ..< 100000))"
+        newTrespassCase["caseStatus"] = "Created"
+        newTrespassCase["department"] = PFObject(withoutDataWithClassName: "KMADepartment", objectId: "poqIHPw4NS")
+        newTrespassCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
+        
+        newTrespassCase.saveInBackground { (success, error) in
+            if let error = error {
+                completion("", error.localizedDescription)
+            } else if success, let trespassCaseId = newTrespassCase.objectId, !trespassCaseId.isEmpty {
+                completion(trespassCaseId, "")
+            } else {
+                completion("", "Can't prepare the new Trespass case data.")
+            }
+        }
+    }
+    
     public func createLandCaseObject(subLandId: String, completion: @escaping (_ landCaseId: String, _ landCaseNumber: String, _ error: String) -> ()) {
         if let currentUser = PFUser.current() {
             let newLandCase = PFObject(className: "KMALandCase")
