@@ -2158,6 +2158,33 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Get Trespass Cases
+    
+    public func getTrespassCasescompletion(completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
+        // Trespass cases array
+        var trespassCases = [KMAUITrespassCaseStruct]()
+        // Get details
+        let query = PFQuery(className: "KMATrespassCase")
+        query.order(byDescending: "updatedAt")
+        query.includeKey("subLand")
+        query.includeKey("subLand.landPlan")
+        query.includeKey("department")
+        query.includeKey("department.mapArea")
+        query.findObjectsInBackground { (trespassCasesArray, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let trespassCasesArray = trespassCasesArray {
+                for trespassCaseObject in trespassCasesArray {
+                    var trespassCase = KMAUITrespassCaseStruct()
+                    trespassCase.fillFromParse(object: trespassCaseObject)
+                    trespassCases.append(trespassCase)
+                }
+            }
+            // Completion handler with the case
+            completion(trespassCases)
+        }
+    }
+    
     // MARK: - Get Land Cases
     
     public func getLandCases(objectId: String? = nil, judgeId: String? = nil, completion: @escaping (_ landCasesArray: [KMAUILandCaseStruct])->()) {

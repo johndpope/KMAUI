@@ -4167,3 +4167,52 @@ public struct KMAUIAttachmentCommentStruct {
     public init() {
     }
 }
+
+// MARK: - KMAUITrespassCaseStruct
+
+public struct KMAUITrespassCaseStruct {
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var caseNumber = ""
+    public var caseStatus = ""
+    public var department = KMADepartmentStruct()
+    public var subLand = KMAUISubLandStruct()
+    
+    public init() {}
+    
+    public mutating func fillFromParse(object: PFObject) {
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        
+        if let caseNumber = object["caseNumber"] as? String {
+            self.caseNumber = caseNumber
+        }
+        
+        if let courtStatus = object["caseStatus"] as? String {
+            self.caseStatus = courtStatus
+        }
+
+        if let department = object["department"] as? PFObject {
+            var departmentObject = KMADepartmentStruct()
+            departmentObject.fillFromParse(departmentObject: department)
+            self.department = departmentObject
+        }
+        
+        if let subLand = object["subLand"] as? PFObject {
+            var subLandObject = KMAUISubLandStruct()
+            subLandObject.fillFromParse(item: subLand)
+            self.subLand = subLandObject
+        }
+    }
+}
+
