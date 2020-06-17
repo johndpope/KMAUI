@@ -2221,6 +2221,9 @@ public struct KMAMapAreaStruct {
     // Land cases count
     public var landCasesCount = 0
     public var approvedLandCasesCount = 0
+    // Trespass cases count
+    public var trespassCasesCount = 0
+    public var resolvedTrespassCasesCount = 0
     // Name as on the map layer
     public var nameMap = ""
 
