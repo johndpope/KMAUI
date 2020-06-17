@@ -30,16 +30,8 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryNameBottom: NSLayoutConstraint!
     
     // MARK: - Variables
-    public var landCase = KMAUILandCaseStruct() {
-        didSet {
-            trespassCase = KMAUITrespassCaseStruct()
-        }
-    }
-    public var trespassCase = KMAUITrespassCaseStruct() {
-        didSet {
-            landCase = KMAUILandCaseStruct()
-        }
-    }
+    public var landCase = KMAUILandCaseStruct()
+    public var trespassCase = KMAUITrespassCaseStruct()
     public var highlightActive = false
     public var isActive = false {
         didSet {
