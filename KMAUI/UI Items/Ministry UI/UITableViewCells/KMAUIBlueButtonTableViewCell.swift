@@ -29,6 +29,14 @@ public class KMAUIBlueButtonTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    public func setupNewTrespass() {
+        lotteryButton.setTitle("Create a new Trespass case", for: .normal)
+        lotteryButton.titleLabel?.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        lotteryButton.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
+        lotteryButton.layer.cornerRadius = 26
+        clipsToBounds = true
+    }
+    
     // MARK: - IBActions
     
     @IBAction public func lotteryButtonPressed(_ sender: Any) {
