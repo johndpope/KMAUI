@@ -140,7 +140,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             lotteryNameLabel.text = "Case #\(trespassCase.caseNumber)"
             
             // Case bottom
-            lotteryNameBottom.constant = 8
+            lotteryNameBottom.constant = 12
         }
     }
     
