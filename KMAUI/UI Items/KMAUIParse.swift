@@ -2160,7 +2160,7 @@ final public class KMAUIParse {
     
     // MARK: - Get Trespass Cases
     
-    public func getTrespassCasescompletion(completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
+    public func getTrespassCases(completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
         // Trespass cases array
         var trespassCases = [KMAUITrespassCaseStruct]()
         // Get details
