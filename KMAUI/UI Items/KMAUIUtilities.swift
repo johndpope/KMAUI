@@ -1594,7 +1594,7 @@ public class KMAUIUtilities {
             completion(pickedDocument)
         } else {
             KMAUIUtilities.shared.stopLoadingWith { (done) in
-                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
+                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select an image or video file.") { (loaded) in }
             }
         }
     }
