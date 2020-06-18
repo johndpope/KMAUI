@@ -204,9 +204,9 @@ final public class KMAUIParse {
             if let regionsOnly = regionsOnly, regionsOnly {
                 completion(areaItems)
             } else {
-            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
-                completion(items)
-            }
+                KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
+                    completion(items)
+                }
             }
         }
     }
