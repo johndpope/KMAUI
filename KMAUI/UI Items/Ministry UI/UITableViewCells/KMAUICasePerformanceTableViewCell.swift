@@ -70,6 +70,11 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         progressLabel.text = "\(Int(stats.progress * 100))%"
         progressView.progress = stats.progress
         resolvedLabel.text = "Approved"
+        
+        if stats.rowValue.isEmpty {
+            resolvedLabel.text = stats.rowValue
+        }
+        
         resolvedValueLabel.text = "\(stats.value)/\(stats.count)"
         // Adjust the font size for 100% situation
         if stats.progress == 1 {
