@@ -4181,6 +4181,7 @@ public struct KMAUITrespassCaseStruct {
     public var caseStatus = ""
     public var department = KMADepartmentStruct()
     public var subLand = KMAUISubLandStruct()
+    public var initialComment = ""
     
     public init() {}
     
@@ -4216,6 +4217,8 @@ public struct KMAUITrespassCaseStruct {
             subLandObject.fillFromParse(item: subLand)
             self.subLand = subLandObject
         }
+        
+        i
     }
 }
 
