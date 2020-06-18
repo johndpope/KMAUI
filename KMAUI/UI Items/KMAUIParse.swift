@@ -2521,14 +2521,19 @@ final public class KMAUIParse {
     
     // MARK: - New Land Case by Consumer app
     
-    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
+    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, isTrespass: Bool? = nil, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
         // Create the new Sub land
         let newSubLand = PFObject(className: "KMASubLand")
         let uniqueId = String(UUID().uuidString.suffix(4))
         newSubLand["subLandId"] = uniqueId
         newSubLand["subLandIndex"] = uniqueId
-        newSubLand["subLandType"] = "Earned Land"
         
+        if let isTrespass = isTrespass, isTrespass {
+            newSubLand["subLandType"] = "Trespass"
+        } else {
+            newSubLand["subLandType"] = "Earned Land"
+        }
+
         var coordinates = [[Double]]()
         
         for coordinate in coordinatesArray {
