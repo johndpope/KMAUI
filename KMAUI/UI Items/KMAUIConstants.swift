@@ -200,6 +200,7 @@ public class KMAUIConstants {
     public var landCaseDetailsUpdated = KMAUILandCaseStruct()
     public var landCaseMasterAction = ""
     public let caseModes = ["All cases", "Regions"]
+    public var newTrespassCaseId = ""
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
