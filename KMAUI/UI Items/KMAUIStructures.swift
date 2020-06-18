@@ -4218,7 +4218,9 @@ public struct KMAUITrespassCaseStruct {
             self.subLand = subLandObject
         }
         
-        i
+        if let initialComment = object["initialComment"] as? String {
+            self.initialComment = initialComment
+        }
     }
 }
 
