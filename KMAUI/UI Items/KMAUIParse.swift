@@ -196,13 +196,17 @@ final public class KMAUIParse {
      Get Saudi Arabia regions
      */
     
-    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, regionsOnly: Bool? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         // Saudi Arabia Parse object id
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
         KMAUIParse.shared.getMapAreas(level: 2, sw: sw, ne: ne, parentObjectId: saudiArabiaId) { (areaItems) in
+            if let regionsOnly = regionsOnly, regionsOnly {
+                completion(areaItems)
+            } else {
             KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
                 completion(items)
+            }
             }
         }
     }
