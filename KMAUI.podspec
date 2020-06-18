@@ -8,7 +8,7 @@ s.summary = "Document name included for the KMANotification when user creates th
 s.requires_arc = true
 
 # 2
-s.version = "1.3.72"
+s.version = "1.3.73"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }

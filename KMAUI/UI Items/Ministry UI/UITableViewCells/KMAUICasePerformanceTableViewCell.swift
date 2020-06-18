@@ -71,7 +71,7 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         progressView.progress = stats.progress
         resolvedLabel.text = "Approved"
         
-        if stats.rowValue.isEmpty {
+        if !stats.rowValue.isEmpty {
             resolvedLabel.text = stats.rowValue
         }
         
