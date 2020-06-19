@@ -40,7 +40,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qC1-M7-xPN"/>
                                 </constraints>
-                                <state key="normal" title="Send for verification "/>
+                                <state key="normal" title="Approve case"/>
                                 <connections>
                                     <action selector="approveButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="G2b-eo-Rbq"/>
                                 </connections>
