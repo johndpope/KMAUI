@@ -16,6 +16,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     @IBOutlet public weak var descriptionLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var approveButton: UIButton!
     @IBOutlet public weak var declineButton: UIButton!
+    @IBOutlet weak var declineButtonBottom: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUITrespassDescriptionActionTableViewCell"
@@ -93,5 +94,17 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
         // Description
         descriptionLabel.text = trespassCase.initialComment
         descriptionLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        // Check status to hide the buttons
+        if trespassCase.caseStatus == "Created" {
+            // Show buttons
+            declineButton.alpha = 1
+            approveButton.alpha = 1
+            declineButtonBottom.constant = 24
+        } else {
+            // Hide buttons
+            declineButton.alpha = 0
+            approveButton.alpha = 0
+            declineButtonBottom.constant = -52
+        }
     }
 }

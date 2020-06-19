@@ -21,7 +21,7 @@
                         <rect key="frame" x="20" y="8" width="280" height="165"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMM-lX-njR">
-                                <rect key="frame" x="148" y="91" width="120" height="50"/>
+                                <rect key="frame" x="148" y="90" width="120" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qC1-M7-xPN"/>
                                 </constraints>
@@ -31,7 +31,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-89-5fy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="12" y="53" width="256" height="14"/>
+                                <rect key="frame" x="12" y="53" width="256" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,9 +46,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y5-Zw-A1s">
-                                <rect key="frame" x="12" y="91" width="120" height="50"/>
+                                <rect key="frame" x="12" y="89" width="120" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="psO-r4-8EB"/>
+                                    <constraint firstAttribute="height" constant="52" id="psO-r4-8EB"/>
                                 </constraints>
                                 <state key="normal" title="Decline case"/>
                                 <connections>
@@ -86,6 +86,7 @@
                 <outlet property="approveButton" destination="vMM-lX-njR" id="j32-Js-zfr"/>
                 <outlet property="bgView" destination="1MF-1H-kpR" id="Mb4-tJ-KAd"/>
                 <outlet property="declineButton" destination="9y5-Zw-A1s" id="dTQ-Tb-1gG"/>
+                <outlet property="declineButtonBottom" destination="N4H-dx-3TP" id="4Kn-VU-UrK"/>
                 <outlet property="descriptionLabel" destination="l9h-89-5fy" id="kuq-PD-yiQ"/>
                 <outlet property="titleLabel" destination="ZQX-qH-P8C" id="XhM-vh-lXe"/>
             </connections>
