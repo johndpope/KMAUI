@@ -164,13 +164,13 @@ public class KMAUITrespassCaseDetailsTableViewCell: UITableViewCell {
         }
         // Status view color
         if trespassCase.caseStatus == "Created" {
-            
+            statusView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
         } else if trespassCase.caseStatus == "Declined" {
-            
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
         } else if trespassCase.caseStatus == "Resolved" {
-            
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else if trespassCase.caseStatus == "Awaiting verification" {
-            
+            statusView.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         }
     }
     
