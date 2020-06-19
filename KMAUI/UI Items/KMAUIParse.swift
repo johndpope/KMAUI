@@ -2576,16 +2576,18 @@ final public class KMAUIParse {
             let uniqueId = String(UUID().uuidString.suffix(4))
             newSubLand["subLandId"] = uniqueId
             newSubLand["subLandIndex"] = uniqueId
+            var type = ""
             
             if let isTrespass = isTrespass, isTrespass {
                 newSubLand["subLandType"] = "Trespass"
+                type = "Trespass"
             } else {
                 newSubLand["subLandType"] = "Earned Land"
+                type = "Earned Land"
             }
             
             if !regionId.isEmpty {
                 newSubLand["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
-                print("SETUP THE REGION: \(regionId)")
             }
             
             var coordinates = [[Double]]()
@@ -2654,7 +2656,7 @@ final public class KMAUIParse {
                 } else if success, let objectId = newSubLand.objectId {
                     print("Initial value saved.")
                     
-                    let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": "Earned Land" as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
+                    let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": type as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
                     let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
                     
                     let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
