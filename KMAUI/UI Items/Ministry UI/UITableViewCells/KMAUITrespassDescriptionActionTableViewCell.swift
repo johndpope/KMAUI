@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     

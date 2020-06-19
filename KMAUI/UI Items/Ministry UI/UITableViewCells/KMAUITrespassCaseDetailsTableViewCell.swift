@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 
 public class KMAUITrespassCaseDetailsTableViewCell: UITableViewCell {
     
@@ -143,9 +142,6 @@ public class KMAUITrespassCaseDetailsTableViewCell: UITableViewCell {
         areaValueLabel.text = "\(Int(trespassCase.subLand.subLandSquare)) m²"
         // Area type
         areaTypeValueLabel.text = trespassCase.subLand.subLandType.capitalized
-        
-        print(trespassCase.subLand.subLandImagesArray)
-        
         // Setup images
         if trespassCase.subLand.subLandImagesAllArray.isEmpty {
             // No images, hide the view
@@ -165,6 +161,16 @@ public class KMAUITrespassCaseDetailsTableViewCell: UITableViewCell {
             imagesView.viewAttachmentsAction = { action in
                 self.attachmentCallback?(true)
             }
+        }
+        // Status view color
+        if trespassCase.caseStatus == "Created" {
+            
+        } else if trespassCase.caseStatus == "Declined" {
+            
+        } else if trespassCase.caseStatus == "Resolved" {
+            
+        } else if trespassCase.caseStatus == "Awaiting verification" {
+            
         }
     }
     
