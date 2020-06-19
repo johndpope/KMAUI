@@ -658,6 +658,22 @@ public class KMAUIUtilities {
         return processingColor
     }
     
+    public func getTrespassCaseColor(status: String) -> UIColor {
+        var processingColor = UIColor.systemPurple
+        
+        if status == "Created" {
+            processingColor = KMAUIConstants.shared.KMABrightBlueColor
+        } else if status == "Declined" {
+            processingColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        } else if status == "Resolved" {
+            processingColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        } else if status == "Awaiting verification" {
+            processingColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+        }
+        
+        return processingColor
+    }
+    
     // MARK: - Upload Body data
     
     /**

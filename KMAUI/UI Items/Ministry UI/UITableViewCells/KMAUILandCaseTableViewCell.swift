@@ -135,6 +135,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         } else if !trespassCase.objectId.isEmpty {
             // Case status
             statusLabel.text = trespassCase.caseStatus
+            statusView.backgroundColor = KMAUIUtilities.shared.getTrespassCaseColor(status: trespassCase.caseStatus)
             
             // Trespass case number
             lotteryNameLabel.text = "Case #\(trespassCase.caseNumber)"
