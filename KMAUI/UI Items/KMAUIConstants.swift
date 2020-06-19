@@ -199,7 +199,7 @@ public class KMAUIConstants {
     public var landCaseUpdated = KMAUILandCaseStruct()
     public var landCaseDetailsUpdated = KMAUILandCaseStruct()
     public var trespassCaseUpdated = KMAUITrespassCaseStruct()
-    public var trespassCaseDetailsUpdated = KMAUILandCaseStruct()
+    public var trespassCaseDetailsUpdated = KMAUITrespassCaseStruct()
     public var landCaseMasterAction = ""
     public let caseModes = ["All cases", "Regions"]
     public var newTrespassCaseId = ""
