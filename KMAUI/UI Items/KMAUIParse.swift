@@ -2193,6 +2193,32 @@ final public class KMAUIParse {
             }
             // Completion handler with the case
             completion(trespassCases)
+            
+            
+            
+            var inProgressCases = [KMAUITrespassCaseStruct]()
+            var approvedCases = [KMAUITrespassCaseStruct]()
+            var declinedCases = [KMAUITrespassCaseStruct]()
+            
+            for trespassCase in trespassCases {
+                let status = trespassCase.caseStatus
+                
+                if status == "Resolved" {
+                    approvedCases.append(trespassCase)
+                } else if status == "Declined" {
+                    declinedCases.append(trespassCase)
+                } else {
+                    inProgressCases.append(trespassCase)
+                }
+            }
+            
+            trespassCases = [KMAUITrespassCaseStruct]()
+            trespassCases.append(contentsOf: inProgressCases)
+            trespassCases.append(contentsOf: approvedCases)
+            trespassCases.append(contentsOf: declinedCases)
+            
+            completion(trespassCases)
+            
         }
     }
     
@@ -2924,7 +2950,7 @@ final public class KMAUIParse {
             trespassCaseObject["initialCheckAttachments"] = attachmentItem
             // Setup status
             if selectedAction {
-                trespassCaseObject["caseStatus"] = "Awaiting verification"
+                trespassCaseObject["caseStatus"] = "Awaiting report"
             } else {
                 trespassCaseObject["caseStatus"] = "Declined"
             }
@@ -2943,7 +2969,7 @@ final public class KMAUIParse {
                         trespassCase.initialCheckAttachments = attachmentItem
                         // Setup status
                         if selectedAction {
-                            trespassCase.caseStatus = "Awaiting verification"
+                            trespassCase.caseStatus = "Awaiting report"
                         } else {
                             trespassCase.caseStatus = "Declined"
                         }

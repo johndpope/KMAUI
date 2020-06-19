@@ -242,7 +242,20 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     }
     
     @IBAction public func documentButtonPressed(_ sender: Any) {
-        if isDepartment {
+        if trespassType == "initialCheck" {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: trespassCase.initialCheckAttachments)
+            if !files.isEmpty {
+                let file = files[0]
+
+                KMAUIUtilities.shared.quicklookPreview(urlString: file.fileURL, fileName: file.name, uniqueId: trespassCase.objectId) { (previewItemValue) in
+                    self.previewItem = previewItemValue
+                    // Display file
+                    let previewController = QLPreviewController()
+                    previewController.dataSource = self
+                    KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                }
+            }
+        } else if isDepartment {
             let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
             if !files.isEmpty {
                 let file = files[0]
