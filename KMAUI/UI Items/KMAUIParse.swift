@@ -518,6 +518,7 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan")
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
+        lotteryResultQuery.includeKey("subLand.region")
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
@@ -603,6 +604,7 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan")
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
+        lotteryResultQuery.includeKey("subLand.region")
         
         lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
             var errorValue = ""
@@ -1100,6 +1102,7 @@ final public class KMAUIParse {
         combinedQuery.includeKey("landPlan")
         combinedQuery.includeKey("landPlan.region")
         combinedQuery.includeKey("landPlan.responsibleDivision")
+        combinedQuery.includeKey("region")
         combinedQuery.order(byAscending: "subLandIndex")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 10
@@ -1268,6 +1271,7 @@ final public class KMAUIParse {
         query.includeKey("landPlan")
         query.includeKey("landPlan.region")
         query.includeKey("landPlan.responsibleDivision")
+        query.includeKey("region")
         query.getObjectInBackground(withId: objectId) { (subLandValue, error) in
             var updatedSubLand = KMAUISubLandStruct()
             
@@ -1387,6 +1391,7 @@ final public class KMAUIParse {
         randomQuery.includeKey("landPlan")
         randomQuery.includeKey("landPlan.region")
         randomQuery.includeKey("landPlan.responsibleDivision")
+        randomQuery.includeKey("region")
         randomQuery.order(byAscending: "createdAt")
         randomQuery.skip = skip
         randomQuery.limit = 1
@@ -1871,6 +1876,7 @@ final public class KMAUIParse {
                 query.includeKey("landPlan")
                 query.includeKey("landPlan.region")
                 query.includeKey("landPlan.responsibleDivision")
+                query.includeKey("region")
                 
                 query.getObjectInBackground(withId: subLandId) { (subLandValue, error) in
                     if let error = error {
@@ -2172,6 +2178,7 @@ final public class KMAUIParse {
         query.order(byDescending: "updatedAt")
         query.includeKey("subLand")
         query.includeKey("subLand.landPlan")
+        query.includeKey("subLand.region")
         query.includeKey("department")
         query.includeKey("department.mapArea")
         query.findObjectsInBackground { (trespassCasesArray, error) in
@@ -2205,6 +2212,7 @@ final public class KMAUIParse {
         query.includeKey("judge.homeAddress.building")
         query.includeKey("subLand")
         query.includeKey("subLand.landPlan")
+        query.includeKey("subLand.region")
         query.includeKey("department")
         query.includeKey("department.mapArea")
         // Get specific land case for notifications
@@ -2501,6 +2509,7 @@ final public class KMAUIParse {
             query.includeKey("subLand.landPlan")
             query.includeKey("subLand.landPlan.region")
             query.includeKey("subLand.landPlan.responsibleDivision")
+            query.includeKey("subLand.region")
             // Department
             query.includeKey("department")
             query.includeKey("department.mapArea")
