@@ -4190,6 +4190,9 @@ public struct KMAUITrespassCaseStruct {
     public var department = KMADepartmentStruct()
     public var subLand = KMAUISubLandStruct()
     public var initialComment = ""
+    public var initialCheckComment = ""
+    public var initialCheckAttachments = ""
+    public var initialCheckAttachmentsItem = KMADocumentData()
     
     public init() {}
     
@@ -4228,6 +4231,26 @@ public struct KMAUITrespassCaseStruct {
         
         if let initialComment = object["initialComment"] as? String {
             self.initialComment = initialComment
+        }
+        
+        if let initialCheckComment = object["initialCheckComment"] as? String {
+            self.initialCheckComment = initialCheckComment
+        }
+        
+        if let initialCheckAttachments = object["initialCheckAttachments"] as? String {
+            self.initialCheckAttachments = initialCheckAttachments
+        }
+    }
+    
+    public mutating func setupAttachments() {
+        if !initialCheckAttachments.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: initialCheckAttachments)
+            
+            if !files.isEmpty {
+                self.initialCheckAttachmentsItem = files[0]
+            } else {
+                self.initialCheckAttachmentsItem = KMADocumentData()
+            }
         }
     }
 }

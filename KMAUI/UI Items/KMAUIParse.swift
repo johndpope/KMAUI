@@ -2913,6 +2913,49 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Save the decision with comment and attachment
+    
+    public func saveTrespassDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var trespassCase = trespassCase
+        let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
+        
+        if decisionType == "initialCheck" {
+            trespassCaseObject["initialCheckComment"] = commentItem
+            trespassCaseObject["initialCheckAttachments"] = attachmentItem
+            // Setup status
+            if selectedAction {
+                trespassCaseObject["caseStatus"] = "Awaiting verification"
+            } else {
+                trespassCaseObject["caseStatus"] = "Declined"
+            }
+        }
+
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
+        
+        trespassCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    if decisionType == "initialCheck" {
+                        trespassCase.initialCheckComment = commentItem
+                        trespassCase.initialCheckAttachments = attachmentItem
+                        // Setup status
+                        if selectedAction {
+                            trespassCase.caseStatus = "Awaiting verification"
+                        } else {
+                            trespassCase.caseStatus = "Declined"
+                        }
+                    }
+                    trespassCase.setupAttachments()
+                    // Completion
+                    completion(trespassCase)
+                }
+            }
+        }
+    }
+    
     public func notifyUser(landCase: KMAUILandCaseStruct, selectedAction: Bool, decisionType: String, comment: String) {
         let title = "Land case \(decisionType) decision"
         var message = ""
