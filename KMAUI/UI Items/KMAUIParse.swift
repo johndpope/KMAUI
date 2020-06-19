@@ -2521,107 +2521,127 @@ final public class KMAUIParse {
     
     // MARK: - New Land Case by Consumer app
     
-    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, isTrespass: Bool? = nil, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
-        // Create the new Sub land
-        let newSubLand = PFObject(className: "KMASubLand")
-        let uniqueId = String(UUID().uuidString.suffix(4))
-        newSubLand["subLandId"] = uniqueId
-        newSubLand["subLandIndex"] = uniqueId
-        
-        if let isTrespass = isTrespass, isTrespass {
-            newSubLand["subLandType"] = "Trespass"
+    public func getRegion(coordinatesArray: [CLLocationCoordinate2D], completion: @escaping (_ regionId: String) -> ()) {
+        if !coordinatesArray.isEmpty {
+            let coordinate = coordinatesArray[0]
+            
+            // Save coordinates and save the box
+            KMAUIUtilities.shared.getAddressFromApple(location: coordinate) { (status, addressDict, regionId) in
+                completion(regionId)
+            }
         } else {
-            newSubLand["subLandType"] = "Earned Land"
+            completion("")
         }
-
-        var coordinates = [[Double]]()
-        
-        for coordinate in coordinatesArray {
-            let array = [coordinate.longitude, coordinate.latitude]
-            coordinates.append(array)
-        }
-        
-        if !coordinates.isEmpty {
-            coordinates.append(coordinates[0])
-        }
-        
-        var geometry = [String: AnyObject]()
-        geometry["type"] = "LineString" as AnyObject
-        geometry["coordinates"] = coordinates as AnyObject
-        
-        let square = KMAUIUtilities.shared.regionAreaLocation(locations: coordinatesArray)
-        let subLandPercent = square / (24 * 24)
-        
-        let widthValue = CLLocation(latitude: coordinatesArray[0].latitude, longitude: coordinatesArray[0].longitude).distance(from: CLLocation(latitude: coordinatesArray[1].latitude, longitude: coordinatesArray[1].longitude))
-        let heightValue = square / widthValue
-        
-        // x - longitude, y - latitude
-        var minX: Double = 0
-        var minY: Double = 0
-        var maxX: Double = 0
-        var maxY: Double = 0
-        
-        for coordinate in coordinatesArray {
-            if coordinate.longitude < minX || minX == 0 {
-                minX = coordinate.longitude
+    }
+    
+    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, isTrespass: Bool? = nil, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
+        KMAUIParse.shared.getRegion(coordinatesArray: coordinatesArray) { (regionId) in
+            // Create the new Sub land
+            let newSubLand = PFObject(className: "KMASubLand")
+            let uniqueId = String(UUID().uuidString.suffix(4))
+            newSubLand["subLandId"] = uniqueId
+            newSubLand["subLandIndex"] = uniqueId
+            
+            if let isTrespass = isTrespass, isTrespass {
+                newSubLand["subLandType"] = "Trespass"
+            } else {
+                newSubLand["subLandType"] = "Earned Land"
             }
             
-            if coordinate.longitude > maxX || maxX == 0 {
-                maxX = coordinate.longitude
+            if !regionId.isEmpty {
+                newSubLand["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+                print("SETUP THE REGION: \(regionId)")
             }
             
-            if coordinate.latitude < minY || minY == 0 {
-                minY = coordinate.latitude
+            var coordinates = [[Double]]()
+            
+            for coordinate in coordinatesArray {
+                let array = [coordinate.longitude, coordinate.latitude]
+                coordinates.append(array)
             }
             
-            if coordinate.latitude > maxY || maxY == 0 {
-                maxY = coordinate.latitude
+            if !coordinates.isEmpty {
+                coordinates.append(coordinates[0])
             }
-        }
-        
-        let latitude = (minY + maxY) / 2
-        let longitude = (minX + maxX) / 2
-        
-        newSubLand["subLandSquare"] = square
-        newSubLand["subLandWidth"] = widthValue
-        newSubLand["subLandHeight"] = heightValue
-        newSubLand["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
-        newSubLand["minX"] = minX
-        newSubLand["minY"] = minY
-        newSubLand["maxX"] = maxX
-        newSubLand["maxY"] = maxY
-        newSubLand["subLandPercent"] = subLandPercent
-        newSubLand["extraPrice"] = 0
-        newSubLand["subLandImages"] = tempAttachments
-        
-        newSubLand.saveInBackground { (success, error) in
-            if let error = error {
-                completion("", error.localizedDescription)
-            } else if success, let objectId = newSubLand.objectId {
-                print("Initial value saved.")
-                
-                let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": "Earned Land" as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
-                let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
-                
-                let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
-                
-                let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: dictionary)
-                var fileBody = ""
-                
-                // JSON String for Parse
-                if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
-                    fileBody = jsonFileBodyString
+            
+            var geometry = [String: AnyObject]()
+            geometry["type"] = "LineString" as AnyObject
+            geometry["coordinates"] = coordinates as AnyObject
+            
+            let square = KMAUIUtilities.shared.regionAreaLocation(locations: coordinatesArray)
+            let subLandPercent = square / (24 * 24)
+            
+            let widthValue = CLLocation(latitude: coordinatesArray[0].latitude, longitude: coordinatesArray[0].longitude).distance(from: CLLocation(latitude: coordinatesArray[1].latitude, longitude: coordinatesArray[1].longitude))
+            let heightValue = square / widthValue
+            
+            // x - longitude, y - latitude
+            var minX: Double = 0
+            var minY: Double = 0
+            var maxX: Double = 0
+            var maxY: Double = 0
+            
+            for coordinate in coordinatesArray {
+                if coordinate.longitude < minX || minX == 0 {
+                    minX = coordinate.longitude
                 }
                 
-                newSubLand["subLandArea"] = fileBody
+                if coordinate.longitude > maxX || maxX == 0 {
+                    maxX = coordinate.longitude
+                }
                 
-                newSubLand.saveInBackground { (updateSuccess, updateError) in
-                    if let updateError = updateError {
-                        completion("", updateError.localizedDescription)
-                    } else if updateSuccess, let subLandId = newSubLand.objectId, !subLandId.isEmpty {
-                        completion(subLandId, "")
-                    } else {
-                        completion("", "Can't prepare the new sub alnd for Land case.")
+                if coordinate.latitude < minY || minY == 0 {
+                    minY = coordinate.latitude
+                }
+                
+                if coordinate.latitude > maxY || maxY == 0 {
+                    maxY = coordinate.latitude
+                }
+            }
+            
+            let latitude = (minY + maxY) / 2
+            let longitude = (minX + maxX) / 2
+            
+            newSubLand["subLandSquare"] = square
+            newSubLand["subLandWidth"] = widthValue
+            newSubLand["subLandHeight"] = heightValue
+            newSubLand["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
+            newSubLand["minX"] = minX
+            newSubLand["minY"] = minY
+            newSubLand["maxX"] = maxX
+            newSubLand["maxY"] = maxY
+            newSubLand["subLandPercent"] = subLandPercent
+            newSubLand["extraPrice"] = 0
+            newSubLand["subLandImages"] = tempAttachments
+            
+            newSubLand.saveInBackground { (success, error) in
+                if let error = error {
+                    completion("", error.localizedDescription)
+                } else if success, let objectId = newSubLand.objectId {
+                    print("Initial value saved.")
+                    
+                    let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": "Earned Land" as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
+                    let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
+                    
+                    let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
+                    
+                    let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: dictionary)
+                    var fileBody = ""
+                    
+                    // JSON String for Parse
+                    if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+                        fileBody = jsonFileBodyString
+                    }
+                    
+                    newSubLand["subLandArea"] = fileBody
+                    
+                    newSubLand.saveInBackground { (updateSuccess, updateError) in
+                        if let updateError = updateError {
+                            completion("", updateError.localizedDescription)
+                        } else if updateSuccess, let subLandId = newSubLand.objectId, !subLandId.isEmpty {
+                            completion(subLandId, "")
+                        } else {
+                            completion("", "Can't prepare the new sub alnd for Land case.")
+                        }
                     }
                 }
             }

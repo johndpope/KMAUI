@@ -2349,6 +2349,7 @@ public struct KMAUISubLandStruct {
     // Region details
     public var regionId = ""
     public var regionName = ""
+    public var regionNameA = ""
     public var rules = [KMAUILotteryRule]()
     // Parse values
     public var createdAt = Date()
@@ -2448,9 +2449,10 @@ public struct KMAUISubLandStruct {
         // region id, region name
         if let noRegion = noRegion, noRegion {
             // No need to load the region for Sub Lands
-        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
+        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regioNameA = region["nameA"] as? String {
             self.regionId = regionId
             self.regionName = regionName
+            self.regionName = regionNameA
             
             if let responsibleDivision = landPlan["responsibleDivision"] as? PFObject {
                 if let departmentIdValue = responsibleDivision.objectId {
@@ -2465,6 +2467,12 @@ public struct KMAUISubLandStruct {
         // Recognized details
         if let recognizedDetails = item["recognizedDetails"] as? String {
             self.recognizedDetails = recognizedDetails
+        }
+        // Region for Cases
+        if let region = item["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regioNameA = region["nameA"] as? String {
+            self.regionId = regionId
+            self.regionName = regionName
+            self.regionNameA = regionNameA
         }
     }
     
