@@ -199,9 +199,11 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         judgeCommentLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
         // Setup background color for status label
-        if trespassCase.caseStatus != "Created" {
+        if trespassCase.caseStatus != "Declined" {
+            caseStatusLabel.text = "approved"
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
         } else {
+            caseStatusLabel.text = "declined"
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
         }
         
