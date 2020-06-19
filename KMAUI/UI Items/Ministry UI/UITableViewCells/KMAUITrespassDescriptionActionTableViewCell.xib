@@ -20,8 +20,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-1H-kpR" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
                         <rect key="frame" x="20" y="8" width="280" height="165"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-89-5fy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="24" y="53" width="232" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQX-qH-P8C" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="24" y="24" width="232" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="76C-Kq-Tin"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMM-lX-njR">
-                                <rect key="frame" x="148" y="90" width="120" height="50"/>
+                                <rect key="frame" x="148" y="90" width="108" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qC1-M7-xPN"/>
                                 </constraints>
@@ -30,23 +45,8 @@
                                     <action selector="approveButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="G2b-eo-Rbq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-89-5fy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="12" y="53" width="256" height="12"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQX-qH-P8C" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="12" y="24" width="256" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="76C-Kq-Tin"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y5-Zw-A1s">
-                                <rect key="frame" x="12" y="89" width="120" height="52"/>
+                                <rect key="frame" x="24" y="89" width="108" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="psO-r4-8EB"/>
                                 </constraints>
@@ -59,18 +59,18 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="l9h-89-5fy" firstAttribute="top" secondItem="ZQX-qH-P8C" secondAttribute="bottom" constant="8" id="2Mq-cJ-G0L"/>
-                            <constraint firstAttribute="trailing" secondItem="vMM-lX-njR" secondAttribute="trailing" constant="12" id="9tP-8G-F3K"/>
+                            <constraint firstAttribute="trailing" secondItem="vMM-lX-njR" secondAttribute="trailing" constant="24" id="9tP-8G-F3K"/>
                             <constraint firstItem="vMM-lX-njR" firstAttribute="leading" secondItem="9y5-Zw-A1s" secondAttribute="trailing" constant="16" id="F9I-9l-HTz"/>
                             <constraint firstItem="ZQX-qH-P8C" firstAttribute="top" secondItem="1MF-1H-kpR" secondAttribute="top" constant="24" id="JhB-jT-alK"/>
                             <constraint firstAttribute="bottom" secondItem="9y5-Zw-A1s" secondAttribute="bottom" constant="24" id="N4H-dx-3TP"/>
                             <constraint firstItem="vMM-lX-njR" firstAttribute="centerY" secondItem="9y5-Zw-A1s" secondAttribute="centerY" id="QQ5-FY-X0J"/>
-                            <constraint firstItem="l9h-89-5fy" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="12" id="cQe-di-kQf"/>
-                            <constraint firstItem="9y5-Zw-A1s" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="12" id="f8J-Bp-FbU"/>
+                            <constraint firstItem="l9h-89-5fy" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="24" id="cQe-di-kQf"/>
+                            <constraint firstItem="9y5-Zw-A1s" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="24" id="f8J-Bp-FbU"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="top" secondItem="l9h-89-5fy" secondAttribute="bottom" constant="24" id="jEe-Tz-RjX"/>
-                            <constraint firstAttribute="trailing" secondItem="l9h-89-5fy" secondAttribute="trailing" constant="12" id="lvW-LY-Kg0"/>
-                            <constraint firstAttribute="trailing" secondItem="ZQX-qH-P8C" secondAttribute="trailing" constant="12" id="mKO-eU-jbM"/>
+                            <constraint firstAttribute="trailing" secondItem="l9h-89-5fy" secondAttribute="trailing" constant="24" id="lvW-LY-Kg0"/>
+                            <constraint firstAttribute="trailing" secondItem="ZQX-qH-P8C" secondAttribute="trailing" constant="24" id="mKO-eU-jbM"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="width" secondItem="vMM-lX-njR" secondAttribute="width" id="myo-cs-y51"/>
-                            <constraint firstItem="ZQX-qH-P8C" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="12" id="v8x-WO-5a2"/>
+                            <constraint firstItem="ZQX-qH-P8C" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="24" id="v8x-WO-5a2"/>
                         </constraints>
                     </view>
                 </subviews>
