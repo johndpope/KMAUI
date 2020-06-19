@@ -1454,7 +1454,7 @@ public class KMAUIUtilities {
         let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
         
         if pickedDocument.hasLocation {
-            KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict) in
+            KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict, regionId) in
                 var pickedDocumentWithAddress = pickedDocument
                 pickedDocumentWithAddress.address = addressString
                 self.renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument) { (pickedDocumentUpdated, nameValue, descriptionValue) in
@@ -1801,11 +1801,13 @@ public class KMAUIUtilities {
      Geocode address from Apple
      */
     
-    public func getAddressFromApple(location: CLLocationCoordinate2D, completion: @escaping (_ address: String, _ dict: [String: String]) -> ()) {
+    public func getAddressFromApple(location: CLLocationCoordinate2D, completion: @escaping (_ address: String, _ dict: [String: String], _ regionId: String) -> ()) {
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude), preferredLocale: Locale(identifier: "en")) { (placemarks, error) in
+            var regionId = ""
+            
             if let error = error {
                 print("Error getting the address from location: \(error.localizedDescription).")
-                completion("Address not available", [String: String]())
+                completion("Address not available", [String: String](), regionId)
             } else if let placemark = placemarks?.first {
                 var addressString = ""
                 var city = ""
@@ -1844,9 +1846,13 @@ public class KMAUIUtilities {
                 
                 print("Apple Maps address: `\(addressString)`, dict: \(dict)")
                 
-                completion(addressString, dict)
+                if let regionIdValue = KMAUIConstants.shared.regionsDict[adminArea] {
+                    regionId = regionIdValue
+                }
+                
+                completion(addressString, dict, regionId)
             } else {
-                completion("Address not available", [String: String]())
+                completion("Address not available", [String: String](), regionId)
             }
         }
     }
