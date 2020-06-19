@@ -2449,10 +2449,10 @@ public struct KMAUISubLandStruct {
         // region id, region name
         if let noRegion = noRegion, noRegion {
             // No need to load the region for Sub Lands
-        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regioNameAValue = region["nameA"] as? String {
+        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regionNameAValue = region["nameA"] as? String {
             self.regionId = regionId
             self.regionName = regionName
-            self.regionName = regionNameAValue
+            self.regionNameA = regionNameAValue
             
             if let responsibleDivision = landPlan["responsibleDivision"] as? PFObject {
                 if let departmentIdValue = responsibleDivision.objectId {
@@ -2469,7 +2469,7 @@ public struct KMAUISubLandStruct {
             self.recognizedDetails = recognizedDetails
         }
         // Region for Cases
-        if let region = item["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regioNameAValue = region["nameA"] as? String {
+        if let region = item["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regionNameAValue = region["nameA"] as? String {
             self.regionId = regionId
             self.regionName = regionName
             self.regionNameA = regionNameAValue
