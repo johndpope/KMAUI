@@ -99,7 +99,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
             // Show buttons
             declineButton.alpha = 1
             approveButton.alpha = 1
-            declineButtonBottom.constant = 24
+            declineButtonBottom.constant = 20
         } else {
             // Hide buttons
             declineButton.alpha = 0
