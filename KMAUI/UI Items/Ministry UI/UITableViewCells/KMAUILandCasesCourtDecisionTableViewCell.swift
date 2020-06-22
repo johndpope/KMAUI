@@ -21,20 +21,20 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     @IBOutlet public weak var documentButton: UIButton!
     
     // MARK: - Variables
-    public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
+    public var trespassType = ""
     public var isDepartment = false
+    public lazy var previewItem = NSURL()
+    public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
     public var landCase = KMAUILandCaseStruct() {
         didSet {
             setupLandCase()
         }
     }
-    public var trespassType = ""
     public var trespassCase = KMAUITrespassCaseStruct() {
         didSet {
             setupTrespassCase()
         }
     }
-    public lazy var previewItem = NSURL()
 
     override public func awakeFromNib() {
         super.awakeFromNib()
