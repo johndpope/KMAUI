@@ -167,6 +167,9 @@ public class KMAUIConstants {
     public let pinIcon = UIImage(named: "pinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let arrowDown = UIImage(named: "arrowDown", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let locationPinIcon = UIImage(named: "locationPinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    // Trespass report
+    public let ownerIcon = UIImage(named: "ownerIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let violatorIcon = UIImage(named: "violatorIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // String gap
     public let stringGap = "     "
