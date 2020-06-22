@@ -38,8 +38,8 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
         bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
         bgView.layer.shadowRadius = 12
         
-       // Title label
-        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        // Title label
+        titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         
         // Description label
         descriptionLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
@@ -57,14 +57,14 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
         declineButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         declineButton.layer.cornerRadius = 8
         declineButton.clipsToBounds = true
-                
+        
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

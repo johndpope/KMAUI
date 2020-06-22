@@ -46,7 +46,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         bgView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         
         // Land case
-        caseLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
+        caseLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         
         // Case status label
         caseStatusLabel.layer.cornerRadius = 6
