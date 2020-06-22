@@ -68,12 +68,12 @@
                             <constraint firstItem="goJ-l0-MaA" firstAttribute="top" secondItem="aHu-Ot-sRR" secondAttribute="top" constant="20" id="GiY-BS-9fv"/>
                             <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="height" secondItem="MBp-yP-5og" secondAttribute="height" id="Gyl-8P-26W"/>
                             <constraint firstItem="Wuo-EI-ZtZ" firstAttribute="centerX" secondItem="MBp-yP-5og" secondAttribute="centerX" id="R6g-xw-NZb"/>
-                            <constraint firstItem="MBp-yP-5og" firstAttribute="centerY" secondItem="aHu-Ot-sRR" secondAttribute="centerY" id="THc-q9-fqM"/>
                             <constraint firstItem="bBz-TT-zxp" firstAttribute="top" secondItem="goJ-l0-MaA" secondAttribute="top" id="TYF-9V-p8a"/>
                             <constraint firstAttribute="bottom" secondItem="mND-GZ-tn2" secondAttribute="bottom" constant="20" id="YvZ-Qw-kCb"/>
                             <constraint firstItem="mND-GZ-tn2" firstAttribute="top" secondItem="goJ-l0-MaA" secondAttribute="bottom" constant="12" id="dUt-IP-Xst"/>
                             <constraint firstAttribute="trailing" secondItem="mND-GZ-tn2" secondAttribute="trailing" constant="20" id="ell-78-DBP"/>
                             <constraint firstItem="goJ-l0-MaA" firstAttribute="leading" secondItem="aHu-Ot-sRR" secondAttribute="leading" constant="20" id="g3E-t4-MC1"/>
+                            <constraint firstItem="MBp-yP-5og" firstAttribute="centerY" secondItem="aHu-Ot-sRR" secondAttribute="centerY" id="hnv-dy-oPU"/>
                             <constraint firstItem="bBz-TT-zxp" firstAttribute="leading" secondItem="goJ-l0-MaA" secondAttribute="trailing" constant="12" id="qU2-1B-ZrM"/>
                             <constraint firstItem="mND-GZ-tn2" firstAttribute="leading" secondItem="goJ-l0-MaA" secondAttribute="leading" id="vbw-RN-P3G"/>
                         </constraints>

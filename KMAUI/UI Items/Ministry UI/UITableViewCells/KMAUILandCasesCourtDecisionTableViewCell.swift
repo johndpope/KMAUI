@@ -44,6 +44,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         
         // BgView color
         bgView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
+        bgView.clipsToBounds = true
         
         // Land case
         caseLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
