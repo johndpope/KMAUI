@@ -153,10 +153,6 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
         }
         
-        // Hide the document preview
-        documentImageView.alpha = 0
-        caseLabelLeft.constant = 20
-        
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
         if !files.isEmpty {
             documentImageView.alpha = 1
