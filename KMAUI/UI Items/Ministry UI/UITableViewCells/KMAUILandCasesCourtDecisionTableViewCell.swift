@@ -107,7 +107,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.judgeAttachment)
         if !files.isEmpty {
             documentImageView.alpha = 1
-            caseLabelLeft.constant = 20 + 60 + 12
+            caseLabelLeft.constant = 20 + 56 + 12
             let file = files[0]
             
             // Preview image view alignment
@@ -156,7 +156,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
         if !files.isEmpty {
             documentImageView.alpha = 1
-            caseLabelLeft.constant = 20 + 60 + 12
+            caseLabelLeft.constant = 20 + 56 + 12
             let file = files[0]
             
             // Preview image view alignment
@@ -207,7 +207,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: trespassCase.initialCheckAttachments)
         if !files.isEmpty {
             documentImageView.alpha = 1
-            caseLabelLeft.constant = 20 + 60 + 12
+            caseLabelLeft.constant = 20 + 56 + 12
             let file = files[0]
             
             // Preview image view alignment
