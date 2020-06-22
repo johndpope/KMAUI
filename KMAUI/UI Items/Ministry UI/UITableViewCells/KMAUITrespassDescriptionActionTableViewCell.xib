@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1MF-1H-kpR" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
-                        <rect key="frame" x="20" y="8" width="280" height="165"/>
+                        <rect key="frame" x="20" y="8" width="280" height="157"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-89-5fy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="49" width="240" height="20"/>
+                                <rect key="frame" x="20" y="49" width="240" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMM-lX-njR">
-                                <rect key="frame" x="148" y="94" width="112" height="50"/>
+                                <rect key="frame" x="148" y="86" width="112" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="qC1-M7-xPN"/>
                                 </constraints>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9y5-Zw-A1s">
-                                <rect key="frame" x="20" y="93" width="112" height="52"/>
+                                <rect key="frame" x="20" y="85" width="112" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="psO-r4-8EB"/>
                                 </constraints>
@@ -78,7 +78,7 @@
                     <constraint firstItem="1MF-1H-kpR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Ebd-hk-hyO"/>
                     <constraint firstAttribute="trailing" secondItem="1MF-1H-kpR" secondAttribute="trailing" constant="20" id="Qex-fc-pQ1"/>
                     <constraint firstItem="1MF-1H-kpR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bAF-hf-FyR"/>
-                    <constraint firstAttribute="bottom" secondItem="1MF-1H-kpR" secondAttribute="bottom" constant="12" id="bpJ-P9-U9k"/>
+                    <constraint firstAttribute="bottom" secondItem="1MF-1H-kpR" secondAttribute="bottom" constant="20" id="bpJ-P9-U9k"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
