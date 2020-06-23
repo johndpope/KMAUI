@@ -1041,7 +1041,10 @@ final public class KMAUIParse {
             completion(searchObject)
         } else {
             searchObject.updateSearch()
-            completion(searchObject)
+
+            if !searchObject.citizens.isEmpty {
+                completion(searchObject)
+            }
             print("Searching for: \(searchObject.search)")
             // Update land plans
             landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
