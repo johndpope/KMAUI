@@ -89,6 +89,14 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         } else if mode == "waitingDepartment" {
             titleLabel.text = "Department decision pending"
             infoLabel.text = "We're waiting for the Department decision in order to provide the full details for the Judge before the Court decision can be received."
+        } else if mode == "citizensSearch" {
+             titleLabel.text = "Search for citizens"
+             infoLabel.text = "Please search for citizens by Full Name of or National ID"
+             logoImageView.image = KMAUIConstants.shared.citizensIcon
+        } else if mode == "citizensNotFound" {
+            titleLabel.text = "No citizens found"
+            infoLabel.text = "Please adjust your search request"
+            logoImageView.image = KMAUIConstants.shared.citizensIcon
         }
         // Add the spacing for the infoLabel
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
