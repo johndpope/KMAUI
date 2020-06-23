@@ -97,6 +97,10 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             titleLabel.text = "No citizens found"
             infoLabel.text = "Please adjust your search request"
             logoImageView.image = KMAUIConstants.shared.citizensIcon
+        } else if mode == "citizensSearching" {
+            titleLabel.text = "Searching..."
+            infoLabel.text = "Please wait for the search results"
+            logoImageView.image = KMAUIConstants.shared.citizensIcon
         }
         // Add the spacing for the infoLabel
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
