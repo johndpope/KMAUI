@@ -4193,6 +4193,11 @@ public struct KMAUITrespassCaseStruct {
     public var initialCheckComment = ""
     public var initialCheckAttachments = ""
     public var initialCheckAttachmentsItem = KMADocumentData()
+    public var fieldObserverReport = ""
+    public var fieldObserverUploads = ""
+    public var fieldObserverUploadsItems = [KMADocumentData]()
+    public var owner = KMAPerson()
+    public var violator = KMAPerson()
     
     public init() {}
     
@@ -4240,6 +4245,24 @@ public struct KMAUITrespassCaseStruct {
         if let initialCheckAttachments = object["initialCheckAttachments"] as? String {
             self.initialCheckAttachments = initialCheckAttachments
         }
+        
+        if let fieldObserverReport = object["fieldObserverReport"] as? String {
+            self.fieldObserverReport = fieldObserverReport
+        }
+        
+        if let fieldObserverUploads = object["fieldObserverUploads"] as? String {
+            self.fieldObserverUploads = fieldObserverUploads
+        }
+        
+        if let owner = object["owner"] as? PFUser {
+            self.owner = KMAPerson()
+            self.owner.fillFrom(person: owner)
+        }
+        
+        if let violator = object["violator"] as? PFUser {
+            self.violator = KMAPerson()
+            self.violator.fillFrom(person: violator)
+        }
     }
     
     public mutating func setupAttachments() {
@@ -4251,6 +4274,10 @@ public struct KMAUITrespassCaseStruct {
             } else {
                 self.initialCheckAttachmentsItem = KMADocumentData()
             }
+        }
+        
+        if !fieldObserverUploads.isEmpty {
+            fieldObserverUploadsItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: fieldObserverUploads)
         }
     }
 }

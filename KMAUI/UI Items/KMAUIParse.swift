@@ -1041,7 +1041,6 @@ final public class KMAUIParse {
             completion(searchObject)
         } else {
             searchObject.updateSearch()
-
             if !searchObject.citizens.isEmpty {
                 completion(searchObject)
             }
@@ -2184,6 +2183,12 @@ final public class KMAUIParse {
         query.includeKey("subLand.region")
         query.includeKey("department")
         query.includeKey("department.mapArea")
+        query.includeKey("owner")
+        query.includeKey("owner.homeAddress")
+        query.includeKey("owner.homeAddress.building")
+        query.includeKey("violator")
+        query.includeKey("violator.homeAddress")
+        query.includeKey("violator.homeAddress.building")
         query.findObjectsInBackground { (trespassCasesArray, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -2194,11 +2199,7 @@ final public class KMAUIParse {
                     trespassCases.append(trespassCase)
                 }
             }
-            // Completion handler with the case
-            completion(trespassCases)
-            
-            
-            
+
             var inProgressCases = [KMAUITrespassCaseStruct]()
             var approvedCases = [KMAUITrespassCaseStruct]()
             var declinedCases = [KMAUITrespassCaseStruct]()
@@ -2944,7 +2945,38 @@ final public class KMAUIParse {
         }
     }
     
-    // MARK: - Save the decision with comment and attachment
+    // MARK: - Sav the Trespass field observer report
+    
+    public func saveTrespassFieldObserverReport(commentItem: String, attachmentItem: String, ownerItem: KMAPerson, violatorItem: KMAPerson, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var trespassCase = trespassCase
+        let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
+        
+        trespassCaseObject["fieldObserverReport"] = commentItem
+        trespassCaseObject["fieldObserverUploads"] = attachmentItem
+        trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
+        trespassCaseObject["violator"] = PFUser(withoutDataWithObjectId: violatorItem.objectId)
+        
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
+        
+        trespassCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    trespassCase.fieldObserverReport = commentItem
+                    trespassCase.fieldObserverUploads = attachmentItem
+                    trespassCase.setupAttachments()
+                    trespassCase.owner = ownerItem
+                    trespassCase.violator = violatorItem
+                    // Completion
+                    completion(trespassCase)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Save the Trespass decision with comment and attachment
     
     public func saveTrespassDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
         var trespassCase = trespassCase
