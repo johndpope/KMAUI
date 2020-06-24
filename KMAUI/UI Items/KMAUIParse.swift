@@ -2955,6 +2955,7 @@ final public class KMAUIParse {
         trespassCaseObject["fieldObserverUploads"] = attachmentItem
         trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
         trespassCaseObject["violator"] = PFUser(withoutDataWithObjectId: violatorItem.objectId)
+        trespassCaseObject["caseStatus"] = "Awaiting decision"
         
         KMAUIUtilities.shared.startLoading(title: "Saving...")
         
@@ -2969,6 +2970,7 @@ final public class KMAUIParse {
                     trespassCase.setupAttachments()
                     trespassCase.owner = ownerItem
                     trespassCase.violator = violatorItem
+                    trespassCase.caseStatus = "Awaiting decision"
                     // Completion
                     completion(trespassCase)
                 }
