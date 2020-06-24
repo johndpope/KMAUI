@@ -690,7 +690,7 @@ public class KMAUIUtilities {
                 for fileObject in filesArray {
                     if let fileObject = fileObject as? [String: String] {
                         var fileValue = KMADocumentData()
-                        fileValue.fillFrom(dictionary: fileObject)
+                        fileValue.fillFrom(document: fileObject)
                         // Check if status is rejected, then dont't show this file
                         if fileValue.status == "rejected" {
                             print("File `\(fileValue.name)` was rejected by Department.")

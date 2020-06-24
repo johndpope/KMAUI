@@ -100,7 +100,7 @@ public struct KMADocumentData {
     public init() {
     }
     
-    public mutating func fillFrom(dictionary: [String: String]) {
+    /*public mutating func fillFrom(dictionary: [String: String]) {
         if let nameValue = dictionary["name"] {
             self.name = nameValue
         }
@@ -127,7 +127,7 @@ public struct KMADocumentData {
             self.comments = commentValue
             self.fillComments()
         }
-    }
+    }*/
     
     public mutating func fillFrom(document: [String: String]) {        
         if let nameValue = document["name"] {
