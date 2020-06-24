@@ -21,10 +21,7 @@
                         <rect key="frame" x="20" y="8" width="805" height="267"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="998" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJp-JG-bnh" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="240" y="20" width="545" height="49"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="E3H-2r-d2m"/>
-                                </constraints>
+                                <rect key="frame" x="240" y="20" width="545" height="65"/>
                                 <string key="text">Label
 Label</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -41,7 +38,7 @@ Label</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-XP-OcW">
-                                <rect key="frame" x="236" y="89" width="553" height="40"/>
+                                <rect key="frame" x="236" y="97" width="553" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
                                         <rect key="frame" x="4" y="0.0" width="64" height="40"/>
@@ -82,14 +79,14 @@ Label</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEt-HR-XjU">
-                                <rect key="frame" x="240" y="133" width="545" height="1"/>
+                                <rect key="frame" x="240" y="141" width="545" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="G4V-p4-42C"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jad-eL-F6w">
-                                <rect key="frame" x="236" y="138" width="553" height="40"/>
+                                <rect key="frame" x="236" y="146" width="553" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Violator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ega-gC-efk" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
                                         <rect key="frame" x="4" y="0.0" width="64" height="40"/>
@@ -130,7 +127,7 @@ Label</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6N-k9-cwc">
-                                <rect key="frame" x="240" y="182" width="545" height="1"/>
+                                <rect key="frame" x="240" y="190" width="545" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="BuQ-lL-Q5U"/>
@@ -163,8 +160,8 @@ Label</string>
                             <constraint firstItem="8JJ-eO-3mt" firstAttribute="top" secondItem="5g3-lL-bTB" secondAttribute="top" constant="20" id="gxM-Px-DOC"/>
                             <constraint firstAttribute="trailing" secondItem="pJp-JG-bnh" secondAttribute="trailing" constant="20" id="qGD-3M-mAh"/>
                             <constraint firstItem="jad-eL-F6w" firstAttribute="leading" secondItem="pJp-JG-bnh" secondAttribute="leading" constant="-4" id="vXY-F5-dJc"/>
-                            <constraint firstItem="jwc-sZ-IUk" firstAttribute="top" secondItem="d6N-k9-cwc" secondAttribute="bottom" constant="20" id="vdJ-Uz-QRn"/>
-                            <constraint firstItem="Rkh-XP-OcW" firstAttribute="top" secondItem="pJp-JG-bnh" secondAttribute="bottom" constant="20" id="wPe-ca-Xac"/>
+                            <constraint firstItem="jwc-sZ-IUk" firstAttribute="top" secondItem="d6N-k9-cwc" secondAttribute="bottom" constant="12" id="vdJ-Uz-QRn"/>
+                            <constraint firstItem="Rkh-XP-OcW" firstAttribute="top" secondItem="pJp-JG-bnh" secondAttribute="bottom" constant="12" id="wPe-ca-Xac"/>
                             <constraint firstAttribute="trailing" secondItem="Rkh-XP-OcW" secondAttribute="trailing" constant="16" id="wlg-iy-Z81"/>
                             <constraint firstAttribute="trailing" secondItem="d6N-k9-cwc" secondAttribute="trailing" constant="20" id="ySA-Lu-y7r"/>
                             <constraint firstAttribute="bottom" secondItem="8JJ-eO-3mt" secondAttribute="bottom" constant="20" id="yzd-73-GQy"/>
