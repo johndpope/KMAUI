@@ -20,7 +20,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUITrespassDescriptionActionTableViewCell"
-    public var type = "" // "initialCheck", "ownerPenalty"
+    public var type = ""
     public var actionCallback: ((Bool) -> Void)?
     public var trespassCase = KMAUITrespassCaseStruct() {
         didSet {
@@ -90,22 +90,44 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Title
-        titleLabel.text = "Trespass description"
-        // Description
-        descriptionLabel.text = trespassCase.initialComment
-        descriptionLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
-        // Check status to hide the buttons
-        if trespassCase.caseStatus == "Created" {
-            // Show buttons
-            declineButton.alpha = 1
-            approveButton.alpha = 1
-            declineButtonBottom.constant = 20
-        } else {
-            // Hide buttons
-            declineButton.alpha = 0
-            approveButton.alpha = 0
-            declineButtonBottom.constant = -52
+        if type == "initialCheck" {
+            // Title
+            titleLabel.text = "Trespass description"
+            // Description
+            descriptionLabel.text = trespassCase.initialComment
+            // Check status to hide the buttons
+            if trespassCase.caseStatus == "Created" {
+                // Show buttons
+                declineButton.alpha = 1
+                declineButton.setTitle("Decline case", for: .normal)
+                approveButton.alpha = 1
+                approveButton.setTitle("Approve case", for: .normal)
+                declineButtonBottom.constant = 20
+            } else {
+                // Hide buttons
+                declineButton.alpha = 0
+                approveButton.alpha = 0
+                declineButtonBottom.constant = -52
+            }
+        } else if type == "ownerPenalty" {
+            // Title
+            titleLabel.text = "Trespass description"
+            // No decision yet
+            if trespassCase.trespassDecision.isEmpty {
+                // Description
+                descriptionLabel.text = trespassCase.initialComment
+                // Show buttons
+                declineButton.alpha = 1
+                declineButton.setTitle("Close case", for: .normal)
+                approveButton.alpha = 1
+                approveButton.setTitle("Penalty for owner", for: .normal)
+            }
+            // Has decision
+            if !trespassCase.trespassDecision.isEmpty {
+                
+            }
         }
+        // Update the description label line offset
+        descriptionLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
 }
