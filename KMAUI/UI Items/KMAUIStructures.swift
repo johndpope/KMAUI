@@ -4252,6 +4252,7 @@ public struct KMAUITrespassCaseStruct {
         
         if let fieldObserverUploads = object["fieldObserverUploads"] as? String {
             self.fieldObserverUploads = fieldObserverUploads
+            self.setupAttachments()
         }
         
         if let owner = object["owner"] as? PFUser {
