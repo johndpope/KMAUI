@@ -20,6 +20,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUITrespassDescriptionActionTableViewCell"
+    public var type = "" // "initialCheck", "ownerPenalty"
     public var actionCallback: ((Bool) -> Void)?
     public var trespassCase = KMAUITrespassCaseStruct() {
         didSet {
