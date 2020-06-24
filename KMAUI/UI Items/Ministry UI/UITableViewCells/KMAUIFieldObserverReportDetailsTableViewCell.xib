@@ -42,16 +42,16 @@
                                 <rect key="frame" x="236" y="77" width="553" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                        <rect key="frame" x="4" y="0.0" width="72" height="40"/>
+                                        <rect key="frame" x="4" y="0.0" width="64" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="7qs-MZ-b6u"/>
+                                            <constraint firstAttribute="width" constant="64" id="7qs-MZ-b6u"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox9-26-YFx" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                        <rect key="frame" x="76" y="0.0" width="473" height="40"/>
+                                        <rect key="frame" x="68" y="0.0" width="481" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -90,16 +90,16 @@
                                 <rect key="frame" x="236" y="126" width="553" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Violator" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ega-gC-efk" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                        <rect key="frame" x="4" y="0.0" width="72" height="40"/>
+                                        <rect key="frame" x="4" y="0.0" width="64" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="72" id="qXq-Rp-npb"/>
+                                            <constraint firstAttribute="width" constant="64" id="qXq-Rp-npb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCO-1B-sZg" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                        <rect key="frame" x="76" y="0.0" width="473" height="40"/>
+                                        <rect key="frame" x="68" y="0.0" width="481" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
