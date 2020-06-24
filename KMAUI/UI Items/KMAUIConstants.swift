@@ -168,6 +168,9 @@ public class KMAUIConstants {
     public let pinIcon = UIImage(named: "pinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let arrowDown = UIImage(named: "arrowDown", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let locationPinIcon = UIImage(named: "locationPinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    // Trespass report
+    public let ownerIcon = UIImage(named: "ownerIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let violatorIcon = UIImage(named: "violatorIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // String gap
     public let stringGap = "     "
@@ -199,6 +202,11 @@ public class KMAUIConstants {
     // Temp land case
     public var landCaseUpdated = KMAUILandCaseStruct()
     public var landCaseDetailsUpdated = KMAUILandCaseStruct()
+    public var trespassCaseUpdated = KMAUITrespassCaseStruct()
+    public var trespassCaseDetailsUpdated = KMAUITrespassCaseStruct()
+    public var landCaseMasterAction = ""
+    public let caseModes = ["All cases", "Regions"]
+    public var newTrespassCaseId = ""
     
     // MARK: - Login variables
     public let usernameAllowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-@"
@@ -267,4 +275,33 @@ public class KMAUIConstants {
                                                                                                                                                                                                                        "objectId" : "4yXAqADyCf"]]
     let placeholderApprovedDecisions = ["This Land Case matches all the rules required by the *departmentName*. It's verified to be resolved as \"Approved\".", "The *departmentName* confirms the Land Case has no violations and sets the status to be \"Approved\".", "After checking all of the documents provided by the Land Case appointment the *departmentName* can guarantee it doesn't violate any rules and can be recommended for the successfull Department and Court decision."]
     let placeholderRejectedDecisions = ["The Land Case can not be approved as we see it violates several rules from the list used by the *departmentName*. We recommend the documents to be revised before proceeding with the repeated appointment.", "The *departmentName* has checked the documents provided with the Land Case appointment and cannot guarantee these are the authentic data.", "The Land Case details doesn't include the full list of documents required by the *departmentName*. Please revise the provided documentation."]
+    
+    // Regions dict
+    let regionsDict = ["Jazan": "uNaTZ905Cg",
+                       "Riyadh": "fN4QkVTtYG",
+                       "Al Baha": "0MeC5xWrhK",
+                       "\'Asir": "1Wbb0OFXuZ",
+                       "Tabuk": "c3CiqAdxjG",
+                       "Al Jawf": "YDevBrdNUz",
+                       "Al Madinah": "urz0USWpmV",
+                       "Al Qassim": "PQJotY1T16",
+                       "Ha\'il": "OQuHnQ1Psl",
+                       "Najran": "x1L4cV8dcX",
+                       "Al Hudud Ash Shamaliyah": "l6XhWzfDpe",
+                       "Makkah": "jKSqzVZ1Qh",
+                       "Ash Sharqiyah": "U3pCS8McNA"]
+    
+//    1. Jizan: uNaTZ905Cg - Jazan
+//    2. Ar Riyad: fN4QkVTtYG - Riyadh
+//    3. Al Bahah: 0MeC5xWrhK - Al Baha
+//    4. `Asir: 1Wbb0OFXuZ - \'Asir
+//    5. Tabuk: c3CiqAdxjG - Tabuk
+//    6. Jawf: YDevBrdNUz - Al Jawf
+//    7. Al Madinah: urz0USWpmV - Al Madinah
+//    8. Qassim: PQJotY1T16 - Al Qassim
+//    9. Hail: OQuHnQ1Psl - Ha\'il
+//    10. Najran: x1L4cV8dcX - Najran
+//    11. Northern Borders: l6XhWzfDpe - Al Hudud Ash Shamaliyah
+//    12. Makkah: jKSqzVZ1Qh - Makkah
+//    13. Eastern Province: U3pCS8McNA - Ash Sharqiyah
 }

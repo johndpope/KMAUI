@@ -1,5 +1,5 @@
 //
-//  KMAUICitizenLandCaseTableViewCell.swift
+//  KMAUITrespassCaseDetailsTableViewCell.swift
 //  KMA
 //
 //  Created by Stanislav Rastvorov on 25.05.2020.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
+public class KMAUITrespassCaseDetailsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var citizenHightlightView: UIView!
-    @IBOutlet public weak var profileImageView: UIImageView!
-    @IBOutlet public weak var nameLabel: UILabel!
-    @IBOutlet public weak var titleLabel: UILabel!
-    @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet public weak var caseNumberLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var departmentLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var divideLineView: UIView!
     @IBOutlet public weak var citizenHighlightButton: UIButton!
     @IBOutlet public weak var attachmentButtonWidth: NSLayoutConstraint!
@@ -34,18 +32,20 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
     @IBOutlet public weak var imagesView: KMAUIImagesPreviewView!
     @IBOutlet public weak var imagesViewLeft: NSLayoutConstraint!
     @IBOutlet public weak var imagesViewWidth: NSLayoutConstraint!
+    @IBOutlet public weak var statusView: UIView!
+    @IBOutlet public weak var statusLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    public static let id = "KMAUICitizenLandCaseTableViewCell"
+    public static let id = "KMAUITrespassCaseDetailsTableViewCell"
     public var citizenCallback: ((Bool) -> Void)?
     public var mapCallback: ((Bool) -> Void)?
     public var attachmentCallback: ((Bool) -> Void)?
-    public var landCase = KMAUILandCaseStruct() {
+    public var trespassCase = KMAUITrespassCaseStruct() {
         didSet {
             setupCell()
         }
     }
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -53,27 +53,29 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
         // Larger shadow for bgView
-        bgView.layer.shadowOffset = CGSize(width: 0, height: 7)
-        bgView.layer.shadowRadius = 8
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        bgView.layer.shadowRadius = 12
         
         // Citizen hightlight view
         citizenHightlightView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         citizenHightlightView.layer.cornerRadius = 8
         
         // Name label
-        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        caseNumberLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         
         // Title number
-        titleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        departmentLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // Attachment view
         imagesView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         imagesView.layer.cornerRadius = 8
         imagesView.clipsToBounds = true
         
-        // Setup the right arrow
-        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
-        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        // Status view
+        statusView.layer.cornerRadius = 4
+        statusView.backgroundColor = KMAUIConstants.shared.KMABrightBlueColor
+        statusView.clipsToBounds = true
         
         // Divide line
         divideLineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
@@ -109,56 +111,39 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
         mapButton.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
         mapButton.setImage(KMAUIConstants.shared.mapButtonImage.withRenderingMode(.alwaysTemplate), for: .normal)
         mapButton.tintColor = KMAUIConstants.shared.KMAUITextColor //UIColor.black
-
+        
         // No selection required
         selectionStyle = .none
     }
     
+    /**
+     Created - blue
+     Declined - red
+     Resolved - green
+     
+     Setup the imagesView when copying to KMAUI
+     */
+    
     public func setupCell() {
+        // Status label
+        statusLabel.text = trespassCase.caseStatus
         // Name label
-        nameLabel.text = landCase.citizen.fullName
+        caseNumberLabel.text = "Case #\(trespassCase.caseNumber)"
         // Title label
-        titleLabel.text = "Citizen"
-        // Citizen image
-        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
-        profileImageView.tintColor = KMAUIConstants.shared.KMAUILightBorderColor
-        profileImageView.layer.cornerRadius = 22
-        profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUILightBorderColor.cgColor
-        profileImageView.clipsToBounds = true
-        profileImageView.layer.borderWidth = 2
-        profileImageView.kf.indicatorType = .activity
-        profileImageView.contentMode = .scaleAspectFill
-        // Get image
-        if !landCase.citizen.profileImage.isEmpty, let url = URL(string: landCase.citizen.profileImage) {
-            profileImageView.kf.setImage(with: url) { result in
-                switch result {
-                case .success(let value):
-                    self.profileImageView.image = value.image
-                    self.profileImageView.layer.borderWidth = 0
-                case .failure(let error):
-                    print(error.localizedDescription) // The error happens
-                }
-            }
-        }
+        departmentLabel.text = "Department of Urban Planning" //trespassCase.department.departmentName
         // Sub land id
-        subLandIdLabel.text = "Land ID \(landCase.subLand.subLandId)"
+        subLandIdLabel.text = "Land ID \(trespassCase.subLand.subLandId)"
         // Region label
-        regionLabel.text = "\(landCase.subLand.regionName) region"
-        
-        if landCase.subLand.regionName.isEmpty {
+        regionLabel.text = "\(trespassCase.subLand.regionName) region"
+        if trespassCase.subLand.regionName.isEmpty {
             regionLabel.text = "Makkah region"
         }
-        
         // Area
-        areaValueLabel.text = "\(Int(landCase.subLand.subLandSquare)) m²"
+        areaValueLabel.text = "\(Int(trespassCase.subLand.subLandSquare)) m²"
         // Area type
-        areaTypeValueLabel.text = landCase.subLand.subLandType.capitalized
-        // Check if residential
-        if landCase.subLand.subLandType.lowercased().contains("residential") {
-            areaTypeValueLabel.text = "Residential"
-        }
+        areaTypeValueLabel.text = trespassCase.subLand.subLandType.capitalized
         // Setup images
-        if landCase.subLand.subLandImagesAllArray.isEmpty {
+        if trespassCase.subLand.subLandImagesAllArray.isEmpty {
             // No images, hide the view
             imagesView.alpha = 0
             imagesViewWidth.constant = 0
@@ -171,38 +156,40 @@ public class KMAUICitizenLandCaseTableViewCell: UITableViewCell {
             imagesViewLeft.constant = 27
             attachmentButtonWidth.constant = 32
             attachmentButtonRight.constant = 8
-            imagesView.subLand = landCase.subLand
+            imagesView.subLand = trespassCase.subLand
             // Callback for actions
             imagesView.viewAttachmentsAction = { action in
                 self.attachmentCallback?(true)
             }
         }
+        // Status view color
+        statusView.backgroundColor = KMAUIUtilities.shared.getTrespassCaseColor(status: trespassCase.caseStatus)
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     // MARK: - IBOutlets
     
-    @IBAction func citizenHightlightButtonPressed(_ sender: Any) {
-        // Highlight the view
-        citizenHightlightView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-        citizenCallback?(true)
-        
-        // Give a small delay before deselect
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.citizenHightlightView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        }
+    @IBAction public func citizenHightlightButtonPressed(_ sender: Any) {
+        /*// Highlight the view
+         citizenHightlightView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+         citizenCallback?(true)
+         
+         // Give a small delay before deselect
+         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+         self.citizenHightlightView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+         }*/
     }
     
-    @IBAction func mapButtonPressed(_ sender: Any) {
+    @IBAction public func mapButtonPressed(_ sender: Any) {
         mapCallback?(true)
     }
     
-    @IBAction func attachmentButtonPressed(_ sender: Any) {
+    @IBAction public func attachmentButtonPressed(_ sender: Any) {
         attachmentCallback?(true)
     }
 }

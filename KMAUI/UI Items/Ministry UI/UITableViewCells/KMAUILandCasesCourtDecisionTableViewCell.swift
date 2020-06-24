@@ -21,14 +21,20 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
     @IBOutlet public weak var documentButton: UIButton!
     
     // MARK: - Variables
-    public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
+    public var trespassType = ""
     public var isDepartment = false
+    public lazy var previewItem = NSURL()
+    public static let id = "KMAUILandCasesCourtDecisionTableViewCell"
     public var landCase = KMAUILandCaseStruct() {
         didSet {
-            setupCell()
+            setupLandCase()
         }
     }
-    public lazy var previewItem = NSURL()
+    public var trespassCase = KMAUITrespassCaseStruct() {
+        didSet {
+            setupTrespassCase()
+        }
+    }
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -38,9 +44,10 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         
         // BgView color
         bgView.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
+        bgView.clipsToBounds = true
         
         // Land case
-        caseLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(19)
+        caseLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         
         // Case status label
         caseStatusLabel.layer.cornerRadius = 6
@@ -69,11 +76,17 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setupCell() {
+    public func setupLandCase() {
         if isDepartment {
             setupDepartment()
         } else {
             setupCase()
+        }
+    }
+    
+    public func setupTrespassCase() {
+        if trespassType == "initialCheck" {
+            setupTrespassInitialCheck()
         }
     }
     
@@ -95,7 +108,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.judgeAttachment)
         if !files.isEmpty {
             documentImageView.alpha = 1
-            caseLabelLeft.constant = 16 + 60 + 12
+            caseLabelLeft.constant = 20 + 56 + 12
             let file = files[0]
             
             // Preview image view alignment
@@ -123,7 +136,7 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             }
         } else {
             documentImageView.alpha = 0
-            caseLabelLeft.constant = 16
+            caseLabelLeft.constant = 20
         }
     }
     
@@ -141,14 +154,10 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
         }
         
-        // Hide the document preview
-        documentImageView.alpha = 0
-        caseLabelLeft.constant = 16
-        
         let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
         if !files.isEmpty {
             documentImageView.alpha = 1
-            caseLabelLeft.constant = 16 + 60 + 12
+            caseLabelLeft.constant = 20 + 56 + 12
             let file = files[0]
             
             // Preview image view alignment
@@ -176,12 +185,76 @@ public class KMAUILandCasesCourtDecisionTableViewCell: UITableViewCell {
             }
         } else {
             documentImageView.alpha = 0
-            caseLabelLeft.constant = 16
+            caseLabelLeft.constant = 20
+        }
+    }
+    
+    public func setupTrespassInitialCheck() {
+        // Setup labels
+        caseLabel.text = "Initial check"
+        judgeCommentLabel.text = trespassCase.initialCheckComment
+        judgeCommentLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+        
+        // Setup background color for status label
+        if trespassCase.caseStatus != "Declined" {
+            caseStatusLabel.text = "approved"
+            caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        } else {
+            caseStatusLabel.text = "declined"
+            caseStatusLabel.backgroundColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        }
+        
+        // Hide the document preview
+        let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: trespassCase.initialCheckAttachments)
+        if !files.isEmpty {
+            documentImageView.alpha = 1
+            caseLabelLeft.constant = 20 + 56 + 12
+            let file = files[0]
+            
+            // Preview image view alignment
+            documentImageView.contentMode = .center
+            documentImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            documentImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            
+            if file.type == "Document" {
+                documentImageView.image = KMAUIConstants.shared.propertyDocument.withRenderingMode(.alwaysTemplate)
+            } else {
+                documentImageView.image = KMAUIConstants.shared.uploadedDocument.withRenderingMode(.alwaysTemplate)
+            }
+            // Preview image view - get the image for all types of files as we have the QuickLook previews implemented
+
+            if !file.previewURL.isEmpty, let url = URL(string: file.previewURL) {
+                self.documentImageView.kf.setImage(with: url) { result in
+                    switch result {
+                    case .success(let value):
+                        self.documentImageView.image = value.image
+                        self.documentImageView.contentMode = .scaleAspectFill
+                    case .failure(let error):
+                        print(error.localizedDescription) // The error happens
+                    }
+                }
+            }
+        } else {
+            documentImageView.alpha = 0
+            caseLabelLeft.constant = 20
         }
     }
     
     @IBAction public func documentButtonPressed(_ sender: Any) {
-        if isDepartment {
+        if trespassType == "initialCheck" {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: trespassCase.initialCheckAttachments)
+            if !files.isEmpty {
+                let file = files[0]
+
+                KMAUIUtilities.shared.quicklookPreview(urlString: file.fileURL, fileName: file.name, uniqueId: trespassCase.objectId) { (previewItemValue) in
+                    self.previewItem = previewItemValue
+                    // Display file
+                    let previewController = QLPreviewController()
+                    previewController.dataSource = self
+                    KMAUIUtilities.shared.displayAlert(viewController: previewController)
+                }
+            }
+        } else if isDepartment {
             let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: landCase.departmentAttachment)
             if !files.isEmpty {
                 let file = files[0]

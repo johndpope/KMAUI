@@ -658,6 +658,22 @@ public class KMAUIUtilities {
         return processingColor
     }
     
+    public func getTrespassCaseColor(status: String) -> UIColor {
+        var processingColor = UIColor.systemPurple
+        
+        if status == "Created" {
+            processingColor = KMAUIConstants.shared.KMABrightBlueColor
+        } else if status == "Declined" {
+            processingColor = KMAUIConstants.shared.KMAUIRedProgressColor
+        } else if status == "Resolved" {
+            processingColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+        } else if status == "Awaiting report" || status == "Awaiting decision" {
+            processingColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+        }
+        
+        return processingColor
+    }
+    
     // MARK: - Upload Body data
     
     /**
@@ -674,7 +690,7 @@ public class KMAUIUtilities {
                 for fileObject in filesArray {
                     if let fileObject = fileObject as? [String: String] {
                         var fileValue = KMADocumentData()
-                        fileValue.fillFrom(dictionary: fileObject)
+                        fileValue.fillFrom(document: fileObject)
                         // Check if status is rejected, then dont't show this file
                         if fileValue.status == "rejected" {
                             print("File `\(fileValue.name)` was rejected by Department.")
@@ -1454,7 +1470,7 @@ public class KMAUIUtilities {
         let documentData = KMAUIUtilities.shared.getItemData(documentObject: pickedDocument)
         
         if pickedDocument.hasLocation {
-            KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict) in
+            KMAUIUtilities.shared.getAddressFromApple(location: pickedDocument.location) { (addressString, addressDict, regionId) in
                 var pickedDocumentWithAddress = pickedDocument
                 pickedDocumentWithAddress.address = addressString
                 self.renameDocument(name: documentData.1, description: "", pickedDocument: pickedDocument) { (pickedDocumentUpdated, nameValue, descriptionValue) in
@@ -1594,7 +1610,7 @@ public class KMAUIUtilities {
             completion(pickedDocument)
         } else {
             KMAUIUtilities.shared.stopLoadingWith { (done) in
-                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select and image or video file.") { (loaded) in }
+                KMAUIUtilities.shared.globalAlert(title: "Error", message: "Please select an image or video file.") { (loaded) in }
             }
         }
     }
@@ -1801,11 +1817,13 @@ public class KMAUIUtilities {
      Geocode address from Apple
      */
     
-    public func getAddressFromApple(location: CLLocationCoordinate2D, completion: @escaping (_ address: String, _ dict: [String: String]) -> ()) {
+    public func getAddressFromApple(location: CLLocationCoordinate2D, completion: @escaping (_ address: String, _ dict: [String: String], _ regionId: String) -> ()) {
         CLGeocoder().reverseGeocodeLocation(CLLocation(latitude: location.latitude, longitude: location.longitude), preferredLocale: Locale(identifier: "en")) { (placemarks, error) in
+            var regionId = ""
+            
             if let error = error {
                 print("Error getting the address from location: \(error.localizedDescription).")
-                completion("Address not available", [String: String]())
+                completion("Address not available", [String: String](), regionId)
             } else if let placemark = placemarks?.first {
                 var addressString = ""
                 var city = ""
@@ -1844,9 +1862,13 @@ public class KMAUIUtilities {
                 
                 print("Apple Maps address: `\(addressString)`, dict: \(dict)")
                 
-                completion(addressString, dict)
+                if let regionIdValue = KMAUIConstants.shared.regionsDict[adminArea] {
+                    regionId = regionIdValue
+                }
+                
+                completion(addressString, dict, regionId)
             } else {
-                completion("Address not available", [String: String]())
+                completion("Address not available", [String: String](), regionId)
             }
         }
     }

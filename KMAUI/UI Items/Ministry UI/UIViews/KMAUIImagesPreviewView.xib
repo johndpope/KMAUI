@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -98,7 +98,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" name="KMAUIMainBgColor"/>
+            <color key="backgroundColor" name="KMAUIViewBgColorReverse"/>
             <constraints>
                 <constraint firstItem="EIP-T4-w5U" firstAttribute="width" secondItem="UDG-wi-5uZ" secondAttribute="width" id="16s-8q-lE1"/>
                 <constraint firstItem="6a6-AC-V6e" firstAttribute="trailing" secondItem="UDG-wi-5uZ" secondAttribute="trailing" id="19U-tV-7tl"/>
@@ -164,8 +164,8 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="KMAUIMainBgColor">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="KMAUIViewBgColorReverse">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

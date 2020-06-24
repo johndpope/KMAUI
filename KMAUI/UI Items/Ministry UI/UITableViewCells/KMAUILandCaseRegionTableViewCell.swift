@@ -21,6 +21,7 @@ public class KMAUILandCaseRegionTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUILandCaseRegionTableViewCell"
+    public var casesType = ""
     public var region = KMAMapAreaStruct()
     public var isActive = false {
         didSet {
@@ -55,17 +56,31 @@ public class KMAUILandCaseRegionTableViewCell: UITableViewCell {
     
     public func setupCell() {
         regionNameLabel.text = region.nameE
-        approvedCountLabel.text = "Approved – \(region.approvedLandCasesCount)"
         
-        if region.landCasesCount == 0 {
-            progressView.progress = 0
-            progressLabel.text = "0%"
-        } else {
-            let progress = Double(Int(Double(region.approvedLandCasesCount) / Double(region.landCasesCount) * 100)) / 100
-            progressView.progress = progress
-            progressLabel.text = "\(Int(progress * 100))%"
+        if casesType == "Land cases" {
+            approvedCountLabel.text = "Approved – \(region.approvedLandCasesCount)"
+            
+            if region.landCasesCount == 0 {
+                progressView.progress = 0
+                progressLabel.text = "0%"
+            } else {
+                let progress = Double(Int(Double(region.approvedLandCasesCount) / Double(region.landCasesCount) * 100)) / 100
+                progressView.progress = progress
+                progressLabel.text = "\(Int(progress * 100))%"
+            }
+        } else if casesType == "Trespass cases" {
+            approvedCountLabel.text = "Resolved – \(region.resolvedTrespassCasesCount)"
+            
+            if region.trespassCasesCount == 0 {
+                progressView.progress = 0
+                progressLabel.text = "0%"
+            } else {
+                let progress = Double(Int(Double(region.resolvedTrespassCasesCount) / Double(region.trespassCasesCount) * 100)) / 100
+                progressView.progress = progress
+                progressLabel.text = "\(Int(progress * 100))%"
+            }
         }
-        
+
         // Adjust the font size for 100% situation
         if progressView.progress == 1 {
             progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(12)

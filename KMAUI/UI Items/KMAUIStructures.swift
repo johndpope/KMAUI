@@ -100,7 +100,7 @@ public struct KMADocumentData {
     public init() {
     }
     
-    public mutating func fillFrom(dictionary: [String: String]) {
+    /*public mutating func fillFrom(dictionary: [String: String]) {
         if let nameValue = dictionary["name"] {
             self.name = nameValue
         }
@@ -127,7 +127,7 @@ public struct KMADocumentData {
             self.comments = commentValue
             self.fillComments()
         }
-    }
+    }*/
     
     public mutating func fillFrom(document: [String: String]) {        
         if let nameValue = document["name"] {
@@ -2221,6 +2221,9 @@ public struct KMAMapAreaStruct {
     // Land cases count
     public var landCasesCount = 0
     public var approvedLandCasesCount = 0
+    // Trespass cases count
+    public var trespassCasesCount = 0
+    public var resolvedTrespassCasesCount = 0
     // Name as on the map layer
     public var nameMap = ""
 
@@ -2346,6 +2349,7 @@ public struct KMAUISubLandStruct {
     // Region details
     public var regionId = ""
     public var regionName = ""
+    public var regionNameA = ""
     public var rules = [KMAUILotteryRule]()
     // Parse values
     public var createdAt = Date()
@@ -2445,9 +2449,10 @@ public struct KMAUISubLandStruct {
         // region id, region name
         if let noRegion = noRegion, noRegion {
             // No need to load the region for Sub Lands
-        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String {
+        } else if let landPlan = item["landPlan"] as? PFObject, let region = landPlan["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regionNameAValue = region["nameA"] as? String {
             self.regionId = regionId
             self.regionName = regionName
+            self.regionNameA = regionNameAValue
             
             if let responsibleDivision = landPlan["responsibleDivision"] as? PFObject {
                 if let departmentIdValue = responsibleDivision.objectId {
@@ -2463,18 +2468,14 @@ public struct KMAUISubLandStruct {
         if let recognizedDetails = item["recognizedDetails"] as? String {
             self.recognizedDetails = recognizedDetails
         }
+        // Region for Cases
+        if let region = item["region"] as? PFObject, let regionId = region.objectId, let regionName = region["nameE"] as? String, let regionNameAValue = region["nameA"] as? String {
+            self.regionId = regionId
+            self.regionName = regionName
+            self.regionNameA = regionNameAValue
+        }
     }
     
-//    public func featureJson() -> [String: Any] {
-//        var json: [String: Any] = [:]
-//        json["type"] = "Feature"
-//        json["geometry"] = [
-//            "type": "LineString",
-//            "coordinates": [
-//            ]
-//        ]
-//
-//    }
     mutating public func fillFromDict(item: [String : Any]) {
         if let itemProperties = item["properties"] as? [String: AnyObject], let itemType = itemProperties["type"] as? String, itemType == "Sub Land", let subLandType = itemProperties["subLandType"] as? String {
             // coordinates
@@ -4177,3 +4178,108 @@ public struct KMAUIAttachmentCommentStruct {
     public init() {
     }
 }
+
+// MARK: - KMAUITrespassCaseStruct
+
+public struct KMAUITrespassCaseStruct {
+    public var objectId = ""
+    public var createdAt = Date()
+    public var updatedAt = Date()
+    public var caseNumber = ""
+    public var caseStatus = ""
+    public var department = KMADepartmentStruct()
+    public var subLand = KMAUISubLandStruct()
+    public var initialComment = ""
+    public var initialCheckComment = ""
+    public var initialCheckAttachments = ""
+    public var initialCheckAttachmentsItem = KMADocumentData()
+    public var fieldObserverReport = ""
+    public var fieldObserverUploads = ""
+    public var fieldObserverUploadsItems = [KMADocumentData]()
+    public var owner = KMAPerson()
+    public var violator = KMAPerson()
+    
+    public init() {}
+    
+    public mutating func fillFromParse(object: PFObject) {
+        if let objectId = object.objectId {
+            self.objectId = objectId
+        }
+        
+        if let createdAt = object.createdAt {
+            self.createdAt = createdAt
+        }
+        
+        if let updatedAt = object.updatedAt {
+            self.updatedAt = updatedAt
+        }
+        
+        if let caseNumber = object["caseNumber"] as? String {
+            self.caseNumber = caseNumber
+        }
+        
+        if let courtStatus = object["caseStatus"] as? String {
+            self.caseStatus = courtStatus
+        }
+
+        if let department = object["department"] as? PFObject {
+            var departmentObject = KMADepartmentStruct()
+            departmentObject.fillFromParse(departmentObject: department)
+            self.department = departmentObject
+        }
+        
+        if let subLand = object["subLand"] as? PFObject {
+            var subLandObject = KMAUISubLandStruct()
+            subLandObject.fillFromParse(item: subLand)
+            self.subLand = subLandObject
+        }
+        
+        if let initialComment = object["initialComment"] as? String {
+            self.initialComment = initialComment
+        }
+        
+        if let initialCheckComment = object["initialCheckComment"] as? String {
+            self.initialCheckComment = initialCheckComment
+        }
+        
+        if let initialCheckAttachments = object["initialCheckAttachments"] as? String {
+            self.initialCheckAttachments = initialCheckAttachments
+        }
+        
+        if let fieldObserverReport = object["fieldObserverReport"] as? String {
+            self.fieldObserverReport = fieldObserverReport
+        }
+        
+        if let fieldObserverUploads = object["fieldObserverUploads"] as? String {
+            self.fieldObserverUploads = fieldObserverUploads
+            self.setupAttachments()
+        }
+        
+        if let owner = object["owner"] as? PFUser {
+            self.owner = KMAPerson()
+            self.owner.fillFrom(person: owner)
+        }
+        
+        if let violator = object["violator"] as? PFUser {
+            self.violator = KMAPerson()
+            self.violator.fillFrom(person: violator)
+        }
+    }
+    
+    public mutating func setupAttachments() {
+        if !initialCheckAttachments.isEmpty {
+            let files = KMAUIUtilities.shared.getItemsFrom(uploadBody: initialCheckAttachments)
+            
+            if !files.isEmpty {
+                self.initialCheckAttachmentsItem = files[0]
+            } else {
+                self.initialCheckAttachmentsItem = KMADocumentData()
+            }
+        }
+        
+        if !fieldObserverUploads.isEmpty {
+            fieldObserverUploadsItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: fieldObserverUploads)
+        }
+    }
+}
+

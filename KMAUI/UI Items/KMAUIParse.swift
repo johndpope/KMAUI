@@ -196,13 +196,17 @@ final public class KMAUIParse {
      Get Saudi Arabia regions
      */
     
-    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
+    public func getSaudiArabiaRegions(responsibleDivisionId: String? = nil, sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, regionsOnly: Bool? = nil, completion: @escaping (_ items: [KMAMapAreaStruct])->()) {
         // Saudi Arabia Parse object id
         let saudiArabiaId = "ocRDUNG9ZR"
         // Get the items
         KMAUIParse.shared.getMapAreas(level: 2, sw: sw, ne: ne, parentObjectId: saudiArabiaId) { (areaItems) in
-            KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
-                completion(items)
+            if let regionsOnly = regionsOnly, regionsOnly {
+                completion(areaItems)
+            } else {
+                KMAUIParse.shared.getLandPlans(responsibleDivisionId: responsibleDivisionId, sw: sw, ne: ne, items: areaItems) { (items) in
+                    completion(items)
+                }
             }
         }
     }
@@ -514,6 +518,7 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan")
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
+        lotteryResultQuery.includeKey("subLand.region")
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
@@ -599,6 +604,7 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan")
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
+        lotteryResultQuery.includeKey("subLand.region")
         
         lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
             var errorValue = ""
@@ -1035,7 +1041,9 @@ final public class KMAUIParse {
             completion(searchObject)
         } else {
             searchObject.updateSearch()
-            completion(searchObject)
+            if !searchObject.citizens.isEmpty {
+                completion(searchObject)
+            }
             print("Searching for: \(searchObject.search)")
             // Update land plans
             landPlanSearch(search: searchObject.search, ids: searchObject.landPlansBackupIds) { (newLandPlans) in
@@ -1096,6 +1104,7 @@ final public class KMAUIParse {
         combinedQuery.includeKey("landPlan")
         combinedQuery.includeKey("landPlan.region")
         combinedQuery.includeKey("landPlan.responsibleDivision")
+        combinedQuery.includeKey("region")
         combinedQuery.order(byAscending: "subLandIndex")
         combinedQuery.whereKey("objectId", notContainedIn: ids)
         combinedQuery.limit = 10
@@ -1264,6 +1273,7 @@ final public class KMAUIParse {
         query.includeKey("landPlan")
         query.includeKey("landPlan.region")
         query.includeKey("landPlan.responsibleDivision")
+        query.includeKey("region")
         query.getObjectInBackground(withId: objectId) { (subLandValue, error) in
             var updatedSubLand = KMAUISubLandStruct()
             
@@ -1341,7 +1351,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func setNotificationRead(notificationId: String) {
+    public func setNotificationRead(notificationId: String, completion: @escaping (_ read: Bool)->()) {
         let notificationObject = PFObject(withoutDataWithClassName: "KMANotification", objectId: notificationId)
         notificationObject["read"] = true
         notificationObject.saveInBackground { (success, error) in
@@ -1349,6 +1359,7 @@ final public class KMAUIParse {
                 print("Error setting the notification \(notificationId) as read: \(error.localizedDescription)")
             } else if success {
                 print("Notification \(notificationId) is set to read")
+                completion(true)
             }
         }
     }
@@ -1382,6 +1393,7 @@ final public class KMAUIParse {
         randomQuery.includeKey("landPlan")
         randomQuery.includeKey("landPlan.region")
         randomQuery.includeKey("landPlan.responsibleDivision")
+        randomQuery.includeKey("region")
         randomQuery.order(byAscending: "createdAt")
         randomQuery.skip = skip
         randomQuery.limit = 1
@@ -1866,6 +1878,7 @@ final public class KMAUIParse {
                 query.includeKey("landPlan")
                 query.includeKey("landPlan.region")
                 query.includeKey("landPlan.responsibleDivision")
+                query.includeKey("region")
                 
                 query.getObjectInBackground(withId: subLandId) { (subLandValue, error) in
                     if let error = error {
@@ -2157,6 +2170,62 @@ final public class KMAUIParse {
         }
     }
     
+    // MARK: - Get Trespass Cases
+    
+    public func getTrespassCases(completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
+        // Trespass cases array
+        var trespassCases = [KMAUITrespassCaseStruct]()
+        // Get details
+        let query = PFQuery(className: "KMATrespassCase")
+        query.order(byDescending: "updatedAt")
+        query.includeKey("subLand")
+        query.includeKey("subLand.landPlan")
+        query.includeKey("subLand.region")
+        query.includeKey("department")
+        query.includeKey("department.mapArea")
+        query.includeKey("owner")
+        query.includeKey("owner.homeAddress")
+        query.includeKey("owner.homeAddress.building")
+        query.includeKey("violator")
+        query.includeKey("violator.homeAddress")
+        query.includeKey("violator.homeAddress.building")
+        query.findObjectsInBackground { (trespassCasesArray, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let trespassCasesArray = trespassCasesArray {
+                for trespassCaseObject in trespassCasesArray {
+                    var trespassCase = KMAUITrespassCaseStruct()
+                    trespassCase.fillFromParse(object: trespassCaseObject)
+                    trespassCases.append(trespassCase)
+                }
+            }
+
+            var inProgressCases = [KMAUITrespassCaseStruct]()
+            var approvedCases = [KMAUITrespassCaseStruct]()
+            var declinedCases = [KMAUITrespassCaseStruct]()
+            
+            for trespassCase in trespassCases {
+                let status = trespassCase.caseStatus
+                
+                if status == "Resolved" {
+                    approvedCases.append(trespassCase)
+                } else if status == "Declined" {
+                    declinedCases.append(trespassCase)
+                } else {
+                    inProgressCases.append(trespassCase)
+                }
+            }
+            
+            trespassCases = [KMAUITrespassCaseStruct]()
+            trespassCases.append(contentsOf: inProgressCases)
+            trespassCases.append(contentsOf: approvedCases)
+            trespassCases.append(contentsOf: declinedCases)
+            
+            completion(trespassCases)
+            
+        }
+    }
+    
     // MARK: - Get Land Cases
     
     public func getLandCases(objectId: String? = nil, judgeId: String? = nil, completion: @escaping (_ landCasesArray: [KMAUILandCaseStruct])->()) {
@@ -2173,6 +2242,7 @@ final public class KMAUIParse {
         query.includeKey("judge.homeAddress.building")
         query.includeKey("subLand")
         query.includeKey("subLand.landPlan")
+        query.includeKey("subLand.region")
         query.includeKey("department")
         query.includeKey("department.mapArea")
         // Get specific land case for notifications
@@ -2469,6 +2539,7 @@ final public class KMAUIParse {
             query.includeKey("subLand.landPlan")
             query.includeKey("subLand.landPlan.region")
             query.includeKey("subLand.landPlan.responsibleDivision")
+            query.includeKey("subLand.region")
             // Department
             query.includeKey("department")
             query.includeKey("department.mapArea")
@@ -2489,104 +2560,150 @@ final public class KMAUIParse {
     
     // MARK: - New Land Case by Consumer app
     
-    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
-        // Create the new Sub land
-        let newSubLand = PFObject(className: "KMASubLand")
-        let uniqueId = String(UUID().uuidString.suffix(4))
-        newSubLand["subLandId"] = uniqueId
-        newSubLand["subLandIndex"] = uniqueId
-        newSubLand["subLandType"] = "Earned Land"
-        
-        var coordinates = [[Double]]()
-        
-        for coordinate in coordinatesArray {
-            let array = [coordinate.longitude, coordinate.latitude]
-            coordinates.append(array)
+    public func getRegion(coordinatesArray: [CLLocationCoordinate2D], completion: @escaping (_ regionId: String) -> ()) {
+        if !coordinatesArray.isEmpty {
+            let coordinate = coordinatesArray[0]
+            
+            // Save coordinates and save the box
+            KMAUIUtilities.shared.getAddressFromApple(location: coordinate) { (status, addressDict, regionId) in
+                completion(regionId)
+            }
+        } else {
+            completion("")
         }
-        
-        if !coordinates.isEmpty {
-            coordinates.append(coordinates[0])
-        }
-        
-        var geometry = [String: AnyObject]()
-        geometry["type"] = "LineString" as AnyObject
-        geometry["coordinates"] = coordinates as AnyObject
-        
-        let square = KMAUIUtilities.shared.regionAreaLocation(locations: coordinatesArray)
-        let subLandPercent = square / (24 * 24)
-        
-        let widthValue = CLLocation(latitude: coordinatesArray[0].latitude, longitude: coordinatesArray[0].longitude).distance(from: CLLocation(latitude: coordinatesArray[1].latitude, longitude: coordinatesArray[1].longitude))
-        let heightValue = square / widthValue
-        
-        // x - longitude, y - latitude
-        var minX: Double = 0
-        var minY: Double = 0
-        var maxX: Double = 0
-        var maxY: Double = 0
-        
-        for coordinate in coordinatesArray {
-            if coordinate.longitude < minX || minX == 0 {
-                minX = coordinate.longitude
+    }
+    
+    public func createLandCaseSubLand(coordinatesArray: [CLLocationCoordinate2D], tempAttachments: String, isTrespass: Bool? = nil, completion: @escaping (_ subLandId: String, _ error: String) -> ()) {
+        KMAUIParse.shared.getRegion(coordinatesArray: coordinatesArray) { (regionId) in
+            // Create the new Sub land
+            let newSubLand = PFObject(className: "KMASubLand")
+            let uniqueId = String(UUID().uuidString.suffix(4))
+            newSubLand["subLandId"] = uniqueId
+            newSubLand["subLandIndex"] = uniqueId
+            var type = ""
+            
+            if let isTrespass = isTrespass, isTrespass {
+                newSubLand["subLandType"] = "Trespass"
+                type = "Trespass"
+            } else {
+                newSubLand["subLandType"] = "Earned Land"
+                type = "Earned Land"
             }
             
-            if coordinate.longitude > maxX || maxX == 0 {
-                maxX = coordinate.longitude
+            if !regionId.isEmpty {
+                newSubLand["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
             }
             
-            if coordinate.latitude < minY || minY == 0 {
-                minY = coordinate.latitude
+            var coordinates = [[Double]]()
+            
+            for coordinate in coordinatesArray {
+                let array = [coordinate.longitude, coordinate.latitude]
+                coordinates.append(array)
             }
             
-            if coordinate.latitude > maxY || maxY == 0 {
-                maxY = coordinate.latitude
+            if !coordinates.isEmpty {
+                coordinates.append(coordinates[0])
             }
-        }
-        
-        let latitude = (minY + maxY) / 2
-        let longitude = (minX + maxX) / 2
-        
-        newSubLand["subLandSquare"] = square
-        newSubLand["subLandWidth"] = widthValue
-        newSubLand["subLandHeight"] = heightValue
-        newSubLand["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
-        newSubLand["minX"] = minX
-        newSubLand["minY"] = minY
-        newSubLand["maxX"] = maxX
-        newSubLand["maxY"] = maxY
-        newSubLand["subLandPercent"] = subLandPercent
-        newSubLand["extraPrice"] = 0
-        newSubLand["subLandImages"] = tempAttachments
-        
-        newSubLand.saveInBackground { (success, error) in
-            if let error = error {
-                completion("", error.localizedDescription)
-            } else if success, let objectId = newSubLand.objectId {
-                print("Initial value saved.")
-                
-                let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": "Earned Land" as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
-                let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
-                
-                let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
-                
-                let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: dictionary)
-                var fileBody = ""
-                
-                // JSON String for Parse
-                if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
-                    fileBody = jsonFileBodyString
+            
+            var geometry = [String: AnyObject]()
+            geometry["type"] = "LineString" as AnyObject
+            geometry["coordinates"] = coordinates as AnyObject
+            
+            let square = KMAUIUtilities.shared.regionAreaLocation(locations: coordinatesArray)
+            let subLandPercent = square / (24 * 24)
+            
+            let widthValue = CLLocation(latitude: coordinatesArray[0].latitude, longitude: coordinatesArray[0].longitude).distance(from: CLLocation(latitude: coordinatesArray[1].latitude, longitude: coordinatesArray[1].longitude))
+            let heightValue = square / widthValue
+            
+            // x - longitude, y - latitude
+            var minX: Double = 0
+            var minY: Double = 0
+            var maxX: Double = 0
+            var maxY: Double = 0
+            
+            for coordinate in coordinatesArray {
+                if coordinate.longitude < minX || minX == 0 {
+                    minX = coordinate.longitude
                 }
                 
-                newSubLand["subLandArea"] = fileBody
+                if coordinate.longitude > maxX || maxX == 0 {
+                    maxX = coordinate.longitude
+                }
                 
-                newSubLand.saveInBackground { (updateSuccess, updateError) in
-                    if let updateError = updateError {
-                        completion("", updateError.localizedDescription)
-                    } else if updateSuccess, let subLandId = newSubLand.objectId, !subLandId.isEmpty {
-                        completion(subLandId, "")
-                    } else {
-                        completion("", "Can't prepare the new sub alnd for Land case.")
+                if coordinate.latitude < minY || minY == 0 {
+                    minY = coordinate.latitude
+                }
+                
+                if coordinate.latitude > maxY || maxY == 0 {
+                    maxY = coordinate.latitude
+                }
+            }
+            
+            let latitude = (minY + maxY) / 2
+            let longitude = (minX + maxX) / 2
+            
+            newSubLand["subLandSquare"] = square
+            newSubLand["subLandWidth"] = widthValue
+            newSubLand["subLandHeight"] = heightValue
+            newSubLand["location"] = PFGeoPoint(latitude: latitude, longitude: longitude)
+            newSubLand["minX"] = minX
+            newSubLand["minY"] = minY
+            newSubLand["maxX"] = maxX
+            newSubLand["maxY"] = maxY
+            newSubLand["subLandPercent"] = subLandPercent
+            newSubLand["extraPrice"] = 0
+            newSubLand["subLandImages"] = tempAttachments
+            
+            newSubLand.saveInBackground { (success, error) in
+                if let error = error {
+                    completion("", error.localizedDescription)
+                } else if success, let objectId = newSubLand.objectId {
+                    print("Initial value saved.")
+                    
+                    let properties = ["name": "\(uniqueId)" as AnyObject, "subLandSquare": square as AnyObject, "subLandPercent": subLandPercent as AnyObject, "type": "Sub Land", "subLandType": type as AnyObject, "subLandWidth": widthValue as AnyObject, "subLandHeight": heightValue as AnyObject, "minX": minX as AnyObject, "maxX": maxX as AnyObject, "minY": minY as AnyObject, "maxY": maxY as AnyObject, "latitude": latitude as AnyObject, "longitude": longitude as AnyObject, "objectId": objectId as AnyObject] as AnyObject
+                    let feature = ["type": "Feature" as AnyObject, "geometry": geometry as AnyObject, "properties": properties]
+                    
+                    let dictionary = ["type": "FeatureCollection" as AnyObject, "features": [feature] as AnyObject]
+                    
+                    let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: dictionary)
+                    var fileBody = ""
+                    
+                    // JSON String for Parse
+                    if let jsonFileBodyString = String(data: jsonFileBodyData, encoding: .utf8) {
+                        fileBody = jsonFileBodyString
+                    }
+                    
+                    newSubLand["subLandArea"] = fileBody
+                    
+                    newSubLand.saveInBackground { (updateSuccess, updateError) in
+                        if let updateError = updateError {
+                            completion("", updateError.localizedDescription)
+                        } else if updateSuccess, let subLandId = newSubLand.objectId, !subLandId.isEmpty {
+                            completion(subLandId, "")
+                        } else {
+                            completion("", "Can't prepare the new sub alnd for Land case.")
+                        }
                     }
                 }
+            }
+        }
+    }
+    
+    public func createTrespassCaseObject(subLandId: String, comment: String, completion: @escaping (_ trespassCaseId: String, _ error: String) -> ()) {
+        let newTrespassCase = PFObject(className: "KMATrespassCase")
+        newTrespassCase["caseNumber"] = "\(Int.random(in: 10000 ..< 100000))"
+        newTrespassCase["caseStatus"] = "Created"
+        newTrespassCase["department"] = PFObject(withoutDataWithClassName: "KMADepartment", objectId: "poqIHPw4NS")
+        newTrespassCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
+        newTrespassCase["initialComment"] = comment
+        
+        newTrespassCase.saveInBackground { (success, error) in
+            if let error = error {
+                completion("", error.localizedDescription)
+            } else if success, let trespassCaseId = newTrespassCase.objectId, !trespassCaseId.isEmpty {
+                completion(trespassCaseId, "")
+            } else {
+                completion("", "Can't prepare the new Trespass case data.")
             }
         }
     }
@@ -2768,10 +2885,6 @@ final public class KMAUIParse {
     
     // MARK: - Save the decision with comment and attachment
     
-    // Decision type: self.decisionType
-    // commentItem: commentItem
-    // attachmentItem: attachmentItem
-    
     public func saveDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, landCase: KMAUILandCaseStruct, completion: @escaping (_ landCase: KMAUILandCaseStruct) -> ()) {
         var landCase = landCase
         let landCaseObject = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCase.objectId)
@@ -2824,17 +2937,142 @@ final public class KMAUIParse {
                         }
                     }
                     landCase.setupAttachments()
+                    KMAUIParse.shared.notifyUser(landCase: landCase, selectedAction: selectedAction, decisionType: decisionType, comment: commentItem)
                     // Completion
                     completion(landCase)
                 }
             }
         }
     }
+    
+    // MARK: - Sav the Trespass field observer report
+    
+    public func saveTrespassFieldObserverReport(commentItem: String, attachmentItem: String, ownerItem: KMAPerson, violatorItem: KMAPerson, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var trespassCase = trespassCase
+        let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
+        
+        trespassCaseObject["fieldObserverReport"] = commentItem
+        trespassCaseObject["fieldObserverUploads"] = attachmentItem
+        trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
+        trespassCaseObject["violator"] = PFUser(withoutDataWithObjectId: violatorItem.objectId)
+        trespassCaseObject["caseStatus"] = "Awaiting decision"
+        
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
+        
+        trespassCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    trespassCase.fieldObserverReport = commentItem
+                    trespassCase.fieldObserverUploads = attachmentItem
+                    trespassCase.setupAttachments()
+                    trespassCase.owner = ownerItem
+                    trespassCase.violator = violatorItem
+                    trespassCase.caseStatus = "Awaiting decision"
+                    // Completion
+                    completion(trespassCase)
+                }
+            }
+        }
+    }
+    
+    // MARK: - Save the Trespass decision with comment and attachment
+    
+    public func saveTrespassDecision(decisionType: String, commentItem: String, attachmentItem: String, selectedAction: Bool, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var trespassCase = trespassCase
+        let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
+        
+        if decisionType == "initialCheck" {
+            trespassCaseObject["initialCheckComment"] = commentItem
+            trespassCaseObject["initialCheckAttachments"] = attachmentItem
+            // Setup status
+            if selectedAction {
+                trespassCaseObject["caseStatus"] = "Awaiting report"
+            } else {
+                trespassCaseObject["caseStatus"] = "Declined"
+            }
+        }
+
+        KMAUIUtilities.shared.startLoading(title: "Saving...")
+        
+        trespassCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    if decisionType == "initialCheck" {
+                        trespassCase.initialCheckComment = commentItem
+                        trespassCase.initialCheckAttachments = attachmentItem
+                        // Setup status
+                        if selectedAction {
+                            trespassCase.caseStatus = "Awaiting report"
+                        } else {
+                            trespassCase.caseStatus = "Declined"
+                        }
+                    }
+                    trespassCase.setupAttachments()
+                    // Completion
+                    completion(trespassCase)
+                }
+            }
+        }
+    }
+    
+    public func notifyUser(landCase: KMAUILandCaseStruct, selectedAction: Bool, decisionType: String, comment: String) {
+        let title = "Land case \(decisionType) decision"
+        var message = ""
+        
+        var status = "declined"
+        
+        if selectedAction {
+            status = "approved"
+        }
+        
+        if decisionType == "judge" {
+            message = "Your Land case #\(landCase.caseNumber) was \(status) by the judge \(landCase.judge.fullName)."
+        } else if decisionType == "department" {
+            message = "Your Land case #\(landCase.caseNumber) was \(status) by the Department of Urban Planning. Please wait for it to be proceeded by the judge \(landCase.judge.fullName)."
+        }
+
+        message += "\nComment: \(comment)"
+        
+        if !title.isEmpty, !message.isEmpty {
+            let userId = landCase.citizen.objectId
+            let newNotification = PFObject(className: "KMANotification")
+            newNotification["user"] = PFUser(withoutDataWithObjectId: userId)
+            newNotification["title"] = title
+            newNotification["message"] = message
+            // Fill the items for Notification
+            var items = ["objectId": landCase.objectId as AnyObject,
+                         "objectType": "landCaseChanged" as AnyObject,
+                         "eventType": "decision\(decisionType.capitalized)" as AnyObject
+            ]
+            // items json string from dictionary
+            if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+                newNotification["items"] = jsonStr
+            }
+            newNotification["read"] = false
+            // Save notification
+            newNotification.saveInBackground { (success, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if success, let notificationId = newNotification.objectId {
+                    items["notificationId"] = notificationId as AnyObject
+                    // Push parameters
+                    let subLandParams = [
+                        "userId" : userId as AnyObject,
+                        "title": title as AnyObject,
+                        "message": message as AnyObject,
+                        "kmaItems": items as AnyObject,
+                        "appType": "Consumer" as AnyObject
+                    ]
+                    // Send push notification
+                    KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+                }
+            }
+        }
+    }
 }
-
-
-/*
- KMAUIConstants.shared.landCaseUpdated = self.landCase
- KMAUIConstants.shared.landCaseDetailsUpdated = self.landCase
- NotificationCenter.default.post(name: .KMALandCaseUpdated, object: nil)
- */

@@ -94,6 +94,7 @@
                 <outlet property="bgViewRight" destination="DTd-XF-1F2" id="XYM-jT-X7K"/>
                 <outlet property="bgViewTop" destination="CVB-PH-eS5" id="IiO-C4-FgO"/>
                 <outlet property="isActiveImageView" destination="owe-ce-Hua" id="SxY-Yh-Ict"/>
+                <outlet property="lotteryNameBottom" destination="iXc-zf-Uou" id="gda-B5-H8y"/>
                 <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>
                 <outlet property="lotteryNameLabelLeft" destination="Wdc-49-QP1" id="GIW-l3-s5a"/>
                 <outlet property="rowsStackView" destination="0Dx-Hy-Hf4" id="e7X-Oa-2t0"/>
@@ -119,7 +120,7 @@
             <color red="0.91764705882352937" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="KMAUIMainBgColor">
-            <color red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

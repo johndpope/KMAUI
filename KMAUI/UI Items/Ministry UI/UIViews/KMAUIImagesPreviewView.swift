@@ -33,9 +33,15 @@ public class KMAUIImagesPreviewView: UIView {
     // MARK: - Variables
     public var subLand = KMAUISubLandStruct() {
         didSet {
-            setupImages()
+            setupSubLand()
         }
     }
+    public var attachments = [KMADocumentData]() {
+        didSet {
+            setupAttachments()
+        }
+    }
+    public var imagesArray = [KMADocumentData]()
     public var viewAttachmentsAction: ((Bool) -> Void)?
     public lazy var previewItem = NSURL()
     
@@ -55,9 +61,39 @@ public class KMAUIImagesPreviewView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        // Borders for images
+        borderFor(imageView: singleImageView)
+        borderFor(imageView: twoOneImageView)
+        borderFor(imageView: twoTwoImageView)
+        borderFor(imageView: threeOneImageView)
+        borderFor(imageView: threeTwoImageView)
+        borderFor(imageView: threeThreeImageView)
+    }
+    
+    func borderFor(imageView: UIImageView) {
+        imageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+        imageView.layer.borderWidth = 1
     }
     
     // MARK: - Setup view
+    
+    /**
+     Setup attachments
+     */
+    
+    public func setupAttachments() {
+        imagesArray = attachments
+        setupImages()
+    }
+    
+    /**
+     Setup sub land attachments
+     */
+    
+    public func setupSubLand() {
+        imagesArray = subLand.subLandImagesArray
+        setupImages()
+    }
     
     /**
      Setup images
@@ -89,12 +125,12 @@ public class KMAUIImagesPreviewView: UIView {
         threeThreeBgView.clipsToBounds = true
         threeThreeBgView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         // Bottom action buttons
-        if !subLand.subLandImagesAllArray.isEmpty {
+        if !imagesArray.isEmpty {
             // Show the correct image for each view
-            if subLand.subLandImagesAllArray.count == 1 {
+            if imagesArray.count == 1 {
                 // One large image
                 showImage(button: singleImageButton, imageView: singleImageView, index: 0)
-            } else if subLand.subLandImagesAllArray.count == 2 {
+            } else if imagesArray.count == 2 {
                 // Two same size images
                 showImage(button: twoOneImageButton, imageView: twoOneImageView, index: 0)
                 showImage(button: twoTwoImageButton, imageView: twoTwoImageView, index: 1)
@@ -104,10 +140,10 @@ public class KMAUIImagesPreviewView: UIView {
                 showImage(button: threeTwoImageButton, imageView: threeTwoImageView, index: 1)
                 showImage(button: threeThreeImageButton, imageView: threeThreeImageView, index: 2)
                 
-                if subLand.subLandImagesAllArray.count > 3 {
+                if imagesArray.count > 3 {
                     threeThreeBgImageButton.alpha = 1.0
                     threeThreeBgView.alpha = 0.5
-                    threeThreeBgImageButton.setTitle("+\(subLand.subLandImagesAllArray.count - 3)", for: .normal)
+                    threeThreeBgImageButton.setTitle("+\(imagesArray.count - 3)", for: .normal)
                 }
             }
         }
@@ -118,7 +154,7 @@ public class KMAUIImagesPreviewView: UIView {
      */
     
     public func showImage(button: UIButton, imageView: UIImageView, index: Int) {
-        let document = subLand.subLandImagesAllArray[index]
+        let document = imagesArray[index]
         button.alpha = 1
         button.layer.cornerRadius = 8
         button.clipsToBounds = true
@@ -167,7 +203,7 @@ public class KMAUIImagesPreviewView: UIView {
     // MARK: - Documents preview
     
     public func previewImages(index: Int) {
-        let document = subLand.subLandImagesAllArray[index]
+        let document = imagesArray[index]
         
         KMAUIUtilities.shared.quicklookPreview(urlString: document.fileURL, fileName: document.name, uniqueId: document.objectId) { (previewItemValue) in
             self.previewItem = previewItemValue

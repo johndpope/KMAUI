@@ -99,6 +99,7 @@ public class KMAUIPerson {
         subLandsQuery.includeKey("subLand.landPlan")
         subLandsQuery.includeKey("subLand.landPlan.region")
         subLandsQuery.includeKey("subLand.landPlan.responsibleDivision")
+        subLandsQuery.includeKey("subLand.region")
         subLandsQuery.order(byDescending: "createdAt")
         // Getting the region name
         subLandsQuery.includeKey("landPlan")
