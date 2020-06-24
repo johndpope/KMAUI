@@ -1717,6 +1717,44 @@ final public class KMAUIParse {
         }
     }
     
+    public func notifyUserPenalty(trespassCase: KMAUITrespassCaseStruct) {
+        let title = "Building violation"
+        let message = "As a result of the investigation on the Trespass case #\(trespassCase.caseNumber) the Municipality has decided to charge you with the penalty payment. Please send the appropriate payment as soon as possible."
+        
+        let newNotification = PFObject(className: "KMANotification")
+        newNotification["user"] = PFUser(withoutDataWithObjectId: trespassCase.owner.objectId)
+        newNotification["title"] = title
+        newNotification["message"] = message
+        // Fill the items for Notification
+        var items = ["objectId": trespassCase.objectId as AnyObject,
+                     "objectType": "trespassCase" as AnyObject,
+                     "eventType": "penaltyPaymentRequest" as AnyObject
+        ]
+        // items json string from dictionary
+        if let data = try? JSONSerialization.data(withJSONObject: items, options: .prettyPrinted), let jsonStr = String(bytes: data, encoding: .utf8) {
+            newNotification["items"] = jsonStr
+        }
+        newNotification["read"] = false
+        // Save notification
+        newNotification.saveInBackground { (success, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if success, let notificationId = newNotification.objectId {
+                items["notificationId"] = notificationId as AnyObject
+                // Push parameters
+                let subLandParams = [
+                    "userId" : trespassCase.owner.objectId as AnyObject,
+                    "title": title as AnyObject,
+                    "message": message as AnyObject,
+                    "kmaItems": items as AnyObject,
+                    "appType": "Consumer" as AnyObject
+                ]
+                // Send push notification
+                KMAUIParse.shared.sendPushNotification(cloudParams: subLandParams)
+            }
+        }
+    }
+    
     public func notifyUser(subLand: KMAUISubLandStruct, type: String, status: String? = nil, documentName: String? = nil, citizenId: String? = nil, comment: String? = nil) {
         var title = ""
         var message = ""
@@ -3074,5 +3112,50 @@ final public class KMAUIParse {
                 }
             }
         }
+    }
+    
+    // MARK: - Trespass case
+    
+    public func closeTrespassCase(trespassCase: KMAUITrespassCaseStruct, hasPenalty: Bool, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var message = "The Trespass case will be marked as Resolved and no penalty will be charged from the land owner."
+        var newStatus = "Resolved"
+        var decision = "noPenalty"
+        
+        if hasPenalty {
+            message = "The Trespass case's status will be set to \"Awaiting penalty payment\" and the land owner will recieve the corresponding notification."
+            newStatus = "Awaiting penalty payment"
+            decision = "penalty"
+        }
+        
+        let alertView = UIAlertController(title: "Final decision", message: message, preferredStyle: .alert)
+        alertView.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (action) in
+            var trespassCase = trespassCase
+            let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
+            
+            trespassCaseObject["trespassDecision"] = decision
+            trespassCaseObject["caseStatus"] = newStatus
+            
+            KMAUIUtilities.shared.startLoading(title: "Saving...")
+            
+            trespassCaseObject.saveInBackground { (success, error) in
+                KMAUIUtilities.shared.stopLoadingWith { (_) in
+                    if let error = error {
+                        KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                    } else if success {
+                        // Don't forger to save details into the local data
+                        trespassCase.trespassDecision = decision
+                        trespassCase.caseStatus = newStatus
+                        // Notify user
+                        if hasPenalty {
+                            KMAUIParse.shared.notifyUserPenalty(trespassCase: trespassCase)
+                        }
+                        // Completion
+                        completion(trespassCase)
+                    }
+                }
+            }
+        }))
+        alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in }))
+        KMAUIUtilities.shared.displayAlert(viewController: alertView)
     }
 }

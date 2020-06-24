@@ -16,10 +16,10 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var ownerLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var ownerValueLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var ownerValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var divideLine1: UIView!
     @IBOutlet public weak var violatorLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var violatorValueLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var violatorValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var divideLine2: UIView!
     @IBOutlet public weak var ownerView: UIView!
     @IBOutlet public weak var violatorView: UIView!
@@ -69,9 +69,9 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         
         // Citizen labels
         ownerLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        ownerValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        ownerValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         violatorLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        violatorValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        violatorValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // No selection required
         selectionStyle = .none
