@@ -3120,22 +3120,28 @@ final public class KMAUIParse {
         var message = "The Trespass case will be marked as Resolved and no penalty will be charged from the land owner."
         var newStatus = "Resolved"
         var decision = "noPenalty"
+        var title = "Final decision"
         
         if type == "penalty" {
-            message = "The Trespass case's status will be set to \"Awaiting penalty payment\" and the land owner will recieve the corresponding notification."
+            message = "The Trespass case status will be set to \"Awaiting penalty payment\" and the land owner will recieve the corresponding notification."
             newStatus = "Awaiting penalty payment"
             decision = "penalty"
         } else if type == "outside" {
-            message = "The Trespass case's status will be set to \"Outside the Urban Range\". This case can't be Resolved by the Department or Urban Planning."
+            message = "The Trespass case status will be set to \"Outside the Urban Range\". This case can't be Resolved by the Department or Urban Planning."
             newStatus = "Outside the Urban Range"
             decision = "outside"
         } else if type == "inside" {
-            message = "The Trespass case's status will be set to \"Awaiting Municipality decision\". One more step required to Resolve the case."
+            message = "The Trespass case status will be set to \"Awaiting Municipality decision\". One more step required to Resolve the case."
             newStatus = "Awaiting Municipality decision"
             decision = "inside"
+            title = "Range decision"
+        } else if type == "demolition" {
+            message = "The Department of Urban Planning will send an order for an Immediate demolition of the Illegal building. The Trespass case status will be set to \"Resolved\"."
+            newStatus = "Resolved"
+            decision = "demolition"
         }
         
-        let alertView = UIAlertController(title: "Final decision", message: message, preferredStyle: .alert)
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (action) in
             var trespassCase = trespassCase
             let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
