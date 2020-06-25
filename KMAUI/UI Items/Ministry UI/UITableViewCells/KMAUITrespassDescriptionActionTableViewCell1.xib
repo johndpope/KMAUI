@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITrespassDescriptionActionTableViewCell" rowHeight="185" id="KGk-i7-Jjw" customClass="KMAUITrespassDescriptionActionTableViewCell" customModule="KMAUI" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUITrespassDescriptionActionTableViewCell1" rowHeight="185" id="KGk-i7-Jjw" customClass="KMAUITrespassDescriptionActionTableViewCell1" customModule="Business" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -55,15 +55,25 @@
                                     <action selector="declineButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="g4S-bc-1Ah"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5d-Jg-bIO" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="20" y="86" width="240" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="A5d-Jg-bIO" firstAttribute="centerY" secondItem="vMM-lX-njR" secondAttribute="centerY" id="0FH-GT-RBq"/>
                             <constraint firstItem="l9h-89-5fy" firstAttribute="top" secondItem="ZQX-qH-P8C" secondAttribute="bottom" constant="8" id="2Mq-cJ-G0L"/>
+                            <constraint firstItem="A5d-Jg-bIO" firstAttribute="height" secondItem="vMM-lX-njR" secondAttribute="height" id="2oA-ZE-lAn"/>
                             <constraint firstAttribute="trailing" secondItem="vMM-lX-njR" secondAttribute="trailing" constant="20" id="9tP-8G-F3K"/>
                             <constraint firstItem="vMM-lX-njR" firstAttribute="leading" secondItem="9y5-Zw-A1s" secondAttribute="trailing" constant="16" id="F9I-9l-HTz"/>
                             <constraint firstItem="ZQX-qH-P8C" firstAttribute="top" secondItem="1MF-1H-kpR" secondAttribute="top" constant="20" id="JhB-jT-alK"/>
+                            <constraint firstItem="A5d-Jg-bIO" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="20" id="M5V-jD-iFx"/>
                             <constraint firstAttribute="bottom" secondItem="9y5-Zw-A1s" secondAttribute="bottom" constant="20" id="N4H-dx-3TP"/>
                             <constraint firstItem="vMM-lX-njR" firstAttribute="centerY" secondItem="9y5-Zw-A1s" secondAttribute="centerY" id="QQ5-FY-X0J"/>
+                            <constraint firstAttribute="trailing" secondItem="A5d-Jg-bIO" secondAttribute="trailing" constant="20" id="WNi-oT-mrl"/>
                             <constraint firstItem="l9h-89-5fy" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="20" id="cQe-di-kQf"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="20" id="f8J-Bp-FbU"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="top" secondItem="l9h-89-5fy" secondAttribute="bottom" constant="24" id="jEe-Tz-RjX"/>
@@ -85,6 +95,7 @@
             <connections>
                 <outlet property="approveButton" destination="vMM-lX-njR" id="j32-Js-zfr"/>
                 <outlet property="bgView" destination="1MF-1H-kpR" id="Mb4-tJ-KAd"/>
+                <outlet property="decisionLabel" destination="A5d-Jg-bIO" id="DAz-Dg-dY8"/>
                 <outlet property="declineButton" destination="9y5-Zw-A1s" id="dTQ-Tb-1gG"/>
                 <outlet property="declineButtonBottom" destination="N4H-dx-3TP" id="4Kn-VU-UrK"/>
                 <outlet property="descriptionLabel" destination="l9h-89-5fy" id="kuq-PD-yiQ"/>
