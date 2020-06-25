@@ -157,7 +157,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
                         decisionLabel.text = "Penalty payment received"
                     } else if trespassCase.caseStatus == "Awaiting penalty payment" {
                         decisionLabel.textColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-                        decisionLabel.text = "Penalty request send to land owner"
+                        decisionLabel.text = "Penalty request send to the Land owner"
                     }
                 }
             }
