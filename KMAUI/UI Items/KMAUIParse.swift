@@ -3116,15 +3116,19 @@ final public class KMAUIParse {
     
     // MARK: - Trespass case
     
-    public func closeTrespassCase(trespassCase: KMAUITrespassCaseStruct, hasPenalty: Bool, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+    public func closeTrespassCase(trespassCase: KMAUITrespassCaseStruct, type: String, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
         var message = "The Trespass case will be marked as Resolved and no penalty will be charged from the land owner."
         var newStatus = "Resolved"
         var decision = "noPenalty"
         
-        if hasPenalty {
+        if type == "penalty" {
             message = "The Trespass case's status will be set to \"Awaiting penalty payment\" and the land owner will recieve the corresponding notification."
             newStatus = "Awaiting penalty payment"
             decision = "penalty"
+        } else if type == "outside" {
+            message = "The Trespass case's status will be set to \"Outside the Urban Range\". This case can't be Resolved by the Department or Urban Planning"
+            newStatus = "Outside the Urban Range"
+            decision = "outside"
         }
         
         let alertView = UIAlertController(title: "Final decision", message: message, preferredStyle: .alert)
@@ -3146,7 +3150,7 @@ final public class KMAUIParse {
                         trespassCase.trespassDecision = decision
                         trespassCase.caseStatus = newStatus
                         // Notify user
-                        if hasPenalty {
+                        if type == "penalty" {
                             KMAUIParse.shared.notifyUserPenalty(trespassCase: trespassCase)
                         }
                         // Completion

@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9h-89-5fy" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="49" width="240" height="12"/>
+                                <rect key="frame" x="20" y="49" width="240" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -76,7 +76,7 @@
                             <constraint firstAttribute="trailing" secondItem="A5d-Jg-bIO" secondAttribute="trailing" constant="20" id="WNi-oT-mrl"/>
                             <constraint firstItem="l9h-89-5fy" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="20" id="cQe-di-kQf"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="leading" secondItem="1MF-1H-kpR" secondAttribute="leading" constant="20" id="f8J-Bp-FbU"/>
-                            <constraint firstItem="9y5-Zw-A1s" firstAttribute="top" secondItem="l9h-89-5fy" secondAttribute="bottom" constant="24" id="jEe-Tz-RjX"/>
+                            <constraint firstItem="9y5-Zw-A1s" firstAttribute="top" secondItem="l9h-89-5fy" secondAttribute="bottom" constant="20" id="jEe-Tz-RjX"/>
                             <constraint firstAttribute="trailing" secondItem="l9h-89-5fy" secondAttribute="trailing" constant="20" id="lvW-LY-Kg0"/>
                             <constraint firstAttribute="trailing" secondItem="ZQX-qH-P8C" secondAttribute="trailing" constant="20" id="mKO-eU-jbM"/>
                             <constraint firstItem="9y5-Zw-A1s" firstAttribute="width" secondItem="vMM-lX-njR" secondAttribute="width" id="myo-cs-y51"/>

@@ -663,7 +663,7 @@ public class KMAUIUtilities {
         
         if status == "Created" {
             processingColor = KMAUIConstants.shared.KMABrightBlueColor
-        } else if status == "Declined" {
+        } else if status == "Declined" || status == "Outside the Urban Range" {
             processingColor = KMAUIConstants.shared.KMAUIRedProgressColor
         } else if status == "Resolved" {
             processingColor = KMAUIConstants.shared.KMAUIGreenProgressColor
