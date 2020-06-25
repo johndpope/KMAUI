@@ -3180,6 +3180,7 @@ final public class KMAUIParse {
                         if !landCaseId.isEmpty {
                             trespassCaseObject["landCase"] = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCaseId)
                             decision = "Land case #\(landCaseNumber)"
+                            trespassCaseObject["trespassDecision"] = decision
                         }
                         // Update the Trespass case
                         KMAUIParse.shared.saveTrespassCase(trespassCaseObject: trespassCaseObject, trespassCase: trespassCase, decision: decision, newStatus: newStatus, type: type) { (trespassCaseUpdated) in
