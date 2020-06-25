@@ -3126,9 +3126,13 @@ final public class KMAUIParse {
             newStatus = "Awaiting penalty payment"
             decision = "penalty"
         } else if type == "outside" {
-            message = "The Trespass case's status will be set to \"Outside the Urban Range\". This case can't be Resolved by the Department or Urban Planning"
+            message = "The Trespass case's status will be set to \"Outside the Urban Range\". This case can't be Resolved by the Department or Urban Planning."
             newStatus = "Outside the Urban Range"
             decision = "outside"
+        } else if type == "inside" {
+            message = "The Trespass case's status will be set to \"Awaiting Municipality decision\". One more step required to Resolve the case."
+            newStatus = "Awaiting Municipality decision"
+            decision = "inside"
         }
         
         let alertView = UIAlertController(title: "Final decision", message: message, preferredStyle: .alert)

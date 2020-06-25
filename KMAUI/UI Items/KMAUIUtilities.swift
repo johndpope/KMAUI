@@ -667,7 +667,7 @@ public class KMAUIUtilities {
             processingColor = KMAUIConstants.shared.KMAUIRedProgressColor
         } else if status == "Resolved" {
             processingColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-        } else if status == "Awaiting report" || status == "Awaiting decision" || status == "Awaiting penalty payment" {
+        } else if status == "Awaiting report" || status == "Awaiting decision" || status == "Awaiting penalty payment" || status == "Municipality decision" {
             processingColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         }
         
