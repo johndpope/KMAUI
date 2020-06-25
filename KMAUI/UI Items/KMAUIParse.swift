@@ -2247,7 +2247,7 @@ final public class KMAUIParse {
                 
                 if status == "Resolved" {
                     approvedCases.append(trespassCase)
-                } else if status == "Declined" {
+                } else if status == "Declined" || status == "Outside the Urban Range" {
                     declinedCases.append(trespassCase)
                 } else {
                     inProgressCases.append(trespassCase)
