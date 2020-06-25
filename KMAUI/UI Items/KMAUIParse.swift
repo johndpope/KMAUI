@@ -3167,6 +3167,15 @@ final public class KMAUIParse {
                             KMAUIUtilities.shared.globalAlert(title: "Error", message: error) { (_) in }
                         }
                     } else {
+                        // Create the Department and Ministry decisions / Notify the Department admin
+                        KMAUIParse.shared.createLandCaseDecisions(landCaseId: landCaseId) { (success, errorString) in
+                            if !errorString.isEmpty {
+                                print("Error creating the Land case decisions.")
+                            } else {
+                                KMAUIParse.shared.notifyDepartmentNewLandCase(landCaseId: landCaseId, caseNumber: landCaseNumber)
+                            }
+                        }
+                        
                         // Add the Land case connection
                         if !landCaseId.isEmpty {
                             trespassCaseObject["landCase"] = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCaseId)
