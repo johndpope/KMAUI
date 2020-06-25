@@ -2746,7 +2746,7 @@ final public class KMAUIParse {
         }
     }
     
-    public func createLandCaseObject(subLandId: String, completion: @escaping (_ landCaseId: String, _ landCaseNumber: String, _ error: String) -> ()) {
+    public func createLandCaseObject(subLandId: String, trespassCase: KMAUITrespassCaseStruct? = nil, completion: @escaping (_ landCaseId: String, _ landCaseNumber: String, _ error: String) -> ()) {
         if let currentUser = PFUser.current() {
             let newLandCase = PFObject(className: "KMALandCase")
             newLandCase["citizen"] = currentUser
@@ -2755,6 +2755,12 @@ final public class KMAUIParse {
             newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
             newLandCase["courtName"] = "Jeddah General Court"
             newLandCase["courtStatus"] = "In progress"
+            
+            // The new Land case from the Trespass case
+            if let trespassCase = trespassCase, !trespassCase.objectId.isEmpty {
+                newLandCase["citizen"] = PFUser(withoutDataWithObjectId: trespassCase.owner.objectId)
+                newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: trespassCase.subLand.objectId)
+            }
                         
             let fileBodyDict = ["files": KMAUIConstants.shared.placeholderFilesArray]
             let jsonFileBodyData = KMAUIUtilities.shared.dictionaryToJSONData(dict: fileBodyDict)
@@ -3139,11 +3145,14 @@ final public class KMAUIParse {
             message = "The Department of Urban Planning will send an order for an Immediate demolition of the Illegal building. The Trespass case status will be set to \"Resolved\"."
             newStatus = "Resolved"
             decision = "demolition"
+        } else if type == "landCase" {
+            message = "The Department of Urban Planning will send an order to create the new Land case for the Land owner. The Trespass case status will be set to \"Resolved\"."
+            newStatus = "Resolved"
+            decision = "Land case"
         }
         
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertView.addAction(UIAlertAction(title: "Submit", style: .default, handler: { (action) in
-            var trespassCase = trespassCase
             let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
             
             trespassCaseObject["trespassDecision"] = decision
@@ -3151,25 +3160,54 @@ final public class KMAUIParse {
             
             KMAUIUtilities.shared.startLoading(title: "Saving...")
             
-            trespassCaseObject.saveInBackground { (success, error) in
-                KMAUIUtilities.shared.stopLoadingWith { (_) in
-                    if let error = error {
-                        KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
-                    } else if success {
-                        // Don't forger to save details into the local data
-                        trespassCase.trespassDecision = decision
-                        trespassCase.caseStatus = newStatus
-                        // Notify user
-                        if type == "penalty" {
-                            KMAUIParse.shared.notifyUserPenalty(trespassCase: trespassCase)
+            if type == "landCase" {
+                KMAUIParse.shared.createLandCaseObject(subLandId: "", trespassCase: trespassCase) { (landCaseId, landCaseNumber, error) in
+                    if !error.isEmpty {
+                        KMAUIUtilities.shared.stopLoadingWith { (_) in
+                            KMAUIUtilities.shared.globalAlert(title: "Error", message: error) { (_) in }
                         }
-                        // Completion
-                        completion(trespassCase)
+                    } else {
+                        // Add the Land case connection
+                        if !landCaseId.isEmpty {
+                            trespassCaseObject["landCase"] = PFObject(withoutDataWithClassName: "KMALandCase", objectId: landCaseId)
+                            newStatus = "Land case #\(landCaseNumber)"
+                        }
+                        // Update the Trespass case
+                        KMAUIParse.shared.saveTrespassCase(trespassCaseObject: trespassCaseObject, trespassCase: trespassCase, decision: decision, newStatus: newStatus, type: type) { (trespassCaseUpdated) in
+                            completion(trespassCaseUpdated)
+                        }
                     }
+                }
+            } else {
+                // Update the Trespass case
+                KMAUIParse.shared.saveTrespassCase(trespassCaseObject: trespassCaseObject, trespassCase: trespassCase, decision: decision, newStatus: newStatus, type: type) { (trespassCaseUpdated) in
+                    completion(trespassCaseUpdated)
                 }
             }
         }))
         alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in }))
         KMAUIUtilities.shared.displayAlert(viewController: alertView)
+    }
+    
+    func saveTrespassCase(trespassCaseObject: PFObject, trespassCase: KMAUITrespassCaseStruct, decision: String, newStatus: String, type: String, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+        var trespassCase = trespassCase
+        
+        trespassCaseObject.saveInBackground { (success, error) in
+            KMAUIUtilities.shared.stopLoadingWith { (_) in
+                if let error = error {
+                    KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (_) in }
+                } else if success {
+                    // Don't forger to save details into the local data
+                    trespassCase.trespassDecision = decision
+                    trespassCase.caseStatus = newStatus
+                    // Notify user
+                    if type == "penalty" {
+                        KMAUIParse.shared.notifyUserPenalty(trespassCase: trespassCase)
+                    }
+                    // Completion
+                    completion(trespassCase)
+                }
+            }
+        }
     }
 }
