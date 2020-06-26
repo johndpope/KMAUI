@@ -3305,6 +3305,8 @@ final public class KMAUIParse {
                     // Notify user
                     if type == "penalty" {
                         KMAUIParse.shared.notifyUserPenalty(trespassCase: trespassCase)
+                    } else if type == "payPenalty" {
+                        KMAUIParse.shared.notifyDepartmentTrespassPenaltyPaid(trespassCase: trespassCase)
                     }
                     // Completion
                     completion(trespassCase)
