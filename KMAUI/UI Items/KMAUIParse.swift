@@ -3155,6 +3155,10 @@ final public class KMAUIParse {
             message = "The Department of Urban Planning will send an order to create the new Land case for the Land owner. The Trespass case status will be set to \"Resolved\"."
             newStatus = "Resolved"
             decision = "Land case"
+        } else if type == "payPenalty" {
+            message = "You're going to pay the penalty for the illegal building on the Land. The full ammount will be charged from your bank account and the Trespass case will be set to \"Resolved\""
+            newStatus = "Resolved"
+            decision = "Penalty paid"
         }
         
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
