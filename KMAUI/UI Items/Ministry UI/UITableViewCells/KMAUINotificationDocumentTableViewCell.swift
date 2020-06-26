@@ -34,6 +34,7 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var tableView: UITableView!
     
     // MARK: - Variables
+    public lazy var previewItem = NSURL()
     public var rows = [KMADocumentData]()
     public var type = ""
     public var lotteryResultStatus = ""
@@ -45,7 +46,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-    public lazy var previewItem = NSURL()
     // Callbacks
     public var shareCallback: ((Bool) -> Void)?
     public var citizenCallback: ((Bool) -> Void)?

@@ -148,7 +148,7 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
                     decisionLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
                     decisionLabel.text = "Trespass case closed without a penalty"
                     descriptionLabel.text = "After reviwing the Field observer report the decision to close the Trespass case without the penalty was made. The case is now Resolved."
-                } else if trespassCase.trespassDecision == "penalty" {
+                } else if trespassCase.trespassDecision == "penalty" || trespassCase.trespassDecision == "Penalty paid" {
                     // Penalty decision
                     descriptionLabel.text = "After reviewing the Field observer report the decision to charge the land owner with the penalty was made."
                     // Status
