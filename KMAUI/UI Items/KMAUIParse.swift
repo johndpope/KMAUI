@@ -2210,7 +2210,7 @@ final public class KMAUIParse {
     
     // MARK: - Get Trespass Cases
     
-    public func getTrespassCases(completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
+    public func getTrespassCases(objectId: String? = nil, completion: @escaping (_ trespassCasesArray: [KMAUITrespassCaseStruct])->()) {
         // Trespass cases array
         var trespassCases = [KMAUITrespassCaseStruct]()
         // Get details
@@ -2227,6 +2227,12 @@ final public class KMAUIParse {
         query.includeKey("violator")
         query.includeKey("violator.homeAddress")
         query.includeKey("violator.homeAddress.building")
+        
+        // Get the specific trespass case only
+        if let objectId = objectId, !objectId.isEmpty {
+            query.whereKey("objectId", equalTo: objectId)
+        }
+        
         query.findObjectsInBackground { (trespassCasesArray, error) in
             if let error = error {
                 print(error.localizedDescription)
