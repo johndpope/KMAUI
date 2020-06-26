@@ -15,7 +15,7 @@ public class KMAUILoadingIndicatorTableViewCell: UITableViewCell {
     @IBOutlet public weak var infoLabelLeft: NSLayoutConstraint!
     
     // MARK: - Variables
-    public static let id = "KMAUISubLandLoadingTableViewCell"
+    public static let id = "KMAUILoadingIndicatorTableViewCell"
     public var isLoading = false
     public var type = "" {
         didSet {
