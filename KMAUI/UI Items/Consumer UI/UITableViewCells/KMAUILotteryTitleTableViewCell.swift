@@ -117,17 +117,24 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     }
     
     public func setupTrespassCase() {
-        // Update font
-        infoLabelTop.constant = 0
-        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
-        // Title
-        titleLabel.text = "Case #\(trespassCase.caseNumber)"
-        titleLabelTop.constant = 16
-        // Status label
-        statusLabel.text = trespassCase.caseStatus.addGaps()
-        statusLabel.alpha = 1
-        statusLabel.backgroundColor = KMAUIUtilities.shared.getTrespassCaseColor(status: trespassCase.caseStatus)
+        // Setup visibility
+        if trespassCase.objectId.isEmpty {
+            // Title label
+            titleLabel.text = ""
+            // Status label
+            statusLabel.alpha = 0
+        } else {
+            // Title labe
+            titleLabel.text = "Case #\(trespassCase.caseNumber)"
+            titleLabelTop.constant = 16
+            // Status label
+            statusLabel.alpha = 1
+            
+            statusLabel.text = trespassCase.caseStatus.addGaps()
+            statusLabel.backgroundColor = KMAUIUtilities.shared.getTrespassCaseColor(status: trespassCase.caseStatus)
+        }
         // Info label - no text
+        infoLabelTop.constant = 0
         infoLabel.text = ""
     }
 }
