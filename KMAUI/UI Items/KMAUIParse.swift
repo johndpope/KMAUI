@@ -2937,7 +2937,7 @@ final public class KMAUIParse {
     
     public func notifyDepartmentTrespassPenaltyPaid(trespassCase: KMAUITrespassCaseStruct) {
         if let currentUser = PFUser.current(), let fullName = currentUser["fullName"] as? String {
-            let notificationTitle = "Trespass penalty payment"
+            let notificationTitle = "Trespass case penalty payment"
             let notificationMessage = "The Trespass case #\(trespassCase.caseNumber) is set as \"Resolved\", as \(fullName) has just paid the full penalty sum."
             let departmentId = "poqIHPw4NS"
 
@@ -3238,6 +3238,7 @@ final public class KMAUIParse {
             newStatus = "Resolved"
             decision = "Land case"
         } else if type == "payPenalty" {
+            title = "Penalty payment"
             message = "You're going to pay the penalty for the illegal building on the Land.\nThe full penalty sum will be charged from your bank account and the Trespass case will be set to \"Resolved\""
             newStatus = "Resolved"
             decision = "Penalty paid"
