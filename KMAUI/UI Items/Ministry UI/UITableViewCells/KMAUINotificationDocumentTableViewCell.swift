@@ -1,5 +1,5 @@
 //
-//  KMAUINotificationDocumentTableViewCell.swift
+//  KMAUINotificationDocumentTableViewCell1.swift
 //  KMA
 //
 //  Created by Stanislav Rastvorov on 06.05.2020.
@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KMAUI
 import QuickLook
 import Kingfisher
 
@@ -34,7 +35,6 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
     @IBOutlet public weak var tableView: UITableView!
     
     // MARK: - Variables
-    public lazy var previewItem = NSURL()
     public var rows = [KMADocumentData]()
     public var type = ""
     public var lotteryResultStatus = ""
@@ -46,14 +46,18 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var trespassCase = KMAUITrespassCaseStruct() {
+        didSet {
+            setupTrespassCase()
+        }
+    }
+    public lazy var previewItem = NSURL()
     // Callbacks
     public var shareCallback: ((Bool) -> Void)?
     public var citizenCallback: ((Bool) -> Void)?
     public var subLandCallback: ((Bool) -> Void)?
     public var viewAttachmentsAction: ((Bool) -> Void)?
     public var actionCallback: ((String) -> Void)?
-    
-    // MARK: - Variables
     public static let id = "KMAUINotificationDocumentTableViewCell"
     
     override public func awakeFromNib() {
@@ -281,16 +285,54 @@ public class KMAUINotificationDocumentTableViewCell: UITableViewCell {
         setupStatus()
     }
     
+    // Setup Trespass case
+    
+    public func setupTrespassCase() {
+        // Type
+        type = "trespassCase"
+        
+        // Title label
+        titleLabel.text = "Trespass case penalty payment"
+        
+        // Info label
+        infoLabel.attributedText = KMAUIUtilities.shared.highlightUnderline(words: ["Trespass case #\(trespassCase.caseNumber)"], in: "The Trespass case #\(trespassCase.caseNumber) has the status changed to \"\(trespassCase.caseStatus)\" as the full penalty payment was received from the citizen.", fontSize: infoLabel.font.pointSize)
+        
+        // Citizen name label
+        citizenNameLabel.text = trespassCase.owner.fullName
+        
+        // Citizen ID label
+        citizenIdLabel.text = "National ID: \(trespassCase.owner.objectId.uppercased())"
+        
+        // Citizen image
+        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
+        profileImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        
+        // Load profile image
+        if let url = URL(string: trespassCase.owner.profileImage) {
+            profileImageView.kf.setImage(with: url)
+        }
+        
+        // Hide the unneeded offsets as we don't show any images]uploadImageView.alpha = 0
+        uploadImageButton.alpha = 0
+        imagesPreviewView.alpha = 0
+        uploadImageViewHeight.constant = 0
+        citizenViewTop.constant = 0
+    }
+    
     @objc public func tapLabel(gesture: UITapGestureRecognizer) {
         var start = 18
+        var length = "Sub land \(subLand.subLandId)".count + 2
         
         if type == "documentUploaded" {
             start = 30
         } else if type == "lotteryResultUpdate" {
             start = 4
+        } else if type == "trespassCase" {
+            start = 4
+            length = "Trespass case #\(trespassCase.caseNumber)".count + 2
         }
         
-        let openRange = NSRange(location: start, length: "Sub land \(subLand.subLandId)".count + 2)
+        let openRange = NSRange(location: start, length: length)
         let tapLocation = gesture.location(in: infoLabel)
         let index = infoLabel.indexOfAttributedTextCharacterAtPoint(point: tapLocation)
         
