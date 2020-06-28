@@ -24,7 +24,7 @@ public class KMAUICasePointTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
         
@@ -77,12 +77,12 @@ public class KMAUICasePointTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-                rightArrowImageView.tintColor = UIColor.white
-                rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-                rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-                rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
 }

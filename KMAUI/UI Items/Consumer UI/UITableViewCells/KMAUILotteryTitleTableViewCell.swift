@@ -12,8 +12,9 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
-    @IBOutlet weak var titleLabelTop: NSLayoutConstraint!
+    @IBOutlet public weak var titleLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var infoLabelTop: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUILotteryTitleTableViewCell"
@@ -25,6 +26,11 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
     public var landCase = KMAUILandCaseStruct() {
         didSet {
             setupLandCase()
+        }
+    }
+    public var trespassCase = KMAUITrespassCaseStruct() {
+        didSet {
+            setupTrespassCase()
         }
     }
 
@@ -66,12 +72,14 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
         dateFormatter.timeStyle = .none
         dateFormatter.dateStyle = .short
         // Setup period label
+        infoLabelTop.constant = 8
         infoLabel.text = "\(dateFormatter.string(from: lottery.startDate)) – \(dateFormatter.string(from: lottery.endDate))"
     }
     
     public func setupLandCase() {
         // Update font
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
+        infoLabelTop.constant = 8
         // Setup the land case status
         if landCase.courtStatus.isEmpty {
             // Not submitted yet
@@ -106,5 +114,27 @@ public class KMAUILotteryTitleTableViewCell: UITableViewCell {
             dateFormatter.dateStyle = .medium
             infoLabel.text = "Court date: " + dateFormatter.string(from: landCase.date)
         }
+    }
+    
+    public func setupTrespassCase() {
+        // Setup visibility
+        if trespassCase.objectId.isEmpty {
+            // Title label
+            titleLabel.text = ""
+            // Status label
+            statusLabel.alpha = 0
+        } else {
+            // Title labe
+            titleLabel.text = "Case #\(trespassCase.caseNumber)"
+            titleLabelTop.constant = 16
+            // Status label
+            statusLabel.alpha = 1
+            
+            statusLabel.text = trespassCase.caseStatus.addGaps()
+            statusLabel.backgroundColor = KMAUIUtilities.shared.getTrespassCaseColor(status: trespassCase.caseStatus)
+        }
+        // Info label - no text
+        infoLabelTop.constant = 0
+        infoLabel.text = ""
     }
 }

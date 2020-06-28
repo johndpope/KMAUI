@@ -16,10 +16,12 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     @IBOutlet public weak var descriptionLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var approveButton: UIButton!
     @IBOutlet public weak var declineButton: UIButton!
-    @IBOutlet weak var declineButtonBottom: NSLayoutConstraint!
+    @IBOutlet public weak var declineButtonBottom: NSLayoutConstraint!
+    @IBOutlet public weak var decisionLabel: KMAUIBoldTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUITrespassDescriptionActionTableViewCell"
+    public var type = ""
     public var actionCallback: ((Bool) -> Void)?
     public var trespassCase = KMAUITrespassCaseStruct() {
         didSet {
@@ -58,6 +60,13 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
         declineButton.layer.cornerRadius = 8
         declineButton.clipsToBounds = true
         
+        // Decision label
+        decisionLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        decisionLabel.textColor = KMAUIConstants.shared.KMAUITextColor
+        decisionLabel.backgroundColor = KMAUIConstants.shared.KMAUILightBorderColor
+        decisionLabel.layer.cornerRadius = 8
+        decisionLabel.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
@@ -89,22 +98,71 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        // Title
-        titleLabel.text = "Trespass description"
-        // Description
-        descriptionLabel.text = trespassCase.initialComment
-        descriptionLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
-        // Check status to hide the buttons
-        if trespassCase.caseStatus == "Created" {
-            // Show buttons
-            declineButton.alpha = 1
-            approveButton.alpha = 1
+        if type == "initialCheck" {
+            // Title
+            titleLabel.text = "Trespass description"
+            // Description
+            descriptionLabel.text = trespassCase.initialComment
+            // Check status to hide the buttons
+            if trespassCase.caseStatus == "Created" {
+                // Show buttons
+                declineButton.alpha = 1
+                declineButton.setTitle("Decline case", for: .normal)
+                approveButton.alpha = 1
+                approveButton.setTitle("Approve case", for: .normal)
+                declineButtonBottom.constant = 20
+            } else {
+                // Hide buttons
+                declineButton.alpha = 0
+                approveButton.alpha = 0
+                declineButtonBottom.constant = -52
+            }
+            // Hide decision label
+            decisionLabel.alpha = 0
+        } else if type == "ownerPenalty" {
+            // Title
+            titleLabel.text = "Final decision"
+            // We need to have the bottom button / label
             declineButtonBottom.constant = 20
-        } else {
-            // Hide buttons
-            declineButton.alpha = 0
-            approveButton.alpha = 0
-            declineButtonBottom.constant = -52
+            // No decision yet
+            if trespassCase.trespassDecision.isEmpty {
+                // Description
+                descriptionLabel.text = "Please review the Field observer report to prepare the final decision.\nAs the violator is the land owner we can either close the case without a penalty or to request the land owner to pay a penalty."
+                // Show buttons
+                declineButton.alpha = 1
+                declineButton.setTitle("Close the case", for: .normal)
+                approveButton.alpha = 1
+                approveButton.setTitle("Penalty for owner", for: .normal)
+                // Hide decision label
+                decisionLabel.alpha = 0
+            }
+            // Has decision
+            if !trespassCase.trespassDecision.isEmpty {
+                // Hide buttons
+                declineButton.alpha = 0
+                approveButton.alpha = 0
+                // Show decision label
+                decisionLabel.alpha = 1
+                // Decision
+                if trespassCase.trespassDecision == "noPenalty" {
+                    decisionLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                    decisionLabel.text = "Trespass case closed without a penalty"
+                    descriptionLabel.text = "After reviwing the Field observer report the decision to close the Trespass case without the penalty was made. The case is now Resolved."
+                } else if trespassCase.trespassDecision == "penalty" || trespassCase.trespassDecision == "Penalty paid" {
+                    // Penalty decision
+                    descriptionLabel.text = "After reviewing the Field observer report the decision to charge the land owner with the penalty was made."
+                    // Status
+                    if trespassCase.caseStatus == "Resolved" {
+                        decisionLabel.textColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                        decisionLabel.text = "Penalty payment received"
+                    } else if trespassCase.caseStatus == "Awaiting penalty payment" {
+                        decisionLabel.textColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+                        decisionLabel.text = "Penalty request send to the Land owner"
+                    }
+                }
+            }
         }
+        // Update the description label line offset
+        descriptionLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
     }
 }

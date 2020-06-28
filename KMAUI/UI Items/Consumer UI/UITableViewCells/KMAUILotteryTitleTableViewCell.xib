@@ -63,6 +63,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="infoLabel" destination="9mu-C4-8tE" id="uH2-YF-xdE"/>
+                <outlet property="infoLabelTop" destination="uSU-KD-DAd" id="6Ag-W5-WQ3"/>
                 <outlet property="statusLabel" destination="9LZ-YL-ZhG" id="gjj-Ih-sap"/>
                 <outlet property="titleLabel" destination="hPM-QJ-var" id="FFy-QP-VlR"/>
                 <outlet property="titleLabelTop" destination="5vk-cY-98n" id="eKc-E2-W4w"/>
