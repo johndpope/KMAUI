@@ -65,8 +65,12 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            arrowIndicator.tintColor = UIColor.white
+            arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+                        starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
@@ -119,6 +123,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         starButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         starButton.clipsToBounds = true
+        
+        // Arrow indicator
         
         setupStarTint()
         
@@ -205,7 +211,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         detailsStackView.alpha = 1
         detailsStackViewTop.constant = 8
         
-        arrowIndicator.image = KMAUIConstants.shared.arrowUpIndicator
+        arrowIndicator.image = KMAUIConstants.shared.arrowUpIndicator.withRenderingMode(.alwaysTemplate)
     }
     
     /**
@@ -227,9 +233,9 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         detailsStackViewTop.constant = 0
         
         if isExpandable {
-            arrowIndicator.image = KMAUIConstants.shared.arrowDownIndicator
+            arrowIndicator.image = KMAUIConstants.shared.arrowDownIndicator.withRenderingMode(.alwaysTemplate)
         } else {
-            arrowIndicator.image = KMAUIConstants.shared.arrowIndicator
+            arrowIndicator.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         }
     }
     
