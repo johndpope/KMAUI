@@ -83,6 +83,9 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
         
+        // Decrease the shadow opacity
+        layer.shadowOpacity = 0.05
+        
         if !itemPerformance.performanceArray.isEmpty {
             var progress = 0
             
