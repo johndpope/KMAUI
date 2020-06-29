@@ -139,7 +139,7 @@
                                             <constraint firstAttribute="trailing" secondItem="web-j7-yQL" secondAttribute="trailing" constant="8" id="qjL-d4-KUt"/>
                                         </constraints>
                                     </view>
-                                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-fT-4i1">
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-fT-4i1">
                                         <rect key="frame" x="114" y="18" width="1" height="31"/>
                                         <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                         <constraints>
@@ -210,7 +210,7 @@
                                             <constraint firstAttribute="trailing" secondItem="n69-F1-RZU" secondAttribute="trailing" constant="8" id="s7y-GG-XU9"/>
                                         </constraints>
                                     </view>
-                                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjn-GE-mmO">
+                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjn-GE-mmO">
                                         <rect key="frame" x="229" y="18" width="1" height="31"/>
                                         <color key="backgroundColor" name="KMAUIGreyLineColor"/>
                                         <constraints>

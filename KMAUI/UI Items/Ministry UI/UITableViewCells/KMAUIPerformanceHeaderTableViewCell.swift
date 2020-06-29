@@ -49,7 +49,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view background color
-        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5).cgColor
+        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         bgView.layer.borderWidth = 2
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
