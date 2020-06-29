@@ -125,6 +125,8 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)
         
         // Arrow indicator
+        arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         arrowIndicator.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
         arrowIndicator.clipsToBounds = true
         
