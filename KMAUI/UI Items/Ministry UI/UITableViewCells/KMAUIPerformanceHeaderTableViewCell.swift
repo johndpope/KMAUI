@@ -53,10 +53,10 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         bgView.layer.borderWidth = 2
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
-
+        
         // Setup the font size
         itemTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        itemValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
+        itemValueLabel.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         communityTitleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         communityProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         serviceTitleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
@@ -65,7 +65,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         securityProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // Stack view background color and corners
-        stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
         stackViewBgView.layer.cornerRadius = 8
         stackViewBgView.clipsToBounds = true
         
@@ -136,7 +136,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             KMAUIUtilities.shared.setupColor(ring: totalProgressView)
         }
     }
-
+    
     @IBAction func clearSelectionButtonPressed(_ sender: Any) {
         closeCallback?(true)
     }

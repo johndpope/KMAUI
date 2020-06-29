@@ -308,7 +308,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TiB-Xm-lIP"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="-2"/>
                                 <state key="normal" title="Clear selection" image="closeIcon">
                                     <color key="titleColor" name="KMAUITextColor"/>
                                 </state>
