@@ -41,6 +41,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         }
     }
     public static let id = "KMAUIPerformanceHeaderTableViewCell"
+    public var closeCallback: ((Bool) -> Void)?
     
     // MARK: - Cell methods
     
@@ -137,7 +138,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     }
 
     @IBAction func clearSelectionButtonPressed(_ sender: Any) {
+        closeCallback?(true)
     }
-    
 }
 
