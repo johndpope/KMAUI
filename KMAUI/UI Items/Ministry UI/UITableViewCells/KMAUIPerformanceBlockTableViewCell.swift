@@ -10,6 +10,7 @@ import UIKit
 import MKRingProgressView
 
 public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet public weak var bgViewTop: NSLayoutConstraint!
@@ -135,11 +136,11 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     
     public func setupStarTint() {
         if itemPerformance.isOn {
-            starButton.tintColor = UIColor.white
-            starButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            starButton.tintColor = KMAUIConstants.shared.KMAUIYellowProgressColor // UIColor.white
+//            starButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
         } else {
             starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+//            starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     

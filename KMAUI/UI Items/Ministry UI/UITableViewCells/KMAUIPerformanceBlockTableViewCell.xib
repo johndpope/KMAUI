@@ -175,7 +175,7 @@
     </objects>
     <resources>
         <image name="arrowIndicator" width="7" height="11"/>
-        <image name="starIcon" width="38" height="38"/>
+        <image name="starIcon" width="16" height="15"/>
         <namedColor name="KMAUIGreenProgressColor">
             <color red="0.0" green="0.74509803921568629" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
