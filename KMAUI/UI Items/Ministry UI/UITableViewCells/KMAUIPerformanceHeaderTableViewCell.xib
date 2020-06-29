@@ -109,7 +109,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sgp-YV-TqQ" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="12" width="84.5" height="21"/>
+                                                <rect key="frame" x="12" y="12" width="88.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="3pL-AT-MAd"/>
                                                 </constraints>
@@ -134,7 +134,7 @@
                                             <constraint firstItem="web-j7-yQL" firstAttribute="leading" secondItem="fZG-Rb-yzk" secondAttribute="trailing" constant="6" id="Dej-uC-TKX"/>
                                             <constraint firstItem="Sgp-YV-TqQ" firstAttribute="top" secondItem="C1C-Pj-d5w" secondAttribute="top" constant="12" id="M9q-Xy-s6v"/>
                                             <constraint firstItem="fZG-Rb-yzk" firstAttribute="top" secondItem="Sgp-YV-TqQ" secondAttribute="bottom" constant="4" id="P30-nc-Hco"/>
-                                            <constraint firstAttribute="trailing" secondItem="Sgp-YV-TqQ" secondAttribute="trailing" constant="12" id="QQl-Eu-Zz3"/>
+                                            <constraint firstAttribute="trailing" secondItem="Sgp-YV-TqQ" secondAttribute="trailing" constant="8" id="QQl-Eu-Zz3"/>
                                             <constraint firstItem="fZG-Rb-yzk" firstAttribute="leading" secondItem="Sgp-YV-TqQ" secondAttribute="leading" id="c3g-7B-5CO"/>
                                             <constraint firstAttribute="trailing" secondItem="web-j7-yQL" secondAttribute="trailing" constant="8" id="qjL-d4-KUt"/>
                                         </constraints>
@@ -151,7 +151,7 @@
                                         <rect key="frame" x="117.5" y="0.0" width="109" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n69-F1-RZU" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="12" width="85" height="21"/>
+                                                <rect key="frame" x="12" y="12" width="89" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="l8Y-y9-eDG"/>
                                                 </constraints>
@@ -207,7 +207,7 @@
                                             <constraint firstItem="3Wo-Bo-A1w" firstAttribute="top" secondItem="n69-F1-RZU" secondAttribute="bottom" constant="4" id="d2P-LR-0Ix"/>
                                             <constraint firstItem="n69-F1-RZU" firstAttribute="top" secondItem="7ei-CR-IC0" secondAttribute="top" constant="12" id="lpn-io-zBz"/>
                                             <constraint firstItem="n69-F1-RZU" firstAttribute="leading" secondItem="7ei-CR-IC0" secondAttribute="leading" constant="12" id="oXo-sF-qLb"/>
-                                            <constraint firstAttribute="trailing" secondItem="n69-F1-RZU" secondAttribute="trailing" constant="12" id="s7y-GG-XU9"/>
+                                            <constraint firstAttribute="trailing" secondItem="n69-F1-RZU" secondAttribute="trailing" constant="8" id="s7y-GG-XU9"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjn-GE-mmO">
@@ -222,7 +222,7 @@
                                         <rect key="frame" x="235.5" y="0.0" width="108.5" height="67"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJh-QC-FMC" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="12" y="12" width="84.5" height="21"/>
+                                                <rect key="frame" x="12" y="12" width="88.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="op8-j4-X20"/>
                                                 </constraints>
@@ -271,7 +271,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="EJh-QC-FMC" secondAttribute="trailing" constant="12" id="5os-f2-T7C"/>
+                                            <constraint firstAttribute="trailing" secondItem="EJh-QC-FMC" secondAttribute="trailing" constant="8" id="5os-f2-T7C"/>
                                             <constraint firstItem="5Fg-UT-Ai1" firstAttribute="leading" secondItem="EJh-QC-FMC" secondAttribute="leading" id="DeF-XR-5bj"/>
                                             <constraint firstItem="EJh-QC-FMC" firstAttribute="leading" secondItem="W2U-DF-NYb" secondAttribute="leading" constant="12" id="VsU-x4-gpg"/>
                                             <constraint firstAttribute="trailing" secondItem="fLB-MZ-PeZ" secondAttribute="trailing" constant="8" id="bgS-Qx-f3m"/>
