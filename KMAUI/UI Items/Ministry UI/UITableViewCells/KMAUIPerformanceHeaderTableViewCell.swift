@@ -21,7 +21,8 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var itemValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var communityProgressView: RingProgressView!
-    @IBOutlet public weak var communityProgressLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var communityTitleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var communityProgressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var serviceProgressView: RingProgressView!
     @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
@@ -47,7 +48,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view background color
-        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         bgView.layer.borderWidth = 2
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
@@ -55,9 +56,9 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         // Setup the font size
         itemTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         itemValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
-        communityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
-        serviceProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
-        securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        communityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        serviceProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // Stack view background color and corners
         stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
@@ -115,7 +116,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
                 totalPerformance += performace
                 // Setup the data for label and progress view
                 if let label = labelArray[index], let progressView = performanceViewArray[index] {
-                    label.attributedText = KMAUIUtilities.shared.attributedText(text: "\(KMAUIConstants.shared.performanceTitles[index]) \(performace)%", search: "\(performace)%", fontSize: label.font.pointSize, noColor: true)
+                    label.text = "\(performace)%"
                     progressView.progress = Double(performace) / 100
                     KMAUIUtilities.shared.setupColor(ring: progressView)
                 }
