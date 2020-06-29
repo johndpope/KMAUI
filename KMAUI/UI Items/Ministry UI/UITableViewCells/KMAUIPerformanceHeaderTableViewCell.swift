@@ -29,9 +29,8 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var securityProgressView: RingProgressView!
     @IBOutlet public weak var securityTitleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var securityProgressLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var detailsStackView: UIStackView!
-    @IBOutlet public weak var detailsStackViewTop: NSLayoutConstraint!
     @IBOutlet public weak var stackViewBgView: UIView!
+    @IBOutlet public weak var clearSelectionButton: UIButton!
     
     // MARK - Variables
     public var canHighlight = false
@@ -68,6 +67,9 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         stackViewBgView.layer.cornerRadius = 8
         stackViewBgView.clipsToBounds = true
+        
+        // Clear button image
+        clearSelectionButton.semanticContentAttribute = UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
         
         // No selection required
         selectionStyle = .none
@@ -132,44 +134,10 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
             totalProgressView.progress = Double(totalPerformance) / 100
             KMAUIUtilities.shared.setupColor(ring: totalProgressView)
         }
-        
-        // Clear existing subviews
-        for subview in detailsStackView.subviews {
-            detailsStackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        
-        if performanceStruct.rows.isEmpty {
-            detailsStackViewTop.constant = -4
-        } else {
-            detailsStackViewTop.constant = 8
-        }
-
-        for statItem in performanceStruct.rows {
-            // Creating the horizontal stack view
-            let stackView = UIStackView()
-            stackView.axis = NSLayoutConstraint.Axis.horizontal
-            stackView.distribution = UIStackView.Distribution.fill
-            stackView.alignment = UIStackView.Alignment.fill
-            stackView.spacing = 8
-            
-            // Creating the title label
-            let titleLabel = KMAUIRegularTextLabel()
-            titleLabel.textAlignment = .left
-            titleLabel.text = statItem.rowName
-            titleLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
-            stackView.addArrangedSubview(titleLabel)
-            
-            // Creating the text label
-            let valueLabel = KMAUIBoldTextLabel()
-            valueLabel.textAlignment = .right
-            valueLabel.widthAnchor.constraint(equalToConstant: 60.0).isActive = true
-            valueLabel.text = statItem.rowValue
-            valueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
-            stackView.addArrangedSubview(valueLabel)
-            
-            detailsStackView.addArrangedSubview(stackView)
-        }
     }
+
+    @IBAction func clearSelectionButtonPressed(_ sender: Any) {
+    }
+    
 }
 
