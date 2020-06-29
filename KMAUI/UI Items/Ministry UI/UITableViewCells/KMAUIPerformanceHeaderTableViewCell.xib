@@ -118,7 +118,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="web-j7-yQL" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="36" y="35.5" width="55.5" height="21"/>
+                                                <rect key="frame" x="36" y="35.5" width="59.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="JPO-FP-Nao"/>
                                                 </constraints>
@@ -136,7 +136,7 @@
                                             <constraint firstItem="fZG-Rb-yzk" firstAttribute="top" secondItem="Sgp-YV-TqQ" secondAttribute="bottom" constant="4" id="P30-nc-Hco"/>
                                             <constraint firstAttribute="trailing" secondItem="Sgp-YV-TqQ" secondAttribute="trailing" constant="12" id="QQl-Eu-Zz3"/>
                                             <constraint firstItem="fZG-Rb-yzk" firstAttribute="leading" secondItem="C1C-Pj-d5w" secondAttribute="leading" constant="12" id="Qk0-YP-ePs"/>
-                                            <constraint firstAttribute="trailing" secondItem="web-j7-yQL" secondAttribute="trailing" constant="12" id="qjL-d4-KUt"/>
+                                            <constraint firstAttribute="trailing" secondItem="web-j7-yQL" secondAttribute="trailing" constant="8" id="qjL-d4-KUt"/>
                                         </constraints>
                                     </view>
                                     <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pfz-fT-4i1">
@@ -189,7 +189,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7y-yR-fI6" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="36" y="35.5" width="55" height="21"/>
+                                                <rect key="frame" x="36" y="35.5" width="59" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="bes-tj-EQT"/>
                                                 </constraints>
@@ -202,7 +202,7 @@
                                         <constraints>
                                             <constraint firstItem="3Wo-Bo-A1w" firstAttribute="leading" secondItem="7ei-CR-IC0" secondAttribute="leading" constant="12" id="NjS-fH-hry"/>
                                             <constraint firstItem="M7y-yR-fI6" firstAttribute="centerY" secondItem="3Wo-Bo-A1w" secondAttribute="centerY" id="UaC-MW-ypS"/>
-                                            <constraint firstAttribute="trailing" secondItem="M7y-yR-fI6" secondAttribute="trailing" constant="12" id="VLh-Vu-luP"/>
+                                            <constraint firstAttribute="trailing" secondItem="M7y-yR-fI6" secondAttribute="trailing" constant="8" id="VLh-Vu-luP"/>
                                             <constraint firstItem="M7y-yR-fI6" firstAttribute="leading" secondItem="3Wo-Bo-A1w" secondAttribute="trailing" constant="6" id="YEL-B8-6Jq"/>
                                             <constraint firstItem="3Wo-Bo-A1w" firstAttribute="top" secondItem="n69-F1-RZU" secondAttribute="bottom" constant="4" id="d2P-LR-0Ix"/>
                                             <constraint firstItem="n69-F1-RZU" firstAttribute="top" secondItem="7ei-CR-IC0" secondAttribute="top" constant="12" id="lpn-io-zBz"/>
@@ -260,7 +260,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLB-MZ-PeZ" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                                <rect key="frame" x="36" y="35.5" width="55.5" height="21"/>
+                                                <rect key="frame" x="36" y="35.5" width="59.5" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="26M-dI-n6P"/>
                                                 </constraints>
@@ -274,7 +274,7 @@
                                             <constraint firstItem="5Fg-UT-Ai1" firstAttribute="leading" secondItem="W2U-DF-NYb" secondAttribute="leading" constant="12" id="1Vf-RB-ORw"/>
                                             <constraint firstAttribute="trailing" secondItem="EJh-QC-FMC" secondAttribute="trailing" constant="12" id="5os-f2-T7C"/>
                                             <constraint firstItem="EJh-QC-FMC" firstAttribute="leading" secondItem="W2U-DF-NYb" secondAttribute="leading" constant="12" id="VsU-x4-gpg"/>
-                                            <constraint firstAttribute="trailing" secondItem="fLB-MZ-PeZ" secondAttribute="trailing" constant="12" id="bgS-Qx-f3m"/>
+                                            <constraint firstAttribute="trailing" secondItem="fLB-MZ-PeZ" secondAttribute="trailing" constant="8" id="bgS-Qx-f3m"/>
                                             <constraint firstItem="fLB-MZ-PeZ" firstAttribute="centerY" secondItem="5Fg-UT-Ai1" secondAttribute="centerY" id="c7T-43-u0q"/>
                                             <constraint firstItem="fLB-MZ-PeZ" firstAttribute="leading" secondItem="5Fg-UT-Ai1" secondAttribute="trailing" constant="6" id="cwl-08-JBJ"/>
                                             <constraint firstItem="5Fg-UT-Ai1" firstAttribute="top" secondItem="EJh-QC-FMC" secondAttribute="bottom" constant="4" id="pp2-cb-8JT"/>
