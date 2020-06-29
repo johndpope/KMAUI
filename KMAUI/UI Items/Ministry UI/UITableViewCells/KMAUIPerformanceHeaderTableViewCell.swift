@@ -21,16 +21,17 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     @IBOutlet public weak var itemTitleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var itemValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var communityProgressView: RingProgressView!
-    @IBOutlet weak var communityTitleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var communityTitleLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var communityProgressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var serviceProgressView: RingProgressView!
-    @IBOutlet public weak var serviceProgressLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var serviceTitleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var serviceProgressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var securityProgressView: RingProgressView!
-    @IBOutlet public weak var securityProgressLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var stackViewBgView: UIView!
-    @IBOutlet public weak var stackView: UIStackView!
+    @IBOutlet public weak var securityTitleLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var securityProgressLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var detailsStackView: UIStackView!
     @IBOutlet public weak var detailsStackViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var stackViewBgView: UIView!
     
     // MARK - Variables
     public var canHighlight = false
@@ -48,7 +49,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view background color
-        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
+        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5).cgColor
         bgView.layer.borderWidth = 2
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
@@ -56,9 +57,12 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         // Setup the font size
         itemTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         itemValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
-        communityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        serviceProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        securityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        communityTitleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        communityProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        serviceTitleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        serviceProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        securityTitleLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
+        securityProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // Stack view background color and corners
         stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
