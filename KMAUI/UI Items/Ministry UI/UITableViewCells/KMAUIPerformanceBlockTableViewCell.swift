@@ -70,7 +70,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-                        starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+            arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
@@ -121,10 +121,10 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         // Star button
         starButton.setTitle("", for: .normal)
         starButton.setImage(KMAUIConstants.shared.starIcon.withRenderingMode(.alwaysTemplate), for: .normal)
-        starButton.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
-        starButton.clipsToBounds = true
         
         // Arrow indicator
+        arrowIndicator.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        arrowIndicator.clipsToBounds = true
         
         setupStarTint()
         
