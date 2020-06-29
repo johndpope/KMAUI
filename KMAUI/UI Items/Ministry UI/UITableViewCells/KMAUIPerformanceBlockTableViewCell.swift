@@ -63,17 +63,16 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            
-            if !isExpandable {
+        if !isExpandable { // Only in this case we need to highlight the click
+            if highlight {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
                 arrowIndicator.tintColor = UIColor.white
                 arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            } else {
+                bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+                arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+                arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAProgressGray
             }
-        } else {
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
@@ -144,11 +143,9 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     
     public func setupStarTint() {
         if itemPerformance.isOn {
-            starButton.tintColor = KMAUIConstants.shared.KMAUIYellowProgressColor // UIColor.white
-            //            starButton.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            starButton.tintColor = KMAUIConstants.shared.KMAUIYellowProgressColor
         } else {
             starButton.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
-            //            starButton.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
