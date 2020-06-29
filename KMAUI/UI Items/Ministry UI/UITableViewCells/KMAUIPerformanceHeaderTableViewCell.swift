@@ -45,8 +45,15 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
     
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Bg view background color
+        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+        bgView.layer.borderWidth = 2
+        bgView.layer.cornerRadius = 8
+        bgView.clipsToBounds = true
 
         // Setup the font size
+        itemTitleLabel.font = UIFont.systemFont(ofSize: 14, weight: .light)
         itemValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(22)
         communityProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
         serviceProgressLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(12)
@@ -54,7 +61,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         
         // Stack view background color and corners
         stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-        stackViewBgView.layer.cornerRadius = 22
+        stackViewBgView.layer.cornerRadius = 8
         stackViewBgView.clipsToBounds = true
         
         // No selection required
