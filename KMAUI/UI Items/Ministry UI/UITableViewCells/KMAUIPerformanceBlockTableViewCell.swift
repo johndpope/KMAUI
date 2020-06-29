@@ -65,8 +65,11 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
-            arrowIndicator.tintColor = UIColor.white
-            arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            
+            if !isExpandable {
+                arrowIndicator.tintColor = UIColor.white
+                arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAUIBlueDarkColor
+            }
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
@@ -98,7 +101,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         }
 
         // Item name label
-        itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+        itemNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         itemNameLabel.text = itemPerformance.itemName
         
         if hasStat {
