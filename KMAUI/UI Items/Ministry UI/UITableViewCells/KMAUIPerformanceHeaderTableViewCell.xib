@@ -97,7 +97,7 @@
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
-                                                        <real key="value" value="4"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                         <real key="value" value="0.0"/>
@@ -177,7 +177,7 @@
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
-                                                        <real key="value" value="4"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                         <real key="value" value="0.0"/>
@@ -248,7 +248,7 @@
                                                         <color key="value" name="KMAUIGreyProgressColor"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="ringWidth">
-                                                        <real key="value" value="4"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                                         <real key="value" value="0.0"/>
