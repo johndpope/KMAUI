@@ -1394,9 +1394,44 @@ final public class KMAUIParse {
                 print("Error setting the notification \(notificationId) as read: \(error.localizedDescription)")
             } else if success {
                 print("Notification \(notificationId) is set to read")
-                completion(true)
+                completion(updateNotificationsAfterRead(notificationId: notificationId))
             }
         }
+    }
+    
+    public func updateNotificationsAfterRead(notificationId: String) -> Bool {
+        let lotteryUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.landLotteryNotifications)
+        let landCasesUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.landCasesNotifications)
+        let trespassCasesUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.trespassCasesNotifications)
+        let generalUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.generalNotifications)
+        
+        KMAUIConstants.shared.landLotteryNotifications = lotteryUpdate.0
+        KMAUIConstants.shared.landCasesNotifications = landCasesUpdate.0
+        KMAUIConstants.shared.trespassCasesNotifications = trespassCasesUpdate.0
+        KMAUIConstants.shared.generalNotifications = generalUpdate.0
+        
+        if lotteryUpdate.1 || landCasesUpdate.1 || trespassCasesUpdate.1 || generalUpdate.1 {
+            return true
+        }
+        
+        return false
+    }
+    
+    public func updateNotificationRead(notificationId: String, notificationsArray: [KMANotificationStruct]) -> ([KMANotificationStruct], Bool) {
+        var notificationsArray = notificationsArray
+        var found = false
+        
+        for (index, notification) in notificationsArray.enumerated() {
+            var notificationItem = notification
+            
+            if notificationItem.objectId == notificationId {
+                found = true
+                notificationItem.read = true
+                notificationsArray[index] = notificationItem
+            }
+        }
+        
+        return (notificationsArray, found)
     }
     
     // MARK: - Random sub land for document
