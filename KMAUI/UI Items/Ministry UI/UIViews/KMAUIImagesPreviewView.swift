@@ -23,12 +23,12 @@ public class KMAUIImagesPreviewView: UIView {
     @IBOutlet public weak var threeThreeBgView: UIView!
     @IBOutlet public weak var threeThreeBgImageButton: UIButton!
     // Images
-    @IBOutlet weak var singleImageView: UIImageView!
-    @IBOutlet weak var twoOneImageView: UIImageView!
-    @IBOutlet weak var twoTwoImageView: UIImageView!
-    @IBOutlet weak var threeOneImageView: UIImageView!
-    @IBOutlet weak var threeTwoImageView: UIImageView!
-    @IBOutlet weak var threeThreeImageView: UIImageView!
+    @IBOutlet public weak var singleImageView: UIImageView!
+    @IBOutlet public weak var twoOneImageView: UIImageView!
+    @IBOutlet public weak var twoTwoImageView: UIImageView!
+    @IBOutlet public weak var threeOneImageView: UIImageView!
+    @IBOutlet public weak var threeTwoImageView: UIImageView!
+    @IBOutlet public weak var threeThreeImageView: UIImageView!
     
     // MARK: - Variables
     public var subLand = KMAUISubLandStruct() {
@@ -146,6 +146,11 @@ public class KMAUIImagesPreviewView: UIView {
                     threeThreeBgImageButton.setTitle("+\(imagesArray.count - 3)", for: .normal)
                 }
             }
+        } else {
+            print("No attachments found.")
+            singleImageView.alpha = 1
+            singleImageView.contentMode = .center
+            singleImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         }
     }
     
