@@ -307,7 +307,7 @@ public class KMAUIConstants {
 //    13. Eastern Province: U3pCS8McNA - Ash Sharqiyah
     
     // MARK: - Notification arrays
-    var landLotteryNotifications = [KMANotificationStruct]()
-    var landCasesNotifications = [KMANotificationStruct]()
-    var trespassCasesNotifications = [KMANotificationStruct]()
+    public var landLotteryNotifications = [KMANotificationStruct]()
+    public var landCasesNotifications = [KMANotificationStruct]()
+    public var trespassCasesNotifications = [KMANotificationStruct]()
 }
