@@ -1400,10 +1400,10 @@ final public class KMAUIParse {
     }
     
     public func updateNotificationsAfterRead(notificationId: String) -> Bool {
-        let lotteryUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.landLotteryNotifications)
-        let landCasesUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.landCasesNotifications)
-        let trespassCasesUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.trespassCasesNotifications)
-        let generalUpdate = updateNotificationRead(notificationId: notificationId, notificationsArray: KMAUIConstants.shared.generalNotifications)
+        let lotteryUpdate = updateNotificationRead(notificationId: notificationId, notifications: KMAUIConstants.shared.landLotteryNotifications)
+        let landCasesUpdate = updateNotificationRead(notificationId: notificationId, notifications: KMAUIConstants.shared.landCasesNotifications)
+        let trespassCasesUpdate = updateNotificationRead(notificationId: notificationId, notifications: KMAUIConstants.shared.trespassCasesNotifications)
+        let generalUpdate = updateNotificationRead(notificationId: notificationId, notifications: KMAUIConstants.shared.generalNotifications)
         
         KMAUIConstants.shared.landLotteryNotifications = lotteryUpdate.0
         KMAUIConstants.shared.landCasesNotifications = landCasesUpdate.0
@@ -1417,16 +1417,17 @@ final public class KMAUIParse {
         return false
     }
     
-    public func updateNotificationRead(notificationId: String, notificationsArray: [KMANotificationStruct]) -> ([KMANotificationStruct], Bool) {
-        var notificationsArray = notificationsArray
+    public func updateNotificationRead(notificationId: String, notifications: [KMANotificationStruct]) -> ([KMANotificationStruct], Bool) {
+        var notificationsArray = notifications
         var found = false
         
-        for (index, notification) in notificationsArray.enumerated() {
+        for (index, notification) in notifications.enumerated() {
             var notificationItem = notification
             
             if notificationItem.objectId == notificationId {
                 found = true
                 notificationItem.read = true
+                print("Notification updated to be read.")
                 notificationsArray[index] = notificationItem
             }
         }
