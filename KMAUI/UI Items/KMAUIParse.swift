@@ -1321,7 +1321,7 @@ final public class KMAUIParse {
     
     // MARK: - Update Notifications
     
-    public func updateNotifications(hasUpdatedAt: Bool, updatedAt: Date, completion: @escaping (_ updatedNotifications: [KMANotificationStruct])->()) {
+    public func updateNotifications(hasUpdatedAt: Bool, updatedAt: Date, completion: @escaping (_ updated: Bool)->()) {
         let query = PFQuery(className: "KMANotification")
         query.order(byDescending: "createdAt")
         
@@ -1347,7 +1347,32 @@ final public class KMAUIParse {
                 }
             }
             
-            completion(updatedNotifications)
+            // Clear notification arrays
+            KMAUIConstants.shared.landLotteryNotifications = [KMANotificationStruct]()
+            KMAUIConstants.shared.landCasesNotifications = [KMANotificationStruct]()
+            KMAUIConstants.shared.trespassCasesNotifications = [KMANotificationStruct]()
+            KMAUIConstants.shared.generalNotifications = [KMANotificationStruct]()
+            // Fill notification arrays
+            for notification in updatedNotifications {
+                let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: notification.items)
+                // Get events
+                if let eventType = dict["eventType"] as? String, !eventType.isEmpty {
+                    // Setup notifications
+                    if KMAUIConstants.shared.landLotteryTypes.contains(eventType) {
+                        KMAUIConstants.shared.landLotteryNotifications.append(notification)
+                    } else if KMAUIConstants.shared.landCasesTypes.contains(eventType) {
+                        KMAUIConstants.shared.landCasesNotifications.append(notification)
+                    } else if KMAUIConstants.shared.trespassCasesTypes.contains(eventType) {
+                        KMAUIConstants.shared.trespassCasesNotifications.append(notification)
+                    } else {
+                        KMAUIConstants.shared.generalNotifications.append(notification)
+                    }
+                } else {
+                    KMAUIConstants.shared.generalNotifications.append(notification)
+                }
+            }
+            
+            completion(true)
         }
     }
     
