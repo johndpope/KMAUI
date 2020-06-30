@@ -1394,7 +1394,7 @@ final public class KMAUIParse {
                 print("Error setting the notification \(notificationId) as read: \(error.localizedDescription)")
             } else if success {
                 print("Notification \(notificationId) is set to read")
-                completion(updateNotificationsAfterRead(notificationId: notificationId))
+                completion(KMAUIParse.shared.updateNotificationsAfterRead(notificationId: notificationId))
             }
         }
     }
