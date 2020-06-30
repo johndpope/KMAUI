@@ -304,10 +304,11 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1nl-H4-G0r">
-                                <rect key="frame" x="116.5" y="208" width="131" height="32"/>
+                                <rect key="frame" x="128" y="208" width="108" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="TiB-Xm-lIP"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="-2"/>
                                 <state key="normal" title="Clear selection" image="closeIcon">
                                     <color key="titleColor" name="KMAUITextColor"/>
