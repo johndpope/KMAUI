@@ -1321,7 +1321,7 @@ final public class KMAUIParse {
     
     // MARK: - Update Notifications
     
-    public func updateNotifications(hasUpdatedAt: Bool, updatedAt: Date, completion: @escaping (_ updated: Bool)->()) {
+    public func updateNotifications(hasUpdatedAt: Bool, updatedAt: Date, notificationsType: String, completion: @escaping (_ notificationsArray: [KMANotificationStruct])->()) {
         let query = PFQuery(className: "KMANotification")
         query.order(byDescending: "createdAt")
         
@@ -1372,7 +1372,17 @@ final public class KMAUIParse {
                 }
             }
             
-            completion(true)
+            var notificationsArray = KMAUIConstants.shared.generalNotifications
+            
+            if notificationsType == "landLottery" {
+                notificationsArray = KMAUIConstants.shared.landLotteryNotifications
+            } else if notificationsType == "landCases" {
+                notificationsArray = KMAUIConstants.shared.landCasesNotifications
+            } else if notificationsType == "trespassCases" {
+                notificationsArray = KMAUIConstants.shared.trespassCasesNotifications
+            }
+             
+            completion(notificationsArray)
         }
     }
     
