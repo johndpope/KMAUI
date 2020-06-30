@@ -310,4 +310,9 @@ public class KMAUIConstants {
     public var landLotteryNotifications = [KMANotificationStruct]()
     public var landCasesNotifications = [KMANotificationStruct]()
     public var trespassCasesNotifications = [KMANotificationStruct]()
+    public var generalNotifications = [KMANotificationStruct]()
+    // Type arrays
+    public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded"]
+    public let landCasesTypes = ["landCaseCreated"]
+    public let trespassCasesTypes = ["penaltyPaymentReceived"]
 }
