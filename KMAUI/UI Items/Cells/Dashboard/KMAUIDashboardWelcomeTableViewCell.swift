@@ -34,9 +34,9 @@ public class KMAUIDashboardWelcomeTableViewCell: UITableViewCell {
         welcomeTitleLabel.text = welcomeText
         
         if homeSet {
-            welcomeTextLabel.text = "We're glad to provide you with up-to-date information about your home area.\nYou can review your home property, add water and electic bills, review some useful infomation from our partners."
+            welcomeTextLabel.text = NSLocalizedString("Details - Add address", comment: "") //"We're glad to provide you with up-to-date information about your home area.\nYou can review your home property, add water and electic bills, review some useful infomation from our partners."
         } else {
-            welcomeTextLabel.text = "We're glad to provide you with up-to-date information about your home area.\nPlease add your home address to start receiving recommendations."
+            welcomeTextLabel.text = NSLocalizedString("Details - Address data", comment: "") // "We're glad to provide you with up-to-date information about your home area.\nPlease add your home address to start receiving recommendations."
         }
     }
 }
