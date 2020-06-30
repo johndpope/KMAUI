@@ -49,7 +49,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Bg view background color
-        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
+        bgView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.5).cgColor
         bgView.layer.borderWidth = 2
         bgView.layer.cornerRadius = 8
         bgView.clipsToBounds = true
@@ -65,7 +65,7 @@ public class KMAUIPerformanceHeaderTableViewCell: UITableViewCell {
         securityProgressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // Stack view background color and corners
-        stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor.withAlphaComponent(0.5)
+        stackViewBgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor.withAlphaComponent(0.75)
         stackViewBgView.layer.cornerRadius = 8
         stackViewBgView.clipsToBounds = true
         
