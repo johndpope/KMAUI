@@ -1372,7 +1372,7 @@ final public class KMAUIParse {
                 }
             }
             
-            var notificationsArray = KMAUIConstants.shared.generalNotifications
+            var notificationsArray = KMAUIConstants.shared.generalNotifications // general
             
             if notificationsType == "landLottery" {
                 notificationsArray = KMAUIConstants.shared.landLotteryNotifications

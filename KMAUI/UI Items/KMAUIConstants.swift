@@ -315,4 +315,5 @@ public class KMAUIConstants {
     public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded"]
     public let landCasesTypes = ["landCaseCreated"]
     public let trespassCasesTypes = ["penaltyPaymentReceived"]
+    public var tabBarController = UITabBarController()
 }
