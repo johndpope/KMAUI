@@ -49,7 +49,8 @@ public class KMAUIBarButtonWithBadge: UIBarButtonItem {
     private func setup(image: UIImage? = nil) {
         self.filterBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         self.filterBtn.adjustsImageWhenHighlighted = false
-        self.filterBtn.setImage(image, for: .normal)
+        self.filterBtn.setImage(image?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.filterBtn.tintColor = KMAUIConstants.shared.KMAUIBlueDarkColorBarTint
         self.filterBtn.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         self.lblBadge.frame = CGRect(x: 18, y: 0, width: 18, height: 18)
