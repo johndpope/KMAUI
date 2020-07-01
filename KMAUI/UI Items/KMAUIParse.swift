@@ -3161,7 +3161,6 @@ final public class KMAUIParse {
             trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
         }
 
-        trespassCaseObject["violator"] = isViolation
         trespassCaseObject["isViolation"] = isViolation
         trespassCaseObject["caseStatus"] = "Awaiting decision"
         
