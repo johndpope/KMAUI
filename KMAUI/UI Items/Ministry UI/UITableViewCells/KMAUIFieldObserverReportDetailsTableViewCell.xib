@@ -40,7 +40,7 @@ Label</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-XP-OcW">
                                 <rect key="frame" x="236" y="146" width="553" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Land owner" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
                                         <rect key="frame" x="4" y="0.0" width="64" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="7qs-MZ-b6u"/>
