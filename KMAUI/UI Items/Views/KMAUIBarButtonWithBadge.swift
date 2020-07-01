@@ -8,7 +8,7 @@
 
 import UIKit
 
-class KMAUIBarButtonWithBadge: UIBarButtonItem {
+public class KMAUIBarButtonWithBadge: UIBarButtonItem {
     
     public func setBadge(with value: Int) {
         self.badgeValue = value
@@ -26,7 +26,7 @@ class KMAUIBarButtonWithBadge: UIBarButtonItem {
         }
     }
     
-    var tapAction: (() -> Void)?
+    public var tapAction: (() -> Void)?
     
     private let filterBtn = UIButton()
     private let lblBadge = UILabel()
@@ -36,12 +36,12 @@ class KMAUIBarButtonWithBadge: UIBarButtonItem {
         setup()
     }
     
-    init(with image: UIImage?) {
+    public init(with image: UIImage?) {
         super.init()
         setup(image: image)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setup()
     }
