@@ -53,12 +53,12 @@ class KMAUIBarButtonWithBadge: UIBarButtonItem {
         self.filterBtn.setImage(image, for: .normal)
         self.filterBtn.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        self.lblBadge.frame = CGRect(x: 20, y: 0, width: 15, height: 15)
+        self.lblBadge.frame = CGRect(x: 20, y: 0, width: 20, height: 20)
         self.lblBadge.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         self.lblBadge.clipsToBounds = true
-        self.lblBadge.layer.cornerRadius = 7
+        self.lblBadge.layer.cornerRadius = 10
         self.lblBadge.textColor = UIColor.white
-        self.lblBadge.font = UIFont.systemFont(ofSize: 10)
+        self.lblBadge.font = UIFont.systemFont(ofSize: 11, weight: .semibold)
         self.lblBadge.textAlignment = .center
         self.lblBadge.isHidden = true
         self.lblBadge.minimumScaleFactor = 0.1
