@@ -1942,7 +1942,7 @@ public class KMAUIUtilities {
     
     // MARK: - Get unread notifications count
     
-    public func getUnreadCounts() -> (Int, Int, Int, Int) {
+    public func getUnreadNotificationCounts() -> (Int, Int, Int, Int) {
         var landLotteryCounts = 0
         var landCasesCounts = 0
         var trespassCasesCount = 0
