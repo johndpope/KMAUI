@@ -15,14 +15,11 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var attachmentsView: KMAUIImagesPreviewView!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var infoViewTop: NSLayoutConstraint!
     @IBOutlet public weak var ownerLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var ownerValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var divideLine1: UIView!
-    @IBOutlet public weak var violatorLabel: KMAUIRegularTextLabel!
-    @IBOutlet public weak var violatorValueLabel: KMAUIBoldTextLabel!
-    @IBOutlet public weak var divideLine2: UIView!
     @IBOutlet public weak var ownerView: UIView!
-    @IBOutlet public weak var violatorView: UIView!
     
     // MARK: - Variables
     public static let id = "KMAUIFieldObserverReportDetailsTableViewCell"
@@ -57,21 +54,16 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         attachmentsView.layer.cornerRadius = 8
         attachmentsView.clipsToBounds = true
         
-        // Divide lines
+        // Divide line
         divideLine1.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
-        divideLine2.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
         
         // Citizen views
         ownerView.layer.cornerRadius = 8
         ownerView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-        violatorView.layer.cornerRadius = 8
-        violatorView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
         // Citizen labels
         ownerLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         ownerValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-        violatorLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
-        violatorValueLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
         
         // No selection required
         selectionStyle = .none
@@ -97,7 +89,16 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         }
         
         // Setup owner and violator
-        ownerValueLabel.text = trespassCase.owner.fullName
+        if !trespassCase.owner.fullName.isEmpty {
+            ownerValueLabel.text = trespassCase.owner.fullName
+            ownerView.alpha = 1
+            divideLine1.alpha = 1
+            infoViewTop.constant = 12
+        } else {
+            ownerView.alpha = 0
+            divideLine1.alpha = 0
+            infoViewTop.constant = -45
+        }
         
         // Layout subviews
         self.layoutSubviews()
@@ -111,15 +112,6 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
             self.ownerView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
-        }
-    }
-    
-    @IBAction public func violatorButtonPressed(_ sender: Any) {
-        violatorView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
-        citizenCallback?("violator")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-            self.violatorView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         }
     }
 }
