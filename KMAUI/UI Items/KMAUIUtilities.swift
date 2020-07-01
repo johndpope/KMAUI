@@ -1939,6 +1939,45 @@ public class KMAUIUtilities {
         
         return fileBody
     }
+    
+    // MARK: - Get unread notifications count
+    
+    public func getUnreadCounts() -> (Int, Int, Int, Int) {
+        var landLotteryCounts = 0
+        var landCasesCounts = 0
+        var trespassCasesCount = 0
+        var generalCounts = 0
+        
+        // Land lottery
+        for notification in KMAUIConstants.shared.landLotteryNotifications {
+            if !notification.read {
+                landLotteryCounts += 1
+            }
+        }
+        
+        // Land cases count
+        for notification in KMAUIConstants.shared.landCasesNotifications {
+            if !notification.read {
+                landCasesCounts += 1
+            }
+        }
+        
+        // Trespass cases count
+        for notification in KMAUIConstants.shared.trespassCasesNotifications {
+            if !notification.read {
+                trespassCasesCount += 1
+            }
+        }
+        
+        // General notifications count
+        for notification in KMAUIConstants.shared.generalNotifications {
+            if !notification.read {
+                generalCounts += 1
+            }
+        }
+                
+        return (landLotteryCounts, landCasesCounts, trespassCasesCount, generalCounts)
+    }
 }
 
 // MARK: - Int extension
