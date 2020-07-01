@@ -98,7 +98,6 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         
         // Setup owner and violator
         ownerValueLabel.text = trespassCase.owner.fullName
-        violatorValueLabel.text = trespassCase.violator.fullName
         
         // Layout subviews
         self.layoutSubviews()

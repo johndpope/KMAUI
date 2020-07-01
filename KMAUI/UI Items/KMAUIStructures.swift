@@ -4197,7 +4197,7 @@ public struct KMAUITrespassCaseStruct {
     public var fieldObserverUploads = ""
     public var fieldObserverUploadsItems = [KMADocumentData]()
     public var owner = KMAPerson()
-    public var violator = KMAPerson()
+    public var isViolation = true
     public var trespassDecision = ""
     
     public init() {}
@@ -4261,9 +4261,8 @@ public struct KMAUITrespassCaseStruct {
             self.owner.fillFrom(person: owner)
         }
         
-        if let violator = object["violator"] as? PFUser {
-            self.violator = KMAPerson()
-            self.violator.fillFrom(person: violator)
+        if let isViolation = object["isViolation"] as? Bool {
+            self.isViolation = isViolation
         }
         
         if let trespassDecision = object["trespassDecision"] as? String {

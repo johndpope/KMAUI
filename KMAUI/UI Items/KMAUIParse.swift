@@ -3150,14 +3150,19 @@ final public class KMAUIParse {
     
     // MARK: - Sav the Trespass field observer report
     
-    public func saveTrespassFieldObserverReport(commentItem: String, attachmentItem: String, ownerItem: KMAPerson, violatorItem: KMAPerson, trespassCase: KMAUITrespassCaseStruct, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
+    public func saveTrespassFieldObserverReport(commentItem: String, attachmentItem: String, ownerItem: KMAPerson, trespassCase: KMAUITrespassCaseStruct, isViolation: Bool, completion: @escaping (_ landCase: KMAUITrespassCaseStruct) -> ()) {
         var trespassCase = trespassCase
         let trespassCaseObject = PFObject(withoutDataWithClassName: "KMATrespassCase", objectId: trespassCase.objectId)
         
         trespassCaseObject["fieldObserverReport"] = commentItem
         trespassCaseObject["fieldObserverUploads"] = attachmentItem
-        trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
-        trespassCaseObject["violator"] = PFUser(withoutDataWithObjectId: violatorItem.objectId)
+        
+        if !ownerItem.objectId.isEmpty {
+            trespassCaseObject["owner"] = PFUser(withoutDataWithObjectId: ownerItem.objectId)
+        }
+
+        trespassCaseObject["violator"] = isViolation
+        trespassCaseObject["isViolation"] = isViolation
         trespassCaseObject["caseStatus"] = "Awaiting decision"
         
         KMAUIUtilities.shared.startLoading(title: "Saving...")
@@ -3172,7 +3177,7 @@ final public class KMAUIParse {
                     trespassCase.fieldObserverUploads = attachmentItem
                     trespassCase.setupAttachments()
                     trespassCase.owner = ownerItem
-                    trespassCase.violator = violatorItem
+                    trespassCase.isViolation = isViolation
                     trespassCase.caseStatus = "Awaiting decision"
                     // Completion
                     completion(trespassCase)
