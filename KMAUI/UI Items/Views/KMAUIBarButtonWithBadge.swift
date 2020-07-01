@@ -52,7 +52,7 @@ public class KMAUIBarButtonWithBadge: UIBarButtonItem {
         self.filterBtn.setImage(image, for: .normal)
         self.filterBtn.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
-        self.lblBadge.frame = CGRect(x: 15, y: 0, width: 18, height: 18)
+        self.lblBadge.frame = CGRect(x: 18, y: 0, width: 18, height: 18)
         self.lblBadge.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
         self.lblBadge.clipsToBounds = true
         self.lblBadge.layer.cornerRadius = 9
