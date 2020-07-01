@@ -16,8 +16,7 @@ public class KMAUIBarButtonWithBadge: UIBarButtonItem {
     
     private var badgeValue: Int? {
         didSet {
-            if let value = badgeValue,
-                value > 0 {
+            if let value = badgeValue, value > 0 {
                 lblBadge.isHidden = false
                 lblBadge.text = "\(value)"
             } else {

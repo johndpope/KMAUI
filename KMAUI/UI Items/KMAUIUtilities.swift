@@ -26,8 +26,13 @@ public class KMAUIUtilities {
      Returns the UIView for a header with the headerTitle set for a label.
      */
     
-    public func headerView(title: String, isRound: Bool? = nil) -> UITableViewHeaderFooterView {
+    public func headerView(title: String, isRound: Bool? = nil, isGrayBg: Bool? = nil) -> UITableViewHeaderFooterView {
         var offset: CGFloat = 0
+        var bgColor = KMAUIConstants.shared.KMAUIViewBgColor
+        
+        if let isGrayBg = isGrayBg, isGrayBg {
+            bgColor = KMAUIConstants.shared.KMAUIMainBgColor
+        }
         
         if let isRound = isRound, isRound {
             offset = 20
@@ -42,8 +47,8 @@ public class KMAUIUtilities {
         
         // Header view
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: KMAUIConstants.shared.KMAScreenWidth, height: 44 + offset))
-        headerView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-        backgroundView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        headerView.backgroundColor = bgColor
+        backgroundView.backgroundColor = bgColor
         headerView.addSubview(backgroundView)
         
         // Header title label
@@ -58,7 +63,7 @@ public class KMAUIUtilities {
         // Create a view cell and attach the custom view to it
         let headerViewObject = UITableViewHeaderFooterView()
         headerViewObject.backgroundView = UIView(frame: headerView.bounds)
-        headerViewObject.backgroundView?.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        headerViewObject.backgroundView?.backgroundColor = bgColor
         let contentView = headerViewObject.contentView
         contentView.addSubview(headerView)
         
