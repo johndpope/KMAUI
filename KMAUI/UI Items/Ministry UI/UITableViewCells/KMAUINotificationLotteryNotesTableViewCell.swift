@@ -82,7 +82,7 @@ public class KMAUINotificationLotteryNotesTableViewCell: UITableViewCell {
         citizenIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // Arrow image view
-        arrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        arrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         arrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // Background color

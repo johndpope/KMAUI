@@ -30,7 +30,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="disclosureArrow" translatesAutoresizingMaskIntoConstraints="NO" id="owe-ce-Hua">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="owe-ce-Hua">
                                 <rect key="frame" x="242" y="14" width="22" height="22"/>
                                 <color key="backgroundColor" name="KMAUIGreyProgressColor"/>
                                 <color key="tintColor" name="KMAUIGreyLineColor"/>
@@ -137,7 +137,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="disclosureArrow" width="7" height="12"/>
+        <image name="arrowIndicator" width="7" height="11"/>
         <namedColor name="KMAUIGreenProgressColor">
             <color red="0.0" green="0.74509803921568629" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -40,7 +40,7 @@ public class KMAUICasePointTableViewCell: UITableViewCell {
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Right arrow imageView
-        rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.layer.cornerRadius = 4
         rightArrowImageView.clipsToBounds = true
         

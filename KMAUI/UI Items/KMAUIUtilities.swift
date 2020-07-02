@@ -2333,7 +2333,7 @@ public extension UIButton {
         if isDecrease {
             self.setImage(KMAUIConstants.shared.decreaseArrow.withRenderingMode(.alwaysTemplate), for: .normal)
         } else {
-            self.setImage(KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate), for: .normal)
+            self.setImage(KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate), for: .normal)
         }
     }
 }

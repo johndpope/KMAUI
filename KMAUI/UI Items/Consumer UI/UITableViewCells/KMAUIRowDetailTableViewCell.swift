@@ -42,7 +42,7 @@ public class KMAUIRowDetailTableViewCell: UITableViewCell {
         bgView.clipsToBounds = true
         
         // Setup the right arrow
-        rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.layer.cornerRadius = 4
         rightArrowImageView.clipsToBounds = true
         // Default state - disabled

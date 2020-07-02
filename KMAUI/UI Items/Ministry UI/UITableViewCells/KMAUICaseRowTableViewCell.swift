@@ -59,7 +59,7 @@ public class KMAUICaseRowTableViewCell: UITableViewCell {
         
         // Arrow image view
         arrowImageView.contentMode = .center
-        arrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        arrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         arrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         
         // Attachments button

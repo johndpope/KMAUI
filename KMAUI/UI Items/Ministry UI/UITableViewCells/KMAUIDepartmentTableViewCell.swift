@@ -45,7 +45,7 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         // Right arrow image view
-        rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         rightArrowImageView.layer.cornerRadius = 4
         rightArrowImageView.clipsToBounds = true
         // Default state - disabled

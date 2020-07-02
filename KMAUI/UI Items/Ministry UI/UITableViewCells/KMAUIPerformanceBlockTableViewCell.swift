@@ -130,7 +130,7 @@ public class KMAUIPerformanceBlockTableViewCell: UITableViewCell {
         // Arrow indicator
         arrowIndicator.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         arrowIndicator.backgroundColor = KMAUIConstants.shared.KMAProgressGray
-        arrowIndicator.layer.cornerRadius = KMAUIConstants.shared.KMACornerRadius
+        arrowIndicator.layer.cornerRadius = 4
         arrowIndicator.clipsToBounds = true
         
         setupStarTint()

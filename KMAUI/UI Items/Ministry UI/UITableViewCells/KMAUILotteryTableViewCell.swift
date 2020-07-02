@@ -60,7 +60,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsCountLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
         // isActive imageView
-        isActiveImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        isActiveImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
         isActiveImageView.layer.cornerRadius = 4
         isActiveImageView.clipsToBounds = true
         
