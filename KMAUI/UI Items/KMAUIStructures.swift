@@ -4285,5 +4285,55 @@ public struct KMAUITrespassCaseStruct {
             fieldObserverUploadsItems = KMAUIUtilities.shared.getItemsFrom(uploadBody: fieldObserverUploads)
         }
     }
+    
+    // MARK: - Bundle from KMA 9x9
+    
+    public struct KMAUI9x9Bundle {
+        public var madePublic = false
+        public var name = ""
+        public var description = ""
+        public var isDefault = false
+        public var status = ""
+        public var paidOnly = false
+        public var id = ""
+        public var icon = ""
+        
+        public init() {}
+        
+        public mutating func fillFromDictionary(object: [String: AnyObject]) {
+            if let madePublic = object["made_public"] as? Bool {
+                self.madePublic = madePublic
+            }
+            
+            if let name = object["name"] as? String {
+                self.name = name
+            }
+            
+            if let description = object["description"] as? String {
+                self.description = description
+            }
+            
+            if let isDefault = object["is_default"] as? Bool {
+                self.isDefault = isDefault
+            }
+            
+            if let status = object["status"] as? String {
+                self.status = status
+            }
+            
+            if let paidOnly = object["paid_only"] as? Bool {
+                self.paidOnly = paidOnly
+            }
+            
+            if let id = object["id"] as? String {
+                self.id = id
+            }
+            
+            if let icon = object["icon"] as? String {
+                self.icon = icon
+            }
+        }
+    }
+
 }
 
