@@ -2826,10 +2826,8 @@ final public class KMAUIParse {
     public func createLandCaseObject(subLandId: String, trespassCase: KMAUITrespassCaseStruct? = nil, completion: @escaping (_ landCaseId: String, _ landCaseNumber: String, _ error: String) -> ()) {
         if let currentUser = PFUser.current() {
             let newLandCase = PFObject(className: "KMALandCase")
-            newLandCase["citizen"] = currentUser
             newLandCase["judge"] = PFUser(withoutDataWithObjectId: "XdwTy8armc")
             newLandCase["date"] = Date().addingTimeInterval(30*24*60*60)
-            newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
             newLandCase["courtName"] = "Jeddah General Court"
             newLandCase["courtStatus"] = "In progress"
             
@@ -2837,6 +2835,9 @@ final public class KMAUIParse {
             if let trespassCase = trespassCase, !trespassCase.objectId.isEmpty {
                 newLandCase["citizen"] = PFUser(withoutDataWithObjectId: trespassCase.owner.objectId)
                 newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: trespassCase.subLand.objectId)
+            } else if !subLandId.isEmpty {
+                newLandCase["citizen"] = currentUser
+                newLandCase["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId)
             }
                         
             let fileBodyDict = ["files": KMAUIConstants.shared.placeholderFilesArray]
