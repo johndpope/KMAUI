@@ -13,6 +13,8 @@ import MapKit
 import Photos
 import Contacts
 import QuickLook
+import Alamofire
+import SwiftyJSON
 import ContactsUI
 import CoreLocation
 import MKRingProgressView
@@ -1982,6 +1984,57 @@ public class KMAUIUtilities {
         }
                 
         return (landLotteryCounts, landCasesCounts, trespassCasesCount, generalCounts)
+    }
+    
+    // MARK: - KMA 9x9 API
+    
+    /**
+     Get data from KMA 9x9
+     */
+    
+    public func getDataKMA9x9(mainSW: CLLocationCoordinate2D, mainNE: CLLocationCoordinate2D, completion: @escaping (_ bundlesCount: Int, _ bundlesString: String)->()) {
+        // Bearer token
+        let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
+        
+        // Headers
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Authorization": "Bearer \(accessToken)"
+        ]
+        
+        // Parameters - geobox of the region
+        let parameters: [String: AnyObject] = [
+            "polygone" : [[mainSW.latitude, mainSW.longitude], [mainNE.latitude, mainSW.longitude], [mainNE.latitude, mainNE.longitude], [mainSW.latitude, mainNE.longitude], [mainSW.latitude, mainSW.longitude]] as AnyObject]
+
+        // Bundles endpoint
+        let bundlesSearch = "https://api.kma.dev.magora.uk/v1/bundles/search"
+        
+        // Backend request
+        AF.request(bundlesSearch, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            // Clear bundles string saved value
+            var bundlesCount = 0
+            var jsonString = ""
+            
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+
+            let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            
+            if let bundlesArray = bundlesDictionary["data"] as? [[String: AnyObject]] {
+                bundlesCount = bundlesArray.count
+            }
+            
+            completion(bundlesCount, jsonString)
+        }
     }
 }
 
