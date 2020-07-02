@@ -22,14 +22,14 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="72"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c7Y-ZQ-Q9Q">
-                                <rect key="frame" x="8" y="14" width="44" height="44"/>
+                                <rect key="frame" x="12" y="14" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="LsV-mv-VVQ"/>
                                     <constraint firstAttribute="width" constant="44" id="MYH-4k-xjo"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlf-nq-EWE" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="14" width="190" height="22"/>
+                                <rect key="frame" x="64" y="14" width="178" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="cdE-3R-Pz4"/>
                                 </constraints>
@@ -38,14 +38,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="55E-vy-7TU">
-                                <rect key="frame" x="258" y="25" width="22" height="22"/>
+                                <rect key="frame" x="250" y="25" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="hS8-Vf-qZZ"/>
                                     <constraint firstAttribute="width" constant="22" id="lmb-OZ-GTX"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqv-hV-gmu" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="60" y="36" width="190" height="22"/>
+                                <rect key="frame" x="64" y="36" width="178" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="c7H-dp-g0b"/>
                                 </constraints>
@@ -60,10 +60,10 @@
                             <constraint firstItem="Dlf-nq-EWE" firstAttribute="top" secondItem="c7Y-ZQ-Q9Q" secondAttribute="top" id="5CK-jg-wHH"/>
                             <constraint firstAttribute="height" constant="72" id="M5y-Yw-5kS"/>
                             <constraint firstItem="55E-vy-7TU" firstAttribute="centerY" secondItem="kqh-pd-OKs" secondAttribute="centerY" id="RRf-3v-qqn"/>
-                            <constraint firstAttribute="trailing" secondItem="55E-vy-7TU" secondAttribute="trailing" constant="8" id="cZd-ab-xHi"/>
+                            <constraint firstAttribute="trailing" secondItem="55E-vy-7TU" secondAttribute="trailing" constant="16" id="cZd-ab-xHi"/>
                             <constraint firstItem="c7Y-ZQ-Q9Q" firstAttribute="centerY" secondItem="kqh-pd-OKs" secondAttribute="centerY" id="cjp-Vf-foQ"/>
                             <constraint firstItem="55E-vy-7TU" firstAttribute="leading" secondItem="gqv-hV-gmu" secondAttribute="trailing" constant="8" id="emM-Zo-3as"/>
-                            <constraint firstItem="c7Y-ZQ-Q9Q" firstAttribute="leading" secondItem="kqh-pd-OKs" secondAttribute="leading" constant="8" id="f03-B6-g9C"/>
+                            <constraint firstItem="c7Y-ZQ-Q9Q" firstAttribute="leading" secondItem="kqh-pd-OKs" secondAttribute="leading" constant="12" id="f03-B6-g9C"/>
                             <constraint firstItem="gqv-hV-gmu" firstAttribute="top" secondItem="Dlf-nq-EWE" secondAttribute="bottom" id="pd0-sv-oF7"/>
                             <constraint firstItem="55E-vy-7TU" firstAttribute="leading" secondItem="Dlf-nq-EWE" secondAttribute="trailing" constant="8" id="sAe-wH-YAB"/>
                             <constraint firstItem="gqv-hV-gmu" firstAttribute="leading" secondItem="c7Y-ZQ-Q9Q" secondAttribute="trailing" constant="8" id="vj2-F0-Tnc"/>
