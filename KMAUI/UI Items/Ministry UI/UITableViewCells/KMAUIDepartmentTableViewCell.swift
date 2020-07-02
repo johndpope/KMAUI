@@ -10,11 +10,13 @@ import UIKit
 import Kingfisher
 
 public class KMAUIDepartmentTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet public weak var profileImageView: UIImageView!
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var lotteryIdLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     
     // MARK: - Variables
     public static let id = "KMAUIDepartmentTableViewCell"
@@ -27,6 +29,12 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
     override public func awakeFromNib() {
         super.awakeFromNib()
         
+        // Background color
+        backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        
+        // BgView
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        
         // Set the profileImageView
         profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
         profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
@@ -36,7 +44,12 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
         
         // Right arrow image view
-        KMAUIUtilities.shared.setupArrow(imageView: rightArrowImageView)
+        rightArrowImageView.image = KMAUIConstants.shared.disclosureArrow.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.layer.cornerRadius = 4
+        rightArrowImageView.clipsToBounds = true
+        // Default state - disabled
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         
         // No selection required
         selectionStyle = .none
@@ -57,9 +70,13 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
-            contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
         } else {
-            contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
