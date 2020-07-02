@@ -36,6 +36,12 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         // BgView
         bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         
+        // Name label
+        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        
+        // Lottery id label
+        lotteryIdLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
         // Set the profileImageView
         profileImageView.tintColor = KMAUIConstants.shared.KMATextGrayColor.withAlphaComponent(0.5)
         profileImageView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
