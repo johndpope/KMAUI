@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dlf-nq-EWE" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="64" y="14" width="178" height="49"/>
+                                <rect key="frame" x="64" y="14" width="178" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="cdE-3R-Pz4"/>
                                 </constraints>
@@ -64,7 +64,7 @@
                             <constraint firstItem="55E-vy-7TU" firstAttribute="leading" secondItem="gqv-hV-gmu" secondAttribute="trailing" constant="8" id="emM-Zo-3as"/>
                             <constraint firstItem="c7Y-ZQ-Q9Q" firstAttribute="leading" secondItem="kqh-pd-OKs" secondAttribute="leading" constant="12" id="f03-B6-g9C"/>
                             <constraint firstAttribute="bottom" secondItem="gqv-hV-gmu" secondAttribute="bottom" constant="14" id="iwT-xX-Eya"/>
-                            <constraint firstItem="gqv-hV-gmu" firstAttribute="top" secondItem="Dlf-nq-EWE" secondAttribute="bottom" id="pd0-sv-oF7"/>
+                            <constraint firstItem="gqv-hV-gmu" firstAttribute="top" secondItem="Dlf-nq-EWE" secondAttribute="bottom" constant="8" id="pd0-sv-oF7"/>
                             <constraint firstItem="55E-vy-7TU" firstAttribute="leading" secondItem="Dlf-nq-EWE" secondAttribute="trailing" constant="8" id="sAe-wH-YAB"/>
                             <constraint firstItem="gqv-hV-gmu" firstAttribute="leading" secondItem="c7Y-ZQ-Q9Q" secondAttribute="trailing" constant="8" id="vj2-F0-Tnc"/>
                         </constraints>
