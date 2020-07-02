@@ -31,6 +31,7 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         
         // Background color
         backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+        contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         
         // BgView
         bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
