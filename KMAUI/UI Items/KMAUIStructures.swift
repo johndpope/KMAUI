@@ -4426,11 +4426,13 @@ public struct KMAUIPolygoneDataStruct {
                                     self.googlePlaceTypes = [String]()
                                     let components = point.components(separatedBy: ", ")
                                     for typeValue in components {
-                                        if !self.googlePlaceTypes.contains(typeValue) {
-                                            self.googlePlaceTypes.append(typeValue)
+                                        let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
+                                        
+                                        if !self.googlePlaceTypes.contains(typeValueItem) {
+                                            self.googlePlaceTypes.append(typeValueItem)
                                         }
                                     }
-                                    self.googlePlaceTypesString = point
+                                    self.googlePlaceTypesString = point.replacingOccurrences(of: "_", with: " ").capitalized
                                 }
                             }
                             
