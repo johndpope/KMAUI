@@ -4349,6 +4349,20 @@ public struct KMAUIPolygoneDataStruct {
     public var type = ""
     public var value = ""
     // Google
+    public var googlePlaceId = ""
+    public var googlePlaceName = ""
+    public var googlePlaceLocation = CLLocationCoordinate2D()
+    public var googlePlaceClosed = false
+    public var googlePlaceOpenNow = ""
+    public var googlePlaceIcon = ""
+    public var googlePlaceImage = ""
+    public var googlePlaceTypes = [String]()
+    public var googlePlaceTypesString = ""
+    public var googlePlaceHours = ""
+    public var googlePlacePriceLevel = ""
+    public var googlePlaceRating = 0.0
+    public var googlePlaceReviewsCount = 0
+    public var googlePlaceWorkingHours = ""
     
     public init() {}
     
@@ -4377,7 +4391,7 @@ public struct KMAUIPolygoneDataStruct {
             if let comment = object["comment"] as? String {
                 self.comment = comment
             }
-
+            
             if let id = object["id"] as? String {
                 self.id = id
             }
@@ -4386,18 +4400,47 @@ public struct KMAUIPolygoneDataStruct {
                 if let value = value as? [[String: AnyObject]] {
                     for valueItem in value {
                         if let id = valueItem["id"] as? String {
-                            // google_place_id - value, string
-                            // google_place_name - value, string
-                            // google_place_geometry - value, string latitude, longitude separated by `, `?
-                            // google_place_permanently_closed - value, string, Yes or No
-                            // google_place_open_now - value, string
-                            // google_place_icon - value, string
-                            // google_place_images - value, string
-                            // google_place_types - value, item separated with `, `
-                            // google_place_working_hours - value, string
-                            // google_place_price_level - value, string
-                            // google_place_rating - value, double
-                            // google_place_rating - value, int
+                            if let point = valueItem["value"] as? String {
+                                if id == "google_place_id" {
+                                    self.googlePlaceId = point
+                                } else if id == "google_place_name" {
+                                    self.googlePlaceName = point
+                                } else if id == "google_place_open_now" {
+                                    self.googlePlaceOpenNow = point
+                                } else if id == "google_place_icon" {
+                                    self.googlePlaceIcon = point
+                                } else if id == "google_place_images" {
+                                    self.googlePlaceImage = point
+                                } else if id == "google_place_price_level" {
+                                    self.googlePlacePriceLevel = point
+                                } else if id == "google_place_working_hours" {
+                                    self.googlePlaceWorkingHours = point
+                                } else if id == "google_place_geometry" {
+                                    let components = point.components(separatedBy: ", ")
+                                    if components.count == 2, let latitude = Double(components[0]), let longitude = Double(components[1]) {
+                                        self.googlePlaceLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                                    }
+                                } else if id == "google_place_permanently_closed" {
+                                    self.googlePlaceClosed = point == "No"
+                                } else if id == "google_place_types" {
+                                    self.googlePlaceTypes = [String]()
+                                    let components = point.components(separatedBy: ", ")
+                                    for typeValue in components {
+                                        if !self.googlePlaceTypes.contains(typeValue) {
+                                            self.googlePlaceTypes.append(typeValue)
+                                        }
+                                    }
+                                    self.googlePlaceTypesString = point
+                                }
+                            }
+                            
+                            if let point = valueItem["value"] as? Double, id == "google_place_rating" {
+                                self.googlePlaceRating = point
+                            }
+                            
+                            if let point = valueItem["value"] as? Int, id == "google_place_reviews_count" {
+                                self.googlePlaceReviewsCount = point
+                            }
                         }
                     }
                 }
