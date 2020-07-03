@@ -2040,7 +2040,7 @@ public class KMAUIUtilities {
     }
     
     // Load the polygone details for bundle id
-    public func getDataForPolygone(bundleId: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygonDataStruct])->()) {
+    public func getDataForPolygone(bundleId: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
         let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
         
         let headers: HTTPHeaders = [
@@ -2075,16 +2075,16 @@ public class KMAUIUtilities {
         }
     }
     
-    public func processPolygoneData(jsonString: String) -> [KMAUIPolygonDataStruct] {
+    public func processPolygoneData(jsonString: String) -> [KMAUIPolygoneDataStruct] {
         let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
-        var polygoneArray = [KMAUIPolygonDataStruct]()
+        var polygoneArray = [KMAUIPolygoneDataStruct]()
         var uniqueKeys = [String]()
         
         if let data = jsonDictionary["data"] as? [String: AnyObject] {
             // CUSTOM
             if let custom = data["CUSTOM"] as? [[String: AnyObject]] {
                 for item in custom {
-                    var polygoneData = KMAUIPolygonDataStruct()
+                    var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.fillFromDictionary(object: item)
                     polygoneArray.append(polygoneData)
                     for (key, _) in item {

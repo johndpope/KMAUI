@@ -4338,7 +4338,7 @@ public struct KMAUI9x9Bundle {
 
 // MARK: - Polygone for Bundle
 
-public struct KMAUIPolygonDataStruct {
+public struct KMAUIPolygoneDataStruct {
     public var comment = ""
     public var paidOnly = false
     public var title = ""
