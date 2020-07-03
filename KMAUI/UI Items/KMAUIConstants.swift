@@ -316,6 +316,4 @@ public class KMAUIConstants {
     public let landCasesTypes = ["landCaseCreated"]
     public let trespassCasesTypes = ["penaltyPaymentReceived"]
     public var tabBarController = UITabBarController()
-    // Bundles string
-    public var bundlesString = ""
 }
