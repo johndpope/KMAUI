@@ -4345,8 +4345,8 @@ public struct KMAUIPolygoneDataStruct {
     public var id = ""
     public var type = ""
     public var value = ""
-    // Type
-    public var type = ""
+    //
+    public var polygoneType = ""
     
     public init() {}
     
