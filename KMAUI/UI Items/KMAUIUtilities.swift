@@ -2071,30 +2071,32 @@ public class KMAUIUtilities {
             
             print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
-            completion(KMAUIUtilities.shared.processPolygoneData(jsonString: jsonString))
+            completion(self.processPolygoneData(jsonString: jsonString))
         }
     }
     
     public func processPolygoneData(jsonString: String) -> [KMAUIPolygoneDataStruct] {
         let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
         var polygoneArray = [KMAUIPolygoneDataStruct]()
-        var uniqueKeys = [String]()
-        
+
         if let data = jsonDictionary["data"] as? [String: AnyObject] {
             // CUSTOM
             if let custom = data["CUSTOM"] as? [[String: AnyObject]] {
                 for item in custom {
                     var polygoneData = KMAUIPolygoneDataStruct()
+                    polygoneData.polygoneType = "custom"
                     polygoneData.fillFromDictionary(object: item)
                     polygoneArray.append(polygoneData)
-                    for (key, _) in item {
-                        if !uniqueKeys.contains(key) {
-                            uniqueKeys.append(key)
-                        }
-                    }
                 }
-                
-                print("\nCustom items: \(custom.count), unique keys: \(uniqueKeys)")
+            }
+            // GOOGLE PLACES
+            if let googlePlaces = data["GOOGLE_PLACES"] as? [[String: AnyObject]] {
+                for place  in googlePlaces {
+                    var polygoneData = KMAUIPolygoneDataStruct()
+                    polygoneData.polygoneType = "googlePlace"
+                    polygoneData.fillFromDictionary(object: place)
+                    polygoneArray.append(polygoneData)
+                }
             }
         } else {
             print("\nNo polygone data for bundle.")

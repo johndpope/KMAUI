@@ -4339,42 +4339,69 @@ public struct KMAUI9x9Bundle {
 // MARK: - Polygone for Bundle
 
 public struct KMAUIPolygoneDataStruct {
+    // Type
+    public var polygoneType = ""
+    // Custom
     public var comment = ""
     public var paidOnly = false
     public var title = ""
     public var id = ""
     public var type = ""
     public var value = ""
-    //
-    public var polygoneType = ""
+    // Google
     
     public init() {}
     
     public mutating func fillFromDictionary(object: [String: AnyObject]) {
-        if let type = object["type"] as? String {
-            self.type = type
-        }
-        
-        if let value = object["value"] as? String {
-            self.value = value
-        } else {
-            print("Value isn't String")
-        }
-        
-        if let paidOnly = object["paid_only"] as? Bool {
-            self.paidOnly = paidOnly
-        }
-        
-        if let comment = object["comment"] as? String {
-            self.comment = comment
-        }
-        
         if let title = object["title"] as? String {
             self.title = title
         }
         
-        if let id = object["id"] as? String {
-            self.id = id
+        if let type = object["type"] as? String {
+            self.type = type
+        }
+        
+        if polygoneType == "custom" {
+            
+            
+            if let value = object["value"] as? String {
+                self.value = value
+            } else {
+                print("Value isn't String")
+            }
+            
+            if let paidOnly = object["paid_only"] as? Bool {
+                self.paidOnly = paidOnly
+            }
+            
+            if let comment = object["comment"] as? String {
+                self.comment = comment
+            }
+
+            if let id = object["id"] as? String {
+                self.id = id
+            }
+        } else if polygoneType == "googlePlace" {
+            for (_, value) in object {
+                if let value = value as? [[String: AnyObject]] {
+                    for valueItem in value {
+                        if let id = valueItem["id"] as? String {
+                            // google_place_id - value, string
+                            // google_place_name - value, string
+                            // google_place_geometry - value, string latitude, longitude separated by `, `?
+                            // google_place_permanently_closed - value, string, Yes or No
+                            // google_place_open_now - value, string
+                            // google_place_icon - value, string
+                            // google_place_images - value, string
+                            // google_place_types - value, item separated with `, `
+                            // google_place_working_hours - value, string
+                            // google_place_price_level - value, string
+                            // google_place_rating - value, double
+                            // google_place_rating - value, int
+                        }
+                    }
+                }
+            }
         }
     }
 }
