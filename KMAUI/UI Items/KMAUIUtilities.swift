@@ -2040,7 +2040,7 @@ public class KMAUIUtilities {
     }
     
     // Load the polygone details for bundle id
-    public func getDataForPolygone(bundleId: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: String)->()) {
+    public func getDataForPolygone(bundleId: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygonDataStruct])->()) {
         let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
         
         let headers: HTTPHeaders = [
@@ -2071,8 +2071,36 @@ public class KMAUIUtilities {
             
             print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
-            completion(jsonString)
+            completion(KMAUIUtilities.shared.processPolygoneData(jsonString: jsonString))
         }
+    }
+    
+    public func processPolygoneData(jsonString: String) -> [KMAUIPolygonDataStruct] {
+        let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+        var polygoneArray = [KMAUIPolygonDataStruct]()
+        var uniqueKeys = [String]()
+        
+        if let data = jsonDictionary["data"] as? [String: AnyObject] {
+            // CUSTOM
+            if let custom = data["CUSTOM"] as? [[String: AnyObject]] {
+                for item in custom {
+                    var polygoneData = KMAUIPolygonDataStruct()
+                    polygoneData.fillFromDictionary(object: item)
+                    polygoneArray.append(polygoneData)
+                    for (key, _) in item {
+                        if !uniqueKeys.contains(key) {
+                            uniqueKeys.append(key)
+                        }
+                    }
+                }
+                
+                print("\nCustom items: \(custom.count), unique keys: \(uniqueKeys)")
+            }
+        } else {
+            print("\nNo polygone data for bundle.")
+        }
+        
+        return polygoneArray
     }
 }
 

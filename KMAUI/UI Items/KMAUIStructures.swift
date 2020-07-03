@@ -4335,3 +4335,45 @@ public struct KMAUI9x9Bundle {
         }
     }
 }
+
+// MARK: - Polygone for Bundle
+
+public struct KMAUIPolygonDataStruct {
+    public var comment = ""
+    public var paidOnly = false
+    public var title = ""
+    public var id = ""
+    public var type = ""
+    public var value = ""
+    
+    public init() {}
+    
+    public mutating func fillFromDictionary(object: [String: AnyObject]) {
+        if let type = object["type"] as? String {
+            self.type = type
+        }
+        
+        if let value = object["value"] as? String {
+            self.value = value
+        } else {
+            print("Value isn't String")
+        }
+        
+        if let paidOnly = object["paid_only"] as? Bool {
+            self.paidOnly = paidOnly
+        }
+        
+        if let comment = object["comment"] as? String {
+            self.comment = comment
+        }
+        
+        if let title = object["title"] as? String {
+            self.title = title
+        }
+        
+        if let id = object["id"] as? String {
+            self.id = id
+        }
+    }
+}
+
