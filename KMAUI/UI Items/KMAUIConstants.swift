@@ -292,6 +292,18 @@ public class KMAUIConstants {
                        "Makkah": "jKSqzVZ1Qh",
                        "Ash Sharqiyah": "U3pCS8McNA"]
     
+    // MARK: - Notification arrays
+    public var landLotteryNotifications = [KMANotificationStruct]()
+    public var landCasesNotifications = [KMANotificationStruct]()
+    public var trespassCasesNotifications = [KMANotificationStruct]()
+    public var generalNotifications = [KMANotificationStruct]()
+    // Type arrays
+    public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded"]
+    public let landCasesTypes = ["landCaseCreated"]
+    public let trespassCasesTypes = ["penaltyPaymentReceived"]
+    public var tabBarController = UITabBarController()
+}
+
 //    1. Jizan: uNaTZ905Cg - Jazan
 //    2. Ar Riyad: fN4QkVTtYG - Riyadh
 //    3. Al Bahah: 0MeC5xWrhK - Al Baha
@@ -305,15 +317,3 @@ public class KMAUIConstants {
 //    11. Northern Borders: l6XhWzfDpe - Al Hudud Ash Shamaliyah
 //    12. Makkah: jKSqzVZ1Qh - Makkah
 //    13. Eastern Province: U3pCS8McNA - Ash Sharqiyah
-    
-    // MARK: - Notification arrays
-    public var landLotteryNotifications = [KMANotificationStruct]()
-    public var landCasesNotifications = [KMANotificationStruct]()
-    public var trespassCasesNotifications = [KMANotificationStruct]()
-    public var generalNotifications = [KMANotificationStruct]()
-    // Type arrays
-    public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded"]
-    public let landCasesTypes = ["landCaseCreated"]
-    public let trespassCasesTypes = ["penaltyPaymentReceived"]
-    public var tabBarController = UITabBarController()
-}

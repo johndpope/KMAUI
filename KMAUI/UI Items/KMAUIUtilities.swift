@@ -1992,7 +1992,7 @@ public class KMAUIUtilities {
      Get data from KMA 9x9
      */
     
-    public func getDataKMA9x9(mainSW: CLLocationCoordinate2D, mainNE: CLLocationCoordinate2D, completion: @escaping (_ bundlesCount: Int, _ bundlesString: String)->()) {
+    public func getDataKMA9x9(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ bundlesCount: Int, _ bundlesString: String)->()) {
         // Bearer token
         let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
         
@@ -2004,7 +2004,7 @@ public class KMAUIUtilities {
         
         // Parameters - geobox of the region
         let parameters: [String: AnyObject] = [
-            "polygone" : [[mainSW.latitude, mainSW.longitude], [mainNE.latitude, mainSW.longitude], [mainNE.latitude, mainNE.longitude], [mainSW.latitude, mainNE.longitude], [mainSW.latitude, mainSW.longitude]] as AnyObject]
+            "polygone" : [[sw.latitude, sw.longitude], [ne.latitude, sw.longitude], [ne.latitude, ne.longitude], [sw.latitude, ne.longitude], [sw.latitude, sw.longitude]] as AnyObject]
 
         // Bundles endpoint
         let bundlesSearch = "https://api.kma.dev.magora.uk/v1/bundles/search"
@@ -2026,6 +2026,8 @@ public class KMAUIUtilities {
                     print(error.localizedDescription)
                 }
             }
+            
+            print("\nBundles loaded:\n\(jsonString)")
 
             let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
             
@@ -2034,6 +2036,42 @@ public class KMAUIUtilities {
             }
             
             completion(bundlesCount, jsonString)
+        }
+    }
+    
+    // Load the polygone details for bundle id
+    public func getDataForPolygone(bundleId: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: String)->()) {
+        let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
+        
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Authorization": "Bearer \(accessToken)"
+        ]
+        
+        let parameters: [String: AnyObject] = [
+            "polygone" : [[sw.latitude, sw.longitude], [ne.latitude, sw.longitude], [ne.latitude, ne.longitude], [sw.latitude, ne.longitude], [sw.latitude, sw.longitude]] as AnyObject
+        ]
+                
+        let dataFromBundle = "https://api.kma.dev.magora.uk/v1/bundles/\(bundleId)/search/polygones"
+        
+        AF.request(dataFromBundle, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+            var jsonString = ""
+            
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
+            
+            completion(jsonString)
         }
     }
 }
