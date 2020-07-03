@@ -4293,6 +4293,7 @@ public struct KMAUI9x9Bundle {
     public var madePublic = false
     public var name = ""
     public var description = ""
+    public var comment = ""
     public var isDefault = false
     public var status = ""
     public var paidOnly = false
@@ -4312,6 +4313,10 @@ public struct KMAUI9x9Bundle {
         
         if let description = object["description"] as? String {
             self.description = description
+        }
+        
+        if let comment = object["comment"] as? String {
+            self.comment = comment
         }
         
         if let isDefault = object["is_default"] as? Bool {
