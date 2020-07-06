@@ -119,7 +119,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.clipsToBounds = false
         } else if mode == "polygones" {
             if isLoading {
@@ -131,7 +131,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
-            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.clipsToBounds = false
         }
         // Add the spacing for the infoLabel
