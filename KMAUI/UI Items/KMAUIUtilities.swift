@@ -2096,9 +2096,9 @@ public class KMAUIUtilities {
                     polygoneData.polygoneType = "googlePlace"
                     polygoneData.fillFromDictionary(object: place)
                     // We don't need to display the permanently closed places
-                    if !polygoneData.googlePlaceClosed {
+//                    if !polygoneData.googlePlaceClosed {
                         polygoneArray.append(polygoneData)
-                    }
+//                    }
                 }
             }
         } else {
