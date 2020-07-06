@@ -49,9 +49,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-HH-bcK">
+                                <rect key="frame" x="275" y="199.5" width="38" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Afl-wY-zrf"/>
+                                    <constraint firstAttribute="height" constant="38" id="C4Q-Bg-PqC"/>
+                                </constraints>
+                                <color key="color" name="KMAUITextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aYU-HH-bcK" firstAttribute="leading" secondItem="UJ2-wX-ukx" secondAttribute="trailing" constant="12" id="3QC-RE-Ti7"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e5t-mG-MFG" secondAttribute="leading" id="BoL-JH-kcx"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="centerX" secondItem="e5t-mG-MFG" secondAttribute="centerX" id="FHA-cj-8JY"/>
                             <constraint firstItem="CLe-vC-ayR" firstAttribute="centerX" secondItem="e5t-mG-MFG" secondAttribute="centerX" id="GPB-9s-8b4"/>
@@ -59,6 +68,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UJ2-wX-ukx" secondAttribute="trailing" id="WBW-tH-qq3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qWd-AU-roY" secondAttribute="trailing" id="Wtl-sh-a7H"/>
                             <constraint firstAttribute="bottom" secondItem="qWd-AU-roY" secondAttribute="bottom" constant="32" id="eZA-eI-e0G"/>
+                            <constraint firstItem="aYU-HH-bcK" firstAttribute="centerY" secondItem="UJ2-wX-ukx" secondAttribute="centerY" id="foW-5c-uT2"/>
                             <constraint firstItem="CLe-vC-ayR" firstAttribute="top" secondItem="e5t-mG-MFG" secondAttribute="top" constant="32" id="pO0-4J-BeZ"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="top" secondItem="CLe-vC-ayR" secondAttribute="bottom" constant="48" id="wyG-bA-H9d"/>
                             <constraint firstItem="qWd-AU-roY" firstAttribute="top" secondItem="UJ2-wX-ukx" secondAttribute="bottom" constant="14" id="xbm-UV-pLF"/>
@@ -78,16 +88,21 @@
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="aYU-HH-bcK" id="LSI-gI-Q5G"/>
                 <outlet property="bgView" destination="e5t-mG-MFG" id="Ft5-qK-u33"/>
                 <outlet property="infoLabel" destination="qWd-AU-roY" id="nhT-LI-Kri"/>
                 <outlet property="logoImageView" destination="CLe-vC-ayR" id="ze7-Qo-Z1H"/>
                 <outlet property="titleLabel" destination="UJ2-wX-ukx" id="hAi-jM-sGr"/>
+                <outlet property="titleLabelCenter" destination="FHA-cj-8JY" id="Yxy-j1-Xzk"/>
             </connections>
             <point key="canvasLocation" x="-238.40579710144928" y="-12.388392857142856"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="lotteryPlaceholder" width="128" height="128"/>
+        <namedColor name="KMAUITextColor">
+            <color red="0.067000001668930054" green="0.082000002264976501" blue="0.2199999988079071" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="KMAUIViewBgColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

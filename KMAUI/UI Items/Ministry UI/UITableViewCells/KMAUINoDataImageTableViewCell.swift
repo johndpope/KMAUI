@@ -14,7 +14,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var titleLabelCenter: NSLayoutConstraint!
     @IBOutlet weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     // MARK: - Variables
     public static let id = "KMAUINoDataImageTableViewCell"
@@ -52,6 +54,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         logoImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         bgView.backgroundColor = UIColor.clear
         bgView.clipsToBounds = true
+        titleLabelCenter.constant = 0
+        activityIndicatorView.alpha = 0
         
         if mode == "subLands" {
             titleLabel.text = "No Sub lands"
@@ -114,6 +118,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the bundles to be loaded."
                 logoImageView.image = KMAUIConstants.shared.citizensIcon
+                titleLabelCenter.constant = -25
+                activityIndicatorView.alpha = 1
+                activityIndicatorView.startAnimating()
             } else {
                 titleLabel.text = "No bundles"
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
@@ -126,6 +133,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the polygones to be loaded."
                 logoImageView.image = KMAUIConstants.shared.citizensIcon
+                titleLabelCenter.constant = -25
+                activityIndicatorView.alpha = 1
+                activityIndicatorView.startAnimating()
             } else {
                 titleLabel.text = "No bundles"
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
@@ -138,3 +148,4 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
     }
 }
+// 38 + 12 / 2
