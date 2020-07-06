@@ -17,6 +17,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     
     // MARK: - Variables
     public static let id = "KMAUINoDataImageTableViewCell"
+    public var isLoading = false
     public var mode = "" {
         didSet {
             setupCell()
@@ -101,6 +102,26 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             titleLabel.text = "Searching..."
             infoLabel.text = "Please wait for the search results"
             logoImageView.image = KMAUIConstants.shared.citizensIcon
+        } else if mode == "bundles" {
+            if isLoading {
+                titleLabel.text = "Loading..."
+                infoLabel.text = "Please wait for the bundles to be loaded."
+                logoImageView.image = KMAUIConstants.shared.citizensIcon
+            } else {
+                titleLabel.text = "No bundles"
+                infoLabel.text = "Unfortunately we weren't able to load any bundles."
+                logoImageView.image = KMAUIConstants.shared.rejectionIcon
+            }
+        } else if mode == "polygones" {
+            if isLoading {
+                titleLabel.text = "Loading..."
+                infoLabel.text = "Please wait for the polygones to be loaded."
+                logoImageView.image = KMAUIConstants.shared.citizensIcon
+            } else {
+                titleLabel.text = "No bundles"
+                infoLabel.text = "Unfortunately we weren't able to load any bundles."
+                logoImageView.image = KMAUIConstants.shared.rejectionIcon
+            }
         }
         // Add the spacing for the infoLabel
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
