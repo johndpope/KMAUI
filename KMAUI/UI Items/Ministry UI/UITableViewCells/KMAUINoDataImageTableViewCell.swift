@@ -137,8 +137,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 activityIndicatorView.alpha = 1
                 activityIndicatorView.startAnimating()
             } else {
-                titleLabel.text = "No bundles"
-                infoLabel.text = "Unfortunately we weren't able to load any bundles."
+                titleLabel.text = "No polygones"
+                infoLabel.text = "Unfortunately we weren't able to load any polygones."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
