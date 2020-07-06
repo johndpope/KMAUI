@@ -61,6 +61,8 @@ public class KMAUIImagesPreviewView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        contentView.layer.cornerRadius = 8
+        contentView.clipsToBounds = true
         // Borders for images
         borderFor(imageView: singleImageView)
         borderFor(imageView: twoOneImageView)
@@ -216,6 +218,7 @@ public class KMAUIImagesPreviewView: UIView {
             let previewController = QLPreviewController()
             previewController.dataSource = self
             KMAUIUtilities.shared.displayAlert(viewController: previewController)
+            KMAUIConstants.shared.popupOpened = true
         }
     }
 }
