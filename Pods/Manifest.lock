@@ -4,9 +4,9 @@ PODS:
   - Charts (3.5.0):
     - Charts/Core (= 3.5.0)
   - Charts/Core (3.5.0)
-  - Kingfisher (5.14.0):
-    - Kingfisher/Core (= 5.14.0)
-  - Kingfisher/Core (5.14.0)
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
   - MKRingProgressView (2.2.3)
   - Parse (1.18.0):
     - Parse/Core (= 1.18.0)
@@ -36,7 +36,7 @@ SPEC CHECKSUMS:
   Alamofire: df2f8f826963b08b9a870791ad48e07a10090b2e
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Charts: 40a08591df1f8ad5c223ddedfb1a06da92f24f7c
-  Kingfisher: 7b64389a43139c903ec434788344c288217c792d
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   MKRingProgressView: 404b3157e7a533ab8668d29ec20042c35d12ca1d
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
