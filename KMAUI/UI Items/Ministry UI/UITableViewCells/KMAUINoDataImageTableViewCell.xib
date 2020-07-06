@@ -49,18 +49,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-HH-bcK">
-                                <rect key="frame" x="275" y="199.5" width="38" height="38"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="aYU-HH-bcK">
+                                <rect key="frame" x="271" y="202.5" width="32" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="38" id="Afl-wY-zrf"/>
-                                    <constraint firstAttribute="height" constant="38" id="C4Q-Bg-PqC"/>
+                                    <constraint firstAttribute="width" constant="32" id="Afl-wY-zrf"/>
+                                    <constraint firstAttribute="height" constant="32" id="C4Q-Bg-PqC"/>
                                 </constraints>
                                 <color key="color" name="KMAUITextColor"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aYU-HH-bcK" firstAttribute="leading" secondItem="UJ2-wX-ukx" secondAttribute="trailing" constant="12" id="3QC-RE-Ti7"/>
+                            <constraint firstItem="aYU-HH-bcK" firstAttribute="leading" secondItem="UJ2-wX-ukx" secondAttribute="trailing" constant="8" id="3QC-RE-Ti7"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e5t-mG-MFG" secondAttribute="leading" id="BoL-JH-kcx"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="centerX" secondItem="e5t-mG-MFG" secondAttribute="centerX" id="FHA-cj-8JY"/>
                             <constraint firstItem="CLe-vC-ayR" firstAttribute="centerX" secondItem="e5t-mG-MFG" secondAttribute="centerX" id="GPB-9s-8b4"/>

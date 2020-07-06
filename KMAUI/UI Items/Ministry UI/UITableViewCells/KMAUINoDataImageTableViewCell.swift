@@ -118,7 +118,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the bundles to be loaded."
                 logoImageView.image = KMAUIConstants.shared.citizensIcon
-                titleLabelCenter.constant = -25
+                titleLabelCenter.constant = -20
                 activityIndicatorView.alpha = 1
                 activityIndicatorView.startAnimating()
             } else {
@@ -133,7 +133,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the polygones to be loaded."
                 logoImageView.image = KMAUIConstants.shared.citizensIcon
-                titleLabelCenter.constant = -25
+                titleLabelCenter.constant = -20
                 activityIndicatorView.alpha = 1
                 activityIndicatorView.startAnimating()
             } else {
