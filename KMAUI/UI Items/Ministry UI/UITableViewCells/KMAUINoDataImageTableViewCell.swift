@@ -9,8 +9,9 @@
 import UIKit
 
 public class KMAUINoDataImageTableViewCell: UITableViewCell {
+
     // MARK: - IBOutlets
-    
+    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var infoLabel: KMAUIRegularTextLabel!
@@ -35,6 +36,10 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         backgroundColor = UIColor.clear
+        
+        // Larger shadow for bgView
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        bgView.layer.shadowRadius = 12
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
@@ -45,6 +50,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
     
     public func setupCell() {
         logoImageView.image = KMAUIConstants.shared.lotteryPlaceholder
+        bgView.backgroundColor = UIColor.clear
+        bgView.clipsToBounds = true
         
         if mode == "subLands" {
             titleLabel.text = "No Sub lands"
@@ -112,6 +119,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            bgView.clipsToBounds = false
         } else if mode == "polygones" {
             if isLoading {
                 titleLabel.text = "Loading..."
@@ -122,6 +131,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
+            bgView.clipsToBounds = false
         }
         // Add the spacing for the infoLabel
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)

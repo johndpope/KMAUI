@@ -18,11 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="477" height="379"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5t-mG-MFG">
-                        <rect key="frame" x="30" y="73.5" width="417" height="232"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5t-mG-MFG" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
+                        <rect key="frame" x="30" y="41.5" width="417" height="296"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lotteryPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="CLe-vC-ayR">
-                                <rect key="frame" x="144.5" y="0.0" width="128" height="128"/>
+                                <rect key="frame" x="144.5" y="32" width="128" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="SHH-iM-9vL"/>
@@ -30,7 +30,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Lottery details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UJ2-wX-ukx" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="154" y="176" width="109" height="21"/>
+                                <rect key="frame" x="154" y="208" width="109" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="bdz-Np-mDO"/>
@@ -40,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please, select the lottery to review the full details" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qWd-AU-roY" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="21.5" y="211" width="374" height="21"/>
+                                <rect key="frame" x="21.5" y="243" width="374" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="1EJ-7z-ANP"/>
@@ -58,8 +58,8 @@
                             <constraint firstItem="qWd-AU-roY" firstAttribute="centerX" secondItem="e5t-mG-MFG" secondAttribute="centerX" id="VhH-xE-hbb"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UJ2-wX-ukx" secondAttribute="trailing" id="WBW-tH-qq3"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qWd-AU-roY" secondAttribute="trailing" id="Wtl-sh-a7H"/>
-                            <constraint firstAttribute="bottom" secondItem="qWd-AU-roY" secondAttribute="bottom" id="eZA-eI-e0G"/>
-                            <constraint firstItem="CLe-vC-ayR" firstAttribute="top" secondItem="e5t-mG-MFG" secondAttribute="top" id="pO0-4J-BeZ"/>
+                            <constraint firstAttribute="bottom" secondItem="qWd-AU-roY" secondAttribute="bottom" constant="32" id="eZA-eI-e0G"/>
+                            <constraint firstItem="CLe-vC-ayR" firstAttribute="top" secondItem="e5t-mG-MFG" secondAttribute="top" constant="32" id="pO0-4J-BeZ"/>
                             <constraint firstItem="UJ2-wX-ukx" firstAttribute="top" secondItem="CLe-vC-ayR" secondAttribute="bottom" constant="48" id="wyG-bA-H9d"/>
                             <constraint firstItem="qWd-AU-roY" firstAttribute="top" secondItem="UJ2-wX-ukx" secondAttribute="bottom" constant="14" id="xbm-UV-pLF"/>
                             <constraint firstItem="qWd-AU-roY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e5t-mG-MFG" secondAttribute="leading" id="yev-oY-Sp6"/>
@@ -70,14 +70,15 @@
                 <constraints>
                     <constraint firstItem="e5t-mG-MFG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="M2y-AV-4A3"/>
                     <constraint firstAttribute="trailing" secondItem="e5t-mG-MFG" secondAttribute="trailing" constant="30" id="Mhr-Rw-sbX"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e5t-mG-MFG" secondAttribute="bottom" constant="64" id="e3T-dH-4o4"/>
-                    <constraint firstItem="e5t-mG-MFG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="64" id="iH8-mO-Z9j"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="e5t-mG-MFG" secondAttribute="bottom" constant="32" id="e3T-dH-4o4"/>
+                    <constraint firstItem="e5t-mG-MFG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="iH8-mO-Z9j"/>
                     <constraint firstItem="e5t-mG-MFG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vLw-3A-hcM"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="KMAUIViewBgColor"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="bgView" destination="e5t-mG-MFG" id="Ft5-qK-u33"/>
                 <outlet property="infoLabel" destination="qWd-AU-roY" id="nhT-LI-Kri"/>
                 <outlet property="logoImageView" destination="CLe-vC-ayR" id="ze7-Qo-Z1H"/>
                 <outlet property="titleLabel" destination="UJ2-wX-ukx" id="hAi-jM-sGr"/>
