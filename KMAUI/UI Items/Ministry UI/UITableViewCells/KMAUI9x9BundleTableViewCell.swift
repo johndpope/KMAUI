@@ -79,10 +79,12 @@ public class KMAUI9x9BundleTableViewCell: UITableViewCell {
     
     public func setupColors(highlight: Bool) {
         if highlight {
+            bgView.alpha = 0.75
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
             rightArrowImageView.tintColor = UIColor.white
             rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
         } else {
+            bgView.alpha = 1.0
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
