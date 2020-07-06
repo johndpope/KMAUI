@@ -4426,7 +4426,7 @@ public struct KMAUIPolygoneDataStruct {
                                         self.googlePlaceLocation = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
                                     }
                                 } else if id == "google_place_permanently_closed" {
-                                    self.googlePlaceClosed = point == "No"
+                                    self.googlePlaceClosed = point != "No"
                                 } else if id == "google_place_types" {
                                     self.googlePlaceTypes = [String]()
                                     let components = point.components(separatedBy: ", ")
