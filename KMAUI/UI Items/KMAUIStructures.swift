@@ -4353,6 +4353,7 @@ public struct KMAUIPolygoneDataStruct {
     public var id = ""
     public var type = ""
     public var value = ""
+    public var valueArray = [KMAUIPolygoneDataStruct]()
     // Google
     public var googlePlaceId = ""
     public var googlePlaceName = ""
@@ -4381,12 +4382,18 @@ public struct KMAUIPolygoneDataStruct {
         }
         
         if polygoneType == "custom" {
-            
-            
             if let value = object["value"] as? String {
                 self.value = value
             } else {
-                print("Value isn't String")
+                if let value = object["value"] as? [[String: AnyObject]], !value.isEmpty {
+                    for item in value {
+                        var polygoneData = KMAUIPolygoneDataStruct()
+                        polygoneData.polygoneType = "custom"
+                        polygoneData.fillFromDictionary(object: item)
+                        valueArray.append(polygoneData)
+                    }
+                }
+                print("VALUE ARRAY: \(valueArray.count)")
             }
             
             if let paidOnly = object["paid_only"] as? Bool {
