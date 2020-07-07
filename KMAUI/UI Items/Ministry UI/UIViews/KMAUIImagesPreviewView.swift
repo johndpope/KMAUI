@@ -149,7 +149,6 @@ public class KMAUIImagesPreviewView: UIView {
                 }
             }
         } else {
-            print("No attachments found.")
             singleImageView.alpha = 1
             singleImageView.contentMode = .center
             singleImageView.image = KMAUIConstants.shared.lotteryPlaceholder
