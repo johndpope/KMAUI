@@ -2027,7 +2027,7 @@ public class KMAUIUtilities {
                 }
             }
             
-            print("\nBundles loaded:\n\(jsonString)")
+//            print("\nBundles loaded:\n\(jsonString)")
 
             let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
             
