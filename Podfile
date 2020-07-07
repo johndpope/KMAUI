@@ -12,5 +12,6 @@ pod 'Kingfisher', '~> 5.0'
 pod 'Charts'
 pod 'Parse'
 pod 'MKRingProgressView'
+pod 'FontAwesome.swift'
 
 end
