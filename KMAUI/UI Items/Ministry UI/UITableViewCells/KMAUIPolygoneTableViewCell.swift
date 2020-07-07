@@ -191,6 +191,13 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Place name
         titleLabel.text = polygone.googlePlaceName
         
+        // Place address
+        if !polygone.googlePlaceAddress.isEmpty {
+            // Location label top offset
+            locationLabelTop.constant = 12
+            locationLabel.text = polygone.googlePlaceAddress
+        }
+        
         // Rating
         if polygone.googlePlaceRating == 0 {
             ratingLabel.text = ""

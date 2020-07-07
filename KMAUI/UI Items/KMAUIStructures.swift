@@ -4356,8 +4356,11 @@ public struct KMAUIPolygoneDataStruct {
     public var valueArray = [KMAUIPolygoneDataStruct]()
     // Google
     public var googlePlaceId = ""
+    public var googlePlaceIdValue = ""
     public var googlePlaceName = ""
     public var googlePlaceLocation = CLLocationCoordinate2D()
+    public var googlePlaceSW = CLLocationCoordinate2D()
+    public var googlePlaceNE = CLLocationCoordinate2D()
     public var googlePlaceClosed = false
     public var googlePlaceOpenNow = ""
     public var googlePlaceIcon = ""
@@ -4369,8 +4372,129 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceRating = 0.0
     public var googlePlaceReviewsCount = 0
     public var googlePlaceWorkingHours = ""
+    public var googlePlaceBusinessStatus = "" // OPERATIONAL || CLOSED_TEMPORARILY || CLOSED_PERMANENTLY
+    public var googlePlaceAddress = ""
     
     public init() {}
+    
+    public mutating func fillFromNearbyPlace(object: [String: AnyObject]) {
+        print("\nPLACE FILLED WITH DETAILS:")
+        // Business status
+        if let businessStatus = object["business_status"] as? String {
+            self.googlePlaceBusinessStatus = businessStatus
+            
+            if businessStatus == "CLOSED_PERMANENTLY" {
+                self.googlePlaceClosed = true
+            } else {
+                self.googlePlaceClosed = false
+            }
+            
+            print("- Business status: \(self.googlePlaceBusinessStatus)")
+            print("- Closed Permanently: \(self.googlePlaceClosed)")
+        }
+        
+        // Location, SW, NE
+        if let geometry = object["geometry"] as? [String: AnyObject] {
+            // Location
+            if let location = geometry["location"] as? [String: AnyObject] {
+                if let lat = location["lat"] as? Double, let lng = location["lng"] as? Double {
+                    self.googlePlaceLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                    print("- Location: \(lat), \(lng)")
+                }
+            }
+            // SW + NE
+            if let viewPort = geometry["viewport"] as? [String: AnyObject] {
+                // SW
+                if let southwest = viewPort["southwest"] as? [String: AnyObject] {
+                    if let lat = southwest["lat"] as? Double, let lng = southwest["lng"] as? Double {
+                        self.googlePlaceSW = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                        print("- SW: \(lat), \(lng)")
+                    }
+                }
+                // NE
+                if let northeast = viewPort["northeast"] as? [String: AnyObject] {
+                    if let lat = northeast["lat"] as? Double, let lng = northeast["lng"] as? Double {
+                        self.googlePlaceNE = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+                        print("- NE: \(lat), \(lng)")
+                    }
+                }
+            }
+        }
+        
+        // Icon
+        if let icon = object["icon"] as? String {
+            self.googlePlaceIcon = icon
+            print("- Icon: \(icon)")
+        }
+        
+        // ID
+        if let id = object["id"] as? String {
+            self.googlePlaceIdValue = id
+            print("- ID: \(id)")
+        }
+        
+        // Place ID
+        if let placeId = object["place_id"] as? String {
+            self.googlePlaceId = placeId
+            print("- Place ID: \(placeId)")
+        }
+        
+        // Name
+        if let name = object["name"] as? String {
+            self.googlePlaceName = name
+            print("- Name: \(name)")
+        }
+        
+        // Open now
+        if let openingHours = object["opening_hours"] as? [String: AnyObject], let openNow = openingHours["open_now"] as? Bool {
+            if openNow {
+                self.googlePlaceOpenNow = "Yes"
+            } else {
+                self.googlePlaceOpenNow = "No"
+            }
+            print("- Open now: \(self.googlePlaceOpenNow)")
+        }
+        
+        // Address
+        if let address = object["vicinity"] as? String {
+            self.googlePlaceAddress = address
+            print("- Address: \(address)")
+        }
+        
+        // Types
+        if let types = object["types"] as? [String] {
+            self.googlePlaceTypesString = ""
+            
+            for typeValue in types {
+                let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
+                
+                if !self.googlePlaceTypes.contains(typeValueItem) {
+                    self.googlePlaceTypes.append(typeValueItem)
+                    
+                    if self.googlePlaceTypesString.isEmpty {
+                       self.googlePlaceTypesString = typeValueItem
+                    } else {
+                        self.googlePlaceTypesString += ", " + typeValueItem
+                    }
+                }
+            }
+            
+            print("- Types array: \(self.googlePlaceTypes)")
+            print("- Types string: \(self.googlePlaceTypesString)")
+        }
+        
+        // Rating
+        if let rating = object["rating"] as? Double {
+            self.googlePlaceRating = rating
+            print("- Rating: \(rating)")
+        }
+        
+        // Ratings count
+        if let ratingsCount = object["user_ratings_total"] as? Int {
+            self.googlePlaceReviewsCount = ratingsCount
+            print("- Reviews count: \(self.googlePlaceReviewsCount)")
+        }
+    }
     
     public mutating func fillFromDictionary(object: [String: AnyObject]) {
         if let title = object["title"] as? String {
