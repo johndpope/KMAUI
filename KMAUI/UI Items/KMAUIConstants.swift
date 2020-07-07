@@ -24,12 +24,14 @@ public class KMAUIConstants {
         public static let weight600Size18 = UIFont.systemFont(ofSize: 18, weight: .semibold)
         public static let weight600Size16 = UIFont.systemFont(ofSize: 16, weight: .semibold)
         public static let weight600Size14 = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        public static let weight600Size12 = UIFont.systemFont(ofSize: 12, weight: .semibold)
         public static let regular = UIFont.systemFont(ofSize: 14, weight: .regular)
+        public static let regular12 = UIFont.systemFont(ofSize: 12, weight: .regular)
     }
     
     // MARK: - KMAUIColors
     public let KMAUIMainBgColor = UIColor(named: "KMAUIMainBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
-    public let KMAUIViewBgColor = UIColor(named: "KMAUIViewBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIViewBgColor = UIColor(named: "KMAUIViewBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#FFFFFF
     public let KMAUIMemberBgColor = UIColor(named: "KMAUIMemberBgColorF2F2F5", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#F2F2F5
     public let KMAUITextColor = UIColor(named: "KMAUITextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIBlueDarkColor = UIColor(named: "KMAUIBlueDarkColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!

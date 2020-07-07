@@ -20,7 +20,11 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     
     // MARK: - Variables
     public var count = 0
-    public var hasShadow = false
+    public var hasShadow = false {
+        didSet {
+            setupHeader()
+        }
+    }
     public var headerTitle = "" {
         didSet {
             setupHeader()
