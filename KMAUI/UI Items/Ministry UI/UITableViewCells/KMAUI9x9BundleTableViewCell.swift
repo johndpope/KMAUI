@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FontAwesome_swift
 
 public class KMAUI9x9BundleTableViewCell: UITableViewCell {
     
@@ -122,9 +123,9 @@ public class KMAUI9x9BundleTableViewCell: UITableViewCell {
         }
         
         if bundle.icon != "string", !bundle.icon.isEmpty, let faImage = UIImage.fontAwesomeIcon(code: bundle.icon, style: .light, textColor: KMAUIConstants.shared.KMAUIBlueDarkColorBarTint, size: CGSize(width: 28, height: 28)) {
-            bundleCell.logoImageView.image = faImage.withRenderingMode(.alwaysTemplate)
+            logoImageView.image = faImage.withRenderingMode(.alwaysTemplate)
         } else {
-            bundleCell.logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
+            logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
         }
     }
 }
