@@ -8,7 +8,7 @@ s.summary = "Document name included for the KMANotification when user creates th
 s.requires_arc = true
 
 # 2
-s.version = "1.5.63"
+s.version = "1.5.64"
 
 # 3
 s.license = { :type => "MIT", :file => "LICENSE" }
@@ -41,5 +41,7 @@ s.dependency 'Kingfisher', '~> 5.0'
 s.dependency 'Charts'
 s.dependency 'Parse'
 s.dependency 'MKRingProgressView'
+s.dependency 'MKRingProgressView'
+s.dependency 'FontAwesome.swift'
 
 end
