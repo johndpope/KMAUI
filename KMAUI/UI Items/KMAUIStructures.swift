@@ -4393,7 +4393,6 @@ public struct KMAUIPolygoneDataStruct {
                         valueArray.append(polygoneData)
                     }
                 }
-                print("VALUE ARRAY: \(valueArray.count)")
             }
             
             if let paidOnly = object["paid_only"] as? Bool {

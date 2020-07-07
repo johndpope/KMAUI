@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIGooglePlacePolygoneTableViewCell" rowHeight="294" id="KGk-i7-Jjw" customClass="KMAUIGooglePlacePolygoneTableViewCell" customModule="KMAUI" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUIPolygoneTableViewCell" rowHeight="294" id="KGk-i7-Jjw" customClass="KMAUIPolygoneTableViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="434" height="294"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -30,10 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgl-Ny-Ym2" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="64" width="362" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="JKA-E3-3lX"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="64" width="362" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,17 +43,17 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfo-G2-BuW">
-                                <rect key="frame" x="16" y="106" width="370" height="1"/>
+                                <rect key="frame" x="16" y="104.5" width="370" height="1"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Gjt-5N-RIb"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="999" verticalCompressionResistancePriority="755" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="RuM-XH-IEZ">
-                                <rect key="frame" x="232" y="127" width="150" height="131"/>
+                                <rect key="frame" x="232" y="125.5" width="150" height="132.5"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwI-n7-ruw" customClass="KMAUIImagesPreviewView" customModule="KMAUI" customModuleProvider="target">
-                                <rect key="frame" x="20" y="126.5" width="200" height="132"/>
+                                <rect key="frame" x="20" y="126" width="200" height="132"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="DfU-wG-zKF"/>
@@ -123,7 +120,9 @@
                 <outlet property="bgView" destination="OZ7-Hm-3vj" id="ekI-yb-gfM"/>
                 <outlet property="bgViewTop" destination="4dL-6I-syZ" id="NzS-Za-DQS"/>
                 <outlet property="locationLabel" destination="Wgl-Ny-Ym2" id="zj3-yw-jbD"/>
+                <outlet property="locationLabelTop" destination="UHV-L7-y1L" id="B9b-2W-DnS"/>
                 <outlet property="logoImageView" destination="cHw-eQ-EiC" id="WRb-vq-6Q0"/>
+                <outlet property="logoImageViewLeft" destination="EGY-rw-c7Y" id="mFK-NT-7zT"/>
                 <outlet property="placeImageView" destination="JwI-n7-ruw" id="WgJ-HI-jgi"/>
                 <outlet property="placeImageViewHeight" destination="DfU-wG-zKF" id="lNS-XR-BTC"/>
                 <outlet property="placeImageViewLeft" destination="OMv-We-J52" id="jSe-ST-xE9"/>
@@ -131,6 +130,8 @@
                 <outlet property="ratingLabelLeft" destination="HMz-ok-IkS" id="chA-xK-tYp"/>
                 <outlet property="ratingLabelWidth" destination="iID-W7-Vym" id="z01-Tv-BeB"/>
                 <outlet property="showOnMapButton" destination="GtO-Ya-1DT" id="zf9-Yw-ft0"/>
+                <outlet property="showOnMapButtonLeft" destination="aiK-w6-l0k" id="3IX-YF-Gqf"/>
+                <outlet property="showOnMapButtonWidth" destination="fnH-Vx-Wu2" id="YdD-vY-sg5"/>
                 <outlet property="stackView" destination="RuM-XH-IEZ" id="8lH-hg-Xlx"/>
                 <outlet property="titleLabel" destination="qAx-QD-Nmh" id="ity-8k-haH"/>
                 <outlet property="topDivideLineView" destination="dfo-G2-BuW" id="M1j-Z3-POn"/>

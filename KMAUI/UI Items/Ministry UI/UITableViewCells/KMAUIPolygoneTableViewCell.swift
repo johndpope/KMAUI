@@ -8,17 +8,20 @@
 
 import UIKit
 import Kingfisher
+import SafariServices
 
-public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
+public class KMAUIPolygoneTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var bgViewTop: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var logoImageViewLeft: NSLayoutConstraint!
     @IBOutlet weak var placeImageView: KMAUIImagesPreviewView!
     @IBOutlet weak var placeImageViewLeft: NSLayoutConstraint!
     @IBOutlet weak var locationLabel: KMAUIRegularTextLabel!
+    @IBOutlet weak var locationLabelTop: NSLayoutConstraint!
     @IBOutlet weak var topDivideLineView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var placeImageViewHeight: NSLayoutConstraint!
@@ -26,9 +29,11 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var ratingLabelLeft: NSLayoutConstraint!
     @IBOutlet weak var showOnMapButton: UIButton!
+    @IBOutlet weak var showOnMapButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var showOnMapButtonLeft: NSLayoutConstraint!
     
     // MARK: - Variables
-    public static let id = "KMAUIGooglePlacePolygoneTableViewCell"
+    public static let id = "KMAUIPolygoneTableViewCell"
     public var mapCallback: ((Bool) -> Void)?
     public var isFirst = false
     public var polygone = KMAUIPolygoneDataStruct() {
@@ -93,6 +98,96 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
 
+        // Check type
+        if polygone.polygoneType == "custom" {
+            // Show on map button - hide
+            showOnMapButton.alpha = 0
+            showOnMapButtonLeft.constant = 0
+            showOnMapButtonWidth.constant = 0
+            // Hide logo image view
+            logoImageView.alpha = 0
+            logoImageViewLeft.constant = -18
+            // Location label top offset
+            locationLabelTop.constant = -8
+            // Setup the custom polygone details
+            setupCustomPolygone()
+        } else if polygone.polygoneType == "googlePlace" {
+            // Show on map button - show
+            showOnMapButton.alpha = 1
+            showOnMapButtonLeft.constant = 12
+            showOnMapButtonWidth.constant = 120
+            // Show logo image view
+            logoImageView.alpha = 1
+            logoImageViewLeft.constant = 20
+            // Location label top offset
+            locationLabelTop.constant = 12
+            // Setup the Google Places details
+            setupGooglePlacePolygone()
+        }
+    }
+
+    func setupCustomPolygone() {
+        // Title
+        titleLabel.text = polygone.title
+        
+        // Id
+        locationLabel.text = ""
+        locationLabel.backgroundColor = UIColor.red
+        
+        // Prepare rows
+        var rows = [KMAUIRowData]()
+        
+        // Value
+        if !polygone.value.isEmpty, polygone.type != "image" {
+            rows.append(KMAUIRowData(rowName: "Value", rowValue: polygone.value))
+        }
+        
+        if !polygone.valueArray.isEmpty {
+            print("VALUES:\n\(polygone.valueArray)")
+            rows.append(KMAUIRowData(rowName: "Values", rowValue: ""))
+            for item in polygone.valueArray {
+                rows.append(KMAUIRowData(rowName: item.title, rowValue: item.value))
+            }
+        }
+            
+        // Type
+        if !polygone.type.isEmpty {
+            if polygone.type != "image", polygone.value.starts(with: "http") {
+                rows.append(KMAUIRowData(rowName: "Type", rowValue: "Website"))
+                // Show on map button - show
+                showOnMapButton.alpha = 1
+                showOnMapButtonLeft.constant = 12
+                showOnMapButtonWidth.constant = 120
+                showOnMapButton.setTitle("Open website", for: .normal)
+            } else {
+                rows.append(KMAUIRowData(rowName: "Type", rowValue: polygone.type.capitalized))
+            }
+        }
+        
+        // Comment
+        if !polygone.comment.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Comment", rowValue: polygone.comment))
+        } else {
+            rows.append(KMAUIRowData(rowName: "Comment", rowValue: "No comments"))
+        }
+        
+        // Setup attachments
+        if polygone.type == "image" {
+            setupAttachments(url: polygone.value, name: polygone.title, id: polygone.title)
+        } else {
+            setupAttachments(url: "", name: "", id: "")
+        }
+        
+        // Setup stack view
+        setupStackView(rows: rows)
+        
+        // Hide rating
+        ratingLabel.text = ""
+        ratingLabelLeft.constant = 0
+        ratingLabelWidth.constant = 0
+    }
+    
+    func setupGooglePlacePolygone() {
         // Place name
         titleLabel.text = polygone.googlePlaceName
         
@@ -126,42 +221,7 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
         }
         
         // Setup attachments
-        var attachments = [KMADocumentData]()
-        
-        if !polygone.googlePlaceImage.isEmpty {
-            var attachment = KMADocumentData()
-            attachment.fileURL = polygone.googlePlaceImage
-            attachment.previewURL = polygone.googlePlaceImage
-            attachment.name = polygone.googlePlaceName.replacingOccurrences(of: " ", with: "") + ".jpg"
-            attachment.objectId = polygone.googlePlaceId
-            attachments.append(attachment)
-        }
-        
-        placeImageView.attachments = attachments
-        
-        if attachments.isEmpty {
-            placeImageView.singleImageView.contentMode = .scaleAspectFit
-            placeImageViewLeft.constant = -200 + 4
-        } else {
-            placeImageView.alpha = 1
-            placeImageViewLeft.constant = 20
-        }
-        
-        placeImageView.isHidden = attachments.isEmpty
-        
-        // Setup stack view
-        setupStackView()
-    }
-    
-    func setupStackView() {
-        // Clear existing subviews
-        for subview in stackView.subviews {
-            stackView.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        
-        // Clear the row views
-        rowViews = [UIView]()
+        setupAttachments(url: polygone.googlePlaceImage, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
         
         // Prepare rows
         var rows = [KMAUIRowData]()
@@ -181,6 +241,46 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
             rows.append(KMAUIRowData(rowName: "Working hours", rowValue: polygone.googlePlaceWorkingHours))
         }
         
+        // Setup stack view
+        setupStackView(rows: rows)
+    }
+    
+    func setupAttachments(url: String, name: String, id: String) {
+        // Setup attachments
+        var attachments = [KMADocumentData]()
+        
+        if !url.isEmpty {
+            var attachment = KMADocumentData()
+            attachment.fileURL = url
+            attachment.previewURL = url
+            attachment.name = name.replacingOccurrences(of: " ", with: "") + ".jpg"
+            attachment.objectId = id
+            attachments.append(attachment)
+        }
+        
+        placeImageView.attachments = attachments
+        
+        if attachments.isEmpty {
+            placeImageView.singleImageView.contentMode = .scaleAspectFit
+            placeImageViewLeft.constant = -200 + 4
+        } else {
+            placeImageView.alpha = 1
+            placeImageViewLeft.constant = 20
+        }
+        
+        placeImageView.isHidden = attachments.isEmpty
+    }
+    
+    func setupStackView(rows: [KMAUIRowData]) {
+        // Clear existing subviews
+        for subview in stackView.subviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
+        // Clear the row views
+        rowViews = [UIView]()
+        
         // Prepare the rows
         for (index, row) in rows.enumerated() {
             let itemView = UIStackView()
@@ -196,6 +296,11 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
+            
+            if row.rowName == "Values", row.rowValue.isEmpty {
+                rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
+            }
+            
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
             
@@ -237,6 +342,14 @@ public class KMAUIGooglePlacePolygoneTableViewCell: UITableViewCell {
     }
     
     @IBAction func showOnMapButtonPressed(_ sender: Any) {
-        mapCallback?(true)
+        if polygone.type != "image", polygone.value.starts(with: "http") {
+            if let url = URL(string: polygone.value) {
+                KMAUIConstants.shared.popupOpened = true
+                let safariVC = SFSafariViewController(url: url)
+                KMAUIUtilities.shared.displayAlert(viewController: safariVC)
+            }
+        } else {
+            mapCallback?(true)
+        }
     }
 }

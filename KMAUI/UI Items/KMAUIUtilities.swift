@@ -2027,7 +2027,7 @@ public class KMAUIUtilities {
                 }
             }
             
-            print("\nBundles loaded:\n\(jsonString)")
+//            print("\nBundles loaded:\n\(jsonString)")
 
             let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
             
@@ -2069,7 +2069,7 @@ public class KMAUIUtilities {
                 }
             }
             
-            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
+//            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
             completion(self.processPolygoneData(jsonString: jsonString))
         }
