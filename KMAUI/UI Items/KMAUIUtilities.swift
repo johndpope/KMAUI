@@ -2513,11 +2513,11 @@ public extension UIButton {
 // MARK: - UILabel extension
 
 public extension UILabel {
-
+    
     // Pass value for any one of both parameters and see result
     func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0, alignment: NSTextAlignment? = nil) {
         guard let labelText = self.text else { return }
-
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
@@ -2525,19 +2525,19 @@ public extension UILabel {
         if let alignment = alignment {
             paragraphStyle.alignment = alignment
         } else {
-        paragraphStyle.alignment = .center
+            paragraphStyle.alignment = .center
         }
-
+        
         let attributedString: NSMutableAttributedString
         if let labelattributedText = self.attributedText {
             attributedString = NSMutableAttributedString(attributedString: labelattributedText)
         } else {
             attributedString = NSMutableAttributedString(string: labelText)
         }
-
+        
         // Line spacing attribute
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-
+        
         self.attributedText = attributedString
     }
     
@@ -2551,7 +2551,7 @@ public extension UILabel {
         textContainer.maximumNumberOfLines = self.numberOfLines
         textContainer.lineBreakMode = self.lineBreakMode
         layoutManager.addTextContainer(textContainer)
-
+        
         let index = layoutManager.characterIndex(for: point, in: textContainer, fractionOfDistanceBetweenInsertionPoints: nil)
         return index
     }

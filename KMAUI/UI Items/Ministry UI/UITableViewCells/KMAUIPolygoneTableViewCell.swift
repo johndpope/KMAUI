@@ -313,6 +313,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
+            rowValueLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .right)
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
             
