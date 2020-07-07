@@ -48,7 +48,6 @@ public class KMAUI9x9BundleTableViewCell: UITableViewCell {
         logoImageView.layer.borderWidth = 1
         logoImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.withAlphaComponent(0.5).cgColor
         logoImageView.clipsToBounds = true
-        logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
         logoImageView.tintColor = KMAUIConstants.shared.KMAUIGreyProgressColor
         logoImageView.contentMode = .center
         
@@ -120,6 +119,12 @@ public class KMAUI9x9BundleTableViewCell: UITableViewCell {
             infoLabelTop.constant = 0
         } else {
             infoLabelTop.constant = 8
+        }
+        
+        if bundle.icon != "string", !bundle.icon.isEmpty, let faImage = UIImage.fontAwesomeIcon(code: bundle.icon, style: .light, textColor: KMAUIConstants.shared.KMAUIBlueDarkColorBarTint, size: CGSize(width: 28, height: 28)) {
+            bundleCell.logoImageView.image = faImage.withRenderingMode(.alwaysTemplate)
+        } else {
+            bundleCell.logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
         }
     }
 }
