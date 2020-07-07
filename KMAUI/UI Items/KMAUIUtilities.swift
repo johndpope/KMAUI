@@ -2107,6 +2107,54 @@ public class KMAUIUtilities {
         
         return polygoneArray
     }
+    
+    public func getGoogleNearbyPlaces(keyword: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
+        let centerPoint = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
+        var radius = CLLocation(latitude: sw.latitude, longitude: sw.longitude).distance(from: CLLocation(latitude: ne.latitude, longitude: ne.longitude))
+//        print("CENTER: \(centerPoint), RADIUS: \(Int(radius)) M")
+        
+        if radius > 50000 {
+//            print("RADIUS SET TO BE 50 000")
+            radius = 50000
+        }
+        
+        let dataFromBundle = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(centerPoint.latitude)%2C\(centerPoint.longitude)&radius=\(radius)&keyword=\(keyword)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    
+        AF.request(dataFromBundle, method: .get).responseJSON { response in
+            var jsonString = ""
+            
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+//            print("\nGoogle Places:\n\(jsonString)")
+            
+            let placesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            var polygoneArray = [KMAUIPolygoneDataStruct]()
+            
+            if let results = placesDictionary["results"] as? [[String: AnyObject]] {
+                for place in results {
+                    var polygoneData = KMAUIPolygoneDataStruct()
+                    polygoneData.polygoneType = "googlePlace"
+                    polygoneData.fillFromNearbyPlace(object: place)
+                    // We don't need to display the permanently closed places
+                    if !polygoneData.googlePlaceClosed {
+                        polygoneArray.append(polygoneData)
+                    }
+                }
+            }
+            
+            completion(polygoneArray)
+        }
+    }
 }
 
 // MARK: - Int extension

@@ -190,14 +190,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     func setupGooglePlacePolygone() {
         // Place name
         titleLabel.text = polygone.googlePlaceName
-        
-        // Place address
-        if !polygone.googlePlaceAddress.isEmpty {
-            // Location label top offset
-            locationLabelTop.constant = 12
-            locationLabel.text = polygone.googlePlaceAddress
-        }
-        
+
         // Rating
         if polygone.googlePlaceRating == 0 {
             ratingLabel.text = ""
@@ -217,10 +210,15 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             }
         }
         
-        // Location
-        let latitude = CGFloat(Int(polygone.googlePlaceLocation.latitude * 1000000)) / 1000000
-        let longitude = CGFloat(Int(polygone.googlePlaceLocation.longitude * 1000000)) / 1000000
-        locationLabel.text = "\(latitude), \(longitude)"
+        // Place address
+        if !polygone.googlePlaceAddress.isEmpty {
+            // Location label top offset
+            locationLabel.text = polygone.googlePlaceAddress
+        } else { // Location
+            let latitude = CGFloat(Int(polygone.googlePlaceLocation.latitude * 1000000)) / 1000000
+            let longitude = CGFloat(Int(polygone.googlePlaceLocation.longitude * 1000000)) / 1000000
+            locationLabel.text = "\(latitude), \(longitude)"
+        }
         
         // Icon
         if !polygone.googlePlaceIcon.isEmpty, let url = URL(string: polygone.googlePlaceIcon) {

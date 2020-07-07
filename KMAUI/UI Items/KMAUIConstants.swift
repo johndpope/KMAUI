@@ -302,6 +302,9 @@ public class KMAUIConstants {
     public let landCasesTypes = ["landCaseCreated"]
     public let trespassCasesTypes = ["penaltyPaymentReceived"]
     public var tabBarController = UITabBarController()
+    
+    // MARK: - Google Places
+    public let googlePlacesAPIKey = "AIzaSyBOukZS28sLMgRjXl5gR5w3WG6-EOM_Zz8"
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan
