@@ -43,7 +43,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     
     public func setupHeader() {
         // Fill the data to display
-        headerLabel.text = headerTitle
+        headerLabel.text = headerTitle + " TESTING"
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         // Text label
         detailsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
@@ -51,7 +51,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         bgView.layer.cornerRadius = 8
         // Set the views
         if headerTitle == "Land rules" {
-            detailsLabel.text = "sub lands available for lottery"
+            detailsLabel.text = "sub lands available for the lottery"
             bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder

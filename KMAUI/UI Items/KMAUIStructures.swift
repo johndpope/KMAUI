@@ -4496,6 +4496,18 @@ public struct KMAUIPolygoneDataStruct {
         }
     }
     
+    /*
+     "photos": <__NSSingleObjectArrayI 0x60000202eb20>(
+     {
+         height = 4032;
+         "html_attributions" =     (
+             "<a href=\"https://maps.google.com/maps/contrib/117787565731935923488\">A Google User</a>"
+         );
+         "photo_reference" = "CmRaAAAAxQrj-t83sMjVcT2DujrbK5A4M_2hdIONAzvTktH_ckYNp1bBNXX0GYmrpr56Ezo7Q0KZdl6wY-JaUZADmfRxwmjWLJlP2u7JaDo3A7KkkEIVCkBijqV3e8wlFumReJhAEhBH6jWDUUp7n-ttaPHD1_3oGhQZG8RsEWUdM4DsgspRNcsyJ9P57A";
+         width = 3024;
+     }
+     */
+    
     public mutating func fillFromDictionary(object: [String: AnyObject]) {
         if let title = object["title"] as? String {
             self.title = title
