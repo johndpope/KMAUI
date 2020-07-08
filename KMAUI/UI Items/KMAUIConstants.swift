@@ -76,6 +76,7 @@ public class KMAUIConstants {
     public let KMAUIBlackTitleButton = UIColor(named: "KMAUIBlackTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIWhiteTitleButton = UIColor(named: "KMAUIWhiteTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #F7F7F7
     public let KMAUIMapSymbolColor = UIColor(named: "KMAUIMapSymbolColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #2D15AC
+    public let KMAUIArrowSelectedColor = UIColor(named: "KMAUIArrowSelectedColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Images
     public let editIcon = UIImage(named: "editIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!

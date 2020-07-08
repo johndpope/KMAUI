@@ -111,7 +111,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             
             if highlightActive {
                 isActiveImageView.tintColor = UIColor.white
-                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
+                isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIArrowSelectedColor
             }
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
@@ -134,7 +134,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         // Is active status
         if isActive {
             isActiveImageView.tintColor = UIColor.white
-            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
+            isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAUIArrowSelectedColor
         } else {
             isActiveImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
             isActiveImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
