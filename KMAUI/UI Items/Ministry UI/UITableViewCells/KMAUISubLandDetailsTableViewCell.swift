@@ -48,7 +48,7 @@ public class KMAUISubLandDetailsTableViewCell: UITableViewCell {
         bgView.layer.shadowRadius = 8
         bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
         
-        bgView.layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+        bgView.layer.shadowColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
         bgView.layer.shadowOpacity = 0.1
         bgView.layer.shouldRasterize = true
         bgView.layer.rasterizationScale = UIScreen.main.scale

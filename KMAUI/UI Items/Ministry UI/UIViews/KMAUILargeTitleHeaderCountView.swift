@@ -91,7 +91,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Shadow
         if hasShadow {
             // Shadow
-            bgView.layer.shadowColor = KMAUIConstants.shared.KMATextGrayColor.cgColor
+            bgView.layer.shadowColor = KMAUIConstants.shared.KMAUIGreyLineColor.cgColor
             bgView.layer.shadowOpacity = 0.1
             bgView.layer.shadowOffset = CGSize(width: 0, height: 0)
             bgView.layer.shadowRadius = 8
