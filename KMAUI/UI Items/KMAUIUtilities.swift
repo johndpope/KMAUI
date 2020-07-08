@@ -2115,6 +2115,9 @@ public class KMAUIUtilities {
             print("\nNo polygone data for bundle.")
         }
         
+        // Order polygone array by rating
+        polygoneArray = KMAUIUtilities.shared.orderPolygoneArray(array: polygoneArray)
+        
         return polygoneArray
     }
     
