@@ -59,8 +59,9 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Set the views
         if headerTitle == "Royal Orders" {
             detailsLabel.text = ""
-            headerLabelTop.constant = 16 + 16 // centering inside the view
+            headerLabelTop.constant = 16 + 20 // centering inside the view
         } else if isLotteryTitle {
+            detailsLabel.text = "sub lands available for the lottery"
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         } else if headerTitle == "Land rules" {
@@ -92,7 +93,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             bgView.layer.rasterizationScale = UIScreen.main.scale
             bgView.clipsToBounds = false
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            bgViewBottom.constant = 8
+            bgViewBottom.constant = 12
         } else {
             bgView.clipsToBounds = true
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
