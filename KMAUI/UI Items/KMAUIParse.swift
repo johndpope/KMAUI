@@ -519,6 +519,8 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
         lotteryResultQuery.includeKey("subLand.region")
+        // Only active lottery result can be accepted
+        lotteryResultQuery.whereKey("isActive", equalTo: true)
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
@@ -578,6 +580,8 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("citizen")
         lotteryResultQuery.includeKey("citizen.homeAddress")
         lotteryResultQuery.includeKey("citizen.homeAddress.building")
+        // Only active lottery result can be accepted
+        lotteryResultQuery.whereKey("isActive", equalTo: true)
         
         lotteryResultQuery.findObjectsInBackground { (results, error) in
             var personObject: KMAPerson?
@@ -605,6 +609,8 @@ final public class KMAUIParse {
         lotteryResultQuery.includeKey("subLand.landPlan.region")
         lotteryResultQuery.includeKey("subLand.landPlan.responsibleDivision")
         lotteryResultQuery.includeKey("subLand.region")
+        // Only active lottery result can be accepted
+        lotteryResultQuery.whereKey("isActive", equalTo: true)
         
         lotteryResultQuery.getObjectInBackground(withId: lotteryResultId) { (lotteryResult, error) in
             var errorValue = ""
@@ -1529,6 +1535,8 @@ final public class KMAUIParse {
         let resultQuery = PFQuery(className: "KMALotteryResult")
         resultQuery.whereKey("subLand", equalTo: PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLandId))
         resultQuery.whereKey("status", notEqualTo: "declined")
+        // Only active lottery result can be accepted
+        resultQuery.whereKey("isActive", equalTo: true)
         resultQuery.findObjectsInBackground { (results, error) in
             if let error = error {
                 completion(false, error.localizedDescription)
@@ -1919,6 +1927,10 @@ final public class KMAUIParse {
                     KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
                 }
             } else if let lotteryResult = lotteryResult {
+                var isActive = true
+                if let isActiveValue = lotteryResult["isActive"] as? Bool, !isActiveValue {
+                    isActive = isActiveValue
+                }
                 // Update status
                 lotteryResult["status"] = status
                 // Add comment
@@ -1960,11 +1972,17 @@ final public class KMAUIParse {
                 }
                 // Save result
                 lotteryResult.saveInBackground { (success, error) in
-                    KMAUIUtilities.shared.stopLoadingWith { (_) in
-                        if let error = error {
-                            KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
-                        } else if success {
-                            completion(true)
+                    if !isActive {
+                        KMAUIUtilities.shared.stopLoadingWith { (_) in
+                            KMAUIUtilities.shared.globalAlert(title: "Error", message: "This Land lottery result is inactive.") { (done) in }
+                        }
+                    } else {
+                        KMAUIUtilities.shared.stopLoadingWith { (_) in
+                            if let error = error {
+                                KMAUIUtilities.shared.globalAlert(title: "Error", message: error.localizedDescription) { (done) in }
+                            } else if success {
+                                completion(true)
+                            }
                         }
                     }
                 }

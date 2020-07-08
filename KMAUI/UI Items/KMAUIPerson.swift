@@ -105,6 +105,8 @@ public class KMAUIPerson {
         subLandsQuery.includeKey("landPlan")
         subLandsQuery.includeKey("landPlan.region")
         subLandsQuery.includeKey("landPlan.responsibleDivision")
+        // Only active lottery result can be accepted
+        subLandsQuery.whereKey("isActive", equalTo: true)
         
         subLandsQuery.findObjectsInBackground { (items, error) in
             var subLandArray = [KMAUISubLandStruct]()
