@@ -57,7 +57,10 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         titleLabelCenter.constant = 0
         activityIndicatorView.alpha = 0
         
-        if mode == "subLands" {
+        if mode == "lotteryOnApprovement" {
+            titleLabel.text = "Lottery is on approvement"
+            infoLabel.text = "Once lottery is apporoved by the Ministry it will become possible to start the randomization process."
+        } else if mode == "subLands" {
             titleLabel.text = "No Sub lands"
             infoLabel.text = "We have no Sub lands received in National land lotteries."
         } else if mode == "property" {
