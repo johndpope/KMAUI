@@ -12,80 +12,85 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KMAUILargeTitleHeaderCountView" customModule="KMAUI" customModuleProvider="target">
             <connections>
                 <outlet property="bgView" destination="9ed-6n-e8p" id="uXP-JW-xUj"/>
-                <outlet property="bgViewBottom" destination="EgS-MP-KCh" id="g4N-VV-FKC"/>
+                <outlet property="bgViewBottom" destination="ogO-IX-me0" id="1b2-fq-4mb"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="S7G-NB-q26"/>
                 <outlet property="countLabel" destination="XD9-qv-JB1" id="LaT-ds-Y4Q"/>
-                <outlet property="countLabelLeft" destination="H3X-Jl-WLY" id="Ju5-eG-gZS"/>
+                <outlet property="countLabelLeft" destination="bHe-0Z-he9" id="TwY-fi-khR"/>
                 <outlet property="detailsLabel" destination="Vuc-xi-e8u" id="NeG-B7-bJB"/>
                 <outlet property="headerLabel" destination="4El-O7-DIN" id="OYF-sd-0Ft"/>
-                <outlet property="headerLabelTop" destination="auU-Qo-MVI" id="wcq-dz-18d"/>
+                <outlet property="headerLabelTop" destination="j7L-4G-5rH" id="VZJ-o9-OVC"/>
                 <outlet property="lotteryImageView" destination="WhS-56-weC" id="vlc-d1-dR9"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="99"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="129"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ed-6n-e8p">
-                    <rect key="frame" x="20" y="12" width="350" height="75"/>
+                    <rect key="frame" x="20" y="12" width="350" height="105"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lotteryPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="WhS-56-weC">
+                            <rect key="frame" x="20" y="30.5" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="NTq-jg-zk8"/>
+                                <constraint firstAttribute="height" constant="44" id="u9B-kD-Pjb"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <rect key="frame" x="76" y="42" width="195.5" height="47"/>
+                            <constraints>
+                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Ptg-Qa-KCT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Count" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                            <rect key="frame" x="283.5" y="41.5" width="46.5" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="9of-b2-V9c"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4El-O7-DIN">
+                            <rect key="frame" x="76" y="16" width="195.5" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="Rvr-PN-IYx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
                     <color key="backgroundColor" name="KMAUIViewBgColor"/>
+                    <constraints>
+                        <constraint firstItem="XD9-qv-JB1" firstAttribute="leading" secondItem="Vuc-xi-e8u" secondAttribute="trailing" constant="12" id="D3g-75-Dh8"/>
+                        <constraint firstItem="XD9-qv-JB1" firstAttribute="centerY" secondItem="9ed-6n-e8p" secondAttribute="centerY" id="Gh7-h3-bdW"/>
+                        <constraint firstAttribute="bottom" secondItem="Vuc-xi-e8u" secondAttribute="bottom" constant="16" id="Lko-fa-ZUI"/>
+                        <constraint firstItem="WhS-56-weC" firstAttribute="centerY" secondItem="9ed-6n-e8p" secondAttribute="centerY" id="Nez-3y-WAh"/>
+                        <constraint firstItem="Vuc-xi-e8u" firstAttribute="leading" secondItem="WhS-56-weC" secondAttribute="trailing" constant="12" id="Y7f-Sp-nG0"/>
+                        <constraint firstItem="XD9-qv-JB1" firstAttribute="leading" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="12" id="bHe-0Z-he9"/>
+                        <constraint firstItem="4El-O7-DIN" firstAttribute="top" secondItem="9ed-6n-e8p" secondAttribute="top" constant="16" id="j7L-4G-5rH"/>
+                        <constraint firstAttribute="trailing" secondItem="XD9-qv-JB1" secondAttribute="trailing" constant="20" id="mxN-AA-fw3"/>
+                        <constraint firstItem="WhS-56-weC" firstAttribute="leading" secondItem="9ed-6n-e8p" secondAttribute="leading" constant="20" id="t7c-sh-nob"/>
+                        <constraint firstItem="Vuc-xi-e8u" firstAttribute="top" secondItem="4El-O7-DIN" secondAttribute="bottom" constant="4" id="vnm-LD-31p"/>
+                        <constraint firstItem="4El-O7-DIN" firstAttribute="leading" secondItem="WhS-56-weC" secondAttribute="trailing" constant="12" id="yT5-T4-qsd"/>
+                    </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lotteryPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="WhS-56-weC">
-                    <rect key="frame" x="40" y="30" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ps4-Yn-ogs"/>
-                        <constraint firstAttribute="width" constant="44" id="xEh-c7-t8q"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4El-O7-DIN">
-                    <rect key="frame" x="96" y="30" width="195.5" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="dD4-Xv-qJU"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sub lands available for lottery" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vuc-xi-e8u" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="96" y="52" width="195.5" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="b7Y-pW-F10"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Count" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XD9-qv-JB1" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                    <rect key="frame" x="303.5" y="38.5" width="46.5" height="22"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="22" id="chu-4q-h2A"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" name="KMAUIMainBgColor"/>
             <constraints>
-                <constraint firstItem="Vuc-xi-e8u" firstAttribute="leading" secondItem="WhS-56-weC" secondAttribute="trailing" constant="12" id="5fM-Gg-WbE"/>
-                <constraint firstItem="WhS-56-weC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="7TJ-7A-dES"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9ed-6n-e8p" secondAttribute="bottom" constant="12" id="EgS-MP-KCh"/>
-                <constraint firstItem="4El-O7-DIN" firstAttribute="leading" secondItem="WhS-56-weC" secondAttribute="trailing" constant="12" id="FQb-IP-gRm"/>
-                <constraint firstItem="XD9-qv-JB1" firstAttribute="leading" secondItem="4El-O7-DIN" secondAttribute="trailing" constant="12" id="H3X-Jl-WLY"/>
-                <constraint firstItem="9ed-6n-e8p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Hp1-hf-sLg"/>
-                <constraint firstItem="WhS-56-weC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="OHS-jK-SHz"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9ed-6n-e8p" secondAttribute="trailing" constant="20" id="TN1-C7-rjg"/>
-                <constraint firstItem="9ed-6n-e8p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Xsc-uL-0Es"/>
-                <constraint firstItem="XD9-qv-JB1" firstAttribute="centerY" secondItem="9ed-6n-e8p" secondAttribute="centerY" id="aMb-OS-qRH"/>
-                <constraint firstItem="4El-O7-DIN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="auU-Qo-MVI"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XD9-qv-JB1" secondAttribute="trailing" constant="40" id="hkN-DV-Ksr"/>
-                <constraint firstItem="Vuc-xi-e8u" firstAttribute="width" secondItem="4El-O7-DIN" secondAttribute="width" id="kq4-zc-nWn"/>
-                <constraint firstItem="Vuc-xi-e8u" firstAttribute="top" secondItem="4El-O7-DIN" secondAttribute="bottom" id="yRh-2s-LNH"/>
+                <constraint firstItem="9ed-6n-e8p" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="I6p-dR-0FK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9ed-6n-e8p" secondAttribute="trailing" constant="20" id="S0Q-92-Set"/>
+                <constraint firstItem="9ed-6n-e8p" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="bXX-Ad-HF8"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9ed-6n-e8p" secondAttribute="bottom" constant="12" id="ogO-IX-me0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="120.28985507246378" y="-114.17410714285714"/>
+            <point key="canvasLocation" x="120.28985507246378" y="-104.12946428571428"/>
         </view>
     </objects>
     <resources>

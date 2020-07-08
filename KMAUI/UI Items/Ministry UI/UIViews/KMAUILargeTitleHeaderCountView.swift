@@ -9,6 +9,7 @@
 import UIKit
 
 public class KMAUILargeTitleHeaderCountView: UIView {
+    
     // MARK: - IBoutlets
     @IBOutlet public var contentView: UIView!
     @IBOutlet public weak var bgView: UIView!
@@ -47,29 +48,26 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     public func setupHeader() {
         // Fill the data to display
         headerLabel.text = headerTitle
-        headerLabelTop.constant = 30
+        headerLabelTop.constant = 16
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
+        bgViewBottom.constant = 0
         // Text label
         detailsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         // Check details
         bgView.layer.cornerRadius = 8
         // Set the views
         if headerTitle == "Royal Orders" {
-            bgViewBottom.constant = 0
             detailsLabel.text = ""
-            headerLabelTop.constant = 30 + 11 // + half of the bottom label's height
+            headerLabelTop.constant = 16 + 13 // centering inside the view
         } else if isLotteryTitle {
-            bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         } else if headerTitle == "Land rules" {
             detailsLabel.text = "sub lands available for the lottery"
-            bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
         } else if headerTitle == "Citizens" {
             detailsLabel.text = "registered users"
-            bgViewBottom.constant = 16
             bgView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.citizensIcon
         }
@@ -93,7 +91,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
             bgView.layer.rasterizationScale = UIScreen.main.scale
             bgView.clipsToBounds = false
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
-            bgViewBottom.constant = 24
+            bgViewBottom.constant = 8
         } else {
             bgView.clipsToBounds = true
             contentView.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
