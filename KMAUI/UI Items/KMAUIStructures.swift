@@ -4378,7 +4378,7 @@ public struct KMAUIPolygoneDataStruct {
     public init() {}
     
     public mutating func fillFromNearbyPlace(object: [String: AnyObject]) {
-        print("\nPLACE FILLED WITH DETAILS:")
+        print("\nOBJECT:\n\(object)\nPLACE FILLED WITH DETAILS:")
         // Business status
         if let businessStatus = object["business_status"] as? String {
             self.googlePlaceBusinessStatus = businessStatus
