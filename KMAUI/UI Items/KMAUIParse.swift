@@ -846,6 +846,7 @@ final public class KMAUIParse {
             newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
             newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: landPlan.landPlanId)
             newLotteryResult["status"] = "pending"
+            newLotteryResult["isActive"] = true
             lotteryResults.append(newLotteryResult)
             
             // Prepare the notification Parse object
@@ -1568,6 +1569,7 @@ final public class KMAUIParse {
             newLotteryResult["subLand"] = PFObject(withoutDataWithClassName: "KMASubLand", objectId: subLand.objectId)
             newLotteryResult["landPlan"] = PFObject(withoutDataWithClassName: "KMALandPlan", objectId: subLand.landPlanId)
             newLotteryResult["status"] = "awaiting verification"
+            newLotteryResult["isActive"] = true
             
             newLotteryResult.saveInBackground { (success, error) in
                 KMAUIUtilities.shared.stopLoadingWith { (done) in
