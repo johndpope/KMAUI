@@ -37,7 +37,8 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
         displayView.clipsToBounds = true
         
         // Bg view
-        bgView.backgroundColor = UIColor.clear
+        backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+//        bgView.backgroundColor = UIColor.clear
         bgView.layer.cornerRadius = 10
         bgView.clipsToBounds = true
         
@@ -118,7 +119,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             largeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyProgressColor.cgColor
             smallImageView.image = KMAUIConstants.shared.uploadDocumentBadgeGray
             uploadButton.setTitle("Start a land case", for: .normal)
-            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+//            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else if rowData.rowName == "Land case" {
             titleLabel.text = rowData.rowName + " " + rowData.rowValue.lowercased()
             if rowData.rowValue == "In progress" {
@@ -140,7 +141,7 @@ public class KMAUIUploadDocumentTableViewCell: UITableViewCell {
             bgViewBottom.constant = 34 + 21
             uploadButton.alpha = 1
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
-            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+//            backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
         } else if rowData.rowName == "Upload a document" {
             infoLabel.attributedText = KMAUIUtilities.shared.highlight(words: ["image", "pdf"], in: "Load the image or pdf file if you already have the land that you received in the lottery")
             largeImageView.image = KMAUIConstants.shared.uploadDocumentImage
