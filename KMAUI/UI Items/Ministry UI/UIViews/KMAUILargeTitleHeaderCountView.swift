@@ -60,6 +60,12 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         if headerTitle == "Royal Orders" {
             detailsLabel.text = ""
             headerLabelTop.constant = 16 + 20 // centering inside the view
+            countLabel.text = nil
+            lotteryImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+            lotteryImageView.layer.borderWidth = 1
+            lotteryImageView.layer.cornerRadius = 8
+            lotteryImageView.clipsToBounds = true
+            lotteryImageViewHeight.constant = 60
         } else if isLotteryTitle {
             detailsLabel.text = "sub lands available for the lottery"
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
