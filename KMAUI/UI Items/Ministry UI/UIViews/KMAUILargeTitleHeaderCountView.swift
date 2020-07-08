@@ -15,11 +15,14 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var lotteryImageView: UIImageView!
     @IBOutlet public weak var headerLabel: UILabel!
+    @IBOutlet public weak var headerLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var detailsLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var countLabel: KMAUIBoldTextLabel!
+    @IBOutlet public weak var countLabelLeft: NSLayoutConstraint!
     
     // MARK: - Variables
     public var count = 0
+    public var isLotteryTitle = false
     public var hasShadow = false {
         didSet {
             setupHeader()
@@ -43,14 +46,23 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     
     public func setupHeader() {
         // Fill the data to display
-        headerLabel.text = headerTitle + " TESTING"
+        headerLabel.text = headerTitle
+        headerLabelTop.constant = 30
         headerLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
         // Text label
         detailsLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         // Check details
         bgView.layer.cornerRadius = 8
         // Set the views
-        if headerTitle == "Land rules" {
+        if headerTitle == "Royal Orders" {
+            bgViewBottom.constant = 0
+            detailsLabel.text = ""
+            headerLabelTop.constant = 30 + 11 // + half of the bottom label's height
+        } else if isLotteryTitle {
+            bgViewBottom.constant = 0
+            bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
+        } else if headerTitle == "Land rules" {
             detailsLabel.text = "sub lands available for the lottery"
             bgViewBottom.constant = 0
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -63,7 +75,13 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         }
         // Count label
         countLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(20)
-        countLabel.text = "\(count)"
+        if count > 0 {
+            countLabelLeft.constant = 12
+            countLabel.text = "\(count)"
+        } else {
+            countLabelLeft.constant = 0
+            countLabel.text = ""
+        }
         // Shadow
         if hasShadow {
             // Shadow
