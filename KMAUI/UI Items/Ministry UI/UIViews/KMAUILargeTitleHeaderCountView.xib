@@ -20,6 +20,7 @@
                 <outlet property="headerLabel" destination="4El-O7-DIN" id="OYF-sd-0Ft"/>
                 <outlet property="headerLabelTop" destination="j7L-4G-5rH" id="VZJ-o9-OVC"/>
                 <outlet property="lotteryImageView" destination="WhS-56-weC" id="vlc-d1-dR9"/>
+                <outlet property="lotteryImageViewHeight" destination="u9B-kD-Pjb" id="661-dt-Aai"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

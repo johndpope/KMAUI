@@ -15,6 +15,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
     @IBOutlet public weak var bgView: UIView!
     @IBOutlet public weak var bgViewBottom: NSLayoutConstraint!
     @IBOutlet public weak var lotteryImageView: UIImageView!
+    @IBOutlet public weak var lotteryImageViewHeight: NSLayoutConstraint!
     @IBOutlet public weak var headerLabel: UILabel!
     @IBOutlet public weak var headerLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var detailsLabel: KMAUIRegularTextLabel!
@@ -58,7 +59,7 @@ public class KMAUILargeTitleHeaderCountView: UIView {
         // Set the views
         if headerTitle == "Royal Orders" {
             detailsLabel.text = ""
-            headerLabelTop.constant = 16 + 13 // centering inside the view
+            headerLabelTop.constant = 16 + 16 // centering inside the view
         } else if isLotteryTitle {
             bgView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             lotteryImageView.image = KMAUIConstants.shared.lotteryPlaceholder
