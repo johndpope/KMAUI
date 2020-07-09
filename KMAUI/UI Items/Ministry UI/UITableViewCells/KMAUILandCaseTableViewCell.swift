@@ -173,7 +173,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         for (index, row) in rows.enumerated() {
             let itemView = UIStackView()
             itemView.axis = .horizontal
-            itemView.distribution = UIStackView.Distribution.fillProportionally
+            itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 4
             
@@ -183,9 +183,8 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
-//            rowNameLabel.widthAnchor.constraint(equalToConstant: 90.0).isActive = true
+            rowNameLabel.widthAnchor.constraint(equalToConstant: 90.0).isActive = true
             itemView.addArrangedSubview(rowNameLabel)
-            rowNameLabel.backgroundColor = UIColor.green
             
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
@@ -194,7 +193,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowValueLabel.text = row.rowValue
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
-            rowValueLabel.backgroundColor = UIColor.yellow
             
             rowsStackView.addArrangedSubview(itemView)
             itemView.leadingAnchor.constraint(equalTo: rowsStackView.leadingAnchor, constant: 0).isActive = true
