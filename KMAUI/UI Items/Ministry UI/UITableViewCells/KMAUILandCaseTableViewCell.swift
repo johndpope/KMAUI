@@ -165,6 +165,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         // Adding the createdAt and updatedAt
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
         rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: landCase.citizen.createdAt)))
         rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.citizen.updatedAt)))
         
@@ -184,6 +185,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
 //            rowNameLabel.widthAnchor.constraint(equalToConstant: 90.0).isActive = true
             itemView.addArrangedSubview(rowNameLabel)
+            rowNameLabel.backgroundColor = UIColor.green
             
             // Row value label
             let rowValueLabel = KMAUIBoldTextLabel()
@@ -192,6 +194,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowValueLabel.text = row.rowValue
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
             itemView.addArrangedSubview(rowValueLabel)
+            rowValueLabel.backgroundColor = UIColor.yellow
             
             rowsStackView.addArrangedSubview(itemView)
             itemView.leadingAnchor.constraint(equalTo: rowsStackView.leadingAnchor, constant: 0).isActive = true
