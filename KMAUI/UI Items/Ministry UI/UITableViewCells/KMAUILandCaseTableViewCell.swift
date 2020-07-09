@@ -173,7 +173,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         for (index, row) in rows.enumerated() {
             let itemView = UIStackView()
             itemView.axis = .horizontal
-            itemView.distribution = UIStackView.Distribution.fill
+            itemView.distribution = UIStackView.Distribution.fillProportionally
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 4
             
