@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0Dx-Hy-Hf4">
-                                <rect key="frame" x="16" y="90" width="248" height="25"/>
+                                <rect key="frame" x="16" y="90" width="248" height="13"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -66,7 +66,7 @@
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="OMv-Zr-PsE"/>
                             <constraint firstItem="WVE-ss-YFn" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="SsP-tq-hje"/>
                             <constraint firstItem="3Fv-hD-pT4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="Wdc-49-QP1"/>
-                            <constraint firstAttribute="bottom" secondItem="0Dx-Hy-Hf4" secondAttribute="bottom" constant="8" id="aQw-BW-FdP"/>
+                            <constraint firstAttribute="bottom" secondItem="0Dx-Hy-Hf4" secondAttribute="bottom" constant="20" id="aQw-BW-FdP"/>
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="centerY" secondItem="WVE-ss-YFn" secondAttribute="centerY" id="fjm-M0-Bhn"/>
                             <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="gdd-bB-CGK"/>
                             <constraint firstItem="0Dx-Hy-Hf4" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="24" id="iXc-zf-Uou"/>
