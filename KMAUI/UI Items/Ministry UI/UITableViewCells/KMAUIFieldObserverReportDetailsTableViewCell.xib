@@ -40,17 +40,17 @@ Label</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkh-XP-OcW">
                                 <rect key="frame" x="236" y="146" width="553" height="40"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Land owner" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                        <rect key="frame" x="4" y="0.0" width="90" height="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trespass citizen" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-ob-dP4" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                                        <rect key="frame" x="4" y="0.0" width="120" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="90" id="7qs-MZ-b6u"/>
+                                            <constraint firstAttribute="width" constant="120" id="7qs-MZ-b6u"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox9-26-YFx" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
-                                        <rect key="frame" x="94" y="0.0" width="455" height="40"/>
+                                        <rect key="frame" x="124" y="0.0" width="425" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -129,6 +129,7 @@ Label</string>
                 <outlet property="infoLabel" destination="jwc-sZ-IUk" id="OXC-QR-hm4"/>
                 <outlet property="infoViewTop" destination="dfB-im-YI5" id="FAr-If-YHL"/>
                 <outlet property="ownerLabel" destination="aJk-ob-dP4" id="6Hw-ay-klG"/>
+                <outlet property="ownerLabelWidth" destination="7qs-MZ-b6u" id="DPv-7U-pWs"/>
                 <outlet property="ownerValueLabel" destination="Ox9-26-YFx" id="2ZD-ck-Iv7"/>
                 <outlet property="ownerView" destination="Rkh-XP-OcW" id="xnT-bm-M9M"/>
                 <outlet property="titleLabel" destination="pJp-JG-bnh" id="vwJ-Ck-a8J"/>

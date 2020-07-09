@@ -115,7 +115,7 @@ public class KMAUIUrbanRangeCheckTableViewCell: UITableViewCell {
             }
             // New Land case created
             if trespassCase.trespassDecision.starts(with: "Land case") {
-                descriptionLabel.text = "The Department of Urban Planning has decided to initiate the creation of the new Land case for the Land owner. Please review the details in the corresponding app section."
+                descriptionLabel.text = "The Department of Urban Planning has decided to initiate the creation of the new Land case for the Trespass citizen. Please review the details on the corresponding app section."
                 outsideButton.alpha = 0
                 insideButton.alpha = 0
                 locationLabel.alpha = 1

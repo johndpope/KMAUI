@@ -17,6 +17,7 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
     @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var infoViewTop: NSLayoutConstraint!
     @IBOutlet public weak var ownerLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var ownerLabelWidth: NSLayoutConstraint!
     @IBOutlet public weak var ownerValueLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var divideLine1: UIView!
     @IBOutlet public weak var ownerView: UIView!
@@ -86,6 +87,15 @@ public class KMAUIFieldObserverReportDetailsTableViewCell: UITableViewCell {
         // Callback for attachment actions
         attachmentsView.viewAttachmentsAction = { action in
             self.attachmentCallback?(true)
+        }
+        
+        // Violation or Trespass
+        if trespassCase.isViolation {
+            ownerLabel.text = "Land owner"
+            ownerLabelWidth.constant = 90
+        } else {
+            ownerLabel.text = "Trespass citizen"
+            ownerLabelWidth.constant = 120
         }
         
         // Setup owner and violator
