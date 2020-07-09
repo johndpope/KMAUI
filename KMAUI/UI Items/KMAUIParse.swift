@@ -3411,4 +3411,62 @@ final public class KMAUIParse {
             }
         }
     }
+    
+    // MARK: - Land cases and Trespass cases stats
+    
+    public func getLandCasesStats(completion: @escaping (_ rowName: String, _ rowValue: String, _ totalSquare: String)->()) {
+        KMAUIParse.shared.getLandCases { (landCases) in
+            var approvedCount = 0
+            var totalCount = 0
+            var totalSquare = 0
+            
+            if !landCases.isEmpty {
+                totalCount = landCases.count
+                
+                for landCase in landCases {
+                    if landCase.courtStatus.lowercased() == "approved" {
+                        approvedCount += 1
+                    }
+                    
+                    // Calculate square
+                    let subLand = landCase.subLand
+                    totalSquare += Int(subLand.subLandSquare)
+                }
+            }
+            
+            let rowName = "Approved"
+            let resolvedString = "\(approvedCount)/\(totalCount)"
+            let totalSquareString = "\(totalSquare.withCommas())".withSquareMeters()
+            
+            completion(rowName, resolvedString, totalSquareString)
+        }
+    }
+    
+    public func getTrespassCasesStats(completion: @escaping (_ rowName: String, _ rowValue: String, _ totalSquare: String)->()) {
+        KMAUIParse.shared.getTrespassCases { (trespassCases) in
+            var approvedCount = 0
+            var totalCount = 0
+            var totalSquare = 0
+            
+            if !trespassCases.isEmpty {
+                totalCount = trespassCases.count
+                
+                for landCase in trespassCases {
+                    if landCase.caseStatus.lowercased() == "resolved" {
+                        approvedCount += 1
+                    }
+                    
+                    // Calculate square
+                    let subLand = landCase.subLand
+                    totalSquare += Int(subLand.subLandSquare)
+                }
+            }
+            
+            let rowName = "Resolved"
+            let resolvedString = "\(approvedCount)/\(totalCount)"
+            let totalSquareString = "\(totalSquare.withCommas())".withSquareMeters()
+            
+            completion(rowName, resolvedString, totalSquareString)
+        }
+    }
 }
