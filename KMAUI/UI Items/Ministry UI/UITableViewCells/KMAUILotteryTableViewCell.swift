@@ -29,6 +29,9 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var statusLabelHeight: NSLayoutConstraint!
     @IBOutlet public weak var statusLabelBottom: NSLayoutConstraint!
     @IBOutlet public weak var profileImageView: UIImageView!
+    @IBOutlet public weak var stackView: UIStackView!
+    @IBOutlet public var stackViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var stackViewBottom: NSLayoutConstraint!
     
     // MARK: - Variables
     public var type = "lottery"
@@ -172,6 +175,8 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         subLandsLabelLeft.constant = 16
         
         profileImageView.alpha = 0
+        
+        setupStackView()
     }
     
     public func setupSubLand() {
@@ -208,6 +213,9 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             statusLabelHeight.constant = 0
             statusLabelBottom.constant = 0
         }
+        
+        stackView.alpha = 0
+        stackViewTop.constant = 0
     }
     
     public func setupCitizen() {
@@ -235,6 +243,82 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         if let url = URL(string: citizen.profileImage) {
             profileImageView.kf.setImage(with: url)
         }
+        
+        stackView.alpha = 0
+        stackViewTop.constant = 0
+    }
+    
+    /**
+     Show the stackView
+     */
+    
+    public func setupStackView() {
+        stackView.alpha = 1
+        stackViewTop.constant = 8
+        
+        // Remove subviews
+        for subview in stackView.subviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
+        var rows = [KMAUIRowData]()
+        // Adding the createdAt and updatedAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: lottery.createdAt)))
+        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: lottery.updatedAt)))
+        
+        // Prepare the rows
+        for (index, row) in rows.enumerated() {
+            if index == 0 {
+                // Line view
+                let lineView = UIView()
+                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
+                lineView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+                stackView.addArrangedSubview(lineView)
+                lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+                lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0).isActive = true
+            }
+            
+            let itemView = UIStackView()
+            itemView.axis = .horizontal
+            itemView.distribution = UIStackView.Distribution.fill
+            itemView.alignment = UIStackView.Alignment.fill
+            itemView.spacing = 4
+            
+            // Row name label
+            let rowNameLabel = KMAUIRegularTextLabel()
+            rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+            rowNameLabel.textAlignment = .left
+            rowNameLabel.text = row.rowName
+            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+            rowNameLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
+            itemView.addArrangedSubview(rowNameLabel)
+            
+            // Row value label
+            let rowValueLabel = KMAUIBoldTextLabel()
+            rowValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+            rowValueLabel.textAlignment = .right
+            rowValueLabel.text = row.rowValue
+            rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            itemView.addArrangedSubview(rowValueLabel)
+            
+            stackView.addArrangedSubview(itemView)
+            itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+            
+            if index < rows.count - 1 {
+                // Line view
+                let lineView = UIView()
+                lineView.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
+                lineView.heightAnchor.constraint(equalToConstant: 1.0).isActive = true
+                stackView.addArrangedSubview(lineView)
+                lineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+                lineView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 0).isActive = true
+            }
+        }
+        stackView.alpha = 1
     }
 }
 

@@ -136,9 +136,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             
             // Trespass case number
             lotteryNameLabel.text = "Case #\(trespassCase.caseNumber)"
-            
-            // Case bottom
-            lotteryNameBottom.constant = 12
         }
         
         // Setup stack view
@@ -166,8 +163,8 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
-        rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: landCase.citizen.createdAt)))
-        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.citizen.updatedAt)))
+        rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: landCase.createdAt)))
+        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.updatedAt)))
         
         // Prepare the rows
         for (index, row) in rows.enumerated() {

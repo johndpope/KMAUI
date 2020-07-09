@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryTableViewCell" rowHeight="131" id="KGk-i7-Jjw" customClass="KMAUILotteryTableViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KMAUILotteryTableViewCell" rowHeight="157" id="KGk-i7-Jjw" customClass="KMAUILotteryTableViewCell" customModule="KMAUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="157"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBQ-TQ-aTf" customClass="KMAUIRoundedCornersView" customModule="KMAUI" customModuleProvider="target">
-                        <rect key="frame" x="20" y="0.0" width="280" height="123"/>
+                        <rect key="frame" x="20" y="0.0" width="280" height="149"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fv-hD-pT4" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
                                 <rect key="frame" x="72" y="57" width="154" height="21"/>
@@ -74,26 +74,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-EL-yMu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-EL-yMu">
                                 <rect key="frame" x="16" y="58" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Ags-nr-lfG"/>
                                     <constraint firstAttribute="height" constant="44" id="i0s-hg-4eO"/>
                                 </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rka-75-LDV">
+                                <rect key="frame" x="16" y="111" width="248" height="18"/>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rka-75-LDV" secondAttribute="bottom" constant="20" id="0b7-NE-VuH"/>
                             <constraint firstAttribute="trailing" secondItem="yc5-ld-7EP" secondAttribute="trailing" constant="16" id="65x-78-PRz"/>
                             <constraint firstItem="WVE-ss-YFn" firstAttribute="leading" secondItem="pVP-vh-Y2W" secondAttribute="trailing" constant="6" id="7FF-2D-nlI"/>
-                            <constraint firstAttribute="bottom" secondItem="yc5-ld-7EP" secondAttribute="bottom" constant="20" id="8ZJ-dp-qMh"/>
                             <constraint firstItem="wQV-EL-yMu" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="E0T-2B-L3k"/>
-                            <constraint firstAttribute="bottom" secondItem="bw7-zD-mu6" secondAttribute="bottom" constant="20" id="Lnh-28-S6g"/>
+                            <constraint firstAttribute="trailing" secondItem="rka-75-LDV" secondAttribute="trailing" constant="16" id="N87-ae-DPC"/>
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="OMv-Zr-PsE"/>
                             <constraint firstItem="yc5-ld-7EP" firstAttribute="leading" secondItem="bw7-zD-mu6" secondAttribute="trailing" constant="16" id="PFW-eR-lvQ"/>
                             <constraint firstItem="WVE-ss-YFn" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="SsP-tq-hje"/>
                             <constraint firstItem="3Fv-hD-pT4" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="72" id="Wdc-49-QP1"/>
-                            <constraint firstAttribute="bottom" secondItem="wQV-EL-yMu" secondAttribute="bottom" constant="21" id="bun-F8-nbP"/>
+                            <constraint firstItem="yc5-ld-7EP" firstAttribute="centerY" secondItem="bw7-zD-mu6" secondAttribute="centerY" id="Xug-q9-ikt"/>
+                            <constraint firstItem="rka-75-LDV" firstAttribute="top" secondItem="bw7-zD-mu6" secondAttribute="bottom" constant="8" id="a7Y-vG-0IA"/>
                             <constraint firstItem="bw7-zD-mu6" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="6" id="e7s-I5-8ra"/>
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="centerY" secondItem="WVE-ss-YFn" secondAttribute="centerY" id="fjm-M0-Bhn"/>
                             <constraint firstItem="owe-ce-Hua" firstAttribute="leading" secondItem="3Fv-hD-pT4" secondAttribute="trailing" constant="16" id="pXo-1F-oW7"/>
@@ -101,6 +105,7 @@
                             <constraint firstItem="bw7-zD-mu6" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="72" id="vPw-2C-ffb"/>
                             <constraint firstAttribute="trailing" secondItem="owe-ce-Hua" secondAttribute="trailing" constant="16" id="x7G-Y0-YBv"/>
                             <constraint firstItem="owe-ce-Hua" firstAttribute="top" secondItem="cBQ-TQ-aTf" secondAttribute="top" constant="14" id="xuX-tg-Tgc"/>
+                            <constraint firstItem="rka-75-LDV" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="16" id="zGa-YI-ATb"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -123,6 +128,9 @@
                 <outlet property="lotteryNameLabel" destination="3Fv-hD-pT4" id="zfV-Qc-Zn3"/>
                 <outlet property="lotteryNameLabelLeft" destination="Wdc-49-QP1" id="GIW-l3-s5a"/>
                 <outlet property="profileImageView" destination="wQV-EL-yMu" id="563-C5-OdX"/>
+                <outlet property="stackView" destination="rka-75-LDV" id="RSP-b7-FVK"/>
+                <outlet property="stackViewBottom" destination="0b7-NE-VuH" id="eMP-kj-0Cq"/>
+                <outlet property="stackViewTop" destination="a7Y-vG-0IA" id="BNW-R4-aRG"/>
                 <outlet property="statusLabel" destination="WVE-ss-YFn" id="S08-H8-o0D"/>
                 <outlet property="statusLabelBottom" destination="sPb-P8-Fas" id="VU1-GZ-Bcx"/>
                 <outlet property="statusLabelHeight" destination="dSe-yy-QkT" id="nOL-de-ufu"/>
@@ -133,7 +141,7 @@
                 <outlet property="subLandsLabel" destination="bw7-zD-mu6" id="jvx-Jh-NET"/>
                 <outlet property="subLandsLabelLeft" destination="vPw-2C-ffb" id="doR-WV-Vjv"/>
             </connections>
-            <point key="canvasLocation" x="-4.3478260869565224" y="20.424107142857142"/>
+            <point key="canvasLocation" x="-4.3478260869565224" y="29.129464285714285"/>
         </tableViewCell>
     </objects>
     <resources>
