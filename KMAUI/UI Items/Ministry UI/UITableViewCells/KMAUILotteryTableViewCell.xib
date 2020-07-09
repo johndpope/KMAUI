@@ -141,6 +141,7 @@
                 <outlet property="subLandsCountLabel" destination="yc5-ld-7EP" id="Ruu-qw-t4y"/>
                 <outlet property="subLandsLabel" destination="bw7-zD-mu6" id="jvx-Jh-NET"/>
                 <outlet property="subLandsLabelLeft" destination="vPw-2C-ffb" id="doR-WV-Vjv"/>
+                <outlet property="subLandsLabelTop" destination="e7s-I5-8ra" id="xDO-zY-9fj"/>
             </connections>
             <point key="canvasLocation" x="-4.3478260869565224" y="29.129464285714285"/>
         </tableViewCell>

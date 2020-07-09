@@ -20,6 +20,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
     @IBOutlet public weak var lotteryNameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var lotteryNameLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var subLandsLabel: UILabel!
+    @IBOutlet weak var subLandsLabelTop: NSLayoutConstraint!
     @IBOutlet public weak var subLandsLabelLeft: NSLayoutConstraint!
     @IBOutlet public weak var subLandsCountLabel: UILabel!
     @IBOutlet public weak var statusView: UIView!
@@ -177,6 +178,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         profileImageView.alpha = 0
         
         setupStackView()
+        subLandsLabelTop.constant = 20
     }
     
     public func setupSubLand() {
@@ -216,6 +218,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         
         stackView.alpha = 0
         stackViewTop.constant = 0
+        subLandsLabelTop.constant = 6
     }
     
     public func setupCitizen() {
@@ -246,6 +249,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         
         stackView.alpha = 0
         stackViewTop.constant = 0
+        subLandsLabelTop.constant = 6
     }
     
     /**
