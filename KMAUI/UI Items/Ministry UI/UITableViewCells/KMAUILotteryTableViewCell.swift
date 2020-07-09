@@ -178,7 +178,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         profileImageView.alpha = 0
         
         setupStackView()
-        subLandsLabelTop.constant = 20
+        subLandsLabelTop.constant = 24
     }
     
     public func setupSubLand() {
