@@ -172,7 +172,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         } else if !trespassCase.objectId.isEmpty {
             rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: trespassCase.createdAt)))
             // If created != updated
-            if landCase.createdAt != landCase.updatedAt {
+            if trespassCase.createdAt != trespassCase.updatedAt {
                 rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: trespassCase.updatedAt)))
             }
         }
