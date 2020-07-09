@@ -164,7 +164,10 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: landCase.createdAt)))
-        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.updatedAt)))
+        // If created != updated
+        if landCase.createdAt != landCase.updatedAt {
+            rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.updatedAt)))
+        }
         
         // Prepare the rows
         for (index, row) in rows.enumerated() {

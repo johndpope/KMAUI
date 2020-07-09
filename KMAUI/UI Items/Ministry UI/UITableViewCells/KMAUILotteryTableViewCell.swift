@@ -268,7 +268,10 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: lottery.createdAt)))
-        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: lottery.updatedAt)))
+        // If created != updated
+        if lottery.createdAt != lottery.updatedAt {
+            rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: lottery.updatedAt)))
+        }
         
         // Prepare the rows
         for (index, row) in rows.enumerated() {

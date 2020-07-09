@@ -74,8 +74,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-EL-yMu">
-                                <rect key="frame" x="16" y="58" width="44" height="44"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wQV-EL-yMu">
+                                <rect key="frame" x="16" y="57" width="44" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="Ags-nr-lfG"/>
                                     <constraint firstAttribute="height" constant="44" id="i0s-hg-4eO"/>
@@ -100,6 +100,7 @@
                             <constraint firstItem="rka-75-LDV" firstAttribute="top" secondItem="bw7-zD-mu6" secondAttribute="bottom" constant="8" id="a7Y-vG-0IA"/>
                             <constraint firstItem="bw7-zD-mu6" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="bottom" constant="6" id="e7s-I5-8ra"/>
                             <constraint firstItem="pVP-vh-Y2W" firstAttribute="centerY" secondItem="WVE-ss-YFn" secondAttribute="centerY" id="fjm-M0-Bhn"/>
+                            <constraint firstItem="wQV-EL-yMu" firstAttribute="top" secondItem="3Fv-hD-pT4" secondAttribute="top" id="gmx-Dv-2jw"/>
                             <constraint firstItem="owe-ce-Hua" firstAttribute="leading" secondItem="3Fv-hD-pT4" secondAttribute="trailing" constant="16" id="pXo-1F-oW7"/>
                             <constraint firstItem="3Fv-hD-pT4" firstAttribute="top" secondItem="WVE-ss-YFn" secondAttribute="bottom" constant="20" id="sPb-P8-Fas"/>
                             <constraint firstItem="bw7-zD-mu6" firstAttribute="leading" secondItem="cBQ-TQ-aTf" secondAttribute="leading" constant="72" id="vPw-2C-ffb"/>
