@@ -100,7 +100,11 @@ public class KMAUITrespassDescriptionActionTableViewCell: UITableViewCell {
     public func setupCell() {
         if type == "initialCheck" {
             // Title
-            titleLabel.text = "Trespass description"
+            if trespassCase.isViolation {
+                titleLabel.text = "Violation description"
+            } else {
+                titleLabel.text = "Trespass description"
+            }
             // Description
             descriptionLabel.text = trespassCase.initialComment
             // Check status to hide the buttons
