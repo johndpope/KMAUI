@@ -301,7 +301,7 @@ public class KMAUILotteryTableViewCell: UITableViewCell {
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
-            rowNameLabel.widthAnchor.constraint(equalToConstant: 110.0).isActive = true
+            rowNameLabel.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
             itemView.addArrangedSubview(rowNameLabel)
             
             // Row value label
