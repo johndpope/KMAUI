@@ -9,6 +9,7 @@
 import UIKit
 
 public class KMAUILotteryTitleTableViewCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet public weak var statusLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!

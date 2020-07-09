@@ -129,9 +129,6 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             
             // Land case number
             lotteryNameLabel.text = "Case #\(landCase.caseNumber)"
-            
-            // Setup stack view
-            setupStackView()
         } else if !trespassCase.objectId.isEmpty {
             // Case status
             statusLabel.text = trespassCase.caseStatus
@@ -143,6 +140,9 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             // Case bottom
             lotteryNameBottom.constant = 12
         }
+        
+        // Setup stack view
+        setupStackView()
     }
     
     /**
@@ -157,8 +157,16 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
         }
         
         var rows = [KMAUIRowData]()
+        // Citizen and Judge for Land cases
+        if !landCase.objectId.isEmpty {
         rows.append(KMAUIRowData(rowName: "Citizen", rowValue: landCase.citizen.fullName))
         rows.append(KMAUIRowData(rowName: "Judge", rowValue: landCase.judge.fullName))
+        }
+        // Adding the createdAt and updatedAt
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        rows.append(KMAUIRowData(rowName: "Case created", rowValue: dateFormatter.string(from: landCase.citizen.createdAt)))
+        rows.append(KMAUIRowData(rowName: "Latest update", rowValue: dateFormatter.string(from: landCase.citizen.updatedAt)))
         
         // Prepare the rows
         for (index, row) in rows.enumerated() {
