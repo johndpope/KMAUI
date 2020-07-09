@@ -20,9 +20,13 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
     @IBOutlet public weak var divideLineView: UIView!
     @IBOutlet public weak var resolvedLabel: UILabel!
     @IBOutlet public weak var resolvedValueLabel: UILabel!
+    @IBOutlet public weak var divideLineView2: UIView!
+    @IBOutlet public weak var totalSquareLabel: UILabel!
+    @IBOutlet public weak var totalSquareValueLabel: UILabel!
     
     // MARK: - Variables
     public static let id = "KMAUICasePerformanceTableViewCell"
+    public var totalSquare = 0
     public var stats = KMAUIRowData() {
         didSet{
             setupCell()
@@ -60,6 +64,15 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         // Resolved value label
         resolvedValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         
+        // Divide line 2
+        divideLineView2.backgroundColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
+        
+        // Total square label
+        totalSquareLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
+        // Total square value label
+        totalSquareValueLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
         // No selection required
         selectionStyle = .none
     }
@@ -69,7 +82,7 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         regionLabel.text = stats.rowName
         progressLabel.text = "\(Int(stats.progress * 100))%"
         progressView.progress = stats.progress
-        resolvedLabel.text = "Approved"
+        resolvedLabel.text = stats.rowValue
         
         if !stats.rowValue.isEmpty {
             resolvedLabel.text = stats.rowValue
@@ -82,6 +95,10 @@ public class KMAUICasePerformanceTableViewCell: UITableViewCell {
         } else {
             progressLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         }
+        
+        // Total square
+        totalSquareLabel.text = "Total square"
+        totalSquareValueLabel.text = "\(totalSquare.withCommas())".withSquareMeters()
     }
     
     public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
