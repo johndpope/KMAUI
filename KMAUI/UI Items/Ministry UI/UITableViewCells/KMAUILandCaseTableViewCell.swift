@@ -183,7 +183,7 @@ public class KMAUILandCaseTableViewCell: UITableViewCell {
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
             rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
-            rowNameLabel.widthAnchor.constraint(equalToConstant: 90.0).isActive = true
+            rowNameLabel.widthAnchor.constraint(equalToConstant: 100.0).isActive = true
             itemView.addArrangedSubview(rowNameLabel)
             
             // Row value label
