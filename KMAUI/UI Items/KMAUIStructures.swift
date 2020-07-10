@@ -2909,8 +2909,11 @@ public struct KMAUILandPlanStruct {
         // MARK: - Blocks grid
             
         // Get the block counts - horizontal
+        print("averageBlockWidth = \(Double(itemsInSubBlockHorizontal)) * \(averageSubLandSize)")
         let averageBlockWidth = Double(itemsInSubBlockHorizontal) * averageSubLandSize
+        print("horizontalBlocks = (\(areaWidth) - \(mainRoadWidth)) / (\(averageBlockWidth) + \(mainRoadWidth))")
         let horizontalBlocks = (areaWidth - mainRoadWidth) / (averageBlockWidth + mainRoadWidth)
+        print("horizontalBlocksCount = \(Int(horizontalBlocks)) / \(horizontalBlocks)")
         var horizontalBlocksCount = Int(horizontalBlocks)
         
         // Get the block counts - vertical
@@ -2918,11 +2921,21 @@ public struct KMAUILandPlanStruct {
         let averageBlockHeight = (Double(rowsPerBlock) - 1) * regularRoadWidth + Double(rowsPerBlock) * Double(itemsInSubBlockVertical) * averageSubLandSize
         print("verticalBlocks = (\(areaHeight) - \(mainRoadWidth)) / (\(averageBlockHeight) + \(mainRoadWidth))")
         let verticalBlocks = (areaHeight - mainRoadWidth) / (averageBlockHeight + mainRoadWidth)
-        print("verticalBlocksCount = \(Int(verticalBlocks))")
+        print("verticalBlocksCount = \(Int(verticalBlocks)) / \(verticalBlocks)")
         var verticalBlocksCount = Int(verticalBlocks)
         print("\(horizontalBlocksCount) - \(verticalBlocksCount)")
         
         print("The Land Plan grid: \(horizontalBlocksCount) x \(verticalBlocksCount) blocks.")
+        
+        if horizontalBlocksCount == 0 {
+            horizontalBlocksCount = 1
+            print("Setting to have 1 block")
+        }
+        
+        if verticalBlocksCount == 0 {
+            verticalBlocksCount = 1
+            print("Setting to have 1 row")
+        }
         
         // MARK: - Preparing the geojson
                 
