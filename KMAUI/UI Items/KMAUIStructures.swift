@@ -2909,214 +2909,214 @@ public struct KMAUILandPlanStruct {
         // MARK: - Blocks grid
             
         // Get the block counts - horizontal
-        print("averageBlockWidth = \(Double(itemsInSubBlockHorizontal)) * \(averageSubLandSize)")
+//        print("averageBlockWidth = \(Double(itemsInSubBlockHorizontal)) * \(averageSubLandSize)")
         let averageBlockWidth = Double(itemsInSubBlockHorizontal) * averageSubLandSize
-        print("horizontalBlocks = (\(areaWidth) - \(mainRoadWidth)) / (\(averageBlockWidth) + \(mainRoadWidth))")
+//        print("horizontalBlocks = (\(areaWidth) - \(mainRoadWidth)) / (\(averageBlockWidth) + \(mainRoadWidth))")
         let horizontalBlocks = (areaWidth - mainRoadWidth) / (averageBlockWidth + mainRoadWidth)
-        print("horizontalBlocksCount = \(Int(horizontalBlocks)) / \(horizontalBlocks)")
+//        print("horizontalBlocksCount = \(Int(horizontalBlocks)) / \(horizontalBlocks)")
         var horizontalBlocksCount = Int(horizontalBlocks)
         
         // Get the block counts - vertical
-        print("averageBlockHeight = (\(Double(rowsPerBlock)) - 1) * \(regularRoadWidth) + \(Double(rowsPerBlock)) * \(Double(itemsInSubBlockVertical)) * \(averageSubLandSize)")
+//        print("averageBlockHeight = (\(Double(rowsPerBlock)) - 1) * \(regularRoadWidth) + \(Double(rowsPerBlock)) * \(Double(itemsInSubBlockVertical)) * \(averageSubLandSize)")
         let averageBlockHeight = (Double(rowsPerBlock) - 1) * regularRoadWidth + Double(rowsPerBlock) * Double(itemsInSubBlockVertical) * averageSubLandSize
-        print("verticalBlocks = (\(areaHeight) - \(mainRoadWidth)) / (\(averageBlockHeight) + \(mainRoadWidth))")
+//        print("verticalBlocks = (\(areaHeight) - \(mainRoadWidth)) / (\(averageBlockHeight) + \(mainRoadWidth))")
         let verticalBlocks = (areaHeight - mainRoadWidth) / (averageBlockHeight + mainRoadWidth)
-        print("verticalBlocksCount = \(Int(verticalBlocks)) / \(verticalBlocks)")
+//        print("verticalBlocksCount = \(Int(verticalBlocks)) / \(verticalBlocks)")
         var verticalBlocksCount = Int(verticalBlocks)
-        print("\(horizontalBlocksCount) - \(verticalBlocksCount)")
-        
-        print("The Land Plan grid: \(horizontalBlocksCount) x \(verticalBlocksCount) blocks.")
+//        print("\(horizontalBlocksCount) - \(verticalBlocksCount)")
         
         if horizontalBlocksCount == 0 {
             horizontalBlocksCount = 1
-            print("Setting to have 1 block")
+//            print("Setting to have 1 block")
         }
         
         if verticalBlocksCount == 0 {
             verticalBlocksCount = 1
-            print("Setting to have 1 row")
+//            print("Setting to have 1 row")
         }
+        
+        print("The Land Plan grid: \(horizontalBlocksCount) x \(verticalBlocksCount) blocks.")
         
         // MARK: - Preparing the geojson
                 
-        if horizontalBlocksCount == 0 || verticalBlocksCount == 0 {
-            print("Can't build a grid - land is too small.")
+//        if horizontalBlocksCount == 0 || verticalBlocksCount == 0 {
+//            print("Can't build a grid - land is too small.")
+//        } else {
+        // MARK: - Adding the Land Plan Border
+        addObject(type: "Border", name: "Land Plan", coordinatesArray: [leftTop, rightTop, rightBottom, leftBottom, leftTop])
+        
+        // MARK: - Getting the bottom and right blocks as they may be not full-sized
+        var horizontalExtraSpace = areaWidth - 2 * mainRoadWidth - (mainRoadWidth + averageBlockWidth) * Double(horizontalBlocksCount)
+        var verticalExtraSpace = areaHeight - 2 * mainRoadWidth - (mainRoadWidth + averageBlockHeight) * Double(verticalBlocksCount)
+        
+        if horizontalExtraSpace > averageSubLandSize {
+            horizontalBlocksCount += 1
         } else {
-            // MARK: - Adding the Land Plan Border
-            addObject(type: "Border", name: "Land Plan", coordinatesArray: [leftTop, rightTop, rightBottom, leftBottom, leftTop])
+            horizontalExtraSpace = 0
+        }
+        
+        if verticalExtraSpace > averageSubLandSize {
+            verticalBlocksCount += 1
+        } else {
+            verticalExtraSpace = 0
+        }
+        
+        // MARK: - First left and top Main Roads
+        
+        // First vertical road
+        addMapItem(topLeft: leftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical 0", type: "Main Road", angle: angle)
+        addMapItem(topLeft: leftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal 0", type: "Main Road", angle: angle)
+        
+        var subBlockRowsCustom: Double = 0
+        var subBlockColumnsCustom: Double = 0
+        
+        // Getting the extra space calculations
+        if verticalExtraSpace > 0 {
+            subBlockRowsCustom = (verticalExtraSpace + regularRoadWidth) / (averageSubLandSize * Double(itemsInSubBlockVertical) + regularRoadWidth)
             
-            // MARK: - Getting the bottom and right blocks as they may be not full-sized
-            var horizontalExtraSpace = areaWidth - 2 * mainRoadWidth - (mainRoadWidth + averageBlockWidth) * Double(horizontalBlocksCount)
-            var verticalExtraSpace = areaHeight - 2 * mainRoadWidth - (mainRoadWidth + averageBlockHeight) * Double(verticalBlocksCount)
-                        
-            if horizontalExtraSpace > averageSubLandSize {
-                horizontalBlocksCount += 1
+            if subBlockRowsCustom - Double(Int(subBlockRowsCustom)) > 0.25 {
+                subBlockRowsCustom = Double(Int(subBlockRowsCustom)) + 1
+            }
+        }
+        
+        if horizontalExtraSpace > 0 {
+            subBlockColumnsCustom = (horizontalExtraSpace + regularRoadWidth) / averageSubLandSize
+            
+            if subBlockColumnsCustom - Double(Int(subBlockColumnsCustom)) > 0.25 {
+                subBlockColumnsCustom = Double(Int(subBlockColumnsCustom)) + 1
+            }
+        }
+        
+        // MARK: - Draw the grid of main roads
+        
+        for column in 0..<horizontalBlocksCount {
+            var blockWidth = averageBlockWidth
+            
+            if column + 1 == horizontalBlocksCount, horizontalExtraSpace > 0 {
+                blockWidth = horizontalExtraSpace
+            }
+            
+            let columnOffset = (averageBlockWidth + mainRoadWidth) * Double(column) + mainRoadWidth
+            
+            // MARK: - Create the inner grid for a block - calculating the rows / columns count
+            var subBlockRows = Double(rowsPerBlock)
+            var subBlockColumns = Double(itemsInSubBlockHorizontal)
+            var customBlock = false
+            
+            // MARK: - Step vertical road
+            let roadLeftTop = leftTop.shift(byDistance: columnOffset + blockWidth, azimuth: Double.pi / 2 + angle)
+            
+            if column + 1 == horizontalBlocksCount {
+                if horizontalExtraSpace > 0 {
+                    subBlockColumns = subBlockColumnsCustom
+                    customBlock = true
+                }
+                
+                // Filling the whole area left with the road
+                addMapItem(topLeft: roadLeftTop, width: areaWidth - columnOffset - blockWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
             } else {
-                horizontalExtraSpace = 0
+                addMapItem(topLeft: roadLeftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
             }
             
-            if verticalExtraSpace > averageSubLandSize {
-                verticalBlocksCount += 1
-            } else {
-                verticalExtraSpace = 0
-            }
-
-            // MARK: - First left and top Main Roads
-            
-            // First vertical road
-            addMapItem(topLeft: leftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical 0", type: "Main Road", angle: angle)
-            addMapItem(topLeft: leftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal 0", type: "Main Road", angle: angle)
-            
-            var subBlockRowsCustom: Double = 0
-            var subBlockColumnsCustom: Double = 0
-            
-            // Getting the extra space calculations
-            if verticalExtraSpace > 0 {
-                subBlockRowsCustom = (verticalExtraSpace + regularRoadWidth) / (averageSubLandSize * Double(itemsInSubBlockVertical) + regularRoadWidth)
+            for row in 0..<verticalBlocksCount {
+                var blockHeight = averageBlockHeight
                 
-                if subBlockRowsCustom - Double(Int(subBlockRowsCustom)) > 0.25 {
-                    subBlockRowsCustom = Double(Int(subBlockRowsCustom)) + 1
-                }
-            }
-            
-            if horizontalExtraSpace > 0 {
-                subBlockColumnsCustom = (horizontalExtraSpace + regularRoadWidth) / averageSubLandSize
-                
-                if subBlockColumnsCustom - Double(Int(subBlockColumnsCustom)) > 0.25 {
-                    subBlockColumnsCustom = Double(Int(subBlockColumnsCustom)) + 1
-                }
-            }
-            
-            // MARK: - Draw the grid of main roads
-            
-            for column in 0..<horizontalBlocksCount {
-                var blockWidth = averageBlockWidth
-                
-                if column + 1 == horizontalBlocksCount, horizontalExtraSpace > 0 {
-                    blockWidth = horizontalExtraSpace
+                if row + 1 == verticalBlocksCount, verticalExtraSpace > 0 {
+                    blockHeight = verticalExtraSpace
                 }
                 
-                let columnOffset = (averageBlockWidth + mainRoadWidth) * Double(column) + mainRoadWidth
+                let rowOffset = (averageBlockHeight + mainRoadWidth) * Double(row) + mainRoadWidth
                 
-                // MARK: - Create the inner grid for a block - calculating the rows / columns count
-                var subBlockRows = Double(rowsPerBlock)
-                var subBlockColumns = Double(itemsInSubBlockHorizontal)
-                var customBlock = false
+                // MARK: - Add the block item
+                let blockLeftTop = leftTop.shift(byDistance: columnOffset, azimuth: Double.pi / 2 + angle).shift(byDistance: rowOffset, azimuth: Double.pi + angle)
+                let blockRightTop = blockLeftTop.shift(byDistance: blockWidth, azimuth: Double.pi / 2 + angle)
+                let blockRightBottom = blockRightTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
+                let blockLeftBottom = blockLeftTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
+                addObject(type: "Block", name: "\(column)-\(row)", coordinatesArray: [blockLeftTop, blockRightTop, blockRightBottom, blockLeftBottom, blockLeftTop])
                 
-                // MARK: - Step vertical road
-                let roadLeftTop = leftTop.shift(byDistance: columnOffset + blockWidth, azimuth: Double.pi / 2 + angle)
+                // MARK: - Step horizontal road
+                let roadLeftTop = leftTop.shift(byDistance: rowOffset + blockHeight, azimuth: Double.pi + angle)
                 
-                if column + 1 == horizontalBlocksCount {
-                    if horizontalExtraSpace > 0 {
-                        subBlockColumns = subBlockColumnsCustom
+                if row + 1 == verticalBlocksCount {
+                    if verticalExtraSpace > 0 {
+                        subBlockRows = subBlockRowsCustom
                         customBlock = true
                     }
                     
                     // Filling the whole area left with the road
-                    addMapItem(topLeft: roadLeftTop, width: areaWidth - columnOffset - blockWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
+                    addMapItem(topLeft: roadLeftTop, width: areaWidth, height: areaHeight - rowOffset - blockHeight, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
                 } else {
-                    addMapItem(topLeft: roadLeftTop, width: mainRoadWidth, height: areaHeight, name: "Vertical \(column + 1)", type: "Main Road", angle: angle)
+                    addMapItem(topLeft: roadLeftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
                 }
-
-                for row in 0..<verticalBlocksCount {
-                    var blockHeight = averageBlockHeight
+                
+                for subBlockRow in 0..<Int(subBlockRows) {
+                    // MARK: - Getting the random height for row 1 and 2 inside the Sub Block
+                    let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * Double(itemsInSubBlockVertical) * Double(subBlockRow), azimuth: Double.pi + angle)
                     
-                    if row + 1 == verticalBlocksCount, verticalExtraSpace > 0 {
-                        blockHeight = verticalExtraSpace
-                    }
+                    var subLandHeight1: Double = 0
                     
-                    let rowOffset = (averageBlockHeight + mainRoadWidth) * Double(row) + mainRoadWidth
-                    
-                    // MARK: - Add the block item
-                    let blockLeftTop = leftTop.shift(byDistance: columnOffset, azimuth: Double.pi / 2 + angle).shift(byDistance: rowOffset, azimuth: Double.pi + angle)
-                    let blockRightTop = blockLeftTop.shift(byDistance: blockWidth, azimuth: Double.pi / 2 + angle)
-                    let blockRightBottom = blockRightTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
-                    let blockLeftBottom = blockLeftTop.shift(byDistance: blockHeight, azimuth: Double.pi + angle)
-                    addObject(type: "Block", name: "\(column)-\(row)", coordinatesArray: [blockLeftTop, blockRightTop, blockRightBottom, blockLeftBottom, blockLeftTop])
-
-                    // MARK: - Step horizontal road
-                    let roadLeftTop = leftTop.shift(byDistance: rowOffset + blockHeight, azimuth: Double.pi + angle)
-                    
-                    if row + 1 == verticalBlocksCount {
-                        if verticalExtraSpace > 0 {
-                            subBlockRows = subBlockRowsCustom
-                            customBlock = true
-                        }
-                        
-                        // Filling the whole area left with the road
-                        addMapItem(topLeft: roadLeftTop, width: areaWidth, height: areaHeight - rowOffset - blockHeight, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
+                    if maxSubLandSide > minSubLandSide {
+                        subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
                     } else {
-                        addMapItem(topLeft: roadLeftTop, width: areaWidth, height: mainRoadWidth, name: "Horizontal \(row + 1)", type: "Main Road", angle: angle)
+                        subLandHeight1 = maxSubLandSide
                     }
                     
-                    for subBlockRow in 0..<Int(subBlockRows) {
-                        // MARK: - Getting the random height for row 1 and 2 inside the Sub Block
-                        let subBlockLeftTop = blockLeftTop.shift(byDistance: Double(subBlockRow) * regularRoadWidth + averageSubLandSize * Double(itemsInSubBlockVertical) * Double(subBlockRow), azimuth: Double.pi + angle)
+                    var subLandHeight2 = averageSubLandSize * Double(itemsInSubBlockVertical) - subLandHeight1
+                    
+                    var subBlockHeight = averageSubLandSize * Double(itemsInSubBlockVertical)
+                    
+                    if subBlockRow + 1 == Int(subBlockRows), customBlock {
+                        subBlockHeight = blockHeight - Double(subBlockRow) * (averageSubLandSize * Double(itemsInSubBlockVertical) + regularRoadWidth)
+                        subLandHeight2 = subBlockHeight - subLandHeight1
                         
-                        var subLandHeight1: Double = 0
-                            
-                        if maxSubLandSide > minSubLandSide {
-                            subLandHeight1 = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
+                        if subLandHeight2 < minSubLandSide {
+                            subLandHeight1 = subBlockHeight
+                            subLandHeight2 = 0
+                        }
+                    }
+                    
+                    // MARK: - Adding Sub Block
+                    addMapItem(topLeft: subBlockLeftTop, width: blockWidth, height: subBlockHeight, name: "\(column)-\(row)-\(subBlockRow)", type: "Sub Block", angle: angle)
+                    
+                    if subBlockRow + 1 < Int(subBlockRows) {
+                        // MARK: - Adding Regular Road
+                        let regularRoadTopLeft = subBlockLeftTop.shift(byDistance: averageSubLandSize * Double(itemsInSubBlockVertical), azimuth: Double.pi + angle)
+                        addMapItem(topLeft: regularRoadTopLeft, width: blockWidth, height: regularRoadWidth, name: "\(column)-\(row)-\(subBlockRow)", type: "Regular Road", angle: angle)
+                    }
+                    
+                    var totalWidth: Double = 0
+                    
+                    for subLandColumn in 0..<Int(subBlockColumns) {
+                        var subLandWidth: Double = 0
+                        
+                        if subLandColumn + 1 == Int(subBlockColumns) {
+                            subLandWidth = blockWidth - totalWidth
                         } else {
-                            subLandHeight1 = maxSubLandSide
-                        }
-                        
-                        var subLandHeight2 = averageSubLandSize * Double(itemsInSubBlockVertical) - subLandHeight1
-                        
-                        var subBlockHeight = averageSubLandSize * Double(itemsInSubBlockVertical)
-                        
-                        if subBlockRow + 1 == Int(subBlockRows), customBlock {
-                            subBlockHeight = blockHeight - Double(subBlockRow) * (averageSubLandSize * Double(itemsInSubBlockVertical) + regularRoadWidth)
-                            subLandHeight2 = subBlockHeight - subLandHeight1
-                            
-                            if subLandHeight2 < minSubLandSide {
-                                subLandHeight1 = subBlockHeight
-                                subLandHeight2 = 0
-                            }
-                        }
-                        
-                        // MARK: - Adding Sub Block
-                        addMapItem(topLeft: subBlockLeftTop, width: blockWidth, height: subBlockHeight, name: "\(column)-\(row)-\(subBlockRow)", type: "Sub Block", angle: angle)
-                        
-                        if subBlockRow + 1 < Int(subBlockRows) {
-                            // MARK: - Adding Regular Road
-                            let regularRoadTopLeft = subBlockLeftTop.shift(byDistance: averageSubLandSize * Double(itemsInSubBlockVertical), azimuth: Double.pi + angle)
-                            addMapItem(topLeft: regularRoadTopLeft, width: blockWidth, height: regularRoadWidth, name: "\(column)-\(row)-\(subBlockRow)", type: "Regular Road", angle: angle)
-                        }
-
-                        var totalWidth: Double = 0
-                        
-                        for subLandColumn in 0..<Int(subBlockColumns) {
-                            var subLandWidth: Double = 0
-                            
-                            if subLandColumn + 1 == Int(subBlockColumns) {
-                                subLandWidth = blockWidth - totalWidth
+                            if maxSubLandSide > minSubLandSide {
+                                subLandWidth = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
                             } else {
-                                if maxSubLandSide > minSubLandSide {
-                                    subLandWidth = Double(Int.random(in: Int(minSubLandSide * 100) ..< Int(maxSubLandSide * 100))) / 100
-                                } else {
-                                    subLandWidth = maxSubLandSide
-                                }
+                                subLandWidth = maxSubLandSide
                             }
-                            
-                            // MARK: - Adding Sub Land
-                            
-                            // Row 1 top left coordinate
-                            let subLand1TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle)
-                            addMapItem(topLeft: subLand1TopLeft, width: subLandWidth, height: subLandHeight1, name: "\(column)-\(row)-\(subBlockRow)-0-\(subLandColumn)", type: "Sub Land", angle: angle)
-                            
-                            if subLandHeight2 > 0 {
-                                // Row 2 top left coordinate
-                                let subLand2TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle).shift(byDistance: subLandHeight1, azimuth: Double.pi + angle)
-                                addMapItem(topLeft: subLand2TopLeft, width: subLandWidth, height: subLandHeight2, name: "\(column)-\(row)-\(subBlockRow)-1-\(subLandColumn)", type: "Sub Land", angle: angle)
-                            }
-                            
-                            totalWidth += subLandWidth
                         }
+                        
+                        // MARK: - Adding Sub Land
+                        
+                        // Row 1 top left coordinate
+                        let subLand1TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle)
+                        addMapItem(topLeft: subLand1TopLeft, width: subLandWidth, height: subLandHeight1, name: "\(column)-\(row)-\(subBlockRow)-0-\(subLandColumn)", type: "Sub Land", angle: angle)
+                        
+                        if subLandHeight2 > 0 {
+                            // Row 2 top left coordinate
+                            let subLand2TopLeft = subBlockLeftTop.shift(byDistance: totalWidth, azimuth: Double.pi / 2 + angle).shift(byDistance: subLandHeight1, azimuth: Double.pi + angle)
+                            addMapItem(topLeft: subLand2TopLeft, width: subLandWidth, height: subLandHeight2, name: "\(column)-\(row)-\(subBlockRow)-1-\(subLandColumn)", type: "Sub Land", angle: angle)
+                        }
+                        
+                        totalWidth += subLandWidth
                     }
                 }
             }
         }
+        //        }
         
         getParseObjects()
         addSubLandTypes()
