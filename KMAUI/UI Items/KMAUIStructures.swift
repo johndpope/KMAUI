@@ -2914,9 +2914,13 @@ public struct KMAUILandPlanStruct {
         var horizontalBlocksCount = Int(horizontalBlocks)
         
         // Get the block counts - vertical
+        print("averageBlockHeight = (\(Double(rowsPerBlock)) - 1) * \(regularRoadWidth) + \(Double(rowsPerBlock)) * \(Double(itemsInSubBlockVertical)) * \(averageSubLandSize)")
         let averageBlockHeight = (Double(rowsPerBlock) - 1) * regularRoadWidth + Double(rowsPerBlock) * Double(itemsInSubBlockVertical) * averageSubLandSize
+        print("verticalBlocks = (\(areaHeight) - \(mainRoadWidth)) / (\(averageBlockHeight) + \(mainRoadWidth))")
         let verticalBlocks = (areaHeight - mainRoadWidth) / (averageBlockHeight + mainRoadWidth)
+        print("verticalBlocksCount = \(Int(verticalBlocks))")
         var verticalBlocksCount = Int(verticalBlocks)
+        print("\(horizontalBlocksCount) - \(verticalBlocksCount)")
         
         print("The Land Plan grid: \(horizontalBlocksCount) x \(verticalBlocksCount) blocks.")
         
