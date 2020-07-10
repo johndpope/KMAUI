@@ -3606,6 +3606,14 @@ public struct KMAUILandPlanStruct {
         if let isDeleted = plan["isDeleted"] as? Bool {
             self.isDeleted = isDeleted
         }
+        // Area width
+        if let areaWidth = plan["areaWidth"] as? Double {
+            self.areaWidth = areaWidth
+        }
+        // Area height
+        if let areaHeight = plan["areaHeight"] as? Double {
+            self.areaHeight = areaHeight
+        }
     }
     
     public func loadGeoJson(completion: @escaping (_ land: KMAUILandPlanStruct?) -> Void) {
