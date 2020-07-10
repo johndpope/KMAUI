@@ -1372,7 +1372,8 @@ final public class KMAUIParse {
                     } else if KMAUIConstants.shared.trespassCasesTypes.contains(eventType) {
                         KMAUIConstants.shared.trespassCasesNotifications.append(notification)
                     } else {
-                        KMAUIConstants.shared.generalNotifications.append(notification)
+                        KMAUIConstants.shared.landLotteryNotifications.append(notification)
+//                        KMAUIConstants.shared.generalNotifications.append(notification)
                     }
                 } else {
                     KMAUIConstants.shared.landLotteryNotifications.append(notification)
