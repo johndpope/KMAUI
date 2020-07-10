@@ -256,7 +256,7 @@ public class KMAUIConstants {
                                            "objectId" : "oOP68KOxw5",
                                            "previewURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/c26d8b53faeda34bdd5722b9f4ecea57_Laws%20and%20regulations%20preview.jpg",
                                            "fileURL" : "https://parsefiles.back4app.com/DX8cx1pmFMVaXRrAnO0jHq86wswN8q3oPN6yEr2W/4808dcabf138e2904555d193e40e2465_Laws%20and%20regulations.pdf",
-                                           "fileDescription" : "The additional information for the Makkah region",
+                                           "fileDescription" : "The additional information for the region",
                                            "type" : "Document",
                                            "createdAt" : "2020-05-28 12:28:52"], ["fileDescription" : "The Royal orders by the King of Saudi Arabia",
                                                                                   "fileExtension" : "PDF",
