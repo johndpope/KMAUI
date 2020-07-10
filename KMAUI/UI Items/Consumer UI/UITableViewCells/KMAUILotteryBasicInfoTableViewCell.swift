@@ -142,14 +142,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         setupView(mode: "status")
         viewDetailsButton.setTitle("View details", for: .normal)
         viewDetailsButton.setTitleColor(KMAUIConstants.shared.KMAUITextColor, for: .normal)
-        
-        // Setup data rows
-//        if lottery.subLandsCount == 0 {
-//            lottery.subLandsCount = lottery.servicesCount + lottery.commercialCount + lottery.saleCount + lottery.lotteryCount
-//        }
-        
-        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.landFeatures.count)")]
-        
+
         // Check the segment - always no button for lotteries
         hideViewDetails()
         
@@ -161,7 +154,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
         titleLabel.text = lottery.landName
         
         // Stack view
-        setupStackView(rows: rows)
+        setupStackView(rows: [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.landFeatures.count)")])
     }
     
     public func setupSubLand() {

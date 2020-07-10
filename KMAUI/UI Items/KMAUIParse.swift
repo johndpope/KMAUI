@@ -1375,7 +1375,8 @@ final public class KMAUIParse {
                         KMAUIConstants.shared.generalNotifications.append(notification)
                     }
                 } else {
-                    KMAUIConstants.shared.generalNotifications.append(notification)
+                    KMAUIConstants.shared.landLotteryNotifications.append(notification)
+//                    KMAUIConstants.shared.generalNotifications.append(notification)
                 }
             }
             
