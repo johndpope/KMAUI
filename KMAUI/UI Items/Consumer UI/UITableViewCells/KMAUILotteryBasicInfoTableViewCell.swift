@@ -148,7 +148,7 @@ public class KMAUILotteryBasicInfoTableViewCell: UITableViewCell {
 //            lottery.subLandsCount = lottery.servicesCount + lottery.commercialCount + lottery.saleCount + lottery.lotteryCount
 //        }
         
-        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.subLandsCount)")]
+        let rows = [KMAUIRowData(rowName: "Sub lands", rowValue: "\(lottery.landFeatures.count)")]
         
         // Check the segment - always no button for lotteries
         hideViewDetails()
