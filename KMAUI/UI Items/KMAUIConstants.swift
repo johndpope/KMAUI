@@ -301,7 +301,7 @@ public class KMAUIConstants {
     public var trespassCasesNotifications = [KMANotificationStruct]()
     public var generalNotifications = [KMANotificationStruct]()
     // Type arrays
-    public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded"]
+    public let landLotteryTypes = ["lotteryResultUpdate", "landPlanStatusChanged", "subLandDocumentAdded", "documentUploaded", "lotteryUpdated"]
     public let landCasesTypes = ["landCaseCreated"]
     public let trespassCasesTypes = ["penaltyPaymentReceived"]
     public var tabBarController = UITabBarController()
