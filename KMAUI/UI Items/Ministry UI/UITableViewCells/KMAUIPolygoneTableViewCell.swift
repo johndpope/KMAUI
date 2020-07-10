@@ -100,10 +100,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
 
         // Check type
         if polygone.polygoneType == "custom" {
-            // Show on map button - hide
-            showOnMapButton.alpha = 0
-            showOnMapButtonLeft.constant = 0
-            showOnMapButtonWidth.constant = 0
+//            // Show on map button - hide
+//            showOnMapButton.alpha = 0
+//            showOnMapButtonLeft.constant = 0
+//            showOnMapButtonWidth.constant = 0
             // Hide logo image view
             logoImageView.alpha = 0
             logoImageViewLeft.constant = -18
@@ -112,10 +112,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             // Setup the custom polygone details
             setupCustomPolygone()
         } else if polygone.polygoneType == "googlePlace" {
-            // Show on map button - show
-            showOnMapButton.alpha = 1
-            showOnMapButtonLeft.constant = 12
-            showOnMapButtonWidth.constant = 120
+//            // Show on map button - show
+//            showOnMapButton.alpha = 1
+//            showOnMapButtonLeft.constant = 12
+//            showOnMapButtonWidth.constant = 120
             // Show logo image view
             logoImageView.alpha = 1
             logoImageViewLeft.constant = 20
@@ -124,6 +124,11 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             // Setup the Google Places details
             setupGooglePlacePolygone()
         }
+        
+        // Temporary hiding the `Show on Map` from the cell// Show on map button - hide
+        showOnMapButton.alpha = 0
+        showOnMapButtonLeft.constant = 0
+        showOnMapButtonWidth.constant = 0
     }
 
     func setupCustomPolygone() {
@@ -226,7 +231,13 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         // Setup attachments
-        setupAttachments(url: polygone.googlePlaceImage, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
+        var imageURL = ""
+        
+        if !polygone.googlePlaceImage.isEmpty {
+            imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(polygone.googlePlaceImage)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        }
+        
+        setupAttachments(url: imageURL, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
         
         // Prepare rows
         var rows = [KMAUIRowData]()
@@ -244,6 +255,11 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Working hours
         if !polygone.googlePlaceWorkingHours.isEmpty {
             rows.append(KMAUIRowData(rowName: "Working hours", rowValue: polygone.googlePlaceWorkingHours))
+        }
+        
+        // Business status
+        if !polygone.googlePlaceBusinessStatus.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Business status", rowValue: polygone.googlePlaceBusinessStatus.lowercased().capitalized))
         }
         
         // Setup stack view

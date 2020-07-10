@@ -4519,6 +4519,30 @@ public struct KMAUIPolygoneDataStruct {
             self.googlePlaceReviewsCount = ratingsCount
             print("- Reviews count: \(self.googlePlaceReviewsCount)")
         }
+        
+        // Photo
+        if let photos = object["photos"] as? [[String: AnyObject]], !photos.isEmpty {
+            let photo = photos[0]
+            
+            if let photoReference = photo["photo_reference"] as? String {
+                self.googlePlaceImage = photoReference
+                print("- Photo reference: \(photoReference)")
+            }
+        } else {
+            print("No photos")
+        }
+        
+        /*
+         "photos": <__NSSingleObjectArrayI 0x6000038c3ab0>(
+         {
+             height = 4608;
+             "html_attributions" =     (
+                 "<a href=\"https://maps.google.com/maps/contrib/110033666216566202495\">Iftikhar Kazi</a>"
+             );
+             "photo_reference" = "CmRaAAAArFPzx-HNvBu611xZWLW-WGL_uRAAE70GOm5khaTAPvGggOse-iNQXT2xIxv6trYP8ypeqvecN0H-95trO1DA1apiglaSwmyEPYlb_sesy471YziojIXX_MD5DzXsjbl1EhCbiWh0_lz1yHICRj7Y0Zy_GhSg2chvlDX8LCAUqu8XWn2ihoNdVg";
+             width = 3456;
+         }
+         */
     }
     
     /*
