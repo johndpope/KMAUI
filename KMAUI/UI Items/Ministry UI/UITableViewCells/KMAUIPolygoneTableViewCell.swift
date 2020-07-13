@@ -148,7 +148,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         if !polygone.valueArray.isEmpty {
-            print("VALUES:\n\(polygone.valueArray)")
+//            print("VALUES:\n\(polygone.valueArray)")
             rows.append(KMAUIRowData(rowName: "Values", rowValue: ""))
             for item in polygone.valueArray {
                 rows.append(KMAUIRowData(rowName: item.title, rowValue: item.value))
@@ -233,7 +233,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Setup attachments
         var imageURL = ""
         
-        if !polygone.googlePlaceImage.isEmpty {
+        if polygone.googlePlaceImage.starts(with: "http") {
+            imageURL = polygone.googlePlaceImage
+        } else if !polygone.googlePlaceImage.isEmpty {
             imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(polygone.googlePlaceImage)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
         }
         
