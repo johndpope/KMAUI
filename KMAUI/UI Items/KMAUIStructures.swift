@@ -4324,6 +4324,7 @@ public struct KMAUI9x9Bundle {
     public var paidOnly = false
     public var id = ""
     public var icon = ""
+    public var polygoneArray = [KMAUIPolygoneDataStruct]()
     
     public init() {}
     
