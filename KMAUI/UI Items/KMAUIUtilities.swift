@@ -962,6 +962,35 @@ public class KMAUIUtilities {
         return UIBarButtonItem(customView: showOnMapButton)
     }
     
+    /**
+     Show on map bar button
+     */
+    
+    public func getShowOnMapWithImageBarButton() -> UIBarButtonItem {
+        // Background
+        let buttonBgView = UIView(frame: CGRect(x: 0, y: 0, width: 152, height: 32))
+        buttonBgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        buttonBgView.layer.cornerRadius = 6
+        buttonBgView.clipsToBounds = true
+        
+        // Image
+        let imageView = UIImageView(frame: CGRect(x: 16, y: 8, width: 16, height: 16))
+        imageView.image = KMAUIConstants.shared.mapIcon.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = KMAUIConstants.shared.KMAUITextColor
+        
+        // Label
+        let label = UILabel(frame: CGRect(x: 45, y: 8, width: 91, height: 17))
+        label.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
+        label.textColor = KMAUIConstants.shared.KMAUITextColor
+        label.text = "Show on map"
+        
+        // Setup subviews
+        buttonBgView.addSubview(imageView)
+        buttonBgView.addSubview(label)
+        
+        return UIBarButtonItem(customView: buttonBgView)
+    }
+    
     // MARK: - Hide the navigation bar line
     
     public func hideBarLine(navigationController: UINavigationController) {
