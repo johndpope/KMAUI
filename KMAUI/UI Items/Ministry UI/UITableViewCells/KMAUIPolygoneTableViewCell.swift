@@ -93,7 +93,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     public func setupCell() {
         // Top offset
         if isFirst {
-            bgViewTop.constant = 16
+            bgViewTop.constant = 32
         } else {
             bgViewTop.constant = 0
         }
