@@ -11,6 +11,8 @@ import UIKit
 public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet public weak var stackView: UIStackView!
+    @IBOutlet public weak var stackViewTop: NSLayoutConstraint!
+    @IBOutlet public weak var stackViewBottom: NSLayoutConstraint!
     
     // MARK: - Variables
     public var items = [KMAUIItemPerformance]() {
