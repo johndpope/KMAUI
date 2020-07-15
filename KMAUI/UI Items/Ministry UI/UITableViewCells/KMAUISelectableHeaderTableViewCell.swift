@@ -25,6 +25,7 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
     public var itemLabels = [UILabel]()
     public var selectedIndex = -1
     public var selectedCallback: ((Int) -> Void)?
+    public var labelFontSize: CGFloat = 18
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -75,11 +76,11 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
             let activeView = UIView()
             activeView.backgroundColor = KMAUIConstants.shared.KMATurquoiseColor
             if item.isOn {
-                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(labelFontSize)
                 selectedIndex = index
                 activeView.alpha = 1
             } else {
-                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(18)
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(labelFontSize)
                 activeView.alpha = 0
             }
             itemLabel.minimumScaleFactor = 0.5
@@ -111,13 +112,13 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
                     activeView.alpha = 1
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(labelFontSize)
             } else if index != selectedIndex, activeView.alpha == 1 {
                 UIView.animate(withDuration: 0.15) {
                     activeView.alpha = 0
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(18)
+                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(labelFontSize)
             }
         }
         
