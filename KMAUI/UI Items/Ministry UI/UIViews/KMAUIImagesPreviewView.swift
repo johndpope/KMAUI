@@ -212,12 +212,12 @@ public class KMAUIImagesPreviewView: UIView {
         let document = imagesArray[index]
         
         KMAUIUtilities.shared.quicklookPreview(urlString: document.fileURL, fileName: document.name, uniqueId: document.objectId) { (previewItemValue) in
+            KMAUIConstants.shared.popupOpened = true
             self.previewItem = previewItemValue
             // Display file
             let previewController = QLPreviewController()
             previewController.dataSource = self
             KMAUIUtilities.shared.displayAlert(viewController: previewController)
-            KMAUIConstants.shared.popupOpened = true
         }
     }
 }
