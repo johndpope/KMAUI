@@ -2150,16 +2150,23 @@ public class KMAUIUtilities {
         return polygoneArray
     }
     
-    public func getGoogleNearbyPlaces(keyword: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
+    public func getGoogleNearbyPlaces(polygoneArray: [KMAUIPolygoneDataStruct], nextPageToken: String, keyword: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
+        var polygoneArray = polygoneArray
         let centerPoint = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
         var radius = CLLocation(latitude: sw.latitude, longitude: sw.longitude).distance(from: CLLocation(latitude: ne.latitude, longitude: ne.longitude))
-
+        
         if radius > 50000 {
             radius = 50000
         }
         
-        let dataFromBundle = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(centerPoint.latitude)%2C\(centerPoint.longitude)&radius=\(radius)&keyword=\(keyword)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
-                    
+        var pageToken = ""
+        
+        if !nextPageToken.isEmpty {
+            pageToken = "&pagetoken=\(nextPageToken)"
+        }
+        
+        let dataFromBundle = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(centerPoint.latitude)%2C\(centerPoint.longitude)&radius=\(radius)&keyword=\(keyword)\(pageToken)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        
         AF.request(dataFromBundle, method: .get).responseJSON { response in
             var jsonString = ""
             
@@ -2174,11 +2181,12 @@ public class KMAUIUtilities {
                     print(error.localizedDescription)
                 }
             }
-
-            let placesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
-            var polygoneArray = [KMAUIPolygoneDataStruct]()
             
-            if let results = placesDictionary["results"] as? [[String: AnyObject]] {
+            let placesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            var newResults = 0
+            
+            if let results = placesDictionary["results"] as? [[String: AnyObject]], !results.isEmpty {
+                print("Places found: \(results.count)")
                 for place in results {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "googlePlace"
@@ -2186,14 +2194,30 @@ public class KMAUIUtilities {
                     // We don't need to display the permanently closed places
                     if !polygoneData.googlePlaceClosed {
                         polygoneArray.append(polygoneData)
+                        newResults += 1
                     }
                 }
+            } else {
+                print("No places found")
             }
             
             // Order polygone array by rating
             polygoneArray = KMAUIUtilities.shared.orderPolygoneArray(array: polygoneArray)
             
-            completion(polygoneArray)
+            // Only send completion if that's the first request or we have some new results
+            if newResults > 0 || (newResults == 0 && polygoneArray.isEmpty) {
+                completion(polygoneArray)
+            }
+            
+            if let nextPageToken = placesDictionary["next_page_token"] as? String, !nextPageToken.isEmpty {
+                print("\nLoad next set of results")
+                // Give a small delay before the next call
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    self.getGoogleNearbyPlaces(polygoneArray: polygoneArray, nextPageToken: nextPageToken, keyword: keyword, sw: sw, ne: ne) { (polygoneArrayValue) in
+                        completion(polygoneArrayValue)
+                    }
+                }
+            }
         }
     }
 }
