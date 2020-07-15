@@ -90,6 +90,8 @@
             <connections>
                 <outlet property="activityIndicatorView" destination="aYU-HH-bcK" id="LSI-gI-Q5G"/>
                 <outlet property="bgView" destination="e5t-mG-MFG" id="Ft5-qK-u33"/>
+                <outlet property="bgViewLeft" destination="M2y-AV-4A3" id="rlP-Vg-NCe"/>
+                <outlet property="bgViewRight" destination="Mhr-Rw-sbX" id="Tsd-7i-q0w"/>
                 <outlet property="infoLabel" destination="qWd-AU-roY" id="nhT-LI-Kri"/>
                 <outlet property="logoImageView" destination="CLe-vC-ayR" id="ze7-Qo-Z1H"/>
                 <outlet property="titleLabel" destination="UJ2-wX-ukx" id="hAi-jM-sGr"/>

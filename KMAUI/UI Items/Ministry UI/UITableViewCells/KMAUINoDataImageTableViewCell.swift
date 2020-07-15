@@ -12,6 +12,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet weak var bgViewLeft: NSLayoutConstraint!
+    @IBOutlet weak var bgViewRight: NSLayoutConstraint!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var titleLabelCenter: NSLayoutConstraint!
@@ -56,6 +58,8 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         bgView.clipsToBounds = true
         titleLabelCenter.constant = 0
         activityIndicatorView.alpha = 0
+        bgViewLeft.constant = 30
+        bgViewRight.constant = 30
         
         if mode == "lotteryOnApprovement" {
             titleLabel.text = "Lottery is on approvement"
@@ -117,6 +121,7 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             infoLabel.text = "Please wait for the search results"
             logoImageView.image = KMAUIConstants.shared.citizensIcon
         } else if mode == "bundles" {
+            // Loading mode
             if isLoading {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the bundles to be loaded."
@@ -129,9 +134,13 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any bundles."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
+            // BgView
+            bgViewLeft.constant = 20
+            bgViewRight.constant = 20
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.clipsToBounds = false
         } else if mode == "polygones" {
+            // Loading mode
             if isLoading {
                 titleLabel.text = "Loading..."
                 infoLabel.text = "Please wait for the polygones to be loaded."
@@ -144,6 +153,9 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
                 infoLabel.text = "Unfortunately we weren't able to load any polygones."
                 logoImageView.image = KMAUIConstants.shared.rejectionIcon
             }
+            // BgView
+            bgViewLeft.constant = 20
+            bgViewRight.constant = 20
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.clipsToBounds = false
         }
@@ -151,4 +163,3 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
     }
 }
-// 38 + 12 / 2
