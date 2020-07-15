@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import KMAUI
 import QuickLook
 import Kingfisher
 import SafariServices
@@ -276,7 +275,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let itemView = UIStackView()
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
-            itemView.alignment = UIStackView.Alignment.center
+            itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 8
             
             itemView.layoutMargins = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
@@ -291,7 +290,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
                 rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
             }
             
-            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 252), for: .horizontal)
+            rowNameLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 253), for: .horizontal)
             itemView.addArrangedSubview(rowNameLabel)
             
             // Row value label
