@@ -137,7 +137,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         
         // Id
         locationLabel.text = ""
-        locationLabel.backgroundColor = UIColor.red
         
         // Prepare rows
         var rows = [KMAUIRowData]()
