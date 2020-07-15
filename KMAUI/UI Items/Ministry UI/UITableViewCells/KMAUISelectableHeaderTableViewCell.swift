@@ -82,6 +82,7 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
                 itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(18)
                 activeView.alpha = 0
             }
+            itemLabel.minimumScaleFactor = 0.5
             activeView.widthAnchor.constraint(equalToConstant: 18).isActive = true
             activeView.heightAnchor.constraint(equalToConstant: 2).isActive = true
             itemView.addArrangedSubview(activeView)
