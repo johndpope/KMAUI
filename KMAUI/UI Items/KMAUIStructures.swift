@@ -4366,6 +4366,25 @@ public struct KMAUI9x9Bundle {
             self.icon = icon
         }
     }
+    
+    public mutating func setupGoogleCategories() {
+        var googleCategoriesArray = [KMAUI9x9Bundle]()
+        // List of items
+        let googleCategories = ["hospital", "school", "police", "store,shop", "food"]
+        let googleNames = ["Medicine", "Education", "Police", "Business", "Food"]
+        let googleDescriptions = ["Hospitals around", "Schools, Universities", "Stations around", "Stores and shops", "Restaurants and Cafes"]
+        // Create an array
+        googleCategoriesArray = [KMAUI9x9Bundle]()
+        for (index, category) in googleCategories.enumerated() {
+            var categoryBundle = KMAUI9x9Bundle()
+            categoryBundle.id = category
+            categoryBundle.name = googleNames[index]
+            categoryBundle.description = googleDescriptions[index]
+            googleCategoriesArray.append(categoryBundle)
+        }
+        // Set the variable
+        self.googleCategoriesArray = googleCategoriesArray
+    }
 }
 
 // MARK: - Polygone for Bundle
