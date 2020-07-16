@@ -309,6 +309,7 @@ public class KMAUIConstants {
     
     // MARK: - Google Places
     public let googlePlacesAPIKey = "AIzaSyBOukZS28sLMgRjXl5gR5w3WG6-EOM_Zz8"
+    public var bundlesArray = [KMAUI9x9Bundle]()
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan

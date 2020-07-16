@@ -2031,7 +2031,7 @@ public class KMAUIUtilities {
      Get data from KMA 9x9
      */
     
-    public func getDataKMA9x9(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ bundlesCount: Int, _ bundlesString: String)->()) {
+    public func getDataKMA9x9(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ bundlesCount: Int, _ bundles: [KMAUI9x9Bundle])->()) {
         // Bearer token
         let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNWVmOWU3MmNhYjYyNDc2ODk4ODgyMWE1IiwiaWF0IjoxNTkzNjkwNzc1LCJleHAiOjMzMTI5NjkwNzc1fQ.rtN50H_U04NlREA9mwNRN2b-J1XJl8uUempIdqLDNgw"
         
@@ -2051,7 +2051,6 @@ public class KMAUIUtilities {
         // Backend request
         AF.request(bundlesSearch, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             // Clear bundles string saved value
-            var bundlesCount = 0
             var jsonString = ""
             
             if let responseData = response.data {
@@ -2066,15 +2065,10 @@ public class KMAUIUtilities {
                 }
             }
             
-//            print("\nBundles loaded:\n\(jsonString)")
-
-            let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            //            print("\nBundles loaded:\n\(jsonString)")
+            let bundles = KMAUIUtilities.shared.setupBundles(jsonString: jsonString)
             
-            if let bundlesArray = bundlesDictionary["data"] as? [[String: AnyObject]] {
-                bundlesCount = bundlesArray.count
-            }
-            
-            completion(bundlesCount, jsonString)
+            completion(bundles.count, bundles)
         }
     }
     
