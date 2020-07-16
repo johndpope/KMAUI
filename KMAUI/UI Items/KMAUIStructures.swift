@@ -4370,7 +4370,7 @@ public struct KMAUI9x9Bundle {
     public mutating func setupGoogleCategories() {
         var googleCategoriesArray = [KMAUI9x9Bundle]()
         // List of items
-        let googleCategories = ["hospital", "school", "police", "store,shop", "food"]
+        let googleCategories = ["hospital", "school", "police", "shop", "food"]
         let googleNames = ["Medicine", "Education", "Police", "Business", "Food"]
         let googleDescriptions = ["Hospitals around", "Schools, Universities", "Stations around", "Stores and shops", "Restaurants and Cafes"]
         // Create an array
