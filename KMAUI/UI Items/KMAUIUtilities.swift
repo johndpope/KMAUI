@@ -2180,7 +2180,7 @@ public class KMAUIUtilities {
             var newResults = 0
             
             if let results = placesDictionary["results"] as? [[String: AnyObject]], !results.isEmpty {
-                print("Places found: \(results.count)")
+//                print("Places found: \(results.count)")
                 for place in results {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "googlePlace"
@@ -2191,8 +2191,8 @@ public class KMAUIUtilities {
                         newResults += 1
                     }
                 }
-            } else {
-                print("No places found")
+//            } else {
+//                print("No places found")
             }
             
             // Order polygone array by rating
@@ -2204,7 +2204,7 @@ public class KMAUIUtilities {
             }
             
             if let nextPageToken = placesDictionary["next_page_token"] as? String, !nextPageToken.isEmpty {
-                print("\nLoad next set of results")
+//                print("\nLoad next set of results")
                 // Give a small delay before the next call
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.getGoogleNearbyPlaces(polygoneArray: polygoneArray, nextPageToken: nextPageToken, keyword: keyword, sw: sw, ne: ne) { (polygoneArrayValue) in
