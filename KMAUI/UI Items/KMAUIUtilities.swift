@@ -2220,6 +2220,32 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    // MARK: KMA 9x9 Bundles
+    
+    public func setupBundles(jsonString: String) -> [KMAUI9x9Bundle] {
+        var bundles = [KMAUI9x9Bundle]()
+        // Get bundles list
+        let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+        if let bundlesArray = bundlesDictionary["data"] as? [[String: AnyObject]] {
+            for bundleItem in bundlesArray {
+                var bundle = KMAUI9x9Bundle()
+                bundle.fillFromDictionary(object: bundleItem)
+                // Add the bundle into the array if it's not an empty bundle
+                if !bundle.id.isEmpty {
+                    if bundle.name == "Google" {
+                        bundle.name = "Google Places"
+                        bundle.description = "Nearby places"
+                        bundle.setupGoogleCategories()
+                    }
+                    
+                    bundles.append(bundle)
+                }
+            }
+        }
+        
+        return bundles
+    }
 }
 
 // MARK: - Int extension
