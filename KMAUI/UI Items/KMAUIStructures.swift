@@ -4370,7 +4370,7 @@ public struct KMAUI9x9Bundle {
     public mutating func setupGoogleCategories() {
         var googleCategoriesArray = [KMAUI9x9Bundle]()
         // List of items
-        let googleCategories = ["hospital", "school", "police", "store,shop", "food"]
+        let googleCategories = ["hospital", "school", "police", "store", "food"]
         let googleNames = ["Medicine", "Education", "Police", "Business", "Food"]
         let googleDescriptions = ["Hospitals around", "Schools, Universities", "Stations around", "Stores and shops", "Restaurants and Cafes"]
         // Create an array
@@ -4420,6 +4420,8 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceWorkingHours = ""
     public var googlePlaceBusinessStatus = "" // OPERATIONAL || CLOSED_TEMPORARILY || CLOSED_PERMANENTLY
     public var googlePlaceAddress = ""
+    // Bundle id
+    public var googleCategory = ""
     
     public init() {}
     
