@@ -2144,7 +2144,7 @@ public class KMAUIUtilities {
         return polygoneArray
     }
     
-    public func getGoogleNearbyPlaces(polygoneArray: [KMAUIPolygoneDataStruct], nextPageToken: String, keyword: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
+    public func getGoogleNearbyPlaces(polygoneArray: [KMAUIPolygoneDataStruct], nextPageToken: String, keyword: String, category: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
         var polygoneArray = polygoneArray
         let centerPoint = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
         var radius = CLLocation(latitude: sw.latitude, longitude: sw.longitude).distance(from: CLLocation(latitude: ne.latitude, longitude: ne.longitude))
@@ -2185,7 +2185,7 @@ public class KMAUIUtilities {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "googlePlace"
                     polygoneData.fillFromNearbyPlace(object: place)
-                    polygoneData.googleCategory = keyword
+                    polygoneData.googleCategory = category.lowercased()
                     // We don't need to display the permanently closed places
                     if !polygoneData.googlePlaceClosed {
                         polygoneArray.append(polygoneData)
