@@ -2208,7 +2208,7 @@ public class KMAUIUtilities {
 //                print("\nLoad next set of results")
                 // Give a small delay before the next call
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                    self.getGoogleNearbyPlaces(polygoneArray: polygoneArray, nextPageToken: nextPageToken, keyword: keyword, sw: sw, ne: ne) { (polygoneArrayValue) in
+                    self.getGoogleNearbyPlaces(polygoneArray: polygoneArray, nextPageToken: nextPageToken, keyword: keyword, category: category, sw: sw, ne: ne) { (polygoneArrayValue) in
                         completion(polygoneArrayValue)
                     }
                 }
