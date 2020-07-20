@@ -2035,6 +2035,38 @@ public class KMAUIUtilities {
         return (landLotteryCounts, landCasesCounts, trespassCasesCount, generalCounts)
     }
     
+    // MARK: - KMA Datasets from data.gov.sa
+    
+    public func getDatasets(completion: @escaping (_ datasetsCount: Int, _ datasets: [AnyObject])->()) {
+        let query = PFQuery(className: "KMADataGovSADataSet")
+        query.order(byDescending: "updatedAt")
+        query.findObjectsInBackground { (datasets, error) in
+            var datasetsArray = [AnyObject]()
+            
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let datasets = datasets {
+                print("\nDatasets loaded: \(datasets.count):\n")
+                // Setup datasets
+                for (index, dataset) in datasets.enumerated() {
+                    // Name
+                    if let name = dataset["name"] as? String {
+                        print("\n\(index + 1). Dataset: \(name)")
+                        // Park Locations
+                        if name == "Park Locations" {
+                            var parkLocatiosDataset = KMAUIParkLocationsDataset()
+                            parkLocatiosDataset.fillFrom(dataset: dataset)
+                            datasetsArray.append(parkLocatiosDataset as AnyObject)
+                        }
+                    }
+                }
+            }
+            
+            // Return counts and datasets array
+            completion(datasetsArray.count, datasetsArray)
+        }
+    }
+    
     // MARK: - KMA 9x9 API
     
     /**
