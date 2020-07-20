@@ -158,6 +158,25 @@ public class KMAUINoDataImageTableViewCell: UITableViewCell {
             bgViewRight.constant = 20
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
             bgView.clipsToBounds = false
+        } else if mode == "datasets" {
+            // Loading mode
+            if isLoading {
+                titleLabel.text = "Loading..."
+                infoLabel.text = "Please wait for the datasets to be loaded."
+                logoImageView.image = KMAUIConstants.shared.citizensIcon
+                titleLabelCenter.constant = -20
+                activityIndicatorView.alpha = 1
+                activityIndicatorView.startAnimating()
+            } else {
+                titleLabel.text = "No datasets"
+                infoLabel.text = "Unfortunately we weren't able to load any datasets."
+                logoImageView.image = KMAUIConstants.shared.rejectionIcon
+            }
+            // BgView
+            bgViewLeft.constant = 20
+            bgViewRight.constant = 20
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            bgView.clipsToBounds = false
         }
         // Add the spacing for the infoLabel
         infoLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
