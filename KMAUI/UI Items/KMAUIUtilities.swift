@@ -2037,11 +2037,11 @@ public class KMAUIUtilities {
     
     // MARK: - KMA Datasets from data.gov.sa
     
-    public func getDatasets(completion: @escaping (_ datasetsCount: Int, _ datasets: [AnyObject])->()) {
+    public func getDatasets(completion: @escaping (_ datasetsCount: Int, _ datasets: [KMAUIDataset])->()) {
         let query = PFQuery(className: "KMADataGovSADataSet")
         query.order(byDescending: "updatedAt")
         query.findObjectsInBackground { (datasets, error) in
-            var datasetsArray = [AnyObject]()
+            var datasetsArray = [KMAUIDataset]()
             
             if let error = error {
                 print(error.localizedDescription)
@@ -2056,7 +2056,7 @@ public class KMAUIUtilities {
                         if name == "Park Locations" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
-                            datasetsArray.append(parkLocatiosDataset as AnyObject)
+                            datasetsArray.append(parkLocatiosDataset)
                         }
                     }
                 }
