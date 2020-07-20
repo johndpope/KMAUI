@@ -23,6 +23,11 @@ public class KMAUIBundlesHorizontalTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var datasets = [KMAUIDataset]() {
+        didSet {
+            setupCell()
+        }
+    }
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -73,13 +78,25 @@ extension KMAUIBundlesHorizontalTableViewCell: UICollectionViewDataSource, UICol
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // Datasets mode
+        if !datasets.isEmpty {
+            return datasets.count
+        }
+        
+        // Bundles mode
         return bundles.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let bundleCell = collectionView.dequeueReusableCell(withReuseIdentifier: KMAUIBundlesCollectionViewCell.id, for: indexPath) as? KMAUIBundlesCollectionViewCell {
             bundleCell.isCellSelected = indexPath.row == selectedBundleIndex
-            bundleCell.bundle = bundles[indexPath.row]
+            
+            if !datasets.isEmpty {
+                bundleCell.dataset = datasets[indexPath.row]
+            } else {
+                bundleCell.bundle = bundles[indexPath.row]
+            }
+            
             return bundleCell
         }
         

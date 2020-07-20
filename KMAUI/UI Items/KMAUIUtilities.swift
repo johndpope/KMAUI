@@ -2054,7 +2054,7 @@ public class KMAUIUtilities {
                         print("\n\(index + 1). Dataset: \(name)")
                         // Park Locations
                         if name == "Park Locations" {
-                            var parkLocatiosDataset = KMAUIParkLocationsDataset()
+                            var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset as AnyObject)
                         }

@@ -312,7 +312,7 @@ public class KMAUIConstants {
     public var bundlesArray = [KMAUI9x9Bundle]()
     
     // MARK: - Datasets
-    public var datasetsArray = [AnyObject]()
+    public var datasetsArray = [KMAUIDataset]()
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan

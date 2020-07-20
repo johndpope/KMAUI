@@ -4672,7 +4672,7 @@ public struct KMAUIPolygoneDataStruct {
 
 // MARK: - Park Locations
 
-public struct KMAUIParkLocationsDataset {
+public struct KMAUIDataset {
     
     public var name = ""
     public var owner = ""

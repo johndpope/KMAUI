@@ -22,7 +22,12 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     public var isCellSelected = false
     public var bundle = KMAUI9x9Bundle() {
         didSet {
-            setupCell()
+            setupBundle()
+        }
+    }
+    public var dataset = KMAUIDataset() {
+        didSet {
+            setupDataset()
         }
     }
     
@@ -47,7 +52,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
     }
     
-    public func setupCell() {
+    public func setupBundle() {
         // Title label
         titleLabel.text = bundle.name
         
@@ -74,7 +79,28 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
             logoImageViewWidth.constant = 40
             logoImageView.contentMode = .scaleAspectFit
         }
-
+        
+        // Setup selection colors
+        setupSelection()
+    }
+    
+    public func setupDataset() {
+        // Title label
+        titleLabel.text = dataset.name
+        
+        // Info label
+        infoLabel.text = dataset.owner
+        
+        // Logo image view
+        logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
+        logoImageViewWidth.constant = 40
+        logoImageView.contentMode = .scaleAspectFit
+        
+        // Setup selection colors
+        setupSelection()
+    }
+    
+    func setupSelection() {
         // Setup colors
         if isCellSelected {
             // Background view color
