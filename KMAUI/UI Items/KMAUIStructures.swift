@@ -4670,3 +4670,88 @@ public struct KMAUIPolygoneDataStruct {
     }
 }
 
+// MARK: - Park Locations
+
+public struct KMAUIParkLocation {
+    
+    public var municipalityName = ""
+    public var neighborName = ""
+    public var objectId = 0
+    public var parcelId = 0
+    public var parcelName = ""
+    public var parcelNumber = ""
+    public var planNumber = ""
+    public var pointX: Double = 0
+    public var pointY: Double = 0
+    public var id = 0
+    public var checkinCount = 0
+    public var location = CLLocationCoordinate2D()
+    
+    public init() {}
+    
+    public mutating func fillFrom(rowDictionary: [String: AnyObject]) {
+        // Municipality name
+        if let municipalityName = rowDictionary["MUNICIPALITYANAME"] as? String {
+            self.municipalityName = municipalityName
+        }
+        
+        // Neighbor name
+        if let neighborName = rowDictionary["NEIGHBORHANAME"] as? String {
+            self.neighborName = neighborName
+        }
+        
+        // Object Id
+        if let objectId = rowDictionary["OBJECTID"] as? Int {
+            self.objectId = objectId
+        }
+        
+        // Parcel Id
+        if let parcelId = rowDictionary["PARCELID"] as? Int {
+            self.parcelId = parcelId
+        }
+        
+        // Parcel name
+        if let parcelName = rowDictionary["PARCELNAME"] as? String {
+            self.parcelName = parcelName
+        }
+        
+        // Parcel number
+        if let parcelNumber = rowDictionary["PARCELNO"] as? Int {
+            self.parcelNumber = "\(parcelNumber)"
+        } else if let parcelNumber = rowDictionary["PARCELNO"] as? String {
+            self.parcelNumber = parcelNumber
+        }
+        
+        // Plan number
+        if let planNumber = rowDictionary["PLANNO"] as? Int {
+            self.planNumber = "\(planNumber)"
+        } else if let planNumber = rowDictionary["PLANNO"] as? String {
+            self.planNumber = planNumber
+        }
+        
+        // Point x
+        if let pointX = rowDictionary["POINT_X"] as? Double {
+            self.pointX = pointX
+        }
+        
+        // Point y
+        if let pointY = rowDictionary["POINT_Y"] as? Double {
+            self.pointY = pointY
+        }
+        
+        // id
+        if let id = rowDictionary["id"] as? Int {
+            self.id = id
+        }
+        
+        // Checkin count
+        if let checkinCount = rowDictionary["checkin_count"] as? Int {
+            self.checkinCount = checkinCount
+        }
+        
+        // Latitude / Longitude
+        if let latitude = rowDictionary["latd"] as? Double, let longitude = rowDictionary["lngd"] as? Double {
+            self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+    }
+}
