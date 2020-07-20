@@ -540,6 +540,16 @@ public class KMAUIUtilities {
         }
     }
     
+    /**
+     Order KMAUIParkLocation array by id
+     */
+    
+    public func orderParkLocationArray(array: [KMAUIParkLocation]) -> [KMAUIParkLocation] {
+        return array.sorted {
+            return $0.id < $1.id
+        }
+    }
+    
     // MARK: - Label and button layout
     
     func showItems(label: UILabel, constant1: NSLayoutConstraint, constant2: NSLayoutConstraint, button: UIButton) {

@@ -4672,6 +4672,43 @@ public struct KMAUIPolygoneDataStruct {
 
 // MARK: - Park Locations
 
+public struct KMAUIParkLocationsDataset {
+    
+    public var name = ""
+    public var owner = ""
+    public var parkLocations = [KMAUIParkLocation]()
+    
+    public init() {}
+    
+    public mutating func fillFrom(dataset: PFObject) {
+        // Name
+        if let name = dataset["name"] as? String {
+            self.name = name
+        }
+        
+        // Owner
+        if let owner = dataset["owner"] as? String {
+            self.owner = owner
+        }
+        
+        // Park locations
+        if let json = dataset["json"] as? String {
+            let dictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: json)
+            var parkLocations = [KMAUIParkLocation]()
+            
+            if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
+                for rowDictionary in datasetArray {
+                    var parkLocationItem = KMAUIParkLocation()
+                    parkLocationItem.fillFrom(rowDictionary: rowDictionary)
+                    parkLocations.append(parkLocationItem)
+                }
+            }
+            
+            self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
+        }
+    }
+}
+
 public struct KMAUIParkLocation {
     
     public var municipalityName = ""
