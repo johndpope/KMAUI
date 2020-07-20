@@ -34,7 +34,12 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     public var isFirst = false
     public var polygone = KMAUIPolygoneDataStruct() {
         didSet {
-            setupCell()
+            setupPolygone()
+        }
+    }
+    public var dataset = KMAUIParkLocation() {
+        didSet {
+            setupDataset()
         }
     }
     public var rowViews = [UIView]()
@@ -82,7 +87,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    public func setupCell() {
+    public func setupPolygone() {
         // Top offset
         if isFirst {
             bgViewTop.constant = 32
@@ -258,6 +263,18 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             placeImageViewLeft.constant = -imageWidth
             placeImageView.alpha = 0
         }
+    }
+    
+    func setupDataset() {
+        // Top offset
+        if isFirst {
+            bgViewTop.constant = 32
+        } else {
+            bgViewTop.constant = 0
+        }
+        
+        // Title
+        titleLabel.text = dataset.municipalityName
     }
     
     func setupStackView(rows: [KMAUIRowData]) {
