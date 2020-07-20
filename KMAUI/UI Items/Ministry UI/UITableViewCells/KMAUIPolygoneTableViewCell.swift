@@ -259,7 +259,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             placeImageView.alpha = 1
         } else {
             placeImageView.image = UIImage()
-            placeImageView.alpha = 1
+            placeImageView.alpha = 0
             placeImageViewLeft.constant = -imageWidth
             placeImageView.alpha = 0
         }
@@ -273,8 +273,58 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
         
-        // Title
+        // Title - Municipality name
         titleLabel.text = dataset.municipalityName
+        
+        // Location label top offset
+        locationLabelTop.constant = 6
+        
+        // Hide rating label
+        ratingLabel.text = ""
+        ratingLabelLeft.constant = 0
+        ratingLabelWidth.constant = 0
+        
+        // Location label top offset
+        locationLabel.text = dataset.neighborName
+        
+        // Hide image view
+        setupAttachments(url: "", name: "", id: "")
+        
+        // Prepare rows
+        var rows = [KMAUIRowData]()
+        
+        // ID
+        if dataset.id > 0 {
+            rows.append(KMAUIRowData(rowName: "ID", rowValue: "\(dataset.id)"))
+        }
+        
+        // Parcel name
+        if !dataset.parcelName.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Parcel name", rowValue: dataset.parcelName))
+        }
+
+        // Parcel id
+        if dataset.parcelId > 0 {
+            rows.append(KMAUIRowData(rowName: "Parcel ID", rowValue: "\(dataset.parcelId)"))
+        }
+        
+        // Parcel number
+        if !dataset.parcelNumber.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Parcel number", rowValue: dataset.parcelNumber))
+        }
+        
+        // Plan number
+        if !dataset.planNumber.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Plan number", rowValue: dataset.planNumber))
+        }
+        
+        // Checkin count
+        if dataset.checkinCount > 0 {
+            rows.append(KMAUIRowData(rowName: "Checkin count", rowValue: "\(dataset.checkinCount)"))
+        }
+        
+        // Setup stack view
+        setupStackView(rows: rows)
     }
     
     func setupStackView(rows: [KMAUIRowData]) {
