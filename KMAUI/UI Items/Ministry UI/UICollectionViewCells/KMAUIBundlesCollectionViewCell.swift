@@ -87,7 +87,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     
     public func setupDataset() {
         // Title label
-        titleLabel.text = dataset.name
+        titleLabel.text = dataset.name + "for region: \(dataset.region.nameE)"
         
         // Info label
         infoLabel.text = dataset.owner
