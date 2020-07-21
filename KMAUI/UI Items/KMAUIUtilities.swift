@@ -2283,6 +2283,183 @@ public class KMAUIUtilities {
         
         return bundles
     }
+    
+    // MARK: - Create dataset
+    
+    public func createXlsDatasets() {
+        // Setup test datasets
+        let valuesArray = [
+            [
+                [2767535, 23337488, 85680, 9212532, 62173362, 28411],
+                [232941, 6487123, 6302, 3567211, 24752474, 2462],
+                [105552, 2016371, 1347, 795168, 5706865, 542],
+                [43703, 596330, 229, 290324, 13320135, 130],
+                [3149731, 32437312, 93558, 13865235, 105952836, 31545]
+            ],
+            [
+                [1532973, 58144397, 101495, 6086026, 21121298, 23759],
+                [117239, 996180, 384, 785978, 5284545, 335],
+                [15026, 328768, 311, 184420, 855074, 189],
+                [5743, 103368, 76, 62756, 196432, 54],
+                [1670981, 59572713, 102266, 7119180, 27457349, 24337
+                ]
+            ],
+            [
+                [133275, 9204992, 27475, 2906458, 15110722,8532],
+                [7105, 241553, 195, 168971, 1484644, 134],
+                [20822, 276999, 305, 171923, 652897, 146],
+                [4764, 118646, 63, 66562, 202381, 30],
+                [165966, 9842190, 28038, 3313914, 17450644, 8842]
+            ],
+            [
+                [549630, 3860427, 9170, 2775240, 21317852, 6879],
+                [34573, 269422, 420, 253258, 2957420, 415],
+                [29029, 184673, 207, 137198, 3669099, 178],
+                [6538, 87112, 54, 64973, 231373, 38],
+                [619770, 4401634, 9851, 3230669, 28175744, 7510]
+            ],
+            [
+                [2082995, 17855393, 46803, 8266421, 13184516, 19836],
+                [249825, 4425095, 6118, 2645151, 5220129, 2179],
+                [61965, 824228, 1090, 486020, 1031474, 331],
+                [21174, 304188, 172, 192884, 1831531, 100],
+                [2415959, 23408904, 54183, 11590476, 21267650, 22446]
+            ],
+            [
+                [629586, 6494199, 12612, 2616584, 9421057, 5626],
+                [40943, 608615, 466, 343700, 1292808, 360],
+                [15004, 168967, 149, 109080, 403262, 100],
+                [17339 ,257444, 88, 92270, 1912528, 53],
+                [702872, 7529225, 13315, 3161634, 13029655, 6139]
+            ],
+            [
+                [316919, 2894948, 6563, 1408858, 3893120, 3377],
+                [23941, 279208, 490, 199131, 540585, 252],
+                [9025, 48907, 65, 30896, 2186467, 40],
+                [7990, 44792, 34, 22700, 1054327, 15],
+                [357875, 3267855, 7152, 1661585, 7674499, 3684]
+            ],
+            [
+                [312010, 1845279, 5474, 873696, 107291484, 2900],
+                [24422, 106795, 164, 83199, 414397, 142],
+                [21398, 218678, 159, 130598, 639063, 99],
+                [7768, 195289, 39, 98346, 704749, 20],
+                [365598, 2366041, 5836, 1185839, 109049693, 3161]
+            ],
+            [
+                [144565, 897650, 2120, 580459, 93534105, 1446],
+                [33944, 229681, 189, 218918, 1261742, 187],
+                [12647, 142062, 83, 82987, 180806, 65],
+                [5408, 35885, 40, 17724, 118916, 20],
+                [196564, 1305278, 2432, 900088, 95095569, 1718]
+            ],
+            [
+                [168899, 1289785, 2991, 730418, 9133514, 1634],
+                [34263, 304869, 274, 238110, 1981081, 229],
+                [6240, 45565, 84, 38123, 249502, 68],
+                [4712, 28900, 36, 22090, 261984, 24],
+                [214114, 1669119, 3385, 1028741, 11626081, 1955]
+            ],
+            [
+                [163617, 1351490, 3958, 722021, 6888252, 1761],
+                [6868, 45236, 39, 39103, 365982, 35],
+                [7571, 21842, 25, 17106, 157957, 17],
+                [4096, 27109, 29, 15682, 215696, 17],
+                [182152, 1445677, 4051, 793912, 7627887, 1830]
+            ],
+            [
+                [143724, 715367, 1478, 421220, 6354352, 980],
+                [3032, 47089, 43, 29609, 87932, 32],
+                [4211, 46283, 36, 26306, 293672, 25],
+                [1753, 15325, 25, 9411, 74265, 17],
+                [152720, 824064, 1582, 486546, 6810221, 1054]
+            ],
+            [
+                [234742, 1610421, 5169, 734860, 49214587, 2398],
+                [20448, 189424, 570, 159569, 2775689, 334],
+                [18992, 283571, 245, 108051, 1668758, 101],
+                [6160, 180129, 96, 86546, 1723118, 24],
+                [280342, 2263545, 6080, 1089026, 55382152, 2857]
+            ],
+            [
+            [9180470, 129501836, 310988, 37334793, 418638221, 107539],
+            [829544, 14230290, 15654, 8731908, 48419428, 7096],
+            [327482, 4606914, 4106, 2317876, 17694896, 1901],
+            [137148, 1994517, 981, 1042268, 21847435, 542],
+            [10474644, 150333557, 331729, 49426845, 506599980, 117078]
+            ]
+        ]
+        let regionIds = [
+            "fN4QkVTtYG", // Ar Riyad
+            "jKSqzVZ1Qh", // Makkah
+            "urz0USWpmV", // Al Madinah
+            "PQJotY1T16", // Qassim
+            "U3pCS8McNA", // Eastern Province
+            "1Wbb0OFXuZ", // `Asir
+            "c3CiqAdxjG", // Tabuk
+            "OQuHnQ1Psl", // Hail
+            "l6XhWzfDpe", // Northern Borders
+            "uNaTZ905Cg", // Jizan
+            "x1L4cV8dcX", // Najran
+            "0MeC5xWrhK", // Al Bahah
+            "YDevBrdNUz", // Jawf
+            "ocRDUNG9ZR" // Saudi Arabia
+        ]
+
+        for (index, regionId) in regionIds.enumerated() {
+            setupDataset(values: valuesArray[index], regionId: regionId)
+        }
+    }
+    
+    public func setupDataset(values: [[Int]], regionId: String) {
+        // Creating the demo array
+        let titles = ["Housing, Commercial",
+                      "Industrial, Commercial",
+                      "Educational Buildings, Health and Mosques",
+                      "Social Buildings and Governmental",
+                      "Total"]
+        
+        let keys = ["Total Length of Fences (m)",
+                    "Total Floor Area (sq m)",
+                    "Total Number of Floors",
+                    "Total Area of Building (sq m)",
+                    "Total Area of Plot (sq m)",
+                    "Number of Permits"]
+        
+        var totalArray = [AnyObject]()
+        
+        for (index1, title) in titles.enumerated() {
+            let value = values[index1]
+            var titleDictionary = [String: Int]()
+            
+            for (index2, key) in keys.enumerated() {
+                titleDictionary[key] = value[index2]
+            }
+            
+            totalArray.append([title: titleDictionary] as AnyObject)
+        }
+        
+        //
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
+        newDataset["owner"] = "Ministry of Municipal and Rural Affairs"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["data": totalArray as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset for a region \(regionId): \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created for the region \(regionId).")
+            }
+        }
+    }
 }
 
 // MARK: - Int extension
