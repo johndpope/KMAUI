@@ -4712,6 +4712,9 @@ public struct KMAUIDataset {
             }
             
             // Type is buildingPermits
+            if type == "buildingPermits" {
+                print("Setup the building permits:\n\(dictionary)")
+            }
         }
         
         // Region
