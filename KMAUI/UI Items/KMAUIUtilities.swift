@@ -2041,7 +2041,12 @@ public class KMAUIUtilities {
         let query = PFQuery(className: "KMADataGovSADataSet")
         query.order(byDescending: "updatedAt")
         query.includeKey("region")
-        query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        
+        // If Saudi Arabia is a region - show all the datasets
+        if regionId != "ocRDUNG9ZR" { // Not the Saudi Arabia
+            query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
+        }
+        
         query.findObjectsInBackground { (datasets, error) in
             var datasetsArray = [KMAUIDataset]()
             
