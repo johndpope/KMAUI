@@ -4677,6 +4677,7 @@ public struct KMAUIDataset {
     public var name = ""
     public var owner = ""
     public var parkLocations = [KMAUIParkLocation]()
+    public var region = KMAMapAreaStruct()
     
     public init() {}
     
@@ -4692,19 +4693,30 @@ public struct KMAUIDataset {
         }
         
         // Park locations
-        if let json = dataset["json"] as? String {
+        if let json = dataset["json"] as? String, let type = dataset["type"] as? String {
             let dictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: json)
-            var parkLocations = [KMAUIParkLocation]()
             
-            if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
-                for rowDictionary in datasetArray {
-                    var parkLocationItem = KMAUIParkLocation()
-                    parkLocationItem.fillFrom(rowDictionary: rowDictionary)
-                    parkLocations.append(parkLocationItem)
+            // Type is Park Locations
+            if type == "parkLocations" {
+                var parkLocations = [KMAUIParkLocation]()
+                
+                if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
+                    for rowDictionary in datasetArray {
+                        var parkLocationItem = KMAUIParkLocation()
+                        parkLocationItem.fillFrom(rowDictionary: rowDictionary)
+                        parkLocations.append(parkLocationItem)
+                    }
                 }
+                
+                self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
             }
-            
-            self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
+        }
+        
+        // Region
+        if let region = dataset["region"] as? PFObject {
+            var regionObject = KMAMapAreaStruct()
+            regionObject.fillFrom(object: region)
+            self.region = regionObject
         }
     }
 }

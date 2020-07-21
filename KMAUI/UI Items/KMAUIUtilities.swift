@@ -2040,6 +2040,7 @@ public class KMAUIUtilities {
     public func getDatasets(completion: @escaping (_ datasetsCount: Int, _ datasets: [KMAUIDataset])->()) {
         let query = PFQuery(className: "KMADataGovSADataSet")
         query.order(byDescending: "updatedAt")
+        query.includeKey("region")
         query.findObjectsInBackground { (datasets, error) in
             var datasetsArray = [KMAUIDataset]()
             
@@ -2051,15 +2052,11 @@ public class KMAUIUtilities {
                 for dataset in datasets {
                     // Name
                     if let type = dataset["type"] as? String {
-                        // Park Locations
-                        if type == "parkLocations" {
+                        // Park Locations or Building Permits
+                        if type == "parkLocations" || type == "buildingPermits" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)
-                        }
-                        // Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H.
-                        if type == "buildingPermits" {
-                            
                         }
                     }
                 }
@@ -2447,8 +2444,9 @@ public class KMAUIUtilities {
         newDataset["name"] = "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
         newDataset["owner"] = "Ministry of Municipal and Rural Affairs"
         newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+        newDataset["type"] = "buildingPermits"
         
-        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["data": totalArray as AnyObject])
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": totalArray as AnyObject])
         // JSON String for Parse
         if let jsonString = String(data: jsonData, encoding: .utf8) {
             print("\nTotal dictionary:\n\(jsonString)")
