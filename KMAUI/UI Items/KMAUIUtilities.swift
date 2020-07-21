@@ -2048,15 +2048,18 @@ public class KMAUIUtilities {
             } else if let datasets = datasets {
                 print("\nDatasets loaded: \(datasets.count):\n")
                 // Setup datasets
-                for (index, dataset) in datasets.enumerated() {
+                for dataset in datasets {
                     // Name
-                    if let name = dataset["name"] as? String {
-                        print("\n\(index + 1). Dataset: \(name)")
+                    if let type = dataset["type"] as? String {
                         // Park Locations
-                        if name == "Park Locations" {
+                        if type == "parkLocations" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)
+                        }
+                        // Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H.
+                        if type == "buildingPermits" {
+                            
                         }
                     }
                 }
