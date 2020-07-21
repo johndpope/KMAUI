@@ -15,7 +15,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var logoImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
-    @IBOutlet public  weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIBundlesCollectionViewCell"
@@ -47,6 +47,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        titleLabel.minimumScaleFactor = 0.5
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
