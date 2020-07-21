@@ -4696,7 +4696,7 @@ public struct KMAUIDataset {
         if let json = dataset["json"] as? String, let type = dataset["type"] as? String {
             let dictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: json)
             
-            // Type is Park Locations
+            // Type is parkLocations
             if type == "parkLocations" {
                 var parkLocations = [KMAUIParkLocation]()
                 
@@ -4710,6 +4710,8 @@ public struct KMAUIDataset {
                 
                 self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
             }
+            
+            // Type is buildingPermits
         }
         
         // Region

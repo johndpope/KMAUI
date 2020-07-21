@@ -39,7 +39,7 @@
                                     <constraint firstItem="zOM-QE-0cQ" firstAttribute="centerX" secondItem="P9e-h6-f2M" secondAttribute="centerX" id="S8B-B7-G7k"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-AU-o2v" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-AU-o2v" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
                                 <rect key="frame" x="20" y="112" width="209" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Nku-Kq-m1N"/>
@@ -66,6 +66,7 @@
                             <constraint firstAttribute="trailing" secondItem="W9W-AU-o2v" secondAttribute="trailing" constant="20" id="ho4-LF-zcu"/>
                             <constraint firstItem="TKy-DY-Hik" firstAttribute="top" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="10" id="n0Y-Dn-fN0"/>
                             <constraint firstAttribute="trailing" secondItem="TKy-DY-Hik" secondAttribute="trailing" constant="20" id="ncz-5s-aQQ"/>
+                            <constraint firstItem="W9W-AU-o2v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9e-h6-f2M" secondAttribute="bottom" id="njz-d3-Ra3"/>
                         </constraints>
                     </view>
                 </subviews>
