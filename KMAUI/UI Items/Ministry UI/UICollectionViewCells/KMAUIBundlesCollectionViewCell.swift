@@ -20,6 +20,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     // MARK: - Variables
     public static let id = "KMAUIBundlesCollectionViewCell"
     public var isCellSelected = false
+    public var region = KMAMapAreaStruct()
     public var bundle = KMAUI9x9Bundle() {
         didSet {
             setupBundle()
@@ -87,7 +88,11 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     
     public func setupDataset() {
         // Title label
-        titleLabel.text = dataset.name + "for region: \(dataset.region.nameE)"
+        if region.nameE == "Saudi Arabia", region.nameE != dataset.region.nameE {
+            titleLabel.text = dataset.name + " for region: \(dataset.region.nameE)"
+        } else {
+            titleLabel.text = dataset.name
+        }
         
         // Info label
         infoLabel.text = dataset.owner

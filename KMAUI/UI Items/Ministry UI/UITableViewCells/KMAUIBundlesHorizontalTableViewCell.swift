@@ -17,6 +17,7 @@ public class KMAUIBundlesHorizontalTableViewCell: UITableViewCell {
     public static let id = "KMAUIBundlesHorizontalTableViewCell"
     public var selectedBundleIndex = 0
     public var collectionViewOffset: CGFloat = 0
+    public var region = KMAMapAreaStruct()
     public var bundleSelectedCallback: ((Int, CGFloat) -> Void)?
     public var bundles = [KMAUI9x9Bundle]() {
         didSet {
@@ -90,6 +91,7 @@ extension KMAUIBundlesHorizontalTableViewCell: UICollectionViewDataSource, UICol
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let bundleCell = collectionView.dequeueReusableCell(withReuseIdentifier: KMAUIBundlesCollectionViewCell.id, for: indexPath) as? KMAUIBundlesCollectionViewCell {
             bundleCell.isCellSelected = indexPath.row == selectedBundleIndex
+            bundleCell.region = region
             
             if !datasets.isEmpty {
                 bundleCell.dataset = datasets[indexPath.row]
