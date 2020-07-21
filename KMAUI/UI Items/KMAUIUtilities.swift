@@ -2442,7 +2442,7 @@ public class KMAUIUtilities {
         
         //
         let newDataset = PFObject(className: "KMADataGovSADataSet")
-        newDataset["name"] = "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
+        newDataset["name"] = "Building Permits: 1434 A.H." // "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
         newDataset["owner"] = "Ministry of Municipal and Rural Affairs"
         newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
         newDataset["type"] = "buildingPermits"

@@ -4673,11 +4673,13 @@ public struct KMAUIPolygoneDataStruct {
 // MARK: - Park Locations
 
 public struct KMAUIDataset {
-    
+     
     public var name = ""
     public var owner = ""
     public var parkLocations = [KMAUIParkLocation]()
+    public var detailsArray = [[String: AnyObject]]()
     public var region = KMAMapAreaStruct()
+    public var type = ""
     
     public init() {}
     
@@ -4694,26 +4696,28 @@ public struct KMAUIDataset {
         
         // Park locations
         if let json = dataset["json"] as? String, let type = dataset["type"] as? String {
+            self.type = type
             let dictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: json)
             
-            // Type is parkLocations
-            if type == "parkLocations" {
-                var parkLocations = [KMAUIParkLocation]()
-                
-                if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
+            if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
+                // Type is parkLocations
+                if type == "parkLocations" {
+                    var parkLocations = [KMAUIParkLocation]()
+                    
+                    
                     for rowDictionary in datasetArray {
                         var parkLocationItem = KMAUIParkLocation()
                         parkLocationItem.fillFrom(rowDictionary: rowDictionary)
                         parkLocations.append(parkLocationItem)
                     }
+                    
+                    self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
                 }
                 
-                self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
-            }
-            
-            // Type is buildingPermits
-            if type == "buildingPermits" {
-                print("Setup the building permits:\n\(dictionary)")
+                // Type is buildingPermits
+                if type == "buildingPermits" {
+                    self.detailsArray = datasetArray
+                }
             }
         }
         
