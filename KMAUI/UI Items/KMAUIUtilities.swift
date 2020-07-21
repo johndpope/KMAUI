@@ -2420,12 +2420,7 @@ public class KMAUIUtilities {
                       "Social Buildings and Governmental",
                       "Total"]
         
-        let keys = ["Total Length of Fences (m)",
-                    "Total Floor Area (sq m)",
-                    "Total Number of Floors",
-                    "Total Area of Building (sq m)",
-                    "Total Area of Plot (sq m)",
-                    "Number of Permits"]
+        let keys = KMAUIConstants.shared.buildingPermitKeys
         
         var totalArray = [AnyObject]()
         
