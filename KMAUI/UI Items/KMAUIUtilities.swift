@@ -2037,10 +2037,11 @@ public class KMAUIUtilities {
     
     // MARK: - KMA Datasets from data.gov.sa
     
-    public func getDatasets(completion: @escaping (_ datasetsCount: Int, _ datasets: [KMAUIDataset])->()) {
+    public func getDatasets(regionId: String, completion: @escaping (_ datasetsCount: Int, _ datasets: [KMAUIDataset])->()) {
         let query = PFQuery(className: "KMADataGovSADataSet")
         query.order(byDescending: "updatedAt")
         query.includeKey("region")
+        query.whereKey("region", equalTo: PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId))
         query.findObjectsInBackground { (datasets, error) in
             var datasetsArray = [KMAUIDataset]()
             
