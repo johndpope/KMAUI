@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIBundlesCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUIBundlesCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="265" height="230"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="230"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="265" height="230"/>
+                <rect key="frame" x="0.0" y="0.0" width="300" height="230"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZgZ-Wb-k8X" customClass="KMAUIRoundedCornersView" customModule="KMAUI">
-                        <rect key="frame" x="8" y="8" width="249" height="214"/>
+                        <rect key="frame" x="8" y="8" width="284" height="214"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P9e-h6-f2M">
                                 <rect key="frame" x="20" y="24" width="50" height="46"/>
@@ -40,7 +40,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-AU-o2v" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="112" width="209" height="55.5"/>
+                                <rect key="frame" x="20" y="112" width="244" height="55.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Nku-Kq-m1N"/>
                                 </constraints>
@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKy-DY-Hik" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="177.5" width="209" height="20.5"/>
+                                <rect key="frame" x="20" y="177.5" width="244" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                 <constraint firstItem="ZgZ-Wb-k8X" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="y2M-TZ-YKf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="265" height="230"/>
+            <size key="customSize" width="300" height="230"/>
             <connections>
                 <outlet property="bgView" destination="ZgZ-Wb-k8X" id="bcI-sA-9Cm"/>
                 <outlet property="infoLabel" destination="TKy-DY-Hik" id="AfR-cu-VZB"/>
@@ -89,7 +89,7 @@
                 <outlet property="logoImageViewWidth" destination="nfg-xH-ni4" id="VaF-3T-kqE"/>
                 <outlet property="titleLabel" destination="W9W-AU-o2v" id="awE-Dy-3cG"/>
             </connections>
-            <point key="canvasLocation" x="136.95652173913044" y="150.66964285714286"/>
+            <point key="canvasLocation" x="162.31884057971016" y="150.66964285714286"/>
         </collectionViewCell>
     </objects>
 </document>
