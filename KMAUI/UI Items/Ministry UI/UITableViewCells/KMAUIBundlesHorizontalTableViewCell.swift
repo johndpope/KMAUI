@@ -51,7 +51,7 @@ public class KMAUIBundlesHorizontalTableViewCell: UITableViewCell {
     }
     
     public func setupCell() {
-        let cellSize = CGSize(width: 305, height: 207)
+        let cellSize = CGSize(width: 305, height: 230)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = cellSize
