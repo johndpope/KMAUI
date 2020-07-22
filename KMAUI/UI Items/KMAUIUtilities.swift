@@ -2059,7 +2059,7 @@ public class KMAUIUtilities {
                     // Name
                     if let type = dataset["type"] as? String {
                         // Park Locations or Building Permits
-                        if type == "parkLocations" || type == "buildingPermits" {
+                        if type == "parkLocations" || type == "buildingPermits" || dataset.type == "establishmentPermits" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)
@@ -2311,6 +2311,83 @@ public class KMAUIUtilities {
             "ocRDUNG9ZR" // Saudi Arabia
         ]
         
+        // Established Permits
+        
+        let valuesArray = [
+            [
+                [11635, 2568, 971, 728, 785, 490, 950, 892, 646, 1298, 615],
+                [41364, 9312, 2881, 2797, 3881, 1446, 2646, 2051, 1991, 2415, 2621],
+                [52999, 11880, 3852, 3525, 4666, 1936, 3596, 2943, 2637, 3713, 3236]
+            ],
+            [
+                [12167, 1787, 1984, 455, 298, 608, 700, 419, 629, 1494, 207, 3586],
+                [30223, 3744, 4781, 1350, 562, 2250, 1268, 855, 951, 3085, 498, 10879],
+                [42390, 5531, 6765, 1805, 860, 2858, 1968, 1274, 1580, 4579, 705, 14465]
+            ],
+            [
+                [2326, 390, 291, 133, 53, 273, 142, 74, 17, 418, 1, 534],
+                [4970, 764, 630, 200, 87, 520, 176, 80, 65, 462, 1, 1985],
+                [7296, 1154, 921, 333, 140, 793, 318, 154, 82, 880, 2, 2519]
+            ],
+            [
+                [3480, 1131, 314, 76, 89, 248, 128, 129, 97, 739, 27, 502],
+                [6114, 1712, 649, 217, 128, 537, 202, 129, 134, 728, 108, 1570],
+                [9594, 2843, 963, 293, 217, 785, 330, 258, 231, 1467, 135, 2072]
+            ],
+            [
+                [11228, 2290, 1753, 211, 249, 352, 480, 507, 324, 2907, 30, 2125],
+                [20619, 3511, 3302, 510, 297, 1151, 740, 402, 479, 3653, 127, 6447],
+                [31847, 5801, 5055, 721, 546, 1503, 1220, 909, 803, 6560, 157, 8572]
+            ],
+            [
+                [3652, 517, 509, 147, 29, 222, 176, 168, 166, 758, 59, 901],
+                [7240, 993, 921, 388, 191, 468, 270, 232, 288, 985, 307, 2197],
+                [10892, 1510, 1430, 535, 220, 690, 446, 400, 454, 1743, 366, 3098]
+            ],
+            [
+                [1623, 229, 374, 21, 10, 67, 85, 67, 29, 354, 8, 379],
+                [2510, 475, 421, 80, 25, 160, 78, 52, 52, 432, 12, 723],
+                [4133, 704, 795, 101, 35, 227, 163, 119, 81, 786, 20, 1102]
+            ],
+            [
+                [1562, 239, 190, 101, 67, 158, 173, 91, 29, 180, 36, 298],
+                [1837, 254, 244, 150, 74, 220, 146, 83, 50, 165, 26, 425],
+                [3399, 493, 434, 251, 141, 378, 319, 174, 79, 345, 62, 723]
+            ],
+            [
+                [1145, 292, 129, 26, 23, 55, 239, 46, 9, 95, 4, 227],
+                [1732, 530, 264, 41, 26, 156, 103, 61, 24, 95, 17, 415],
+                [2877, 822, 393, 67, 49, 211, 342, 107, 33, 190, 21, 642]
+            ],
+            [
+                [1620, 284, 216, 33, 9, 143, 75, 40, 77, 138, 26, 579],
+                [1597, 305, 219, 46, 10, 122, 61, 41, 57, 126, 23, 587],
+                [3217, 589, 435, 79, 19, 265, 136, 81, 134, 264, 49, 1166]
+            ],
+            [
+                [2019, 365, 113, 94, 58, 388, 116, 112, 79, 283, 49, 362],
+                [17087, 1481, 735, 545, 469, 1009, 836, 451, 108, 2801, 183, 8469],
+                [19106, 1846, 848, 639, 527, 1397, 952, 563, 187, 3084, 232, 8831]
+            ],
+            [
+                [972, 211, 201, 33, 10, 68, 54, 47, 35, 121, 7, 185],
+                [1871, 442, 282, 68, 28, 191, 107, 61, 102, 197, 19, 374],
+                [2843, 653, 483, 101, 38, 259, 161, 108, 137, 318, 26, 559]
+            ],
+            [
+                [1361, 317, 139, 17, 29, 123, 82, 89, 11, 152, 13, 389],
+                [2199, 468, 243, 23, 50, 166, 95, 81, 29, 193, 28, 823],
+                [3560, 785, 382, 40, 79, 289, 177, 170, 40, 345, 41, 1212]
+            ],
+            [
+                [54790, 10620, 7184, 2075, 1709, 3195, 3400, 2681, 2148, 8937, 1082, 11759],
+                [139363, 23991, 15572, 6415, 5828, 8396, 6728, 4579, 4330, 15337, 3970, 44217],
+                [194153, 34611, 22756, 8490, 7537, 11591, 10128, 7260, 6478, 24274, 5052, 55976]
+            ]
+        ]
+        
+            
+        /* // For 1424
         let valuesArray = [
             [
                 [677738, 4871076, 13303, 2391187, 27724146, 6782],
@@ -2410,7 +2487,7 @@ public class KMAUIUtilities {
                 [262412, 387612, 291, 272049, 3067922, 179],
                 [3778881, 30714234, 85034, 16220614, 48497332, 37585]
             ]
-        ]
+        ]*/
         
         /* // For 1434
         let valuesArray = [
@@ -2510,10 +2587,10 @@ public class KMAUIUtilities {
             [9180470, 129501836, 310988, 37334793, 418638221, 107539],
             [829544, 14230290, 15654, 8731908, 48419428, 7096],
             [327482, 4606914, 4106, 2317876, 17694896, 1901],
-            [137148, 1994517, 981, 1042268, 21847435, 542],
-            [10474644, 150333557, 331729, 49426845, 506599980, 117078]
-            ]
-        ]*/
+         [137148, 1994517, 981, 1042268, 21847435, 542],
+         [10474644, 150333557, 331729, 49426845, 506599980, 117078]
+         ]
+         ]*/
         
         for (index, regionId) in regionIds.enumerated() {
             setupDataset(values: valuesArray[index], regionId: regionId)
@@ -2522,13 +2599,21 @@ public class KMAUIUtilities {
     
     public func setupDataset(values: [[Int]], regionId: String) {
         // Creating the demo array
-        let titles = ["Housing, Commercial",
+        let titles = [
+            "New",
+            "Renewed",
+            "Total"
+        ]
+        
+        /*let titles = [
+         "Housing, Commercial",
                       "Industrial, Commercial",
                       "Educational Buildings, Health and Mosques",
                       "Social Buildings and Governmental",
-                      "Total"]
+                      "Total"
+         ]*/
         
-        let keys = KMAUIConstants.shared.buildingPermitKeys
+        let keys = KMAUIConstants.shared.establishmentPermitKeys // KMAUIConstants.shared.buildingPermitKeys
         
         var totalArray = [AnyObject]()
         
@@ -2545,10 +2630,10 @@ public class KMAUIUtilities {
         
         //
         let newDataset = PFObject(className: "KMADataGovSADataSet")
-        newDataset["name"] = "Building Permits: 1424 A.H." // "Building Permits: 1434 A.H." // "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
-        newDataset["owner"] = "Ministry of Municipal and Rural Affairs"
+        newDataset["name"] = "New and Renewed Establishments Permits: 1426 A.H." // "Building Permits: 1424 A.H." // "Building Permits: 1434 A.H." // "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
+        newDataset["owner"] = "Ministry of Municipal and Rural Affairs (Statistics and Researches Department)" // "Ministry of Municipal and Rural Affairs"
         newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
-        newDataset["type"] = "buildingPermits"
+        newDataset["type"] = "establishmentPermits" // "buildingPermits"
         
         let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": totalArray as AnyObject])
         // JSON String for Parse

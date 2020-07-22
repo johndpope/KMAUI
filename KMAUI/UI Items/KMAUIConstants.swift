@@ -313,12 +313,30 @@ public class KMAUIConstants {
     
     // MARK: - Datasets
     public var datasetsArray = [KMAUIDataset]()
-    public var buildingPermitKeys = ["Total Length of Fences (m)",
-    "Total Floor Area (sq m)",
-    "Total Number of Floors",
-    "Total Area of Building (sq m)",
-    "Total Area of Plot (sq m)",
-    "Number of Permits"]
+    
+    public var buildingPermitKeys = [
+        "Total Length of Fences (m)",
+        "Total Floor Area (sq m)",
+        "Total Number of Floors",
+        "Total Area of Building (sq m)",
+        "Total Area of Plot (sq m)",
+        "Number of Permits"
+    ]
+    
+    public var establishmentPermitKeys = [
+        "Total",
+        "Others",
+        "Personal Services",
+        "Fuel & Cars Services",
+        "Health Care & Plumbing Items",
+        "Electrical Equipments Maintenance",
+        "Machines & Cars Maintenance",
+        "Furniture",
+        "Workshops",
+        "Establishments",
+        "Super Markets",
+        "Food Stuffs"
+    ]
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan
