@@ -105,7 +105,8 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             rowNameLabel.text = title
             
             if fontSize == 10 {
-                rowNameLabel.rotate(degrees: 90)
+                rowNameLabel.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
+                rowNameLabel.rotate(degrees: -90)
             }
             
             topLineView.addArrangedSubview(rowNameLabel)
