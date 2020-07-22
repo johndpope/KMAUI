@@ -91,8 +91,14 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         topLineView.distribution = UIStackView.Distribution.fillEqually
         topLineView.alignment = UIStackView.Alignment.fill
         topLineView.spacing = 4
+        
+        var keys = KMAUIConstants.shared.buildingPermitKeys
+        
+        if dataset.type == "establishmentPermits" {
+            keys = KMAUIConstants.shared.establishmentPermitKeys
+        }
 
-        for title in KMAUIConstants.shared.buildingPermitKeys { // topLineArray
+        for title in keys { // topLineArray
             let rowNameLabel = KMAUIBoldTextLabel()
             rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
             rowNameLabel.textAlignment = .center
@@ -130,7 +136,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             // Value for items
             let value = values[index1]
             
-            for key in KMAUIConstants.shared.buildingPermitKeys {
+            for key in keys {
                 let rowNameLabel = KMAUIRegularTextLabel()
                 if let count = value[key] {
                     rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize)

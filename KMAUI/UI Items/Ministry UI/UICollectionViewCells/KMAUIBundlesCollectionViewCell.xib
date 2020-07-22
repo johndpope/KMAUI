@@ -60,13 +60,15 @@
                             <constraint firstItem="P9e-h6-f2M" firstAttribute="top" secondItem="ZgZ-Wb-k8X" secondAttribute="top" constant="24" id="2A6-EU-1yz"/>
                             <constraint firstItem="P9e-h6-f2M" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="31E-Cl-nuN"/>
                             <constraint firstItem="W9W-AU-o2v" firstAttribute="top" relation="lessThanOrEqual" secondItem="P9e-h6-f2M" secondAttribute="bottom" constant="42" id="Bfj-c2-dxo"/>
-                            <constraint firstAttribute="bottom" secondItem="TKy-DY-Hik" secondAttribute="bottom" constant="16" id="MeJ-F6-QVC"/>
+                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="TKy-DY-Hik" secondAttribute="bottom" constant="16" id="MeJ-F6-QVC"/>
                             <constraint firstItem="W9W-AU-o2v" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="S9F-fw-OKb"/>
                             <constraint firstItem="TKy-DY-Hik" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="YHX-qg-xan"/>
                             <constraint firstAttribute="trailing" secondItem="W9W-AU-o2v" secondAttribute="trailing" constant="20" id="ho4-LF-zcu"/>
-                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="10" id="n0Y-Dn-fN0"/>
+                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" relation="greaterThanOrEqual" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="4" id="jFO-q2-6mq"/>
+                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" relation="lessThanOrEqual" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="10" id="n0Y-Dn-fN0"/>
                             <constraint firstAttribute="trailing" secondItem="TKy-DY-Hik" secondAttribute="trailing" constant="20" id="ncz-5s-aQQ"/>
                             <constraint firstItem="W9W-AU-o2v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9e-h6-f2M" secondAttribute="bottom" id="njz-d3-Ra3"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TKy-DY-Hik" secondAttribute="bottom" constant="4" id="vs7-eM-7TB"/>
                         </constraints>
                     </view>
                 </subviews>
