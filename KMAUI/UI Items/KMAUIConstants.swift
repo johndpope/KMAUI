@@ -53,6 +53,7 @@ public class KMAUIConstants {
     public let KMAUISubLandBorderColor = UIColor(named: "KMAUISubLandBorderColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #979797
     public let KMAUIGreyTextColor = UIColor(named: "KMAUIGreyTextColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUILightBorderColor = UIColor(named: "KMAUILightBorderColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let KMAUIMapGreyColor = UIColor(named: "KMAUIMapGreyColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! // #AEB2C3
     
     // MARK: - Colors
     public let KMATextGrayColor = UIColor(named: "KMATextGrayColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
@@ -167,6 +168,7 @@ public class KMAUIConstants {
     public let approvedAttachmentIcon = UIImage(named: "approvedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let rejectedAttachmentIcon = UIImage(named: "rejectedAttachmentIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let mapButtonImage = UIImage(named: "mapButtonImage", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let mapFilterImage = UIImage(named: "mapFilter", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let approvementIcon = UIImage(named: "approvementIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let rejectionIcon = UIImage(named: "rejectionIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let pinIcon = UIImage(named: "pinIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
