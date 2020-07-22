@@ -4670,3 +4670,146 @@ public struct KMAUIPolygoneDataStruct {
     }
 }
 
+// MARK: - Park Locations
+
+public struct KMAUIDataset {
+     
+    public var name = ""
+    public var owner = ""
+    public var parkLocations = [KMAUIParkLocation]()
+    public var detailsArray = [[String: AnyObject]]()
+    public var region = KMAMapAreaStruct()
+    public var type = ""
+    
+    public init() {}
+    
+    public mutating func fillFrom(dataset: PFObject) {
+        // Name
+        if let name = dataset["name"] as? String {
+            self.name = name
+        }
+        
+        // Owner
+        if let owner = dataset["owner"] as? String {
+            self.owner = owner
+        }
+        
+        // Park locations
+        if let json = dataset["json"] as? String, let type = dataset["type"] as? String {
+            self.type = type
+            let dictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: json)
+            
+            if let datasetArray = dictionary["Dataset"] as? [[String: AnyObject]] {
+                // Type is parkLocations
+                if type == "parkLocations" {
+                    var parkLocations = [KMAUIParkLocation]()
+                    
+                    
+                    for rowDictionary in datasetArray {
+                        var parkLocationItem = KMAUIParkLocation()
+                        parkLocationItem.fillFrom(rowDictionary: rowDictionary)
+                        parkLocations.append(parkLocationItem)
+                    }
+                    
+                    self.parkLocations = KMAUIUtilities.shared.orderParkLocationArray(array: parkLocations)
+                }
+                
+                // Type is buildingPermits
+                if type == "buildingPermits" || type == "establishmentPermits" {
+                    self.detailsArray = datasetArray
+                }
+            }
+        }
+        
+        // Region
+        if let region = dataset["region"] as? PFObject {
+            var regionObject = KMAMapAreaStruct()
+            regionObject.fillFrom(object: region)
+            self.region = regionObject
+        }
+    }
+}
+
+public struct KMAUIParkLocation {
+    
+    public var municipalityName = ""
+    public var neighborName = ""
+    public var objectId = 0
+    public var parcelId = 0
+    public var parcelName = ""
+    public var parcelNumber = ""
+    public var planNumber = ""
+    public var pointX: Double = 0
+    public var pointY: Double = 0
+    public var id = 0
+    public var checkinCount = 0
+    public var location = CLLocationCoordinate2D()
+    
+    public init() {}
+    
+    public mutating func fillFrom(rowDictionary: [String: AnyObject]) {
+        // Municipality name
+        if let municipalityName = rowDictionary["MUNICIPALITYANAME"] as? String {
+            self.municipalityName = municipalityName
+        }
+        
+        // Neighbor name
+        if let neighborName = rowDictionary["NEIGHBORHANAME"] as? String {
+            self.neighborName = neighborName
+        }
+        
+        // Object Id
+        if let objectId = rowDictionary["OBJECTID"] as? Int {
+            self.objectId = objectId
+        }
+        
+        // Parcel Id
+        if let parcelId = rowDictionary["PARCELID"] as? Int {
+            self.parcelId = parcelId
+        }
+        
+        // Parcel name
+        if let parcelName = rowDictionary["PARCELNAME"] as? String {
+            self.parcelName = parcelName
+        }
+        
+        // Parcel number
+        if let parcelNumber = rowDictionary["PARCELNO"] as? Int {
+            self.parcelNumber = "\(parcelNumber)"
+        } else if let parcelNumber = rowDictionary["PARCELNO"] as? String {
+            self.parcelNumber = parcelNumber
+        }
+        
+        // Plan number
+        if let planNumber = rowDictionary["PLANNO"] as? Int {
+            self.planNumber = "\(planNumber)"
+        } else if let planNumber = rowDictionary["PLANNO"] as? String {
+            self.planNumber = planNumber
+        }
+        
+        // Point x
+        if let pointX = rowDictionary["POINT_X"] as? Double {
+            self.pointX = pointX
+        }
+        
+        // Point y
+        if let pointY = rowDictionary["POINT_Y"] as? Double {
+            self.pointY = pointY
+        }
+        
+        // id
+        if let id = rowDictionary["id"] as? Int {
+            self.id = id
+        }
+        
+        // Checkin count
+        if let checkinCount = rowDictionary["checkin_count"] as? Int {
+            self.checkinCount = checkinCount
+        }
+        
+        // Latitude / Longitude
+        if let latitude = rowDictionary["latd"] as? Double, let longitude = rowDictionary["lngd"] as? Double {
+            self.location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+    }
+}

@@ -15,14 +15,20 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     @IBOutlet public weak var logoImageView: UIImageView!
     @IBOutlet public weak var logoImageViewWidth: NSLayoutConstraint!
     @IBOutlet public weak var titleLabel: KMAUIBoldTextLabel!
-    @IBOutlet public  weak var infoLabel: KMAUIRegularTextLabel!
+    @IBOutlet public weak var infoLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIBundlesCollectionViewCell"
     public var isCellSelected = false
+    public var region = KMAMapAreaStruct()
     public var bundle = KMAUI9x9Bundle() {
         didSet {
-            setupCell()
+            setupBundle()
+        }
+    }
+    public var dataset = KMAUIDataset() {
+        didSet {
+            setupDataset()
         }
     }
     
@@ -42,12 +48,14 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
         
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        titleLabel.minimumScaleFactor = 0.5
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        infoLabel.minimumScaleFactor = 0.5
     }
     
-    public func setupCell() {
+    public func setupBundle() {
         // Title label
         titleLabel.text = bundle.name
         
@@ -74,7 +82,32 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
             logoImageViewWidth.constant = 40
             logoImageView.contentMode = .scaleAspectFit
         }
-
+        
+        // Setup selection colors
+        setupSelection()
+    }
+    
+    public func setupDataset() {
+        // Title label
+        if region.nameE == "Saudi Arabia", region.nameE != dataset.region.nameE {
+            titleLabel.text = dataset.name + " for region: \(dataset.region.nameE)"
+        } else {
+            titleLabel.text = dataset.name
+        }
+        
+        // Info label
+        infoLabel.text = dataset.owner
+        
+        // Logo image view
+        logoImageView.image = KMAUIConstants.shared.headerSubLandIcon.withRenderingMode(.alwaysTemplate)
+        logoImageViewWidth.constant = 40
+        logoImageView.contentMode = .scaleAspectFit
+        
+        // Setup selection colors
+        setupSelection()
+    }
+    
+    func setupSelection() {
         // Setup colors
         if isCellSelected {
             // Background view color

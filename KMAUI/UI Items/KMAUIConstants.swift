@@ -312,6 +312,33 @@ public class KMAUIConstants {
     // MARK: - Google Places
     public let googlePlacesAPIKey = "AIzaSyBOukZS28sLMgRjXl5gR5w3WG6-EOM_Zz8"
     public var bundlesArray = [KMAUI9x9Bundle]()
+    
+    // MARK: - Datasets
+    public var datasetsArray = [KMAUIDataset]()
+    
+    public var buildingPermitKeys = [
+        "Total Length of Fences (m)",
+        "Total Floor Area (sq m)",
+        "Total Number of Floors",
+        "Total Area of Building (sq m)",
+        "Total Area of Plot (sq m)",
+        "Number of Permits"
+    ]
+    
+    public var establishmentPermitKeys = [
+        "Total",
+        "Others",
+        "Personal Services",
+        "Fuel & Cars Services",
+        "Health Care & Plumbing Items",
+        "Electrical Equipments Maintenance",
+        "Machines & Cars Maintenance",
+        "Furniture",
+        "Workshops",
+        "Establishments",
+        "Super Markets",
+        "Food Stuffs"
+    ]
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan

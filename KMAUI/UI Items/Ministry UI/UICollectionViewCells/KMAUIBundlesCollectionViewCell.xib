@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIBundlesCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUIBundlesCollectionViewCell" customModule="Business" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="KMAUIBundlesCollectionViewCell" id="gTV-IL-0wX" customClass="KMAUIBundlesCollectionViewCell" customModule="KMAUI" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="265" height="207"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -39,17 +39,17 @@
                                     <constraint firstItem="zOM-QE-0cQ" firstAttribute="centerX" secondItem="P9e-h6-f2M" secondAttribute="centerX" id="S8B-B7-G7k"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-AU-o2v" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="112" width="209" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="W9W-AU-o2v" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="20" y="112" width="209" height="32.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="Nku-Kq-m1N"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Nku-Kq-m1N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKy-DY-Hik" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="20" y="143" width="209" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKy-DY-Hik" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="20" y="154.5" width="209" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,12 +59,16 @@
                         <constraints>
                             <constraint firstItem="P9e-h6-f2M" firstAttribute="top" secondItem="ZgZ-Wb-k8X" secondAttribute="top" constant="24" id="2A6-EU-1yz"/>
                             <constraint firstItem="P9e-h6-f2M" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="31E-Cl-nuN"/>
-                            <constraint firstItem="W9W-AU-o2v" firstAttribute="top" secondItem="P9e-h6-f2M" secondAttribute="bottom" constant="42" id="Bfj-c2-dxo"/>
+                            <constraint firstItem="W9W-AU-o2v" firstAttribute="top" relation="lessThanOrEqual" secondItem="P9e-h6-f2M" secondAttribute="bottom" constant="42" id="Bfj-c2-dxo"/>
+                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="TKy-DY-Hik" secondAttribute="bottom" constant="16" id="MeJ-F6-QVC"/>
                             <constraint firstItem="W9W-AU-o2v" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="S9F-fw-OKb"/>
                             <constraint firstItem="TKy-DY-Hik" firstAttribute="leading" secondItem="ZgZ-Wb-k8X" secondAttribute="leading" constant="20" id="YHX-qg-xan"/>
                             <constraint firstAttribute="trailing" secondItem="W9W-AU-o2v" secondAttribute="trailing" constant="20" id="ho4-LF-zcu"/>
-                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="10" id="n0Y-Dn-fN0"/>
+                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" relation="greaterThanOrEqual" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="4" id="jFO-q2-6mq"/>
+                            <constraint firstItem="TKy-DY-Hik" firstAttribute="top" relation="lessThanOrEqual" secondItem="W9W-AU-o2v" secondAttribute="bottom" constant="10" id="n0Y-Dn-fN0"/>
                             <constraint firstAttribute="trailing" secondItem="TKy-DY-Hik" secondAttribute="trailing" constant="20" id="ncz-5s-aQQ"/>
+                            <constraint firstItem="W9W-AU-o2v" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9e-h6-f2M" secondAttribute="bottom" id="njz-d3-Ra3"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="TKy-DY-Hik" secondAttribute="bottom" constant="4" id="vs7-eM-7TB"/>
                         </constraints>
                     </view>
                 </subviews>
