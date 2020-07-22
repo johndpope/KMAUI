@@ -103,12 +103,6 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
             rowNameLabel.textAlignment = .center
             rowNameLabel.text = title
-            
-            if fontSize == 10 {
-                rowNameLabel.widthAnchor.constraint(equalToConstant: 120.0).isActive = true
-                rowNameLabel.rotate(degrees: -90)
-            }
-            
             topLineView.addArrangedSubview(rowNameLabel)
         }
         
