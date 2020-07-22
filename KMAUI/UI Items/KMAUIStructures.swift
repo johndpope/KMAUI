@@ -4715,7 +4715,7 @@ public struct KMAUIDataset {
                 }
                 
                 // Type is buildingPermits
-                if type == "buildingPermits" || dataset.type == "establishmentPermits" {
+                if type == "buildingPermits" || type == "establishmentPermits" {
                     self.detailsArray = datasetArray
                 }
             }
