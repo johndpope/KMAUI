@@ -2945,6 +2945,14 @@ public extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    func rotate(degrees: CGFloat) {
+        rotate(radians: CGFloat.pi * degrees / 180.0)
+    }
+
+    func rotate(radians: CGFloat) {
+        self.transform = CGAffineTransform(rotationAngle: radians)
+    }
 }
 
 // MARK: - UISegmentedControl extension
