@@ -4410,7 +4410,7 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceClosed = false
     public var googlePlaceOpenNow = ""
     public var googlePlaceIcon = ""
-    public var googlePlaceImage = ""
+    public var googlePlaceImages = [String]()
     public var googlePlaceTypes = [String]()
     public var googlePlaceTypesString = ""
     public var googlePlaceHours = ""
@@ -4420,6 +4420,8 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceWorkingHours = ""
     public var googlePlaceBusinessStatus = "" // OPERATIONAL || CLOSED_TEMPORARILY || CLOSED_PERMANENTLY
     public var googlePlaceAddress = ""
+    public var googlePlaceURL = ""
+    public var googlePlaceUTCOffset = 0
     // Bundle id
     public var googleCategory = ""
     
@@ -4548,14 +4550,26 @@ public struct KMAUIPolygoneDataStruct {
         
         // Photo
         if let photos = object["photos"] as? [[String: AnyObject]], !photos.isEmpty {
-            let photo = photos[0]
+            self.googlePlaceImages = [String]()
             
-            if let photoReference = photo["photo_reference"] as? String {
-                self.googlePlaceImage = photoReference
-                print("- Photo reference: \(photoReference)")
+            for photo in photos {
+                if let photoReference = photo["photo_reference"] as? String {
+                    self.googlePlaceImages.append(photoReference)
+                    print("- Photo reference: \(photoReference)")
+                }
             }
         } else {
             print("No photos")
+        }
+        
+        // URL
+        if let url = object["url"] as? String {
+            self.googlePlaceURL = url
+        }
+        
+        // UTC Offset
+        if let utcOffset = object["utc_offset"] as? Int {
+            self.googlePlaceUTCOffset = utcOffset
         }
     }
     
@@ -4608,7 +4622,7 @@ public struct KMAUIPolygoneDataStruct {
                                 } else if id == "google_place_icon" {
                                     self.googlePlaceIcon = point
                                 } else if id == "google_place_images" {
-                                    self.googlePlaceImage = point
+                                    self.googlePlaceImages = [point]
                                 } else if id == "google_place_price_level" {
                                     self.googlePlacePriceLevel = point
                                 } else if id == "google_place_working_hours" {

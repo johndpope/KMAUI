@@ -206,10 +206,14 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Setup attachments
         var imageURL = ""
         
-        if polygone.googlePlaceImage.starts(with: "http") {
-            imageURL = polygone.googlePlaceImage
-        } else if !polygone.googlePlaceImage.isEmpty {
-            imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(polygone.googlePlaceImage)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        if !polygone.googlePlaceImages.isEmpty {
+            let imageString = polygone.googlePlaceImages[0]
+            
+            if imageString.starts(with: "http") {
+                imageURL = imageString
+            } else if !imageString.isEmpty {
+                imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(imageString)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+            }
         }
         
         setupAttachments(url: imageURL, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
