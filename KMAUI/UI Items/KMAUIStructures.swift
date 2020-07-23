@@ -4387,6 +4387,64 @@ public struct KMAUI9x9Bundle {
     }
 }
 
+// MARK: - Google Reviews
+
+public struct KMAUIGoogleReviewStruct {
+    // Variables
+    public var author = ""
+    public var authorURL = ""
+    public var language = ""
+    public var profilePhotoURL = ""
+    public var rating: Double = 0
+    public var displayTime = ""
+    public var text = ""
+    public var time = Date()
+    
+    public init() {}
+    
+    public mutating func fillFrom(review: [String: AnyObject]) {
+        // Author
+        if let author = review["author_name"] as? String {
+            self.author = author
+        }
+        
+        // URL
+        if let authorURL = review["author_url"] as? String {
+            self.authorURL = authorURL
+        }
+        
+        // Language
+        if let language = review["language"] as? String {
+            self.language = language
+        }
+
+        // Profile photo URL
+        if let profilePhotoURL = review["profile_photo_url"] as? String {
+            self.profilePhotoURL = profilePhotoURL
+        }
+        
+        // Rating
+        if let rating = review["rating"] as? Double {
+            self.rating = rating
+        }
+        
+        // Display time
+        if let displayTime = review["relative_time_description"] as? String {
+            self.displayTime = displayTime
+        }
+
+        // Text
+        if let text = review["text"] as? String {
+            self.text = text
+        }
+        
+        // Time
+        if let time = review["time"] as? Double {
+            self.time = Date(timeIntervalSince1970: time)
+        }
+    }
+}
+
 // MARK: - Polygone for Bundle
 
 public struct KMAUIPolygoneDataStruct {
@@ -4422,6 +4480,7 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceAddress = ""
     public var googlePlaceURL = ""
     public var googlePlaceUTCOffset = 0
+    public var googlePlaceReviews = [KMAUIGoogleReviewStruct]()
     // Bundle id
     public var googleCategory = ""
     
@@ -4570,6 +4629,18 @@ public struct KMAUIPolygoneDataStruct {
         // UTC Offset
         if let utcOffset = object["utc_offset"] as? Int {
             self.googlePlaceUTCOffset = utcOffset
+        }
+        
+        // Reviews
+        self.googlePlaceReviews = [KMAUIGoogleReviewStruct]()
+        
+        if let reviews = object["reviews"] as? [[String: AnyObject]] {
+            for review in reviews {
+                var reviewItem = KMAUIGoogleReviewStruct()
+                reviewItem.fillFrom(review: review)
+                print("- Review: \(review)")
+                self.googlePlaceReviews.append(reviewItem)
+            }
         }
     }
     
