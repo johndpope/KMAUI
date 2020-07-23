@@ -4638,7 +4638,7 @@ public struct KMAUIPolygoneDataStruct {
             for review in reviews {
                 var reviewItem = KMAUIGoogleReviewStruct()
                 reviewItem.fillFrom(review: review)
-                print("- Review: \(review)")
+                print("- Review: \(reviewItem)")
                 self.googlePlaceReviews.append(reviewItem)
             }
         }
