@@ -4567,24 +4567,26 @@ public struct KMAUIPolygoneDataStruct {
         
         // Types
         if let types = object["types"] as? [String] {
-            self.googlePlaceTypesString = ""
-            
-            for typeValue in types {
-                let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
-                
-                if !self.googlePlaceTypes.contains(typeValueItem) {
-                    self.googlePlaceTypes.append(typeValueItem)
-                    
-                    if self.googlePlaceTypesString.isEmpty {
-                       self.googlePlaceTypesString = typeValueItem
-                    } else {
-                        self.googlePlaceTypesString += ", " + typeValueItem
-                    }
-                }
-            }
+            self.googlePlaceTypes = types
             
 //            print("- Types array: \(self.googlePlaceTypes)")
 //            print("- Types string: \(self.googlePlaceTypesString)")
+        }
+        
+        self.googlePlaceTypesString = ""
+        
+        for typeValue in self.googlePlaceTypes {
+            let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
+            
+            if !self.googlePlaceTypes.contains(typeValueItem) {
+                self.googlePlaceTypes.append(typeValueItem)
+                
+                if self.googlePlaceTypesString.isEmpty {
+                   self.googlePlaceTypesString = typeValueItem
+                } else {
+                    self.googlePlaceTypesString += ", " + typeValueItem
+                }
+            }
         }
         
         // Rating
