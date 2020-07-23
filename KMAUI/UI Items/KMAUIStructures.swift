@@ -4481,6 +4481,7 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceURL = ""
     public var googlePlaceUTCOffset = 0
     public var googlePlaceReviews = [KMAUIGoogleReviewStruct]()
+    public var googlePlaceOpeningHours = [String]()
     // Bundle id
     public var googleCategory = ""
     
@@ -4552,16 +4553,6 @@ public struct KMAUIPolygoneDataStruct {
         if let name = object["name"] as? String {
             self.googlePlaceName = name
             print("- Name: \(name)")
-        }
-        
-        // Open now
-        if let openingHours = object["opening_hours"] as? [String: AnyObject], let openNow = openingHours["open_now"] as? Bool {
-            if openNow {
-                self.googlePlaceOpenNow = "Yes"
-            } else {
-                self.googlePlaceOpenNow = "No"
-            }
-            print("- Open now: \(self.googlePlaceOpenNow)")
         }
         
         // Address
@@ -4640,6 +4631,24 @@ public struct KMAUIPolygoneDataStruct {
                 reviewItem.fillFrom(review: review)
                 print("- Review: \(reviewItem)")
                 self.googlePlaceReviews.append(reviewItem)
+            }
+        }
+        
+        // Opening hours
+        // Open now
+        if let openingHours = object["opening_hours"] as? [String: AnyObject] {
+            if let openNow = openingHours["open_now"] as? Bool {
+                if openNow {
+                    self.googlePlaceOpenNow = "Yes"
+                } else {
+                    self.googlePlaceOpenNow = "No"
+                }
+            }
+            print("- Open now: \(self.googlePlaceOpenNow)")
+            
+            if let weekdayText = openingHours["weekday_text"] as? [String] {
+                self.googlePlaceOpeningHours = weekdayText
+                print("- Opening hours: \(self.googlePlaceOpeningHours)")
             }
         }
     }
