@@ -4426,7 +4426,7 @@ public struct KMAUIPolygoneDataStruct {
     public init() {}
     
     public mutating func fillFromNearbyPlace(object: [String: AnyObject]) {
-//        print("\nOBJECT:\n\(object)\nPLACE FILLED WITH DETAILS:")
+        print("\nOBJECT:\n\(object)\nPLACE FILLED WITH DETAILS:")
         // Business status
         if let businessStatus = object["business_status"] as? String {
             self.googlePlaceBusinessStatus = businessStatus
@@ -4437,8 +4437,8 @@ public struct KMAUIPolygoneDataStruct {
                 self.googlePlaceClosed = false
             }
             
-//            print("- Business status: \(self.googlePlaceBusinessStatus)")
-//            print("- Closed Permanently: \(self.googlePlaceClosed)")
+            print("- Business status: \(self.googlePlaceBusinessStatus)")
+            print("- Closed Permanently: \(self.googlePlaceClosed)")
         }
         
         // Location, SW, NE
@@ -4447,7 +4447,7 @@ public struct KMAUIPolygoneDataStruct {
             if let location = geometry["location"] as? [String: AnyObject] {
                 if let lat = location["lat"] as? Double, let lng = location["lng"] as? Double {
                     self.googlePlaceLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-//                    print("- Location: \(lat), \(lng)")
+                    print("- Location: \(lat), \(lng)")
                 }
             }
             // SW + NE
@@ -4456,14 +4456,14 @@ public struct KMAUIPolygoneDataStruct {
                 if let southwest = viewPort["southwest"] as? [String: AnyObject] {
                     if let lat = southwest["lat"] as? Double, let lng = southwest["lng"] as? Double {
                         self.googlePlaceSW = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-//                        print("- SW: \(lat), \(lng)")
+                        print("- SW: \(lat), \(lng)")
                     }
                 }
                 // NE
                 if let northeast = viewPort["northeast"] as? [String: AnyObject] {
                     if let lat = northeast["lat"] as? Double, let lng = northeast["lng"] as? Double {
                         self.googlePlaceNE = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-//                        print("- NE: \(lat), \(lng)")
+                        print("- NE: \(lat), \(lng)")
                     }
                 }
             }
@@ -4472,25 +4472,25 @@ public struct KMAUIPolygoneDataStruct {
         // Icon
         if let icon = object["icon"] as? String {
             self.googlePlaceIcon = icon
-//            print("- Icon: \(icon)")
+            print("- Icon: \(icon)")
         }
         
         // ID
         if let id = object["id"] as? String {
             self.googlePlaceIdValue = id
-//            print("- ID: \(id)")
+            print("- ID: \(id)")
         }
         
         // Place ID
         if let placeId = object["place_id"] as? String {
             self.googlePlaceId = placeId
-//            print("- Place ID: \(placeId)")
+            print("- Place ID: \(placeId)")
         }
         
         // Name
         if let name = object["name"] as? String {
             self.googlePlaceName = name
-//            print("- Name: \(name)")
+            print("- Name: \(name)")
         }
         
         // Open now
@@ -4500,13 +4500,16 @@ public struct KMAUIPolygoneDataStruct {
             } else {
                 self.googlePlaceOpenNow = "No"
             }
-//            print("- Open now: \(self.googlePlaceOpenNow)")
+            print("- Open now: \(self.googlePlaceOpenNow)")
         }
         
         // Address
-        if let address = object["vicinity"] as? String {
+        if let address = object["formatted_address"] as? String {
             self.googlePlaceAddress = address
-//            print("- Address: \(address)")
+            print("- Address: \(address)")
+        } else if let address = object["vicinity"] as? String {
+            self.googlePlaceAddress = address
+            print("- Address: \(address)")
         }
         
         // Types
@@ -4527,20 +4530,20 @@ public struct KMAUIPolygoneDataStruct {
                 }
             }
             
-//            print("- Types array: \(self.googlePlaceTypes)")
-//            print("- Types string: \(self.googlePlaceTypesString)")
+            print("- Types array: \(self.googlePlaceTypes)")
+            print("- Types string: \(self.googlePlaceTypesString)")
         }
         
         // Rating
         if let rating = object["rating"] as? Double {
             self.googlePlaceRating = rating
-//            print("- Rating: \(rating)")
+            print("- Rating: \(rating)")
         }
         
         // Ratings count
         if let ratingsCount = object["user_ratings_total"] as? Int {
             self.googlePlaceReviewsCount = ratingsCount
-//            print("- Reviews count: \(self.googlePlaceReviewsCount)")
+            print("- Reviews count: \(self.googlePlaceReviewsCount)")
         }
         
         // Photo
@@ -4549,36 +4552,12 @@ public struct KMAUIPolygoneDataStruct {
             
             if let photoReference = photo["photo_reference"] as? String {
                 self.googlePlaceImage = photoReference
-//                print("- Photo reference: \(photoReference)")
+                print("- Photo reference: \(photoReference)")
             }
         } else {
-//            print("No photos")
+            print("No photos")
         }
-        
-        /*
-         "photos": <__NSSingleObjectArrayI 0x6000038c3ab0>(
-         {
-             height = 4608;
-             "html_attributions" =     (
-                 "<a href=\"https://maps.google.com/maps/contrib/110033666216566202495\">Iftikhar Kazi</a>"
-             );
-             "photo_reference" = "CmRaAAAArFPzx-HNvBu611xZWLW-WGL_uRAAE70GOm5khaTAPvGggOse-iNQXT2xIxv6trYP8ypeqvecN0H-95trO1DA1apiglaSwmyEPYlb_sesy471YziojIXX_MD5DzXsjbl1EhCbiWh0_lz1yHICRj7Y0Zy_GhSg2chvlDX8LCAUqu8XWn2ihoNdVg";
-             width = 3456;
-         }
-         */
     }
-    
-    /*
-     "photos": <__NSSingleObjectArrayI 0x60000202eb20>(
-     {
-         height = 4032;
-         "html_attributions" =     (
-             "<a href=\"https://maps.google.com/maps/contrib/117787565731935923488\">A Google User</a>"
-         );
-         "photo_reference" = "CmRaAAAAxQrj-t83sMjVcT2DujrbK5A4M_2hdIONAzvTktH_ckYNp1bBNXX0GYmrpr56Ezo7Q0KZdl6wY-JaUZADmfRxwmjWLJlP2u7JaDo3A7KkkEIVCkBijqV3e8wlFumReJhAEhBH6jWDUUp7n-ttaPHD1_3oGhQZG8RsEWUdM4DsgspRNcsyJ9P57A";
-         width = 3024;
-     }
-     */
     
     public mutating func fillFromDictionary(object: [String: AnyObject]) {
         if let title = object["title"] as? String {
