@@ -2264,6 +2264,37 @@ public class KMAUIUtilities {
         }
     }
     
+    public func getGooglePlaceDetails(placeId: String, polygone: KMAUIPolygoneDataStruct, completion: @escaping (_ polygone: KMAUIPolygoneDataStruct)->()) {
+        var polygone = polygone
+        
+        let dataFromBundle = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeId)&language=en&fields=address_component,adr_address,business_status,formatted_address,geometry,icon,name,photo,place_id,plus_code,type,url,utc_offset,vicinity,formatted_phone_number,international_phone_number,opening_hours,website,price_level,rating,review,user_ratings_total&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        
+        AF.request(dataFromBundle, method: .get).responseJSON { response in
+            var jsonString = ""
+            
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            let placeDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            
+            if let result = placeDictionary["result"] as? [String: AnyObject] {
+                polygone.polygoneType = "googlePlace"
+                polygone.fillFromNearbyPlace(object: result)
+                polygone.googleDetailsLoaded = true
+                completion(polygone)
+            }
+        }
+    }
+    
     // MARK: KMA 9x9 Bundles
     
     public func setupBundles(jsonString: String) -> [KMAUI9x9Bundle] {
