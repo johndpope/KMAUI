@@ -126,6 +126,7 @@ public class KMAUIImagesPreviewView: UIView {
         threeThreeBgView.layer.cornerRadius = 8
         threeThreeBgView.clipsToBounds = true
         threeThreeBgView.backgroundColor = KMAUIConstants.shared.KMAUITextColor
+        print("Setup images: \(imagesArray.count)")
         // Bottom action buttons
         if !imagesArray.isEmpty {
             // Show the correct image for each view
