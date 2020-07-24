@@ -377,6 +377,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
+            rowNameLabel.numberOfLines = 0
             
             if row.rowName == "Values", row.rowValue.isEmpty {
                 rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
@@ -389,8 +390,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
+            rowValueLabel.numberOfLines = 0
             rowValueLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .right)
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            rowValueLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0).isActive = true
             itemView.addArrangedSubview(rowValueLabel)
             
             let rowView = UIView()
