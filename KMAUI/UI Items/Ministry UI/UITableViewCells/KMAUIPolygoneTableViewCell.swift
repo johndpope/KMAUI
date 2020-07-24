@@ -242,11 +242,11 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     }
     
     func setupAttachments(urls: [String], name: String, id: String) {
-        var imageWidth: CGFloat = 200
+        var imageWidth: CGFloat = 240
         
         let orientation = UIApplication.shared.statusBarOrientation
         if orientation.isPortrait {
-            imageWidth = 100
+            imageWidth = 160
         }
         
         placeImageViewWidth.constant = imageWidth
