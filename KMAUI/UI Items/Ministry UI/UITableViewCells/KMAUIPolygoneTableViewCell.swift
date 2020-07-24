@@ -45,6 +45,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     public lazy var previewItem = NSURL()
     public var uniqueId = ""
     public var name = ""
+    public var attachmentCallback: ((Bool) -> Void)?
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -199,19 +200,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         // Setup attachments
-        var imagesArray = [String]()
-        
-        if !polygone.googlePlaceImages.isEmpty {
-            for imageString in polygone.googlePlaceImages {
-                if imageString.starts(with: "http") {
-                    imagesArray.append(imageString)
-                } else if !imageString.isEmpty {
-                    imagesArray.append("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(imageString)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)")
-                }
-            }
-        }
-        
-        // Get images
         setupAttachments(urls: polygone.googlePlaceImages, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
         
         // Prepare rows
@@ -270,16 +258,27 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         for (index, url) in urls.enumerated() {
             if !url.isEmpty {
                 var attachment = KMADocumentData()
-                attachment.previewURL = url
-                attachment.fileURL = url
                 attachment.name = "Image \(index + 1)"
                 attachment.objectId = uniqueId
+                // Setup urls
+                if url.starts(with: "http") {
+                    attachment.previewURL = url
+                    attachment.fileURL = url
+                } else if !url.isEmpty {
+                    attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                }
+                // Add an attachments
                 attachments.append(attachment)
             }
         }
         
         imagesView.attachments = attachments
-        print("ATTACHMENTS:\n\n\(attachments)")
+        
+        // Callback for attachment actions
+        imagesView.viewAttachmentsAction = { action in
+            self.attachmentCallback?(true)
+        }
         
         // KMADocumentData
         if !attachments.isEmpty {
