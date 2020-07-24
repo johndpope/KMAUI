@@ -221,25 +221,49 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Prepare rows
         var rows = [KMAUIRowData]()
         
-        // Open now
-        if !polygone.googlePlaceOpenNow.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Open now", rowValue: polygone.googlePlaceOpenNow))
+        // Business status
+        if !polygone.googlePlaceBusinessStatus.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Business status", rowValue: polygone.googlePlaceBusinessStatus.lowercased().capitalized))
         }
-
+        
         // Categores
         if !polygone.googlePlaceTypes.isEmpty {
             rows.append(KMAUIRowData(rowName: "Category", rowValue: polygone.googlePlaceTypesString))
         }
         
+        // Open now
+        if !polygone.googlePlaceOpenNow.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Open now", rowValue: polygone.googlePlaceOpenNow))
+        }
+        
+        // Opening hours
+            var hoursString = ""
+            
+            for daySchedule in polygone.googlePlaceOpeningHours {
+                if !daySchedule.isEmpty {
+                if hoursString.isEmpty {
+                    hoursString = daySchedule
+                } else {
+                    hoursString += "\n" + daySchedule
+                }
+                }
+            }
+            
+            if !hoursString.isEmpty {
+                rows.append(KMAUIRowData(rowName: "Opening hours", rowValue: hoursString))
+            }
+
+        /*
         // Working hours
         if !polygone.googlePlaceWorkingHours.isEmpty {
             rows.append(KMAUIRowData(rowName: "Working hours", rowValue: polygone.googlePlaceWorkingHours))
-        }
+        }*/
         
-        // Business status
-        if !polygone.googlePlaceBusinessStatus.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Business status", rowValue: polygone.googlePlaceBusinessStatus.lowercased().capitalized))
-        }
+        
+        
+        
+        
+        //
         
         // Setup stack view
         setupStackView(rows: rows)
