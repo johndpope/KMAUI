@@ -79,7 +79,7 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             profileImageView.layer.cornerRadius = 22
             profileImageView.layer.borderWidth = 1
             profileImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
-            profileImageView.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
+            profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
             profileImageView.clipsToBounds = true
             profileImageView.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
             profileImageView.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
@@ -127,7 +127,7 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             
             ratingLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
             ratingLabel.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-            ratingLabel.cornerRadius = 8
+            ratingLabel.layer.cornerRadius = 8
             ratingLabel.clipsToBounds = true
             ratingLabel.textAlignment = .center
             nameRatingView.addArrangedSubview(ratingLabel)
