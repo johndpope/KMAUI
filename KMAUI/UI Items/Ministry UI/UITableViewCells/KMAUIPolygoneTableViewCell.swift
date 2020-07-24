@@ -26,6 +26,8 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var ratingLabelLeft: NSLayoutConstraint!
     @IBOutlet weak var imagesView: KMAUIImagesPreviewView!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var rightArrowImageViewRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUIPolygoneTableViewCell"
@@ -46,6 +48,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     public var uniqueId = ""
     public var name = ""
     public var attachmentCallback: ((Bool) -> Void)?
+    public var isClickable = false
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -70,14 +73,51 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Location label
         locationLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
+        // Setup the right arrow
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.layer.cornerRadius = 4
+        rightArrowImageView.clipsToBounds = true
+        // Default state - disabled
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        
         // No selection required
         selectionStyle = .none
     }
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        }
+    }
+    
+    func setupClickable() {
+        // Check if clickable
+        if isClickable {
+            rightArrowImageViewRight.constant = 20
+            rightArrowImageView.alpha = 1
+        } else {
+            rightArrowImageViewRight.constant = -12
+            rightArrowImageView.alpha = 0
+        }
     }
     
     public func setupPolygone() {
@@ -87,6 +127,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         } else {
             bgViewTop.constant = 0
         }
+        
+        // Setup clickable
+        setupClickable()
 
         // Check type
         if polygone.polygoneType == "custom" {
@@ -297,6 +340,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         } else {
             bgViewTop.constant = 0
         }
+        
+        // Setup clickable
+        setupClickable()
         
         // Title - Municipality name
         titleLabel.text = dataset.municipalityName

@@ -20,7 +20,7 @@
                         <rect key="frame" x="20" y="0.0" width="493" height="199"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="997" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6h-Fl-Awb" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="244" y="20" width="173" height="20.5"/>
+                                <rect key="frame" x="244" y="20" width="139" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="SZQ-aA-obQ"/>
                                 </constraints>
@@ -28,18 +28,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVy-LV-EuQ" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="429" y="20" width="44" height="32"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X4T-5D-Bg7">
+                                <rect key="frame" x="451" y="20" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="BSK-uP-GfJ"/>
-                                    <constraint firstAttribute="width" constant="44" id="VZY-Cr-e9q"/>
+                                    <constraint firstAttribute="width" constant="22" id="3RE-02-i7e"/>
+                                    <constraint firstAttribute="height" constant="22" id="4r9-No-STU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="998" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cna-M6-Jsz" customClass="KMAUIRegularTextLabel" customModule="KMAUI">
-                                <rect key="frame" x="244" y="46.5" width="173" height="21"/>
+                                <rect key="frame" x="244" y="46.5" width="139" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="Wbz-c7-FlD"/>
                                 </constraints>
@@ -57,11 +54,22 @@
                                     <constraint firstAttribute="width" constant="200" id="z9k-oz-cxW"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVy-LV-EuQ" customClass="KMAUIBoldTextLabel" customModule="KMAUI">
+                                <rect key="frame" x="395" y="20" width="44" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="BSK-uP-GfJ"/>
+                                    <constraint firstAttribute="width" constant="44" id="VZY-Cr-e9q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="5cN-4G-9BM" firstAttribute="leading" secondItem="T6h-Fl-Awb" secondAttribute="leading" constant="-4" id="006-sq-Qgu"/>
                             <constraint firstItem="Lxh-H0-ZrC" firstAttribute="leading" secondItem="2nU-k5-EX8" secondAttribute="leading" constant="20" id="2Vb-ux-h12"/>
+                            <constraint firstItem="X4T-5D-Bg7" firstAttribute="leading" secondItem="oVy-LV-EuQ" secondAttribute="trailing" constant="12" id="5BI-NB-zgp"/>
                             <constraint firstItem="cna-M6-Jsz" firstAttribute="top" secondItem="T6h-Fl-Awb" secondAttribute="bottom" constant="6" id="Jue-8c-RkM"/>
                             <constraint firstItem="cna-M6-Jsz" firstAttribute="width" secondItem="T6h-Fl-Awb" secondAttribute="width" id="QoF-x4-MVZ"/>
                             <constraint firstAttribute="trailing" secondItem="5cN-4G-9BM" secondAttribute="trailing" constant="20" id="SpP-v7-Hdp"/>
@@ -72,7 +80,8 @@
                             <constraint firstItem="T6h-Fl-Awb" firstAttribute="leading" secondItem="Lxh-H0-ZrC" secondAttribute="trailing" constant="24" id="f15-3o-gm6"/>
                             <constraint firstAttribute="bottom" secondItem="5cN-4G-9BM" secondAttribute="bottom" constant="20" id="pio-6P-xHN"/>
                             <constraint firstAttribute="bottom" secondItem="Lxh-H0-ZrC" secondAttribute="bottom" constant="20" id="r8K-W5-TP1"/>
-                            <constraint firstAttribute="trailing" secondItem="oVy-LV-EuQ" secondAttribute="trailing" constant="20" id="s4b-fk-Ueq"/>
+                            <constraint firstAttribute="trailing" secondItem="X4T-5D-Bg7" secondAttribute="trailing" constant="20" id="rSL-f1-Zf6"/>
+                            <constraint firstItem="X4T-5D-Bg7" firstAttribute="centerY" secondItem="oVy-LV-EuQ" secondAttribute="centerY" id="s1k-Mx-q8d"/>
                             <constraint firstItem="oVy-LV-EuQ" firstAttribute="top" secondItem="2nU-k5-EX8" secondAttribute="top" constant="20" id="vcc-3i-2LK"/>
                             <constraint firstItem="5cN-4G-9BM" firstAttribute="top" secondItem="cna-M6-Jsz" secondAttribute="bottom" constant="20" id="vce-BY-QBW"/>
                             <constraint firstItem="T6h-Fl-Awb" firstAttribute="top" secondItem="2nU-k5-EX8" secondAttribute="top" constant="20" id="yDA-ea-Fpj"/>
@@ -97,6 +106,8 @@
                 <outlet property="ratingLabel" destination="oVy-LV-EuQ" id="ALb-s4-CJd"/>
                 <outlet property="ratingLabelLeft" destination="aS7-Gg-tdw" id="HoL-HP-eAb"/>
                 <outlet property="ratingLabelWidth" destination="VZY-Cr-e9q" id="ztj-a3-A4w"/>
+                <outlet property="rightArrowImageView" destination="X4T-5D-Bg7" id="t8P-0d-D4b"/>
+                <outlet property="rightArrowImageViewRight" destination="rSL-f1-Zf6" id="IJG-Mj-eA7"/>
                 <outlet property="stackView" destination="5cN-4G-9BM" id="wbf-4E-w6j"/>
                 <outlet property="titleLabel" destination="T6h-Fl-Awb" id="2RS-OP-iiB"/>
             </connections>

@@ -57,13 +57,7 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             stackView.removeArrangedSubview(subview)
             subview.removeFromSuperview()
         }
-        
-        print("\n\nREVIEWS: \(reviews.count)")
-        
-        /*
-         public var rating: Double = 0
-         */
-        
+
         // Prepare the rows
         for (index, review) in reviews.enumerated() {
             // Top view
@@ -112,25 +106,27 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             nameLabel.text = review.author
             nameRatingView.addArrangedSubview(nameLabel)
             
-            // Rating view
-            let ratingLabel = KMAUIBoldTextLabel()
-            ratingLabel.textColor = UIColor.white
-            ratingLabel.text = "\(review.rating)"
-            
-            if review.rating >= 4.5 {
-                ratingLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
-            } else if review.rating >= 3 {
-                ratingLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
-            } else {
-                ratingLabel.backgroundColor = KMAUIConstants.shared.KMARedColor
+            // Rating label
+            if review.rating > 0 {
+                let ratingLabel = KMAUIBoldTextLabel()
+                ratingLabel.textColor = UIColor.white
+                ratingLabel.text = "\(review.rating)"
+                
+                if review.rating >= 4.5 {
+                    ratingLabel.backgroundColor = KMAUIConstants.shared.KMAUIGreenProgressColor
+                } else if review.rating >= 3 {
+                    ratingLabel.backgroundColor = KMAUIConstants.shared.KMAUIYellowProgressColor
+                } else {
+                    ratingLabel.backgroundColor = KMAUIConstants.shared.KMARedColor
+                }
+                
+                ratingLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+                ratingLabel.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+                ratingLabel.layer.cornerRadius = 8
+                ratingLabel.clipsToBounds = true
+                ratingLabel.textAlignment = .center
+                nameRatingView.addArrangedSubview(ratingLabel)
             }
-            
-            ratingLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
-            ratingLabel.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-            ratingLabel.layer.cornerRadius = 8
-            ratingLabel.clipsToBounds = true
-            ratingLabel.textAlignment = .center
-            nameRatingView.addArrangedSubview(ratingLabel)
             
             // Add the nameRating into the nameTime
             nameTimeView.addArrangedSubview(nameRatingView)
