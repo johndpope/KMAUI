@@ -268,6 +268,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
                     attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
                     attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
                 }
+                attachment.fileExtension = "JPG"
                 // Add an attachments
                 attachments.append(attachment)
             }
