@@ -67,7 +67,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Rating label
         ratingLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         ratingLabel.textColor = UIColor.white
-        ratingLabel.layer.cornerRadius = 8
+        ratingLabel.layer.cornerRadius = 4
         ratingLabel.clipsToBounds = true
         
         // Location label
@@ -120,7 +120,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             rightArrowImageViewRight.constant = 20
             rightArrowImageView.alpha = 1
         } else {
-            rightArrowImageViewRight.constant = -12
+            rightArrowImageViewRight.constant = -8
             rightArrowImageView.alpha = 0
         }
     }
