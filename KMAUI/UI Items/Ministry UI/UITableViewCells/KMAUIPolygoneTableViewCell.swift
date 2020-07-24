@@ -70,12 +70,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Location label
         locationLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
-//        // Place imageView
-//        imagesView.layer.borderWidth = 1
-//        imagesView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
-//        imagesView.layer.cornerRadius = 8
-//        imagesView.clipsToBounds = true
-        
         // No selection required
         selectionStyle = .none
     }
@@ -258,7 +252,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         for (index, url) in urls.enumerated() {
             if !url.isEmpty {
                 var attachment = KMADocumentData()
-                attachment.name = "Image \(index + 1)"
+                attachment.name = "Image \(index + 1).jpg"
                 attachment.objectId = uniqueId
                 // Setup urls
                 if url.starts(with: "http") {
