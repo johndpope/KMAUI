@@ -120,9 +120,9 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
                     ratingLabel.backgroundColor = KMAUIConstants.shared.KMARedColor
                 }
                 
-                ratingLabel.heightAnchor.constraint(equalToConstant: 30.0).isActive = true
+                ratingLabel.heightAnchor.constraint(equalToConstant: 22.0).isActive = true
                 ratingLabel.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-                ratingLabel.layer.cornerRadius = 8
+                ratingLabel.layer.cornerRadius = 4
                 ratingLabel.clipsToBounds = true
                 ratingLabel.textAlignment = .center
                 nameRatingView.addArrangedSubview(ratingLabel)
