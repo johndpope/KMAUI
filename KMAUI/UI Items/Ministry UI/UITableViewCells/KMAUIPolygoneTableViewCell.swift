@@ -83,7 +83,8 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         
         // Images view
         imagesView.layer.cornerRadius = 8
-        imageView?.clipsToBounds = true
+        imagesView.clipsToBounds = true
+        imagesView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
         // No selection required
         selectionStyle = .none
