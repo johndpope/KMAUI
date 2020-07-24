@@ -16,9 +16,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var bgViewTop: NSLayoutConstraint!
-    @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeImageViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var placeImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var placeImageViewLeft: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var locationLabel: KMAUIRegularTextLabel!
@@ -27,6 +25,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var ratingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var ratingLabelLeft: NSLayoutConstraint!
+    @IBOutlet weak var imagesView: KMAUIImagesPreviewView!
     
     // MARK: - Variables
     public static let id = "KMAUIPolygoneTableViewCell"
@@ -44,7 +43,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     }
     public var rowViews = [UIView]()
     public lazy var previewItem = NSURL()
-    public var attachmentURLString = ""
     public var uniqueId = ""
     public var name = ""
 
@@ -72,10 +70,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         locationLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
         // Place imageView
-        placeImageView.layer.borderWidth = 1
-        placeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
-        placeImageView.layer.cornerRadius = 8
-        placeImageView.clipsToBounds = true
+        imagesView.layer.borderWidth = 1
+        imagesView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+        imagesView.layer.cornerRadius = 8
+        imagesView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
@@ -94,9 +92,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         } else {
             bgViewTop.constant = 0
         }
-        
-        // Attachment
-        attachmentURLString = ""
 
         // Check type
         if polygone.polygoneType == "custom" {
@@ -154,9 +149,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         
         // Setup attachments
         if polygone.type == "image" {
-            setupAttachments(url: polygone.value, name: polygone.title, id: polygone.title)
+            setupAttachments(urls: [polygone.value], name: polygone.title, id: polygone.title)
         } else {
-            setupAttachments(url: "", name: "", id: "")
+            setupAttachments(urls: [""], name: "", id: "")
         }
         
         // Setup stack view
@@ -204,19 +199,20 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         // Setup attachments
-        var imageURL = ""
+        var imagesArray = [String]()
         
         if !polygone.googlePlaceImages.isEmpty {
-            let imageString = polygone.googlePlaceImages[0]
-            
-            if imageString.starts(with: "http") {
-                imageURL = imageString
-            } else if !imageString.isEmpty {
-                imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(imageString)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+            for imageString in polygone.googlePlaceImages {
+                if imageString.starts(with: "http") {
+                    imagesArray.append(imageString)
+                } else if !imageString.isEmpty {
+                    imagesArray.append("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(imageString)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)")
+                }
             }
         }
         
-        setupAttachments(url: imageURL, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
+        // Get images
+        setupAttachments(urls: polygone.googlePlaceImages, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
         
         // Prepare rows
         var rows = [KMAUIRowData]()
@@ -257,7 +253,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         setupStackView(rows: rows)
     }
     
-    func setupAttachments(url: String, name: String, id: String) {
+    func setupAttachments(urls: [String], name: String, id: String) {
         var imageWidth: CGFloat = 200
         
         let orientation = UIApplication.shared.statusBarOrientation
@@ -267,17 +263,31 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         
         placeImageViewWidth.constant = imageWidth
         
-        if !url.isEmpty, let urlString = URL(string: url) {
-            attachmentURLString = url
-            placeImageView.kf.indicatorType = .activity
-            placeImageView.kf.setImage(with: urlString)
+        // Setup the attachments array
+        var attachments = [KMADocumentData]()
+        let uniqueId = String(UUID().uuidString.suffix(8))
+        
+        for (index, url) in urls.enumerated() {
+            if !url.isEmpty {
+                var attachment = KMADocumentData()
+                attachment.previewURL = url
+                attachment.fileURL = url
+                attachment.name = "Image \(index + 1)"
+                attachment.objectId = uniqueId
+                attachments.append(attachment)
+            }
+        }
+        
+        imagesView.attachments = attachments
+        print("ATTACHMENTS:\n\n\(attachments)")
+        
+        // KMADocumentData
+        if !attachments.isEmpty {
             placeImageViewLeft.constant = 20
-            placeImageView.alpha = 1
+            imagesView.alpha = 1
         } else {
-            placeImageView.image = UIImage()
-            placeImageView.alpha = 0
             placeImageViewLeft.constant = -imageWidth
-            placeImageView.alpha = 0
+            imagesView.alpha = 0
         }
     }
     
@@ -304,7 +314,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         locationLabel.text = dataset.neighborName
         
         // Hide image view
-        setupAttachments(url: "", name: "", id: "")
+        setupAttachments(urls: [""], name: "", id: "")
         
         // Prepare rows
         var rows = [KMAUIRowData]()
@@ -409,15 +419,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             
             rowViews.append(rowView)
         }
-        
-        // Setup the image height
-        var imageHeight = 36 * CGFloat(rowViews.count) + 21 + 20
-        
-        if let infoText = locationLabel.text, !infoText.isEmpty {
-            imageHeight += 21 + 6
-        }
-        
-        placeImageViewHeight.constant = imageHeight + CGFloat(polygone.googlePlaceOpeningHours.count * 22)
     }
     
     @IBAction func showOnMapButtonPressed(_ sender: Any) {
@@ -431,24 +432,11 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             mapCallback?(true)
         }
     }
-    
-    @IBAction func previewAttachment(_ sender: Any) {
-        if !attachmentURLString.isEmpty {
-            KMAUIUtilities.shared.quicklookPreview(urlString: attachmentURLString, fileName: name + ".jpg", uniqueId: uniqueId) { (previewItemValue) in
-                KMAUIConstants.shared.popupOpened = true
-                self.previewItem = previewItemValue
-                // Display file
-                let previewController = QLPreviewController()
-                previewController.dataSource = self
-                KMAUIUtilities.shared.displayAlert(viewController: previewController)
-            }
-        }
-    }
 }
 
 // MARK: - QLPreviewController Datasource
 
-extension KMAUIPolygoneTableViewCell: QLPreviewControllerDataSource {
+extension KMAUIPolygoneTableViewCell1: QLPreviewControllerDataSource {
     
     public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
