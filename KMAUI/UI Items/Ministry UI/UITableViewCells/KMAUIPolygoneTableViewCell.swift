@@ -70,11 +70,11 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Location label
         locationLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
-        // Place imageView
-        imagesView.layer.borderWidth = 1
-        imagesView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
-        imagesView.layer.cornerRadius = 8
-        imagesView.clipsToBounds = true
+//        // Place imageView
+//        imagesView.layer.borderWidth = 1
+//        imagesView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
+//        imagesView.layer.cornerRadius = 8
+//        imagesView.clipsToBounds = true
         
         // No selection required
         selectionStyle = .none
