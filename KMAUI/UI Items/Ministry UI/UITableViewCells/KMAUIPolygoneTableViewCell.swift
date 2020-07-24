@@ -81,6 +81,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
         rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         
+        // Images view
+        imagesView.layer.cornerRadius = 8
+        imageView?.clipsToBounds = true
+        
         // No selection required
         selectionStyle = .none
     }
@@ -98,7 +102,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     }
     
     public func setupColors(highlight: Bool) {
-        if highlight {
+        if highlight, isClickable {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
             rightArrowImageView.tintColor = UIColor.white
             rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
