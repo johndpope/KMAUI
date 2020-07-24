@@ -172,6 +172,7 @@ public class KMAUIImagesPreviewView: UIView {
         
         // Show the image
         if let previewURL = URL(string: document.previewURL) {
+            print("SET IMAGE: \(previewURL)")
             imageView.kf.setImage(with: previewURL)
         }
     }

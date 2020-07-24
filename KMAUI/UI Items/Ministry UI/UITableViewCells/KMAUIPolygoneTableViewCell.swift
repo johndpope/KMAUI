@@ -237,33 +237,21 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         // Opening hours
-            var hoursString = ""
-            
-            for daySchedule in polygone.googlePlaceOpeningHours {
-                if !daySchedule.isEmpty {
+        var hoursString = ""
+        
+        for daySchedule in polygone.googlePlaceOpeningHours {
+            if !daySchedule.isEmpty {
                 if hoursString.isEmpty {
                     hoursString = daySchedule
                 } else {
                     hoursString += "\n" + daySchedule
                 }
-                }
             }
-            
-            if !hoursString.isEmpty {
-                rows.append(KMAUIRowData(rowName: "Opening hours", rowValue: hoursString))
-            }
-
-        /*
-        // Working hours
-        if !polygone.googlePlaceWorkingHours.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Working hours", rowValue: polygone.googlePlaceWorkingHours))
-        }*/
+        }
         
-        
-        
-        
-        
-        //
+        if !hoursString.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Opening hours", rowValue: hoursString))
+        }
         
         // Setup stack view
         setupStackView(rows: rows)
@@ -429,7 +417,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             imageHeight += 21 + 6
         }
         
-        placeImageViewHeight.constant = imageHeight
+        placeImageViewHeight.constant = imageHeight + CGFloat(polygone.googlePlaceOpeningHours.count * 22)
     }
     
     @IBAction func showOnMapButtonPressed(_ sender: Any) {
