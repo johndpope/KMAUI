@@ -244,30 +244,35 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         placeImageViewWidth.constant = imageWidth
-        
         // Setup the attachments array
         var attachments = [KMADocumentData]()
-        let uniqueId = String(UUID().uuidString.suffix(8))
         
-        for (index, url) in urls.enumerated() {
-            if !url.isEmpty {
-                var attachment = KMADocumentData()
-                attachment.name = "Image \(index + 1).jpg"
-                attachment.objectId = uniqueId
-                // Setup urls
-                if url.starts(with: "http") {
-                    attachment.previewURL = url
-                    attachment.fileURL = url
-                } else if !url.isEmpty {
-                    attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
-                    attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        if !polygone.googlePlaceImagesArray.isEmpty {
+            attachments = polygone.googlePlaceImagesArray
+        } else {
+            let uniqueId = String(UUID().uuidString.suffix(8))
+            
+            for (index, url) in urls.enumerated() {
+                if !url.isEmpty {
+                    var attachment = KMADocumentData()
+                    attachment.name = "Image \(index + 1).jpg"
+                    attachment.objectId = uniqueId
+                    // Setup urls
+                    if url.starts(with: "http") {
+                        attachment.previewURL = url
+                        attachment.fileURL = url
+                    } else if !url.isEmpty {
+                        attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                        attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    }
+                    attachment.fileExtension = "JPG"
+                    // Add an attachments
+                    attachments.append(attachment)
                 }
-                attachment.fileExtension = "JPG"
-                // Add an attachments
-                attachments.append(attachment)
             }
         }
         
+        // Setup images
         imagesView.attachments = attachments
         
         // Callback for attachment actions

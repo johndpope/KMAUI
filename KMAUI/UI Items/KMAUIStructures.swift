@@ -4482,6 +4482,7 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceUTCOffset = 0
     public var googlePlaceReviews = [KMAUIGoogleReviewStruct]()
     public var googlePlaceOpeningHours = [String]()
+    public var googlePlaceImagesArray = [KMADocumentData]()
     // Bundle id
     public var googleCategory = ""
     public var googleDetailsLoaded = false
@@ -4614,6 +4615,32 @@ public struct KMAUIPolygoneDataStruct {
         } else {
 //            print("No photos")
         }
+        
+        // Setup the Images array
+        var attachments = [KMADocumentData]()
+        let uniqueId = String(UUID().uuidString.suffix(8))
+        
+        for (index, url) in self.googlePlaceImages.enumerated() {
+            if !url.isEmpty {
+                var attachment = KMADocumentData()
+                attachment.name = "Image \(index + 1).jpg"
+                attachment.type = "Document"
+                attachment.hasCreatedAt = true
+                attachment.objectId = uniqueId
+                // Setup urls
+                if url.starts(with: "http") {
+                    attachment.previewURL = url
+                    attachment.fileURL = url
+                } else if !url.isEmpty {
+                    attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                }
+                // Add an attachments
+                attachments.append(attachment)
+            }
+        }
+        
+        self.googlePlaceImagesArray = attachments
         
         // URL
         if let url = object["url"] as? String {
