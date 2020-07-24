@@ -367,7 +367,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         for (index, row) in rows.enumerated() {
             let itemView = UIStackView()
             itemView.axis = .horizontal
-            itemView.distribution = UIStackView.Distribution.fill
+            itemView.distribution = UIStackView.Distribution.fillProportionally
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 8
             
@@ -436,7 +436,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
 
 // MARK: - QLPreviewController Datasource
 
-extension KMAUIPolygoneTableViewCell1: QLPreviewControllerDataSource {
+extension KMAUIPolygoneTableViewCell: QLPreviewControllerDataSource {
     
     public func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
         return 1
