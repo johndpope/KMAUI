@@ -70,7 +70,7 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             // Profile images
             let profileImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
             profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
-            profileImageView.layer.cornerRadius = 22
+            profileImageView.layer.cornerRadius = 4
             profileImageView.layer.borderWidth = 1
             profileImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2)
             profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
