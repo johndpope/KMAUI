@@ -2169,7 +2169,23 @@ public class KMAUIUtilities {
                     polygoneData.fillFromDictionary(object: item)
                     
                     if polygoneData.location.isEmpty {
-                        polygoneData.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
+                        // Randomize the value
+                        let randomInt = Int.random(in: 0 ..< 10)
+                        let randomInt2 = Int.random(in: 0 ..< 10)
+                        let areaLat = ne.latitude - sw.latitude
+                        let areaLong = ne.longitude - sw.longitude
+                        var latOffset = areaLat * Double(randomInt) / 10
+                        var longOffset = areaLong * Double(randomInt) / 10
+
+                        if randomInt % 2 == 0 {
+                            latOffset = -latOffset
+                        }
+                        
+                        if randomInt2 % 2 == 0 {
+                            longOffset = -longOffset
+                        }
+                        
+                        polygoneData.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2 + latOffset, longitude: (sw.longitude + ne.longitude) / 2 + longOffset)
                     }
                     
                     polygoneArray.append(polygoneData)
