@@ -4326,6 +4326,7 @@ public struct KMAUI9x9Bundle {
     public var icon = ""
     public var polygoneArray = [KMAUIPolygoneDataStruct]()
     public var googleCategoriesArray = [KMAUI9x9Bundle]()
+    public var location = CLLocationCoordinate2D()
     
     public init() {}
     

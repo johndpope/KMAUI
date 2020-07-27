@@ -2114,7 +2114,7 @@ public class KMAUIUtilities {
             }
             
             //            print("\nBundles loaded:\n\(jsonString)")
-            let bundles = KMAUIUtilities.shared.setupBundles(jsonString: jsonString)
+            let bundles = KMAUIUtilities.shared.setupBundles(jsonString: jsonString, sw: sw, ne: ne)
             
             completion(bundles.count, bundles)
         }
@@ -2297,7 +2297,7 @@ public class KMAUIUtilities {
     
     // MARK: KMA 9x9 Bundles
     
-    public func setupBundles(jsonString: String) -> [KMAUI9x9Bundle] {
+    public func setupBundles(jsonString: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> [KMAUI9x9Bundle] {
         var bundles = [KMAUI9x9Bundle]()
         // Get bundles list
         let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
@@ -2307,10 +2307,14 @@ public class KMAUIUtilities {
                 bundle.fillFromDictionary(object: bundleItem)
                 // Add the bundle into the array if it's not an empty bundle
                 if !bundle.id.isEmpty {
+                    // Load Google Places
                     if bundle.name == "Google" {
                         bundle.name = "Google Places"
                         bundle.description = "Nearby places"
                         bundle.setupGoogleCategories()
+                    } else {
+                        // Setup location
+                        bundle.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
                     }
                     
                     bundles.append(bundle)
