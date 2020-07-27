@@ -4459,6 +4459,7 @@ public struct KMAUIPolygoneDataStruct {
     public var type = ""
     public var value = ""
     public var valueArray = [KMAUIPolygoneDataStruct]()
+    public var location = CLLocationCoordinate2D()
     // Google
     public var googlePlaceId = ""
     public var googlePlaceIdValue = ""
