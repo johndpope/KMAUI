@@ -114,14 +114,15 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             // Building kind
             let rowNameLabel = KMAUIBoldTextLabel()
             rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
+            rowNameLabel.text = titles.rowName
             
             if index == 0 {
-                rowNameLabel.textAlignment = .left
+                rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
             } else {
                 rowNameLabel.textAlignment = .center
+                rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
             }
-            
-            rowNameLabel.text = titles.rowName
+
             rowNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24.0).isActive = true
             itemView.addArrangedSubview(rowNameLabel)
         }
@@ -142,8 +143,8 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             // Row title
             let rowNameLabel = KMAUIBoldTextLabel()
             rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
-            rowNameLabel.textAlignment = .left
             rowNameLabel.text = key
+            rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
             rowNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24.0).isActive = true
             
             rowNameLabel.layer.cornerRadius = 8

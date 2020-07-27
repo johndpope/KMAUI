@@ -148,7 +148,6 @@ public class KMAUIPolygoneReviewsTableViewCell: UITableViewCell {
             stackView.addArrangedSubview(rowNameLabel)
             
             // Divide with line
-            print("\(index + 1) < \(reviews.count)")
             if index + 1 < reviews.count {
                 addLine()
             }
