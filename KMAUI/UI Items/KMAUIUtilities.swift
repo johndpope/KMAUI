@@ -2152,11 +2152,11 @@ public class KMAUIUtilities {
             
 //            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
-            completion(self.processPolygoneData(jsonString: jsonString))
+            completion(self.processPolygoneData(jsonString: jsonString, sw: sw, ne: ne))
         }
     }
     
-    public func processPolygoneData(jsonString: String) -> [KMAUIPolygoneDataStruct] {
+    public func processPolygoneData(jsonString: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> [KMAUIPolygoneDataStruct] {
         let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
         var polygoneArray = [KMAUIPolygoneDataStruct]()
 
@@ -2167,6 +2167,11 @@ public class KMAUIUtilities {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "custom"
                     polygoneData.fillFromDictionary(object: item)
+                    
+                    if polygoneData.location.isEmpty {
+                        polygoneData.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
+                    }
+                    
                     polygoneArray.append(polygoneData)
                 }
             }
