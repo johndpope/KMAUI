@@ -23,6 +23,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
+    public var isClickable = false
     
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -42,7 +43,21 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
-        // Configure the view for the selected state
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight, isClickable {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        }
     }
     
     public func setupCell() {
