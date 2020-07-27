@@ -2170,8 +2170,8 @@ public class KMAUIUtilities {
                     
                     if polygoneData.location.isEmpty {
                         // Randomize the value
-                        let randomInt = Int.random(in: 0 ..< 25)
-                        let randomInt2 = Int.random(in: 0 ..< 25)
+                        let randomInt = Int.random(in: 0 ..< 20)
+                        let randomInt2 = Int.random(in: 0 ..< 20)
                         let areaLat = ne.latitude - sw.latitude
                         let areaLong = ne.longitude - sw.longitude
                         var latOffset = areaLat * Double(randomInt) / 100
