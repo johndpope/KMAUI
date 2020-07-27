@@ -16,9 +16,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var bgViewTop: NSLayoutConstraint!
-    @IBOutlet weak var placeImageView: UIImageView!
     @IBOutlet weak var placeImageViewWidth: NSLayoutConstraint!
-    @IBOutlet weak var placeImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var placeImageViewLeft: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var locationLabel: KMAUIRegularTextLabel!
@@ -27,6 +25,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: KMAUIBoldTextLabel!
     @IBOutlet weak var ratingLabelWidth: NSLayoutConstraint!
     @IBOutlet weak var ratingLabelLeft: NSLayoutConstraint!
+    @IBOutlet weak var imagesView: KMAUIImagesPreviewView!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var rightArrowImageViewRight: NSLayoutConstraint!
     
     // MARK: - Variables
     public static let id = "KMAUIPolygoneTableViewCell"
@@ -44,9 +45,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
     }
     public var rowViews = [UIView]()
     public lazy var previewItem = NSURL()
-    public var attachmentURLString = ""
     public var uniqueId = ""
     public var name = ""
+    public var attachmentCallback: ((Bool) -> Void)?
+    public var isClickable = false
 
     override public func awakeFromNib() {
         super.awakeFromNib()
@@ -65,17 +67,24 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         // Rating label
         ratingLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
         ratingLabel.textColor = UIColor.white
-        ratingLabel.layer.cornerRadius = 8
+        ratingLabel.layer.cornerRadius = 4
         ratingLabel.clipsToBounds = true
         
         // Location label
         locationLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
-        // Place imageView
-        placeImageView.layer.borderWidth = 1
-        placeImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
-        placeImageView.layer.cornerRadius = 8
-        placeImageView.clipsToBounds = true
+        // Setup the right arrow
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.layer.cornerRadius = 4
+        rightArrowImageView.clipsToBounds = true
+        // Default state - disabled
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        
+        // Images view
+        imagesView.layer.cornerRadius = 8
+        imagesView.clipsToBounds = true
+        imagesView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
         // No selection required
         selectionStyle = .none
@@ -83,8 +92,37 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
 
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        setupColors(highlight: selected)
+    }
+    
+    override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        
+        setupColors(highlight: highlighted)
+    }
+    
+    public func setupColors(highlight: Bool) {
+        if highlight, isClickable {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
+        } else {
+            bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        }
+    }
+    
+    func setupClickable() {
+        // Check if clickable
+        if isClickable {
+            rightArrowImageViewRight.constant = 20
+            rightArrowImageView.alpha = 1
+        } else {
+            rightArrowImageViewRight.constant = -8
+            rightArrowImageView.alpha = 0
+        }
     }
     
     public func setupPolygone() {
@@ -95,8 +133,8 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             bgViewTop.constant = 0
         }
         
-        // Attachment
-        attachmentURLString = ""
+        // Setup clickable
+        setupClickable()
 
         // Check type
         if polygone.polygoneType == "custom" {
@@ -154,9 +192,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         
         // Setup attachments
         if polygone.type == "image" {
-            setupAttachments(url: polygone.value, name: polygone.title, id: polygone.title)
+            setupAttachments(urls: [polygone.value], name: polygone.title, id: polygone.title)
         } else {
-            setupAttachments(url: "", name: "", id: "")
+            setupAttachments(urls: [""], name: "", id: "")
         }
         
         // Setup stack view
@@ -204,64 +242,99 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         }
         
         // Setup attachments
-        var imageURL = ""
-        
-        if polygone.googlePlaceImage.starts(with: "http") {
-            imageURL = polygone.googlePlaceImage
-        } else if !polygone.googlePlaceImage.isEmpty {
-            imageURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(polygone.googlePlaceImage)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
-        }
-        
-        setupAttachments(url: imageURL, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
+        setupAttachments(urls: polygone.googlePlaceImages, name: polygone.googlePlaceName, id: polygone.googlePlaceId)
         
         // Prepare rows
         var rows = [KMAUIRowData]()
-        
-        // Open now
-        if !polygone.googlePlaceOpenNow.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Open now", rowValue: polygone.googlePlaceOpenNow))
-        }
-
-        // Categores
-        if !polygone.googlePlaceTypes.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Category", rowValue: polygone.googlePlaceTypesString))
-        }
-        
-        // Working hours
-        if !polygone.googlePlaceWorkingHours.isEmpty {
-            rows.append(KMAUIRowData(rowName: "Working hours", rowValue: polygone.googlePlaceWorkingHours))
-        }
         
         // Business status
         if !polygone.googlePlaceBusinessStatus.isEmpty {
             rows.append(KMAUIRowData(rowName: "Business status", rowValue: polygone.googlePlaceBusinessStatus.lowercased().capitalized))
         }
         
+        // Categores
+        if !polygone.googlePlaceTypes.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Category", rowValue: polygone.googlePlaceTypesString))
+        }
+        
+        // Open now
+        if !polygone.googlePlaceOpenNow.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Open now", rowValue: polygone.googlePlaceOpenNow))
+        }
+        
+        // Opening hours
+        var hoursString = ""
+        
+        for daySchedule in polygone.googlePlaceOpeningHours {
+            if !daySchedule.isEmpty {
+                if hoursString.isEmpty {
+                    hoursString = daySchedule
+                } else {
+                    hoursString += "\n" + daySchedule
+                }
+            }
+        }
+        
+        if !hoursString.isEmpty {
+            rows.append(KMAUIRowData(rowName: "Opening hours", rowValue: hoursString))
+        }
+        
         // Setup stack view
         setupStackView(rows: rows)
     }
     
-    func setupAttachments(url: String, name: String, id: String) {
-        var imageWidth: CGFloat = 200
+    func setupAttachments(urls: [String], name: String, id: String) {
+        var imageWidth: CGFloat = 240
         
         let orientation = UIApplication.shared.statusBarOrientation
         if orientation.isPortrait {
-            imageWidth = 100
+            imageWidth = 160
         }
         
         placeImageViewWidth.constant = imageWidth
+        // Setup the attachments array
+        var attachments = [KMADocumentData]()
         
-        if !url.isEmpty, let urlString = URL(string: url) {
-            attachmentURLString = url
-            placeImageView.kf.indicatorType = .activity
-            placeImageView.kf.setImage(with: urlString)
-            placeImageViewLeft.constant = 20
-            placeImageView.alpha = 1
+        if !polygone.googlePlaceImagesArray.isEmpty {
+            attachments = polygone.googlePlaceImagesArray
         } else {
-            placeImageView.image = UIImage()
-            placeImageView.alpha = 0
+            let uniqueId = String(UUID().uuidString.suffix(8))
+            
+            for (index, url) in urls.enumerated() {
+                if !url.isEmpty {
+                    var attachment = KMADocumentData()
+                    attachment.name = "Image \(index + 1).jpg"
+                    attachment.objectId = uniqueId
+                    // Setup urls
+                    if url.starts(with: "http") {
+                        attachment.previewURL = url
+                        attachment.fileURL = url
+                    } else if !url.isEmpty {
+                        attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                        attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    }
+                    attachment.fileExtension = "JPG"
+                    // Add an attachments
+                    attachments.append(attachment)
+                }
+            }
+        }
+        
+        // Setup images
+        imagesView.attachments = attachments
+        
+        // Callback for attachment actions
+        imagesView.viewAttachmentsAction = { action in
+            self.attachmentCallback?(true)
+        }
+        
+        // KMADocumentData
+        if !attachments.isEmpty {
+            placeImageViewLeft.constant = 20
+            imagesView.alpha = 1
+        } else {
             placeImageViewLeft.constant = -imageWidth
-            placeImageView.alpha = 0
+            imagesView.alpha = 0
         }
     }
     
@@ -272,6 +345,9 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         } else {
             bgViewTop.constant = 0
         }
+        
+        // Setup clickable
+        setupClickable()
         
         // Title - Municipality name
         titleLabel.text = dataset.municipalityName
@@ -288,7 +364,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         locationLabel.text = dataset.neighborName
         
         // Hide image view
-        setupAttachments(url: "", name: "", id: "")
+        setupAttachments(urls: [""], name: "", id: "")
         
         // Prepare rows
         var rows = [KMAUIRowData]()
@@ -341,7 +417,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
         for (index, row) in rows.enumerated() {
             let itemView = UIStackView()
             itemView.axis = .horizontal
-            itemView.distribution = UIStackView.Distribution.fill
+            itemView.distribution = UIStackView.Distribution.fillProportionally
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 8
             
@@ -352,6 +428,7 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let rowNameLabel = KMAUIRegularTextLabel()
             rowNameLabel.textAlignment = .left
             rowNameLabel.text = row.rowName
+            rowNameLabel.numberOfLines = 0
             
             if row.rowName == "Values", row.rowValue.isEmpty {
                 rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(14)
@@ -364,8 +441,10 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             let rowValueLabel = KMAUIBoldTextLabel()
             rowValueLabel.textAlignment = .right
             rowValueLabel.text = row.rowValue
+            rowValueLabel.numberOfLines = 0
             rowValueLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .right)
             rowValueLabel.setContentHuggingPriority(UILayoutPriority(rawValue: 251), for: .horizontal)
+            rowValueLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 21.0).isActive = true
             itemView.addArrangedSubview(rowValueLabel)
             
             let rowView = UIView()
@@ -393,15 +472,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             
             rowViews.append(rowView)
         }
-        
-        // Setup the image height
-        var imageHeight = 36 * CGFloat(rowViews.count) + 21 + 20
-        
-        if let infoText = locationLabel.text, !infoText.isEmpty {
-            imageHeight += 21 + 6
-        }
-        
-        placeImageViewHeight.constant = imageHeight
     }
     
     @IBAction func showOnMapButtonPressed(_ sender: Any) {
@@ -413,19 +483,6 @@ public class KMAUIPolygoneTableViewCell: UITableViewCell {
             }
         } else {
             mapCallback?(true)
-        }
-    }
-    
-    @IBAction func previewAttachment(_ sender: Any) {
-        if !attachmentURLString.isEmpty {
-            KMAUIUtilities.shared.quicklookPreview(urlString: attachmentURLString, fileName: name + ".jpg", uniqueId: uniqueId) { (previewItemValue) in
-                KMAUIConstants.shared.popupOpened = true
-                self.previewItem = previewItemValue
-                // Display file
-                let previewController = QLPreviewController()
-                previewController.dataSource = self
-                KMAUIUtilities.shared.displayAlert(viewController: previewController)
-            }
         }
     }
 }

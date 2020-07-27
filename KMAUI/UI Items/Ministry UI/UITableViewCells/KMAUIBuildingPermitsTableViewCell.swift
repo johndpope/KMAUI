@@ -11,6 +11,7 @@ import UIKit
 public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlets
+    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var stackViewTop: NSLayoutConstraint!
     
@@ -22,9 +23,14 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             setupCell()
         }
     }
-
+    
     override public func awakeFromNib() {
         super.awakeFromNib()
+        
+        // Larger shadow for bgView
+        bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+        bgView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        bgView.layer.shadowRadius = 12
         
         // Background color
         backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
@@ -32,10 +38,10 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         // No selection required
         selectionStyle = .none
     }
-
+    
     override public func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -82,77 +88,84 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             fontSize = 10
         }
         
-        // Add line
-        addLine()
+        // Rows
+        var keys = KMAUIConstants.shared.establishmentPermitKeys
         
-        // Adding the top title view
-        let topLineView = UIStackView()
-        topLineView.axis = .horizontal
-        topLineView.distribution = UIStackView.Distribution.fillEqually
-        topLineView.alignment = UIStackView.Alignment.fill
-        topLineView.spacing = 4
-        
-        var keys = KMAUIConstants.shared.buildingPermitKeys
-        
-        if dataset.type == "establishmentPermits" {
-            keys = KMAUIConstants.shared.establishmentPermitKeys
-        }
-
-        for title in keys { // topLineArray
-            let rowNameLabel = KMAUIBoldTextLabel()
-            rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
-            rowNameLabel.textAlignment = .center
-            rowNameLabel.text = title
-            topLineView.addArrangedSubview(rowNameLabel)
+        if dataset.type == "buildingPermits" {
+            keys = KMAUIConstants.shared.buildingPermitKeys
         }
         
-        stackView.addArrangedSubview(topLineView)
-        topLineView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+        // Title
+        let itemView = UIStackView()
+        itemView.axis = .horizontal
+        itemView.distribution = UIStackView.Distribution.fill
+        itemView.alignment = UIStackView.Alignment.fill
+        itemView.spacing = 4
         
-        // Add the title for each category
-        // Prepare the rows
-        for (index1, row) in rows.enumerated() {
-            // Add line
-            addLine()
-            
+        var titlesArray = [KMAUIRowData(rowName: "Types of Activities", rowValue: "")]
+        
+        if dataset.type == "buildingPermits" {
+            titlesArray = [KMAUIRowData(rowName: "Type of Permit", rowValue: "")]
+        }
+        
+        titlesArray.append(contentsOf: rows)
+        
+        for (index, titles) in titlesArray.enumerated() {
             // Building kind
             let rowNameLabel = KMAUIBoldTextLabel()
-            rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize + 2)
-            rowNameLabel.textAlignment = .left
-            rowNameLabel.text = "   " + row.rowName
-            rowNameLabel.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
-            rowNameLabel.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColorReverse
-            rowNameLabel.layer.cornerRadius = 8
-            rowNameLabel.clipsToBounds = true
-            stackView.addArrangedSubview(rowNameLabel)
+            rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
+            rowNameLabel.text = titles.rowName
             
-            // Values row
+            if index == 0 {
+                rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+            } else {
+                rowNameLabel.textAlignment = .center
+                rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
+            }
+
+            rowNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24.0).isActive = true
+            itemView.addArrangedSubview(rowNameLabel)
+        }
+        
+        stackView.addArrangedSubview(itemView)
+        itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+        
+        addLine()
+        
+        for key in keys {
+            // Title
             let itemView = UIStackView()
             itemView.axis = .horizontal
             itemView.distribution = UIStackView.Distribution.fill
             itemView.alignment = UIStackView.Alignment.fill
             itemView.spacing = 4
             
-            // Value for items
-            let value = values[index1]
+            // Row title
+            let rowNameLabel = KMAUIBoldTextLabel()
+            rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
+            rowNameLabel.text = key
+            rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+            rowNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24.0).isActive = true
             
-            for key in keys {
-                let rowNameLabel = KMAUIRegularTextLabel()
+            rowNameLabel.layer.cornerRadius = 8
+            rowNameLabel.clipsToBounds = true
+            itemView.addArrangedSubview(rowNameLabel)
+            
+            // Values
+            for value in values {
                 if let count = value[key] {
+                    // Value title
+                    let rowNameLabel = KMAUIRegularTextLabel()
                     rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize)
+                    rowNameLabel.textAlignment = .center
                     rowNameLabel.text = "\(count)"
+                    itemView.addArrangedSubview(rowNameLabel)
                 }
-                rowNameLabel.textAlignment = .center
-                rowNameLabel.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
-                itemView.addArrangedSubview(rowNameLabel)
             }
             
             stackView.addArrangedSubview(itemView)
             itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
         }
-        
-        // Add line
-        addLine()
     }
     
     func addLine() {

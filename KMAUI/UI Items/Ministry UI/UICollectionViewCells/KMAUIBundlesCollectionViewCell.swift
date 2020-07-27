@@ -49,10 +49,12 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
         // Title label
         titleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         titleLabel.minimumScaleFactor = 0.5
+        titleLabel.adjustsFontSizeToFitWidth = true
         
         // Info label
         infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
         infoLabel.minimumScaleFactor = 0.5
+        infoLabel.adjustsFontSizeToFitWidth = true
     }
     
     public func setupBundle() {

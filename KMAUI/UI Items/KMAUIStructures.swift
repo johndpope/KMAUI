@@ -4326,6 +4326,7 @@ public struct KMAUI9x9Bundle {
     public var icon = ""
     public var polygoneArray = [KMAUIPolygoneDataStruct]()
     public var googleCategoriesArray = [KMAUI9x9Bundle]()
+    public var location = CLLocationCoordinate2D()
     
     public init() {}
     
@@ -4387,6 +4388,64 @@ public struct KMAUI9x9Bundle {
     }
 }
 
+// MARK: - Google Reviews
+
+public struct KMAUIGoogleReviewStruct {
+    // Variables
+    public var author = ""
+    public var authorURL = ""
+    public var language = ""
+    public var profilePhotoURL = ""
+    public var rating: Double = 0
+    public var displayTime = ""
+    public var text = ""
+    public var time = Date()
+    
+    public init() {}
+    
+    public mutating func fillFrom(review: [String: AnyObject]) {
+        // Author
+        if let author = review["author_name"] as? String {
+            self.author = author
+        }
+        
+        // URL
+        if let authorURL = review["author_url"] as? String {
+            self.authorURL = authorURL
+        }
+        
+        // Language
+        if let language = review["language"] as? String {
+            self.language = language
+        }
+
+        // Profile photo URL
+        if let profilePhotoURL = review["profile_photo_url"] as? String {
+            self.profilePhotoURL = profilePhotoURL
+        }
+        
+        // Rating
+        if let rating = review["rating"] as? Double {
+            self.rating = rating
+        }
+        
+        // Display time
+        if let displayTime = review["relative_time_description"] as? String {
+            self.displayTime = displayTime
+        }
+
+        // Text
+        if let text = review["text"] as? String {
+            self.text = text
+        }
+        
+        // Time
+        if let time = review["time"] as? Double {
+            self.time = Date(timeIntervalSince1970: time)
+        }
+    }
+}
+
 // MARK: - Polygone for Bundle
 
 public struct KMAUIPolygoneDataStruct {
@@ -4400,6 +4459,7 @@ public struct KMAUIPolygoneDataStruct {
     public var type = ""
     public var value = ""
     public var valueArray = [KMAUIPolygoneDataStruct]()
+    public var location = CLLocationCoordinate2D()
     // Google
     public var googlePlaceId = ""
     public var googlePlaceIdValue = ""
@@ -4410,7 +4470,7 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceClosed = false
     public var googlePlaceOpenNow = ""
     public var googlePlaceIcon = ""
-    public var googlePlaceImage = ""
+    public var googlePlaceImages = [String]()
     public var googlePlaceTypes = [String]()
     public var googlePlaceTypesString = ""
     public var googlePlaceHours = ""
@@ -4420,8 +4480,14 @@ public struct KMAUIPolygoneDataStruct {
     public var googlePlaceWorkingHours = ""
     public var googlePlaceBusinessStatus = "" // OPERATIONAL || CLOSED_TEMPORARILY || CLOSED_PERMANENTLY
     public var googlePlaceAddress = ""
+    public var googlePlaceURL = ""
+    public var googlePlaceUTCOffset = 0
+    public var googlePlaceReviews = [KMAUIGoogleReviewStruct]()
+    public var googlePlaceOpeningHours = [String]()
+    public var googlePlaceImagesArray = [KMADocumentData]()
     // Bundle id
     public var googleCategory = ""
+    public var googleDetailsLoaded = false
     
     public init() {}
     
@@ -4493,42 +4559,37 @@ public struct KMAUIPolygoneDataStruct {
 //            print("- Name: \(name)")
         }
         
-        // Open now
-        if let openingHours = object["opening_hours"] as? [String: AnyObject], let openNow = openingHours["open_now"] as? Bool {
-            if openNow {
-                self.googlePlaceOpenNow = "Yes"
-            } else {
-                self.googlePlaceOpenNow = "No"
-            }
-//            print("- Open now: \(self.googlePlaceOpenNow)")
-        }
-        
         // Address
-        if let address = object["vicinity"] as? String {
+        if let address = object["formatted_address"] as? String {
+            self.googlePlaceAddress = address
+//            print("- Address: \(address)")
+        } else if let address = object["vicinity"] as? String {
             self.googlePlaceAddress = address
 //            print("- Address: \(address)")
         }
         
         // Types
         if let types = object["types"] as? [String] {
-            self.googlePlaceTypesString = ""
-            
-            for typeValue in types {
-                let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
-                
-                if !self.googlePlaceTypes.contains(typeValueItem) {
-                    self.googlePlaceTypes.append(typeValueItem)
-                    
-                    if self.googlePlaceTypesString.isEmpty {
-                       self.googlePlaceTypesString = typeValueItem
-                    } else {
-                        self.googlePlaceTypesString += ", " + typeValueItem
-                    }
-                }
-            }
+            self.googlePlaceTypes = types
             
 //            print("- Types array: \(self.googlePlaceTypes)")
 //            print("- Types string: \(self.googlePlaceTypesString)")
+        }
+        
+        self.googlePlaceTypesString = ""
+        
+        for typeValue in self.googlePlaceTypes {
+            let typeValueItem = typeValue.replacingOccurrences(of: "_", with: " ").capitalized
+            
+            if !self.googlePlaceTypes.contains(typeValueItem) {
+                self.googlePlaceTypes.append(typeValueItem)
+                
+                if self.googlePlaceTypesString.isEmpty {
+                   self.googlePlaceTypesString = typeValueItem
+                } else {
+                    self.googlePlaceTypesString += ", " + typeValueItem
+                }
+            }
         }
         
         // Rating
@@ -4545,40 +4606,84 @@ public struct KMAUIPolygoneDataStruct {
         
         // Photo
         if let photos = object["photos"] as? [[String: AnyObject]], !photos.isEmpty {
-            let photo = photos[0]
+            self.googlePlaceImages = [String]()
             
-            if let photoReference = photo["photo_reference"] as? String {
-                self.googlePlaceImage = photoReference
-//                print("- Photo reference: \(photoReference)")
+            for photo in photos {
+                if let photoReference = photo["photo_reference"] as? String {
+                    self.googlePlaceImages.append(photoReference)
+//                    print("- Photo reference: \(photoReference)")
+                }
             }
         } else {
 //            print("No photos")
         }
         
-        /*
-         "photos": <__NSSingleObjectArrayI 0x6000038c3ab0>(
-         {
-             height = 4608;
-             "html_attributions" =     (
-                 "<a href=\"https://maps.google.com/maps/contrib/110033666216566202495\">Iftikhar Kazi</a>"
-             );
-             "photo_reference" = "CmRaAAAArFPzx-HNvBu611xZWLW-WGL_uRAAE70GOm5khaTAPvGggOse-iNQXT2xIxv6trYP8ypeqvecN0H-95trO1DA1apiglaSwmyEPYlb_sesy471YziojIXX_MD5DzXsjbl1EhCbiWh0_lz1yHICRj7Y0Zy_GhSg2chvlDX8LCAUqu8XWn2ihoNdVg";
-             width = 3456;
-         }
-         */
+        // Setup the Images array
+        var attachments = [KMADocumentData]()
+        let uniqueId = String(UUID().uuidString.suffix(8))
+        
+        for (index, url) in self.googlePlaceImages.enumerated() {
+            if !url.isEmpty {
+                var attachment = KMADocumentData()
+                attachment.name = "Image \(index + 1).jpg"
+                attachment.type = "Document"
+                attachment.hasCreatedAt = true
+                attachment.objectId = uniqueId
+                // Setup urls
+                if url.starts(with: "http") {
+                    attachment.previewURL = url
+                    attachment.fileURL = url
+                } else if !url.isEmpty {
+                    attachment.previewURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                    attachment.fileURL = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(url)&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+                }
+                // Add an attachments
+                attachments.append(attachment)
+            }
+        }
+        
+        self.googlePlaceImagesArray = attachments
+        
+        // URL
+        if let url = object["url"] as? String {
+            self.googlePlaceURL = url
+        }
+        
+        // UTC Offset
+        if let utcOffset = object["utc_offset"] as? Int {
+            self.googlePlaceUTCOffset = utcOffset
+        }
+        
+        // Reviews
+        self.googlePlaceReviews = [KMAUIGoogleReviewStruct]()
+        
+        if let reviews = object["reviews"] as? [[String: AnyObject]] {
+            for review in reviews {
+                var reviewItem = KMAUIGoogleReviewStruct()
+                reviewItem.fillFrom(review: review)
+//                print("- Review: \(reviewItem)")
+                self.googlePlaceReviews.append(reviewItem)
+            }
+        }
+        
+        // Opening hours
+        // Open now
+        if let openingHours = object["opening_hours"] as? [String: AnyObject] {
+            if let openNow = openingHours["open_now"] as? Bool {
+                if openNow {
+                    self.googlePlaceOpenNow = "Yes"
+                } else {
+                    self.googlePlaceOpenNow = "No"
+                }
+            }
+//            print("- Open now: \(self.googlePlaceOpenNow)")
+            
+            if let weekdayText = openingHours["weekday_text"] as? [String] {
+                self.googlePlaceOpeningHours = weekdayText
+//                print("- Opening hours: \(self.googlePlaceOpeningHours)")
+            }
+        }
     }
-    
-    /*
-     "photos": <__NSSingleObjectArrayI 0x60000202eb20>(
-     {
-         height = 4032;
-         "html_attributions" =     (
-             "<a href=\"https://maps.google.com/maps/contrib/117787565731935923488\">A Google User</a>"
-         );
-         "photo_reference" = "CmRaAAAAxQrj-t83sMjVcT2DujrbK5A4M_2hdIONAzvTktH_ckYNp1bBNXX0GYmrpr56Ezo7Q0KZdl6wY-JaUZADmfRxwmjWLJlP2u7JaDo3A7KkkEIVCkBijqV3e8wlFumReJhAEhBH6jWDUUp7n-ttaPHD1_3oGhQZG8RsEWUdM4DsgspRNcsyJ9P57A";
-         width = 3024;
-     }
-     */
     
     public mutating func fillFromDictionary(object: [String: AnyObject]) {
         if let title = object["title"] as? String {
@@ -4629,7 +4734,7 @@ public struct KMAUIPolygoneDataStruct {
                                 } else if id == "google_place_icon" {
                                     self.googlePlaceIcon = point
                                 } else if id == "google_place_images" {
-                                    self.googlePlaceImage = point
+                                    self.googlePlaceImages = [point]
                                 } else if id == "google_place_price_level" {
                                     self.googlePlacePriceLevel = point
                                 } else if id == "google_place_working_hours" {

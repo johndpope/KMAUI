@@ -2114,7 +2114,7 @@ public class KMAUIUtilities {
             }
             
             //            print("\nBundles loaded:\n\(jsonString)")
-            let bundles = KMAUIUtilities.shared.setupBundles(jsonString: jsonString)
+            let bundles = KMAUIUtilities.shared.setupBundles(jsonString: jsonString, sw: sw, ne: ne)
             
             completion(bundles.count, bundles)
         }
@@ -2152,11 +2152,11 @@ public class KMAUIUtilities {
             
 //            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
-            completion(self.processPolygoneData(jsonString: jsonString))
+            completion(self.processPolygoneData(jsonString: jsonString, sw: sw, ne: ne))
         }
     }
     
-    public func processPolygoneData(jsonString: String) -> [KMAUIPolygoneDataStruct] {
+    public func processPolygoneData(jsonString: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> [KMAUIPolygoneDataStruct] {
         let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
         var polygoneArray = [KMAUIPolygoneDataStruct]()
 
@@ -2167,6 +2167,27 @@ public class KMAUIUtilities {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "custom"
                     polygoneData.fillFromDictionary(object: item)
+                    
+                    if polygoneData.location.isEmpty {
+                        // Randomize the value
+                        let randomInt = Int.random(in: 0 ..< 10)
+                        let randomInt2 = Int.random(in: 0 ..< 10)
+                        let areaLat = ne.latitude - sw.latitude
+                        let areaLong = ne.longitude - sw.longitude
+                        var latOffset = areaLat * Double(randomInt) / 10
+                        var longOffset = areaLong * Double(randomInt) / 10
+
+                        if randomInt % 2 == 0 {
+                            latOffset = -latOffset
+                        }
+                        
+                        if randomInt2 % 2 == 0 {
+                            longOffset = -longOffset
+                        }
+                        
+                        polygoneData.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2 + latOffset, longitude: (sw.longitude + ne.longitude) / 2 + longOffset)
+                    }
+                    
                     polygoneArray.append(polygoneData)
                 }
             }
@@ -2264,9 +2285,40 @@ public class KMAUIUtilities {
         }
     }
     
+    public func getGooglePlaceDetails(placeId: String, polygone: KMAUIPolygoneDataStruct, completion: @escaping (_ polygone: KMAUIPolygoneDataStruct)->()) {
+        var polygone = polygone
+        
+        let dataFromBundle = "https://maps.googleapis.com/maps/api/place/details/json?place_id=\(placeId)&language=en&fields=address_component,adr_address,business_status,formatted_address,geometry,icon,name,photo,place_id,plus_code,type,url,utc_offset,vicinity,formatted_phone_number,international_phone_number,opening_hours,website,price_level,rating,review,user_ratings_total&key=\(KMAUIConstants.shared.googlePlacesAPIKey)"
+        
+        AF.request(dataFromBundle, method: .get).responseJSON { response in
+            var jsonString = ""
+            
+            if let responseData = response.data {
+                do {
+                    let json = try JSON(data: responseData)
+                    
+                    if let jsonStringValue = json.rawString() {
+                        jsonString = jsonStringValue
+                    }
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            let placeDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
+            
+            if let result = placeDictionary["result"] as? [String: AnyObject] {
+                polygone.polygoneType = "googlePlace"
+                polygone.fillFromNearbyPlace(object: result)
+                polygone.googleDetailsLoaded = true
+                completion(polygone)
+            }
+        }
+    }
+    
     // MARK: KMA 9x9 Bundles
     
-    public func setupBundles(jsonString: String) -> [KMAUI9x9Bundle] {
+    public func setupBundles(jsonString: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> [KMAUI9x9Bundle] {
         var bundles = [KMAUI9x9Bundle]()
         // Get bundles list
         let bundlesDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
@@ -2276,10 +2328,14 @@ public class KMAUIUtilities {
                 bundle.fillFromDictionary(object: bundleItem)
                 // Add the bundle into the array if it's not an empty bundle
                 if !bundle.id.isEmpty {
+                    // Load Google Places
                     if bundle.name == "Google" {
                         bundle.name = "Google Places"
                         bundle.description = "Nearby places"
                         bundle.setupGoogleCategories()
+                    } else {
+                        // Setup location
+                        bundle.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2, longitude: (sw.longitude + ne.longitude) / 2)
                     }
                     
                     bundles.append(bundle)
@@ -2944,6 +3000,14 @@ public extension UIView {
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         layer.mask = mask
+    }
+    
+    func rotate(degrees: CGFloat) {
+        rotate(radians: CGFloat.pi * degrees / 180.0)
+    }
+
+    func rotate(radians: CGFloat) {
+        self.transform = CGAffineTransform(rotationAngle: radians)
     }
 }
 
