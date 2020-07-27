@@ -30,6 +30,7 @@ public class KMAUIConstants {
     }
     
     // MARK: - KMAUIColors
+    public let KMAUIDarkTitleButton = UIColor(named: "KMAUIDarkTitleButton", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIMainBgColor = UIColor(named: "KMAUIMainBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let KMAUIViewBgColor = UIColor(named: "KMAUIViewBgColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#FFFFFF
     public let KMAUIMemberBgColor = UIColor(named: "KMAUIMemberBgColorF2F2F5", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)! //#F2F2F5
@@ -80,6 +81,8 @@ public class KMAUIConstants {
     public let KMAUIArrowSelectedColor = UIColor(named: "KMAUIArrowSelectedColor", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     
     // MARK: - Images
+    public let zoomInIcon = UIImage(named: "zoomInIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
+    public let zoomOutIcon = UIImage(named: "zoomOutIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let editIcon = UIImage(named: "editIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let checkboxFilledIcon = UIImage(named: "checkboxFilledIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
     public let checkboxIcon = UIImage(named: "checkboxIcon", in: Bundle(for: KMAUIConstants.self), compatibleWith: nil)!
