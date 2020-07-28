@@ -49,6 +49,8 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         profileImageView.contentMode = .scaleAspectFill
         profileImageView.kf.indicatorType = .activity
         profileImageView.clipsToBounds = true
+        profileImageView.layer.borderWidth = 1
+        profileImageView.layer.borderColor = KMAUIConstants.shared.KMAUIGreyLineColor.withAlphaComponent(0.2).cgColor
         
         // Right arrow image view
         rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
