@@ -14,6 +14,10 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var stackViewTop: NSLayoutConstraint!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var rightArrowImageViewRight: NSLayoutConstraint!
+    @IBOutlet weak var nameLabel: KMAUIBoldTextLabel!
+    @IBOutlet weak var ministryLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
     public static let id = "KMAUIBuildingPermitsTableViewCell"
@@ -36,6 +40,20 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         // Background color
         backgroundColor = KMAUIConstants.shared.KMAUIViewBgColorReverse
         
+        // Setup the right arrow
+        rightArrowImageView.image = KMAUIConstants.shared.arrowIndicator.withRenderingMode(.alwaysTemplate)
+        rightArrowImageView.layer.cornerRadius = 4
+        rightArrowImageView.clipsToBounds = true
+        // Default state - disabled
+        rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+        rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
+        
+        // Name label
+        nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
+        
+        // Ministry label
+        ministryLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        
         // No selection required
         selectionStyle = .none
     }
@@ -55,8 +73,12 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     public func setupColors(highlight: Bool) {
         if highlight, isClickable {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUILightButtonColor
+            rightArrowImageView.tintColor = UIColor.white
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAUIBlackTitleButton
         } else {
             bgView.backgroundColor = KMAUIConstants.shared.KMAUIViewBgColor
+            rightArrowImageView.tintColor = KMAUIConstants.shared.KMAUIGreyLineColor
+            rightArrowImageView.backgroundColor = KMAUIConstants.shared.KMAProgressGray
         }
     }
     
@@ -67,6 +89,22 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             stackViewTop.constant = 0
         }
         
+        // Check if clickable
+        if isClickable {
+            rightArrowImageViewRight.constant = 16
+            rightArrowImageView.alpha = 1
+        } else {
+            rightArrowImageViewRight.constant = -18
+            rightArrowImageView.alpha = 0
+        }
+        
+        // Name label
+        nameLabel.text = dataset.name + " for \(dataset.region.nameE)"
+        
+        // Ministry label
+        ministryLabel.text = dataset.owner
+        
+        // Setup stack view
         var rowsTitles = [String]()
         var rows = [KMAUIRowData]()
         var values = [[String: Int]]()

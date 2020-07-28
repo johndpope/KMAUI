@@ -21,15 +21,42 @@
                         <rect key="frame" x="16" y="0.0" width="288" height="205"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="quN-Um-qTY">
-                                <rect key="frame" x="12" y="12" width="264" height="181"/>
+                                <rect key="frame" x="12" y="81" width="264" height="112"/>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A51-0H-r7x">
+                                <rect key="frame" x="250" y="16" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="F5m-fr-VxL"/>
+                                    <constraint firstAttribute="width" constant="22" id="nZ0-Pa-Mis"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cY9-5w-OJe" customClass="KMAUIBoldTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="16" width="222" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kf-1w-H7j" customClass="KMAUIRegularTextLabel" customModule="KMAUI" customModuleProvider="target">
+                                <rect key="frame" x="16" y="44.5" width="256" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="cY9-5w-OJe" firstAttribute="top" secondItem="KXg-ob-5Tc" secondAttribute="top" constant="16" id="9Tf-A5-HWV"/>
                             <constraint firstAttribute="trailing" secondItem="quN-Um-qTY" secondAttribute="trailing" constant="12" id="FTB-dq-VPy"/>
+                            <constraint firstAttribute="trailing" secondItem="9kf-1w-H7j" secondAttribute="trailing" constant="16" id="Frd-rv-eA9"/>
+                            <constraint firstAttribute="trailing" secondItem="A51-0H-r7x" secondAttribute="trailing" constant="16" id="IbV-Nt-Ki2"/>
                             <constraint firstItem="quN-Um-qTY" firstAttribute="leading" secondItem="KXg-ob-5Tc" secondAttribute="leading" constant="12" id="MFW-vS-WV6"/>
                             <constraint firstAttribute="bottom" secondItem="quN-Um-qTY" secondAttribute="bottom" constant="12" id="RRz-nu-aMH"/>
-                            <constraint firstItem="quN-Um-qTY" firstAttribute="top" secondItem="KXg-ob-5Tc" secondAttribute="top" constant="12" id="VS5-yG-Ocq"/>
+                            <constraint firstItem="A51-0H-r7x" firstAttribute="top" secondItem="KXg-ob-5Tc" secondAttribute="top" constant="16" id="SOH-rp-YV4"/>
+                            <constraint firstItem="cY9-5w-OJe" firstAttribute="leading" secondItem="KXg-ob-5Tc" secondAttribute="leading" constant="16" id="STe-Nt-mFh"/>
+                            <constraint firstItem="9kf-1w-H7j" firstAttribute="leading" secondItem="KXg-ob-5Tc" secondAttribute="leading" constant="16" id="TIn-MA-j8p"/>
+                            <constraint firstItem="quN-Um-qTY" firstAttribute="top" secondItem="9kf-1w-H7j" secondAttribute="bottom" constant="16" id="ZEb-xj-kjs"/>
+                            <constraint firstItem="9kf-1w-H7j" firstAttribute="top" secondItem="cY9-5w-OJe" secondAttribute="bottom" constant="8" id="hkI-pF-iB8"/>
+                            <constraint firstItem="A51-0H-r7x" firstAttribute="leading" secondItem="cY9-5w-OJe" secondAttribute="trailing" constant="12" id="r8Y-yp-BVG"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -43,6 +70,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bgView" destination="KXg-ob-5Tc" id="XCK-7z-gsy"/>
+                <outlet property="ministryLabel" destination="9kf-1w-H7j" id="246-YU-wfc"/>
+                <outlet property="nameLabel" destination="cY9-5w-OJe" id="x7c-vb-WsS"/>
+                <outlet property="rightArrowImageView" destination="A51-0H-r7x" id="cpv-Td-oUu"/>
+                <outlet property="rightArrowImageViewRight" destination="IbV-Nt-Ki2" id="oGy-F5-zyW"/>
                 <outlet property="stackView" destination="quN-Um-qTY" id="yU4-QS-3VL"/>
                 <outlet property="stackViewTop" destination="65F-vE-fL5" id="uc5-cE-je2"/>
             </connections>

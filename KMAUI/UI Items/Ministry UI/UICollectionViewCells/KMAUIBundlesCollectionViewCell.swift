@@ -92,7 +92,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
     public func setupDataset() {
         // Title label
         if region.nameE == "Saudi Arabia", region.nameE != dataset.region.nameE {
-            titleLabel.text = dataset.name + " for region: \(dataset.region.nameE)"
+            titleLabel.text = dataset.name + " for \(dataset.region.nameE)"
         } else {
             titleLabel.text = dataset.name
         }
