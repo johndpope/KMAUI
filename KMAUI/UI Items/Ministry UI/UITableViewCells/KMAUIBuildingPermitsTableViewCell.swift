@@ -100,9 +100,11 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         
         // Name label
         nameLabel.text = dataset.name + " for \(dataset.region.nameE)"
+        nameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
         // Ministry label
         ministryLabel.text = dataset.owner
+        ministryLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
         // Setup stack view
         var rowsTitles = [String]()
