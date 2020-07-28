@@ -16,7 +16,7 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
     @IBOutlet public weak var nameLabel: KMAUIBoldTextLabel!
     @IBOutlet public weak var lotteryIdLabel: KMAUIRegularTextLabel!
     @IBOutlet public weak var rightArrowImageView: UIImageView!
-    @IBOutlet weak var bgView: KMAUIRoundedCornersView!
+    @IBOutlet public weak var bgView: KMAUIRoundedCornersView!
     
     // MARK: - Variables
     public static let id = "KMAUIDepartmentTableViewCell"
@@ -93,7 +93,7 @@ public class KMAUIDepartmentTableViewCell: UITableViewCell {
         // Setup handle
         lotteryIdLabel.text = department.departmentHandle
         // Setup placeholder image
-        profileImageView.image = KMAUIConstants.shared.profilePlaceholder.withRenderingMode(.alwaysTemplate)
+        profileImageView.image = KMAUIConstants.shared.departmentPlaceholder.withRenderingMode(.alwaysTemplate)
         // Load profile image
         if let url = URL(string: department.departmentLogo) {
             profileImageView.kf.setImage(with: url)
