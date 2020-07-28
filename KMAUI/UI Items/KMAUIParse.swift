@@ -1296,7 +1296,7 @@ final public class KMAUIParse {
     
     // MARK: - Get Departments in area
     
-    public func getDepartments(sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, completion: @escaping ([KMADepartmentStruct]) -> Void) {
+    public func getDepartments(sw: CLLocationCoordinate2D? = nil, ne: CLLocationCoordinate2D? = nil, type: String? = nil, completion: @escaping ([KMADepartmentStruct]) -> Void) {
         
         let query = PFQuery(className:"KMADepartment")
         
@@ -1307,7 +1307,15 @@ final public class KMAUIParse {
             query.whereKey("location", withinGeoBoxFromSouthwest: southWest, toNortheast: northEast)
         }
         
-        query.whereKey("type", equalTo: "department")
+        var typeString = "department"
+
+        if let type = type, !type.isEmpty {
+            query.whereKey("type", equalTo: type)
+            typeString = type
+        } else {
+            query.whereKey("type", equalTo: "department")
+        }
+        
         query.includeKey("mapArea")
         query.findObjectsInBackground { (departments, error) in
             var newDepartments = [KMADepartmentStruct]()
@@ -1315,6 +1323,8 @@ final public class KMAUIParse {
             if let error = error {
                 print("Error loading Sub lands: `\(error.localizedDescription)`.")
             } else if let departments = departments {
+                print("Items loaded for \(typeString): \(departments.count)")
+                
                 for department in departments {
                     var departmentObject = KMADepartmentStruct()
                     departmentObject.fillFromParse(departmentObject: department)
