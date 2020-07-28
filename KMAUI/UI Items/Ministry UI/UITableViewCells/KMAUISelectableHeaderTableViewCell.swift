@@ -112,13 +112,13 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
                     activeView.alpha = 1
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(labelFontSize)
+//                itemLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(labelFontSize)
             } else if index != selectedIndex, activeView.alpha == 1 {
                 UIView.animate(withDuration: 0.15) {
                     activeView.alpha = 0
                 }
                 
-                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(labelFontSize)
+//                itemLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(labelFontSize)
             }
         }
         
