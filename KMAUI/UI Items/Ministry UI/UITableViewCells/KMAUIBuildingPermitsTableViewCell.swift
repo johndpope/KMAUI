@@ -52,7 +52,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         nameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(18)
         
         // Ministry label
-        ministryLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        ministryLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         
         // No selection required
         selectionStyle = .none

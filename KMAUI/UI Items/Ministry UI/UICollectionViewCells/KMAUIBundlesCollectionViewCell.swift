@@ -52,7 +52,7 @@ public class KMAUIBundlesCollectionViewCell: UICollectionViewCell {
         titleLabel.adjustsFontSizeToFitWidth = true
         
         // Info label
-        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(16)
+        infoLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(14)
         infoLabel.minimumScaleFactor = 0.5
         infoLabel.adjustsFontSizeToFitWidth = true
     }
