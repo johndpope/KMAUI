@@ -25,7 +25,7 @@ public class KMAUISelectableHeaderTableViewCell: UITableViewCell {
     public var itemLabels = [UILabel]()
     public var selectedIndex = -1
     public var selectedCallback: ((Int) -> Void)?
-    public var labelFontSize: CGFloat = 18
+    public var labelFontSize: CGFloat = 16
 
     override public func awakeFromNib() {
         super.awakeFromNib()
