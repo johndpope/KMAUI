@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import KMAUI
 
-public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
+public class KMAUIBuildingPermitsTableViewCell1: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet weak var bgView: KMAUIRoundedCornersView!
@@ -20,7 +21,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     @IBOutlet weak var ministryLabel: KMAUIRegularTextLabel!
     
     // MARK: - Variables
-    public static let id = "KMAUIBuildingPermitsTableViewCell"
+    public static let id = "KMAUIBuildingPermitsTableViewCell1"
     public var isFirst = false
     public var dataset = KMAUIDataset() {
         didSet {
@@ -106,23 +107,115 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         ministryLabel.text = dataset.owner
         ministryLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
-        // Setup stack view
-        var rowsTitles = [String]()
-        var rows = [KMAUIRowData]()
-        var values = [[String: Int]]()
-        
-        for sets in dataset.detailsArray {
-            for (key, value) in sets {
-                if let value = value as? [String: Int] {
-                    values.append(value)
+        // Dataset mode
+        if dataset.type == "hospitalBedsSectors" {
+            // Remove subviews
+            for subview in stackView.subviews {
+                stackView.removeArrangedSubview(subview)
+                subview.removeFromSuperview()
+            }
+            
+            setupStackViewHospitalBedsSectors()
+        } else {
+            // Setup stack view
+            var rowsTitles = [String]()
+            var rows = [KMAUIRowData]()
+            var values = [[String: Int]]()
+            
+            for sets in dataset.detailsArray {
+                for (key, value) in sets {
+                    if let value = value as? [String: Int] {
+                        values.append(value)
+                    }
+                    
+                    rowsTitles.append(key)
+                    rows.append(KMAUIRowData(rowName: key, rowValue: ""))
                 }
-                
-                rowsTitles.append(key)
-                rows.append(KMAUIRowData(rowName: key, rowValue: ""))
+            }
+            
+            setupStackView(rows: rows, values: values)
+        }
+    }
+//    0800400111
+    
+    /**
+     Show the stack view for hospitalBedsSectors
+     */
+    
+    public func setupStackViewHospitalBedsSectors() {
+        let datasetDictionary = dataset.detailsDictionary
+        print(datasetDictionary)
+        
+        if let rowTitles = datasetDictionary["rowTitles"] as? [String],
+            var years = datasetDictionary["years"] as? [String],
+            let points = datasetDictionary["points"] as? [String],
+            let datasetData = datasetDictionary["data"] as? [String: AnyObject] {
+            // Title inserted
+            years.insert("Years", at: 0)
+            
+            for rowTitle in rowTitles {
+                if let rowDetails = datasetData[rowTitle] as? [String: AnyObject] {
+                let rowTitleLabel = KMAUIBoldTextLabel()
+                rowTitleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
+                rowTitleLabel.text = "   " + rowTitle
+                rowTitleLabel.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
+                rowTitleLabel.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
+                rowTitleLabel.layer.cornerRadius = 8
+                rowTitleLabel.clipsToBounds = true
+                stackView.addArrangedSubview(rowTitleLabel)
+
+                // rows - years
+                for (index, year) in years.enumerated() {
+                    // Title
+                    let itemView = UIStackView()
+                    itemView.axis = .horizontal
+                    itemView.distribution = UIStackView.Distribution.fill
+                    itemView.alignment = UIStackView.Alignment.fill
+                    itemView.spacing = 4
+                    
+                    // Year title
+                    let rowTitleLabel = KMAUIBoldTextLabel()
+                    rowTitleLabel.text = year
+                    rowTitleLabel.textAlignment = .left
+                    rowTitleLabel.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
+                    itemView.addArrangedSubview(rowTitleLabel)
+                    
+                    if index == 0 {
+                        for point in points {
+                            let rowTitleLabel = KMAUIBoldTextLabel()
+                            rowTitleLabel.text = point
+                            rowTitleLabel.textAlignment = .center
+                            itemView.addArrangedSubview(rowTitleLabel)
+                        }
+                        
+                        addLine()
+                    } else {
+                        if let pointsDetails = rowDetails[year] as? [String: Double] {
+                            for point in points {
+                                if let pointValue = pointsDetails[point] {
+                                    let rowTitleLabel = KMAUIRegularTextLabel()
+                                    
+                                    if pointValue > 0 {
+                                        rowTitleLabel.text = "\(pointValue.withCommas())"
+                                    } else {
+                                        rowTitleLabel.text = "-" // Empty space
+                                    }
+                                    
+                                    rowTitleLabel.textAlignment = .center
+                                    itemView.addArrangedSubview(rowTitleLabel)
+                                }
+                            }
+                        }
+                    }
+                    
+                    stackView.addArrangedSubview(itemView)
+                    itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+                }
+
+                // columns - beds, hospitals
+                }
             }
         }
-        
-        setupStackView(rows: rows, values: values)
     }
     
     /**
