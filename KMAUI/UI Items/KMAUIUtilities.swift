@@ -2059,7 +2059,7 @@ public class KMAUIUtilities {
                     // Name
                     if let type = dataset["type"] as? String {
                         // Park Locations or Building Permits
-                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" {
+                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)
@@ -2703,6 +2703,60 @@ public class KMAUIUtilities {
                 print("Error creating a dataset for a region \(regionId): \(error.localizedDescription).")
             } else if success {
                 print("Dataset created for the region \(regionId).")
+            }
+        }
+    }
+    
+    // 01 Hospital Beds in Other Governmental Sector by Speciality during 1439H
+    
+    public func prepareHospitalBeds1439HDataset() {
+        let values = [
+            [0, 733, 760, 72, 102, 3, 639, 419, 808, 8, 3, 37, 3, 32, 97, 93, 1542, 5351],
+            [0, 891, 338, 66, 4, 0, 279, 686, 204, 3, 2, 15, 0, 5, 0, 65, 22, 2580],
+            [0, 148, 110, 26, 9, 2, 112, 225, 61, 9, 8, 0, 0, 7, 0, 28, 80, 825],
+            [0, 220, 131, 26, 30, 2, 67, 108, 200, 22, 2, 15, 1, 8, 11, 0, 363, 1206],
+            [0, 81, 79, 28, 0, 0, 65, 131, 26, 0, 0, 0, 0, 0, 0, 24, 12, 446],
+            [0, 102, 41, 37, 0, 0, 56, 78, 26, 0, 0, 0, 0, 0, 20, 16, 0, 376],
+            [0, 399, 360, 62, 21, 9, 200, 298, 168, 57, 39, 13, 3, 29, 59, 62, 99, 1878],
+            [0, 2574, 1819, 317, 166, 16, 1418, 1945, 1493, 99, 54, 80, 7, 81, 187, 288, 2118, 12662]
+        ]
+        
+        setupHospitalBeds1439HDataset(values: values, objectId: "grU4aHAAIx")
+    }
+    
+    func setupHospitalBeds1439HDataset(values: [[Int]], objectId: String) {
+        // Creating the demo array
+        let titles = ["A.F.Hs.", "N.G.Hs.", "S.F.Hs.", "K.F.S.H.,R-J.", "R.C.Hs.", "ARAMCO Hs.", "MOE"]
+        let keys = KMAUIConstants.shared.hospitalBedsKeys
+        
+        var totalArray = [AnyObject]()
+        
+        for (index1, title) in titles.enumerated() {
+            let value = values[index1]
+            var titleDictionary = [String: Int]()
+            
+            for (index2, key) in keys.enumerated() {
+                titleDictionary[key] = value[index2]
+            }
+            
+            totalArray.append([title: titleDictionary] as AnyObject)
+        }
+        
+        //
+        let newDataset = PFObject(withoutDataWithClassName: "KMADataGovSADataSet", objectId: objectId)
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": totalArray as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
             }
         }
     }

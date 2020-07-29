@@ -342,6 +342,26 @@ public class KMAUIConstants {
         "Super Markets",
         "Food Stuffs"
     ]
+    
+    public var hospitalBedsKeys = [
+        "General",
+        "Intemal medicine",
+        "Surgery",
+        "Orthopedics",
+        "Urology",
+        "Faciodental",
+        "OBS/GYN",
+        "Paediatrics",
+        "Intensive care",
+        "E.N.T",
+        "Ophthalmology",
+        "Chest & Fever",
+        "Skin & venereal",
+        "Burns & plastic",
+        "Psychiatry & neurology",
+        "Isolation",
+        "Others",
+        "Total"]
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan
