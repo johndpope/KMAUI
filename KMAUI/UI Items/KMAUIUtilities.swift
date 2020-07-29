@@ -2059,7 +2059,7 @@ public class KMAUIUtilities {
                     // Name
                     if let type = dataset["type"] as? String {
                         // Park Locations or Building Permits
-                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" {
+                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" || type == "hospitalBedsSectors" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)

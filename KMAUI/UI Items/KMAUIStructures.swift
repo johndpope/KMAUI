@@ -4790,6 +4790,7 @@ public struct KMAUIDataset {
     public var owner = ""
     public var parkLocations = [KMAUIParkLocation]()
     public var detailsArray = [[String: AnyObject]]()
+    public var detailsDictionary = [String: AnyObject]()
     public var region = KMAMapAreaStruct()
     public var type = ""
     
@@ -4816,7 +4817,6 @@ public struct KMAUIDataset {
                 if type == "parkLocations" {
                     var parkLocations = [KMAUIParkLocation]()
                     
-                    
                     for rowDictionary in datasetArray {
                         var parkLocationItem = KMAUIParkLocation()
                         parkLocationItem.fillFrom(rowDictionary: rowDictionary)
@@ -4830,6 +4830,8 @@ public struct KMAUIDataset {
                 if type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" {
                     self.detailsArray = datasetArray
                 }
+            } else if let datasetDictionary = dictionary["Dataset"] as? [String: AnyObject], type == "hospitalBedsSectors" {
+                self.detailsDictionary = datasetDictionary
             }
         }
         
