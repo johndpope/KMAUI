@@ -2761,7 +2761,7 @@ public class KMAUIUtilities {
         }
     }
     
-    func createDatasetHospitalBedsSectors() {
+    public func createDatasetHospitalBedsSectors() {
         let rowTitles = [
             "Ministry of Health",
             "Other governmental Sector",
