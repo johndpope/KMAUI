@@ -2779,8 +2779,8 @@ public class KMAUIUtilities {
         ]
         
         let points = [
-            "Beds",
-            "Hospitals"
+            "Hospitals",
+            "Beds"
         ]
         
         let values = [
@@ -2788,7 +2788,7 @@ public class KMAUIUtilities {
             [[42, 12032], [43, 11449], [44, 11581], [47, 12279], [47, 12662]],
             [[141, 15665], [145, 16648], [152, 17428], [158, 17622], [163, 18883]],
             [[453, 67997], [462, 69394], [470, 70844], [487, 72981], [494, 75225]],
-            [[0, 22,1], [0, 22,0], [0, 22,3], [0, 22,4], [0, 22,5]]
+            [[0, 22.1], [0, 22.0], [0, 22.3], [0, 22.4], [0, 22.5]]
         ]
         
         var datasetData = [String: AnyObject]()
@@ -2796,13 +2796,13 @@ public class KMAUIUtilities {
         for (rowIndex, row) in rowTitles.enumerated() {
             print("\nROW: \(row)")
             let rowValue = values[rowIndex]
-            var rowData = [String: [String: Int]]()
+            var rowData = [String: [String: Double]]()
             
             for (yearIndex, year) in years.enumerated() {
                 print("\nYEAR: \(year)")
                 let yearData = rowValue[yearIndex]
                 
-                var pointData = [String: Int]()
+                var pointData = [String: Double]()
                 for (pointIndex, point) in points.enumerated() {
                     print("\(point) - \(yearData[pointIndex])")
                     pointData[point] = yearData[pointIndex]
