@@ -1744,6 +1744,8 @@ public struct KMAPerson {
     // Occupation and cases count for Judge
     public var occupation = ""
     public var casesCount = 0
+    // Citizen location
+    public var location = CLLocationCoordinate2D()
     
     public init() {
     }
@@ -1790,8 +1792,12 @@ public struct KMAPerson {
             }
             
             // Address
-            if let homeAddress = person["homeAddress"] as? PFObject,
-                let building = homeAddress["building"] as? PFObject {
+            if let homeAddress = person["homeAddress"] as? PFObject {
+                if let homeLocation = homeAddress["location"] as? PFGeoPoint {
+                    self.location = CLLocationCoordinate2D(latitude: homeLocation.latitude, longitude: homeLocation.longitude)
+                }
+                
+                if let building = homeAddress["building"] as? PFObject {
                 if let formattedAddress = building["formattedAddress"] as? String {
                     self.formattedAddress = formattedAddress
                 }
@@ -1810,6 +1816,7 @@ public struct KMAPerson {
                 
                 if let country = building["country"] as? String {
                     self.country = country
+                }
                 }
             }
             
