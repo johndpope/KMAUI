@@ -148,6 +148,8 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         
         if dataset.type == "buildingPermits" {
             keys = KMAUIConstants.shared.buildingPermitKeys
+        } else if dataset.type == "hospitalBeds" {
+            keys = KMAUIConstants.shared.hospitalBedsKeys
         }
         
         // Title
@@ -161,6 +163,8 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         
         if dataset.type == "buildingPermits" {
             titlesArray = [KMAUIRowData(rowName: "Type of Permit", rowValue: "")]
+        } else if dataset.type == "hospitalBeds" {
+            titlesArray = [KMAUIRowData(rowName: "Speciality", rowValue: "")]
         }
         
         titlesArray.append(contentsOf: rows)
