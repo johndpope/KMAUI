@@ -2760,6 +2760,83 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    func createDatasetHospitalBedsSectors() {
+        let rowTitles = [
+            "Ministry of Health",
+            "Other governmental Sector",
+            "Private  sector",
+            "Total",
+            "Rate of beds/10,000 population"
+        ]
+        
+        let years = [
+            "1435H (2014G)",
+            "1436H (2015G)",
+            "1437H (2016G)",
+            "1438H (2017G)",
+            "1439H (2018G)"
+        ]
+        
+        let points = [
+            "Beds",
+            "Hospitals"
+        ]
+        
+        let values = [
+            [[270, 40300], [274, 41297], [274, 41835], [282, 43080], [284, 43680]],
+            [[42, 12032], [43, 11449], [44, 11581], [47, 12279], [47, 12662]],
+            [[141, 15665], [145, 16648], [152, 17428], [158, 17622], [163, 18883]],
+            [[453, 67997], [462, 69394], [470, 70844], [487, 72981], [494, 75225]],
+            [[0, 22,1], [0, 22,0], [0, 22,3], [0, 22,4], [0, 22,5]]
+        ]
+        
+        var datasetData = [String: AnyObject]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            print("\nROW: \(row)")
+            let rowValue = values[rowIndex]
+            var rowData = [String: [String: Int]]()
+            
+            for (yearIndex, year) in years.enumerated() {
+                print("\nYEAR: \(year)")
+                let yearData = rowValue[yearIndex]
+                
+                var pointData = [String: Int]()
+                for (pointIndex, point) in points.enumerated() {
+                    print("\(point) - \(yearData[pointIndex])")
+                    pointData[point] = yearData[pointIndex]
+                }
+                
+                rowData[year] = pointData
+            }
+            
+            datasetData[row] = rowData as AnyObject
+        }
+                
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["years"] = years as AnyObject
+        datasetDictionary["points"] = points as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(withoutDataWithClassName: "KMADataGovSADataSet", objectId: "pmmml8JsgZ")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
 }
 
 // MARK: - Int extension
