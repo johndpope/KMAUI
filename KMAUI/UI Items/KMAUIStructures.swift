@@ -4830,7 +4830,7 @@ public struct KMAUIDataset {
                 if type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" {
                     self.detailsArray = datasetArray
                 }
-            } else if let datasetDictionary = dictionary["Dataset"] as? [String: AnyObject], type == "hospitalBedsSectors" {
+            } else if let datasetDictionary = dictionary["Dataset"] as? [String: AnyObject], (type == "hospitalBedsSectors" || type == "hospitalBedsSectorsByRegion") {
                 self.detailsDictionary = datasetDictionary
             }
         }
