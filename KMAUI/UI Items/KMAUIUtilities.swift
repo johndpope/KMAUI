@@ -333,7 +333,7 @@ public class KMAUIUtilities {
             if let dateOnly = dateOnly, dateOnly {
                 dateFormatter.dateFormat = "yyyy-MM-dd"
             }
-
+            
             if let dateObject = dateFormatter.date(from: string) {
                 return dateObject
             }
@@ -354,7 +354,7 @@ public class KMAUIUtilities {
         } else {
             dateFormatter.dateStyle = .short
         }
-            
+        
         dateFormatter.timeStyle = .short
         
         return dateFormatter.string(from: date)
@@ -603,7 +603,7 @@ public class KMAUIUtilities {
         for word in words {
             while true {
                 let foundRange = nsstr.range(of: word, options: [], range: searchRange)
-
+                
                 if foundRange.location == NSNotFound {
                     break
                 }
@@ -629,7 +629,7 @@ public class KMAUIUtilities {
         for word in words {
             while true {
                 let foundRange = nsstr.range(of: word, options: [], range: searchRange)
-
+                
                 if foundRange.location == NSNotFound {
                     break
                 }
@@ -1016,8 +1016,8 @@ public class KMAUIUtilities {
     // MARK: - Get cities from Parse for the area
     
     /**
-    Get the city in bounds area
-    */
+     Get the city in bounds area
+     */
     
     public func getCities(_ sw: CLLocationCoordinate2D, _ ne: CLLocationCoordinate2D, _ limit: Int, completion: @escaping (_ cities: [KMAUIItemPerformance])->()) {
         let query = PFQuery(className: "KMACity")
@@ -1026,8 +1026,8 @@ public class KMAUIUtilities {
         // Should be active in database
         query.whereKey("isActive", equalTo: true)
         // Should be from database hude
-//        query.whereKey("fromDatabaseHub", equalTo: true)
-//         Should have a population data
+        //        query.whereKey("fromDatabaseHub", equalTo: true)
+        //         Should have a population data
         // Order cities by population, largest on top
         query.order(byDescending: "population")
         // Include the country details
@@ -1149,7 +1149,7 @@ public class KMAUIUtilities {
             
             // to check if it exists before downloading it
             if FileManager.default.fileExists(atPath: destinationUrl.path) {
-//                debugPrint("The file already exists at path")
+                //                debugPrint("The file already exists at path")
                 completion(true, destinationUrl)
             } else {
                 // Displaying the loading alert
@@ -1169,11 +1169,11 @@ public class KMAUIUtilities {
                             // Displaying the loading alert
                             if let hideLoading = hideLoading, hideLoading {
                                 // No need to show the loading alert
-//                                print("File moved to documents folder")
+                                //                                print("File moved to documents folder")
                                 completion(true, destinationUrl)
                             } else {
                                 KMAUIUtilities.shared.stopLoadingWith { (loaded) in
-//                                    print("File moved to documents folder")
+                                    //                                    print("File moved to documents folder")
                                     completion(true, destinationUrl)
                                 }
                             }
@@ -1203,22 +1203,22 @@ public class KMAUIUtilities {
     public func radians(degrees: Double) -> Double {
         return degrees * Double.pi / 180
     }
-
+    
     public func regionArea(locations: [CLLocation]) -> Double {
         let kEarthRadius = 6378137.0
-
+        
         guard locations.count > 2 else { return 0 }
         var area = 0.0
-
+        
         for i in 0..<locations.count {
             let p1 = locations[i > 0 ? i - 1 : locations.count - 1]
             let p2 = locations[i]
-
+            
             area += radians(degrees: p2.coordinate.longitude - p1.coordinate.longitude) * (2 + sin(radians(degrees: p1.coordinate.latitude)) + sin(radians(degrees: p2.coordinate.latitude)) )
         }
-
+        
         area = -(area * kEarthRadius * kEarthRadius / 2)
-
+        
         return max(area, -area) // In order not to worry about is polygon clockwise or counterclockwise defined.
     }
     
@@ -1271,7 +1271,7 @@ public class KMAUIUtilities {
     public func getSubLandDictionary(subLand: KMAUISubLandStruct) -> [String: AnyObject] {
         let dict = KMAUIUtilities.shared.jsonToDictionary(jsonText: subLand.subLandArea)
         var subLandDict = [String: AnyObject]()
-                
+        
         if let features = dict["features"] as? [AnyObject], !features.isEmpty {
             let feature = features[0]
             
@@ -1283,7 +1283,7 @@ public class KMAUIUtilities {
                     subLandDict = subLandFeature
                 }
             } else if let feature = feature as? [String: AnyObject] {
-               subLandDict = feature
+                subLandDict = feature
             }
         }
         
@@ -1305,7 +1305,7 @@ public class KMAUIUtilities {
         
         var subLandDict = [String: AnyObject]()
         var coordinates = [[Double]]()
-                
+        
         if let features = dict["features"] as? [AnyObject], !features.isEmpty {
             let feature = features[0]
             
@@ -1317,7 +1317,7 @@ public class KMAUIUtilities {
                     subLandDict = subLandFeature
                 }
             } else if let feature = feature as? [String: AnyObject] {
-               subLandDict = feature
+                subLandDict = feature
             }
         }
         
@@ -1337,7 +1337,7 @@ public class KMAUIUtilities {
                 corners.append(contentsOf: getCorner(location1: coordinate1, location2: coordinate2))
             }
         }
-
+        
         // Prepare coordinates geojson
         var featureCollection = [String: AnyObject]()
         featureCollection["type"] = "FeatureCollection" as AnyObject
@@ -1352,7 +1352,7 @@ public class KMAUIUtilities {
         
         let coordinateObject1 = CLLocationCoordinate2D(latitude: location1[1], longitude: location1[0])
         let coordinateObject2 = CLLocationCoordinate2D(latitude: location2[1], longitude: location2[0])
-
+        
         let bearingLeft = getBearingBetweenTwoPoints1(point1: coordinateValue1, point2: coordinateValue2)
         let angleLeft = Double.pi * bearingLeft / 180 // calculating angle from the degrees
         
@@ -1380,7 +1380,7 @@ public class KMAUIUtilities {
         geomertyRight["type"] = "LineString" as AnyObject
         geomertyRight["coordinates"] = lineRight
         dictRight["geometry"] = geomertyRight as AnyObject
-
+        
         return [dictLeft as AnyObject, dictRight as AnyObject]
     }
     
@@ -1389,10 +1389,10 @@ public class KMAUIUtilities {
         let coordinateValue2 = CLLocation(latitude: location2[1], longitude: location2[0])
         
         let coordinateObject1 = CLLocationCoordinate2D(latitude: location1[1], longitude: location1[0])
-
+        
         let bearingLeft = KMAUIUtilities.shared.getBearingBetweenTwoPoints1(point1: coordinateValue1, point2: coordinateValue2)
         let angleLeft = Double.pi * bearingLeft / 180 // calculating angle from the degrees
-                
+        
         let distance = coordinateValue1.distance(from: coordinateValue2)
         var distanceSegment: Double = 4 // 4 meters each segment as default
         var segmentsCount = distance / distanceSegment
@@ -1470,20 +1470,20 @@ public class KMAUIUtilities {
     
     public func degreesToRadians(degrees: Double) -> Double { return degrees * .pi / 180.0 }
     public func radiansToDegrees(radians: Double) -> Double { return radians * 180.0 / .pi }
-
+    
     public func getBearingBetweenTwoPoints1(point1 : CLLocation, point2 : CLLocation) -> Double {
         let lat1 = degreesToRadians(degrees: point1.coordinate.latitude)
         let lon1 = degreesToRadians(degrees: point1.coordinate.longitude)
-
+        
         let lat2 = degreesToRadians(degrees: point2.coordinate.latitude)
         let lon2 = degreesToRadians(degrees: point2.coordinate.longitude)
-
+        
         let dLon = lon2 - lon1
-
+        
         let y = sin(dLon) * cos(lat2)
         let x = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
         let radiansBearing = atan2(y, x)
-
+        
         return radiansToDegrees(radians: radiansBearing)
     }
     
@@ -1620,7 +1620,7 @@ public class KMAUIUtilities {
                 hasCreatedAt = true
                 createdAt = itemCreatedAt
             }
-
+            
             if let itemLocation = asset.location {
                 print("Item location: \(itemLocation.coordinate.latitude), \(itemLocation.coordinate.longitude)")
                 hasLocation = true
@@ -1633,7 +1633,7 @@ public class KMAUIUtilities {
         pickedDocument.captureDate = createdAt
         pickedDocument.hasLocation = hasLocation
         pickedDocument.location = location
-
+        
         // Getting the video or image from Camera and Photo Library picker, saving these items into the local array as a structure
         if let videoURL = info[.mediaURL] as? URL {
             pickedDocument.type = "Video"
@@ -1683,14 +1683,14 @@ public class KMAUIUtilities {
             pickedDocument.captureDate = creationDate
             pickedDocument.hasCreatedAt = true
         }
-
+        
         // Adding the data into the local array
         completion(pickedDocument)
     }
     
     /**
      Get the item name, selectio
-    */
+     */
     
     public func getItemData(documentObject: KMADocumentData) -> (UIImage, String, String, String, UIImage) {
         var imageValue = UIImage()
@@ -1706,7 +1706,7 @@ public class KMAUIUtilities {
         let uuidString = UUID().uuidString.suffix(8)
         
         let filename: NSString = NSString(string: documentObject.name)
-            
+        
         // Get file extension for images and video
         if !filename.pathExtension.isEmpty {
             fileExtensionValue = filename.pathExtension.uppercased()
@@ -1758,7 +1758,7 @@ public class KMAUIUtilities {
                     typeValue = "Image"
                 } else {
                     let filename: NSString = NSString(string: documentObject.name)
-
+                    
                     if !filename.pathExtension.isEmpty, let emptyDocumentIcon = UIImage(named: "documentEmptyIcon")?.withRenderingMode(.alwaysTemplate) {
                         imageValue = emptyDocumentIcon
                         fileExtensionValue = filename.pathExtension.uppercased()
@@ -1766,7 +1766,7 @@ public class KMAUIUtilities {
                         // Get the preview for a pdf file
                         if fileExtensionValue.lowercased() == "pdf",
                             let pdfPreview = generatePdfThumbnail(of: CGSize(width: 600, height: 600), for: documentURL, atPage: 0) {
-                                imageValue = pdfPreview
+                            imageValue = pdfPreview
                         }
                     }
                 }
@@ -2031,7 +2031,7 @@ public class KMAUIUtilities {
                 generalCounts += 1
             }
         }
-                
+        
         return (landLotteryCounts, landCasesCounts, trespassCasesCount, generalCounts)
     }
     
@@ -2059,7 +2059,7 @@ public class KMAUIUtilities {
                     // Name
                     if let type = dataset["type"] as? String {
                         // Park Locations or Building Permits
-                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" || type == "hospitalBedsSectors" || type == "hospitalBedsSectorsByRegion" {
+                        if type == "parkLocations" || type == "buildingPermits" || type == "establishmentPermits" || type == "hospitalBeds" || type == "hospitalBedsSectors" || type == "hospitalBedsSectorsByRegion" || type == "governmentWellsByTypesAndRegions" {
                             var parkLocatiosDataset = KMAUIDataset()
                             parkLocatiosDataset.fillFrom(dataset: dataset)
                             datasetsArray.append(parkLocatiosDataset)
@@ -2092,7 +2092,7 @@ public class KMAUIUtilities {
         // Parameters - geobox of the region
         let parameters: [String: AnyObject] = [
             "polygone" : [[sw.latitude, sw.longitude], [ne.latitude, sw.longitude], [ne.latitude, ne.longitude], [sw.latitude, ne.longitude], [sw.latitude, sw.longitude]] as AnyObject]
-
+        
         // Bundles endpoint
         let bundlesSearch = "https://api.kma.dev.magora.uk/v1/bundles/search"
         
@@ -2132,7 +2132,7 @@ public class KMAUIUtilities {
         let parameters: [String: AnyObject] = [
             "polygone" : [[sw.latitude, sw.longitude], [ne.latitude, sw.longitude], [ne.latitude, ne.longitude], [sw.latitude, ne.longitude], [sw.latitude, sw.longitude]] as AnyObject
         ]
-                
+        
         let dataFromBundle = "https://api.kma.dev.magora.uk/v1/bundles/\(bundleId)/search/polygones"
         
         AF.request(dataFromBundle, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
@@ -2150,7 +2150,7 @@ public class KMAUIUtilities {
                 }
             }
             
-//            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
+            //            print("\nPolygones for bundle \(bundleId):\n\(jsonString)")
             
             completion(self.processPolygoneData(jsonString: jsonString, sw: sw, ne: ne))
         }
@@ -2159,7 +2159,7 @@ public class KMAUIUtilities {
     public func processPolygoneData(jsonString: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> [KMAUIPolygoneDataStruct] {
         let jsonDictionary = KMAUIUtilities.shared.jsonToDictionary(jsonText: jsonString)
         var polygoneArray = [KMAUIPolygoneDataStruct]()
-
+        
         if let data = jsonDictionary["data"] as? [String: AnyObject] {
             // CUSTOM
             if let custom = data["CUSTOM"] as? [[String: AnyObject]] {
@@ -2176,7 +2176,7 @@ public class KMAUIUtilities {
                         let areaLong = ne.longitude - sw.longitude
                         var latOffset = areaLat * Double(randomInt) / 100
                         var longOffset = areaLong * Double(randomInt) / 100
-
+                        
                         if randomInt % 2 == 0 {
                             latOffset = -latOffset
                         }
@@ -2249,7 +2249,7 @@ public class KMAUIUtilities {
             var newResults = 0
             
             if let results = placesDictionary["results"] as? [[String: AnyObject]], !results.isEmpty {
-//                print("Places found: \(results.count)")
+                //                print("Places found: \(results.count)")
                 for place in results {
                     var polygoneData = KMAUIPolygoneDataStruct()
                     polygoneData.polygoneType = "googlePlace"
@@ -2261,8 +2261,8 @@ public class KMAUIUtilities {
                         newResults += 1
                     }
                 }
-//            } else {
-//                print("No places found")
+                //            } else {
+                //                print("No places found")
             }
             
             // Order polygone array by rating
@@ -2274,7 +2274,7 @@ public class KMAUIUtilities {
             }
             
             if let nextPageToken = placesDictionary["next_page_token"] as? String, !nextPageToken.isEmpty {
-//                print("\nLoad next set of results")
+                //                print("\nLoad next set of results")
                 // Give a small delay before the next call
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.getGoogleNearbyPlaces(polygoneArray: polygoneArray, nextPageToken: nextPageToken, keyword: keyword, category: category, sw: sw, ne: ne) { (polygoneArrayValue) in
@@ -2442,207 +2442,207 @@ public class KMAUIUtilities {
             ]
         ]
         
-            
+        
         /* // For 1424
-        let valuesArray = [
-            [
-                [677738, 4871076, 13303, 2391187, 27724146, 6782],
-                [18481, 292133, 381, 241360, 1465154, 303],
-                [30065, 284166, 338, 182455, 1161038, 231],
-                [6090, 78333, 41, 49831, 221714, 23],
-                [732374, 5525708, 14063, 2864833, 30572052, 7339]
-            ],
-            [
-                [294218, 5208136, 10909, 1666335, 3650523, 4017],
-                [23850, 325547, 168, 267772, 1980565, 154],
-                [8729, 194046, 201, 104018, 1525528, 123],
-                [2768, 82964, 91, 32958, 729594, 38],
-                [329565, 5810693, 11369, 2071083, 7886210, 4332]
-            ],
-            [
-                [169647, 2319733, 12163, 1237021, 3576059, 3223],
-                [8132, 157936, 129, 127685, 502588, 90],
-                [17840, 560326, 121, 465410, 794871, 76],
-                [5826, 93820, 14, 93242, 180182, 13],
-                [201445, 3131815, 12427, 1923358, 5053700, 3402]
-            ],
-            [
-                [318540, 2493344, 7233, 1442074, 6160635, 3869],
-                [31698, 200669, 297, 170994, 497351, 245],
-                [26464, 163519, 264, 115799, 576323, 193],
-                [2143, 16759, 24, 10210, 83018, 17],
-                [378845, 2874291, 7818, 1739077, 7317327, 4324]
-            ],
-            [
-                [676332, 5515792, 17278, 2714001, 6684418, 7690],
-                [169814, 917371, 1012, 658400, 1197023, 795],
-                [78056, 544148, 232, 457847, 2383353, 136],
-                [231192, 26273, 43, 17915, 115975, 31],
-                [1155394, 7003584, 18565, 3848163, 10380769, 8652]
-            ],
-            [
-                [209666, 1877103, 4023, 950945, 3052511, 2147],
-                [5295, 109044,101, 105374, 324115, 91],
-                [11888,163617, 100, 129625, 469029, 76],
-                [556, 3935, 6, 2256, 7425, 5],
-                [227405, 2153699, 4230, 1188200, 3853080, 2319]
-            ],
-            [
-                [132076, 988886, 7552, 463587, 991486, 1509],
-                [10301, 145414, 155, 122245, 298950, 120],
-                [4195, 44251, 52, 29505, 84801, 40],
-                [1914, 7945, 13, 6331, 25868, 9],
-                [148486, 1186496, 7772, 621668, 1401105, 1678]
-            ],
-            [
-                [93984, 655586, 2244, 441551, 1799465, 1501],
-                [29942, 69847, 107, 64034, 204754, 98],
-                [28889, 122452, 110, 108213, 303645, 97],
-                [900, 28170, 16, 23593, 75660, 14],
-                [153715, 876055, 2477, 637391, 2383524, 1710]
-            ],
-            [
-                [82365, 276145, 1192, 180981, 832493, 784],
-                [9957, 26197, 68, 22190, 142343, 56],
-                [7873, 81081, 36, 65859, 392660, 28],
-                [6096, 22560, 17, 20853, 566731, 14],
-                [106291, 405983, 1313, 289883, 1934227, 882]
-            ],
-            [
-                [80701, 412342, 1286, 196361, 2041056, 690],
-                [9471, 82963, 86, 74381, 470985, 78],
-                [7248, 61338, 85, 40446, 317644, 66],
-                [981, 10434, 10, 3844, 14216, 4],
-                [98401, 567077, 1467, 315032, 2843901, 838]
-            ],
-            [
-                [53616, 270682, 784, 143258, 485837, 481],
-                [3514, 23672, 39, 23206, 56323, 38],
-                [1910, 5942, 13, 4100, 32854, 11],
-                [800, 7070, 4, 3511, 20000, 2],
-                [59840, 307366, 840, 174075, 595014, 532]
-            ],
-            [
-                [41808, 197649, 553, 103434, 909112, 326],
-                [2250, 10490, 14, 7882, 29534, 11],
-                [3917, 34997, 37, 27059, 261885, 30],
-                [1284, 5573, 2, 5573, 54124, 2],
-                [49259, 248709, 606, 143948, 1254655, 38]
-            ],
-            [
-                [110577,539694, 1969, 354414, 3065922, 1117],
-                [14667, 21884, 56, 20661, 112199, 54],
-                [10755, 57404, 52, 26896, 159894, 30],
-                [1862, 3776, 10, 1932, 34091, 7],
-                [137861, 622758, 2087, 403903, 3372106, 1208]
-            ],
-            [
-                [2941268, 25626168, 80489, 12285149, 60973663, 34136],
-                [337372, 2383167, 2613, 1906184, 33540876, 2133],
-                [237829, 2317287, 1641, 1757232, 8767641, 1137],
-                [262412, 387612, 291, 272049, 3067922, 179],
-                [3778881, 30714234, 85034, 16220614, 48497332, 37585]
-            ]
-        ]*/
+         let valuesArray = [
+         [
+         [677738, 4871076, 13303, 2391187, 27724146, 6782],
+         [18481, 292133, 381, 241360, 1465154, 303],
+         [30065, 284166, 338, 182455, 1161038, 231],
+         [6090, 78333, 41, 49831, 221714, 23],
+         [732374, 5525708, 14063, 2864833, 30572052, 7339]
+         ],
+         [
+         [294218, 5208136, 10909, 1666335, 3650523, 4017],
+         [23850, 325547, 168, 267772, 1980565, 154],
+         [8729, 194046, 201, 104018, 1525528, 123],
+         [2768, 82964, 91, 32958, 729594, 38],
+         [329565, 5810693, 11369, 2071083, 7886210, 4332]
+         ],
+         [
+         [169647, 2319733, 12163, 1237021, 3576059, 3223],
+         [8132, 157936, 129, 127685, 502588, 90],
+         [17840, 560326, 121, 465410, 794871, 76],
+         [5826, 93820, 14, 93242, 180182, 13],
+         [201445, 3131815, 12427, 1923358, 5053700, 3402]
+         ],
+         [
+         [318540, 2493344, 7233, 1442074, 6160635, 3869],
+         [31698, 200669, 297, 170994, 497351, 245],
+         [26464, 163519, 264, 115799, 576323, 193],
+         [2143, 16759, 24, 10210, 83018, 17],
+         [378845, 2874291, 7818, 1739077, 7317327, 4324]
+         ],
+         [
+         [676332, 5515792, 17278, 2714001, 6684418, 7690],
+         [169814, 917371, 1012, 658400, 1197023, 795],
+         [78056, 544148, 232, 457847, 2383353, 136],
+         [231192, 26273, 43, 17915, 115975, 31],
+         [1155394, 7003584, 18565, 3848163, 10380769, 8652]
+         ],
+         [
+         [209666, 1877103, 4023, 950945, 3052511, 2147],
+         [5295, 109044,101, 105374, 324115, 91],
+         [11888,163617, 100, 129625, 469029, 76],
+         [556, 3935, 6, 2256, 7425, 5],
+         [227405, 2153699, 4230, 1188200, 3853080, 2319]
+         ],
+         [
+         [132076, 988886, 7552, 463587, 991486, 1509],
+         [10301, 145414, 155, 122245, 298950, 120],
+         [4195, 44251, 52, 29505, 84801, 40],
+         [1914, 7945, 13, 6331, 25868, 9],
+         [148486, 1186496, 7772, 621668, 1401105, 1678]
+         ],
+         [
+         [93984, 655586, 2244, 441551, 1799465, 1501],
+         [29942, 69847, 107, 64034, 204754, 98],
+         [28889, 122452, 110, 108213, 303645, 97],
+         [900, 28170, 16, 23593, 75660, 14],
+         [153715, 876055, 2477, 637391, 2383524, 1710]
+         ],
+         [
+         [82365, 276145, 1192, 180981, 832493, 784],
+         [9957, 26197, 68, 22190, 142343, 56],
+         [7873, 81081, 36, 65859, 392660, 28],
+         [6096, 22560, 17, 20853, 566731, 14],
+         [106291, 405983, 1313, 289883, 1934227, 882]
+         ],
+         [
+         [80701, 412342, 1286, 196361, 2041056, 690],
+         [9471, 82963, 86, 74381, 470985, 78],
+         [7248, 61338, 85, 40446, 317644, 66],
+         [981, 10434, 10, 3844, 14216, 4],
+         [98401, 567077, 1467, 315032, 2843901, 838]
+         ],
+         [
+         [53616, 270682, 784, 143258, 485837, 481],
+         [3514, 23672, 39, 23206, 56323, 38],
+         [1910, 5942, 13, 4100, 32854, 11],
+         [800, 7070, 4, 3511, 20000, 2],
+         [59840, 307366, 840, 174075, 595014, 532]
+         ],
+         [
+         [41808, 197649, 553, 103434, 909112, 326],
+         [2250, 10490, 14, 7882, 29534, 11],
+         [3917, 34997, 37, 27059, 261885, 30],
+         [1284, 5573, 2, 5573, 54124, 2],
+         [49259, 248709, 606, 143948, 1254655, 38]
+         ],
+         [
+         [110577,539694, 1969, 354414, 3065922, 1117],
+         [14667, 21884, 56, 20661, 112199, 54],
+         [10755, 57404, 52, 26896, 159894, 30],
+         [1862, 3776, 10, 1932, 34091, 7],
+         [137861, 622758, 2087, 403903, 3372106, 1208]
+         ],
+         [
+         [2941268, 25626168, 80489, 12285149, 60973663, 34136],
+         [337372, 2383167, 2613, 1906184, 33540876, 2133],
+         [237829, 2317287, 1641, 1757232, 8767641, 1137],
+         [262412, 387612, 291, 272049, 3067922, 179],
+         [3778881, 30714234, 85034, 16220614, 48497332, 37585]
+         ]
+         ]*/
         
         /* // For 1434
-        let valuesArray = [
-            [
-                [2767535, 23337488, 85680, 9212532, 62173362, 28411],
-                [232941, 6487123, 6302, 3567211, 24752474, 2462],
-                [105552, 2016371, 1347, 795168, 5706865, 542],
-                [43703, 596330, 229, 290324, 13320135, 130],
-                [3149731, 32437312, 93558, 13865235, 105952836, 31545]
-            ],
-            [
-                [1532973, 58144397, 101495, 6086026, 21121298, 23759],
-                [117239, 996180, 384, 785978, 5284545, 335],
-                [15026, 328768, 311, 184420, 855074, 189],
-                [5743, 103368, 76, 62756, 196432, 54],
-                [1670981, 59572713, 102266, 7119180, 27457349, 24337
-                ]
-            ],
-            [
-                [133275, 9204992, 27475, 2906458, 15110722,8532],
-                [7105, 241553, 195, 168971, 1484644, 134],
-                [20822, 276999, 305, 171923, 652897, 146],
-                [4764, 118646, 63, 66562, 202381, 30],
-                [165966, 9842190, 28038, 3313914, 17450644, 8842]
-            ],
-            [
-                [549630, 3860427, 9170, 2775240, 21317852, 6879],
-                [34573, 269422, 420, 253258, 2957420, 415],
-                [29029, 184673, 207, 137198, 3669099, 178],
-                [6538, 87112, 54, 64973, 231373, 38],
-                [619770, 4401634, 9851, 3230669, 28175744, 7510]
-            ],
-            [
-                [2082995, 17855393, 46803, 8266421, 13184516, 19836],
-                [249825, 4425095, 6118, 2645151, 5220129, 2179],
-                [61965, 824228, 1090, 486020, 1031474, 331],
-                [21174, 304188, 172, 192884, 1831531, 100],
-                [2415959, 23408904, 54183, 11590476, 21267650, 22446]
-            ],
-            [
-                [629586, 6494199, 12612, 2616584, 9421057, 5626],
-                [40943, 608615, 466, 343700, 1292808, 360],
-                [15004, 168967, 149, 109080, 403262, 100],
-                [17339 ,257444, 88, 92270, 1912528, 53],
-                [702872, 7529225, 13315, 3161634, 13029655, 6139]
-            ],
-            [
-                [316919, 2894948, 6563, 1408858, 3893120, 3377],
-                [23941, 279208, 490, 199131, 540585, 252],
-                [9025, 48907, 65, 30896, 2186467, 40],
-                [7990, 44792, 34, 22700, 1054327, 15],
-                [357875, 3267855, 7152, 1661585, 7674499, 3684]
-            ],
-            [
-                [312010, 1845279, 5474, 873696, 107291484, 2900],
-                [24422, 106795, 164, 83199, 414397, 142],
-                [21398, 218678, 159, 130598, 639063, 99],
-                [7768, 195289, 39, 98346, 704749, 20],
-                [365598, 2366041, 5836, 1185839, 109049693, 3161]
-            ],
-            [
-                [144565, 897650, 2120, 580459, 93534105, 1446],
-                [33944, 229681, 189, 218918, 1261742, 187],
-                [12647, 142062, 83, 82987, 180806, 65],
-                [5408, 35885, 40, 17724, 118916, 20],
-                [196564, 1305278, 2432, 900088, 95095569, 1718]
-            ],
-            [
-                [168899, 1289785, 2991, 730418, 9133514, 1634],
-                [34263, 304869, 274, 238110, 1981081, 229],
-                [6240, 45565, 84, 38123, 249502, 68],
-                [4712, 28900, 36, 22090, 261984, 24],
-                [214114, 1669119, 3385, 1028741, 11626081, 1955]
-            ],
-            [
-                [163617, 1351490, 3958, 722021, 6888252, 1761],
-                [6868, 45236, 39, 39103, 365982, 35],
-                [7571, 21842, 25, 17106, 157957, 17],
-                [4096, 27109, 29, 15682, 215696, 17],
-                [182152, 1445677, 4051, 793912, 7627887, 1830]
-            ],
-            [
-                [143724, 715367, 1478, 421220, 6354352, 980],
-                [3032, 47089, 43, 29609, 87932, 32],
-                [4211, 46283, 36, 26306, 293672, 25],
-                [1753, 15325, 25, 9411, 74265, 17],
-                [152720, 824064, 1582, 486546, 6810221, 1054]
-            ],
-            [
-                [234742, 1610421, 5169, 734860, 49214587, 2398],
-                [20448, 189424, 570, 159569, 2775689, 334],
-                [18992, 283571, 245, 108051, 1668758, 101],
-                [6160, 180129, 96, 86546, 1723118, 24],
-                [280342, 2263545, 6080, 1089026, 55382152, 2857]
-            ],
-            [
-            [9180470, 129501836, 310988, 37334793, 418638221, 107539],
-            [829544, 14230290, 15654, 8731908, 48419428, 7096],
-            [327482, 4606914, 4106, 2317876, 17694896, 1901],
+         let valuesArray = [
+         [
+         [2767535, 23337488, 85680, 9212532, 62173362, 28411],
+         [232941, 6487123, 6302, 3567211, 24752474, 2462],
+         [105552, 2016371, 1347, 795168, 5706865, 542],
+         [43703, 596330, 229, 290324, 13320135, 130],
+         [3149731, 32437312, 93558, 13865235, 105952836, 31545]
+         ],
+         [
+         [1532973, 58144397, 101495, 6086026, 21121298, 23759],
+         [117239, 996180, 384, 785978, 5284545, 335],
+         [15026, 328768, 311, 184420, 855074, 189],
+         [5743, 103368, 76, 62756, 196432, 54],
+         [1670981, 59572713, 102266, 7119180, 27457349, 24337
+         ]
+         ],
+         [
+         [133275, 9204992, 27475, 2906458, 15110722,8532],
+         [7105, 241553, 195, 168971, 1484644, 134],
+         [20822, 276999, 305, 171923, 652897, 146],
+         [4764, 118646, 63, 66562, 202381, 30],
+         [165966, 9842190, 28038, 3313914, 17450644, 8842]
+         ],
+         [
+         [549630, 3860427, 9170, 2775240, 21317852, 6879],
+         [34573, 269422, 420, 253258, 2957420, 415],
+         [29029, 184673, 207, 137198, 3669099, 178],
+         [6538, 87112, 54, 64973, 231373, 38],
+         [619770, 4401634, 9851, 3230669, 28175744, 7510]
+         ],
+         [
+         [2082995, 17855393, 46803, 8266421, 13184516, 19836],
+         [249825, 4425095, 6118, 2645151, 5220129, 2179],
+         [61965, 824228, 1090, 486020, 1031474, 331],
+         [21174, 304188, 172, 192884, 1831531, 100],
+         [2415959, 23408904, 54183, 11590476, 21267650, 22446]
+         ],
+         [
+         [629586, 6494199, 12612, 2616584, 9421057, 5626],
+         [40943, 608615, 466, 343700, 1292808, 360],
+         [15004, 168967, 149, 109080, 403262, 100],
+         [17339 ,257444, 88, 92270, 1912528, 53],
+         [702872, 7529225, 13315, 3161634, 13029655, 6139]
+         ],
+         [
+         [316919, 2894948, 6563, 1408858, 3893120, 3377],
+         [23941, 279208, 490, 199131, 540585, 252],
+         [9025, 48907, 65, 30896, 2186467, 40],
+         [7990, 44792, 34, 22700, 1054327, 15],
+         [357875, 3267855, 7152, 1661585, 7674499, 3684]
+         ],
+         [
+         [312010, 1845279, 5474, 873696, 107291484, 2900],
+         [24422, 106795, 164, 83199, 414397, 142],
+         [21398, 218678, 159, 130598, 639063, 99],
+         [7768, 195289, 39, 98346, 704749, 20],
+         [365598, 2366041, 5836, 1185839, 109049693, 3161]
+         ],
+         [
+         [144565, 897650, 2120, 580459, 93534105, 1446],
+         [33944, 229681, 189, 218918, 1261742, 187],
+         [12647, 142062, 83, 82987, 180806, 65],
+         [5408, 35885, 40, 17724, 118916, 20],
+         [196564, 1305278, 2432, 900088, 95095569, 1718]
+         ],
+         [
+         [168899, 1289785, 2991, 730418, 9133514, 1634],
+         [34263, 304869, 274, 238110, 1981081, 229],
+         [6240, 45565, 84, 38123, 249502, 68],
+         [4712, 28900, 36, 22090, 261984, 24],
+         [214114, 1669119, 3385, 1028741, 11626081, 1955]
+         ],
+         [
+         [163617, 1351490, 3958, 722021, 6888252, 1761],
+         [6868, 45236, 39, 39103, 365982, 35],
+         [7571, 21842, 25, 17106, 157957, 17],
+         [4096, 27109, 29, 15682, 215696, 17],
+         [182152, 1445677, 4051, 793912, 7627887, 1830]
+         ],
+         [
+         [143724, 715367, 1478, 421220, 6354352, 980],
+         [3032, 47089, 43, 29609, 87932, 32],
+         [4211, 46283, 36, 26306, 293672, 25],
+         [1753, 15325, 25, 9411, 74265, 17],
+         [152720, 824064, 1582, 486546, 6810221, 1054]
+         ],
+         [
+         [234742, 1610421, 5169, 734860, 49214587, 2398],
+         [20448, 189424, 570, 159569, 2775689, 334],
+         [18992, 283571, 245, 108051, 1668758, 101],
+         [6160, 180129, 96, 86546, 1723118, 24],
+         [280342, 2263545, 6080, 1089026, 55382152, 2857]
+         ],
+         [
+         [9180470, 129501836, 310988, 37334793, 418638221, 107539],
+         [829544, 14230290, 15654, 8731908, 48419428, 7096],
+         [327482, 4606914, 4106, 2317876, 17694896, 1901],
          [137148, 1994517, 981, 1042268, 21847435, 542],
          [10474644, 150333557, 331729, 49426845, 506599980, 117078]
          ]
@@ -2663,10 +2663,10 @@ public class KMAUIUtilities {
         
         /*let titles = [
          "Housing, Commercial",
-                      "Industrial, Commercial",
-                      "Educational Buildings, Health and Mosques",
-                      "Social Buildings and Governmental",
-                      "Total"
+         "Industrial, Commercial",
+         "Educational Buildings, Health and Mosques",
+         "Social Buildings and Governmental",
+         "Total"
          ]*/
         
         let keys = KMAUIConstants.shared.establishmentPermitKeys // KMAUIConstants.shared.buildingPermitKeys
@@ -2813,7 +2813,7 @@ public class KMAUIUtilities {
             
             datasetData[row] = rowData as AnyObject
         }
-                
+        
         var datasetDictionary = [String: AnyObject]()
         datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
         datasetDictionary["rowTitles"] = years as AnyObject
@@ -2826,6 +2826,218 @@ public class KMAUIUtilities {
         // JSON String for Parse
         if let jsonString = String(data: jsonData, encoding: .utf8) {
             print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
+    
+    public func createDatasetHospitalBedsSectorsByRegion() {
+        // Setup test datasets
+        let regionIds = [
+            "fN4QkVTtYG", // Ar Riyad
+            "jKSqzVZ1Qh", // Makkah
+            "urz0USWpmV", // Al Madinah
+            "PQJotY1T16", // Qassim
+            "U3pCS8McNA", // Eastern Province
+            "1Wbb0OFXuZ", // `Asir
+            "c3CiqAdxjG", // Tabuk
+            "OQuHnQ1Psl", // Hail
+            "l6XhWzfDpe", // Northern Borders
+            "uNaTZ905Cg", // Jizan
+            "x1L4cV8dcX", // Najran
+            "0MeC5xWrhK", // Al Bahah
+            "YDevBrdNUz", // Jawf
+            "ocRDUNG9ZR" // Saudi Arabia
+        ]
+        
+        let sectionTitles = [
+            ["Riyadh"],
+            ["Makkah", "Jeddah", "Ta`if", "Qunfudah"],
+            ["Medinah"],
+            ["Qaseem"],
+            ["Eastern", "Al-Ahsa", "Hafr Al-Baten"],
+            ["Aseer", "Bishah"],
+            ["Tabouk"],
+            ["Ha`il"],
+            ["Northern"],
+            ["Jazan"],
+            ["Najran"],
+            ["Al-Bahah"],
+            ["Al-Jouf", "Qurayyat"],
+            ["Saudi Arabia"]
+        ]
+        
+        let rowTitles = ["MOH", "Other Governmental Sector", "Private Sector", "Total"]
+        
+        let values = [
+            [
+                [[49, 8337], [16, 5072], [41, 5747], [106, 19156]]
+            ], [
+                [[10, 2694], [1, 193], [7, 473], [18, 3360]],
+                [[13, 3091], [4, 1870], [40, 3714], [57, 8675]],
+                [[16, 2640], [5, 859], [4, 489], [25, 3988]],
+                [[5, 400], [0, 0], [0, 0], [5, 400]]
+            ], [
+                [[19, 2768], [3, 650], [12, 1135], [34, 4553]]
+            ], [
+                [[19, 2859], [0, 0], [4, 343], [23, 3202]]
+            ], [
+                [[20, 3356], [8, 1952], [23, 4081], [51, 9389]],
+                [[10, 1955], [1, 270], [6, 728], [17, 2953]],
+                [[7, 1000], [1, 289], [2, 150], [10, 1439]]
+            ], [
+                [[20, 2330], [2, 515], [12, 1137], [34, 3982]],
+                [[7, 770], [0, 0], [0, 0], [7, 770]]
+            ], [
+                [[12, 1820], [2, 642], [1, 86], [15, 2548]]
+            ], [
+                [[13, 1790], [0, 0], [3, 170], [16, 1960]]
+            ], [
+                [[10, 1360], [0, 0], [0, 0], [10, 1360]]
+            ], [
+                [[21, 2225], [1, 38], [3, 250], [25, 2513]]
+            ], [
+                [[10, 1300], [3, 312], [3, 250], [16, 1862]]
+            ], [
+                [[10, 1165], [0, 0], [2, 130], [12, 1295]]
+            ], [
+                [[9, 1330], [0, 0], [0, 0], [9, 1330]],
+                [[4, 490], [0, 0], [0, 0], [4, 490]]
+            ], [
+                [[284, 43680], [47, 12662], [163, 18883], [494, 75225]]
+            ]
+        ]
+        
+        
+        // sectionTitles
+        // rowTitles
+        
+        let points = [
+            "Hospitals",
+            "Beds"
+        ]
+        
+        for (regionIndex, regionId) in regionIds.enumerated() {
+            print("\nREGION ID: \(regionId)\n")
+            let sectionTitle = sectionTitles[regionIndex]
+            let valuesTitle = values[regionIndex]
+            var sectionData = [String: AnyObject]()
+            
+            for (sectionIndex, sectionItem) in sectionTitle.enumerated() {
+                let valuesItem = valuesTitle[sectionIndex]
+                var valueData = [String: [String: Int]]()
+                
+                for (rowIndex, rowTitle) in rowTitles.enumerated() {
+                    let rowValues = valuesItem[rowIndex]
+                    var rowData = [String: Int]()
+                    
+                    for (pointIndex, point) in points.enumerated() {
+                        rowData[point] = rowValues[pointIndex]
+                    }
+                    
+                    valueData[rowTitle] = rowData
+                }
+                
+                sectionData[sectionItem] = valueData as AnyObject
+            }
+            
+            //            print("SECTION DATA: \(sectionData)")
+            var datasetDictionary = [String: AnyObject]()
+            datasetDictionary["sectionTitles"] = sectionTitle as AnyObject
+            datasetDictionary["rowTitles"] = rowTitles as AnyObject
+            datasetDictionary["points"] = points as AnyObject
+            datasetDictionary["data"] = sectionData as AnyObject
+            
+            let newDataset = PFObject(className: "KMADataGovSADataSet")
+            newDataset["name"] = "Hospitals and Beds in KSA Health Sectors by Region, 1439H (2018G)"
+            newDataset["owner"] = "Ministry of Health"
+            newDataset["type"] = "hospitalBedsSectorsByRegion"
+            newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+            
+            let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+            // JSON String for Parse
+            if let jsonString = String(data: jsonData, encoding: .utf8) {
+                print("\nTotal dictionary:\n\(jsonString)")
+                newDataset["json"] = jsonString
+            }
+            
+            newDataset.saveInBackground { (success, error) in
+                if let error = error {
+                    print("Error creating a dataset: \(error.localizedDescription).")
+                } else if success {
+                    print("Dataset created.")
+                }
+            }
+        }
+    }
+    
+    public func createDatasetGovernmentWellsByTypesAndRegions() {
+        let datasetName = "التطور التراكمي لعدد الآبار الأهلية المرخصة (لمختلف الأغراض) بالمناطق"
+        
+        let sectionTitles = [
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+        ]
+        
+        let rowTitles = [
+            "الرياض",
+            "مكة المكرمة ، المدينة المنورة",
+            "المنطقة الشرقية",
+            "القصيم، حائل، تبوك، الجوف، والحدود الشمالية",
+            "الباحة ، عسير ، نجران ، جازان",
+            "الإجمـــــالي",
+        ]
+        
+        let values = [
+            [57767, 59319, 61053, 62884, 64690, 66172, 67176, 68092, 68720],
+            [8173, 8188, 8216, 8448, 8460, 8481, 8507, 8541, 8561],
+            [10715, 10778, 10843, 11069, 11196, 11296, 11358, 11393, 11409],
+            [44049, 45048, 45943, 46942, 47513, 48502, 48828, 49078, 49259],
+            [10410, 10412, 10414, 10423, 10425, 10437, 10500, 10137, 10355],
+            [131114, 133745, 136469, 139766, 142284, 144888, 146369, 147941, 148304]
+        ]
+        
+        var datasetData = [String: [String: Int]]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            var rowData = [String: Int]()
+            let rowValue = values[rowIndex]
+            
+            for (columnIndex, column) in sectionTitles.enumerated() {
+                rowData[column] = rowValue[columnIndex]
+            }
+            
+            datasetData[row] = rowData
+        }
+        
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = datasetName
+        newDataset["owner"] = "Ministry of Environment, Water and Agriculture"
+        newDataset["type"] = "governmentWellsByTypesAndRegions"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: "ocRDUNG9ZR")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
             newDataset["json"] = jsonString
         }
         
@@ -2905,7 +3117,7 @@ public extension UIDevice {
             guard let value = element.value as? Int8, value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-
+        
         func mapToDevice(identifier: String) -> String { // swiftlint:disable:this cyclomatic_complexity
             #if os(iOS)
             switch identifier {
@@ -2970,7 +3182,7 @@ public extension UIDevice {
             }
             #endif
         }
-
+        
         return mapToDevice(identifier: identifier)
     }()
 }
@@ -3080,7 +3292,7 @@ public extension UIImage {
 // MARK: - Location extension
 
 public extension CLLocationCoordinate2D {
-
+    
     /// Get coordinate moved from current to `distanceMeters` meters with azimuth `azimuth` [0, Double.pi)
     ///
     /// - Parameters:
@@ -3091,10 +3303,10 @@ public extension CLLocationCoordinate2D {
         let bearing = azimuth
         let origin = self
         let distRadians = distanceMeters / (6372797.6) // earth radius in meters
-
+        
         let lat1 = origin.latitude * Double.pi / 180
         let lon1 = origin.longitude * Double.pi / 180
-
+        
         let lat2 = asin(sin(lat1) * cos(distRadians) + cos(lat1) * sin(distRadians) * cos(bearing))
         let lon2 = lon1 + atan2(sin(bearing) * sin(distRadians) * cos(lat1), cos(distRadians) - sin(lat1) * sin(lat2))
         return CLLocationCoordinate2D(latitude: lat2 * 180 / Double.pi, longitude: lon2 * 180 / Double.pi)
@@ -3136,7 +3348,7 @@ public extension UIView {
     func rotate(degrees: CGFloat) {
         rotate(radians: CGFloat.pi * degrees / 180.0)
     }
-
+    
     func rotate(radians: CGFloat) {
         self.transform = CGAffineTransform(rotationAngle: radians)
     }
@@ -3254,7 +3466,7 @@ public extension UITextView {
     // Pass value for any one of both parameters and see result
     func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0, alignment: NSTextAlignment? = nil) {
         guard let labelText = self.text else { return }
-
+        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = lineSpacing
         paragraphStyle.lineHeightMultiple = lineHeightMultiple
@@ -3262,19 +3474,19 @@ public extension UITextView {
         if let alignment = alignment {
             paragraphStyle.alignment = alignment
         } else {
-        paragraphStyle.alignment = .center
+            paragraphStyle.alignment = .center
         }
-
+        
         let attributedString: NSMutableAttributedString
         if let labelattributedText = self.attributedText {
             attributedString = NSMutableAttributedString(attributedString: labelattributedText)
         } else {
             attributedString = NSMutableAttributedString(string: labelText)
         }
-
+        
         // Line spacing attribute
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
-
+        
         self.attributedText = attributedString
     }
 }
