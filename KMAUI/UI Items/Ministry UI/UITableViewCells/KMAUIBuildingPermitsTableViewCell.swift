@@ -107,7 +107,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         ministryLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
         // Dataset mode
-        if dataset.type == "hospitalBedsSectors" {
+        if dataset.type == "hospitalBedsSectors" || dataset.type == "hospitalBedsSectorsByRegion" {
             // Remove subviews
             for subview in stackView.subviews {
                 stackView.removeArrangedSubview(subview)
@@ -135,7 +135,6 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             setupStackView(rows: rows, values: values)
         }
     }
-//    0800400111
     
     /**
      Show the stack view for hospitalBedsSectors
@@ -143,20 +142,24 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
     
     public func setupStackViewHospitalBedsSectors() {
         let datasetDictionary = dataset.detailsDictionary
-        print(datasetDictionary)
         
-        if let rowTitles = datasetDictionary["rowTitles"] as? [String],
-            var years = datasetDictionary["years"] as? [String],
+        if let sectionTitles = datasetDictionary["sectionTitles"] as? [String],
+            var years = datasetDictionary["rowTitles"] as? [String],
             let points = datasetDictionary["points"] as? [String],
             let datasetData = datasetDictionary["data"] as? [String: AnyObject] {
             // Title inserted
-            years.insert("Years", at: 0)
+            if dataset.type == "hospitalBedsSectors" {
+                years.insert("Years", at: 0)
+            }
+            if dataset.type == "hospitalBedsSectorsByRegion" {
+                years.insert("Sectors", at: 0)
+            }
             
-            for rowTitle in rowTitles {
-                if let rowDetails = datasetData[rowTitle] as? [String: AnyObject] {
+            for sectionTitle in sectionTitles {
+                if let rowDetails = datasetData[sectionTitle] as? [String: AnyObject] {
                 let rowTitleLabel = KMAUIBoldTextLabel()
                 rowTitleLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(16)
-                rowTitleLabel.text = "   " + rowTitle
+                rowTitleLabel.text = "   " + sectionTitle
                 rowTitleLabel.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
                 rowTitleLabel.backgroundColor = KMAUIConstants.shared.KMAUIMainBgColor
                 rowTitleLabel.layer.cornerRadius = 8

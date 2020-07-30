@@ -2762,7 +2762,7 @@ public class KMAUIUtilities {
     }
     
     public func createDatasetHospitalBedsSectors() {
-        let rowTitles = [
+        let sectionTitles = [
             "Ministry of Health",
             "Other governmental Sector",
             "Private  sector",
@@ -2793,7 +2793,7 @@ public class KMAUIUtilities {
         
         var datasetData = [String: AnyObject]()
         
-        for (rowIndex, row) in rowTitles.enumerated() {
+        for (rowIndex, row) in sectionTitles.enumerated() {
             print("\nROW: \(row)")
             let rowValue = values[rowIndex]
             var rowData = [String: [String: Double]]()
@@ -2815,8 +2815,8 @@ public class KMAUIUtilities {
         }
                 
         var datasetDictionary = [String: AnyObject]()
-        datasetDictionary["rowTitles"] = rowTitles as AnyObject
-        datasetDictionary["years"] = years as AnyObject
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = years as AnyObject
         datasetDictionary["points"] = points as AnyObject
         datasetDictionary["data"] = datasetData as AnyObject
         
