@@ -107,7 +107,9 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         ministryLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
         
         // Dataset mode
-        if dataset.type == "hospitalBedsSectors" || dataset.type == "hospitalBedsSectorsByRegion" {
+        if dataset.type == "governmentWellsByTypesAndRegions" {
+            setupStackViewGovernmentWells()
+        } else if dataset.type == "hospitalBedsSectors" || dataset.type == "hospitalBedsSectorsByRegion" {
             // Remove subviews
             for subview in stackView.subviews {
                 stackView.removeArrangedSubview(subview)
@@ -319,6 +321,77 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
             
             stackView.addArrangedSubview(itemView)
             itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+        }
+    }
+    
+    public func setupStackViewGovernmentWells() {
+        // Remove subviews
+        for subview in stackView.subviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
+        let datasetDictionary = dataset.detailsDictionary
+        
+        // Optimize the font size for the 9.7-inch iPad
+        var fontSize: CGFloat = 12
+        
+        if UIScreen.main.bounds.size.width == 768 || UIScreen.main.bounds.size.height == 768 {
+            fontSize = 10
+        }
+        
+        var rowTitles = [""]
+        var firstRow = ["المنطقة"]
+        
+        if let columnTitles = datasetDictionary["sectionTitles"] as? [String], let rowTitlesValue = datasetDictionary["rowTitles"] as? [String], let datasetData = datasetDictionary["data"] as? [String: AnyObject] {
+            firstRow.append(contentsOf: columnTitles)
+            rowTitles.append(contentsOf: rowTitlesValue)
+            
+            for (rowIndex, rowTitle) in rowTitles.enumerated() {
+                // Title
+                let itemView = UIStackView()
+                itemView.axis = .horizontal
+                itemView.distribution = UIStackView.Distribution.fill
+                itemView.alignment = UIStackView.Alignment.fill
+                itemView.spacing = 4
+              
+                for (index, columnTitle) in firstRow.enumerated() {
+                    // Building kind
+                    let rowNameLabel = KMAUIBoldTextLabel()
+                    rowNameLabel.font = KMAUIConstants.shared.KMAUIBoldFont.withSize(fontSize)
+                    
+                    if rowIndex == 0 {
+                        rowNameLabel.text = columnTitle
+                    } else if rowIndex > 0, index == 0 {
+                        rowNameLabel.text = rowTitles[rowIndex]
+                    } else if rowIndex > 0, index > 0 {
+                        rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize)
+                        
+                        if let rowValues = datasetData[rowTitle] as? [String: Int], let value = rowValues[columnTitle] {
+                            rowNameLabel.text = "\(value.withCommas())"
+                        }
+                    } else {
+                        rowNameLabel.text = "-"
+                    }
+                     
+                    if index == 0 {
+                        rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .left)
+                    } else {
+                        rowNameLabel.textAlignment = .center
+                        rowNameLabel.setLineSpacing(lineSpacing: 1.2, lineHeightMultiple: 1.2, alignment: .center)
+                    }
+                                     
+                    rowNameLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 24.0).isActive = true
+                    itemView.addArrangedSubview(rowNameLabel)
+                }
+                
+                stackView.addArrangedSubview(itemView)
+                itemView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: 0).isActive = true
+                
+                if rowIndex == 0 {
+                    addLine()
+                }
+            }
         }
     }
     
