@@ -243,7 +243,9 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         // Rows
         var keys = KMAUIConstants.shared.establishmentPermitKeys
         
-        if dataset.type == "buildingPermits" {
+        if dataset.name == "Manpower in the Productive Factories Licensed Under the Protection and Encouragement of National Industries and Foreign Capital Investment Laws Classified by Industrial Sector and Region: Up to the End of 1426A.H." {
+            keys = ["Manpower"]
+        } else if dataset.type == "buildingPermits" {
             keys = KMAUIConstants.shared.buildingPermitKeys
         } else if dataset.type == "hospitalBeds" {
             keys = KMAUIConstants.shared.hospitalBedsKeys
@@ -258,7 +260,9 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         
         var titlesArray = [KMAUIRowData(rowName: "Types of Activities", rowValue: "")]
         
-        if dataset.type == "buildingPermits" {
+        if dataset.name == "Manpower in the Productive Factories Licensed Under the Protection and Encouragement of National Industries and Foreign Capital Investment Laws Classified by Industrial Sector and Region: Up to the End of 1426A.H." {
+            titlesArray = [KMAUIRowData(rowName: "Industrial sector", rowValue: "")]
+        } else  if dataset.type == "buildingPermits" {
             titlesArray = [KMAUIRowData(rowName: "Type of Permit", rowValue: "")]
         } else if dataset.type == "hospitalBeds" {
             titlesArray = [KMAUIRowData(rowName: "Speciality", rowValue: "")]
@@ -342,6 +346,12 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         
         var rowTitles = [""]
         var firstRow = ["المنطقة"]
+        
+        if dataset.name == "كميات الطلب السنوية على المياه – مليون م3 / سنة" {
+            firstRow = [" الأغراض"]
+        } else if dataset.name == "Total water consumption by region and purpose 2018-2019" {
+            firstRow = ["المنطقة المستفيدة"]
+        }
         
         if let columnTitles = datasetDictionary["sectionTitles"] as? [String], let rowTitlesValue = datasetDictionary["rowTitles"] as? [String], let datasetData = datasetDictionary["data"] as? [String: AnyObject] {
             firstRow.append(contentsOf: columnTitles)

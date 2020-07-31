@@ -3049,6 +3049,449 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    public func createDatasetNumberOfWaterSubscribersByRegion() {
+        let datasetName = "عدد المشتركين بالمياه حسب المنطقة للأعوام من 2012 م إلى 2017 م"
+        
+        let sectionTitles = [
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+        ]
+        
+        let rowTitles = [
+            "الرياض",
+            "مكة المكرمة",
+            "المدينة المنورة",
+            "القصيم",
+            "المنطقة الشرقية",
+            "عسير",
+            "تبوك",
+            "حائل",
+            "الحدود الشمالية",
+            "جازان",
+            "نجران",
+            "الباحة",
+            "الجوف",
+            "الإجمالي"
+        ]
+        
+        let values = [
+            [394145, 419000, 435213, 593549, 594353, 612656],
+            [280516, 330569, 359211, 368040, 347076, 349448],
+            [84231, 84950, 87031, 95136, 102619, 114506],
+            [102814, 111472, 120003, 129387, 148300, 155892],
+            [109735, 114621, 118208, 310276, 332977, 337796],
+            [21832, 22811, 23085, 29674, 43879, 44513],
+            [19954, 21613, 22123, 32067, 36927, 71056],
+            [20074, 22112, 23340, 87002, 66586, 69691],
+            [13412, 13956, 15169, 32887, 26297, 29872],
+            [19900, 20714, 21116, 168692, 71412, 72981],
+            [13812, 15549, 17120, 40276, 48252, 51599],
+            [13510, 14816, 16065, 59718, 33173, 34998],
+            [11433, 13005, 15966, 47600, 8549, 28549],
+            [1105368, 1205188, 1273650, 1994304, 1860400, 1973557]
+        ]
+
+        var datasetData = [String: [String: Int]]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            var rowData = [String: Int]()
+            let rowValue = values[rowIndex]
+            
+            for (columnIndex, column) in sectionTitles.enumerated() {
+                rowData[column] = rowValue[columnIndex]
+            }
+            
+            datasetData[row] = rowData
+        }
+        
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = datasetName
+        newDataset["owner"] = "Ministry of Environment, Water and Agriculture"
+        newDataset["type"] = "governmentWellsByTypesAndRegions"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: "ocRDUNG9ZR")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
+    
+    public func createDatasetAnnualWaterDemand() {
+        let datasetName = "كميات الطلب السنوية على المياه – مليون م3 / سنة"
+        
+        let sectionTitles = [
+            "2009",
+            "2010",
+            "2011",
+            "2012",
+            "2013",
+            "2014",
+            "2015",
+            "2016",
+            "2017"
+        ]
+        
+        let rowTitles = [
+    "البلدية",
+    "الصناعية",
+    "الزراعية",
+    "الإجمالي "
+        ]
+        
+        let values = [
+            [2123, 2284, 2423, 2527, 2731, 2874, 3025, 3130, 3150],
+            [714, 753, 800, 843, 890, 930, 977, 1015, 1000],
+            [14747, 14410, 15970, 17514, 18639, 19612, 20831, 19789, 19200],
+            [17584, 17447, 19193, 20884, 22260, 23416, 24833, 23934, 23350]
+        ]
+
+        var datasetData = [String: [String: Int]]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            var rowData = [String: Int]()
+            let rowValue = values[rowIndex]
+            
+            for (columnIndex, column) in sectionTitles.enumerated() {
+                rowData[column] = rowValue[columnIndex]
+            }
+            
+            datasetData[row] = rowData
+        }
+        
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = datasetName
+        newDataset["owner"] = "Ministry of Environment, Water and Agriculture"
+        newDataset["type"] = "governmentWellsByTypesAndRegions"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: "ocRDUNG9ZR")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
+    
+    public func createDatasetWaterConsumption() {
+        let datasetName = "Total water consumption by region and purpose 2018-2019"
+        
+        let sectionTitles = [
+            "الاستهلاك التجاري",
+            "الاستهلاك السكني ",
+            "الإجمالي السنوي ( مليون متر مكعب/سنة)"
+        ]
+        
+        let rowTitles = [
+            "الرياض",
+            "مكة المكرمة",
+            "المدينة المنورة",
+            "القصيم",
+            "المنطقة الشرقية",
+            "عسير",
+            "تبوك",
+            "حائل",
+            "الحدود الشمالية",
+            "جازان",
+            "نجران",
+            "الباحة",
+            "الجوف",
+            "الإجمالي"
+        ]
+        
+        let values = [
+            [161.0, 911.0, 1072.0],
+            [114.0, 647.0, 761.0],
+            [36.0, 204.0, 240.0],
+            [26.0, 147.0, 173.0],
+            [101.0, 574.0, 675.0],
+            [16.0, 89.0, 105.0],
+            [11.0, 60.0, 71.0],
+            [10.0, 54.0, 64.0],
+            [5.0, 29.0, 34.0],
+            [13.0, 73.0, 86.0],
+            [5.0, 26.0, 31.0],
+            [5.0, 27.0, 32.0],
+            [7.0, 41.0, 48.0],
+            [509.0, 2883.0, 3392.0]
+        ]
+
+        var datasetData = [String: [String: Double]]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            var rowData = [String: Double]()
+            let rowValue = values[rowIndex]
+            
+            for (columnIndex, column) in sectionTitles.enumerated() {
+                rowData[column] = rowValue[columnIndex]
+            }
+            
+            datasetData[row] = rowData
+        }
+        
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = datasetName
+        newDataset["owner"] = "Ministry of Environment, Water and Agriculture"
+        newDataset["type"] = "governmentWellsByTypesAndRegions"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: "ocRDUNG9ZR")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
+    
+    public func createDatasetHouseholdConnectionsSewage() {
+        let datasetName = "Number of household connections for sewage by region 2018-2019"
+        
+        let sectionTitles = [
+            "المنفذ  ( توصيلة )",
+            "التراكمي بنهاية العام (توصيلة)"
+        ]
+        
+        let rowTitles = [
+            "الرياض",
+            "مكة المكرمة",
+            "المدينة المنورة",
+            "القصيم",
+            "المنطقة الشرقية",
+            "عسير",
+            "تبوك",
+            "حائل",
+            "الحدود الشمالية",
+            "جازان",
+            "نجران",
+            "الباحة",
+            "الجوف",
+            "الإجمالي"
+        ]
+        
+        let values = [
+            [20095.0, 388880.0],
+            [6754.0, 267657.0],
+            [2189.0, 68997.0],
+            [3347.0, 137149.0],
+            [6060.0, 274160.0],
+            [2831.0, 94703.0],
+            [2724.0, 41331.0],
+            [4152.0, 32407.0],
+            [674.0, 16131.0],
+            [100.0, 23654.0],
+            [3001.0, 14896.0],
+            [0.0, 0.0],
+            [67.0, 17527.0],
+            [51994.0, 1377492.0]
+        ]
+
+        var datasetData = [String: [String: Double]]()
+        
+        for (rowIndex, row) in rowTitles.enumerated() {
+            var rowData = [String: Double]()
+            let rowValue = values[rowIndex]
+            
+            for (columnIndex, column) in sectionTitles.enumerated() {
+                rowData[column] = rowValue[columnIndex]
+            }
+            
+            datasetData[row] = rowData
+        }
+        
+        var datasetDictionary = [String: AnyObject]()
+        datasetDictionary["sectionTitles"] = sectionTitles as AnyObject
+        datasetDictionary["rowTitles"] = rowTitles as AnyObject
+        datasetDictionary["data"] = datasetData as AnyObject
+        
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = datasetName
+        newDataset["owner"] = "Ministry of Environment, Water and Agriculture"
+        newDataset["type"] = "governmentWellsByTypesAndRegions"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: "ocRDUNG9ZR")
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": datasetDictionary as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset: \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created.")
+            }
+        }
+    }
+    
+    public func createDatasetManpowerProductiveFactories() {
+        // Setup test datasets
+        let regionIds = [
+            "fN4QkVTtYG", // Ar Riyad
+            "jKSqzVZ1Qh", // Makkah
+            "urz0USWpmV", // Al Madinah
+            "PQJotY1T16", // Qassim
+            "U3pCS8McNA", // Eastern Province
+            "1Wbb0OFXuZ", // `Asir
+            "c3CiqAdxjG", // Tabuk
+            "OQuHnQ1Psl", // Hail
+            "l6XhWzfDpe", // Northern Borders
+            "uNaTZ905Cg", // Jizan
+            "x1L4cV8dcX", // Najran
+            "0MeC5xWrhK", // Al Bahah
+            "YDevBrdNUz", // Jawf
+            "ocRDUNG9ZR" // Saudi Arabia
+        ]
+        
+        // Established Permits
+        
+        let valuesArray = [
+            [
+                [21789, 13295, 7461, 7944, 25874, 20621, 20090, 23766, 3202, 52, 144094]
+            ],
+            [
+                [23539, 6337, 3312, 8108, 22718, 12906, 16352, 12479, 2107, 217, 108075]
+            ],
+            [
+                [1763, 1057, 533, 74, 8221, 4003, 1867, 252, 196, 38, 18004]
+            ],
+            [
+                [3317, 75, 198, 225, 1893, 1842, 828, 725, 265, 0, 9368]
+            ],
+            [
+                [11825, 2233, 4146, 5456, 29081, 13402, 20770, 13901, 1029, 157, 102000]
+            ],
+            [
+                [801, 50, 33, 439, 883, 1982, 451, 28, 18, 0, 4685]
+            ],
+            [
+                [557, 0, 0, 0, 1534, 720, 86, 0, 0, 8, 2905]
+            ],
+            [
+                [268, 0, 230, 57, 166, 174, 166, 0, 0, 0, 1061]
+            ],
+            [
+                [78, 0, 0, 0, 26, 124, 0, 15, 0, 0, 243]
+            ],
+            [
+                [409, 29, 0, 11, 114, 1165, 41, 0, 0, 41, 1810]
+            ],
+            [
+                [173, 0, 0, 0, 155, 231, 84, 0, 0, 0, 643]
+            ],
+            [
+                [117, 48, 0, 77, 96, 101, 0, 0, 0, 0, 439]
+            ],
+            [
+                [625, 0, 0, 0, 111, 126, 0, 0, 0, 0, 862]
+            ],
+            [
+                [65261, 23124, 15913, 22391, 90872, 57397, 60735, 51166, 6817, 513,394189]
+            ]
+        ]
+
+        for (index, regionId) in regionIds.enumerated() {
+            setupDatasetManpower(values: valuesArray[index], regionId: regionId)
+        }
+    }
+    
+    public func setupDatasetManpower(values: [[Int]], regionId: String) {
+        // Creating the demo array
+        let titles = [
+            "Manpower"
+        ]
+        
+        let keys = [
+            "Food and beverage industry",
+            "Textile, ready clothes and leather industries",
+            "Wood and wood products, including furniture industry",
+            "Paper products, printing and publishing",
+            "Chemicals, petroleum coal, rubber & plastic industry",
+            "Construction Materials, Chinaware, Ceramic & Glass Industry",
+            "Basic metal industries",
+            "Fabricated metal products, machinery & equipment industry",
+            "Other Industries",
+            "Transport & storage",
+            "Total"
+        ]
+        
+        var totalArray = [AnyObject]()
+        
+        for (index1, title) in titles.enumerated() {
+            let value = values[index1]
+            var titleDictionary = [String: Int]()
+            
+            for (index2, key) in keys.enumerated() {
+                titleDictionary[key] = value[index2]
+            }
+            
+            totalArray.append([title: titleDictionary] as AnyObject)
+        }
+        
+        //
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = "Manpower in the Productive Factories Licensed Under the Protection and Encouragement of National Industries and Foreign Capital Investment Laws Classified by Industrial Sector and Region: Up to the End of 1426A.H." // "Building Permits: 1424 A.H." // "Building Permits: 1434 A.H." // "Building Permits Issued by Municipalities by Regions and Type of Permit : 1434 A.H."
+        newDataset["owner"] = "Ministry of Commerce and Industry" // "Ministry of Municipal and Rural Affairs"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+        newDataset["type"] = "establishmentPermits" // "buildingPermits"
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": totalArray as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset for a region \(regionId): \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created for the region \(regionId).")
+            }
+        }
+    }
 }
 
 // MARK: - Int extension
