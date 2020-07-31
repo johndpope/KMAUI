@@ -3443,20 +3443,7 @@ public class KMAUIUtilities {
             "Manpower"
         ]
         
-        let keys = [
-            "Food and beverage industry",
-            "Textile, ready clothes and leather industries",
-            "Wood and wood products, including furniture industry",
-            "Paper products, printing and publishing",
-            "Chemicals, petroleum coal, rubber & plastic industry",
-            "Construction Materials, Chinaware, Ceramic & Glass Industry",
-            "Basic metal industries",
-            "Fabricated metal products, machinery & equipment industry",
-            "Other Industries",
-            "Transport & storage",
-            "Total"
-        ]
-        
+        let keys = KMAUIConstants.shared.manpowerKeys
         var totalArray = [AnyObject]()
         
         for (index1, title) in titles.enumerated() {

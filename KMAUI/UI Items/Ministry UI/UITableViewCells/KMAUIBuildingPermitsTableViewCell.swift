@@ -244,7 +244,7 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         var keys = KMAUIConstants.shared.establishmentPermitKeys
         
         if dataset.name == "Manpower in the Productive Factories Licensed Under the Protection and Encouragement of National Industries and Foreign Capital Investment Laws Classified by Industrial Sector and Region: Up to the End of 1426A.H." {
-            keys = ["Manpower"]
+            keys = KMAUIConstants.shared.manpowerKeys
         } else if dataset.type == "buildingPermits" {
             keys = KMAUIConstants.shared.buildingPermitKeys
         } else if dataset.type == "hospitalBeds" {

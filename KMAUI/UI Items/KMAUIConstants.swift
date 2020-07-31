@@ -361,7 +361,22 @@ public class KMAUIConstants {
         "Psychiatry & neurology",
         "Isolation",
         "Others",
-        "Total"]
+        "Total"
+    ]
+    
+    public var manpowerKeys = [
+        "Food and beverage industry",
+        "Textile, ready clothes and leather industries",
+        "Wood and wood products, including furniture industry",
+        "Paper products, printing and publishing",
+        "Chemicals, petroleum coal, rubber & plastic industry",
+        "Construction Materials, Chinaware, Ceramic & Glass Industry",
+        "Basic metal industries",
+        "Fabricated metal products, machinery & equipment industry",
+        "Other Industries",
+        "Transport & storage",
+        "Total"
+    ]
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan
