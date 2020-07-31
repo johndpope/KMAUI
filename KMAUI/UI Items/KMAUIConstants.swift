@@ -377,6 +377,33 @@ public class KMAUIConstants {
         "Transport & storage",
         "Total"
     ]
+    
+    public var manpower2012Keys = [
+        "Manufacture of food products",
+        "Manufacture of beverages",
+        "Manufacture of Textiles",
+        "Manufacture of apparel",
+        "Manufacture of leather products and related products",
+        "Manufacture of wood and wood products and cork, except furniture, manufacture of varieties of straw and plaiting materials",
+        "Manufacture of paper and paper Mntgaat",
+        "Printing and reproduction of recorded media",
+        "Manufacture of coke, refined petroleum products",
+        "Manufacture of chemicals and chemical products",
+        "Manufacture of basic pharmaceutical products and pharmaceutical products",
+        "Manufacture of rubber and plastic",
+        "Manufacture of non-metallic products",
+        "Manufacture of basic metals",
+        "Manufacture of fabricated metal products, except machinery and equipment",
+        "Manufacture of computers and electronic products, optical",
+        "Manufacture of electrical equipment",
+        "Manufacture of machinery & equipment",
+        "Manufacture of motor vehicles & trailers",
+        "Manufacture of other transportation equipment",
+        "Furniture Making",
+        "Manufacturing of other",
+        "Repair and installation of machinery & equipment",
+        "Total"
+    ]
 }
 
 //    1. Jizan: uNaTZ905Cg - Jazan
