@@ -3479,6 +3479,121 @@ public class KMAUIUtilities {
             }
         }
     }
+    
+    public func createDatasetManpowerProductiveFactories2012() {
+        // Setup test datasets
+        let regionIds = [
+            "fN4QkVTtYG", // Ar Riyad
+            "jKSqzVZ1Qh", // Makkah
+            "urz0USWpmV", // Al Madinah
+            "PQJotY1T16", // Qassim
+            "U3pCS8McNA", // Eastern Province
+            "1Wbb0OFXuZ", // `Asir
+            "c3CiqAdxjG", // Tabuk
+            "OQuHnQ1Psl", // Hail
+            "l6XhWzfDpe", // Northern Borders
+            "uNaTZ905Cg", // Jizan
+            "x1L4cV8dcX", // Najran
+            "0MeC5xWrhK", // Al Bahah
+            "YDevBrdNUz", // Jawf
+            "ocRDUNG9ZR" // Saudi Arabia
+        ]
+        
+        // Established Permits
+        
+        let valuesArray = [
+            [
+                [47989, 12745, 8424, 8342, 2383, 1120, 11706, 3220, 3836, 16181, 3212, 32614, 64086, 7151, 34090, 3882, 21633, 11434, 7248, 55, 16882, 6832, 1668, 326733]
+            ],
+            [
+                [36791, 10571, 3627, 1809, 328, 965, 8881, 1192, 5591, 10500, 2213, 23504, 23381, 9694, 21168, 3468, 4863, 3723, 3419, 90, 2368, 4415, 0, 182561]
+            ],
+            [
+                [2648, 868, 440, 616, 450, 50, 490, 0, 2406, 8980, 0, 1650, 8543, 1940, 2396, 50, 459, 0, 0, 0, 150, 0, 0, 32136]
+            ],
+            [
+                [5360, 4742, 20, 97, 0, 394, 554, 90, 130, 502, 900, 1648, 4865, 347, 1070, 68, 214, 353, 84, 0, 606, 270, 0, 22314]
+            ],
+            [
+                [14821, 6034, 1237, 1656, 463, 2667, 8217, 1483, 4203, 34583, 183, 14939, 30993, 22444, 32602, 1174, 9036, 8290, 5301, 978, 3747, 2994, 200, 208245]
+            ],
+            [
+                [616, 2256, 50, 165, 150, 40, 60, 480, 125, 2315, 0, 716, 7567, 95, 1521, 18, 0, 0, 50, 0, 242, 213, 0, 16679]
+            ],
+            [
+                [859, 165, 0, 0, 0, 0, 0, 0, 0, 131, 1077, 236, 924, 0, 231, 0, 0, 0, 0, 0, 40, 0, 0, 3663]
+            ],
+            [
+                [4263, 0, 0, 0, 0, 0, 0, 42, 0, 30, 0, 60, 1400, 0, 92, 0, 0, 0, 0, 0, 335, 0, 0, 6222]
+            ],
+            [
+                [40, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 56, 1752, 0, 30, 0, 0, 0, 0, 0, 75, 0, 0, 2008]
+            ],
+            [
+                [80, 315, 0, 33, 0, 0, 0, 0, 0, 105, 0, 65, 2290, 750, 80, 0, 0, 0, 0, 0, 0, 70, 0, 3788]
+            ],
+            [
+                [600, 190, 0, 0, 0, 0, 0, 0, 0, 60, 0, 137, 1421, 0, 115, 0, 0, 0, 0, 0, 102, 0, 0, 2625]
+            ],
+            [
+                [35, 58, 0, 0, 0, 0, 0, 12, 0, 39, 0, 85, 182, 0, 46, 0, 0, 0, 0, 0, 0, 0, 0, 457]
+            ],
+            [
+                [687, 355, 0, 0, 0, 35, 0, 0, 0, 130, 0, 67, 854, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2166]
+            ],
+            [
+                [114789, 38354, 13798, 12718, 3774, 5271, 29908, 6519, 16291, 73556, 7585, 75777, 148258, 42459, 93441, 8660, 36205, 23800, 16102, 1123, 24547, 14794, 1868, 809597]
+            ]
+        ]
+
+        for (index, regionId) in regionIds.enumerated() {
+            setupDatasetManpower2012(values: valuesArray[index], regionId: regionId)
+        }
+    }
+    
+    public func setupDatasetManpower2012(values: [[Int]], regionId: String) {
+        // Creating the demo array
+        let titles = [
+            "Manpower"
+        ]
+        
+        let keys = KMAUIConstants.shared.manpower2012Keys
+        
+        var totalArray = [AnyObject]()
+        
+        for (index1, title) in titles.enumerated() {
+            let value = values[index1]
+            var titleDictionary = [String: Int]()
+            
+            for (index2, key) in keys.enumerated() {
+                titleDictionary[key] = value[index2]
+            }
+            
+            totalArray.append([title: titleDictionary] as AnyObject)
+        }
+        
+        //
+        let newDataset = PFObject(className: "KMADataGovSADataSet")
+        newDataset["name"] = "Manpower in the Productive Factories Licensed Under the Protection and Encouragement of National Industries and Foreign Capital Investment Laws Classified by Industrial Activity and Regions Until 2012 A.D."
+        newDataset["owner"] = "Ministry of Commerce and Industry" // "Ministry of Municipal and Rural Affairs"
+        newDataset["region"] = PFObject(withoutDataWithClassName: "KMAMapArea", objectId: regionId)
+        newDataset["type"] = "establishmentPermits" // "buildingPermits"
+        
+        let jsonData = KMAUIUtilities.shared.dictionaryToJSONData(dict: ["Dataset": totalArray as AnyObject])
+        // JSON String for Parse
+        if let jsonString = String(data: jsonData, encoding: .utf8) {
+            print("\nTotal dictionary:\n\(jsonString)")
+            newDataset["json"] = jsonString
+        }
+        
+        newDataset.saveInBackground { (success, error) in
+            if let error = error {
+                print("Error creating a dataset for a region \(regionId): \(error.localizedDescription).")
+            } else if success {
+                print("Dataset created for the region \(regionId).")
+            }
+        }
+    }
 }
 
 // MARK: - Int extension

@@ -110,12 +110,6 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
         if dataset.type == "governmentWellsByTypesAndRegions" {
             setupStackViewGovernmentWells()
         } else if dataset.type == "hospitalBedsSectors" || dataset.type == "hospitalBedsSectorsByRegion" {
-            // Remove subviews
-            for subview in stackView.subviews {
-                stackView.removeArrangedSubview(subview)
-                subview.removeFromSuperview()
-            }
-            
             setupStackViewHospitalBedsSectors()
         } else {
             // Setup stack view
@@ -143,12 +137,19 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
      */
     
     public func setupStackViewHospitalBedsSectors() {
+        // Remove subviews
+        for subview in stackView.subviews {
+            stackView.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
+        
         let datasetDictionary = dataset.detailsDictionary
         
         if let sectionTitles = datasetDictionary["sectionTitles"] as? [String],
             var years = datasetDictionary["rowTitles"] as? [String],
             let points = datasetDictionary["points"] as? [String],
             let datasetData = datasetDictionary["data"] as? [String: AnyObject] {
+            
             // Title inserted
             if dataset.type == "hospitalBedsSectors" {
                 years.insert("Years", at: 0)
@@ -320,7 +321,13 @@ public class KMAUIBuildingPermitsTableViewCell: UITableViewCell {
                     let rowNameLabel = KMAUIRegularTextLabel()
                     rowNameLabel.font = KMAUIConstants.shared.KMAUIRegularFont.withSize(fontSize)
                     rowNameLabel.textAlignment = .center
-                    rowNameLabel.text = "\(count)"
+                    
+                    if count > 0 {
+                        rowNameLabel.text = "\(count)"
+                    } else {
+                        rowNameLabel.text = "-"
+                    }
+                    
                     itemView.addArrangedSubview(rowNameLabel)
                 }
             }
