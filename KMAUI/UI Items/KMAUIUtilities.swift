@@ -2199,12 +2199,12 @@ public class KMAUIUtilities {
     
     public func getRandomLocationInside(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
         // Randomize the value
-        let randomInt = Int.random(in: 0 ..< 250)
-        let randomInt2 = Int.random(in: 0 ..< 250)
+        let randomInt = Int.random(in: 0 ..< 2500)
+        let randomInt2 = Int.random(in: 0 ..< 2500)
         let areaLat = ne.latitude - sw.latitude
         let areaLong = ne.longitude - sw.longitude
-        var latOffset = areaLat * Double(randomInt) / 1000
-        var longOffset = areaLong * Double(randomInt) / 1000
+        var latOffset = areaLat * Double(randomInt) / 10000
+        var longOffset = areaLong * Double(randomInt) / 10000
         
         if randomInt % 2 == 0 {
             latOffset = -latOffset
