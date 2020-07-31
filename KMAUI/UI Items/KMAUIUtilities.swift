@@ -2169,23 +2169,7 @@ public class KMAUIUtilities {
                     polygoneData.fillFromDictionary(object: item)
                     
                     if polygoneData.location.isEmpty {
-                        // Randomize the value
-                        let randomInt = Int.random(in: 0 ..< 20)
-                        let randomInt2 = Int.random(in: 0 ..< 20)
-                        let areaLat = ne.latitude - sw.latitude
-                        let areaLong = ne.longitude - sw.longitude
-                        var latOffset = areaLat * Double(randomInt) / 100
-                        var longOffset = areaLong * Double(randomInt) / 100
-                        
-                        if randomInt % 2 == 0 {
-                            latOffset = -latOffset
-                        }
-                        
-                        if randomInt2 % 2 == 0 {
-                            longOffset = -longOffset
-                        }
-                        
-                        polygoneData.location = CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2 + latOffset, longitude: (sw.longitude + ne.longitude) / 2 + longOffset)
+                        polygoneData.location = getRandomLocationInside(sw: sw, ne: ne)
                     }
                     
                     polygoneArray.append(polygoneData)
@@ -2211,6 +2195,26 @@ public class KMAUIUtilities {
         polygoneArray = KMAUIUtilities.shared.orderPolygoneArray(array: polygoneArray)
         
         return polygoneArray
+    }
+    
+    public func getRandomLocationInside(sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D) -> CLLocationCoordinate2D {
+        // Randomize the value
+        let randomInt = Int.random(in: 0 ..< 20)
+        let randomInt2 = Int.random(in: 0 ..< 20)
+        let areaLat = ne.latitude - sw.latitude
+        let areaLong = ne.longitude - sw.longitude
+        var latOffset = areaLat * Double(randomInt) / 100
+        var longOffset = areaLong * Double(randomInt) / 100
+        
+        if randomInt % 2 == 0 {
+            latOffset = -latOffset
+        }
+        
+        if randomInt2 % 2 == 0 {
+            longOffset = -longOffset
+        }
+        
+        return CLLocationCoordinate2D(latitude: (sw.latitude + ne.latitude) / 2 + latOffset, longitude: (sw.longitude + ne.longitude) / 2 + longOffset)
     }
     
     public func getGoogleNearbyPlaces(polygoneArray: [KMAUIPolygoneDataStruct], nextPageToken: String, keyword: String, category: String, sw: CLLocationCoordinate2D, ne: CLLocationCoordinate2D, completion: @escaping (_ polygones: [KMAUIPolygoneDataStruct])->()) {
